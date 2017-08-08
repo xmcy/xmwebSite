@@ -883,7 +883,7 @@ router.get('/manage/installTemp',function(req,res){
         var params = url.parse(req.url,true);
         var tempId = params.query.tempId;
 
-        request(settings.xmcyAPI + '/system/template/getItem?tempId=' + tempId, function (error, response, body) {
+        request(settings.DORACMSAPI + '/system/template/getItem?tempId=' + tempId, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var tempObj = JSON.parse(body);
 

@@ -15,7 +15,6 @@ var users = require('./routes/users')(io)
 var company = require('./routes/company')(io)
 var citypartner = require('./routes/cityPartner')(io)
 var admin = require('./routes/admin')
-var tender = require('./routes/tender')
 var content = require('./routes/content')
 var resource = require('./routes/resource')(io)
 var wechat = require('./routes/wechat/wechat')
@@ -138,7 +137,6 @@ app.locals.searchKeyWord = function (content, key) {
 
 /*指定路由控制*/
 app.use('/', routes)
-app.use('/tender', tender)
 app.use('/content', content)
 app.use('/citypartner', citypartner)
 app.use('/users', users)

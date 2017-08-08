@@ -453,7 +453,7 @@ var adminFunc = {
     return basePath
   },
 
-  authxmcy: function (req, res, callBack) {
+  authDoraCMS: function (req, res, callBack) {
     var params = {
       domain: req.headers.host,
       ipAddress: adminFunc.getClienIp(req)

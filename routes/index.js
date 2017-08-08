@@ -83,7 +83,7 @@ router.get('/details/:url', function(req, res, next) {
     }
 })
 
-// 分类列表页面  http://127.0.0.1/xmcy___VylIn1IU-1.html
+// 分类列表页面  http://127.0.0.1/DoraCms___VylIn1IU-1.html
 router.get('/:defaultUrl', function(req, res, next) {
     var defaultUrl = req.params.defaultUrl
     var url = defaultUrl.split('___')[1]
