@@ -1,0 +1,667 @@
+<style>
+	.bottom_lanmai{
+		margin-top: 500px;
+	}
+	.dropdown-header {
+		font-weight: bold;
+		font-size: 14px !important;
+	}
+	form input{
+		border: 0;
+	}
+	.shopinfo>div {
+		margin: 20px 0 30px 105px;
+		height: 35px;
+		clear: both;
+		font-size: 15px;
+	}
+	.shopinfo>.shopname{
+		margin-left: 0;
+		margin-bottom: 80px;
+	}
+	.shopinfo>div>span:first-child {
+		display: inline-block;
+		width: 90px;
+		margin-right: 35px;
+	}
+	.shopinfo>div input {
+		height: 30px;
+		margin-right: 10px;
+		width: 315px;
+		padding-left: 10px;
+	}
+	.shopinfo>.modifyPic{
+		height: 225px;
+		position: relative;
+	}
+	.shopinfo>.modifyPic>.shoplogo{
+		position: absolute;
+		top:56px;
+		left: 0px;
+		width: 150px;
+		height: 90px;
+
+		background: url(/themes/lanmai/images/addfile.png) no-repeat -41px -24px;
+	}
+	.shopinfo>.modifyPic>img{
+		position: absolute;
+		top:0;
+		left: 130px;
+		width: 220px;
+		height: 220px;
+	}
+	.shopinfo>.modifyPic>.updatelogo{
+		position: absolute;
+		top:0;
+		left: 130px;
+		height:220px;
+		width: 220px;
+		overflow: hidden;
+		font-size: 300px;
+		opacity: 0;
+		filter:alpha(opacity=0);
+		cursor:pointer;
+		padding: 0;
+		margin: 0;
+		z-index: 9999;
+	}
+	.tip{
+		position: absolute;
+		top:225px;
+		left: 150px;
+		color: red;
+		display: none;
+	}
+	.modifyPic>div{
+		margin-left: 130px;
+	}
+	.modifyPic .localUpload {
+		margin: 180px 0 32px 0px;
+	}
+	.modifyPic .uploadPic{
+		margin-top: 0;
+		width: 220px;
+		height: 220px;
+	}
+	.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+		width: 250px;
+	}
+	#chooseaddress{
+		height: 50px;
+		margin-top: 50px;
+	}
+	.citychoose{
+		display: inline-block;
+	}
+	.city-picker-span{
+		width: 250px !important;
+	}
+	.city-picker-dropdown{
+		left: 650px !important;
+		top:120% !important;
+	}
+	.city-picker-span.focus, .city-picker-span.open {
+		border-bottom-color: #eee;
+	}
+	.shopaddress{
+		display: block;
+		margin-left: 130px;
+		margin-top: 0px;
+	}
+	.shopinfo>.shopdiscription {
+		height:auto;
+		position: relative;
+		margin-bottom: 30px;
+		min-height:55px;
+	}
+	.shopinfo>.shopdiscription>div {
+		position: absolute;
+		left: 130px;
+		top: 0px;
+	}
+	.shopinfo>.shopdiscription>div>div>textarea {
+		width: 315px;
+		height: auto;
+		min-height:96px;
+		max-height:145px;
+		max-width: 315px;
+		resize: none;
+		font-family: "微软雅黑";
+		font-size: 15px;
+		outline: none;
+	}
+	.shopinfo button.modify-btn {
+		margin: 20px 0 0 300px;
+		width: 170px;
+		height: 40px;
+		color: #FFFFFF;
+		border-radius: 3px;
+		background-color: rgb(218,47,47);
+		border: 1px solid rgb(218,47,47);
+		font-size: 17px;
+		margin-bottom: 50px;
+	}
+	.shopinfo button.submit-btn {
+		display: none;
+		margin: 20px 0 0 300px;
+		width: 170px;
+		height: 40px;
+		color: #FFFFFF;
+		border-radius: 3px;
+		background-color: rgb(218,47,47);
+		border: 1px solid rgb(218,47,47);
+		font-size: 17px;
+		margin-bottom: 50px;
+	}
+	.shopinfo button.orsubmit{
+		display: block;
+	}
+</style>
+<script type="application/javascript">
+	$(function () {
+		console.log(navigator.userAgent)
+		function getBrowserInfo() {
+			var agent = navigator.userAgent.toLowerCase();
+
+			var regStr_ie = /msie [\d.]+;/gi;
+			var regStr_ie2 = /Trident\/ [\d.]+;/gi;
+			//IE
+			if (agent.indexOf("msie") > 0) {
+				return agent.match(regStr_ie) ;
+			}
+			return false
+		}
+		var browser = getBrowserInfo() ;
+		if(browser){
+			var verinfo = (browser+"").replace(/[^0-9.]/ig,"");
+			if(8<parseInt(verinfo)<=9){
+				swal({
+							title: "您的浏览器版本过低，无法使用上传图片功能",
+							text:"若使用360,qq,搜狗,2345,uc等浏览器,请切换成极速模式,若使用IE浏览器,请升级浏览器版本或安装其它浏览器",
+							showCancelButton: true,
+							confirmButtonColor: "#DD6B55",
+							cancelButtonText: "取消",
+							confirmButtonText: "查看帮助",
+							closeOnConfirm: false
+						},
+						function(isConfirm){
+							if(isConfirm){
+								window.location.href="/users/helperCenter#uploadImg"
+							}
+						});
+			}else if(parseInt(verinfo)<=8){
+				alert("您的浏览器版本过低，无法使用上传图片功能,请升级浏览器版或安装其它浏览器")
+			}
+		}
+
+	})
+</script>
+
+
+
+<input type="hidden" value="<%=companyInfo._id%>" id="id" />
+
+<%if(true){%>
+<form class="shopinfo">
+						<div class="shopname">
+							<div class="storePic2"></div>
+							<h2>企业资料</h2>
+						</div>
+
+						<div id="">
+							<span id="">企业名称&nbsp;&nbsp:</span>
+							<%if(companyIdentifyInfo&&companyIdentifyInfo.status=="审核通过"){%>
+							<input class="shopname2 geryborder" type="" name="" id="" title="<%=companyInfo.companyName%>" disabled value="<%=companyInfo.companyName%>"/>企业信息审核通过，不能修改公司名称
+							<%}else{%>
+							<input class="shopname2 geryborder" type="" name="" id="" value="<%=companyInfo.companyName%>"/>
+							<%}%>
+						</div>
+
+						<div class="modifyPic">
+							<span id="">企业Logo&nbsp;&nbsp:</span>
+							<div class="shoplogo"></div>
+							<%if(!companyInfo.companyLogo){%>
+							<input class="updatelogo" type="file" name="" id="" value=""/>
+							<img src=""/>
+							<%}else {%>
+							<input class="updatelogo" type="file" name="" id="updatelogo" value=""/>
+							<img src="<%=companyInfo.companyLogo%>/220.220"/>
+							<%}%>
+							<span class="tip">点击图片可重新修改Logo</span>
+						</div>
+
+
+	                    <div>
+							<span id="">经营范围&nbsp;&nbsp;:</span>
+							<%if(companyInfo.businessScope){%>
+							<input type="hidden" id="typeValue" value="<%=companyInfo.businessScope.join(",")%>">
+							<%}else {%>
+							<input type="hidden" id="typeValue" value="">
+							<%}%>
+							<select class="selectpicker" id="type" multiple title="请选择经营范围" data-live-search="true" data-dropup-auto="false" data-max-options="8" data-max-options-text="经营范围最多选择8个">
+								<%for(var i=0;i<cateList.length;i++){%>
+								<optgroup label="<%=cateList[i].name%>" data-id="<%=cateList[i]._id%>">
+									<%for(var j=0;j<currentCateListForSecond.length;j++){%>
+									<%if(currentCateListForSecond[j].parentID==cateList[i]._id){%>
+									<option value="<%=currentCateListForSecond[j].name%>"><%=currentCateListForSecond[j].name%></option>
+									<%}}%>
+								</optgroup>
+								<%}%>
+							</select>
+						</div>
+
+						<div class="shopdiscription">
+							<span id="">企业描述&nbsp;&nbsp;:</span>
+							<div id="">
+								<%if(!companyInfo.companyDes){%>
+								<div><textarea style="border: 1px solid rgb(189, 188, 188)" type="" name="" id="" value=""></textarea></div>
+								<%}else {%>
+								<div><textarea type="" name="" id="" value="" ><%=companyInfo.companyDes%></textarea></div>
+								<%}%>
+
+							</div>
+			    		</div>
+
+						<div id="chooseaddress">
+							<span id="">企业地址&nbsp;&nbsp:</span>
+							<div class="citychoose">
+								<%if(companyIdentifyInfo&&companyIdentifyInfo.status=="审核通过"){%>
+								<%if(companyInfo.region&&companyInfo.region.district){%>
+								<input  type="text" disabled  value="<%=companyInfo.region.province%>/<%=companyInfo.region.city%>/<%=companyInfo.region.district%>" name="region" id="region">企业信息审核通过，不能修改公司地区
+								<%}else if(companyInfo.region){%>
+								<input  type="text" disabled value="<%=companyInfo.region.province%>/<%=companyInfo.region.city%>" name="region" id="region">企业信息审核通过，不能修改公司地区
+								<%}else {%>
+								<input type="text" disabled value="" name="region" id="region">企业信息审核通过，不能修改公司地区
+								<%}%>
+								<%}else{%>
+								<%if(companyInfo.region&&companyInfo.region.district){%>
+								<input  type="text" data-toggle="city-picker" value="<%=companyInfo.region.province%>/<%=companyInfo.region.city%>/<%=companyInfo.region.district%>" name="region" id="region">
+								<%}else if(companyInfo.region){%>
+								<input  type="text" data-toggle="city-picker" value="<%=companyInfo.region.province%>/<%=companyInfo.region.city%>" name="region" id="region">
+								<%}else {%>
+								<input type="text" data-toggle="city-picker" value="" name="region" id="region">
+								<%}%>
+								<%}%>
+
+							</div>
+							<%if(!companyInfo.address){%>
+							<input class="shopaddress geryborder" type="" name="" id="" value="" placeholder="请填写具体地址"/>
+							<%}else {%>
+							<input  class="shopaddress geryborder" type="" name="" id="" value="<%=companyInfo.address%>" placeholder="请填写具体地址"/>
+							<%}%>
+
+
+						</div>
+
+						<div id="">
+							<span id="">企业联系人&nbsp;&nbsp:</span>
+							<%if(!companyInfo.contacts){%>
+							<input class="shopcontactor geryborder" type="" name="" id="" value=""/>
+							<%}else {%>
+							<input  class="shopcontactor geryborder" type="" name="" id="" value="<%=companyInfo.contacts%>"/>
+							<%}%>
+
+						</div>
+
+						<div id="">
+							<span id="">企业邮箱&nbsp;&nbsp:</span>
+							<%if(!companyInfo.email){%>
+							<input class="shopemail geryborder" type="" name="" id="" value=""/>
+							<%}else {%>
+							<input  class="shopemail geryborder" class="" type="" name="" id="" value="<%=companyInfo.email%>"/>
+							<%}%>
+
+						</div>
+						<div id="">
+							<span id="">接单QQ&nbsp;&nbsp:</span>
+							<%if(!companyInfo.qq){%>
+							<input class="shopqq geryborder" type="" name="" id="" value=""/>
+							<%}else {%>
+							<input  class="shopqq geryborder" class="" type="" name="" id="" value="<%=companyInfo.qq%>"/>
+							<%}%>
+
+						</div>
+						<div class="modifyContact" id="">
+							<span id="">联系方式&nbsp;&nbsp:</span>
+							<%if(!companyInfo.phoneNum){%>
+							<input class="mobilenum geryborder" value="">
+							<%}else {%>
+							<input  class="mobilenum geryborder" value="<%=companyInfo.phoneNum%>">
+							<%}%>
+
+							<!--<div class="mobilecontact">-->
+								<!--<div>-->
+									<!--<div class="privateMobileLogo"></div>-->
+									<!--<div class="shopMobile">13387876565</div>-->
+								<!--</div>-->
+								<!--<span class="changeIcon"></span>-->
+							<!--</div>-->
+
+						</div>
+			    		<button class="submit-btn orsubmit">提交</button>
+			    	</form>
+<%}else {%>
+<form class="shopinfo">
+						<div class="shopname">
+							<div class="storePic2"></div>
+							<h2>企业资料</h2>
+						</div>
+
+						<div id="">
+							<span id="">企业名称&nbsp;&nbsp:</span>
+							<%if(companyIdentifyInfo&&companyIdentifyInfo.status=="审核通过"){%>
+							<input class="shopname2" type="" name="" id="" title="<%=companyInfo.companyName%>" disabled value="<%=companyInfo.companyName%>"/>企业信息审核通过，不能修改公司名称
+							<%}else{%>
+							<input class="shopname2" type="" name="" id="" value="<%=companyInfo.companyName%>"/>
+							<%}%>
+						</div>
+
+
+						<div class="modifyPic">
+							<span id="">企业Logo&nbsp;&nbsp:</span>
+							<div class="shoplogo"></div>
+							<input disabled="true" class="updatelogo" type="file" name="" id="updatelogo" value=""/>
+							<img src="<%=companyInfo.companyLogo%>/220.220"/>
+							<span class="tip">点击图片可重新修改Logo</span>
+						</div>
+	                    <div>
+							<span id="">经营范围&nbsp;&nbsp;:</span>
+							<select class="selectpicker" data-dropup-auto="false" id="type" multiple title="" data-live-search="true" data-max-options="8" data-max-options-text="经营范围最多选择8个">
+								<%for(var i=0;i<cateList.length;i++){%>
+								<optgroup label="<%=cateList[i].name%>" data-id="<%=cateList[i]._id%>">
+									<%for(var j=0;j<currentCateListForSecond.length;j++){%>
+									<%if(currentCateListForSecond[j].parentID==cateList[i]._id){%>
+									<option value="<%=currentCateListForSecond[j].name%>"><%=currentCateListForSecond[j].name%></option>
+									<%}}%>
+								</optgroup>
+								<%}%>
+							</select>
+						</div>
+
+						<div class="shopdiscription">
+							<span id="">企业描述&nbsp;&nbsp;:</span>
+							<div id="">
+								<div><textarea  readonly="readonly" type="" name="" id="" value="" ><%=companyInfo.companyDes%></textarea></div>
+							</div>
+			    		</div>
+
+						<div id="chooseaddress">
+							<span id="">企业地址&nbsp;&nbsp:</span>
+							<div class="citychoose">
+								<%if(companyIdentifyInfo&&companyIdentifyInfo.status=="审核通过"){if(companyInfo.region.district){%>
+								<input disabled type="text"  value="<%=companyInfo.region.privince%>/<%=companyInfo.region.city%>/<%=companyInfo.region.district%>" name="region" id="region">企业信息审核通过，不能修改公司地区
+								<%}else {%>
+								<input disabled type="text"  value="<%=companyInfo.region.privince%>/<%=companyInfo.region.city%>" name="region" id="region">企业信息审核通过，不能修改公司地区
+								<%}%>
+								<%}else{if(companyInfo.region.district){%>
+								<input readonly="readonly" type="text" data-toggle="city-picker" value="<%=companyInfo.region.privince%>/<%=companyInfo.region.city%>/<%=companyInfo.region.district%>" name="region" id="region">
+								<%}else {%>
+								<input readonly="readonly" type="text" data-toggle="city-picker" value="<%=companyInfo.region.privince%>/<%=companyInfo.region.city%>" name="region" id="region">
+								<%}}%>
+
+							</div>
+
+							<input readonly="readonly" class="shopaddress " type="" name="" id="" value="<%=companyInfo.address%>" placeholder="请填写具体地址"/>
+						</div>
+
+						<div id="">
+							<span id="">企业联系人&nbsp;&nbsp:</span>
+							<input readonly="readonly" class="shopcontactor " type="" name="" id="" value="<%=companyInfo.contacts%>"/>
+						</div>
+
+						<div id="">
+							<span id="">企业邮箱&nbsp;&nbsp:</span>
+							<input readonly="readonly" class="shopemail" class="" type="" name="" id="" value="<%=companyInfo.email%>"/>
+						</div>
+						<div id="">
+							<span id="">接单QQ&nbsp;&nbsp:</span>
+							<input readonly="readonly" class="shopqq" class="" type="" name="" id="" value="<%=companyInfo.qq%>"/>
+
+						</div>
+						<div class="modifyContact" id="">
+							<span id="">联系方式&nbsp;&nbsp:</span>
+							<input readonly="readonly" class="mobilenum" value="<%=companyInfo.phoneNum%>">
+							<!--<div class="mobilecontact">-->
+								<!--<div>-->
+									<!--<div class="privateMobileLogo"></div>-->
+									<!--<div class="shopMobile">13387876565</div>-->
+								<!--</div>-->
+								<!--<span class="changeIcon"></span>-->
+							<!--</div>-->
+
+						</div>
+	                    <button class="modify-btn">点击修改</button>
+			    		<button class="submit-btn">提交修改</button>
+			    	</form>
+<%}%>
+<input type="hidden" value="<%=userInfo._id%>" id="idForUser">
+
+<script>
+	$(function () {
+		var finalText;
+		$('#type').on('loaded.bs.select', function (e) {
+			if ($("#typeValue").val() !== "") {
+				$("#type").selectpicker("val", $("#typeValue").val().split(','))
+			}
+		})
+		$(".modify-btn").on("click",function () {
+			$(this).hide();
+			$(".submit-btn").show();
+			$("form input").addClass("geryborder");
+			$("form input").attr("readOnly",false);
+			$("textarea").attr("readOnly",false);
+			$("textarea").css("border","1px solid #bdbcbc").css("min-height","120px");
+			$(".shopdiscription").css("min-height","120px");
+			$("#updatelogo").prop("disabled",false);
+			$(".tip").show()
+		})
+
+        var pattern=/^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+		$("button.submit-btn").on("click",function () {
+			var shopname=$(".shopname2").val();
+			var businessScope=$("#type").selectpicker("val")
+			var shoplogo=$(".modifyPic img").attr("src").replace("/220.220","");
+			if(finalText){
+				var region={
+					province:finalText.split("/")[0],
+					city:finalText.split("/")[1],
+					district:finalText.split("/").length==3?finalText.split("/")[2]:""
+				};
+			}else{
+				var region={
+					province:$("#region").val().split("/")[0],
+					city:$("#region").val().split("/")[1],
+					district:$("#region").val().split("/").length==3?$("#region").val().split("/")[2]:""
+				};
+			}
+
+			var shopaddress=$(".shopaddress").val();
+			var companyDes=$("textarea").val();
+			var shopcontactor=$(".shopcontactor").val();
+			var shopMobile=$(".mobilenum").val();
+			var shopemail=$(".shopemail").val();
+			var shopqq=$(".shopqq").val();
+			var restmobible = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+
+			if(shopname.trim()!==""&&shopname.length>=30){
+				swal({
+					title: "企业名称不能超过30个字",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+//			if(shopname.trim().length>20){
+//				swal({
+//					title: "企业名称不能超过20个字",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//
+//			if(shoplogo.trim()==""){
+//				swal({
+//					title: "请先上传图片，再提交",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//			if(businessScope==null){
+//				swal({
+//					title: "请先选择企业经营范围再提交",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//			if(companyDes.trim()==""){
+//				swal({
+//					title: "请先对企业进行相关描述再提交",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//			if(region=={}){
+//				swal({
+//					title: "请选择企业所在区域再提交",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//			if(shopaddress.trim()==""){
+//				swal({
+//					title: "请先填写企业具体地址再提交",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//			if(shopcontactor.trim()==""){
+//				swal({
+//					title: "请先填写企业联系人再提交",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//			if(shopemail.trim()==""){
+//				swal({
+//					title: "请先填写企业邮箱再提交！",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//			if (!pattern.test(shopemail)){
+//				swal({
+//					title: "邮箱填写有误！",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//			if(shopMobile.trim()==""){
+//				swal({
+//					title: "请先填写企业联系方式再提交",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//			if (!restmobible.test(shopMobile)){
+//				swal({
+//					title: "手机填写有误！",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+			var data={
+				id:$("#id").val(),
+				companyName:shopname,
+				businessScope:businessScope,
+				companyLogo:shoplogo,
+				companyDes:companyDes,
+				region:region,
+				address:shopaddress,
+				qq:shopqq,
+				contacts:shopcontactor,
+				phoneNum:shopMobile,
+				email:shopemail
+			}
+			if(shopname.trim()!==""||
+				shoplogo.trim()!==""||
+				companyDes.trim()!==""||
+				shopemail.trim()!==""||
+				shopMobile.trim()!==""||
+				shopaddress.trim()!==""||
+				shopcontactor.trim()!==""){
+				swal({
+							title: "确认提交修改",
+							type: "warning",
+							showCancelButton: true,
+							confirmButtonColor: "#DD6B55",
+							confirmButtonText: "确定",
+							closeOnConfirm: false
+						},
+						function(){
+							$.ajax({
+								url:"/users/updateCompanyInfo",
+								data:JSON.stringify(data),
+								type:"POST",
+								dataType:"json",
+								contentType:"application/json",
+								success:function(res){
+									console.log(res)
+									if(res.result=="success"){
+										swal({
+											title: "提交成功!",
+											type: "success",
+											confirmButtonText: "确定"
+										});
+										window.location.reload();
+									}else {
+										swal({
+											title: "提交失败!",
+											type: "error",
+											confirmButtonText: "确定"
+										});
+									}
+								},
+								error:function (res) {
+									swal({
+										title: "提交失败!",
+										type: "error",
+										confirmButtonText: "确定"
+									});
+									console.log("error"+res);
+								}
+							})
+
+						});
+			}
+		})
+
+		$("input[type='file']").change(function(e) {
+			var that = this;
+			var file = this.files[0];
+			var fileType=file.type.split('/')[1];
+			var filePath=$("#idForUser").val();
+			$.getCos("users",filePath,fileType,file, function (res) {
+				console.log(res)
+				$(that).next().attr("src", res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+				$(".tip").show()
+				$(".shoplogo").css("background","none")
+			})
+		});
+
+		$(".changeIcon").on("click",function () {
+			$(".mobilecontact").hide();
+			$(".mobilenum").show();
+		})
+	})
+</script>

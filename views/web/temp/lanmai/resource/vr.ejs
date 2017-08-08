@@ -1,0 +1,1043 @@
+
+	<style>
+		.warpper{
+			width: 1200px;
+			margin: 0 auto;
+			color: #9d9d9d;
+		}
+		.headshow{
+			width: 1200px;
+			height: 425px;
+			position: relative;
+			color: grey;
+			margin-bottom: 15px;
+		}
+		.headshow img{
+			width: 1200px;
+			height: 425px;
+		}
+		.headshow h1{
+			position: absolute;
+			top: 65px;
+			left: 0;
+			font-weight:500;
+		}
+		.headshow ul{
+			width: 350px;
+			height:180px;
+			position: absolute;
+			top: 150px;
+			left:40px;
+			font-size: 17px;
+		}
+		.headshow ul li{
+			height: 33.3%;
+			width: 340px;
+			padding-left: 10px;
+			list-style: disc;
+		}
+		.headshow .clickin{
+			height: 30px;
+			width: 100px;
+			position: absolute;
+			bottom:50px ;
+			left: 500px;
+			border: 2px solid   #F3A9A9;
+		}
+		.headshow .clickin>a{
+			display: block;
+			height: 30px;
+			line-height: 28px;
+			width: 100px;
+			text-align: center;
+			cursor: pointer;
+			border-radius: 2px;
+			font-weight: 600;
+		}
+		.headshow .clickin>a:hover{
+			color:#F3A9A9 ;
+		}
+		.industypromote{
+			width: 1200px;
+			height: 520px;
+			margin-bottom: 40px;
+		}
+		.title{
+			width: 100%;
+			height: 60px;
+			line-height: 60px;
+			font-size: 24px;
+			color: #777676;
+		}
+		.industypromote>.industypromotepic{
+			height: 460px;
+			width:1200px;
+			position: relative;
+		}
+		.industypromote>.industypromotepic>.bigpic{
+			height: 460px;
+			width: 460px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.industypromote>.industypromotepic>.bigpic>img{
+			height: 460px;
+			width: 460px;
+		   
+		}
+		.industypromote>.industypromotepic>.industyinfo{
+			width: 450px;
+			height: 60px;
+			position: absolute;
+			top:400px;
+			left: 0;
+			padding-left: 10px;
+			/*background-color:#fff;
+            opacity: 0.5;*/
+            background-color:rgba(255,255,255,0.5)
+			/*filter:alpha(opacity=50);*/
+		}
+		.industypromote>.industypromotepic>.industyinfo>h4,
+		.industypromote>.industypromotepic>.industyinfo>p{
+			margin: 0;
+			margin-top:8px;
+			padding: 0;
+			color: #fff;
+		}
+		.industypromote>.industypromotepic>.industyinfo>p{
+			font-size: 13px;
+		}
+		.industypromote>.industypromotepic>.smallpic{
+			width: 720px;
+			height: 460px;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+		.industypromote>.industypromotepic>.smallpic>.smallpicshow{
+			width: 730px;
+			height: 227px;
+		}
+		.industypromote>.industypromotepic>.smallpic>.smallpicshow:first-child{
+			margin-bottom: 15px;
+		}
+		.industypromote>.industypromotepic>.smallpic>.smallpicshow img{
+			width: 230px;
+			height: 217px;
+			float: left;
+			margin-right: 15px;
+		}
+		.industypromote>.industypromotepic>.smallpic>.smallpicshow img:nth-child(3){
+			margin-right: 0;
+		}
+		.admake{
+			width: 1200px;
+			height: 690px;
+		}
+		.admake>.admakeshow{
+			height: 630px;
+			width: 1200px;
+		}
+		.admake>.admakeshow>.showarea{
+			float: left;
+			height: 626px;
+			width: 382px;
+			margin-right: 27px;
+		}
+		.admake>.admakeshow>.lastshowarea{
+			margin-right: 0px;
+		}
+		.admake>.admakeshow>.showarea>.showpic{
+			width: 382px;
+			height: 536px;
+			position: relative;
+		}
+		.admake>.admakeshow>.showarea>.admakeinfo{
+			width: 382px;
+			height: 90px;
+			position: relative;
+			background-color: #f2f2f2;
+		}
+		.admake>.admakeshow>.showarea>.showpic>img{
+			width: 382px;
+			height: 536px;
+			position: absolute;
+		}
+		.clickread{
+			width: 40px;
+			height: 15px;
+			line-height: 15px;
+			background-color: #e12929;
+			color: #fff;
+			border-radius:2px ;
+			position: absolute;
+			left: 23px;
+			top: 18px;
+			font-size: 12px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		.industyname{
+			position: absolute;
+			height: 25px;
+			width: 100%;
+			font-size: 14px;
+			top: 10px;
+			overflow: hidden;
+		}
+		.admakeinfo>.industyname>a{
+			margin-left: 20px;
+			display: inline-block;
+			height: 25px;
+			line-height: 25px;
+			max-width: 214px;
+			overflow: hidden;
+			text-overflow:ellipsis;
+			white-space: nowrap;
+			cursor: pointer;
+		}
+		.admakeskin{
+			width: 40px;
+			height: 15px;
+			position: absolute;
+			bottom: 20px;
+			left: 22px;
+		}
+
+		.admakeskin>span{
+			float: right;
+			font-size: 12px;
+		}
+		.admakeadd{
+			width: 40px;
+			height:15px;
+			position: absolute;
+			bottom: 20px;
+			left: 120px;
+		}
+
+		.admakeadd>span{
+			float: right;
+			font-size: 12px;
+		}
+		.readmore{
+			display: none;
+			width: 1200px;
+			margin-top: 20px;
+		}
+		.morecontent{
+			width: 1200px;
+			position: relative;
+		}
+		.morecontent>.specificcontent>.showpic{
+			position: relative;
+		}
+		.morecontent>.specificcontent{
+			padding-bottom: 10px;
+			padding-right: 12px;
+			float: left;
+		}
+		.morecontent>.specificcontent:nth-child(4){
+			padding-right: 0;
+		}
+		.morecontent>.specificcontent>.showpic>img{
+			width: 291px;
+			height: auto;
+		}
+		.morecontent>.specificcontent>.admakeinfo{
+			height: 66px;
+			position: relative;
+			background-color: #f2f2f2;
+			width: 291px;
+		}
+		.morecontent>.specificcontent>.admakeinfo>.admakeskin,
+		.morecontent>.specificcontent>.admakeinfo>.admakeadd{
+			bottom: 10px;
+		}
+		.join{
+			clear: both;
+			width: 1200px;
+			height: 480px;
+			margin-bottom: 20px;
+		}
+		.jionVr{
+			height: 420px;
+			width: 1200px;
+		}
+		.joininfo{
+			float: left;
+			width: 600px;
+			height: 420px;
+		}
+		.joininfo>div{
+			width: 600px;
+			height: 420px;
+			position: relative;
+		}
+		.joininfo>div>ul{
+			width: 600px;
+			height: 420px;
+			position: absolute;
+			top: 0;
+			left:24px;
+		}
+		.joininfo>div>ul>li{
+			width:560px;
+			padding-left:40px;
+			height: 90px;
+			line-height: 90px;
+			list-style: disc;
+			font-size: 18px;
+			color: grey;
+		}
+		.joininfo>div>a{
+			width: 80px;
+			height:25px;
+			text-align: center;
+			line-height: 25px;
+			position: absolute;
+			top: 33px;
+			right:184px;
+			background-color: #e12929;
+			color: #fff;
+			border-radius:3px ;
+			cursor: pointer;
+		}
+		.joinpic{
+			width: 600px;
+			float: right;
+			height: 420px;
+		}
+		.joinpic>div{
+			width: 600px;
+			height: 420px;
+			position: relative;
+		}
+		.joinpic>div>img{
+			width: 470px;
+			height: 260px;
+			position: absolute;
+			right: 55px;
+			top: 40px;
+		}
+		.joinpic>div>.clickjoin{
+			position: absolute;
+			right: 297px;
+			top: 248px;
+			width: 185px;
+			height: 25px;
+		}
+		.joinpic>div>.clickjoin>a{
+			display: block;
+			width: 185px;
+			height: 25px;
+			cursor: pointer;
+		}
+		.joinpic>div>.clickmore{
+			position: absolute;
+			right: 55px;
+			top:306px;
+			width: 180px;
+			height: 25px;
+			text-align: center;
+			line-height: 25px;
+			text-decoration: underline;
+		}
+		.joinpic>div>.clickmore>a{
+			margin-left: 10px;
+			cursor: pointer;
+            font-size: 17px;
+		}
+		.joinpic>div>.clickmore>a:hover{
+			color: #da2f2f;
+		}
+		.clickadd{
+			width: 20px;
+			height:20px;
+			position: absolute;
+			top: 20px;
+			right: 50px;
+			background: url(/themes/lanmai/VRimages/vricon.png) -10px -10px;
+			cursor: pointer;
+		}
+		.skinicon{
+			width: 20px;
+			height: 15px;
+			float: left;
+			background: url(/themes/lanmai/VRimages/vricon.png) -86px -9px;
+		}
+		.addicon{
+			width: 20px;
+			height:15px;
+			float: left;
+			background: url(/themes/lanmai/VRimages/vricon.png) -110px -10px;
+			cursor: pointer;
+		}
+		#VR{
+			color:#DA2F2F;
+		}
+		.haveListForMoney{
+			position: relative;
+		}
+		.haveListForMoney img{
+			position: absolute;
+			width: 20%;
+			top:-4px;
+			right:-2px;
+		}
+	</style>
+	<body>
+		<div class="warpper">
+			<div class="headshow">
+			    <img src="https://cdn.adquan.net/images/bigimg/charonDigitalBanner.png/compress.only" />
+			    <h1>加入制作宝企业VR展会&nbsp; &nbsp;实力展现企业资源</h1>
+		        <ul>
+		    	  <li>3D实景，身临其境，足不出户锁定目标人群</li>
+		          <li>高效便捷，极大缩减渠道宣传成本</li>
+		          <li>资源可视，轻松赢得客户信赖</li>
+		        </ul>
+		        <div class="clickin"><a href="brandWin#join">点击拥有</a></div>
+			</div>
+			<div class="industypromote">
+				<div class="title">优秀企业资源VR全景推荐</div>
+				<div class="industypromotepic">
+					<div class="bigpic">
+						<img src="/themes/lanmai/VRimages/20.png" />
+					</div>
+					<div class="industyinfo">
+						<h4>北京嘉禾广告制作有限公司</h4>
+						<p>主要提供展会布置、展台搭建、广告片拍摄等服务，行业高标准</p>
+						</div>
+					<div class="smallpic">
+						<div class="smallpicshow">
+							<img src="/themes/lanmai/VRimages/21.png" />
+							<img src="/themes/lanmai/VRimages/22.png" />
+							<img src="/themes/lanmai/VRimages/23.png" />
+						</div>
+						<div class="smallpicshow">
+							<img src="/themes/lanmai/VRimages/26.png" />
+							<img src="/themes/lanmai/VRimages/27.png" />
+							<img src="/themes/lanmai/VRimages/28.png" />
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		    <div class="admake">
+				<div class="title">广告制作企业资源精选</div>
+				<div class="admakeshow">
+					<div class="showarea">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/8.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a title="北京嘉禾广告制作公司">北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="showarea">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/28.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="showarea lastshowarea">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/10.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="readmore">
+				<div class="title">查看更多</div>
+				<div class="morecontent">
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/4.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a title="北京嘉禾广告制作公司">北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/17.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/16.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/15.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+				    <div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/10.png" />
+							
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/31.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/21.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/11.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/30.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/10.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/2.png"/>
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/3.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/6.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/16.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/15.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/17.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/13.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/12.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/11.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/32.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/8.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/9.png" />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent">
+						<div class="showpic">
+							<img src="/themes/lanmai/VRimages/10.png"  />
+							<a class="clickread">查&nbsp;看</a>
+							<div class="clickadd"></div>
+						</div>
+						<div class="admakeinfo">
+							<div class="industyname">
+								<a>北京嘉禾广告制作公司</a><a>北京</a>
+							</div>
+							<div class="admakeskin">
+								<div class="skinicon"></div>
+								<span>66</span>
+							</div>
+							<div class="admakeadd">
+								<div class="addicon"></div>
+								<span>66</span>
+							</div>
+						</div>
+					</div>
+					<div class="specificcontent clickreadmore">
+						<div class="readmoreicon">点击加载更多</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			
+			</div>
+			<div class="readmore">
+				<div class="title">查看更多</div>
+
+
+			</div>
+			<div class="join">
+				<div class="title">如何加入制作宝VR展馆</div>
+				<div class="jionVr">
+					<div class="joininfo">
+						<div>
+							<ul>
+								<li><span>步骤1</span><span>加入制作宝品牌推广会员</span></li>
+								<li><span>步骤2</span><span>我们将派专业技术人员去公司实地取景</span></li>
+								<li><span>步骤3</span><span>专业设计师帮您免费设计展览形式</span></li>
+								<li><span>步骤4</span><span>等待企业在我们的展馆上线</span></li>
+							</ul>
+						    <a href="brandWin#join">点击加入</a>
+						</div>
+					</div>
+					<div class="joinpic">
+						<div>
+							<img src="https://cdn.adquan.net/images/bigimg/31.png/compress.only" />
+							<span class="clickjoin"><a href="brandWin#join"></a></span>
+							<span class="clickmore"><a href="brandWin#learn">了解更多会员特权 Go</a></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+
+		window.onload=function(){
+			var readmore=$(".readmore");
+			var readmoreicon=$(".readmoreicon")
+			var $aPin = $(".specificcontent");
+			var pinHArr=[];
+			var lastpin=$aPin[$aPin.length-2]
+			var jion=$(".join");
+			$(readmore[0]).css("display","block");
+
+			$aPin.each( function(index,value){
+				var pinH =$(this).height();
+				if( index <4 ){
+					pinHArr[index] = pinH; //第一行中的num个块框pin 先添加进数组pinHArr
+				}else{
+					var minH = Math.min.apply(null,pinHArr);//数组pinHArr中的最小值minH
+
+					var minHIndex = $.inArray(minH,pinHArr);
+					$( value ).css({
+						'position': 'absolute',
+						'top': minH +15,
+						'left': $aPin.eq(minHIndex).position().left
+					});
+					//数组 最小高元素的高 + 添加上的aPin[i]块框高
+					pinHArr[minHIndex] += $aPin.eq(index).height() + 15;//更新添加了块框后的列高
+
+				}
+
+			});
+			var lastPinHeight=$(lastpin).height();
+			var lastPinTop=$(lastpin).position().top;
+			var jionTop=lastPinHeight+lastPinTop+20;
+			if(readmore.length>1){
+				readmoreicon.on('click',function () {
+					var next=$($(this).parent().parent().parent().next()[0])
+					next.show();
+					next.css("margin-top",jionTop+'px');
+				})
+//				for(var i=0;i<readmoreicon.length;i++){
+//					readmoreicon[i].bind("click",function () {
+//						$(readmore[i+1]).show();
+//						$(readmore[i+1]).css("margin-top",jionTop+'px');
+//					})(i)
+//				}
+			}
+			$(jion).css("margin-top",jionTop+'px');
+		}
+
+	</script>

@@ -1,0 +1,289 @@
+<style type="text/css">
+
+	.file-drop-zone {
+		width: 280px;
+		height: 230px !important;
+	}
+	.certificatContent{
+		margin-top: 57px;
+		padding-left: 225px;
+	}
+	.certificatContent>div{
+		margin-bottom: 30px;
+	}
+	.certificatContent>div span.firstSpan{
+		height: 36px;
+		display: inline-block;
+		width: 65px;
+		margin:0 45px 0 45px;
+		vertical-align: top;
+	}
+	.certificatContent>div input{
+		border: 1px solid rgb(112,112,112);
+		width: 202px;
+		height:25px;
+		text-align: center;
+	}
+	.certificatContent .checkDate{
+		position: relative;
+	}
+	.certificatContent .checkDate>input{
+		position: absolute;
+		top: -8px;
+		left: 153px;
+		width: 14px;
+		height: 15px;
+	}
+	.certificatContent .checkRemind{
+		position: absolute;
+		top: -5px;
+		left: 214px;
+		font-size:13px;
+		color:rgb(275,170,111);
+	}
+	.certificatContent .remindForlong{
+		position: absolute;
+		top: -5px;
+		left: 178px;
+		font-size: 13px;
+	}
+	.certificatContent .uploadRemind{
+		display: block;
+		margin-left: 154px;
+	}
+	.certificatContent button.submit-btn{
+		margin-left: 154px;
+		width: 202px;
+		height: 40px;
+		margin-bottom: 60px;
+	}
+	.licensemodifyPic{
+		height: 270px;
+		position: relative;
+	}
+	.licensemodifyPic>.shoplogo{
+		position: absolute;
+		top:66px;
+		left:157px;
+		width: 150px;
+		height: 90px;
+		background: url(/themes/lanmai/images/addfile.png) no-repeat -41px -24px;
+	}
+	.licensemodifyPic>img{
+		position: absolute;
+		top:10px;
+		left:155px;
+		width: 220px;
+		height: 220px;
+	}
+	.licensemodifyPic>.updatelogo{
+		position: absolute;
+		top:10px;
+		left:155px;
+		height:220px;
+		width: 220px;
+		overflow: hidden;
+		font-size: 300px;
+		opacity: 0;
+		filter:alpha(opacity=0);
+		cursor:pointer;
+		padding: 0;
+		margin: 0;
+		z-index: 9999;
+	}
+	.tip{
+		position: absolute;
+		top:235px;
+		left: 160px;
+		color: red;
+		display: none;
+	}
+	.city-picker-span{
+		top: -34px;
+		left: 157px;
+	}
+	.city-picker-span>.placeholder{
+		width: 100px !important;
+	}
+	.city-picker-dropdown{
+		left: 750px !important;
+		top: 80% !important;
+	}
+</style>
+<script type="application/javascript">
+	$(function () {
+		console.log(navigator.userAgent)
+		function getBrowserInfo() {
+			var agent = navigator.userAgent.toLowerCase();
+
+			var regStr_ie = /msie [\d.]+;/gi;
+			var regStr_ie2 = /Trident\/ [\d.]+;/gi;
+			//IE
+			if (agent.indexOf("msie") > 0) {
+				return agent.match(regStr_ie) ;
+			}
+			return false
+		}
+		var browser = getBrowserInfo() ;
+		if(browser){
+			var verinfo = (browser+"").replace(/[^0-9.]/ig,"");
+			if(8<parseInt(verinfo)<=9){
+				swal({
+							title: "您的浏览器版本过低，无法使用上传图片功能",
+							text:"若使用360,qq,搜狗,2345,uc等浏览器,请切换成极速模式,若使用IE浏览器,请升级浏览器版本或安装其它浏览器",
+							showCancelButton: true,
+							confirmButtonColor: "#DD6B55",
+							cancelButtonText: "取消",
+							confirmButtonText: "查看帮助",
+							closeOnConfirm: false
+						},
+						function(isConfirm){
+							if(isConfirm){
+								window.location.href="/users/helperCenter#uploadImg"
+							}
+						});
+			}else if(parseInt(verinfo)<=8){
+				alert("您的浏览器版本过低，无法使用上传图片功能,请升级浏览器版或安装其它浏览器")
+			}
+		}
+
+	})
+</script>
+
+
+
+<div class="license">
+			    		<div class="checkStep">
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_one_active"></div>
+			    		<div class="navStep stepNotyet"></div><div class="nav_step_logo step_two_notyet"></div>
+			    		<div class="navStep stepNotyet"></div><div class="nav_step_logo step_three_notyet"></div>
+			    	    <div class="navStep stepNotyet"></div>
+			    	    <ul>
+		    	    		<li class="redFont">填写信息</li>
+				    		<li>等待审核</li>
+				    		<li>审核结果</li>
+			    	    </ul>
+				    	</div>
+				    	<form class="certificatContent">
+				    		<!--<div class="">-->
+				    			<!--<span id="" class="firstSpan">企业名称</span><input type="text" name="name" id="" value="" />-->
+				    		<!--</div>-->
+				    		<!--<div class="">-->
+				    			<!--<span id="" class="firstSpan">信用代码</span><input type="text" name="num" id="" value="" />-->
+				    		<!--</div>-->
+				    		<!--<div class="">-->
+				    			<!--<span id="" class="firstSpan">法人代表</span><input type="text" name="owner" id="" value="" />-->
+				    		<!--</div>-->
+							<!--<div class="">-->
+				    			<!--<span id="" class="firstSpan">所在地区</span><div class=""><input type="text" data-toggle="city-picker" value="" name="region" id="region"></div>-->
+							<!--</div>-->
+							<div class="licensemodifyPic">
+								<span id="" class="firstSpan">营业执照</span>
+								<div class="shoplogo"></div>
+								<input class="updatelogo" type="file" name="" id="updatelogo" value=""/>
+								<img src="" id="img"/>
+								<span class="tip">点击图片可重新修改营业执照</span>
+							</div>
+							<!--<div class="">-->
+								<!--<div class="">-->
+									<!--<span id="" class="firstSpan">营业期限</span><input id="date" name="expired" type="text" />-->
+								<!--</div>-->
+								<!--<div class="checkDate"> <input type="checkbox" name="long" /><span class="remindForlong">长期</span><span class="checkRemind">若无营业期限则选择长期 </span></div>-->
+							<!--</div>-->
+				    		<button class="submit-btn">提交并保存信息</button>
+				    	</form>
+			    	</div>
+<input type="hidden" value="<%=userInfo._id%>" id="idForUser">
+
+<script type="application/javascript">
+	$(function() {
+		$("button.submit-btn").on("click",function () {
+//			var name=$("input[name='name']").val();
+//			var owner=$("input[name='owner']").val();
+//			var num=$("input[name='num']").val();
+//			var expired=$("input[name='expired']").val();
+//			var long=$("input[name='long']").prop("checked");
+//			var ownerName = /^[\u4E00-\u9FA5]{2,4}$/;
+//			if (!ownerName.test(owner)){
+//				swal({
+//					title: "法人代表填写有误！",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//			if(name.trim()==""||owner.trim()==""||!(expired.trim()!==""||long!==false)||num.trim()==""||$("#region").val()==""){
+//				swal({
+//					title: "请填写完整数据！",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+//			if(name.trim()!==""&&name.length>=30){
+//				swal({
+//					title: "企业名称不能超过30个字",
+//					type: "error",
+//					confirmButtonText: "确定"
+//				});
+//				return false;
+//			}
+			if($("#img").attr('src')==""){
+				swal({
+					title: "请先上传图片，再提交",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			if(!$("#img").attr('src').startsWith('https://cdn.adquan.net')){
+				swal({
+					title: "请重新上传图片",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+//			if(long){
+//				expired="长期";
+//			}
+//			var regionStr=$("#region").val().split("/");
+//			var region={
+//				province:regionStr[0],
+//				city:regionStr[1],
+//				district:regionStr.length==3?regionStr[2]:""
+//			};
+			$.post("/users/uploadCompanyIdentify",{
+				img:$("#img").attr('src')
+			},function (result) {
+				if(result=="success"){
+					$(".shoplogo").css("background","none")
+					swal({
+						title: "成功提交企业认证！",
+						type: "success",
+						confirmButtonText: "跳转到下一页面"
+					});
+					window.location.href="/users/licenseCertification";
+				}else{
+					swal({
+						title: result,
+						type: "error",
+						confirmButtonText: "确定"
+					});
+				}
+			})
+		})
+	})
+	$("input[type='file']").change(function(e) {
+		var that = this;
+		var file = this.files[0];
+		var fileType=file.type.split('/')[1];
+		var filePath=$("#idForUser").val()
+		$.getCos("users",filePath,fileType,file, function (res) {
+			console.log(res)
+			$(that).next().attr("src", res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+			$('.shoplogo').hide()
+			$(".tip").show()
+		})
+	});
+</script>

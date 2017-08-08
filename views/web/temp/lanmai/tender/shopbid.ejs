@@ -1,0 +1,647 @@
+<style>
+	.tobind{
+		color:#da2f2f;
+	}
+	.hasbind{
+		padding-left: 105px;
+		color:#da2f2f;
+	}
+	h3{
+		margin-bottom: 30px;
+	}
+
+	.promisetocash{
+		border: 2px solid #da2f2f;
+		padding: 40px 30px;
+		position: fixed;
+		top: 30%;
+		left: 40%;
+		background-color: #fff;
+		width: 570px;
+		font-size: 16px;
+		/*display: none;*/
+		z-index: 99999;
+	}
+	.promisetocash span{
+		display: inline-block;
+		width: 100px;
+		margin-right: 34px;
+	}
+	.promisetocash input{
+		width: 250px;
+		height: 40px;
+		padding-left: 10px;
+		margin-bottom: 20px;
+	}
+	.surebuttom{
+		width: 90px;
+		height: 35px;
+		line-height: 35px;
+		text-align: center;
+		background-color: #da2f2f;
+		color: #fff;
+		border-radius: 4px;
+		margin-left: 190px;
+		margin-top: 16px;
+		cursor: pointer;
+	}
+	.close{
+		width: 30px !important;
+		height: 30px;
+		float: right;
+		background:url(/themes/lanmai/images/tendericon.png)  976px 121px ;
+		margin: -92px -30px 0 0 !important;
+	}
+	.nomargin{
+		margin-top: -42px !important; ;
+	}
+	.tipforpass{
+		width: auto !important;
+		margin-left: 133px;
+		font-size: 14px;
+	}
+	.password,.wxpassword{
+		margin-bottom: 0 !important;
+	}
+	.paycash>h3{
+		margin-bottom: 30px;
+	}
+	.paycash>form{
+		margin: 20px 0;
+	}
+	.paycash>form>span{
+		margin-right: 40px;
+	}
+	.paycash>form>label{
+		margin-right: 30px;
+		font-weight: 500;
+	}
+	.surepay{
+		display: inline-block;
+		width: 90px;
+		height: 32px;
+		line-height: 32px;
+		text-align: center;
+		background-color: #da2f2f;
+		color: #fff;
+		border-radius: 4px;
+		cursor: pointer;
+		margin-left: 10px;
+	}
+	.paycash{
+		position: absolute;
+		top:130px;
+		left: 600px;
+		width: 500px;
+		height: 220px;
+		padding: 30px;
+		background-color: #fff;
+		border: 2px solid #da2f2f;
+		font-size: 16px;
+		display: none;
+	}
+	.yellow{
+		color: #e9bc84;
+	}
+	.tocashtip{
+		margin: 20px 0;
+	}
+	.mask{
+		width: 60px;
+		height: 60px;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity:0.6;
+		background-color: #000;
+		display: none;
+	}
+	.mask>.deleteIcon{
+		width: 25px;
+		height: 25px;
+		float: right;
+		margin-top: 35px;
+		opacity: 1;
+		background:url("/themes/lanmai/images/privatecenter.png") -56px -75px;
+	}
+	.contentlist>div>.mask>.deleteIcon>a{
+		width: 25px;
+		height: 25px;
+		display: block;
+	}
+	.bannerimg{
+		width: 60px;
+		height: 60px;
+		float: left;
+	}
+	.bannercontent{
+		width: 60px;
+		height: 60px;
+		display: inline-block;
+		position: relative;
+		margin-right: 15px;
+	}
+	.sweet-alert>h2>img{
+		width: 250px;
+		height:250px;
+	}
+	.myPromote{
+		position: relative;
+	}
+	.promoteDate{
+		left: 400px;
+	}
+	.skin_count{
+		margin-top: -8px;
+	}
+	#pagination{
+		margin-left:30%;
+		margin-bottom: 30px;
+	}
+	ul.pagination>li>a{
+		margin-right:8px;
+	}
+	.adChoice{
+		width: 100%;
+		height: 35px;
+		margin-top: 45px;
+	}
+	.adChoice>ul{
+		height:35px;
+		margin:0 auto;
+		width:480px;
+	}
+	.adChoice>ul>li{
+		display: inline-block;
+		width:80px;
+		height: 30px;
+		line-height: 30px;
+		margin-right: 8px;
+		border: 1px gainsboro solid;
+		border-radius: 4px;
+		color: rgb(112,112,112);
+		text-align: center;
+		font-size: 13px;
+	}
+	.newResource{
+		float: right;
+	}
+	.promote_delete>a{
+		display: block;
+		height: 20px;
+		outline: none;
+		text-decoration: none;
+	}
+	.promote_line{
+		height: 120px;
+	}
+	.specificinfo{
+		position: absolute;
+		top: 32px;
+		left:630px;
+	}
+	.specificinfo>a,.specificinfo>div{
+		display: block;
+		line-height: 26px;
+	}
+	.status>a,.status>div{
+		display: block;
+		line-height: 26px;
+		max-width: 186px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.status{
+		position: absolute;
+		top: 30px;
+		left: 744px;
+		line-height: 26px;
+	}
+	.yellow{
+		color: #e9bc84;
+	}
+	.forcomment,.forcomplain{
+		position: absolute;
+		top:0;
+		left: 0;
+		width:100%;
+		height: auto;
+		min-height: 700px;
+		background-color: #fff;
+		z-index: 9999;
+		font-size: 16px;
+		border: 2px solid gainsboro;
+	}
+	.tenderno{
+		width: 100%;
+		height: 100px;
+		background-color: gainsboro;
+	}
+	.forcomplain{
+		min-height: 500px;
+		top: 76px;
+	}
+	.tenderno>h2{
+		display: block;
+		margin: 0 auto;
+		color: #000;
+		width: 150px;
+		text-align: center;
+		padding-top: 14px;
+	}
+	.tenderno>.tendertime{
+		display: block;
+		margin: 0 auto;
+		width: 450px;
+		text-align: center;
+		padding-top: 14px;
+	}
+	.tenderno>.tendertime>span{
+		margin:0 20px;
+	}
+	.commentinfo{
+		width: 100%;
+	}
+	.tenderinfo{
+		width:30%;
+		float: left;
+		margin-top: 14px;
+	}
+	.tenderinfo>img{
+		display: block;
+		width: 160px;
+		height: 160px;
+		margin:30px auto;
+	}
+	.tenderinfo>div{
+		max-width: 200px;
+		margin: 0 auto;
+		height: 40px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		text-align: center;
+	}
+	.commentcontent{
+		float: right;
+		width: 60%;
+		margin-left: 20px;
+		margin-top: 20px;
+	}
+	.commentcontent>ul{
+		margin:20px 0px 20px 0;
+	}
+	.commentcontent>ul>li{
+		height: 40px;
+		margin-bottom: 4px;
+	}
+	.commentcontent>ul>li>span{
+		float: left;
+		height: 40px;
+		line-height:33px;
+		width: 100px;
+	}
+	.commentcontent>ul>li>img{
+		float: left;
+		margin:0 14px;
+	}
+	.sign{
+		width: 100%;
+		margin-top: 20px;
+		position: relative;
+		height: 200px;
+	}
+	.sign>span{
+		position: absolute;
+		top: 0;
+	}
+	.sign>div{
+		position: absolute;
+		left:98px;
+	}
+	.sign>div>div{
+		width: 450px;
+		height: 160px;
+		border: none;
+	}
+	.sign>div>div>textarea{
+		width: 100%;
+		height: 100%;
+		max-height: 100%;
+		max-width: 100%;
+		resize: none;
+		border:1px solid #bdbcbc;
+		font-family: "微软雅黑";
+		font-size: 15px;
+	}
+	.sign .signtip{
+		margin-left: 192px;
+	}
+	.sign .signtip>a{
+		color: red;
+	}
+	.addfilelist{
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	.addfilelist>span{
+		margin-left: 5px;
+	}
+	.addfilediv{
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+		position: relative;
+	}
+	.addfileimg{
+		height: 60px;
+		width: 60px;
+		float: left;
+	}
+	.addfileInput{
+		height:60px;
+		width: 60px;
+		overflow: hidden;
+		font-size: 300px;
+		position:absolute;
+		right:0px;
+		top:0px;
+		opacity: 0;
+		filter:alpha(opacity=0);
+		cursor:pointer;
+	}
+	.subbmit>span{
+		display: inline-block;
+		width: 140px;
+		text-align: center;
+		height: 34px;
+		line-height: 34px;
+		margin-right: 40px;
+		background-color: #da2f2f;
+		border: 1px solid #da2f2f;
+		color: #fff;
+		border-radius: 3px;
+		margin-left: 96px;
+		cursor: pointer;
+	}
+	.subbmit>input{
+		height: 16px;
+		width: 17px;
+		margin-right: 5px;
+	}
+	.close{
+		width: 30px !important;
+		height: 30px;
+		float: right;
+		background:url(/themes/lanmai/images/tendericon.png)  976px 121px ;
+	}
+
+	.surebuttom{
+		width: 90px;
+		height: 35px;
+		line-height: 35px;
+		text-align: center;
+		background-color: #da2f2f;
+		color: #fff;
+		border-radius: 4px;
+		margin-left: 190px;
+		margin-top: 16px;
+		cursor: pointer;
+	}
+	.subbmit>span{
+		display: inline-block;
+		width: 140px;
+		text-align: center;
+		height: 34px;
+		line-height: 34px;
+		margin-right: 40px;
+		background-color: #da2f2f;
+		border: 1px solid #da2f2f;
+		color: #fff;
+		border-radius: 3px;
+		margin-left: 96px;
+		cursor: pointer;
+	}
+	.subbmit>input{
+		height: 16px;
+		width: 17px;
+		margin-right: 5px;
+	}
+	.addfilelist {
+		margin-bottom: 20px;
+		margin-left: 100px;
+	}
+	.close,.close2{
+		width: 30px !important;
+		height: 30px;
+		float: right;
+		background:url(/themes/lanmai/images/tendericon.png)  976px 121px ;
+	}
+	.complainbid{
+		width: 100%;
+		padding: 20px 30px;
+	}
+	.complainbid>ul{
+		width: 90%;
+		height: 100px;
+		margin-top: 20px;
+	}
+	.complainbid>ul>li{
+		height: 50px;
+		line-height: 50px;
+		float: left;
+	}
+	.complainbid span{
+		display: block;
+		margin-top: 20px;
+	}
+	.complainbid textarea{
+		margin-top: 20px;
+		display: block;
+		width: 100%;
+		min-height: 180px;
+		padding: 10px;
+	}
+	.complain{
+		cursor: pointer;
+	}
+	.submmintcomplain{
+		width: 140px;
+		margin-left:84%;
+		background-color: #da2f2f;
+		border: 1px solid #da2f2f;
+		color: #fff;
+		height: 35px !important;
+		line-height: 35px;
+		text-align: center;
+		border-radius: 3px;
+		margin-top:20px;
+		cursor: pointer;
+	}
+	.percents{
+		width: 66%;
+	}
+	.percentf{
+		width: 34%;
+	}
+</style>
+<div class="myPromote" ng-controller="shopbidController">
+
+	<h2>企业投标</h2>
+	<div class="newResource bgRed "><a href="../tender/tenderlist" class="whiteFont">去投标</a></div>
+	<div class="adChoice">
+		<ul>
+			<li ng-class="{redBorder:border=='投标中'}"><a ng-click="collect('投标中')">投标中</a></li>
+			<li ng-class="{redBorder:border=='已中标'}"><a ng-click="collect('已中标')">已中标</a></li>
+			<li ng-class="{redBorder:border=='未中标'}"><a ng-click="collect('未中标')">未中标</a></li>
+			<li ng-class="{redBorder:border=='已交付'}"><a ng-click="collect('已交付')">已交付</a></li>
+			<li ng-class="{redBorder:border=='已取消'}"><a ng-click="collect('已取消')">已取消</a></li>
+		</ul>
+	</div>
+	<div class="admake"  >
+		<div class="littlemargin" ng-if="!dataList.length">暂无任何投标</div>
+		<div class="promote_list">
+			<div class="promote_line" ng-repeat="item in dataList track by $index">
+				<div class="promotePic"><img ng-src="{{item|filetype}}" /></div>
+				<div class="promoteInfo">
+					<p>招标号<span>{{item.tenderNum}}</span></p>
+					<p title="{{item.title}}">{{item.title}}</p>
+					<p class="titleOverflow">{{item.categoryL1.name}}-{{item.categoryL2.name}}</p>
+					<p>{{item.createdAt|timeFilter}}</p>
+				</div>
+				<div class="promoteDate">
+					<div class="promotetime yellow"  >报价 | {{item|bidprice:userId}}元</div>
+					<!--<p class="skin_count">完工剩余<span class="greenColor">{{item.bidders[0].serviceEnd|endtime}}</span></p>-->
+					<p class="skin_count">完工时间<span class="greenColor">{{item.bidders[0].serviceEnd|date:'yyyy-MM-dd hh:mm'}}</span></p>
+				</div>
+				<div class="specificinfo blueColor">
+					<a ng-href="/tender/tenderinfo?id={{item|itemToId}}" target="_blank" class="blueColor">招标详情</a>
+					<div ng-bind-html="item|tocash" ng-if="item.chosenBidderUser==userId" compile-html></div>
+				</div>
+				<div class="status" ng-if="item.chosenBidderUser==userId">
+					<a class="yellow" >{{item|tenderstep}}</a>
+					<div ng-bind-html="item|tenderstep5" compile-html></div>
+					<a >{{item|tenderstep2}}<span class="greenColor">{{item|tenderstep3}}</span></a>
+					<div ng-if="item.isCanceled&&item.status<6&&item.status>2&&!item.bidderComplain" class="complain redFont" ng-click="complain(item)">投 诉</div>
+					<div ng-if="item.isCanceled&&item.status<6&&item.status>2&&item.bidderComplain" class="complain" >已投诉</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="promisetocash" ng-show="promisetocashShow">
+		<span class="close nomargin" ng-click="close()"></span>
+		<h3>现金账户提现</h3>
+		<div class="tocashtip">友情提醒：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现金账户资金将提现到您绑定的支付宝账户</br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将收取您提现金额3%的费用作为平台服务费</br>
+			<%if(isbind){for(var i=0;i<companyInfo.withdrawAccount.length;i++){if(companyInfo.withdrawAccount[i].type=="alipay"){%>
+			<a href=""  class="hasbind">您绑定的支付宝账号为:<%=companyInfo.withdrawAccount[i].account%></a>
+			<%}}}else {%>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			您暂未绑定支付宝账户<a href="/tender/shopaccount"  class="tobind">去绑定</a>
+			<%}%>
+		</div>
+		<span>   验  证  码</span><input class="tocashpassword" placeholder="请输入验证码" ng-model="code" /><span class="tipforpass">注：验证码已发送到您的手机，请查收！</span>
+		<div class="surebuttom suretocash" ng-click="button_clicked||confirm()">确 认</div>
+	</div>
+	<div class="forcomplain" ng-show="forcomplainShow">
+		<div class="close2" ng-click="forcomplainShow=false"></div>
+		<div class="complainbid">
+			<h2>投诉</h2>
+			<ul>
+				<li class="oneLineOver percents" title=" {{complainCompanyName}}">公司名称 ： {{complainCompanyName}}</li>
+				<li class="percentf">招  标  号  ： {{complainTenderNum}}</li>
+				<li class="oneLineOver percents" title=" {{complainTenderName}}">招标名称 ： {{complainTenderName}}</li>
+				<li class="percentf">招标类目：{{complainCatelogory1}}-{{complainCatelogory2}}</li>
+			</ul>
+			<span>投诉详情:</span>
+			<textarea placeholder="请输入您的投诉意见~(最多350字)" ng-model="complainDetails"></textarea>
+			<div class="submmintcomplain" ng-click="button_clicked||confirmComplain()">提 交</div>
+		</div>
+	</div>
+	<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+				next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+				items-per-page="itemsPerPage"></pagination>
+
+</div>
+<input type="hidden" id="phoneNum" value="<%=userInfo.phoneNum%>">
+<script>
+	$(function () {
+		$("textarea").on("input propertychange", function() {
+			var $this = $(this),
+					_val = $this.val(),
+					_length=_val.length,
+					remain_length=parseInt(500-parseInt(_length));
+			$(".sign a").text(remain_length);
+			if (_val.length > 499) {
+				$this.val(_val.substring(0, 499));
+			}
+		});
+		var images=[]
+		var str="";
+		var listitem;
+		var deleteIcon=$(".deleteIcon");
+		var bannerimgcount=$(".bannerimg").length;
+		listitem=$(".bannercontent div .shopimg");
+		$(listitem).bind("mouseover",function () {
+			$(this).next().show();
+		})
+		$(".mask").bind("mouseout",function () {
+			$(this).hide();
+		})
+		$(".addfileInput").change(function (e) {
+			var that=this;
+			str=""
+			images=[]
+			if($(".bannercontent>div").length+that.files.length>=6){
+				swal({
+					title: "达到上传图片上限5张，请删除后再上传图片!",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return;
+			}
+			$(".hasLoad").text($(".bannercontent>div").length+that.files.length)
+			$(".totalLoad").text(5-($(".bannercontent>div").length+that.files.length))
+			window.fileArr=[]
+			for(var i=0;i<that.files.length;i++){
+				var file = this.files[i];
+				var fileType=file.type.split('/')[1];
+				var filePath=$("#idForUser").val()
+				$.getCos("users",filePath,fileType,file,function (res) {
+					$("#bannercontentlist>div>img[name='"+res.data.resource_path+"']").attr("src",res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net')+'/addrespreview')
+				})
+				str+='<div class="bannercontent">'+'<img class="shopimg bannerimg" src="" name="/1253780958/adquan/users/'+$("#idForUser").val()+'/'+window.fileArr[i]+'"/>'+
+						' <div class="mask" style="display: none">'+
+						'<div class="deleteIcon"><a></a></div> </div></div>';
+			}
+			$("#bannercontentlist").prepend($(str));
+			listitem=$(".bannerimg");
+			for(var j=0;j<listitem.length;j++){
+				images.push($(listitem[j]).attr("name").replace("/1253780958/adquan","https://cdn.adquan.net"))
+			}
+			$("#bannercontentlist").scope().imgArr=images
+			$("#bannercontentlist").scope().$apply()
+			$(listitem).on("mouseover",function () {
+				$(this).next().show();
+			})
+			$(".mask").on("mouseout",function () {
+				$(this).hide();
+			})
+			$(".deleteIcon").on("click",function () {
+				$(this).parent().parent().remove();
+				images=[]
+				for(var j=0;j<$(".bannerimg").length;j++){
+					images.push($($(".bannerimg")[j]).attr("name").replace("/1253780958/adquan","https://cdn.adquan.net"))
+				}
+				$("#bannercontentlist").scope().imgArr=images
+				$("#bannercontentlist").scope().$apply()
+				$(".hasLoad").text($(".bannercontent>div").length)
+				$(".totalLoad").text(5-($(".bannercontent>div").length))
+			})
+
+		})
+
+	})
+</script>

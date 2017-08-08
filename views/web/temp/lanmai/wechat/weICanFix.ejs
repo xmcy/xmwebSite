@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height;initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>制作宝-我能安装</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/weui.min.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/myStyle.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/common.css">
+    <link href="/plugins/citypicker/css/city-picker.css" rel="stylesheet">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/javascripts/jquery-1.8.3.min.js?vesion=<%=siteConfig.version%>"></script>
+    <style>
+        .serviceArea .city-picker-span{
+            float: left;
+        }
+        .serviceArea .city-picker-dropdown{
+            width: 100% !important;
+            top:54% !important;
+        }
+       .serviceArea>span.numOne{
+            float: left;
+        }
+         /*.conformAndCancle{
+            width: 100%;
+            height: 2em;
+            position: absolute;
+            top:2em;
+            left: 0;
+            background: #fff;
+        }*/
+    </style>
+</head>
+<body ontouchstart>
+    <div class="iCanFix">
+        <div class="iCanFixTitle">我能安装</div>
+        <div class="iCanFixList">
+            <ul>
+                <li>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题：<br><input class="iCanFixTitle01" type="text" value="" placeholder="请输入标题"></li>
+                <li class="serviceArea" style="position: relative">
+                    <span class="numOne">服务地区：</span><br>
+                    <input class="ICanFixArea" readonly type="text" data-toggle="city-picker" data-simple="true" >
+                    <!--<div class="conformAndCancle">
+                        <a href="javascript:;">取消</a>
+                        <a href="javascript:;">确认</a>
+                    </div>-->
+                </li>
+                <li>联系方式：<br><input class="iCanFixTel" type="text" value="" placeholder="请输入联系方式"></li>
+                <li>联&nbsp;&nbsp;系&nbsp;人：<br><input class="iCanFixName" type="text" value="" placeholder="请输入联系人"></li>
+            </ul>
+        </div>
+        <div class="iCanFixDescription"> <span>详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情：<br></span>
+            <textarea class="iCanFixDetail" name="" id="" cols="41" rows="10"></textarea>
+        </div>
+        <div class="ICanFixSubmit">
+            <a href="javascript:;">提交</a>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/plugins/citypicker/city-picker.data.js"></script>
+<script src="/plugins/citypicker/city-picker.js"></script>
+<script>
+    $(function(){
+        $(".ICanFixSubmit").click(function(){
+            var Oarea = $(".ICanFixArea").val();
+            var OTitle=$(".iCanFixTitle01").val();
+            var OTel=$(".iCanFixTel").val();
+            var OName = $(".iCanFixName").val();
+            var ODetail = $(".iCanFixDetail").val();
+            if(OTitle==""){
+                swal("标题不能为空","","error")
+                return
+            }else if(OTitle.length>50){
+                swal("标题不能超过50个字符","","error")
+                return
+            }
+            if(Oarea==""){
+                swal("请选择服务地区","服务地区不能为空","error")
+                return
+            }
+            if(Oarea==""){
+                var region="";
+            }else{
+                var OhomeLocation = Oarea.split("/");
+                if(OhomeLocation.length==1){
+                    var region = {province: OhomeLocation[0],city:"", district:""}
+                }else if(OhomeLocation.length==2){
+                    var region={province:OhomeLocation[0],city:OhomeLocation[1],district:""}
+                }else if(OhomeLocation.length==3){
+                    var region={province:OhomeLocation[0],city:OhomeLocation[1],district:OhomeLocation[2]}
+                }
+            }
+            var tel = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/;
+            var Matchok = OTel.match(tel);
+            if(OTel==""){
+                swal("联系方式不能为空！", "", "error")
+                return
+            }else if(!Matchok){
+                swal("联系方式格式不正确！", "", "error")
+                return
+            }
+
+            $.ajax({
+                type:"POST",
+                url:"/resource/updateOrInsertInstall",
+                data:JSON.stringify({
+                    title:OTitle,
+                    serviceRegion:region,
+                    phoneNum:OTel,
+                    name:OName,
+                    details:ODetail
+                }),
+                contentType:"application/json",
+                success:function(res){
+                    console.log(res)
+                    if(res.result=="success"){
+                        swal("发布成功！", "", "success")
+                        window.location.href="userCenter"
+                    }else{
+                        swal(res, "", "error")
+                    }
+                }
+            })
+        })
+    })
+</script>

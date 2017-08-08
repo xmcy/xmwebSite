@@ -1,0 +1,428 @@
+<style>
+    body{
+        background-color: #fff;
+    }
+    .index_nav{
+     padding-left: 130px;
+    }
+    .index_nav>ul>li{
+        width: 130px;
+    }
+    .re_announce_con_make>.tip{
+        margin: 30px 0 ;
+        background-color: #da2f2f;
+        height: 38px;
+        width: 100%;
+        padding: 7px 0 6px 90px;
+        color: #fff;
+        border-radius: 4px;
+        font-size: 18px;
+        position: static;
+        display: block;
+    }
+    .contenthead{
+        width: 1200px;
+        height: 66px;
+        padding: 10px 0 26px 90px;
+        color: #acaaaa;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .tendrtitle>span{
+       margin-left: 25px;
+        float: left;
+        margin-top: 30px;
+    }
+    .tendrtitle>h2{
+        float: left;
+        color: black;
+        margin-bottom: 15px;
+        font-size: 32px;
+        max-width: 876px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .sweet-alert>h2>img{
+        width: 250px;
+        height:250px;
+    }
+    .tenderinfo{
+        width: 1200px;
+        height: 160px;
+        padding: 20px 20px 20px 75px;
+        position: relative;
+        color: #acaaaa;
+        border-bottom: 1px solid gainsboro;
+    }
+    .tenderinfo>ul{
+        width: 1200px;
+        height: 130px;
+        margin-bottom: 20px;
+    }
+    .tenderinfo>ul>li{
+        float: left;
+        height: 60px;
+        width: 32%;
+        line-height: 60px;
+        text-align: left;
+        font-size: 18px;
+        padding-left: 20px;
+    }
+    input{
+        min-width:auto;
+        margin-right: 5px;
+    }
+    .sweet-alert{
+        margin-top: -250px !important;
+    }
+    .contentlist>div{
+        margin-bottom: 0;
+    }
+    .re_source_make {
+        width: 820px;
+    }
+#imageList>li{
+    position: relative;
+}
+#imageList>li>.first{
+    width: 24px;height: 24px;background: url(/themes/lanman/images/re_announce02.png) -2px -2px no-repeat;display: block;position: absolute;top:0;left: 0;
+}
+#imageList>li>.second{
+    width: 16px;height: 16px;background: url(/themes/laiman/images/re_announce02.png) -2px -266px no-repeat;display: block;position: absolute;bottom: 0;right: 0;cursor: pointer;
+}
+
+    .dropdown-menu>li>a{
+        color:#acaaaa;
+    }
+    .picGet{
+        margin-left: 80px;
+        font-size: 16px;
+        padding-top: 2px;
+        color: darkgrey;
+    }
+    .tenderdis{
+        padding-top: 200px;
+        line-height: 36px !important;
+        padding-left: 80px;
+        color: darkgrey;
+    }
+    .file-preview{
+        margin-left: 70px;
+    }
+    .change_style{
+        font-style: normal;
+        font-weight: 500;
+        margin-left: 5px;
+        width: 100px;
+    }
+    #tenderdate{
+        padding-right: 60px;
+    }
+    .re_main>form>input{
+        margin-left: 25px;
+        height: 16px;
+    }
+    .re_submit_a{
+        background-color: #da2f2f;
+        border:  1px solid #da2f2f;
+        color: #ffffff;
+        width: 150px;
+        height: 40px;
+        line-height: 40px;
+        margin-left: 650px;
+        font-size: 20px;
+        margin-bottom: 50px;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 10px;
+        border-radius: 3px;
+    }
+    .re_maincontact{
+        height: 200px !important;
+    }
+    .newnumform{
+        display: none;
+        margin-top: -20px;
+    }
+    #phoneNum,#password{
+        width: 200px;
+        height: 40px;
+        margin-top: 0;
+        margin-left:17px;
+        float: none;
+        padding-left: 5px;
+    }
+    #password{
+        margin-left: 90px;
+        display: block !important;
+    }
+    .forpass{
+        height: 36px;
+        width: 90px;
+        line-height: 36px;
+        text-align: center;
+        background-color: #dcdbdb;
+        border: 1px solid #dcdbdb;
+        border-radius: 3px;
+        margin-top: 2px;
+        margin-left: 10px;
+        outline: none;
+    }
+    textarea{
+        width: 478px;
+        height: 258px;
+        /*  border: 1px solid darkslategray;*/
+        float: left;
+    }
+    .fortext{
+        height: 250px !important;
+        margin-top: 30px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .wangEditor-container {
+        float: left;
+        width: 60%;
+        margin-left: 15px;
+        height: 200px;
+    }
+    .wangEditor-txt{
+        height: 190px;
+    }
+    .tipforpass{
+        width: auto !important;
+        height: auto !important;
+        line-height: normal !important;
+        float: right !important;
+        margin-top: 40px;
+        margin-right: 90px;
+        color: darkgrey;
+    }
+</style>
+    <div class="re_announce_con_make">
+        <div class="tip">
+            <%if(tenderInfo.company.depositAccount&&tenderInfo.company.depositAccount>0||tenderInfo.deposit){%>
+            <p>官方提供线上担保交易，保障您的资金安全，且不会收取您任何佣金。 80%的欺诈、资金盗取均由线下交易导致，请勿线下交易。</p>
+            <%}else{%>
+            <p>招标方未缴纳企业保证金和招标保证金，请谨慎投标</p>
+            <%}%>
+        </div>
+        <div class="contenthead">
+            <div class="tendrtitle">
+                <h2 title=" <%=tenderInfo.title%>"> <%=tenderInfo.title%></h2>
+                <span>发布时间:<%=moment(tenderInfo.createdAt).format("YYYY-MM-DD HH:mm")%></span>
+            </div>
+        </div>
+        <div class="tenderinfo">
+            <ul>
+                <li>招标号：<%=tenderInfo.tenderNum%></li>
+                <li>类别：<%=tenderInfo.categoryL1.name%>-<%=tenderInfo.categoryL2.name%></li>
+                <li>招标区域：
+               <span>
+                   <%=tenderInfo.region.province%>
+                   <%if(tenderInfo.region.city){%>
+                   <%=tenderInfo.region.city%>
+                   <%}%>
+                   <%if(tenderInfo.region.district){%>
+                   <%=tenderInfo.region.district%>
+                   <%}%></span>
+                </li>
+                <li>安装：
+                    <%if(tenderInfo.needInstall){%>
+                    需要
+                    <%}else{%>
+                    不需要
+                    <%}%>
+                </li>
+                <li>设计稿： <%if(tenderInfo.hasDesign){%>
+                    已有
+                    <%}else{%>
+                    没有
+                    <%}%></li>
+                <li>交付时间：<%=moment(tenderInfo.serviceEnd).format("YYYY-MM-DD")%></li>
+            </ul>
+
+            </div>
+        <div class="re_source_make">
+            <ul>
+                <li class="re_main"><span>报价</span><input type="text"  id="price" placeholder="请输入报价" value=""/></li>
+                <li class="re_main"><span>定金比例</span><input type="number"  id="depositRate" placeholder="请输入定金比例" value="" />%</li>
+                <li  class="re_main fortext"><span>投标描述</span>
+                    <div class="textarea" id="wangEditor">
+                    </div>
+                    <div class="tenderdis">（详细描述制作流程工艺、设备产品 将助您提高中标率）</div>
+                </li>
+                <li class="re_main">
+                    <span>完工时间</span>
+                    <input class="geryborder" type="text" id="tenderdate" readonly name="brithday" placeholder="点击完工时间" data-enable-time="true"/>
+                    <div class="picGet">（服务商需要在该时间前交付验收）</div>
+                </li>
+                <li class="re_main"><span>联系人</span><input type="text" id="contacts" placeholder="请输入联系人" value=""/></li>
+                <li class="re_main"><span>验证码</span><input type="text" id="vnumCode" placeholder="请输入验证码" value=""/><img src="/admin/vnum" class="vnumCode"/><span class="tipforpass">点击可切换图形验证码</span>
+                <li class="re_main re_maincontact">
+                    <span>联系方式</span>
+                    <form class="contactway">
+                        <input class="re_machine_fix" type="radio" name="contactnum" id="readynum" checked value="13212789887"> <label for="readynum" class="change_style"><%=userInfo.phoneNum%></label>
+                        <input class="re_machine_fix" type="radio" name="contactnum" id="newnum"  value="新建"> <label for="newnum" class="change_style">其他联系方式</label>
+                    </form>
+                    <form class="newnumform">
+                        <input type="text"  id="phoneNum" placeholder="请输入手机号码" value=""/>
+                    </form>
+                </li>
+            </ul>
+        </div>
+<div class="re_submit_a">确认投标</div>
+        <input type="hidden" id="tenderId" value="<%=tenderInfo._id%>"/>
+        <input type="hidden" id="maxserviceEnd" value="<%=tenderInfo.serviceEnd%>"/>
+</div>
+<script>
+    $(function () {
+        $(".vnumCode").on("click",function () {
+            $(this).attr("src","/admin/vnum?"+Math.random())
+        })
+        var serviceEnd;
+        $("#tenderdate").flatpickr({
+            maxDate:$("#maxserviceEnd").val(),
+            onClose:function (dateObject, dateString) {
+                serviceEnd=dateString
+            }
+        });
+        $(".contactway input").on("click",function (){
+            if($("#newnum").is(":checked")){
+                $(".newnumform").show()
+            }else{
+                $(".newnumform").hide()
+            }
+        })
+        var button_clicked=false
+
+        $(".re_submit_a").on("click",function () {
+            var price=$("#price").val();
+            var contacts=$("#contacts").val();
+            var depositRate=$("#depositRate").val()?parseInt($("#depositRate").val()):$("#depositRate").val();
+            var tenderId=$("#tenderId").val();
+            var phoneNum;
+            var details = editor.$txt.html();
+            var code=$("#vnumCode").val()
+            if($("#newnum").is(":checked")){
+                phoneNum=$("#phoneNum").val();
+            }else{
+                phoneNum=$("#readynum").val();
+            }
+            if(price==""||price.trim()==""||depositRate==""||contacts==""||contacts.trim()==""||phoneNum==""
+                    ||phoneNum.trim()==""||code==""||code.trim()==""||editor.$txt.formatText()==""||serviceEnd==undefined){
+                swal({
+                    title: "必填项不许为空!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            };
+            if(!(/^1[34578]\d{9}$/.test(phoneNum))){
+                swal({
+                    title: "手机号码填写有误!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            if(editor.$txt.formatText().length<10){
+                swal({
+                    title: "详情长度需大于10个字符",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            if(depositRate<0||depositRate>100){
+                swal({
+                    title: "定金比例必须为0-100!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            var dataForPost={
+                price:price,
+                details:details,
+                depositRate:(depositRate/100).toString(),
+                tenderId:tenderId,
+                vnum:code,
+                phoneNum:phoneNum,
+                serviceEnd:serviceEnd,
+                contacts:contacts
+            }
+            button_clicked=true
+
+            $.ajax({
+                url:"/tender/insertBid",
+                data:JSON.stringify(dataForPost),
+                type:"POST",
+                dataType:"json",
+                contentType:"application/json",
+                success:function(res){
+                    if(res.result=="success"){
+                        window.location.href="/tender/tenderinfo?id="+tenderId
+                    }else{
+                        swal({
+                            title: res.error,
+                            type: "error",
+                            confirmButtonText: "确定"
+                        });
+                        button_clicked=false
+
+                    }
+                },
+                error:function (res) {
+                    swal({
+                        title: "发布失败",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    button_clicked=false
+
+                    console.log("error"+res);
+                }
+            })
+
+        })
+
+        var editor = new wangEditor('wangEditor');
+        editor.config.menus = [
+            'fontsize',
+            'bold',
+            'underline',
+            'strikethrough',
+            'undo',
+            'redo',
+            'forecolor'
+        ];
+
+        // 字体
+        editor.config.familys = [
+            '宋体', '黑体', '楷体', '微软雅黑',
+            'Arial', 'Verdana', 'Georgia'
+        ];
+        editor.config.colors = {
+            '#880000': '暗红色',
+            '#800080': '紫色',
+            '#ff0000': '红色'
+        };
+
+        // 字号
+        editor.config.fontsizes = {
+            // 格式：'value': 'title'
+            1: '10px',
+            2: '13px',
+            3: '16px',
+            4: '19px',
+            5: '22px',
+            6: '25px',
+            7: '28px'
+        };
+        editor.create();
+        window.editor=editor;
+    })
+</script>

@@ -1,0 +1,58 @@
+/*--------------------------全局样式开始---------------------------*/
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-size:14px;
+    font-family:"Microsoft YaHei";
+}
+a{
+    text-decoration:none;
+    color:#908e8e ;
+}
+a:link{
+    text-decoration: none !important;
+}
+a:active{
+    text-decoration: none !important;
+}
+a:hover{
+    text-decoration: none !important;
+}
+a:visited{
+    text-decoration: none !important;
+}
+.bigImg{
+    width: 510px;
+}
+.phcolor{ color:#c5c4c4;}
+ul{
+    list-style:none;
+}
+img{
+    border:none;
+}
+.oneLineOver{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.active{
+    color:#DA2F2F;
+}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+
+input::-webkit-input-placeholder{
+    color:#c5c4c4;
+    font-size: 14px;
+}
+input::-moz-placeholder{color:#c5c4c4;
+    font-size: 14px;}
+input:-moz-placeholder{color:#c5c4c4;
+    font-size: 14px;}
+input:-ms-input-placeholder{color:#c5c4c4;
+    font-size: 14px;}
+.titleOverflow{
+    overflow: hidden;  text-overflow:ellipsis;  white-space: nowrap;
+}

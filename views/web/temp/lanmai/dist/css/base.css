@@ -1,0 +1,55 @@
+﻿@charset "utf-8";
+/* 基本元素重置 */
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select { margin:0; padding:0; }
+body, input, textarea, select, button, table { font-size:14px; line-height:1.25em; background:#fff }
+body { min-width:320px; font-size:14px; font-family:'microsoft yahei', Verdana, Arial, Helvetica, sans-serif; color:#000; -webkit-text-size-adjust:none; background:#fff }
+
+img, fieldset { border:0; }
+ul, ol { list-style:none; }
+em, address { font-style:normal; }
+a { text-decoration:none; cursor:pointer }
+table { border-collapse:collapse; }
+h1, h2, h3, h4, h5, h6, em, i { font-style:normal; font-weight:400; outline:none; }
+/*input{
+	height: 32px;
+	border: 1px solid #bfbfbf;
+	border-radius: 3px;
+}*/
+/* 重用类样式 */
+i{
+	border: none;
+}
+.fl { float:left!important; }
+.fr { float:right!important; }
+.no_margin { margin:0px!important; }
+.no_border { border:0px!important; }
+.no_bg { background:none!important; }
+.clear_both { clear:both!important; }
+.display_block { display:block !important; }
+.clearfix:after { content:" "; display:block; height:0; clear:both; visibility:hidden; }
+.clearfix { display:inline-block; }
+.hide { display:none; }
+.show { display:block; }
+.red{ color:red}
+/*.yellow{color:#f60}
+.submit{height: 35px;border-radius:3px;background-color:#f63;color:#fff}*/
+
+ 上传图片对话框 
+.filePicker-box {width:840px; height:430px; position:absolute; right:-5px; top:-3px;"}
+
+input::-webkit-input-placeholder { /* WebKit browsers*/ 
+　　color:red !important;
+	font-size:14px;
+　　}
+input:-moz-placeholder {  /* Mozilla Firefox 4 to 18*/ 
+　　color:red !important;
+	font-size:14px;
+　　}
+input::-moz-placeholder {  /* Mozilla Firefox 19+*/ 
+　　color:red !important;
+	font-size:14px;
+　　}
+input:-ms-input-placeholder { /* Internet Explorer 10+*/ 
+　　color:red !important;
+	font-size:14px;
+}

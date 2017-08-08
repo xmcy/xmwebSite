@@ -1,0 +1,928 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title><%=companyInfo.companyName%>- 企业首页 -制作宝</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="Keywords" content="<%=siteConfig.keywords%>"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Description" content="<%=siteConfig.cmsDescription%>"/>
+    <meta name="viewport" content="width=device-width,initial-scale=0.2,minimum-scale=0.2,maximum-scale=5" />
+    <meta name="Keywords" content="广告、制作宝、户外广告、广告资源"/>
+    <meta name="Description" content="制作宝是广告行业中广告资源有效的展示和专业采购平台,提供全面的广告资源服务,三位一体的广告尽在制作宝"/>
+    <link href="/themes/<%=staticforder%>/css/common.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="/themes/<%=staticforder%>/css/detail.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="/themes/<%=staticforder%>/css/core.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="/plugins/bootstrap/css/bootstrap.min.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="/plugins/myPage/res/myPage.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/javascripts/angular.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/plugins/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.12.0.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <style type="text/css">
+        .ng-cloak { display: none; }
+        body{
+            background-color: #fff;
+        }
+        .searchKinds{
+            height: 37px;
+        }
+        .index_search_box input{
+            height: 37px !important;
+        }
+        .index_header_top_con>ul>li>a{
+            color: grey;
+        }
+        .index_header_top_con>ul>li>a:hover{
+            text-decoration: none;
+        }
+        .index_header{
+            border-bottom: 2px solid gainsboro;
+        }
+        .index_logo{
+            position: relative;
+        }
+        .aboutshop{
+            width: 240px;
+            margin-right: 50px;
+            margin-top: 15px;
+            margin-left: 15px;
+        }
+        .shopscopecontent{
+            height: 20px;
+        }
+        .shopname{
+            display: block;
+            width: 100%;
+            height: 25px;
+            font-size: 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .shopscope{
+            height: 20px;
+            width: 250px;
+            color: #908E8E;
+        }
+        .shopscope>div{
+            float: left;
+        }
+        .shopscopeicon{
+            width: 20px;
+            height: 20px;
+            background: url(/themes/lanmai/images/privatecenter.png) -5px -2px;
+        }
+        .shoprenticon{
+            width: 20px;
+            height: 20px;
+            background: url("/themes/lanmai/images/shopcenter.png") 310px -728px;
+        }
+        .shoprenting{
+            float: left;
+            width: 160px;
+            margin-left: 4px;
+        }
+        .shoprenting>ul>li{
+            width: 40px;
+            float: left;
+            font-size: 12px;
+        }
+        .shopscopecontent>ul{
+            width: 220px;
+            height: 25px;
+        }
+        .shopscopecontent>ul>li{
+            height: 25px;
+            width: auto;
+            margin-left: 4px;
+            padding-top: 2px;
+            float: left;
+            font-size: 12px;
+        }
+      .moreAboutshop{
+           margin-top: 4px;
+            width:10px;
+            height:10px;
+            background:url(/themes/lanmai/images/more.png) -4px 0 no-repeat;
+        }
+        .index_search{
+            width: 372px;
+        }
+        .index_search_box input{
+            width: 250px;
+            min-width: 250px;
+        }
+        .index_for_resource{
+          width: 252px;
+        }
+        .index_for_resource a{
+            width: 110px;
+        }
+        .index_for_resource a:hover{
+           color: #fff;
+            text-decoration: none;
+        }
+        .index_search_box ul a{
+            margin-right: 8px;
+        }
+        .shopinfo{
+            width: 1200px;
+            margin: 0 auto;
+            height: 160px;
+        }
+        .spcificinfos>a:hover{
+            text-decoration: none;
+        }
+        .shopinfo>ul{
+            width: 1200px;
+            height: 150px;
+        }
+        .shopinfo>ul>li{
+            height: 150px;
+            float: left;
+            width: 250px;
+        }
+        .shopinfo>ul>li>p{
+            display: block;
+            width: 140px;
+            text-align: center;
+            font-size: 14px;
+            color: #908E8E;
+            height: 15px;
+            margin: 0;
+            padding-top: 10px;
+        }
+        .shopinfo>ul>li>img{
+            width: 143px;
+            height: 130px;
+        }
+        .shopinfo>ul>.shoplogoinfo{
+            width: 442px;
+        }
+        .shoplogoinfo>div{
+            float: left;
+            padding-top:20px;
+            padding-left: 10px;
+        }
+        .shoplogoinfo>div>img{
+            width: 110px;
+            height: 110px;
+        }
+        .shoplogoinfo>div>p{
+            padding-top:10px;
+            display: block;
+            width: 290px;
+            font-size: 16px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-left: 18px;
+        }
+        .depositAndPromotion{
+            height: 30px;
+            font-size: 16px;
+        }
+        .depositAndPromotion>span{
+            float: left;
+        }
+        .depositicon {
+            width: 30px;
+            height: 34px;
+            background:url(/themes/lanmai/images/shopcenter.png) 266px -728px;
+            margin: -2px 5px 0 10px;
+        }
+        .promotionicon{
+            width: 30px;
+            height: 34px;
+            background: url(/themes/lanmai/images/shopcenter.png) 210px -728px;
+            margin: 0px 5px 0 30px;
+        }
+        .addcollect{
+            height: 30px;
+            width: 118px;
+            background: url("/themes/lanmai/images/shopcenter.png") 11px -700px;
+        }
+        .cancelCollect{
+            height: 30px;
+            width: 118px;
+            background: url("/themes/lanmai/images/shopcenter.png") 2px -750px;
+        }
+        .addcollect>a{
+            height: 30px;
+            width: 118px;
+            display: block;
+            cursor: pointer;
+        }
+        .headnav{
+            width: 100%;
+            height: 32px;
+            background-color: #da2f2f;
+        }
+        .headnav>div{
+            width: 1260px;
+            margin: 0 auto;
+            height: 32px;
+        }
+        .headnav>div>div{
+            display: inline-block;
+            height: 32px;
+            width: 114px;
+            font-size: 16px;
+            float: left;
+        }
+        .headnav>div>div>a{
+            color: #fff;
+            display: block;
+            width:114px;
+            text-align: center;
+            height: 32px;
+            line-height: 32px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .shopSpcificinfo{
+            position: absolute;
+            top:90px;
+            left:280px;
+            width: 260px;
+            height: auto;
+            border: 2px solid gainsboro;
+            background-color: #fff;
+            color: grey;
+            padding:15px 0 15px 15px;
+            display: none;
+            z-index: 9999;
+        }
+        .shopinfoheader{
+            height: 30px;
+            line-height: 30px;
+            display: block;
+            float: none !important;
+            font-size: 16px !important;
+        }
+        .shopSpcificinfo li,.shopSpcificinfo span{
+            font-size: 14px !important;
+        }
+        .spcificinfos{
+            width: 100%;
+            font-size: 14px !important;
+            height: 22px;
+        }
+        .spcificinfos>span{
+            margin-right: 10px;
+        }
+        .spcificinfos>a{
+            display: inline-block;
+            float: left;
+            width:34px;
+            height: 26px;
+            margin-right: 15px;
+            font-size: 14px !important;
+            color: grey;
+        }
+        .spcificinfos>div{
+            display: inline-block;
+           float: right;
+            width: 190px;
+        }
+
+        .spcificinfos>div>span{
+            width:auto;
+            height: 26px;
+            margin-right: 5px;
+            font-size: 14px !important;
+        }
+        .shopinfoSummary{
+            margin-top: 10px;
+            font-size: 14px !important;
+            max-height: 120px;
+            overflow: auto;
+            margin-bottom: 10px;
+        }
+         .collectshop{
+             width: 74px;
+             height: 28px;
+             line-height: 24px;
+             margin-left: 74px;
+             margin-top: 6px;
+        }
+        /*.collectshop>a.collect{*/
+           /*display: block;*/
+            /*width: 100%;*/
+            /*height: 100%;*/
+            /*background: url(/themes/lanmai/images/shopcenter.png) -452px -700px;*/
+            /*cursor: pointer;*/
+        /*}*/
+        /*.collectshop>a.cancel{*/
+           /*display: block;*/
+            /*width: 100%;*/
+            /*height: 100%;*/
+            /*background: url(/themes/lanmai/images/shopcenter.png)  -453px -755px;*/
+            /*cursor: pointer;*/
+        /*}*/
+        .notice{
+            width: 1200px;
+            margin: 0 auto;
+            margin-top: 20px;
+            padding-left: 12px;
+        }
+        .notice a{
+            color: #da2f2f;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        .notice a:hover{
+            color: #da2f2f;
+            text-decoration: none;
+        }
+        /*轮播图*/
+        .shopbanner{
+            width: 100%;
+            height: 420px;
+            overflow: hidden;
+            position: relative;
+        }
+        .flex-viewport{
+            z-index: 1;
+            width: 100%;
+            height: auto;
+            max-height: 900px;
+        }
+        .slides{
+            position:relative;
+            z-index:1;
+        }
+        .flexslider{
+            position:relative;
+            height:500px;
+            overflow:hidden;
+        }
+        .slides{
+            position:relative;
+            z-index:1;
+        }
+        .slides li{
+            height:500px;
+        }
+        .slides li>a>img{
+            width: 100%;
+            height:500px;
+        }
+        .blueColor{
+        color: rgb(87,151,223)
+        }
+        .yellow {
+            color: #e9bc84;
+        }
+        .shopjuge{
+            display: block;
+            height:50px;
+            margin-bottom: 5px;
+        }
+        .shopjuge>li{
+            float: left;
+            width: 50%;
+            height: 25px;
+        }
+        .heightAuto{
+            height: auto;
+        }
+        .index_footer{
+            position: absolute;
+            top: 100%;
+        }
+        body{
+            position: relative;
+        }
+    </style>
+    <!--[if IE 8]>
+    <style>
+        .index_ad_title ul.index_out02 li{
+            font-size: 14px;
+            margin-left: 5px;
+            background: rgb(255,255,255);
+            filter:alpha(opacity=20);
+            position: static;
+            zoom: 1;
+        }
+        .index_ad_title ul.index_out02 li a{
+            position: relative;
+        }
+        .index_ad_title ul.index_out02 li a:hover{
+            height: 24px;
+            padding: 0 6px;
+            border: 1px solid rgb(255,255,255);
+        }
+    </style>
+    <![endif]-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?89323d159de3da4db3d8ba79f8643edd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body ng-app="layoutForshopSpecific" ng-controller="layoutForshopSpecificController">
+<!--页面的header部分开始-->
+<div class="index_header" id="top">
+    <div class="index_header_top">
+        <div class="index_header_top_con">
+            <ul>
+                <% if(!logined){ %>
+                <li><a href="/users/login">登录</a>&nbsp;&nbsp;<a href="/users/reg">注册</a></li>
+                <li><a href="/users/login">个人中心</a></li>
+                <% }else{ %>
+
+                <li style=" width: auto !important;">您好&nbsp;<a style="color:#DA2F2F" href="/users/recentDemandAndResource">
+                        <%if(userInfo.nickName){%>
+                        <%=userInfo.nickName%>
+                        <%}else {%>
+                        <%=userInfo.userName%>
+                        <%}%>
+                    </a>
+                    <%if(userInfo.msg_count && userInfo.msg_count>0){%>
+                    <a href="javascript:;"><a href="/users/messageManagement"><span class="badge" id="u_notify_num"><%=userInfo.msg_count%></span></a></a>
+                    <%}%>
+                <li style="width: 40px"><a rel="nofollow" href="/users/logout" id="userLoginOut">退出</a></li>
+                <li><a href="/users/recentDemandAndResource">个人中心</a></li>
+                </li>
+                <!--<li style="width: 40px"><a rel="nofollow" href="logout" id="userLoginOut">退出</a></li>-->
+                <!--<li><a href="recentDemandAndResource">个人中心</a></li>-->
+                <% } %>
+                <!--<li><a href="login">登录</a>&nbsp;&nbsp;<a href="reg">注册</a></li>-->
+                <li class="forwebnav">网站导航</li>
+                <li><a href="/users/helperCenter">帮助中心</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="index_header_mid">
+        <input type="hidden" value="<%=isCollect%>" id="isCollect">
+        <input type="hidden" value="<%=companyInfo.companyName%>" id="companyName">
+        <div class="index_logo">
+            <a href="/users/home"> <img src="/themes/<%=staticforder%>/images/index_logo.png" alt=""> </a>
+            <div class="shopSpcificinfo">
+                <div class="shopinfoheader blueColor">企业动态评分</div>
+                <ul class="shopjuge">
+                    <li>产品质量：<%if(avequality=="NaN"){%>
+                        暂无
+                        <%}else{%>
+                        <%=avequality%>
+                        <%}%>
+                    </li>
+                    <li>描述相符：<%if(avedescribe=="NaN"){%>
+                        暂无
+                        <%}else{%>
+                        <%=avedescribe%>
+                        <%}%></li>
+                    <li>服务态度：<%if(aveattitude=="NaN"){%>
+                        暂无
+                        <%}else{%>
+                        <%=aveattitude%>
+                        <%}%></li>
+                    <li>交付速度：<%if(avespeed=="NaN"){%>
+                        暂无
+                        <%}else{%>
+                        <%=avespeed%>
+                        <%}%></li>
+                </ul>
+                <div class="shopinfoheader yellow">企业经营范围</div>
+                <div class="spcificinfos heightAuto"><a>经营</a>
+                    <div>
+                        <%if(companyInfo.businessScope){for(var i=0;i<companyInfo.businessScope.length;i++){%>
+                        <span><%=companyInfo.businessScope[i]%></span>
+                        <%}}else {%>
+                        <span>暂未填写</span>
+                        <%}%>
+                    </div>
+
+                </div>
+                <%if(companyInfo.region){%>
+                <div class="spcificinfos"><a>地区</a><span><%=companyInfo.region.province%> <%=companyInfo.region.city%> <%=companyInfo.region.district%></span></div>
+                <%}%>
+                <div class="spcificinfos"><a>资源</a><span><%=resCount%></span></div>
+                <div class="spcificinfos"><a>认证</a>
+                    <%if(companyIdentify&&companyIdentify.status=="审核通过"){%>
+                    <span>
+                        执照已认证  </span>
+                    <%}else{ %>
+                    <span>
+                        执照未认证  </span>
+                    <%}%>
+                    <%if(idCardIdentify&&idCardIdentify.status=="审核通过"){%>
+                    <span>
+                        实名已认证  </span>
+                    <%}else{ %>
+                    <span>
+                        实名未认证  </span>
+                    <%}%>
+                </div>
+                <div class="shopinfoSummary">
+                    <%if(companyInfo.companyDes==""){%>
+                        暂无企业描述
+                        <%}else{%>
+                    <%=companyInfo.companyDes%>
+                    <%}%>
+                </div>
+                <!--<div class="collectshop" >-->
+                    <!--<a ng-if="isCollect!=='collected'" class="collect" ng-click="changeCollect()"></a>-->
+                    <!--<a ng-if="isCollect=='collected'" class="cancel" ng-click="changeCollect()"></a>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="aboutshop">
+            <span class="shopname" title="<%=companyInfo.companyName%>"><%=companyInfo.companyName%></span>
+            <div class="shopscope">
+                <div class="shopscopeicon"></div>
+                <div class="shopscopecontent">
+                    <ul>
+                        <%if(companyInfo.businessScope){for(var i=0;i<3&&i<companyInfo.businessScope.length;i++){%>
+                        <li><%=companyInfo.businessScope[i]%></li>
+                        <%}}else {%>
+                        <li>经营范围暂未填写</li>
+                        <%}%>
+                    </ul>
+                </div>
+                <div class="moreAboutshop"></div>
+                <div class="shoprenticon"></div>
+                <div class="shoprenting">
+                    <ul>
+                       <li>质量</li> <li>描述</li> <li>态度</li> <li>速度</li>
+                        <li><%if(avequality=="NaN"){%>
+                            暂无
+                            <%}else{%>
+                            <%=avequality%>
+                            <%}%></li>
+                        <li><%if(avedescribe=="NaN"){%>
+                            暂无
+                            <%}else{%>
+                            <%=avedescribe%>
+                            <%}%></li>
+                        <li><%if(aveattitude=="NaN"){%>
+                            暂无
+                            <%}else{%>
+                            <%=aveattitude%>
+                            <%}%></li>
+                        <li><%if(avespeed=="NaN"){%>
+                            暂无
+                            <%}else{%>
+                            <%=avespeed%>
+                            <%}%></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="index_search">
+            <div class="index_search_box">
+                <div class="kindSelect" style="float: left">
+                    <input class="serchKindName" type="hidden" value="all">
+                    <a class="searchKinds" href="javascript:;">全部</a>
+                    <dl style="display: none">
+                        <dt id="all">广告全部</dt>
+                        <%
+                        for(var i=0;i<catL1List.length;i++){%>
+                        <dt id="<%=catL1List[i].defaultUrl%>"><%=catL1List[i].name%></dt>
+                        <%}%>
+                        <dt id="xuqiu">广告需求</dt>
+                        <dt id="zhaobiao">广告招标</dt>
+                        <dt id="anzhuang">广告安装</dt>
+                    </dl>
+                </div>
+
+                <%if(searchRecommendForSearch&&searchRecommendForSearch.text){var i;i=parseInt(Math.random()*searchRecommendForSearch.text.split("#").length)%>
+                <input class="searchText" type="text" value="" placeholder="<%=searchRecommendForSearch.text.split("#")[i]%>">
+                <%}else {%>
+                <input class="searchText" type="text" value="" placeholder="">
+                <%}%>
+                <a class="index_buttom" href="javascript:;"></a>
+                <div style="clear: both;"></div>
+                <ul class="clearfix" id="searchRecommendForManufacture" style="display: none">
+                    <%if(searchRecommendForManufacture){for(var i=0;i<searchRecommendForManufacture.text.split('#').length;i++){%>
+                    <a href="javascript:;" data-id="<%=searchRecommendForManufacture.text.split('#')[i]%>"><%=searchRecommendForManufacture.text.split('#')[i]%></a>
+                    <%}}%>
+                </ul>
+                <ul class="clearfix" id="searchRecommendForMaterial" style="display: none">
+                    <%if(searchRecommendForMaterial){for(var i=0;i<searchRecommendForMaterial.text.split('#').length;i++){%>
+                    <a href="javascript:;" data-id="<%=searchRecommendForMaterial.text.split('#')[i]%>"><%=searchRecommendForMaterial.text.split('#')[i]%></a>
+                    <%}}%>
+                </ul>
+                <ul class="clearfix" id="searchRecommendForEquipment" style="display: none">
+                    <%if(searchRecommendForEquipment){for(var i=0;i<searchRecommendForEquipment.text.split('#').length;i++){%>
+                    <a href="javascript:;" data-id="<%=searchRecommendForEquipment.text.split('#')[i]%>"><%=searchRecommendForEquipment.text.split('#')[i]%></a>
+                    <%}}%>
+                </ul>
+                <ul class="clearfix" id="searchRecommendForDemands" style="display: none">
+                    <%if(searchRecommendForDemands){for(var i=0;i<searchRecommendForDemands.text.split('#').length;i++){%>
+                    <a href="javascript:;" data-id="<%=searchRecommendForDemands.text.split('#')[i]%>"><%=searchRecommendForDemands.text.split('#')[i]%></a>
+                    <%}}%>
+                </ul>
+            </div>
+        </div>
+        <div class="index_for_resource">
+            <a href="../resource/reIndex">免费发布资源</a>
+            <a href="../tender/tender" style="width: 100px;">发布招标</a>
+        </div>
+    </div>
+</div>
+<div class="shopinfo">
+    <ul>
+        <li class="shoplogoinfo">
+            <div><img src="<%=companyInfo.companyLogo%>/110.110"/></div>
+            <div>
+                <p title="<%=companyInfo.companyName%>"><%=companyInfo.companyName%></p>
+                <%if(companyInfo.depositAccount||brandPromotion){%>
+                    <%if(companyInfo.depositAccount&&brandPromotion){%>
+                        <div class="depositAndPromotion">
+                            <span class="depositicon" title="企业保证金"></span> <span title="企业保证金"><%=companyInfo.depositAccount%>元</span>
+                            <span class="promotionicon"></span> <span>品牌会员</span>
+                        </div>
+                    <%}else if(companyInfo.depositAccount){%>
+                        <div class="depositAndPromotion">
+                            <span class="depositicon" title="企业保证金"></span> <span title="企业保证金"><%=companyInfo.depositAccount%>元</span>
+                        </div>
+                    <%}else{%>
+                        <div class="depositAndPromotion">
+                            <span class="promotionicon"></span> <span>品牌会员</span>
+                        </div>
+                <%}}%>
+                <div class="addcollect ng-cloak" ng-cloak ng-if="isCollect!=='collected'" ng-click="changeCollect()"><a></a></div>
+                <div class="cancelCollect ng-cloak" ng-cloak ng-if="isCollect=='collected'" ng-click="changeCollect()"><a></a></div>
+            </div>
+        </li>
+        <%if(companyInfo.businessScope){for(var i=0;i<3&&i<companyInfo.businessScope.length;i++){%>
+        <li>
+            <p><%=companyInfo.businessScope[i]%></p>
+            <%for(var j=0;j<categorySettingList.length;j++){if(categorySettingList[j].category.name==companyInfo.businessScope[i]){%>
+            <img src="<%=categorySettingList[j].icon%>"/>
+            <%}}%>
+        </li>
+        <%}}%>
+    </ul>
+</div>
+<div class="webnav">
+    <div>
+        <div class="webnavb"><a>找资源</a></div>
+        <ul>
+            <li><a href="/resource/resourceListMake">制作</a></li>
+            <li><a href="/resource/resourceListMachine">设备</a></li>
+            <li><a href="/resource/resourceListMaterial">材料</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>发布信息</a></div>
+        <ul>
+            <li><a href="/resource/demandRelease">发布需求</a></li>
+            <li><a href="/resource/myFix">发布安装</a></li>
+            <li><a href="/resource/reIndex">发布资源</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>个人中心</a></div>
+        <ul>
+            <li><a href="privateInfo">个人资料</a></li>
+            <li><a href="myOrders">个人订单</a></li>
+            <li><a href="safetySet">账户设置</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>企业中心</a></div>
+        <ul>
+            <li><a href="../tender/shopaccount">企业账户</a></li>
+            <li><a href="../tender/shoptender">企业招标</a></li>
+            <li><a href="../tender/shopbid">企业投标</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>品牌推广</a></div>
+        <ul>
+            <li><a href="/resource/digitalMagazine">数字期刊</a></li>
+            <li><a class="redFont" href="/resource/brandWin">品牌推广</a></li>
+            <li><a href="/resource/vr">VR展馆</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>关注我们</a></div>
+        <img src="/themes/lanmai/images/weicahrtqr.png"/>
+    </div>
+
+</div>
+<!--页面header部分结束-->
+<%-body %>
+<!--首页底部部分-->
+<div class="index_footer">
+    <div class="index_footer_con clearfix">
+        <ul class="focusus">
+            <li class="focustitlt">关注我们</li>
+            <li class="focusicon"><a><img class="footqq" src="/themes/lanmai/images/footqq.png"/><img class="footweichart" src="/themes/lanmai/images/footweichart.png"/></a></li>
+            <li class="focusqr"><a><img class="footqqqr" src="https://cdn.adquan.net/images/bigimg/qqqr.png/compress.only"/><img class="footweichartqr" src="/themes/lanmai/images/weicahrtqr.png"/></a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li style="font-size: 18px;margin-bottom: 6px;"><a href="/users/helperCenter#1">关于制作宝</a></li>
+            <li><a href="/users/helperCenter#7">服务条款</a></li>
+            <li><a href="/users/helperCenter#4">隐私申明</a></li>
+            <li><a href="/users/helperCenter#3">版权申明</a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li style="font-size: 18px;margin-bottom: 6px;"><a href="/users/helperCenter#2">帮助中心</a></li>
+            <li><a href="/users/helperCenter#2">新手入门</a></li>
+            <li><a href="/users/helperCenter#2">品牌推广</a></li>
+            <li><a href="/users/helperCenter#2">发布资源</a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li style="font-size: 18px;margin-bottom: 6px;"><a href="/users/helperCenter#5">客服中心</a></li>
+            <li><a href="/users/helperCenter#5">联系客服</a></li>
+            <li><a href="/users/helperCenter#5">意见反馈</a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li class="digmagazine" style="font-size: 18px;">
+                <%if(ebookData[0]){%>
+                <a href="../resource/digitalMagazine"><img src="<%=ebookData[0].coverImg%>/compress.only"/></a>
+                <span><%=ebookData[0].title%></span>
+                <%}%>
+            </li>
+        </ul>
+    </div>
+
+    <div class="copyright">
+        <!--<ul>-->
+            <!--<li>友情链接</li>-->
+            <!--<li><a>大吉</a></li></li>-->
+            <!--<li><a>如意</a></li></li>-->
+            <!--<li><a>萌爷</a></li></li>-->
+            <!--<li><a>颖子</a></li></li>-->
+            <!--<li><a>九九</a></li></li>-->
+            <!--<li><a>大个</a></li></li>-->
+            <!--<li><a>财百万</a></li></li>-->
+            <!--<li><a class="morelinks">更多</a></li></li>-->
+        <!--</ul>-->
+        <span>武汉蓝迈网络科技有限公司2016&nbsp;鄂&nbsp;ICP&nbsp;备 &nbsp;16023329号</span>
+    </div>
+</div>
+
+
+</body>
+<script>
+    $(function () {
+        $(".footqq").on("mouseenter",function () {
+            $(".footweichartqr").css("display","none");
+            $(".footqqqr").css("display","block");
+        })
+        $(".footweichart").on("mouseenter",function () {
+            $(".footqqqr").css("display","none");
+            $(".footweichartqr").css("display","block");
+        })
+        $(".aboutshop").on("mouseenter",function () {
+            $(".shopSpcificinfo").show();
+        })
+        $(".aboutshop").on("mouseleave",function () {
+            $(".shopSpcificinfo").hide();
+        })
+        $(".shopSpcificinfo").on("mouseenter",function () {
+            $(".shopSpcificinfo").show();
+        })
+        $(".shopSpcificinfo").on("mouseleave",function () {
+            $(".shopSpcificinfo").hide();
+        })
+        $(".aboutshop").scope().url=window.location.href.split("?")[1].split("=")[1]
+        $("#isCollect").scope().isCollect=$("#isCollect").val()
+        $("#isCollect").scope().companyName=$("#companyName").val()
+        $("#isCollect").scope().$apply();
+        //搜索点击下拉菜单的选项
+        $('.searchKinds').mouseover(function(event){
+            if($('.index_search_box dl').is(":visible")){
+                $(this).css({"background-position":"-156px -91px"})
+                $('.index_search_box dl').hide(100);
+                $('.index_pull_con dl').hide(100);
+            }else{
+                $(this).css({"background-position":"-156px -116px"})
+                $('.index_search_box dl').show(100);
+                $('.index_pull_con dl').show(100);
+            }
+
+            //event.stopPropagation();
+            if (window.event) {
+                event.stopPropagation();
+            }else{
+                event.stopPropagation();
+            }
+            /*if($.browser.mozilla)
+             {
+             var $E = function(){var c=$E.caller; while(c.caller)c=c.caller; return c.arguments[0]};
+             __defineGetter__("event", $E);
+             }*/
+        });
+        $('#searchRecommendForManufacture').show()
+        $('.index_search_box dl dt,.index_pull_con dl dt').click(function(){
+            var oDt=$(this).html();
+            var oName = $(this).attr("id");
+            $('.index_search_box>ul').hide()
+            if(oName=="all"){
+                oName="all"
+            }else if(oName=="cailiao"){
+                oName="Material"
+                $('#searchRecommendForMaterial').show()
+            }else if(oName=="shebei"){
+                oName="Equipment"
+                $('#searchRecommendForEquipment').show()
+            }else if(oName=="zhizuo"){
+                oName="Manufacture"
+                $('#searchRecommendForManufacture').show()
+            }else if(oName=="xuqiu"){
+                $('#searchRecommendForDemands').show()
+            }else if(oName=="zhaobiao"){
+
+            }else if(oName=="anzhuang"){
+                $('#searchRecommendForFix').show()
+            }
+            $('.searchKinds').html(oDt).css({"background-position":"-156px -91px"});
+            $('.serchKindName').val(oName);
+            $('.index_search_box dl').hide(100)
+            $('.index_pull_con dl').hide(100)
+
+        })
+        $('.index_search_box>ul>a').on('click',function () {
+            $('input.searchText').val($(this).data('id'));
+        })
+        $(".kindSelect").mouseleave(function(event){
+            $('.searchKinds').css({"background-position":"-156px -91px"});
+            $('.index_search_box dl').hide(100);
+            $('.index_pull_con dl').hide(100);
+            if (window.event) {
+                event.stopPropagation();
+            }else{
+                event.stopPropagation();
+            }
+            /* if($.browser.mozilla)
+             {
+             var $E = function(){var c=$E.caller; while(c.caller)c=c.caller; return c.arguments[0]};
+             __defineGetter__("event", $E);
+             }*/
+        });
+        //搜索框的下拉菜单的截取
+        var OlenDt=$('.index_search_box dl dt').length;
+        for(var i=0;i<OlenDt;i++){
+            var OgetHtml=   $('.index_search_box dl dt').eq(i).html().substr(2,4);
+            $('.index_search_box dl dt').eq(i).html(OgetHtml)
+            $('.index_pull_con dl dt').eq(i).html(OgetHtml)
+        }
+        $(".index_buttom").click(function(){
+            var text = $(".index_search_box input.searchText").val();
+            var searchValue=$(".serchKindName").val();
+            if(searchValue=="all"){
+                window.location.href=text!=""&&text?'/resource/resourceListAll?text='+escape(text):'/resource/resourceListAll'
+            }else if(searchValue=="Material"){
+                window.location.href=text!=""&&text?'/resource/resourceListMaterial?text='+escape(text):'/resource/resourceListMaterial'
+            }else if(searchValue=="Manufacture"){
+                window.location.href=text!=""&&text?'/resource/resourceListMake?text='+escape(text):'/resource/resourceListMake'
+            }else if(searchValue=="Equipment"){
+                window.location.href=text!=""&&text?'/resource/resourceListMachine?text='+escape(text):'/resource/resourceListMachine'
+            } else if(searchValue=="xuqiu"){
+                window.location.href=text!=""&&text?'/resource/secondDemand?text='+escape(text):'/resource/secondDemand'
+            }else if(searchValue=="anzhuang"){
+                window.location.href=text!=""&&text?'/resource/resourceFixList?text='+escape(text):'/resource/resourceFixList'
+            }else if(searchValue=="zhaobiao"){
+                window.location.href=text!=""&&text?'/tender/tenderlist?text='+escape(text):'/tender/tenderlist'
+            }
+
+        })
+
+        $('.shopbanner').flexslider({
+            directionNav: true,
+            animation: "slide",
+            pauseOnAction: false,
+            slideshowSpeed:3500
+        });
+        $(".index_banner_con ").on("mouseenter ",function () {
+            $('.shopbanner').flexslider("stop")
+        })
+        $(".index_banner_con ").on("mouseleave ",function () {
+            $('.shopbanner').flexslider("play")
+        })
+
+        $(".forwebnav").on("mouseenter",function () {
+            $(this).addClass("forwenavstyle");
+            $(".webnav").show();
+        })
+        $(".webnav").on("mouseenter",function () {
+            $(".webnav").show();
+            $(".forwebnav").addClass("forwenavstyle");
+        })
+        $(".webnav").on("mouseleave",function () {
+            $(".webnav").hide();
+            $(".forwebnav").removeClass("forwenavstyle");
+        })
+
+    })
+</script>
+<script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/top.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/jquery.flexslider-min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/modules.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/directive.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/layoutForShopSpecificController.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/hack.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+
+</html>

@@ -1,0 +1,60 @@
+﻿@charset "utf-8";
+/* 基本元素重置 */
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select { margin:0; padding:0; }
+body, input, textarea, select, button, table { background:#fff }
+body { min-width:320px; font-size:14px; font-family:'microsoft yahei', Verdana, Arial, Helvetica, sans-serif; color:#000; -webkit-text-size-adjust:none; background:#fff }
+
+img, fieldset { border:0; }
+ul, ol { list-style:none; }
+em, address { font-style:normal; }
+a { text-decoration:none; cursor:pointer }
+a:hover{text-decoration:none !important;}
+a:visited{text-decoration:none !important;}
+a:active{text-decoration:none !important;}
+a:link{text-decoration:none !important;}
+table { border-collapse:collapse; }
+h1, h2, h3, h4, h5, h6, em, i { font-style:normal; font-weight:400; outline:none; }
+/*input{
+	height: 32px;
+	border: 1px solid #bfbfbf;
+	border-radius: 3px;
+}*/
+/* 重用类样式 */
+i{
+	border: none;
+}
+.oneLineOver{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.phcolor{ color:#c5c4c4;}
+.red{
+		border-bottom:1px solid #DA2F2F !important;
+	}
+.clickChange{
+	 background-color: #d8d8d8 !important;
+	 }
+.disableBtn{
+		color: white !important;
+		background-color:#bdbcbc !important;
+		border: none !important;
+	}
+.ng-cloak { display: none; }
+input::-webkit-input-placeholder{
+		color:#c5c4c4;
+		font-size: 14px;
+	}
+input::-moz-placeholder{color:#c5c4c4;
+		font-size: 14px;}
+input:-moz-placeholder{color:#c5c4c4;
+		font-size: 14px;}
+input:-ms-input-placeholder{color:#c5c4c4;
+		font-size: 14px;}
+.titleOverflow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+

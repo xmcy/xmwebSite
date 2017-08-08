@@ -1,0 +1,67 @@
+<style>
+	.bottom_lanmai{
+		margin-top: 250px;
+	}
+</style>
+<div class="Binding" ng-controller="certificationManagementController">
+	<h2>账号绑定</h2>
+	<div ng-show="flag">
+		<div class="accountbing bgGrey">
+			<div class="imglogo weichartLogo"></div>
+			<h2>微信绑定</h2>
+			<ul>
+				<li><a>账户关系绑定</a></li>
+				<li><a>可使用微信账号直接登陆制作宝分享信息至朋友圈、微信公众号</a></li>
+			</ul>
+			<% if(qqweichartBinding.wechatBind){ %>
+			<button title="查看认证信息" ><a href="">已绑定</a></button>
+			<%}else {%>
+			<button title="查看认证信息" class="changcorlor nowx"><a href="">未绑定</a></button>
+			<%} %>
+		</div>
+		<div class="accountbing bgGrey">
+			<div class="imglogo googleLogo"></div>
+			<h2>QQ绑定</h2>
+			<ul>
+				<li><a>认证快捷</a></li>
+				<li><a>可使用QQ账号直接登陆制作宝分享信息至Qzone、腾讯微博</a></li>
+			</ul>
+			<% if(qqweichartBinding.qqBind){ %>
+			<button title="查看认证信息" ><a href="">已绑定</a></button>
+			<% }else{ %>
+			<button class="changcorlor noqq" ><a href="">未绑定</a></button>
+			<% } %>
+		</div>
+	</div>
+</div>
+<script>
+	$(function () {
+		if(window.location.search!==""&&window.location.search=="?weiChatBind"){
+			swal({
+				title: "微信绑定成功",
+				type: "success",
+				confirmButtonText: "确定"
+			});
+		}else if(window.location.search!==""&&window.location.search=="?weiChatBindSame"){
+			swal({
+				title: "该微信已经绑定其它账号",
+				type: "error",
+				confirmButtonText: "确定"
+			});
+		}
+		var nowx=$(".nowx")
+		if($(nowx)){
+			$(nowx).on("click",function () {
+				window.location.href="/users/weiChartBindQr"
+				$(this).children().css("outline","0").css("color","#fff")
+			})
+		}
+		var noqq=$(".noqq")
+		if($(noqq)){
+			$(noqq).on("click",function () {
+				swal("此功能正在建设中,敬请期待")
+				$(this).children().css("outline","0").css("color","#fff")
+			})
+		}
+	})
+</script>

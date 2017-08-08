@@ -1,0 +1,1045 @@
+<style type="text/css">
+	.warningInfoData{
+		margin: 0 auto;
+		width: 200px !important;
+		height: 50px !important;
+	}
+	.warningInfoData:hover{
+		background-color: #fff !important;
+
+	}
+	.paging{
+		clear: both;
+		width:100%;
+		height: 80px;
+		margin-bottom: 40px;
+	}
+	.paging>ul{
+		position: relative;
+		left: 250px;
+	}
+	body,a{
+		color: #b0b0b0;
+	}
+	input,button{
+		outline: none;
+	}
+	.content{
+		width: 1200px;
+		margin: 0 auto;
+	}
+	.header{
+		width: 100%;
+		height: 120px;
+		position: relative;
+	}
+	.privateNav{
+		height: 26px;
+		width: 1200px;
+		margin: 0 auto;
+		font-size: 15px;
+		background-color:#f4f4f4;
+	}
+	.privateNav>ul{
+		float: right;
+		height: 22px;
+	}
+	.privateNav>ul>li{
+		height: 20px;
+		float: left;
+		width:85px;
+		text-align: center;
+		margin-right: 5px;
+	}
+	.privateNav>ul>li a{
+		color: #b0b0b0;
+	}
+	.privateNav .addmore{
+		display:inline-block;
+		width:0;
+		height:0;
+		border-left:5px solid transparent;
+		border-right:5px solid transparent;
+		border-top:7px solid grey;
+		margin: 0 7px 0 7px;
+	}
+
+	.position{
+		position: absolute;
+		top:45px;
+		left: 200px;
+	}
+	.current_position{
+		display: inline-block;
+		width: 60px;
+		height: 18px;
+		position: relative;
+	}
+	.city-picker-input {
+		font-size: 18px;
+		font-weight: 500;
+		color: rgb(112,112,112);
+		opacity: 1 !important;
+		width: 77px;
+		top:0;
+		left:0px;
+		position: absolute;
+		cursor: pointer;
+		background-color: #fff !important;
+		text-align: center;
+		z-index: -99;
+	}
+	.city-picker-span{
+		width: 138px ;
+		left: 0;
+	}
+	.city-select-content{
+		margin-top: 32px;
+	}
+	.select-item{
+		display: none;
+	}
+	.change_position{
+		color: #e7c276;
+		display: block;
+		margin-top: 5px;
+	}
+	.search{
+		position: absolute;
+		right: 160px;
+		top: 12px;
+		height: 70px;
+		width: 490px;
+	}
+	.searchArea>input{
+		float: left;
+		height: 40px;
+		width: 335px;
+		border: 2px solid #da2f2f;
+		border-left: 0;
+		margin-top: 14px;
+		padding-left: 20px;
+	}
+	.searchKinds{
+		border: 2px solid #da2f2f;
+		border-right:0 ;
+	}
+	.search>ul{
+		clear: both;
+		width: 100%;
+		height: 20px;
+		padding-top: 8px;
+		padding-left: 5px;
+	}
+	.search>ul>li{
+		float: left;
+		height: 25px;
+		width: 60px;
+		margin-right: 10px;
+		font-size: 13px;
+	}
+	.releaseDemand{
+		width: 135px;
+		height:40px;
+		line-height: 40px;
+		text-align: center;
+		position: absolute;
+		right: 10px;
+		top: 26px;
+		background-color: #da2f2f;
+		color: #fff;
+	}
+	.releaseDemand a{
+		color: #fff;
+	}
+	.nav{
+		width: 100%;
+		font-size: 15px;
+		margin-bottom:40px;
+		margin-top: 15px;
+		border-bottom: 1px solid #eee;
+	}
+	.nav>.categoeries{
+		display: block;
+		width: 1200px;
+	}
+	.nav>.categoeries>div{
+		border-top: 1px dotted #eeeeee;
+	}
+	.nav>.categoeries>div:last-child{
+		border-bottom: 1px solid #eeeeee;
+	}
+	.nav>div li{
+		cursor: pointer;
+	}
+	.allcategoery{
+		width: 100%;
+		border:none !important;
+		font-size: 14px;
+		height: 40px;
+	}
+	.allcategoery>div{
+		float: left;
+		width:150px;
+		margin-right: 25px;
+		height:28px;
+		line-height:28px;
+        cursor: pointer;
+		position: relative;
+	}
+	.allcategoery>div>.navWord{
+		position: absolute;
+		top:0px;
+		left: 3px;
+		width: 136px;
+		text-align: center;
+		height:25px;
+		line-height:25px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		border: 0;
+		cursor: pointer;
+	}
+	.allcategoery>.navcate{
+		width: 82px;
+		font-size: 16px;
+	}
+	.allcategoery>.navArea,.allcategoery>.navArea>.navWord{
+		width:100px;
+	}
+	/*.allcategoery>.navArea{*/
+		/*color: #e7c276*/
+	/*}*/
+	.allcategoery>div>.deleteIcon{
+		position: absolute;
+		top:1px;
+		right: 2px;
+	}
+	.allcategoery>ul>li{
+		float: left;
+		width:118px;
+		height:40px;
+		line-height:40px;
+		margin-right:5px;
+		text-align: left;
+	}
+	.allcategoery>ul>li>.deleteIcon{
+		display: inline-block;
+	}
+	.demandChoice{
+		float: left;
+		width: 85%;
+	}
+	.demandChoice>div{
+		float: left;
+		width: 70px;
+		height:40px;
+		line-height:40px;
+	}
+	.demandChoice>ul{
+		display: inline-block;
+		width: 90%;
+		margin-left: 2%;
+		height: 40px;
+		overflow: hidden;
+	}
+	.demandChoice>ul>li{
+		float: left;
+		height: 40px;
+		line-height: 40px;
+		width:12%;
+		text-align: center;
+		margin-right: 1%;
+	}
+	.demandChoice>ul>li>a{
+		display: inline-block;
+		height: 40px;
+		line-height:40px;
+	}
+	.chooseMore{
+		float: right;
+		width: 53px;
+		cursor: pointer;
+	}
+	.chooseArea,.budget{
+		clear: both;
+	}
+	.chooseArea>div{
+		display: inline-block;
+		margin-right:5%;
+		height:40px;
+		line-height:40px;
+	}
+	.budget{
+		margin-bottom: 25px;
+	}
+	.budget>ul,.budget>div{
+		display: inline-block;
+		height: 40px;
+		line-height:40px;
+		margin-right: 1%;
+	}
+	.budget>div{
+		width: 60px;
+		float: left;
+		height:40px;
+		margin-right: 28px;
+	}
+	.budget>ul{
+		width:57%;
+	}
+	.budget>ul>li{
+		float: left;
+		height: 40px;
+		line-height:40px;
+		width: 19%;
+		text-align: center;
+		margin-right:6px;
+	}
+	.budget>.user_define{
+		float: right;
+		width: 31%;
+		position: relative;
+	}
+	.user_define>div,.user_define>span{
+		float: left;
+	}
+	.user_define>div{
+		width: 70px;
+		height: 20px;
+	}
+	.user_define>div>input{
+		width: 70px;
+		height: 22px;
+		border: 1px solid gainsboro;
+		font-size: 12px;
+		text-align: center;
+	}
+	.user_define>span{
+		margin:11px 10px 0 10px;
+		height: 20px;
+		line-height: 20px;
+	}
+	.budget .budgetSure{
+		position: absolute;
+		top: -2px;
+		right:-8%;
+		width: 45px;
+		height: 24px;
+		border-radius: 2px;
+		line-height: 22px;
+		border: 1px solid #da2f2f;
+		background-color:#da2f2f ;
+		color: #fff;
+		text-align: center;
+		cursor: pointer;
+	}
+	.contentLeft{
+		width: 78%;
+		float: left;
+		font-size: 15px;
+	}
+	.contentRight{
+		width:20%;
+		float: right;
+	}
+	.contentLeft>div{
+		position: relative;
+		width: 100%;
+		height:160px;
+		margin:20px 0 20px 0;
+	}
+	.contentLeft>div:hover{
+		background-color:#f0f0f0 ;
+	}
+
+	/*.contentLeft>.contentHeader{*/
+		/*height: 30px;*/
+		/*background-color:#f0f0f0 ;*/
+	/*}*/
+	/*.contentLeft>.contentHeader span{*/
+		/*margin-top: 0;*/
+	/*}*/
+	.contentLeft span{
+		position: absolute;
+		font-size: 14px;
+	}
+	.contentLeft span a:hover{
+		color: #b0b0b0;
+	}
+	.contentLeft .shoppic{
+		width: 80px;
+		height: 80px;
+		top:5px;
+		left: 0;
+	}
+	.contentLeft .shoppic>img{
+		width: 80px;
+		height: 80px;
+	}
+	.contentLeft .shoppic1{
+		background: url("/themes/lanmai/images/shop.png") -35px -5px;
+		width: 30px;
+		height: 25px;
+		top:100px;
+		left:6px;
+	}
+	.contentLeft .shoppic2{
+		background: url("/themes/lanmai/images/shop.png") -68px -2px;
+		width: 30px;
+		height: 25px;
+		top:100px;
+		left:44px;
+	}
+	.contentLeft .promoteicon{
+		background: url("/themes/lanmai/images/shop.png") 0px -4px;
+		width: 30px;
+		height: 25px;
+		top:3px;
+		left:300px;
+	}
+	.contentLeft .shoppic1>a,.contentLeft .shoppic2>a{
+		width: 30px;
+		height: 25px;
+		display: block;
+	}
+	.contentLeft .shopname{
+		top:5px;
+		left:100px;
+		color: red;
+		font-size: 16px;
+	}
+	.contentLeft .bussscope{
+		top:43px;
+		left: 100px;
+	}
+	.contentLeft .bussscope>a{
+		margin-right:10px;
+	}
+	.contentLeft .shopposition{
+		top:73px;
+		left: 100px;
+	}
+	.contentLeft .resourcecount{
+		top:101px;
+		left: 100px;
+	}
+	.contentLeft .collectcount{
+		top:101px;
+		left: 235px;
+	}
+	.contentLeft .resourcecount>a,.contentLeft .collectcount>a{
+		color: #8fceec;
+		margin-left:5px;
+		margin-right: 5px;
+	}
+	.contentLeft>div>ul{
+		position: absolute;
+		top: 5px;
+		right: 0;
+		height:150px;
+		width: 560px;
+	}
+	.contentLeft>div>ul>li{
+		float: left;
+		margin-left: 15px;
+		width: 125px;
+		height: 150px;
+	}
+	.contentLeft>div>ul>li>div{
+		width: 125px;
+		height: 150px;
+	}
+	.contentLeft>div>ul>li>div>img{
+		width: 125px;
+		height: 125px;
+	}
+	.contentLeft>div>ul>li>div>div{
+		width: 125px;
+		height: 25px;
+		line-height: 25px;
+		text-align: center;
+	}
+	.contentLeft>div>.specificinfoicon {
+		width: 20px;
+		height: 30px;
+		background: url("/themes/lanmai/images/shop.png") -5px -34px;
+		position: absolute;
+		margin-top: 13px;
+		left:323px;
+		z-index: 9999;
+	}
+	.contentLeft .specificDemand{
+		width:500px;
+		position: absolute;
+		left:340px;
+		top: -78px;
+		background-color: #f7f5f5;
+		z-index: 999;
+		border: 1px solid #fd4848;
+		padding-right: 12px;
+		padding-left: 10px;
+	}
+	.specificDemand>h3 {
+		margin: 20px 0 20px 0;
+		color: #555555;
+		display: inline-block;
+		margin-right: 45px;
+	}
+	.contentLeft .specificDemand>ul{
+		height: auto;
+	}
+	.contentLeft .specificDemand>ul>li {
+		float: left;
+		height: 33px;
+		width: auto;
+		line-height: 33px;
+		margin-right: 10px;
+	}
+	.specificDemand>.certificateinfo{
+		float: right;
+		margin: 23px 0px 0 0;
+	}
+	.specificDemand>.certificateinfo>a{
+		display: inline-block;
+		width: 65px;
+		height: 18px;
+		text-align: center;
+		line-height: 18px;
+		font-size: 13px;
+		margin-right:10px;
+		border:1px solid gainsboro;
+	}
+	.specificDemand .specificposition{
+		clear: both;
+		width: 100%;
+		height: 10px;
+	}
+	.specificDemand .specificposition>a{
+		margin-right: 10px;
+	}
+	.specificDemand .specificposition>a:hover{
+		color: #b0b0b0;
+	}
+	.specificDemand>p{
+		margin:0px 0 20px 0;
+	}
+	.sorting{
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
+		background-color:#f0f0f0 ;
+	}
+	.sorting>div,.sorting>ul{
+		float: left;
+		color: #767575;
+		cursor: pointer;
+		font-size: 15px;
+	}
+	.sorting>div{
+		margin-left: 20px;
+		color: red;
+	}
+	.sorting>ul{
+		margin-left: 35px;
+	}
+	.sorting>ul>li{
+		float: left;
+		width: 80px;
+		margin-right: 15px;
+
+	}
+	.sorting .hotLine{
+		float: right;
+		margin-right: 7px;
+		height: 40px;
+		line-height: 40px;
+		font-size: 18px;
+		color: #da2f2f;
+		background-color:#f0f0f0 ;
+	}
+	.promotbar{
+		width: 100%;
+		height: 272px;
+		background-color: #f0f0f0;
+		margin-top: 15px;
+	}
+	.promotbar>p{
+		font-size: 14px;
+		margin-top: 2px;
+	}
+	.promotbar>.promotePrice{
+		font-size: 14px;
+		color: #da2f2f;
+	}
+	.paging{
+		clear: both;
+		width:100%;
+		height: 80px;
+		margin-bottom: 40px;
+	}
+	.paging>p{
+		float: left;
+		margin: 2% 5% 0 20px;
+		height: 30px;
+	}
+	.paging>p>span{
+		margin-right: 10px;
+		font-size: 15px;
+	}
+	.paging>form{
+		display: inline-block;
+	}
+	.paging li{
+		float: left;
+		display: inline-block;
+		margin-right: 7px;
+	}
+	.pagination>li:first-child>a,.pagination>li:last-child>a{
+		border: none;
+		font-size: 15px;
+	}
+	.bandPromote{
+		width: 100%;
+		height: 400px;
+	}
+	.bandPromoteTitle{
+		font-size: 18px;
+		color: #da2f2f;
+		background-color:#f0f0f0 ;
+		height: 50px;
+		line-height: 50px;
+		margin-bottom:50px;
+		padding-left: 20px;
+		font-weight:500;
+	}
+	.bandPromote>ul{
+		width: 100%;
+		height: 190px;
+	}
+	.bandPromote>ul>li{
+		float: left;
+		width: 25%;
+		height: 100%;
+	}
+	.bandPromote>ul>li>ul{
+		float: left;
+		width: 85px;
+		height: 180px;
+		position: relative;
+		margin-left: 5px;
+	}
+	.bandPromote>ul>li>ul>li{
+		height: 33.33%;
+		position:absolute;
+	}
+	.bandPromote .bandPosition{
+		top: 35%;
+	}
+	.bandPromote .bandStyle{
+		top: 73%;
+	}
+	.bandPromote .pagingLine{
+		width: 400px;
+		margin: 0 auto;
+		margin-top: 40px;
+	}
+	.pagingLine>ul>li{
+		float: left;
+		width: 90px;
+		height: 4px;
+		margin-right: 10px;
+		background-color: #b4b3b3 ;
+		border-radius: 2px;
+	}
+	.activeLine{
+		background-color: #da2f2f !important;
+	}
+	.footer{
+		width: 100%;
+		height: 360px;
+		background-color: #565555;
+		color: #fff;
+	}
+	.footer>.footerContent{
+		width: 80%;
+		margin: 0 auto;
+	}
+	.footer .footerNav{
+		width: 100%;
+		height: 40px;
+		padding-top: 35px;
+		font-size: 20px;
+	}
+	.footer .footerNav>li{
+		float: left;
+		width: 20%;
+		text-align: center;
+		height: 40px;
+		line-height: 40px;
+	}
+	.footer .navContent{
+		width: 100%;
+		height: 160px;
+		margin-top: 10px;
+	}
+	.footer .navContent>li{
+		float: left;
+		width: 20%;
+		height: 100%;
+	}
+	.footer .navContent>li>ul{
+		width: 100%;
+		height: 100%;
+	}
+	.footer .navContent>li>ul>li{
+		width: 100%;
+		text-align: center;
+		height: 25%;
+	}
+	.footer p{
+		width: 20%;
+		text-align: center;
+		margin:10px 0 15px 0;
+	}
+	.footer hr{
+		width: 780px;
+		height: 2px;
+		margin: 0 auto;
+		background-color: #969696;
+		margin-bottom: 20px;
+	}
+	.footerContent>div{
+		width: 750px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.header .current_position span.city-picker-span{
+		width: 85px !important;
+		height: 47px !important;
+		opacity: 0;
+		filter:alpha(opacity=0) !important;
+	}
+	.header .city-select-tab{
+		display: none;
+	}
+	.header .city-picker-input{
+		font-family: "微软雅黑" !important;
+	}
+	.form-control{
+		box-shadow:none; ;
+	}
+	.chooseArea .city-picker-span{
+		width: 230px !important;
+		border-bottom: none !important;
+		background: none !important;
+		height: 40px !important;
+		line-height: 40px !important;
+	}
+	.chooseArea .city-picker-span .arrow{
+		display: none ;
+	}
+	.chooseArea span.select-item{
+		color:#B0B0B0;
+	}
+	.chooseArea .city-picker-span{
+		width: 256px !important;
+	}
+	.chooseArea .city-picker-input{
+		width: 256px !important;
+		border: none !important;
+		text-align: left !important;
+		color:#B0B0B0 !important;
+		font-size: 15px;
+	}
+	.chooseArea .city-select-content{
+		margin-top: 0px !important;
+	}
+	.chooseArea .title{
+		display: none !important;
+	}
+	.chooseArea .title>span.select-item{
+		color:#B0B0B0 !important;
+	}
+</style>
+<div ng-controller="secondDemandController">
+			<div class="nav">
+				<div class="allcategoery">
+					<div class="navcate">企业搜索&nbsp;></div>
+					<div class="navArea"><input class="navWord" ng-model="regionData" /><span class="deleteIcon"></span></div>
+					<div class="navLeibie"><input class="navWord"  ng-model="typesData" /><span class="deleteIcon"></span></div>
+
+				</div>
+				<div class="categoeries">
+					<div class="chooseArea" style="position: relative">
+						<div>选择地区</div>
+						<div style="position:absolute; left: 106px;top: -1px;">
+							<input readonly type="text" data-toggle="city-picker" value="北京市/北京市/东城区" name="region" id="region">
+						</div>
+					</div>
+
+
+					<div id="">
+						<div class="demandChoice">
+							<div class="chooseProject">经营范围</div>
+							<ul class="leibie">
+								<li data-selected="false">户外广告</li>
+								<li data-selected="false">广告制作</li>
+								<li data-selected="false">广告材料</li>
+								<li data-selected="false">广告设备</li>
+								<li data-selected="false">营销策划</li>
+								<li data-selected="false">电视广告</li>
+								<li data-selected="false">广播广告</li>
+								<li data-selected="false">杂志广告</li>
+								<li data-selected="false">报纸广告</li>
+							</ul>
+						</div>
+						<div data-flag="true" class="chooseMore">更多<div class="addIcon"></div></div>
+					</div>
+
+				</div>
+
+			</div>
+		    <div class="contenWrap">
+		    	<div class="sorting">
+				    <div>综合排序</div>
+				    <ul>
+						<li class="sortingBySkin"  data-flag="true" ng-click="changeOrder('pageview')">资源数<span class="addIcon"></span></li>
+						<li class="sortingByTime"  data-flag="true" ng-click="changeOrder('refreshedAt')">收藏量<span class="addIcon"></span></li>
+				    </ul>
+				    <div class="hotLine">推广热线 027-87551680</div>
+		    	</div>
+		    	<div class="contentLeft" >
+		    	    <!--<div ng-repeat="(key,item) in dataList" ng-mouseenter="showModal(key,item)" ng-mouseleave="hiddenModal()">-->
+		    	    	<!--<span class="demand_categories"><a ng-href="dDemand?id={{item.resNum}}">{{item.categoryL1.name}}</a></span><span class="industries"><a ng-href="dDemand?id={{item.resNum}}">{{item.classify}}</a></span>-->
+		    	    	<!--<span class="area"><a ng-href="dDemand?id={{item.resNum}}">{{item.region.province}}</a></span><span class="budget">{{item.price}}元</span>-->
+		    	    	<!--<span class="demand_summary"><a ng-href="dDemand?id={{item.resNum}}">{{item.title}}</a></span>-->
+		    	    	<!--<div class="specificDemand" ng-show="showid==key">-->
+	    	    		    <!--<div></div>-->
+							<!--<h2><a ng-href="dDemand?id={{item.resNum}}">{{item.title}}</a></h2>-->
+							<!--<ul>-->
+								<!--<li>类别：<span>{{item.categoryL1.name}}</span></li><li>行业：<span>{{item.classify}}</span></li><li>联系人：<span>{{item.contacts}}</span></li>-->
+								<!--<li>区域：<span>{{item.region.province}}-{{item.region.city}}</span></li><li>价格：{{item.price}}元<span></span></li><li>联系方式：{{item.phoneNum}}</li>-->
+							<!--</ul>-->
+							<!--<p  class="details" ng-bind-html="item.details|trusted">-->
+							<!--</p>-->
+					    <!--</div>-->
+						<!--<span class="contacter">{{item.contacts}}</span>-->
+		    	    	<!--<span class="contact_way">{{item.phoneNum}}</span><span class="skin">66</span>-->
+		    	    <!--</div>-->
+					<!--<div class="warningInfoData" ng-if="warningInfoData!==''">{{warningInfoData}}</div>-->
+					<div>
+						<span class="shoppic"><img src="/themes/lanmai/VRimages/10.png"/></span>
+						<span class="shoppic1"><a></a></span><span class="shoppic2"><a></a></span>
+						<span class="shopname">北京嘉禾广告制作有限公司</span>
+						<span class="promoteicon"></span>
+						<span class="bussscope"><a>经营范围：</a><a>门头招牌</a><a>门头招牌</a><a>门头招牌</a></span>
+						<span class="shopposition"><a>所在地：</a><a>北京</a></span>
+						<span class="resourcecount">发布资源数量<a>66</a>条</span>
+						<span class="collectcount">收藏数量<a>66</a>条</span>
+						<ul>
+							<li>
+								<div>
+									<img  src="/themes/lanmai/VRimages/10.png"/>
+									<div>招牌制作</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<img  src="/themes/lanmai/VRimages/10.png"/>
+									<div>招牌制作</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<img  src="/themes/lanmai/VRimages/10.png"/>
+									<div>招牌制作</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<img  src="/themes/lanmai/VRimages/10.png"/>
+									<div>招牌制作</div>
+								</div>
+							</li>
+						</ul>
+						<div class="specificinfoicon"></div>
+						<div class="specificDemand">
+							<h3>求购北京二环LED广告牌</h3>
+							<span class="certificateinfo"><a>实名认证</a><a>企业认证</a></span>
+							<ul>
+								<li>经营范围：</li>
+								<li>门头站牌</li>
+								<li>门头站牌</li>
+								<li>门头站牌</li>
+							</ul>
+							<p class="specificposition">
+								<a>所在地：</a><a>北京</a>
+							</p>
+							<p>
+								DoraCMS是基于Nodejs+express+mongodb编写的一套内容管理系统，结构简单，较目前一些开源的cms，doracms易于拓展，特别适合前端开发工程师做二次开发。
+								DoraCMS是基于Nodejs+express+mongodb编写的一套内容管理系统，结构简单，较目前一些开源的cms，doracms易于拓展，特别适合前端开发工程师做二次开发。
+							</p>
+						</div>
+					</div>
+				</div>
+			    <div class="contentRight">
+
+			   	    <div class="promotbar">
+			   	    	<a><div class="promoteImg"></div></a>
+			   	    	<p class="promotePrice">1888.88</p>
+			   	    	<p><span class="">北京</span>&nbsp;-<span class="">&nbsp;二环公路</span></p>
+			   	    	<p>北京南站二环入口12米户外广告牌</p>
+			   	    </div>
+			   	    <div class="promotbar">
+						<a><div class="promoteImg"></div></a>
+			   	    	<p class="promotePrice">1888.88</p>
+			   	    	<p><span class="">北京</span>&nbsp;-<span class="">&nbsp;二环公路</span></p>
+			   	    	<p>北京南站二环入口12米户外广告牌</p>
+			   	    </div>
+			   	    <div class="promotbar">
+						<a><div class="promoteImg"></div></a>
+			   	    	<p class="promotePrice">1888.88</p>
+			   	    	<p><span class="">北京</span>&nbsp;-<span class="">&nbsp;二环公路</span></p>
+			   	    	<p>北京南站二环入口12米户外广告牌</p>
+			   	    </div>
+			   </div>
+	<div class=" paging">
+		<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页" first-text="第一页" last-text="最后一页"
+					next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+					items-per-page="itemsPerPage"></pagination>
+	</div>
+<div class="bandPromote">
+	<div class="bandPromoteTitle">优秀品牌推荐</div>
+	<ul class="">
+		<li><a><div></div></a>
+			<ul>
+				<li class="bandName">嘉禾传媒</li>
+				<li class="bandPosition"><span>湖北</span>-<span>武汉</span></li>
+				<li class="bandStyle">户外广告</li>
+			</ul>
+		</li>
+		<li><a><div></div></a>
+			<ul>
+				<li class="bandName">嘉禾传媒</li>
+				<li class="bandPosition"><span>湖北</span>&nbsp;-&nbsp;<span>武汉</span></li>
+				<li class="bandStyle">户外广告</li>
+			</ul>
+		</li>
+		<li><a><div></div></a>
+			<ul>
+				<li class="bandName">嘉禾传媒</li>
+				<li class="bandPosition"><span>湖北</span>-<span>武汉</span></li>
+				<li class="bandStyle">户外广告</li>
+			</ul>
+		</li>
+		<li><a><div></div></a>
+			<ul>
+				<li class="bandName">嘉禾传媒</li>
+				<li class="bandPosition"><span>湖北</span>-<span>武汉</span></li>
+				<li class="bandStyle">户外广告</li>
+			</ul>
+		</li>
+	</ul>
+	<div class="pagingLine">
+		<ul>
+			<li><a></a></li><li><a></a></li><li class="activeLine"><a></a></li><li><a></a></li>
+		</ul>
+	</div>
+
+</div>
+</div>
+	</div>
+<script type="text/javascript">
+	$(function() {
+		document.addEventListener("listen", function (e) {
+			$(navArea).children("input").val(finalText);
+			$(navArea).children("input").scope().regionData=finalText;
+			$(navArea).children("input").scope().$apply();
+		}, false);
+		var demandSummary = $(".demand_summary"),
+				sorting = $(".addIcon").parent(),
+				requireselect = $(".nav li"),
+				deletecategory = $(".deleteIcon").parent();
+		var strId="";
+		var str1 = "";
+		var str2 = "";
+		var str3 = "";
+		var str4 = "";
+		var navLeibie = $(".allcategoery .navLeibie");
+		var navArea = $(".allcategoery .navArea");
+
+
+		$(deletecategory).on("click", function () {
+			$(this).children(".navWord").val("");
+			$(this).hide();
+
+			$(".leibie").children().css("background-color", "#fff").css("color", "#b0b0b0");
+			$(".leibie").children().data("selected", false);
+			str1 = "";
+			strId="";
+			$(navLeibie).children(".navWord").val(str1);
+			$(navLeibie).children(".navWord").scope().typesData=str1;
+			$(navLeibie).children(".navWord").scope().currentCateListData=strId;
+			$(navLeibie).children(".navWord").scope().$apply();
+		})
+
+		sorting.on("click", function () {
+			if ($(this).data("flag")) {
+				$(this).children().css("background-position", " -300px -8px");
+				$(this).parent().children().children("ul").css("height", "90px").css("overflow", "auto");
+			} else {
+				$(this).children().css("background-position", " -274px -8px");
+				$(this).parent().children().children("ul").css("height", "40px").css("overflow", "hidden")
+			}
+			$(this).data("flag", !$(this).data("flag"));
+		})
+
+		requireselect.on("click", function () {
+			var selectedValue = $(this).text() + "、";
+			var classValue = $(this).parent("ul").attr("class");
+			if ($(this).data("selected")) {
+				$(this).css("background-color", "#fff").css("color", "#b0b0b0");
+				selectedValueId=$(this).attr("id")+"、";
+				strId=strId.replace(selectedValueId,"");
+				str1 = str1.replace(selectedValue, "");
+				$(navLeibie).children(".navWord").val(str1);
+				$(navLeibie).children(".navWord").scope().typesData=str1;
+				$(navLeibie).children(".navWord").scope().currentCateListData=strId
+				$(navLeibie).children(".navWord").scope().$apply();
+				if ($(navLeibie).children(".navWord").val() == "") {
+					$(navLeibie).css("display", "none");
+					$(navLeibie).children().css("display", "none");
+
+				}
+			} else {
+				if ($(navLeibie).children(".navWord").val() == "") {
+					$(navLeibie).css("display", "none");
+					$(navLeibie).children().css("display", "none");
+				}
+				$(this).css("background-color", "#f0f0f0").css("color", "#261f1a");
+				var selectedValueId=$(this).attr("id")+"、";
+				$(navLeibie).css("display", "block");
+				$(navLeibie).css("display", "block").css("border","1px solid #da2f2f");
+				str1 += selectedValue;
+				strId+=selectedValueId;
+				$(navLeibie).children(".navWord").val(str1);
+				$(navLeibie).children(".navWord").scope().typesData=str1;
+				$(navLeibie).children(".navWord").scope().currentCateListData=strId;
+				$(navLeibie).children(".navWord").scope().$apply();
+				$(navLeibie).children().css("display", "inline-block")
+			}
+			$(this).data("selected", !$(this).data("selected"));
+		})
+
+		$(".city-select dl dd a").on("click", function () {
+			setTimeout(function () {
+				window.localStorage.setItem("area", $(".city-picker-input").val());
+			}, 0)
+		});
+
+
+	})
+</script>

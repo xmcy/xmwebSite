@@ -1,0 +1,785 @@
+<style type="text/css">
+	.current_position .form-control{
+		box-shadow: none !important;
+	}
+	.rightFix{
+		position: absolute;
+		left: 800px;
+	}
+	.warningInfoData{
+		margin: 0 auto;
+		width: 200px !important;
+		height: 50px !important;
+	}
+	.warningInfoData:hover{
+		background-color: #fff !important;
+
+	}
+	body,a{
+		color: grey;
+	}
+	input,button{
+		outline: none;
+	}
+	.contenWrap{
+		padding-top: 20px;
+		margin-top: 20px;
+	}
+	.privateNav>ul{
+		float: right;
+		height: 22px;
+	}
+	.privateNav>ul>li{
+		height: 20px;
+		float: left;
+		width:85px;
+		text-align: center;
+		margin-right: 5px;
+	}
+	.privateNav>ul>li a{
+		color: #b0b0b0;
+	}
+	.privateNav .addmore{
+		display:inline-block;
+		width:0;
+		height:0;
+		border-left:5px solid transparent;
+		border-right:5px solid transparent;
+		border-top:7px solid grey;
+		margin: 0 7px 0 7px;
+	}
+	.header .city-picker-input {
+		font-size: 18px;
+		font-weight: 500;
+		color: rgb(112,112,112);
+		opacity: 1 !important;
+		width: 77px;
+		top:0;
+		left:0px;
+		position: absolute;
+		cursor: pointer;
+		background-color: #fff !important;
+		text-align: center;
+		z-index: -99;
+	}
+	.header .city-picker-span{
+		width: 138px ;
+		left: 0;
+	}
+	.header .city-select-content{
+		margin-top: 32px;
+	}
+	.nav{
+		width: 100%;
+		font-size: 15px;
+		margin-bottom: 20px;
+		margin-top: 15px;
+	}
+	.nav>.categoeries{
+		display: block;
+		width: 1200px;
+	}
+	.nav>.categoeries>div{
+		border-top: 1px dotted #eeeeee;
+	}
+	.nav>.categoeries>div:last-child{
+		border-bottom: 1px solid #eeeeee;
+	}
+	.nav>div li{
+		cursor: pointer;
+	}
+	.allcategoery{
+		width: 100%;
+		border:none !important;
+		font-size: 14px;
+		height: 28px;
+		line-height: 28px;
+	}
+	.allcategoery>div{
+		float: left;
+		width:140px;
+		margin-right: 25px;
+		height:28px;
+		line-height: 28px;
+
+		position: relative;
+	}
+	.allcategoery>div>.navWord{
+		position: absolute;
+		top:0px;
+		left:3px;
+		width: 126px;
+		text-align: center;
+		height: 25px;
+		line-height:25px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		border: 0;
+	}
+	.allcategoery>.navcate{
+		width:84px;
+		font-size: 16px;
+	}
+	.allcategoery>.navArea,.allcategoery>.navArea>.navWord{
+		width:100px;
+		display: none;
+	}
+	/*.allcategoery>.navArea{*/
+		/*color: #e7c276*/
+	/*}*/
+	.allcategoery>div>.deleteIcon{
+		position: absolute;
+		top:1px;
+		right: 2px;
+	}
+	.allcategoery>ul>li{
+		float: left;
+		width:118px;
+		height:40px;
+		line-height:40px;
+		margin-right:5px;
+		text-align: left;
+	}
+	.allcategoery>ul>li>.deleteIcon{
+		display: inline-block;
+	}
+	.demandChoice{
+		float: left;
+		width: 95%;
+
+	}
+	.demandChoice>div{
+		float: left;
+		width: 70px;
+		margin-right: 30px;
+		height:40px;
+		line-height:40px;
+	}
+	.demandChoice>ul{
+		display: inline-block;
+		width: 90%;
+		height: 40px;
+		overflow: hidden;
+	}
+	.demandChoice>ul>li{
+		float: left;
+		height: 40px;
+		line-height: 40px;
+		width:110px;
+		text-align: center;
+		margin-right: 16px;
+	}
+	.demandChoice>ul>li:first-child,.budget>ul>li:first-child,.yunFeiPay>ul>li:first-child,.fixKinds>ul>li:first-child{
+		text-align: left!important;
+		width: 90px !important;
+	}
+	.demandChoice>ul>li>a{
+		display: inline-block;
+		height: 40px;
+		line-height:40px;
+	}
+	.chooseMore{
+		float: right;
+		width: 53px;
+		cursor: pointer;
+	}
+	.chooseArea,.budget{
+		clear: both;
+		border-bottom:1px solid #eeeeee;
+	}
+	.budget{
+		border-top:1px solid #eeeeee;
+	}
+	.chooseArea>div{
+		display: inline-block;
+		margin-right:30px;
+		width: 70px;
+		height:40px;
+		line-height:40px;
+	}
+	.areaoption{
+		top:0 !important;
+		left: 100px !important;
+	}
+	.budget>ul,.budget>div{
+		display: inline-block;
+		height: 40px;
+		line-height:40px;
+		margin-right: 1%;
+	}
+	.budget>div{
+		width: 70px;
+		float: left;
+		margin-right: 30px;
+	}
+	.budget>ul{
+		width:53%;
+	}
+	.budget>ul>li{
+		float: left;
+		height: 40px;
+		line-height:40px;
+		width: 110px;
+		text-align: center;
+		margin-right:16px;
+	}
+	.budget>.user_define{
+		float: right;
+		width: 35%;
+		position: relative;
+	}
+	.user_define>div,.user_define>span{
+		float: left;
+	}
+	.user_define>div{
+		width: 70px;
+		height: 20px;
+	}
+	.user_define>div>input{
+		width: 70px;
+		height: 22px;
+		border: 1px solid gainsboro;
+		font-size: 12px;
+		text-align: center;
+	}
+	.user_define>span{
+		margin:11px 10px 0 10px;
+		height: 20px;
+		line-height: 20px;
+	}
+	.budget .budgetSure{
+		position: absolute;
+		top: -2px;
+		right:-8%;
+		width: 45px;
+		height: 24px;
+		border-radius: 2px;
+		line-height: 22px;
+		border: 1px solid #da2f2f;
+		background-color:#da2f2f ;
+		color: #fff;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	.demandChoice>div{
+		float: left;
+		width: 70px;
+	}
+
+	.yunFeiPay,.fixKinds{
+		clear: both;
+		line-height: 40px;
+		width: 100%;
+		display: block;
+		margin-bottom: 5px;
+		border-bottom:1px solid #eeeeee;
+	}
+	.yunFeiPay>div,.fixKinds>div{
+		float: left;
+	}
+	.yunFeiPay>ul,.fixKinds>ul{
+		margin-left:100px;
+		height: 40px;
+	}
+	.yunFeiPay>ul>li,.fixKinds>ul>li{
+		float: left;
+		width: 110px;
+		margin-right:16px;
+		text-align: center;
+	}
+	.yunFeiPay>ul>li>a,.fixKinds>ul>li>a{
+		color:#B0B0B0;
+		margin-left: 3px;
+	}
+	.contentLeft{
+		width: 100%;
+		float: left;
+		font-size: 15px;
+	}
+	.contentRight{
+		width:23%;
+		float: right;
+	}
+	.contentLeft>.tenderline{
+		position: relative;
+		width: 100%;
+		height: 120px;
+		margin-top: 15px;
+		padding-top: 10px;
+		font-size: 18px;
+	}
+	.contentLeft>div:hover{
+		background-color:#f0f0f0 ;
+	}
+	.invitation{
+		float: left;
+		width: 30px;
+		height: 35px;
+		background:url(/themes/lanmai/images/tendericon.png)  1170px 71px ;
+		margin-right: 10px;
+		margin-top: -5px;
+	}
+	.tenderhead{
+		float: left;
+		width: 82%;
+		padding-top: 10px;
+		position: relative;
+	}
+	.tenderhead>span{
+		display: inline-block;
+	}
+	.tenderhead>p{
+		display: block;
+		font-size: 15px;
+		margin-top: 55px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.tendertitle{
+		float: left;
+		max-width: 660px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.tendertitle>a{
+		color: #6398d4;
+		margin-right: 25px;
+	}
+	.tenderstatus{
+		float: left;
+		width: 18%;
+		font-size: 14px;
+		padding-left: 40px;
+		margin-top: -6px;
+	}
+	.tenderstatus>span{
+		display: inline-block;
+		width: 100%;
+		margin-right: 4px;
+		height:30px;
+		line-height: 30px;
+	}
+	.tenderstatus>span>a{
+		color: #6398d4;
+	}
+	.sorting{
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
+		background-color:#f0f0f0;
+	}
+	.sorting>div,.sorting>ul{
+		float: left;
+	}
+	.sorting>ul{
+		margin-left: 35px;
+	}
+	.sorting>ul>li{
+		float: left;
+		width: 80px;
+		margin-right: 15px;
+		cursor: pointer;
+	}
+	.sorting .hotLine{
+		float: right;
+		margin-right: 7px;
+		height: 40px;
+		line-height: 40px;
+		font-size: 18px;
+		color: #da2f2f;
+		background-color:#f0f0f0 ;
+	}
+	.promotbar{
+		width: 100%;
+		height: 272px;
+		background-color: #f0f0f0;
+		margin-top: 15px;
+	}
+	.promotbar>p{
+		font-size: 14px;
+		margin-top: 2px;
+	}
+	.promotbar>.promotePrice{
+		font-size: 14px;
+		color: #da2f2f;
+	}
+	.paging{
+		clear: both;
+		width:100%;
+		height: 80px;
+		margin-bottom: 40px;
+	}
+	.paging>ul{
+		position: relative;
+		left: 250px;
+	}
+	ul.pagination>li>a {
+		margin-right: 6px;
+	}
+	.bandPromoteTitle{
+		font-size: 22px;
+		color: #da2f2f;
+		background-color:#f0f0f0 ;
+		height: 50px;
+		line-height: 50px;
+		margin-bottom:50px;
+		padding-left: 4px;
+		font-weight:500;
+	}
+
+	.header .current_position span.city-picker-span{
+		width: 85px !important;
+		height: 47px !important;
+		opacity: 0;
+		filter:alpha(opacity=0) !important;
+	}
+	.header .city-select-tab{
+		display: none;
+	}
+	.header .city-picker-input{
+		font-family: "微软雅黑" !important;
+	}
+	.chooseArea span.select-item{
+		color:#B0B0B0;
+	}
+	.chooseArea .city-picker-span{
+		width: 230px !important;
+	}
+	.city-picker-span.focus, .city-picker-span.open{
+		border-bottom-color: #B0B0B0 !important;
+	}
+	.chooseArea{
+		position: relative;
+	}
+	.chooseArea .city-picker-span{
+		width: 230px !important;
+		border-bottom: none !important;
+		background: none !important;
+		height: 40px !important;
+		line-height: 40px !important;
+	}
+	.chooseArea .city-picker-span .arrow{
+		display: none ;
+	}
+    .depositAccount{
+		float: left;
+		width: 30px;
+		height: 33px;
+		background: url(/themes/lanmai/images/tendericon.png)  254px 139px;
+		margin-top: -4px;
+	}
+</style>
+<div ng-controller="tenderListController">
+	<div class="nav">
+		<div class="allcategoery">
+			<div class="navcate">所有类别&nbsp;></div>
+			<div class="navArea"><input hidden class="navWord" ng-model="regionData"/></div>
+			<div class="navLeibie"><input class="navWord" ng-model="typesData"/><span class="deleteIcon"></span></div>
+			<div class="navPay"><input class="navWord" ng-model="freightTypeData"/><span class="deleteIcon"></span></div>
+			<div class="navInstall"><input class="navWord" ng-model="installTypeData"/><span class="deleteIcon"></span></div>
+		</div>
+		<div class="chooseArea"><div>选择地区</div>
+			<div class="areaoption" style="position:absolute; left: 106px;top: -5px;">
+				<input readonly type="text" data-toggle="city-picker" value="北京市/北京市/东城区" name="region" id="region">
+			</div>
+		</div>
+		<div id="">
+			<div class="demandChoice">
+				<div class="chooseProject">招标类别</div>
+				<ul class="leibie">
+					<%for(var i=0,long=currentCateListForSecond.length;i<long;i++){%>
+					<li data-selected="false" id="<%=currentCateListForSecond[i]._id%>"><%=currentCateListForSecond[i].name%></li>
+					<%}%>
+				</ul>
+			</div>
+			<!--<div data-flag="true" class="chooseMore">更多<div class="addIcon"></div></div>-->
+		</div>
+		<div class="yunFeiPay">
+			<div>招标类型</div>
+			<ul class="payway">
+				<li data-selected="false">公开招标</li>
+				<li data-selected="false">邀请招标</li>
+			</ul>
+		</div>
+		<div class="fixKinds">
+			<div>招标状态</div>
+			<ul class="install">
+				<li data-selected="false">投标中</li>
+			</ul>
+		</div>
+	</div>
+	<div class="contenWrap">
+		<div class="sorting">
+			<div><a>综合排序</a></div>
+			<ul>
+				<li class="sortingBySkin"  data-flag="true" ng-click="changeOrder('bidderLimit')">参与数<span class="addIcon"></span></li>
+				<li class="sortingByTime"  data-flag="true" ng-click="changeOrder('refreshedAt')">发布时间<span class="addIcon"></span></li>
+				<li class="sortingByPrice"  data-flag="true" ng-click="changeOrder('deposit')">保证金<span class="addIcon"></span></li>
+			</ul>
+			<div class="hotLine">推广热线 : 027-87551680</div>
+		</div>
+		<div class="contentLeft">
+			<div class="tenderline" ng-repeat="(key,item) in dataList">
+				<div class="tenderhead">
+					<span class="invitation" ng-if="item.tenderType==2" ></span>
+					<span title="招标方已缴纳企业保证金" class="depositAccount" ng-if="!item.company.depositAccount==0"></span>
+					<span class="tendertitle" title="{{item.title}}">
+						<a ng-href="/tender/tenderinfo?id={{item|itemToId}}" ng-if="userId=='1'" target="_blank">{{item.title}}</a>
+						<a ng-click="alertForLogin()" ng-if="userId=='0'" >{{item.title}}</a>
+					</span>
+					<span ng-if="!item.deposit" class="redFont aboutpromise rightFix">招标保证金 : 未缴纳</span>
+					<span ng-if="item.deposit" class="redFont rightFix">招标保证金 : {{item.deposit}}元</span>
+					<p><span class="tenderarea">[{{item.region.province}} {{item.region.city}}]</span><span ng-bind="item.details|contentFilter">{{item.details}}</span></p>
+				</div>
+				<div class="tenderstatus"ng-if="!item.chosenBidder">
+					<span><a> {{item.bidders.length}} </a>参与招标</span>
+					<span>仅剩<a class="redFont">{{item.bidderLimit-item.bidders.length}}</a>个投标名额</span>
+					<span>{{item.tenderEnd|endToTime}}</span>
+				</div>
+				<div class="tenderstatus"ng-if="item.chosenBidder">
+					<span>投标已截止</span>
+				</div>
+			</div>
+
+			<div class="warningInfoData" ng-if="warningInfoData!==''">{{warningInfoData}}</div>
+		</div>
+		<input type="hidden" id="isChange" ng-model="isChange">
+
+		<div class=" paging">
+			<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+						next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+						items-per-page="itemsPerPage"></pagination>
+		</div>
+	</div>
+	<div class="bandPromote">
+		<div class="bandPromoteTitle">优秀品牌推荐</div>
+	</div>
+	<%if(userInfo){%>
+	<input type="hidden" id="userId" value="1"/>
+	<%}else{%>
+	<input type="hidden" id="userId" value="0"/>
+	<%}%>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		document.addEventListener("listen", function (e) {
+			$(navArea).children("input").val(finalText);
+			$(navArea).children("input").scope().regionData=finalText;
+			$(navArea).children("input").scope().$apply();
+		}, false);
+		var arrFortypes=[]
+		$(".leibie>li").each(function () {
+			arrFortypes.push($(this).attr("id"))
+		})
+		$(".leibie").scope().types=arrFortypes
+		$(".leibie").scope().userId=$("#userId").val()
+		$(".leibie").scope().$apply()
+		$(".leibie").scope().postData()
+
+		var demandSummary = $(".demand_summary"),
+				sorting = $(".addIcon").parent(),
+				requireselect = $(".nav li"),
+				deletecategory = $(".deleteIcon").parent(),
+				cancleSelect=$(".yunFeiPay>ul>li,.fixKinds>ul>li"),
+		maxnum, minnum;
+		var strId="";
+		var str1 = "";
+		var str2 = "";
+		var str3 = "";
+		var str4 = "";
+		var str5 = "";
+		var navLeibie = $(".allcategoery .navLeibie");
+		var navArea = $(".allcategoery .navArea");
+		var navPay = $(".allcategoery .navPay");
+		var navInstall = $(".allcategoery .navInstall");
+
+		$(deletecategory).on("click", function () {
+			var deleteinfo = $(this).attr("class");
+			$(this).children(".navWord").val("");
+			$(this).hide();
+
+			switch (deleteinfo) {
+				case ("navLeibie"):
+					$(".leibie").children().css("background-color", "#fff").css("color", "grey");
+					$(".leibie").children().data("selected", false);
+					str1 = "";
+					$(navLeibie).children(".navWord").scope().currentCateListData=arrFortypes.join('、')+'、'
+					$(navLeibie).scope().$apply();
+					break;
+				case ("navPay"):
+					$(".payway").children().css("background-color", "#fff").css("color", "grey");
+					$(".payway").children().data("selected", false);
+					str4 = "";
+					$(".payway").children().scope().tenderTypeData="";
+					$(".payway").scope().$apply();
+					break;
+				case ("navInstall"):
+					$(".install").children().css("background-color", "#fff").css("color", "grey");
+					$(".install").children().data("selected", false);
+					str5 = "";
+					$(".install").children().scope().statusData="";
+					$(".install").scope().$apply();
+					break;
+				default:
+					return;
+			}
+		})
+
+		sorting.on("click", function () {
+			if ($(this).data("flag")) {
+				$(this).children().css("background-position", " -300px -8px");
+//				$(this).parent().children().children("ul").css("height", "90px").css("overflow", "auto");
+			} else {
+				$(this).children().css("background-position", " -274px -8px");
+//				$(this).parent().children().children("ul").css("height", "40px").css("overflow", "hidden")
+			}
+			$(this).data("flag", !$(this).data("flag"));
+		})
+
+		requireselect.on("click", function () {
+			var selectedValue = $(this).text() + "、";
+			var classValue = $(this).parent("ul").attr("class");
+
+			if ($(this).data("selected")) {
+				$(this).css("background-color", "#fff").css("color", "grey");
+				switch (classValue) {
+					case ("leibie"):
+						var selectedValueId=$(this).attr("id")+"、";
+						strId=strId.replace(selectedValueId,"");
+						str1 = str1.replace(selectedValue, "");
+						$(navLeibie).children(".navWord").val(str1);
+						if(strId==""||strId.trim()==""){
+							$(navLeibie).children(".navWord").scope().currentCateListData=arrFortypes.join('、')+'、'
+						}else{
+							$(navLeibie).children(".navWord").scope().currentCateListData=strId
+						}
+						$(navLeibie).children(".navWord").scope().$apply();
+						break;
+					case ("payway"):
+						str4 = str4.replace(selectedValue, "");
+						$(navPay).children(".navWord").val(str4);
+						$(navPay).children(".navWord").scope().tenderTypeData=str4;
+						$(navPay).children(".navWord").scope().$apply();
+						break;
+					case ("install"):
+						str5 = str5.replace(selectedValue, "");
+						$(navInstall).children(".navWord").val(str5);
+						$(navPay).children(".navWord").scope().statusData=str5;
+						$(navPay).children(".navWord").scope().$apply();
+						break;
+					default:
+						return
+				}
+				if ($(navLeibie).children(".navWord").val() == "") {
+					$(navLeibie).css("display", "none");
+					$(navLeibie).children().css("display", "none");
+
+				}
+				if ($(navPay).children(".navWord").val() == "") {
+					$(navPay).css("display", "none");
+					$(navPay).children().css("display", "none");
+
+				}
+				if ($(navInstall).children(".navWord").val() == "") {
+					$(navInstall).css("display", "none");
+					$(navInstall).children().css("display", "none");
+
+				}
+			} else {
+				if ($(navLeibie).children(".navWord").val() == "") {
+					$(navLeibie).css("display", "none");
+					$(navLeibie).children().css("display", "none");
+				}
+				if ($(navPay).children(".navWord").val() == "") {
+					$(navPay).css("display", "none");
+					$(navPay).children().css("display", "none");
+
+				}
+				if ($(navInstall).children(".navWord").val() == "") {
+					$(navInstall).css("display", "none");
+					$(navInstall).children().css("display", "none");
+
+				}
+				$(this).css("background-color", "#f0f0f0").css("color", "#261f1a");
+				switch (classValue) {
+					case ("leibie"):
+						var selectedValueId=$(this).attr("id")+"、";
+						$(navLeibie).css("display", "block").css("border","1px solid #da2f2f");
+						str1 += selectedValue;
+						strId+=selectedValueId;
+						$(navLeibie).children(".navWord").val(str1);
+						$(navLeibie).children(".navWord").scope().currentCateListData=strId;
+						$(navLeibie).children(".navWord").scope().$apply();
+						$(navLeibie).children().css("display", "inline-block")
+						break;
+					case ("payway"):
+						$(navPay).css("display", "block").css("border","1px solid #da2f2f");
+						if (str4 !== "") {
+							str4 = selectedValue;
+							$(navPay).children(".navWord").val(str4);
+							$(navPay).children(".navWord").scope().tenderTypeData=str4;
+							$(navPay).children(".navWord").scope().$apply();
+							$(navPay).children().css("display", "inline-block");
+							$(this).parent().children().css("background-color", "#fff").css("color", "grey");
+							$(this).css("background-color", "#f0f0f0").css("color", "#261f1a");
+							return;
+						} else {
+							str4 += selectedValue;
+							$(navPay).children(".navWord").val(str4);
+							$(navPay).children(".navWord").scope().tenderTypeData=str4;
+							$(navPay).children(".navWord").scope().$apply();
+							$(navPay).children().css("display", "inline-block")
+						}
+						break;
+					case ("install"):
+						$(navInstall).css("display", "block").css("border","1px solid #da2f2f");
+						if (str5 !== "") {
+							str5 = selectedValue;
+							$(navInstall).children(".navWord").val(str5);
+							$(navPay).children(".navWord").scope().statusData=str5;
+							$(navPay).children(".navWord").scope().$apply();
+							$(navInstall).children().css("display", "inline-block");
+							$(this).parent().children().css("background-color", "#fff").css("color", "grey");
+							$(this).css("background-color", "#f0f0f0").css("color", "#261f1a");
+							return;
+						} else {
+							str5 += selectedValue;
+							$(navInstall).children(".navWord").val(str5);
+							$(navPay).children(".navWord").scope().statusData=str5;
+							$(navPay).children(".navWord").scope().$apply();
+							$(navInstall).children().css("display", "inline-block");
+						}
+						break;
+					default:
+						return
+				}
+			}
+			$(this).data("selected", !$(this).data("selected"));
+			console.log(str1)
+		})
+
+
+		cancleSelect.on("click",function () {
+				$(this).css("border","none")
+		})
+
+
+		$(".city-select dl dd a").on("click",function () {
+//			var chooseArea=$(".title").children();
+//			var areavalue=$(chooseArea[0]).text()+$(chooseArea[1]).text()+$(chooseArea[2]).text()
+//			console.log(areavalue);
+//			$(navArea).children("input").val(areavalue);
+			setTimeout(function () {
+				window.localStorage.setItem("area",$(".city-picker-input").val());
+			},0)
+		});
+		$(".city-picker-input").val(window.localStorage.getItem("area"));
+
+
+	});
+</script>

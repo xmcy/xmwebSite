@@ -1,0 +1,1213 @@
+<style>
+    .chooseBid{
+        cursor: pointer;
+    }
+    .collectRes{
+        width: 60px !important;
+        cursor: pointer;
+    }
+    .divForCollect{
+        width: 140px !important;
+        cursor: pointer;
+    }
+    body{
+        color: grey;
+        background-color: #fff;
+    }
+    .index_local a{
+        color:#c8c7c7 ;
+    }
+    .index_local .city-select-content .city-select dl dd a{
+        float: left;
+    }
+    .index_local .flex-direction-nav li a.flex-prev{
+        top:50px;
+    }
+    .index_local .flex-direction-nav li a.flex-next{
+        top:50px;
+    }
+    .index_local .city-picker-span{
+        border: none;
+        background: none;
+        position: absolute;
+        left: 50px;
+        top:-3px;
+        width: 79px !important;
+        height: 52px !important;
+    }
+    .index_local .city-picker-span .title span{
+        width: 60px;
+        height: 40px;
+
+    }
+    .index_local .city-picker-span .title span:hover{
+        background: none;
+    }
+    .index_local .arrow{
+        display: none
+    }
+    .index_local .city-picker-dropdown{
+        width: 345px !important;
+        top:50px !important;
+        left: 52px !important;
+    }
+    .index_local .city-picker-dropdown dl dd a{
+        font-size: 13px !important;
+    }
+    .index_local .city-picker-span .title>span.select-item{
+        position: absolute;
+        left:11px;
+        top:5px;
+        color:#908E8E;
+    }
+    .index_local .city-select-tab{
+        display: none;
+    }
+    .charonAdIndexAboutUs{
+        width: 464px;
+    }
+    .charonAdIndexWhite{
+        width: 105px;
+    }
+    .wrapper{
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .contenthead{
+        width: 1200px;
+        height: 86px;
+        padding-top: 30px;
+        margin-bottom: 16px;
+    }
+    .tendrtitle{
+        float: left;
+    }
+    .tendrtitle>span{
+        margin-right: 15px;
+    }
+    .tendrtitle>h2{
+        color: black;
+        margin-bottom: 15px;
+        font-size: 32px;
+        max-width: 920px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .handle{
+        float: right;
+        width: 250px;
+    }
+    .handle>div{
+        display: inline-block;
+        width: 100px;
+        height: 34px;
+        margin-top: 30px;
+    }
+    .handle>div>span{
+        float: left;
+        width:40px;
+        height: 34px;
+        line-height: 34px;
+        background-image:url(/themes/lanmai/images/tendericon.png)  ;
+    }
+    .share{
+        background-position: 519px 210px;
+    }
+    .collect{
+        background-position: 377px 210px;
+    }
+    .steps{
+        width: 1200px;
+        height: 170px;
+        border: 1px solid gainsboro;
+        outline:#fdf3f3 dotted thick;
+    }
+    .timeout{
+        width: 280px;
+        margin: 20px auto;
+        height: 30px;
+    }
+    .timeout>span{
+       float: left;
+       margin-left: 5px;
+    }
+    .bgc{
+        /*background-color: #908e8e;*/
+        width: 10px;
+        text-align: center;
+        color: #000000;
+    }
+    .timeout>.timeouticon{
+        width: 30px;
+        height: 30px;
+        background:url(/themes/lanmai/images/tendericon.png) 255px 212px;
+        margin-top: -6px;
+    }
+    .stepstatus{
+        width: 1200px;
+        height: 50px;
+        background-image:url(/themes/lanmai/images/tendericon.png);
+    }
+    .step1{
+        background-position: 0 -30px;
+    }
+    .step2{
+        background-position: 0 -130px;
+    }
+    .step3{
+        background-position: 0 -225px;
+        display: block;
+    }
+    .step4{
+        background-position: 0 -322px;
+    }
+    .step5{
+        background-position: 0 -418px;
+    }
+    .step6{
+        background-position: 0 -514px;
+    }
+    .steps>span{
+        float: left;
+        width: 196px;
+        padding-left: 4px;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .tenderinfo{
+        width: 1200px;
+        height: 280px;
+        padding: 20px;
+        position: relative;
+    }
+    .tenderinfo>ul{
+           width: 1200px;
+           height: 130px;
+        margin-bottom: 20px;
+       }
+    .tenderinfo>ul>li{
+       float: left;
+        height: 50px;
+        width: 28%;
+        line-height: 40px;
+        text-align: left;
+        font-size: 18px;
+        padding-left: 20px;
+    }
+    .tendercount,.bidnow{
+        font-size:20px;
+        width: 510px;
+        padding-left: 20px;
+    }
+    .tendercount{
+        float: left;
+    }
+    .bidnow{
+        border: 1px solid #da2f2f;
+        height: 80px;
+        float: right;
+        width: 544px;
+        margin-right: 100px;
+    }
+    .tendercount>p{
+        display: block;
+        margin-top: 30px;
+    }
+    .bidnowicon{
+       float: left;
+        width: 148px;
+        height: 38px;
+        background:url(/themes/lanmai/images/tendericon.png) 735px 208px ;
+        cursor: pointer;
+        margin-top: 20px;
+        border: 2px solid #da2f2f;
+        border-radius: 3px;
+    }
+    .bidnowicon2{
+        float: left;
+        width: 149px;
+        height: 39px;
+        background-color: #da2f2f;
+        color: #fff;
+        cursor: pointer;
+        margin-top: 20px;
+        border: 2px solid #da2f2f;
+        border-radius: 3px;
+        text-align: center;
+        line-height: 39px;
+        font-size: 16px;
+    }
+    .bidnow>.bidcount{
+        float: right;
+        margin-top:25px;
+        width: 380px;
+        text-align: center;
+    }
+    .bidnow>.bidcount2{
+        float: right;
+        margin-top:30px;
+        font-size: 17px;
+    }
+    .topay{
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 620px;
+        height: 190px;
+        padding: 20px;
+        background-color: #fff;
+        border: 2px solid #da2f2f;
+        font-size: 18px;
+        display: none;
+    }
+    .topay>h3{
+         margin-bottom: 20px;
+     }
+    .topay>p{
+        line-height: 28px;
+    }
+    .topay>form{
+        margin-top: 20px;
+    }
+    .topay>form>input{
+        width: 20px ;
+        height: 16px;
+        min-width: auto;
+        margin: 0 20px;
+    }
+    .topay>form>label{
+        margin-right: 40px;
+    }
+    .topay>form>.clickforpay{
+        display: inline-block;
+        width: 90px;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        background-color: #da2f2f;
+        border: 1px solid #da2f2f;
+        color: #fff;
+        margin-left: 20px;
+        font-size: 17px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .close,.close2{
+        width: 20px;
+        height: 20px;
+        float: right;
+        background:url(/themes/lanmai/images/tendericon.png)  977px 114px ;
+        cursor: pointer;
+    }
+    .close2{
+        margin-top: -80px;
+        margin-right: -10px;
+    }
+    .line{
+        width: 1200px;
+        height: 50px;
+        border-bottom: 2px solid #da2f2f;
+        margin-bottom: 50px;
+    }
+    .forcontact{
+        float: right;
+        margin-top: 20px;
+        cursor: pointer;
+        font-size: 18px;
+        margin-right: 10px;
+        color: rgb(232,163,105);
+    }
+    .redbg{
+        float: left;
+        width: 180px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        background-color: #da2f2f;
+        color: #fff;
+        font-size: 20px;
+    }
+    .tenderdiscrip>p{
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 40px;
+    }
+    .fordetails{
+        display: none;
+    }
+    .uploadfile{
+        width: 1200px;
+        margin: 30px 0;
+    }
+    .uploadimg{
+        display: inline-block;
+        margin-right: 12px;
+        margin-bottom: 10px;
+        border: 1px solid gainsboro;
+        padding-bottom: 10px;
+    }
+    .uploadimg>div{
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .uploadimg>img{
+        width: 280px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+    .uploadfile>a>div{
+        display: inline-block;
+        width: 100px;
+        height: 120px;
+        margin-right: 20px;
+    }
+    .filename{
+        text-align: center;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .bidlist{
+        width: 920px;
+        margin:50px auto;
+        font-size: 16px;
+    }
+    .bidinfo{
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        outline: #fcecec solid thick;
+        margin-bottom: 60px;
+    }
+    .bidinfo>div{
+        width: 100%;
+        height: 50px;
+    }
+    .bidinfo>div>span{
+        float: left;
+        margin-right: 20px;
+        max-width: 500px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .bidshop{
+        font-size: 20px;
+        color: #000000;
+    }
+    .bidshop>a{
+        color: #000;
+    }
+    .redborder{
+        border: 1px solid#da2f2f;
+        padding: 3px 7px;
+    }
+    .yellowfont{
+        color: #e8c289;
+        margin-top: 4px;
+    }
+    .bidinfo>ul{
+        width: 100%;
+        height: 30px;
+    }
+    .bidinfo>p{
+        display: block;
+        line-height: 28px;
+        margin-top: 20px;
+    }
+    .maxheight{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        overflow : hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        max-height: 110px;
+    }
+    .bidinfo>ul>li{
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 30px;
+    }
+    .bidinfo>ul>li>button{
+        width: 75px;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        background-color: #da2f2f;
+        border: 1px solid #da2f2f;
+        color: #fff;
+        float: right;
+        border-radius: 3px;
+        font-size: 16px;
+        outline: 0;
+        cursor: pointer;
+    }
+    .copyrightcontent{
+        height: 170px;
+        margin-bottom: 20px;
+    }
+    .copyrightcontent>div{
+        font-size: 18px;
+        color: #908e8e;
+        line-height: 28px;
+    }
+    .copyrightcontent>.copyrighttitle{
+       background-color: #f5f5f5;
+        color: #565555;
+        height: 50px;
+        line-height: 50px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        padding-left: 20px;
+    }
+    .bidderdetails{
+        display: none !important;
+    }
+    .tenderend{
+        float: right !important;
+        margin-right: 300px;
+    }
+    .nobidder{
+        margin-left: -100px;
+    }
+    .niu{
+        background-image: url('/themes/lanmai/images/niu.png');
+        background-repeat:no-repeat;
+        width: 90px;
+        height: 35px;
+        margin-top: -5px;
+    }
+    .forcontactWay{
+        position: fixed;
+        top: 40%;
+        left: 30%;
+        width: 500px;
+        border: 2px solid #da2f2f;
+        background-color: #fff;
+        padding: 20px;
+        font-size: 16px;
+        z-index: 999;
+        display: none;
+    }
+    .forcontactWay h3{
+        margin: 10px 0 30px 0;
+        font-size:20px;
+    }
+    .forcontactWay div input{
+        width: 170px;
+        height: 34px;
+        line-height: 34px;
+        padding-left: 10px;
+        min-width: 170px !important;
+        float: left;
+        margin-left: 110px;
+    }
+    .surecheck{
+        width: 120px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        background-color: #da2f2f;
+        color: #fff;
+        border-radius: 4px;
+        margin-left: 130px;
+        margin-top: 34px;
+        cursor: pointer;
+    }
+    .vnumCode{
+        width: 130px;
+        height: 50px;
+        display: inline-block;
+        margin: -10px 10px 0 15px;
+    }
+    .changepass{
+        display: block;
+        margin-left: 110px;
+        margin-top: 10px;
+    }
+    .bidcontactmun{
+        display: none;
+    }
+    .tendercontact{
+        display: none;
+    }
+    .line-tip{
+        overflow: hidden;
+        height: 30px;
+        width: 500px;
+        font-size: 18px;
+        color: rgb(128, 128, 128);
+        padding-left: 50px;
+        padding-top: 15px;
+    }
+</style>
+<div class="wrapper">
+    <input type="hidden" value="<%=tenderInfo.tenderEnd%>" id="tenderEnd">
+    <input type="hidden" value="<%=tenderInfo.timeRcdStep2%>" id="timeRcdStep2">
+    <input type="hidden" value="<%=tenderInfo.serviceEnd%>" id="serviceEnd">
+    <input type="hidden" value="<%=tenderInfo.timeRcdStep4%>" id="timeRcdStep4">
+    <input type="hidden" value="<%=tenderInfo.timeRcdStep5%>" id="timeRcdStep5">
+    <input type="hidden" value="<%=tenderInfo.title%>" id="title">
+    <input type="hidden" value="<%=tenderInfo._id%>" id="tenderInfoId">
+    <input type="hidden" value="<%=tenderInfo.tenderType%>" id="tenderType">
+    <input type="hidden" value="<%=tenderInfo.status%>" id="tenderInfoStatus">
+    <input type="hidden" value="<%=isInvite%>" id="isInvite">
+    <input type="hidden" value="<%=tenderInfo.qq%>" id="tendercontactQQVal">
+
+    <div class="forcontactWay">
+        <h3>查看联系方式</h3>
+        <span class="close2"></span>
+        <div>
+            <input class="vnumCodenum" placeholder="请输入图形验证码" />
+            <img src="/admin/vnum" class="vnumCode"/><span class="changepass">注：点击可切换图形验证码</span>
+        </div>
+        <div class="surecheck ">确 认</div>
+    </div>
+    <div class="contenthead">
+       <div class="tendrtitle">
+           <h2><%=tenderInfo.title%></h2>
+           <span>发布时间</span>
+           <span><%=moment(tenderInfo.createdAt).format("YYYY-MM-DD HH:mm:ss")%></span>
+       </div>
+       <div class="handle" id="collectRes">
+           <div><span class="share"></span><span>分享</span></div>
+           <div class="divForCollect"><span class="collect"></span>
+               <span class="collectRes"><%if(favorites){%>取消收藏<%}else {%>收藏<%}%></span></div>
+       </div>
+   </div>
+    <div class="steps">
+        <%if(tenderInfo.timeRcdStep6){%>
+        <input type="hidden" value="6" id="flag">
+        <div class="timeout">此次招标已经完成</div>
+        <%}
+        else if(tenderInfo.timeRcdStep5){%>
+        <input type="hidden" value="5" id="flag">
+        <div class="timeout">
+            <span class="timeouticon"></span>
+            <span> 评价截止剩余 </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> 天 </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> : </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> : </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+        </div>
+        <%}
+        else if(tenderInfo.timeRcdStep4){%>
+        <input type="hidden" value="4" id="flag">
+        <div class="timeout">
+            <span class="timeouticon"></span>
+            <span> 缴纳尾款剩余 </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> 天 </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> : </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> : </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+        </div>
+        <%}
+        else if(tenderInfo.timeRcdStep3){%>
+        <input type="hidden" value="3" id="flag">
+        <div class="timeout">
+            <span class="timeouticon"></span>
+            <span> 制作验收剩余 </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> 天 </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> : </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> : </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+        </div>
+        <%}
+        else if(tenderInfo.timeRcdStep2){%><div class="timeout">
+            <input type="hidden" value="2" id="flag">
+            <span class="timeouticon"></span>
+            <span> 缴纳定金剩余 </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> 天 </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> : </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+            <span> : </span>
+            <span class="bgc">0</span>
+            <span class="bgc">0</span>
+        </div>
+        <%}
+        else{%>
+           <%if(moment(tenderInfo.tenderEnd).isBefore(new Date())){%>
+               <%if(tenderInfo.bidders.length==0){%>
+                <div class="timeout redFont" title="建议您使用网站搜索功能定位相关企业和资源">很遗憾，没有服务商竞投，此标已被关闭</div>
+                <%}else{%>
+                   <input type="hidden" value="1" id="flag">
+                   <div class="timeout">
+                              <span class="timeouticon"></span>
+                              <span> 选标剩余 </span>
+                              <span class="bgc">0</span>
+                              <span class="bgc">0</span>
+                              <span> 天 </span>
+                              <span class="bgc">0</span>
+                              <span class="bgc">0</span>
+                              <span> : </span>
+                              <span class="bgc">0</span>
+                              <span class="bgc">0</span>
+                              <span> : </span>
+                              <span class="bgc">0</span>
+                              <span class="bgc">0</span>
+                </div>
+                <%}%>
+           <%}else{%>
+        <input type="hidden" value="0" id="flag">
+        <div class="timeout">
+                    <span class="timeouticon"></span>
+                    <span> 投标剩余 </span>
+                    <span class="bgc">0</span>
+                    <span class="bgc">0</span>
+                    <span> 天 </span>
+                    <span class="bgc">0</span>
+                    <span class="bgc">0</span>
+                    <span> : </span>
+                    <span class="bgc">0</span>
+                    <span class="bgc">0</span>
+                    <span> : </span>
+                    <span class="bgc">0</span>
+                    <span class="bgc">0</span>
+                </div>
+         <%}}%>
+
+        <%if(tenderInfo.status==6){%>
+        <div class="stepstatus step6"></div>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep1).format("YYYY-MM-DD")%></span>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep2).format("YYYY-MM-DD")%></span>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep3).format("YYYY-MM-DD")%></span>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep4).format("YYYY-MM-DD")%></span>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep5).format("YYYY-MM-DD")%></span>
+            <%if(tenderInfo.timeRcdStep6){%>
+            <span class="redFont"><%=moment(tenderInfo.timeRcdStep6).format("YYYY-MM-DD")%></span>
+            <%}%>
+        <%}else if(tenderInfo.status==5){%>
+        <div class="stepstatus step5"></div>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep1).format("YYYY-MM-DD")%></span>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep2).format("YYYY-MM-DD")%></span>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep3).format("YYYY-MM-DD")%></span>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep4).format("YYYY-MM-DD")%></span>
+            <%if(tenderInfo.timeRcdStep5){%>
+            <span class="redFont"><%=moment(tenderInfo.timeRcdStep5).format("YYYY-MM-DD")%></span>
+            <%}%>
+        <%}else if(tenderInfo.status==4){%>
+        <div class="stepstatus step4"></div>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep1).format("YYYY-MM-DD")%></span>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep2).format("YYYY-MM-DD")%></span>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep3).format("YYYY-MM-DD")%></span>
+            <%if(tenderInfo.timeRcdStep4){%>
+            <span class="redFont"><%=moment(tenderInfo.timeRcdStep4).format("YYYY-MM-DD")%></span>
+            <%}%>
+        <%}else if(tenderInfo.status==3){%>
+        <div class="stepstatus step3"></div>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep1).format("YYYY-MM-DD")%></span>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep2).format("YYYY-MM-DD")%></span>
+            <%if(tenderInfo.timeRcdStep3){%>
+            <span class="redFont"><%=moment(tenderInfo.timeRcdStep3).format("YYYY-MM-DD")%></span>
+            <%}%>
+        <%}else if(tenderInfo.status==2){%>
+        <div class="stepstatus step2"></div>
+        <span class="redFont timeRcdStep1"><%=moment(tenderInfo.timeRcdStep1).format("YYYY-MM-DD")%></span>
+            <%if(tenderInfo.timeRcdStep2){%>
+            <span class="redFont"><%=moment(tenderInfo.timeRcdStep2).format("YYYY-MM-DD")%></span>
+            <%}%>
+        <%}else{%>
+        <div class="stepstatus step1"></div>
+        <span class="redFont"><%=moment(tenderInfo.timeRcdStep1).format("YYYY-MM-DD")%></span>
+        <%}%>
+
+    </div>
+    <div class="tenderinfo">
+       <ul>
+          <li>招标号：<%=tenderInfo.tenderNum%></li>
+           <li class="tendercontact"><%=tenderInfo.phoneNum%></li>
+          <li>类别：<%=tenderInfo.categoryL1.name%>-<%=tenderInfo.categoryL2.name%></li>
+           <li>招标区域：
+               <span>
+                   <%=tenderInfo.region.province%>
+                   <%if(tenderInfo.region.city){%>
+                   <%=tenderInfo.region.city%>
+                   <%}%>
+                   <%if(tenderInfo.region.district){%>
+                   <%=tenderInfo.region.district%>
+                   <%}%></span>
+           </li>
+          <li>安装：
+              <%if(tenderInfo.needInstall){%>
+              需要
+              <%}else{%>
+              不需要
+              <%}%>
+          </li>
+           <li>设计稿： <%if(tenderInfo.hasDesign){%>
+               已有
+               <%}else{%>
+               没有
+               <%}%></li>
+           <li>交付时间：<%=moment(tenderInfo.serviceEnd).format("YYYY-MM-DD")%></li>
+          <li>保证金：
+              <%if(tenderInfo.deposit){%>
+              <span class="promisemoney"><%=tenderInfo.deposit%>元 已支付</span>
+           <%}else{%>
+              <span class="promisemoney">暂未缴纳</span>
+           <%}%>
+          </li>
+
+      </ul>
+        <div>
+            <div class="tendercount">
+                <%if(!tenderInfo.chosenBidder){%>
+                <p>该招标可接受<a class="redFont"> <%=tenderInfo.bidderLimit%> </a>位服务商，目前还剩余<a class="redFont">
+                        <%=tenderInfo.bidderLimit-tenderInfo.bidders.length%> </a>个名额</p>
+                <%}%>
+            </div>
+            <%if(isTender||(tenderInfo.tenderType==2&&!isInvite)||isShield){%>
+
+            <%}else if((tenderInfo.bidderLimit-tenderInfo.bidders)==0||tenderInfo.status>=3||moment(tenderInfo.tenderEnd).isBefore(new Date())){%>
+                 <span class="bidnowicon2 tenderend" />投标已截止</span>
+            <%}else if(isBidder){%>
+                 <span class="bidnowicon2 tenderend" />您已投标</span>
+            <%}else {%>
+             <div class="bidnow">
+                 <%if(companyIdentifyInfo&&companyIdentifyInfo.status=="审核通过"){%>
+                     <%if(tenderInfo.deposit){%>
+                        <span class="bidnowicon identify deposit" /></span>
+                         <%}else{%>
+                         <span class="bidnowicon identify" /></span>
+                     <%}%>
+                 <%}else{%>
+                 <span class="bidnowicon"></span>
+                 <%}%>
+                  <%if(isBidBrandPromotion){%>
+                      <span class="bidcount"> 您已购买品牌推广可以无限次投标！</span>
+                  <%}else if(5-bidCount==0){%>
+                 <span class="bidcount2">今日投标次数已用完，购买<a class="redFont" href="/resource/brandWin#join" title="点击了解品牌推广">品牌推广</a>可不限投标次数</span>
+                    <%}else {%>
+                 <span class="bidcount"> （您今日剩余投标次数<a class="redFont"> <%=5-bidCount%>  </a>次）</span>
+                 <%}%>
+            </div>
+            <%}%>
+        </div>
+        <div class="topay">
+            <div class="close"></div>
+            <h3 class="redFont">您的企业还未缴纳保证金，暂无投标资格!</h3>
+            <p>为了保证招投标双方公平公正交易，制作宝要求双方缴纳保证金在平台托管,一旦招投标过程中任何一方发生违约行为，平台可通过保证金来保证另一方的利益！非招投标期间保证金随时可退！ </p>
+            <form>
+                <span>缴纳保证金</span>
+                <input class="re_machine_fix" type="radio" name="installType" id="two" checked value="2000"> <label for="two" class="change_style">2000元</label>
+                <input class="re_machine_fix" type="radio" name="installType" id="five"  value="5000"> <label for="five" class="change_style">5000元</label>
+                <div class="clickforpay">点击付款</div>
+            </form>
+        </div>
+    </div>
+
+    <div class="line">
+        <div class="redbg">招标详情</div>
+        <%if(tenderInfo.timeRcdStep2){%>
+        <%}else {if(!isTender){%>
+        <div class="forcontact">查看联系方式</div>
+        <%}}%>
+
+    </div>
+    <div class="tenderdiscrip">
+        <p class="fordetails"><%=tenderInfo.details%></p>
+        <p class="realdetails"></p>
+        <div class="uploadfile" >
+            <%if(tenderInfo.files.length>0){%>
+            <%for(i=0;i<tenderInfo.files.length;i++){%>
+            <%if(tenderInfo.files[i].name.split(".")[1]=='png'||
+                    tenderInfo.files[i].name.split(".")[1]=='jpg'||
+                    tenderInfo.files[i].name.split(".")[1]=='jpeg'){%>
+            <a href="<%=tenderInfo.files[i].url%>" target="_blank" class="uploadimg">
+                <img src="<%=tenderInfo.files[i].url%>/compress.only"/>
+            </a>
+            <%}%>
+            <%}%>
+            <%}%>
+        </div>
+        <div class="uploadfile" >
+            <%if(tenderInfo.files.length>0){%>
+            <%for(i=0;i<tenderInfo.files.length;i++){%>
+            <%if(tenderInfo.files[i].name.split(".")[1]!=='png'&&
+                    tenderInfo.files[i].name.split(".")[1]!=='jpg'&&
+                    tenderInfo.files[i].name.split(".")[1]!=='jpeg'){%>
+            <a href="<%=tenderInfo.files[i].url%>"><div>
+                    <img src="/themes/lanmai/images/fileicon.png"/>
+                    <div class="filename" title="<%=tenderInfo.files[i].name%>"><%=tenderInfo.files[i].name%></div>
+                </div> </a>
+            <%}%>
+            <%}%>
+            <%}%>
+    </div>
+        <%if(isTender){%>
+        <div class="line">
+            <div class="redbg">投标详情</div>
+            <p class="line-tip">请优先选择已缴纳企业保证金的服务商</p>
+        </div>
+        <div class="bidlist">
+            <%if(tenderInfo.bidders.length>0){%>
+            <%for(var i=0;i<tenderInfo.bidders.length;i++){%>
+            <div class="bidinfo">
+                <div>
+                    <span class="bidshop"><%=tenderInfo.bidders[i].user.company.companyName%></span>
+                <span class="yellowfont"><%=tenderInfo.bidders[i].user.company.region.province%>
+                    <%if(tenderInfo.bidders[i].user.company.region.city){%>
+                    <%=tenderInfo.bidders[i].user.company.region.city%>
+                    <%}%>
+                    <%if(tenderInfo.bidders[i].user.company.region.district){%>
+                    <%=tenderInfo.bidders[i].user.company.region.district%>
+                    <%}%>
+                </span>
+                    <%if(tenderInfo.bidders[i].user.idCardIdentify&&tenderInfo.bidders[i].user.idCardIdentify.status=="审核通过"){%>
+                    <span class="redFont redborder">实名认证</span>
+                    <%}%>
+                    <%if(tenderInfo.bidders[i].user.companyIdentify&&tenderInfo.bidders[i].user.companyIdentify.status=="审核通过"){%>
+                    <span class="redFont redborder">企业认证</span>
+                    <%}%>
+                    <%if(tenderInfo.bidders[i].hasBrandPro){%>
+                    <span class=" niu"></span>
+                    <%}%>
+                </div>
+                <ul>
+                    <li>报价：<span class="redFont"><%=tenderInfo.bidders[i].price%></span>元</li>
+                    <li>定金比列：<span class="redFont"><%=Math.round(tenderInfo.bidders[i].depositRate*100)%>%</span></li>
+                    <li>承诺完工时间：<%=moment(tenderInfo.bidders[i].serviceEnd).format("YYYY-MM-DD")%></li>
+                    <li>企业保证金：<%if(tenderInfo.bidders[i].user.company.depositAccount){%><%=tenderInfo.bidders[i].user.company.depositAccount%>元
+                        <%}else {%>
+                        未缴纳
+                        <%}%>
+                        <!--<span class="redFont">5000</span>元-->
+                    </li>
+                    <li><button class="bidcontact">联系方式</button><span class="bidcontactmun"><%=tenderInfo.bidders[i].phoneNum%></span></li>
+                    <%if(tenderInfo.chosenBidder&&(tenderInfo.bidders[i]._id==tenderInfo.chosenBidder._id)){%>
+                    <li><button >已中标</button></li>
+                    <%}%>
+                    <%if(isTender&&!tenderInfo.chosenBidder){%>
+                    <li><button class="chooseBid">选 标</button></li>
+                    <li><input type="hidden" value="<%=tenderInfo.bidders[i]._id%>"></li>
+                    <%}%>
+                </ul>
+                <p class="bidderdetails"><%=tenderInfo.bidders[i].details%></p>
+                <p class="bidderdetails2 maxheight"></p>
+            </div>
+            <%}%>
+            <%}%>
+            <%if(tenderInfo.bidders.length==0){%>
+            <span class="nobidder">很遗憾，暂无企业投标!</span>
+            <%}%>
+        </div>
+        <%}else if(isBidder){%>
+        <div class="line">
+            <div class="redbg">投标详情</div>
+            <p class="line-tip">请优先选择已缴纳企业保证金的服务商</p>
+        </div>
+        <div class="bidlist">
+            <%if(tenderInfo.bidders.length>0){for(var i=0;i<tenderInfo.bidders.length;i++){if(tenderInfo.bidders[i].user._id==userInfo._id){%>
+            <div class="bidinfo">
+                <div>
+                    <span class="bidshop"><a class="bidshopname" href="/users/shopSpecific1?id=<%=tenderInfo.bidders[i].user._id%>" target="_blank"><%=tenderInfo.bidders[i].user.company.companyName%></a></span>
+                    <span class="yellowfont"><%=tenderInfo.bidders[i].user.company.region.province%>
+                    <%if(tenderInfo.bidders[i].user.company.region.city){%>
+                    <%=tenderInfo.bidders[i].user.company.region.city%>
+                    <%}%>
+                    <%if(tenderInfo.bidders[i].user.company.region.district){%>
+                    <%=tenderInfo.bidders[i].user.company.region.district%>
+                    <%}%>
+                    </span>
+                    <%if(tenderInfo.bidders[i].user.idCardIdentify&&tenderInfo.bidders[i].user.idCardIdentify.status=="审核通过"){%>
+                    <span class="redFont redborder">实名认证</span>
+                    <%}%>
+                    <%if(tenderInfo.bidders[i].user.companyIdentify&&tenderInfo.bidders[i].user.companyIdentify.status=="审核通过"){%>
+                    <span class="redFont redborder">企业认证</span>
+                    <%}%>
+                    <%if(tenderInfo.bidders[i].hasBrandPro){%>
+                    <span class=" niu"></span>
+                    <%}%>
+                </div>
+                <ul>
+                    <li>报价：<span class="redFont"><%=tenderInfo.bidders[i].price%></span>元</li>
+                    <li>定金比列：<span class="redFont"><%=Math.round(tenderInfo.bidders[i].depositRate*100)%>%</span></li>
+                    <li>承诺完工时间：<%=moment(tenderInfo.bidders[i].serviceEnd).format("YYYY-MM-DD")%></li>
+                    <li>企业保证金：<%if(tenderInfo.bidders[i].user.company.depositAccount){%><%=tenderInfo.bidders[i].user.company.depositAccount%>元
+                        <%}else {%>
+                        未缴纳
+                        <%}%>
+                    </li>
+                    <li><button class="bidcontact">联系方式</button><span class="bidcontactmun"><%=tenderInfo.bidders[i].phoneNum%></span></li>
+                    <%if(tenderInfo.chosenBidder&&(tenderInfo.bidders[i]._id==tenderInfo.chosenBidder._id)){%>
+                    <li><button >已中标</button></li>
+                    <%}%>
+                    <%if(isTender&&!tenderInfo.chosenBidder){%>
+                    <li><button class="chooseBid">选 标</button></li>
+                    <li><input type="hidden" value="<%=tenderInfo.bidders[i]._id%>"></li>
+                    <%}%>
+                </ul>
+                <p class="bidderdetails"><%=tenderInfo.bidders[i].details%></p>
+                <p class="bidderdetails2 maxheight"></p>
+            </div>
+            <%}}}%>
+        </div>
+        <%}%>
+
+    <div class="copyrightcontent">
+        <div class="copyrighttitle">权利申明</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;制作宝（91zhizuo.com）上的所有媒体信息、资源信息、客户评价、购买咨询、网友讨论等内容，是制作宝重要的经营资源，未经许可，禁止非法转载使用。注：本站媒体信息和广告资源信息均来自于合作方，其真实性、准确性和合法性由信息拥有者（合作方）负责。本站不提供任何保证，并不承担任何法律责任。</div>
+    </div>
+</div>
+</div>
+<script>
+    $(function () {
+        var tendercontact="联系方式 ："+$(".tendercontact").text()
+        var tendercontactQQ=$("#tendercontactQQVal").val()!==""?"联系qq ："+$("#tendercontactQQVal").val():"招标方暂无QQ"
+        var teleShow=false
+        var bidcontact=$(".bidcontact")
+        if(bidcontact){
+            $(bidcontact).on("click",function () {
+                var that=$(this)
+                console.log(that)
+                var bidcontactmun= $(that).next().text()
+                var bidshopname=$(that).parent().parent().prev().children().first().text()
+                swal(bidshopname,"联系方式 : "+bidcontactmun)
+            })
+        }
+        $(".surecheck").on("click",function () {
+            $.post("/tender/checkVnum",{
+                vnum:$(".vnumCodenum").val()
+            },function (res) {
+                if(res.result=="success"){
+                    if($("#tenderInfoStatus").val()=="2"){
+                        if($("#tenderType").val()=="2"&&$("#isInvite").val()=="true"){
+                            $(".forcontact").text(tendercontact)
+                        }else {
+                            $(".forcontact").text(tendercontactQQ)
+                        }
+                    }else {
+                        $(".forcontact").text(tendercontact)
+                    }
+                    $(".forcontactWay").hide()
+                    teleShow=true
+                }else{
+                    swal("验证码不正确")
+                }
+            })
+        })
+        $(".vnumCode").on("click",function () {
+            $(this).attr("src","/admin/vnum?"+Math.random())
+        })
+        $(".bidderdetails2").html( $(".bidderdetails").text())
+        $(".realdetails").html($(".fordetails").text())
+        $(".bidinfo>p").mouseenter(function () {
+            $(this).removeClass("maxheight")
+        })
+        $(".bidinfo>p").mouseleave(function () {
+            $(this).addClass("maxheight")
+        })
+        $(".bidnowicon").on("click",function () {
+            if($(this).hasClass("identify")){
+                if($(this).hasClass("deposit")){
+                     $.post("/tender/canBid",{
+                         tenderId:$("#tenderInfoId").val(),
+                         action:"canBid"
+                     },function (res) {
+                         if(res.result=="success"){
+                             window.location.href="/tender/bid?id="+$("#tenderInfoId").val();
+                         }else{
+                             swal(res.error)
+                         }
+                     })
+                }else{
+//                    $(".topay").show()
+                    $.post("/tender/canBid",{
+                        tenderId:$("#tenderInfoId").val(),
+                        action:"canBid"
+                    },function (res) {
+                        if(res.result=="success"){
+                            window.location.href="/tender/bid?id="+$("#tenderInfoId").val();
+                        }else{
+                            swal(res.error)
+                        }
+                    })
+                }
+            }else{
+                swal({
+                            title: "您的企业还未进行企业认证",
+                            text: "出于双方安全考虑，企业需进行认证后才能进行投标操作!",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "去认证"
+                        },
+                        function(){
+                            window.location.href="/users/shopcertificate";
+                        });
+            }
+        })
+        $(".close").on("click",function () {
+            $(".topay").hide()
+        })
+        $(".close2").on("click",function () {
+            $(".forcontactWay").hide()
+        })
+        $(".forcontact").on("click",function () {
+            if(teleShow){
+
+            }else {
+                if($("#tenderType").val()=="2"&&$("#isInvite").val()=="false"){
+                    swal({
+                        title: "您未被邀请，无法查看招标方联系方式",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    return false
+                }
+                $(".forcontactWay").show()
+            }
+
+        })
+        $("#collectRes").on("click",function () {
+            var title=$("#title").val();
+            var tenderInfoId=$("#tenderInfoId").val();
+            var url=window.location.pathname+"?id="+tenderInfoId;
+            var data={
+                title:title,
+                url:url,
+                type:"zb"
+            }
+            $.post("/collectRes",data,function (res) {
+                if(res=="success1"){
+                    swal({
+                        title: "取消收藏成功",
+                        type: "success",
+                        confirmButtonText: "确定"
+                    });
+                    $(".collectRes").text("收藏")
+                }else if(res=="success2"){
+                    swal({
+                        title: "收藏成功",
+                        type: "success",
+                        confirmButtonText: "确定"
+                    });
+                    $(".collectRes").text("取消收藏")
+                }else if(res=="非法参数"){
+                    swal({
+                        title: "请登陆",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                }else{
+                    swal({
+                        title: res,
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                }
+            })
+
+        })
+        $(".chooseBid").on("click",function () {
+            var that=$(this);
+            var bidderId=that.parent().next().children().val()
+            var tenderId=$("#tenderInfoId").val()
+            $.post('/tender/chosenBidder',{
+                bidderId:bidderId,
+                tenderId:tenderId
+            },function (res) {
+                if(res.result){
+                    swal({
+                        title: "选标成功",
+                        type: "success",
+                        confirmButtonText: "确定"
+                    });
+                    window.location.reload();
+                }else{
+                    console.log(res)
+                }
+            })
+        })
+
+
+
+
+        function sk(text,day){
+            /*定义时间*/
+            if(day){
+                var timeobj=moment(text).add(day,"days").toDate().getTime()
+            }else{
+                var timeobj=moment(text).toDate().getTime()
+            }
+
+            var nowObj=new Date().getTime()
+            var skTime=(timeobj-nowObj)/1000,d,h,m,s
+            skDom=document.querySelectorAll(".bgc");
+            var timer= setInterval(function(){
+                if(skTime <= 0){
+                    clearInterval(timer);
+                    return false;
+                }
+                skTime--;
+                d=parseInt(skTime/24/3600);
+                h=parseInt(skTime%86400/3600);
+                m=parseInt(skTime%3600/60);
+                s=parseInt(skTime%60);
+                skDom[0].innerHTML=parseInt(d/10);
+                skDom[1].innerHTML=d%10;
+                skDom[2].innerHTML=parseInt(h/10);
+                skDom[3].innerHTML=h%10;
+                skDom[4].innerHTML=parseInt(m/10);
+                skDom[5].innerHTML=m%10;
+                skDom[6].innerHTML=parseInt(s/10);
+                skDom[7].innerHTML=s%10;
+            },1000)
+        }
+        switch (parseInt($("#flag").val())){
+            case 0:
+                sk($("#tenderEnd").val());
+                break;
+            case 1:
+                sk($("#tenderEnd").val(),3);
+                break;
+            case 2:
+                sk($("#timeRcdStep2").val(),3);
+                break;
+            case 3:
+                sk($("#serviceEnd").val());
+                break;
+            case 4:
+                sk($("#timeRcdStep4").val(),7);
+                break;
+            case 5:
+                sk($("#timeRcdStep5").val(),30);
+                break;
+        }
+
+
+    })
+</script>

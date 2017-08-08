@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" runat="server">
+		<title><%=title%></title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="Keywords" content="<%=siteConfig.keywords%>"/>
+		<meta name="Description" content="<%=siteConfig.cmsDescription%>"/>
+		<meta name="viewport" content="width=device-width,initial-scale=0.2,minimum-scale=0.2,maximum-scale=5" />
+		<link href="/plugins/bootstrap/css/bootstrap.min.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/themes/<%=staticforder%>/css/base.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/themes/<%=staticforder%>/css/secondDemand.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<link href="/plugins/citypicker/css/city-picker.css" rel="stylesheet">
+		<script src="/javascripts/angular.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.12.0.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/citypicker/city-picker.data.js"></script>
+		<script src="/plugins/citypicker/city-picker.js"></script>
+		<script src="/themes/<%=staticforder%>/js/jquery.flexslider-min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<style>
+			.haveListForMoney{
+				position: relative;
+			}
+			.haveListForMoney img{
+				position: absolute;
+				width: 20%;
+				top:-4px;
+				right:-2px;
+			}
+
+		</style>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?89323d159de3da4db3d8ba79f8643edd";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+	<body ng-app="layoutForsecondDemand" ng-cloak class="ng-cloak">
+
+	<div style="background: #F4F4F4">
+			<div class="privateNav">
+				<ul>
+					<% if(!logined){ %>
+					<li><a href="/users/login">登录</a>&nbsp;&nbsp;<a href="/users/reg">注册</a></li>
+					<li><a href="/users/login">个人中心</a></li>
+					<% }else{ %>
+					<li style="width: auto !important;color:#000">您好&nbsp;<a style="color:#DA2F2F" href="/users/recentDemandAndResource">
+							<%if(userInfo.nickName){%>
+							<%=userInfo.nickName%>
+							<%}else {%>
+							<%=userInfo.userName%>
+							<%}%>
+						</a>
+					</li>
+					<li style="width: 40px"><a rel="nofollow" href="/users/logout" id="userLoginOut">退出</a></li>
+					<li><a href="/users/recentDemandAndResource">个人中心</a></li>
+					<% } %>
+					<li class="forwebnav">网站导航</li>
+					<li><a href="/users/helperCenter">帮助中心</a><span></span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="header">
+			<a href="/users/home"><div class="adLogo"></div></a>
+			<img class="areaflag" src="/themes/lanmai/images/location.png" alt="">
+			<div class="position constrict"><span class="current_position" class="regionHead">
+					<input class="form-control" readonly onfocus="this.blur()" type="text" data-toggle="city-picker" data-level="province"   value="湖北" placeholder="湖北" style="border: 0 ;"></span><span class="change_position"> [ 切换区域 ]</span>
+			</div>
+			<form class="search index_search_box">
+				<div class="searchArea clearfix">
+					<div class="searchBox02">
+						<input class="serchKindName" type="hidden" value="Manufacture">
+						<a class="searchKinds" href="javascript:;">全部</a>
+						<dl style="display: none">
+							<dt id="all">广告全部</dt>
+							<%for(var i=0;i<cateList.length;i++){%>
+							<dt id="<%=cateList[i].defaultUrl%>"><%=cateList[i].name%></dt>
+							<%}%>
+							<dt id="xuqiu">广告需求</dt>
+							<dt id="zhaobiao">广告招标</dt>
+							<dt id="anzhuang">广告安装</dt>
+						</dl>
+					</div>
+					<%if(searchRecommendForSearch&&searchRecommendForSearch.text){var i;i=parseInt(Math.random()*searchRecommendForSearch.text.split("#").length)%>
+					<input class="searchText" type="text" value="" placeholder="<%=searchRecommendForSearch.text.split("#")[i]%>">
+					<%}else {%>
+					<input class="searchText" type="text" value="" placeholder="">
+					<%}%>
+					<button class="searchIcon"></button>
+				</div>
+				<ul class="clearfix" id="searchRecommendForManufacture" style="display: none">
+					<%if(searchRecommendForManufacture){for(var i=0;i<searchRecommendForManufacture.text.split('#').length;i++){%>
+					<a href="javascript:;" data-id="<%=searchRecommendForManufacture.text.split('#')[i]%>"><%=searchRecommendForManufacture.text.split('#')[i]%></a>
+					<%}}%>
+				</ul>
+				<ul class="clearfix" id="searchRecommendForMaterial" style="display: none">
+					<%if(searchRecommendForMaterial){for(var i=0;i<searchRecommendForMaterial.text.split('#').length;i++){%>
+					<a href="javascript:;" data-id="<%=searchRecommendForMaterial.text.split('#')[i]%>"><%=searchRecommendForMaterial.text.split('#')[i]%></a>
+					<%}}%>
+				</ul>
+				<ul class="clearfix" id="searchRecommendForEquipment" style="display: none">
+					<%if(searchRecommendForEquipment){for(var i=0;i<searchRecommendForEquipment.text.split('#').length;i++){%>
+					<a href="javascript:;" data-id="<%=searchRecommendForEquipment.text.split('#')[i]%>"><%=searchRecommendForEquipment.text.split('#')[i]%></a>
+					<%}}%>
+				</ul>
+				<ul class="clearfix" id="searchRecommendForDemands" style="display: none">
+					<%if(searchRecommendForDemands){for(var i=0;i<searchRecommendForDemands.text.split('#').length;i++){%>
+					<a href="javascript:;" data-id="<%=searchRecommendForDemands.text.split('#')[i]%>"><%=searchRecommendForDemands.text.split('#')[i]%></a>
+					<%}}%>
+				</ul>
+				<ul class="clearfix" id="searchRecommendForFix" style="display: none">
+					<%if(searchRecommendForFix){for(var i=0;i<searchRecommendForFix.text.split('#').length;i++){%>
+					<a href="javascript:;" data-id="<%=searchRecommendForFix.text.split('#')[i]%>"><%=searchRecommendForFix.text.split('#')[i]%></a>
+					<%}}%>
+				</ul>
+			</form>
+			<div class="releaseadres"><a href="../../resource/reIndex">免费发布广告资源</a></div>
+			<div class="releaseDemand"><a href="../../tender/tender" title="登陆后即可发布招标">发布招标</a>
+			</div>
+		</div>
+		<div class="index_header_menu">
+			<div class="index_nav">
+				<ul>
+					<li class="index_square">广告制作服务平台</li>
+					<li style="margin-left: 20px;"><a class="active" href="../../users/home">首页</a></li>
+					<li class="haveListForMoney"><a href="../../tender/tenderlist" class="redFont">接单赚钱</a><img src="/themes/<%=staticforder%>/images/hot.gif" alt=""></li>
+					<li><a href="../resource/resourceFixList" >找安装</a></li>
+					<li><a href="../../resource/digitalMagazine">数字期刊</a></li>
+					<li><a href="../../resource/vr">VR展馆</a></li>
+					<li><a href="/resource/secondDemand">需求中心</a></li>
+					<li class="aboutUsForMa"><a href="javascript:;">关注我们</a>
+						<span class="charonAdIndexWhite"></span>
+						<div class="charonAdIndexAboutUs">
+							<ul class="clearfix">
+								<li class="clearfix">
+									<a href="javascript:;"><img src="/themes/<%=staticforder%>/images/weicahrtqr.png" alt=""/></a>
+									<span style="color:#d33737;font-size: 14px;padding-top: 2px;">制作宝微信服务号</span>
+									<span>重要提醒不要错过</span>
+									<span>核心操作更加简单</span>
+								</li>
+								<li class="clearfix">
+									<a href="javascript:;"><img src="/themes/<%=staticforder%>/images/serviceqr.jpg" alt=""/></a>
+									<span style="color:#d33737;font-size: 14px;padding-top: 2px;">制作宝微信订阅号</span>
+									<span>重要提醒不要错过</span>
+									<span>核心操作更加简单</span>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li id="indexBrandsGet"><a href="../../resource/brandWin">品牌推广服务</a></li>
+				</ul>
+			</div>
+		</div>
+
+	<div class="webnav">
+		<div>
+			<div class="webnavb"><a>找资源</a></div>
+			<ul>
+				<li><a href="/resource/resourceListMake">制作</a></li>
+				<li><a href="/resource/resourceListMachine">设备</a></li>
+				<li><a href="/resource/resourceListMaterial">材料</a></li>
+			</ul>
+		</div>
+		<div>
+			<div class="webnavb"><a>发布信息</a></div>
+			<ul>
+				<li><a href="/resource/demandRelease">发布需求</a></li>
+				<li><a href="/resource/myFix">发布安装</a></li>
+				<li><a href="/resource/reIndex">发布资源</a></li>
+			</ul>
+		</div>
+		<div>
+			<div class="webnavb"><a>个人中心</a></div>
+			<ul>
+				<li><a href="privateInfo">个人资料</a></li>
+				<li><a href="myOrders">个人订单</a></li>
+				<li><a href="safetySet">账户设置</a></li>
+			</ul>
+		</div>
+		<div>
+			<div class="webnavb"><a>企业中心</a></div>
+			<ul>
+				<li><a href="../tender/shopaccount">企业账户</a></li>
+				<li><a href="../tender/shoptender">企业招标</a></li>
+				<li><a href="../tender/shopbid">企业投标</a></li>
+			</ul>
+		</div>
+		<div>
+			<div class="webnavb"><a>品牌推广</a></div>
+			<ul>
+				<li><a href="/resource/digitalMagazine">数字期刊</a></li>
+				<li><a class="redFont" href="/resource/brandWin">品牌推广</a></li>
+				<li><a href="/resource/vr">VR展馆</a></li>
+			</ul>
+		</div>
+		<div>
+			<div class="webnavb"><a>关注我们</a></div>
+			<img src="/themes/lanmai/images/weicahrtqr.png"/>
+		</div>
+
+	</div>
+		<div class="content">
+		    <%-body%>
+		</div>
+		<div class="best_brandRecommend flexslider">
+			<ul class="bestBrandRecommend01 slides">
+				<li>
+					<ul>
+						<%for(var i=0;i<4;i++){if(companyList[i]){%>
+						<li>
+							<a href="/users/shopSpecific2?id=<%=companyList[i].user%>">
+								<img src="<%=companyList[i].priorShowImgs[0]%>"/>
+							</a>
+						</li>
+						<%}}%>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<%for(var i=4;i<8;i++){if(companyList[i]){%>
+						<li>
+							<a href="/users/shopSpecific2?id=<%=companyList[i].user%>">
+								<img src="<%=companyList[i].priorShowImgs[0]%>"/>
+							</a>
+						</li>
+						<%}}%>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<%for(var i=8;i<12;i++){if(companyList[i]){%>
+						<li>
+							<a href="/users/shopSpecific2?id=<%=companyList[i].user%>">
+								<img src="<%=companyList[i].priorShowImgs[0]%>"/>
+							</a>
+						</li>
+						<%}}%>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<%for(var i=12;i<16;i++){if(companyList[i]){%>
+						<li>
+							<a href="/users/shopSpecific2?id=<%=companyList[i].user%>">
+								<img src="<%=companyList[i].priorShowImgs[0]%>"/>
+							</a>
+						</li>
+						<%}}%>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="index_footer">
+			<div class="index_footer_con clearfix">
+				<ul class="focusus">
+					<li class="focustitlt">关注我们</li>
+					<li class="focusicon"><a><img class="footqq" src="/themes/lanmai/images/footqq.png"/><img class="footweichart" src="/themes/lanmai/images/footweichart.png"/></a></li>
+					<li class="focusqr"><a><img class="footqqqr" src="https://cdn.adquan.net/images/bigimg/qqqr.png/compress.only"/><img class="footweichartqr" src="/themes/lanmai/images/weicahrtqr.png"/></a></li>
+				</ul>
+				<ul class="index_footer_right">
+					<li style="font-size: 18px;margin-bottom: 6px;"><a href="../../users/helperCenter#1">关于制作宝</a></li>
+					<li><a href="../../users/helperCenter#7">服务条款</a></li>
+					<li><a href="../../users/helperCenter#4">隐私申明</a></li>
+					<li><a href="../../users/helperCenter#3">版权申明</a></li>
+				</ul>
+				<ul class="index_footer_right">
+					<li style="font-size: 18px;margin-bottom: 6px;"><a href="../../users/helperCenter#2">帮助中心</a></li>
+					<li><a href="../../users/helperCenter#2">新手入门</a></li>
+					<li><a href="../../users/helperCenter#2">品牌推广</a></li>
+					<li><a href="../../users/helperCenter#2">发布资源</a></li>
+				</ul>
+				<ul class="index_footer_right">
+					<li style="font-size: 18px;margin-bottom: 6px;"><a href="../../users/helperCenter#5">客服中心</a></li>
+					<li><a href="../../users/helperCenter#5">联系客服</a></li>
+					<li><a href="../../users/helperCenter#5">意见反馈</a></li>
+				</ul>
+				<ul class="index_footer_right">
+					<li class="digmagazine" style="font-size: 18px;">
+						<%if(ebookData[0]){%>
+						<a href="../resource/digitalMagazine"><img src="<%=ebookData[0].coverImg%>/compress.only"/></a>
+						<span><%=ebookData[0].title%></span>
+						<%}%>
+					</li>
+				</ul>
+			</div>
+			<div class="copyright">
+				<!--<ul>-->
+					<!--<li>友情链接</li>-->
+					<!--<li><a>大吉</a></li></li>-->
+					<!--<li><a>如意</a></li></li>-->
+					<!--<li><a>萌爷</a></li></li>-->
+					<!--<li><a>颖子</a></li></li>-->
+					<!--<li><a>九九</a></li></li>-->
+					<!--<li><a>大个</a></li></li>-->
+					<!--<li><a>财百万</a></li></li>-->
+					<!--<li><a class="morelinks">更多</a></li></li>-->
+				<!--</ul>-->
+				<span>武汉蓝迈网络科技有限公司2016&nbsp;鄂&nbsp;ICP&nbsp;备 &nbsp;16023329号</span>
+			</div>
+		</div>
+			<script>
+				$(function () {
+					//搜索框的下拉菜单的截取
+					var OlenDt=$('.searchArea dl dt').length;
+					for(var i=0;i<OlenDt;i++){
+						var OgetHtml=   $('.searchArea dl dt').eq(i).html().substr(2,4);
+						$('.searchArea dl dt').eq(i).html(OgetHtml)
+					}
+					$(".chooseArea>.city-picker-span>.placeholder").text("请选择地区")
+					//搜索点击下拉菜单的选项
+					$('.searchKinds').mouseover(function(event){
+						if($('.searchArea dl').is(":visible")){
+							$(this).css({"background-position":"-156px -91px"})
+							$('.searchArea dl').hide(100);
+						}else{
+							$(this).css({"background-position":"-156px -116px"})
+							$('.searchArea dl').show(100);
+						}
+
+						//event.stopPropagation();
+						if (window.event) {
+							event.stopPropagation();
+						}else{
+							event.stopPropagation();
+						}
+						/*if($.browser.mozilla)
+						 {
+						 var $E = function(){var c=$E.caller; while(c.caller)c=c.caller; return c.arguments[0]};
+						 __defineGetter__("event", $E);
+						 }*/
+					});
+					var searchTextForFirst=unescape(window.location.search.split('=')[1])
+					if(searchTextForFirst&&searchTextForFirst!==""&&searchTextForFirst!=="undefined"){
+						$('input.searchText').val(searchTextForFirst)
+					}else {
+						$('input.searchText').val("")
+					}
+					$(".forwebnav").hover(function(){
+						$(".webnav").show();
+						$(".forwebnav").addClass("forwenavstyle")
+					},function(){
+						$(".webnav").hide();
+						$(".forwebnav").removeClass("forwenavstyle")
+					})
+					$(".webnav").on("mouseleave",function () {
+						$(".webnav").hide();
+						$(".forwebnav").removeClass("forwenavstyle")
+					})
+					$(".webnav").on("mouseenter",function () {
+						$(".webnav").show();
+						$(".forwebnav").addClass("forwenavstyle")
+					})
+					var areaCoo = window.localStorage.getItem("area");
+
+					if(areaCoo!=null){
+						$('.constrict .index_local_area').html(areaCoo);
+						$('.constrict .index_for_area').val(areaCoo);
+						$('.constrict .city-picker-span> span').html(areaCoo).eq(0).hide()
+					}
+					$(".constrict .city-picker-input").val(window.localStorage.getItem("area"));
+
+					$(".constrict .city-select dl dd a").on("click",function () {
+						setTimeout(function () {
+							window.localStorage.setItem("area",$(".constrict .city-picker-input").val());
+							$('#region').citypicker("reset");
+							$(".chooseArea span.city-picker-span>.placeholder").text($(".constrict .city-picker-input").val())
+						},0)
+					});
+
+					$('#searchRecommendForManufacture').show()
+					$('.index_search_box dl dt').click(function(){
+						var oDt=$(this).html();
+						var oName = $(this).attr("id");
+						$('.index_search_box>ul').hide()
+						if(oName=="all"){
+							oName="all"
+						}else if(oName=="cailiao"){
+							oName="Material"
+							$('#searchRecommendForMaterial').show()
+						}else if(oName=="shebei"){
+							oName="Equipment"
+							$('#searchRecommendForEquipment').show()
+						}else if(oName=="zhizuo"){
+							oName="Manufacture"
+							$('#searchRecommendForManufacture').show()
+						}else if(oName=="xuqiu"){
+							$('#searchRecommendForDemands').show()
+						}else if(oName=="zhaobiao"){
+
+						}else if(oName=="anzhuang"){
+							$('#searchRecommendForFix').show()
+						}
+						$('.searchKinds').html(oDt).css({"background-position":"-156px -91px"});
+						$('.serchKindName').val(oName);
+						$('.index_search_box dl').hide(100)
+						$('.index_pull_con dl').hide(100)
+
+					})
+					$('.index_search_box>ul>a').on('click',function () {
+						$('input.searchText').val($(this).data('id'));
+					})
+					$(".searchBox02").mouseleave(function(event){
+						$('.searchKinds').css({"background-position":"-156px -91px"});
+						$('.searchArea dl').hide(100);
+						if (window.event) {
+							event.stopPropagation();
+						}else{
+							event.stopPropagation();
+						}
+						/* if($.browser.mozilla)
+						 {
+						 var $E = function(){var c=$E.caller; while(c.caller)c=c.caller; return c.arguments[0]};
+						 __defineGetter__("event", $E);
+						 }*/
+					});
+					//点击开始搜索
+					$(".searchIcon").click(function(){
+						if('placeholder'in document.createElement('input')){
+							var text = $("input.searchText").val();
+						}else {
+							if($("input.searchText").val()==$("input.searchText").attr("placeholder")){
+								var text = ""
+							}else {
+								var text = $("input.searchText").val();
+							}
+						}
+						var searchValue=$(".serchKindName").val();
+						if(searchValue=="all"){
+							window.location.href=text!=""&&text?'/resource/resourceListAll?text='+escape(text):'/resource/resourceListAll'
+						}else if(searchValue=="Material"){
+							window.location.href=text!=""&&text?'/resource/resourceListMaterial?text='+escape(text):'/resource/resourceListMaterial'
+						}else if(searchValue=="Manufacture"){
+							window.location.href=text!=""&&text?'/resource/resourceListMake?text='+escape(text):'/resource/resourceListMake'
+						}else if(searchValue=="Equipment"){
+							window.location.href=text!=""&&text?'/resource/resourceListMachine?text='+escape(text):'/resource/resourceListMachine'
+						} else if(searchValue=="xuqiu"){
+							window.location.href=text!=""&&text?'/resource/secondDemand?text='+escape(text):'/resource/secondDemand'
+						}else if(searchValue=="zhaobiao"){
+							window.location.href=text!=""&&text?'/tender/tenderlist?text='+escape(text):'/tender/tenderlist'
+						}else if(searchValue=="anzhuang"){
+							window.location.href=text!=""&&text?'/resource/resourceFixList?text='+escape(text):'/resource/resourceFixList'
+						}
+
+					})
+					$("input.searchText").keyup(function (event) {
+						if(event.keyCode ==13){
+							$(".searchIcon").trigger("click");
+						}
+					})
+
+					$('.aboutUsForMa').hover(function(){
+						$('.charonAdIndexAboutUs').show();
+						$('.charonAdIndexWhite').show();
+					},function(){
+						$('.charonAdIndexAboutUs').hide()
+						$('.charonAdIndexWhite').hide();
+					})
+					$(".footqq").on("mouseenter",function () {
+						$(".footweichartqr").css("display","none");
+						$(".footqqqr").css("display","block");
+					})
+					$(".footweichart").on("mouseenter",function () {
+						$(".footqqqr").css("display","none");
+						$(".footweichartqr").css("display","block");
+					})
+					/*底部轮播*/
+					$('.best_brandRecommend').flexslider({
+						directionNav: true,
+						animation: "slide",
+						pauseOnAction: false,
+						slideshowSpeed:4000
+					});
+					$(".index_banner_con ").on("mouseenter ",function () {
+						$('.index_banner').flexslider("stop")
+					})
+					$(".index_banner_con ").on("mouseleave ",function () {
+						$('.index_banner').flexslider("play")
+					})
+
+					$(".index_footer").scope().$watch('isChange', function() {
+						$(".serchKindName").text($(".nav").scope().resType)
+						if($(".nav").scope().resType=="all"){
+							$(".searchKinds").text("全部")
+							$('.serchKindName').val("all");
+						}else if($(".nav").scope().resType=="Manufacture"){
+							$(".searchKinds").text("制作")
+							$('.serchKindName').val("Manufacture");
+						}else if($(".nav").scope().resType=="Material"){
+							$(".searchKinds").text("材料")
+							$('.serchKindName').val("Material");
+						}else if($(".nav").scope().resType=="Equipment"){
+							$(".searchKinds").text("设备")
+							$('.serchKindName').val("Equipment");
+						}else if($(".nav").scope().resType=="xuqiu"){
+							$(".searchKinds").text("需求")
+							$('.serchKindName').val("xuqiu");
+						}else if($(".nav").scope().resType=="anzhuang"){
+							$(".searchKinds").text("安装")
+							$('.serchKindName').val("anzhuang");
+						}else if($(".nav").scope().resType=="zhaobiao"){
+							$(".searchKinds").text("招标")
+							$('.serchKindName').val("zhaobiao");
+						}
+					});
+				})
+
+			</script>
+
+		</div>
+
+		<script src="/themes/<%=staticforder%>/js/moment.min.js?vesion=<%=siteConfig.version%>"></script>
+		<script src="/themes/<%=staticforder%>/js/directive.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/themes/<%=staticforder%>/js/modules.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/themes/<%=staticforder%>/js/layoutForSecondDemandController.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/themes/<%=staticforder%>/js/hack.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+
+	</body>
+</html>

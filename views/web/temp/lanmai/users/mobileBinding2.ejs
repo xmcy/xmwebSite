@@ -1,0 +1,41 @@
+<div class="mobileBinding1" ng-controller="mobileBinding2">
+			    	<h2>安全设置</h2>
+			    	<div class="checkStep">
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_one_active"></div>
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_two_active"></div>
+			    		<div class="navStep stepNotyet"></div><div class="nav_step_logo step_three_notyet"></div>
+			    	    <div class="navStep stepNotyet"></div>
+			    	    <ul>
+		    	    		<li>解绑手机</li>
+		    	    		<li class="redFont">绑定手机</li>
+		    	    		<li>完成</li>
+			    	    </ul>
+			    	</div>
+	<form name="tele" ng-submit="mobileBindingFirst()" novalidate>
+		<div class="loginTele">
+			<input type="text" id="phoneNum"  ng-pattern="/^1[34578]\d{9}$/"
+				   ng-model="phoneNum" name="phoneNum" autocomplete="off" placeholder="手机号" required />
+			<div down-tick></div>
+			<i class="login-green-check-ok" ng-show="tele.phoneNum.$dirty&&tele.phoneNum.$valid"></i>
+		</div>
+		<div class="loginTele-tip" >
+			<div ng-show="tele.phoneNum.$dirty&&tele.phoneNum.$invalid">
+				<i class="login-tip-div-i"></i><span>手机号不存在</span>
+			</div>
+		</div>
+
+		<div class="loginQr">
+			<i class="login-first-i"></i>
+			<input type="text" id="code" name="code" value="" ng-model="code"
+				   autocomplete="off" placeholder="动态验证码" required />
+			<i class="login-green-check-ok" ng-show="tele.code.$dirty&&tele.code.$valid"></i>
+		</div>
+		<div class="loginQr-tip">
+			<div ng-show="tele.code.$dirty&&tele.code.$invalid">
+				<i class="login-tip-div-i"></i><span>验证码不能为空</span>
+			</div>
+		</div>
+		<div class="errorMessage">{{errorMessage}}</div>
+		<input type="submit" value="确          定" ng-class="{disableBtn:tele.$invalid}" ng-disabled="tele.$invalid"/>
+	</form>
+			    </div>

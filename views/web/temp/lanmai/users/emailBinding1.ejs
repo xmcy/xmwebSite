@@ -1,0 +1,32 @@
+
+            <div class="emailbinding" ng-controller="emailBinding1">
+		    	<h2>邮箱认证</h2>
+			    	<div class="checkStep">
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_one_active"></div>
+			    		<div class="navStep stepNotyet"></div><div class="nav_step_logo step_two_notyet"></div>
+			    		<div class="navStep stepNotyet"></div><div class="nav_step_logo step_three_notyet"></div>
+			    	    <div class="navStep stepNotyet"></div>
+			    	    <ul>
+		    	    		<li class="redFont">填写邮箱</li>
+		    	    		<li>查收邮件</li>
+		    	    		<li>完成</li>
+			    	    </ul>
+			    	</div>
+				<form  name="tele"  class="form-container-tele" novalidate="novalidate" ng-submit="emailBindingFirst()">
+					<div class="loginTele">
+						<input type="text" id="email"  ng-pattern="/^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/"
+							   ng-model="email" name="email" autocomplete="off" placeholder="邮箱"  required />
+						<i class="login-green-check-ok" ng-show="tele.email.$dirty&&tele.email.$valid"></i>
+					</div>
+					<div class="loginTele-tip" >
+						<div ng-show="tele.email.$dirty&&tele.email.$invalid">
+							<i class="login-tip-div-i"></i><span>该邮箱不存在</span>
+						</div>
+					</div>
+					<div class="errorMessage">{{errorMessage}}</div>
+						<input type="submit" value="发送认证邮件" ng-class="{disableBtn:tele.$invalid}" ng-disabled="tele.$invalid"/>
+
+				</form>
+		    	<!--<div class="bindingMessege"><span>您的邮箱</span><input type="" name="" id="" value="" /></div>-->
+		        <!--<button>发送认证邮件</button>-->
+		    </div>

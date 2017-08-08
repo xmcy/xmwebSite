@@ -1,0 +1,545 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>活动详情页-制作宝</title>
+    <meta name="Keywords" content="<%=siteConfig.keywords%>"/>
+    <meta name="Description" content="<%=siteConfig.cmsDescription%>"/>
+    <meta name="viewport" content="width=device-width,initial-scale=0.2,minimum-scale=0.2,maximum-scale=5" />
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/common.css?vesion=<%=siteConfig.version%>">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/digitalMagazine.css?vesion=<%=siteConfig.version%>">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+</head>
+<style>
+    .contentwarper{
+        width: 1200px;
+        height: 1000px;
+        margin: 0 auto;
+        font-size: 18px;
+        color: #949393;
+    }
+    .contenthead{
+        width: 1200px;
+        height: 190px;
+    }
+    .contenthead>img{
+        display: block;
+        width: 751px;
+        height: 187px;
+        margin: 0 auto;
+    }
+    .activitycontent{
+        float: left;
+        width: 960px;
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+    .title{
+        width: 160px;
+        height: 34px;
+        background-color: #deb746;
+        color: #fff;
+        border-radius: 3px;
+        text-align: center;
+        line-height: 34px;
+        font-size: 19px;
+        margin-bottom: 18px;
+    }
+    .activitycontent>div>p{
+        display: inline-block;
+        padding-left: 40px;
+        line-height: 40px;
+    }
+    .clickreg{
+        display: inline-block;
+        width: 94px;
+        height: 30px;
+        margin-left: 20px;
+    }
+    .clickreg>a{
+        display: block;
+        width: 94px;
+        height: 26px;
+        background-color: #aac2db;
+        color: #fff;
+        text-align: center;
+        line-height: 26px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .clickread{
+        display: inline-block;
+        width: 94px;
+        height: 30px;
+        margin-left: 20px;
+    }
+    .clickread>a{
+        display: block;
+        width: 94px;
+        height: 26px;
+        background-color: #aac2db;
+        color: #fff;
+        text-align: center;
+        line-height: 26px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .clicksend{
+        display: inline-block;
+        width: 140px;
+        height: 40px;
+        margin-left: 10px;
+    }
+    .clicksend>a{
+        display: block;
+        width: 140px;
+        height: 26px;
+        background-color: #aac2db;
+        color: #fff;
+        text-align: center;
+        line-height: 26px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .addmobile{
+        width: 130px;
+        height: 26px;
+        border-radius: 3px;
+        border: 1px solid gainsboro;
+        display: inline-block;
+        margin: 0 15px;
+    }
+    .activityorder{
+        width: 1200px;
+    }
+    .activitybanner{
+        width: 220px;
+        height: 420px;
+        float: right;
+    }
+    .activitybanner>img{
+        width: 220px;
+        height: 420px;
+    }
+    .mask{
+        position: fixed;
+        opacity: 0.5;
+        background-color: #000;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left:0;
+        display:none ;
+    }
+    .qrcodecontent{
+        position: fixed;
+        top: 60%;
+        left: 50%;
+        width: 466px;
+        height: 420px;
+        margin-left: -233px;
+        margin-top: -233px;
+        background-color: #fff;
+    }
+    .qrcontent{
+        width: 466px;
+        height: 420px;
+        position: relative;
+        background-color: #000;
+    }
+    .sctivityer{
+        position: absolute;
+        top: 50px;
+        left: 65px;
+        width: 334px;
+        height: 334px;
+    }
+    .qrshare{
+        position: absolute;
+        top:390px;
+        left: 65px;
+        width: 360px;
+        height: 334px;
+        color: #fff;
+    }
+    .handleicon{
+        position: absolute;
+        top: 0px;
+        right: 5px;
+        width: 66px;
+        height: 66px;
+        background: url(/themes/lanmai/images/shopcenter.png)   -128px -704px;
+        background-color: #fff;
+        border-radius: 33px;
+    }
+    .handleicon>a{
+        display: block;
+        width: 66px;
+        height: 66px;
+        cursor: pointer;
+    }
+    .digitaimaginfo{
+        width: 1200px;
+        display: inline-block;
+        padding-left: 40px;
+        line-height: 40px;
+    }
+    .index_footer{
+        clear: both;
+        margin-top: 170px;
+    }
+    .clear{
+        clear: both;
+    }
+
+    .forwebnav{
+        color: #908e8e;
+    }
+    .webnav{
+        width: 1200px;
+        height: 210px;
+        margin: 0 auto;
+        position: fixed;
+        top: 25px;
+        left: 50%;
+        margin-left: -600px;
+        background-color: #fff;
+        border:1px solid gainsboro;
+        border-top: 0;
+        z-index: 99 !important;
+        display: none;
+    }
+    .forwenavstyle{
+        color: #DA2F2F;
+        background-color:#fff;
+        font-weight: 600;
+    }
+    .webnav>div{
+        float: left;
+        width: 160px;
+        margin: 23px 18px;
+        border-right: 1px solid gainsboro;
+    }
+    .webnav>div:last-child{
+        border-right:0;
+    }
+    .webnav>div>img{
+        float: left;
+        width: 110px;
+        height: 110px;
+        margin-left: -10px;
+    }
+    .webnav>div>.webnavb{
+        font-size: 22px;
+        height: 35px;
+        line-height: 30px;
+    }
+    .webnav>div>.webnavb>a{
+        color: #DA2F2F;
+    }
+    .webnav>div>ul>li{
+        font-size: 16px;
+        height: 42px;
+        line-height: 42px;
+    }
+    .webnav>div>ul>li>a{
+        color: #908e8e;
+        text-decoration: none;
+    }
+    .webnav>div>ul>li>a:hover{
+        color: #DA2F2F;
+        text-decoration: none;
+    }
+    .haveListForMoney{
+        position: relative;
+        margin-right: 38px;
+    }
+    .haveListForMoney img {
+        position: absolute;
+        width: 20%;
+        top: -4px;
+        right: -2px;
+    }
+</style>
+<body>
+<div class="charonDigitalHeaderPart">
+    <div class="charonDigitalHeaderTop">
+        <div class="charonDigitalHeaderTopCon">
+            <ul>
+                <% if(!logined){ %>
+                <li><a href="/users/login">登录</a>&nbsp;&nbsp;<a href="/users/reg">注册</a></li>
+                <li><a href="/users/login">个人中心</a></li>
+                <% }else{ %>
+                <li class="charonDigitalUsername">您好<a href="../users/recentDemandAndResource">
+                        <%if(userInfo.nickName){%>
+                        <%=userInfo.nickName%>
+                        <%}else {%>
+                        <%=userInfo.userName%>
+                        <%}%>
+                    </a></li>
+                <%}%>
+                <li class="forwebnav">网站导航</li>
+                <li><a href="javascript:;">帮助中心</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="charonDigitalHeaderNav">
+        <div class="charonDigitalLogo">
+            <a href="../users/home"><img src="/themes/<%=staticforder%>/images/charonDigitalLogo.png" alt=""></a>
+        </div>
+        <div class="charonDigitalMenu">
+            <ul>
+                <li><a href="../users/home">首页</a></li>
+                <li><a href="../resource/digitalMagazine">数字期刊</a></li>
+                <li><a href="../resource/vr">VR展馆</a></li>
+                <li class="haveListForMoney"><a class="redFont" href="../tender/tenderlist">接单赚钱</a><img src="/themes/lanmai/images/hot.gif" alt=""></li>
+                <li><a href="../resource/reIndex">发布资源</a></li>
+                <li><a class="redFont" href="../resource/brandWin">品牌推广</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="contentwarper">
+    <div class="contenthead">
+        <img src="/themes/lanmai/images/activity.png">
+    </div>
+    <div class="activitycontent">
+        <div class="title">活动说明</div>
+        <div>
+            <p>只要您成功邀请20名小伙伴成为制作宝的注册会员，制作宝为您或您的企业免费制作数字期刊！</p>
+            <p>活动时间2017.05.01日至2017.12.31。当您以会员身份登陆后，在本活动页面“活动流程”中获取邀请码，分享给您的小伙伴，只要20个小伙伴在注册时输入您的邀请码并完成注册，就算成功！</p>
+        </div>
+    </div>
+    <div class="activitybanner"><img src="/themes/lanmai/images/activitybanner.png"></div>
+    <div class="activitycontent">
+        <div class="title">参与条件</div>
+        <div>
+            <p>邀请20名小伙伴成为我们的会员，首先自己必须是制作宝的会员。如果您已经是会员，请您保持在登陆的状态喔！</p>
+            <p>如果您还不是制作宝的会员，快于小伙伴一步，抢先完成注册，体验制作宝吧！</p>
+            <div class="clickreg"><a href="reg" target="_blank">点击注册</a></div>
+        </div>
+    </div>
+    <div class="activitycontent">
+        <div class="title">活动流程</div>
+        <div>
+            <p>1.输入手机号码</p><input class="addmobile"/><div class="clicksend"><a class="sendqr">点击发送邀请码</a></div>
+            <p>2.将您获得的的邀请码分享给小伙伴们，在他们注册时输入您的邀请码，完成注册即可！</p>
+            <p class="activityorder">3.活动进行时，您可以登陆制作宝，在“个人中心”-“我的活动”页面查看活动完成情况，达到目标人数后，联系客服制作数字期刊。</p>
+        </div>
+    </div>
+    <div class="activitycontent" >
+        <div class="title">什么是数字期刊</div>
+        <p class="digitaimaginfo">
+            数字期刊是最新的集图文，音效于一体的电子期刊，除了有立体惊艳的阅读体验外，更能高效整合资源一体展示，更有传统期刊无法达到的传播速度！数字期刊支持手机阅读，支持微信朋友圈，QQ空间分享！如果您有很多的广告制作资源需要展示传播，拥有一本数字期刊再美不过了！快来阅读我们的数字期刊体验一下吧!
+        <span class="clickread"><a href="../resource/digitalMagazine" target="_blank">点击了解</a></span>
+        </p>
+
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="webnav">
+    <div>
+        <div class="webnavb"><a>找资源</a></div>
+        <ul>
+            <li><a href="/resource/resourceListMake">制作</a></li>
+            <li><a href="/resource/resourceListMachine">设备</a></li>
+            <li><a href="/resource/resourceListMaterial">材料</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>发布信息</a></div>
+        <ul>
+            <li><a href="/resource/demandRelease">发布需求</a></li>
+            <li><a href="/resource/myFix">发布安装</a></li>
+            <li><a href="/resource/reIndex">发布资源</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>个人中心</a></div>
+        <ul>
+            <li><a href="privateInfo">个人资料</a></li>
+            <li><a href="myOrders">个人订单</a></li>
+            <li><a href="safetySet">账户设置</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>企业中心</a></div>
+        <ul>
+            <li><a href="../tender/shopaccount">企业账户</a></li>
+            <li><a href="../tender/shoptender">企业招标</a></li>
+            <li><a href="../tender/shopbid">企业投标</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>品牌推广</a></div>
+        <ul>
+            <li><a href="/resource/digitalMagazine">数字期刊</a></li>
+            <li><a href="/resource/brandWin">品牌推广</a></li>
+            <li><a href="/resource/vr">VR展馆</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>关注我们</a></div>
+        <img src="/themes/lanmai/images/weicahrtqr.png"/>
+    </div>
+
+</div>
+<div class="index_footer">
+    <div class="index_footer_con clearfix">
+        <ul class="focusus">
+            <li class="focustitlt">关注我们</li>
+            <li class="focusicon"><a><img class="footqq" src="/themes/lanmai/images/footqq.png"/><img class="footweichart" src="/themes/lanmai/images/footweichart.png"/></a></li>
+            <li class="focusqr"><a><img class="footqqqr" src="/themes/lanmai/images/qqqr.png"/><img class="footweichartqr" src="/themes/lanmai/images/weicahrtqr.png"/></a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li style="font-size: 18px;margin-bottom: 6px;"><a href="../users/helperCenter#1">关于制作宝</a></li>
+            <li><a href="../users/helperCenter#7">服务条款</a></li>
+            <li><a href="../users/helperCenter#4">隐私申明</a></li>
+            <li><a href="../users/helperCenter#3">版权申明</a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li style="font-size: 18px;margin-bottom: 6px;"><a href="../users/helperCenter#2">帮助中心</a></li>
+            <li><a href="../users/helperCenter#2">新手入门</a></li>
+            <li><a href="../users/helperCenter#2">品牌推广</a></li>
+            <li><a href="../users/helperCenter#2">发布资源</a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li style="font-size: 18px;margin-bottom: 6px;"><a href="../users/helperCenter#5">客服中心</a></li>
+            <li><a href="../users/helperCenter#5">联系客服</a></li>
+            <li><a href="../users/helperCenter#5">意见反馈</a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li class="digmagazine">
+                <%if(ebookData){%>
+                <a href="../resource/digitalMagazine"><img src="<%=ebookData[0].coverImg%>"/></a>
+                <span><%=ebookData[0].title%></span>
+                <%}%>
+            </li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <!--<ul>-->
+        <!--<li>友情链接</li>-->
+        <!--<li><a>大吉</a></li></li>-->
+        <!--<li><a>如意</a></li></li>-->
+        <!--<li><a>萌爷</a></li></li>-->
+        <!--<li><a>颖子</a></li></li>-->
+        <!--<li><a>九九</a></li></li>-->
+        <!--<li><a>大个</a></li></li>-->
+        <!--<li><a>财百万</a></li></li>-->
+        <!--<li><a class="morelinks">更多</a></li></li>-->
+        <!--</ul>-->
+        <span>武汉蓝迈网络科技有限公司2016-<script>document.write((new Date()).getFullYear())</script>&nbsp;鄂&nbsp;ICP&nbsp;备 &nbsp;16023329号</span>
+    </div>
+</div>
+<div class="mask">
+    <div class="qrcodecontent">
+        <div class="qrcontent">
+            <img class="sctivityer" />
+            <div class="handleicon"><a></a></div>
+            <div class="qrshare">扫一扫，分享至朋友圈邀请小伙伴共享制作宝会员福利！</div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+   $(function () {
+       $(".forwebnav").hover(function(){
+           $(".webnav").show();
+           $(".forwebnav").addClass("forwenavstyle")
+       },function(){
+           $(".webnav").hide();
+           $(".forwebnav").removeClass("forwenavstyle")
+       })
+       $(".webnav").on("mouseleave",function () {
+           $(".webnav").hide();
+           $(".forwebnav").removeClass("forwenavstyle")
+       })
+       $(".webnav").on("mouseenter",function () {
+           $(".webnav").show();
+           $(".forwebnav").addClass("forwenavstyle")
+       })
+       $(".footqq").on("mouseenter",function () {
+           $(".footweichartqr").css("display","none");
+           $(".footqqqr").css("display","block");
+       })
+       $(".footweichart").on("mouseenter",function () {
+           $(".footqqqr").css("display","none");
+           $(".footweichartqr").css("display","block");
+       })
+       $(".handleicon").on("click",function () {
+           $(".mask").hide();
+       })
+       var restmobible = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+       $(".sendqr").on("click",function () {
+           var data={
+               phoneNum:$(".addmobile").val()
+           }
+           if(data.phoneNum==""){
+               swal({
+                   title: "请先填写有效电话号码",
+                   type: "error",
+                   confirmButtonText: "确定"
+               });
+               return;
+           }
+           if (!restmobible.test($(".addmobile").val())){
+               swal({
+                   title: "请先填写有效电话号码！",
+                   type: "error",
+                   confirmButtonText: "确定"
+               });
+               return false;
+           }else{
+               $.ajax({
+                   url:"/users/getInviteCode",
+                   data:JSON.stringify(data),
+                   type:"POST",
+                   dataType:"json",
+                   contentType:"application/json",
+                   success:function(res){
+                       if(res.code) {
+                           $(".sctivityer").attr("src","/users/getInviteQrCode");
+                           $(".mask").show();
+                       }else if(res.errors=="您已经获取过邀请码请到个人中心-我的活动页面查看"){
+                           swal({
+                                       title: "您已经获取过邀请码请到个人中心-我的活动页面查看",
+                                       type: "warning",
+                                       showCancelButton: true,
+                                       confirmButtonColor: "#DD6B55",
+                                       confirmButtonText: "点击去查看",
+                                       closeOnConfirm: false
+                                   },
+                                   function(){
+                                       window.location.href="/users/myActivity"
+                                   });
+                       }else if(res.errors=="请登录后完成操作"){
+                           swal({
+                                       title: "请登录后完成操作",
+                                       type: "warning",
+                                       showCancelButton: true,
+                                       confirmButtonColor: "#DD6B55",
+                                       confirmButtonText: "点击去登陆",
+                                       closeOnConfirm: false
+                                   },
+                                   function(){
+                                       window.location.href="/users/login"
+                                   });
+                       }else {
+                           console.log(res)
+                       }
+                   },
+                   error:function (error) {
+                    console.log(error)
+                   }
+               })
+           }
+
+       })
+
+   })
+</script>
+</html>
+			    	

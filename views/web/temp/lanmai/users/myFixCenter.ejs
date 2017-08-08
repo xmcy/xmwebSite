@@ -1,0 +1,177 @@
+<style type="text/css">
+	.newPromote{
+		float: right;
+		width: 140px;
+		height: 30px;
+		line-height:30px;
+		font-size: 18px;
+		text-align: center;
+		border-radius: 3px;
+	}
+	.myFixCenterShow{
+		clear: both;
+		margin-top: 45px;
+	}
+	.newResource{
+		float: right;
+	}
+	.newResource a{
+		color:#fff ;
+	}
+	#pagination {
+		margin-left: 255px;
+	}
+	ul.pagination>li>a{
+		margin-right: 6px;
+	}
+	.fixListShow{
+		width: 99%;
+		height: 150px;
+		background: #f6f4f4;
+		margin-bottom: 5px;
+	}
+	.fixListShow>ul{
+		width: 15%;
+		float: left;
+		margin-top: 12px;
+	}
+	.fixListShow>ul>li{
+		height: 40px;
+
+		line-height: 40px;
+	}
+	.fixListShow01{
+		margin-left: 5%;
+		width: 20%;
+	}
+	.fixListShow02{
+		margin-left: 15%;
+	}
+	.fixListShow03{
+		margin-left: 20%;
+		width: 8% !important;
+	}
+	.fixListShow03>li>a{
+		color:#5797df !important;
+	}
+	.fixListShow04>li>a{
+		color:#5797df !important;
+	}
+	.fixListShow04{
+		margin-left: 5%;
+		width: 7% !important;
+	}
+	.nowShow>a{
+		color:#e89c52;
+		 }
+	.contentForThisDetail{
+		width: 700px;
+		position: fixed;
+		left: 50%;
+		top:30%;
+		background: #fff;
+		z-index: 101;
+		padding-top: 5px;
+		padding-bottom: 30px;
+	}
+	.coverBackground {
+		width: 100%;
+		background: #000;
+		opacity: 0.5;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 100;
+	}
+	.fixOutDetail{
+		width: 48px;
+		height: 16px;
+		display: block;
+		line-height: 16px;
+		text-align: right;
+		float: right;
+		margin-right: 2%;
+	}
+	.fixOutDetail>span{
+		display: block;
+		width: 16px;
+		height: 16px;
+		border:1px solid #C1C1C1;
+		border-radius: 16px;
+		line-height: 16px;
+		text-align: center;
+		float: left;
+	}
+	.contentForThisDetail>ul{
+		margin-left: 5%;
+		margin-top: 10px;
+	}
+	.contentForThisDetail>ul.fixDetailTitle{
+		margin-top: 20px;
+	}
+	.fixDetailTitle>li{
+		font-size: 18px;
+	}
+	.fixTimeAndSee>li{
+		width: 30%;
+		float: left;
+	}
+	.fixContactStyle>li{
+		float: left;
+		width: 30%;
+	}
+	.fixDetailContent{
+		width: 80%;
+	}
+</style>
+<div class="myFix" ng-controller="myFixCenterController">
+			    		<h2>我的安装</h2>
+	                    <div class="newResource bgRed "><a href="../resource/myFix">发布新安装</a></div>
+			    		<div class="newPromote redBg whiteFont">发布新安装</div>
+						<div class="myFixCenterShow">
+							<div ng-if="!dataList.length" class="littlemargin"> 暂未发布安装</div>
+							<div class="fixListShow" ng-repeat="(key,item) in dataList">
+								<ul class="fixListShow01">
+									<li><a href="javascript:;">{{item.title |centerTitleFilter}}</a></li>
+									<li><a href="javascript:;">{{item.serviceRegion.province}}&nbsp;&nbsp; {{item.serviceRegion.city}}&nbsp;&nbsp;{{item.serviceRegion.district}}</a></li>
+									<li><a href="javascript:;">{{item.refreshedAt|date:'yyyy-MM-dd'}}</a></li>
+								</ul>
+								<ul class="fixListShow02">
+									<li class="nowShow"><a ng-click="triggerDeShow(item)"  ng-class="{redFont:item.isShowing,pastColor:!item.isShowing}" href="javascript:;">{{item.isShowing|myfilter}}</a></li>
+									<li><a href="javascript:;">浏览 <span>{{item.pageview|numPageViewFilter}}</span></a></li>
+								</ul>
+								<ul class="fixListShow03">
+									<li><a ng-href="/resource/changeMyFix?fixid={{item|itemToId}}" target="_blank">修改</a></li>
+									<li><a href="javascript:;" ng-click="refreshNowFix(item)">刷新</a></li>
+								</ul>
+								<ul class="fixListShow04">
+									<li><a href="javascript:;" ng-click="deleteNowFix(item)">删除</a></li>
+									<li><a href="javascript:;" ng-click="thisDetailShow(key,item)">详情</a></li>
+								</ul>
+								<div class="coverBackground" block-hide ng-show="showid==key" ></div>
+								<div class="contentForThisDetail" ng-show="showid==key" align-set >
+									<a class="fixOutDetail" href="javascript:;" ng-click="thisDetailHide(key,item)"> <span>×</span>关闭</a>
+									<ul class="fixDetailTitle">
+										<li>{{item.title}}</li>
+									</ul>
+									<ul class="fixTimeAndSee clearfix">
+										<li>更新时间：{{item.refreshedAt|date:'yyyy-MM-dd'}}</li>
+										<li>浏览量：{{item.pageView}}</li>
+									</ul>
+									<ul class="fixContactStyle clearfix">
+										<li>服务地区:{{item.serviceRegion.province}}&nbsp;&nbsp; {{item.serviceRegion.city}}&nbsp;&nbsp;{{item.serviceRegion.district}}</li>
+										<li>联系人：{{item.name|limitTo:4}}</li>
+										<li>联系方式：{{item.phoneNum}}</li>
+									</ul>
+									<ul class="fixDetailContent">
+										<li>详情：{{item.details}}</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+									next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+									items-per-page="itemsPerPage">
+
+						</pagination>
+			    	</div>

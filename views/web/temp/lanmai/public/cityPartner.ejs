@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>城市合伙人-制作宝</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=0.2,minimum-scale=0.2,maximum-scale=5" />
+		<link href="/plugins/bootstrap/css/bootstrap.min.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/themes/<%=staticforder%>/css/base.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/plugins/bootstrapSelect/css/bootstrap-select.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/themes/<%=staticforder%>/css/layoutForAccountSet.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/plugins/myPage/res/myPage.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/javascripts/angular.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.12.0.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/bootstrapSelect/bootstrap/js/bootstrap.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/bootstrapSelect/js/bootstrap-select.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+	</head>
+	<style>
+		.maginForA{
+			width: 130px !important;
+			margin-left: 17px;
+		}
+	</style>
+	<body ng-app="layoutCitypartner" ng-cloak class="ng-cloak" ng-controller="layoutcitypartnerController">
+		<div class="navHead bgRed" >
+			<div class="navHeadContent">
+				<a href="/users/home"><span class="adLogo"></span></a>
+				<div class="navList">
+					<a href="/users/recentDemandAndResource">个人中心</a>
+					<a href="/users/safetySet">账户设置</a>
+					<a  href="/users/shopcenter">企业中心</a>
+					<a  href="/citypartner/cityPartner">城市运营商</a>
+				</div>
+				<div class="privateAccount">
+					<ul>
+						<li>你好<a  style="color:#DA2F2F"  href="/users/recentDemandAndResource">
+								<%if(userInfo.nickName){%>
+								<%=userInfo.nickName%>
+								<%}else {%>
+								<%=userInfo.userName%>
+								<%}%>
+							</a></li>
+						<li><a rel="nofollow" href="/users/logout" id="userLoginOut">退出</a></li>
+						<li><a href="/users/messageManagement">消息</a>
+						<%if(userInfo.msg_count && userInfo.msg_count>0){%>
+						<a href="javascript:;"><a href="/users/messageManagement"><span class="badge" id="u_notify_num"><%=userInfo.msg_count%></span></a></a>
+						<%}%></li>
+						<li><a href="/users/helperCenter">帮助</a><span></span></li>
+				    </ul>
+				</div>
+			</div>
+		</div>
+		<div class="contenWrap">
+			<div class="myContent">
+				<div class="slidebar bgGrey">
+				    <ul>
+					    <li ng-class="{activeSlidebar:activeSlidebar=='cityPartner'}"><a class="maginForA" href="/citypartner/cityPartner">城市运营商</a></li>
+					    <li ng-class="{activeSlidebar:activeSlidebar=='userinfo'}"><span  class="imgForIcon1 imgForIcon private" alt=""></span><a  href="/citypartner/userinfo">注册用户</a></li>
+					    <li ng-class="{activeSlidebar:activeSlidebar=='precisionPromotion'}"><span  class="imgForIcon2 imgForIcon private" alt=""></span><a  href="/citypartner/precisionPromotion">精准推广</a></li>
+					    <li ng-class="{activeSlidebar:activeSlidebar=='brandPromotion'}"><span  class="imgForIcon3 imgForIcon private" alt=""></span><a  href="/citypartner/brandPromotion">品牌推广</a></li>
+					    <li ng-class="{activeSlidebar:activeSlidebar=='tenderBid'}"><span  class="imgForIcon4 imgForIcon private" alt=""></span><a  href="/citypartner/tenderBid">招投标收入</a></li>
+					</ul>
+			    </div>
+			    <div class="contentArea">
+					<%-body %>
+			    </div>
+		    </div>
+		</div>
+		<div class="bottom_lanmai">
+			<ul>
+				<li><a href="/users/helperCenter#1" target="_blank">关于制作宝</a></li>
+				<li><a href="/users/helperCenter#2" target="_blank">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;帮助中心</a></li>
+			</ul>
+			<p>武汉蓝迈网络科技有限公司2016-<script>document.write((new Date()).getFullYear())</script>&nbsp;鄂&nbsp;ICP&nbsp;备 &nbsp;16023329号</p>
+		</div>
+		<script src="/themes/<%=staticforder%>/js/directive.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/themes/<%=staticforder%>/js/modules.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/themes/<%=staticforder%>/js/layoutCitypartnerController.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/themes/<%=staticforder%>/js/hack.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+
+	</body>
+</html>

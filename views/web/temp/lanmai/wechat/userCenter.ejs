@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height;initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>制作宝-用户中心</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/weui.min.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/myStyle.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/common.css">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+     <!--引入 WeUI -->
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/0.4.0/weui.min.css">
+    <script src="/javascripts/jquery-1.8.3.min.js?vesion=<%=siteConfig.version%>"></script>
+</head>
+<body ontouchstart>
+    <div class="userCenterHeader">
+        <a class="weChatExitIcon"  href="/users/welogout" ><img src="/themes/<%=staticforder%>/images/weChatExit.png" alt=""><span>退出</span></a>
+        <img src="http://adquan-1253780958.cosgz.myqcloud.com/images/bigimg/we0101.png" alt="">
+        <div class="userCenterHeaderPhoto">
+            <span class="storePhoto">
+                <img src="<%=userInfo.avatar%>/140.140" alt="">
+            </span>
+        </div>
+        <% if(userInfo.nickName){%>
+        <div class="changeName">
+            <span class="myName"><%=userInfo.nickName%></span>
+            <input class="changeValue" style="border: none;border-bottom: 1px solid #dcdcdc;display: none" type="text" value="">
+            <i class="changePen">
+                <img src="/themes/<%=staticforder%>/images/web0702.png" alt="">
+            </i>
+            <i class="changeRight" STYLE="display: none">
+                <img src="/themes/<%=staticforder%>/images/web0703.png" alt="">
+            </i>
+        </div>
+        <%}else{ %>
+        <div class="changeName">
+            <span class="myName"><%=userInfo.userName%></span>
+            <input class="changeValue" style="border: none;border-bottom: 1px solid #dcdcdc;display: none" type="text" value="">
+            <i class="changePen">
+                <img src="/themes/<%=staticforder%>/images/web0702.png" alt="">
+            </i>
+            <i class="changeRight" STYLE="display: none">
+                <img src="/themes/<%=staticforder%>/images/web0703.png" alt="">
+            </i>
+        </div>
+        <%}%>
+    </div>
+    <div class="userCenterTab">
+        <div class="fixTab choiceTb">
+            <a href="javascript:;">
+                <span>我能安装</span>
+                <i>
+                    <img src="/themes/<%=staticforder%>/images/web0705.png" alt="">
+                </i>
+            </a>
+        </div>
+        <!--<div class="priceTab choiceTb">
+            <a href="javascript:;">
+                <span>我的报价</span>
+                <i>
+                    <img src="/themes/staticforder/images/web0704.png" alt="">
+                </i>
+            </a>
+        </div>-->
+    </div>
+    <div  class="userCenterConList">
+        <% if(myInstallList.length==0){ %>
+        <div class="userCenterConListDes">
+            <ul style="border-bottom: none">
+                <li class="dontHaveList">您还未发布安装……现在<a href="/wechat/weICanFix">去发布</a></li>
+
+            </ul>
+        </div>
+        <% }else{ %>
+        <% for(var i=0;i<myInstallList.length;i++){ %>
+        <div class="userCenterConListDes">
+            <input class="goToDetail" type="hidden" value="<%=myInstallList[i]._id%>">
+            <a class="centerFixFresh" href="javascript:;">
+                <i><img src="/themes/<%=staticforder%>/images/freshIcon.png"></i>
+                <span>刷新</span>
+            </a>
+            <a class="centerFixEditor" href="weChangeMyFix?id=<%=myInstallList[i]._id%>">
+                <i><img src="/themes/<%=staticforder%>/images/web0706.png"></i>
+                <span>修改</span>
+            </a>
+            <input type="hidden" class=" " value="<%=myInstallList[i]._id%>">
+            <a class="centerFixDelete" href="javascript:;">
+                <i><img src="/themes/<%=staticforder%>/images/web0708.png"></i>
+                <span>删除</span>
+            </a>
+            <ul>
+                <%if((myInstallList[i].title).length>25){%>
+                <li class="centerFixTitle"> <%= myInstallList[i].title.substr(0,25) %>...</li>
+                <%}else{%>
+                <li class="centerFixTitle"> <%= myInstallList[i].title %></li>
+                <%}%>
+                <li class="centerFixNameArea">
+                    <%if((myInstallList[i].serviceRegion.province.length+myInstallList[i].serviceRegion.city.length+myInstallList[i].serviceRegion.district.length)>6){%>
+                    <span>服务地区：<%= (myInstallList[i].serviceRegion.province+" "+myInstallList[i].serviceRegion.city+" "+myInstallList[i].serviceRegion.district).substr(0,8) %>...</span>
+                    <%}else{%>
+                    <span>服务地区：<%= myInstallList[i].serviceRegion.province %>&nbsp;&nbsp;<%= myInstallList[i].serviceRegion.city %>&nbsp;&nbsp;<%= myInstallList[i].serviceRegion.district %></span>
+                    <%}%>
+                </li>
+                <li class="centerFixDescription">详情：<%= myInstallList[i].details %></li>
+                <li></li>
+            </ul>
+        </div>
+        <% } %>
+        <% } %>
+    </div>
+
+    <div class="weui_tabbar weui_tabbar01">
+        <a href="getHomeInfo" class="weui_tabbar_item ">
+            <div class="weui_tabbar_icon">
+                <img src="/themes/<%=staticforder%>/images/web0108.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">首页</p>
+        </a>
+        <a href="userCenter" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="/themes/<%=staticforder%>/images/web0109.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">我的</p>
+        </a>
+    </div>
+    <script src="/themes/<%=staticforder%>/js/weui.min.js"></script>
+<script>
+    $(function(){
+        var OName=$('.myName').html();
+        $('.changeValue').val(OName);
+        $('.changePen').click(function(){
+            $('.myName').hide();
+            $('.changeValue').show();
+            $(this).hide();
+            $('.changeRight').show();
+            var oWidth= $(window).width();
+            var changeName=$(".changeName").width();
+            var long=(oWidth-changeName)/2;
+            $('.changeName').css({left:long});
+        });
+        $(".changeRight").click(function(){
+            var Oval = $('.changeValue').val();
+            $(this).hide();
+            $('.changeValue').hide();
+            $('.myName').html(Oval).show();
+            $(".changePen").show();
+            var oWidth= $(window).width();
+            var changeName=$(".changeName").width();
+            var long=(oWidth-changeName)/2;
+            $('.changeName').css({left:long});
+        })
+        var oWidth= $(window).width();
+        var changeName=$(".changeName").width();
+        var long=(oWidth-changeName)/2;
+        $('.changeName').css({left:long});
+       /*$(".centerFixDelete").on("click",function(){
+            $(this).parent().parent().remove();
+        })*/
+
+        $(".choiceTb").click(function(){
+            $(this).css({border:"1px solid #FB6383",background:"#fff"}).siblings().css({border:"1px solid #f4f4f4",background:"#F4F4F4"})
+            var myIndex=$(this).index();
+            $(".userCenterConList").hide();
+            $(".userCenterConList").eq(myIndex).show();
+        })
+        $(".centerFixDelete").click(function(){
+           var  sortId =$(this).prev().val();
+            swal({
+                        title: "确定删除吗？",
+                        text: "你将无法恢复该条信息！",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "删除",
+                        cancelButtonText: "取消",
+                        closeOnConfirm: false
+                    },
+                    function(isConfirm){
+                        if (isConfirm) {
+                            $.post(
+                                    "/resource/deleteMyInstall",
+                                    {id:sortId},
+                                    function(res){
+                                        swal(res, "", "success")
+                                    })
+                            swal("已删除!", "", "success");
+                            window.location.reload()
+                        }else{
+                            console.log("message is store")
+                            //window.location.reload()
+                        }
+                    })
+        })
+        $(".centerFixFresh").click(function(){
+            var  sortId =$(this).next().next().val();
+            $.post(
+                    "/resource/refreshFixRes",
+                    {resId:sortId},
+                    function(res){
+                        swal(res, "", "")
+                        setTimeout(function(){
+                            window.location.reload()
+                        },1000)
+                    }
+            )
+        })
+
+
+        $('.changeRight>img').click(function(){
+            var nickName=$(".changeValue").val();
+            $.post(
+                    "/users/changeNickName",
+                    {
+                        nickName:nickName
+                    },function(res){
+                        if(res.result=="success"){
+                            swal("您的昵称已修改!", "", "success")
+                        }else {
+                            sweetAlert("昵称修改失败!", "", "error");
+                        }
+                    }
+            )
+        })
+        $(".userCenterConListDes>ul").click(function(){
+            var Oval = $(this).parent().children(".goToDetail").val();
+            window.location.href="weDetailFix?value="+Oval;
+        })
+    $(".weChatExitIcon").click(function(){
+        //localStorage.clear();
+        swal("您已经退出了登录!", "", "success")
+       /* swal({
+                    title: "您确定退出登录吗?",
+                    text: "您将退出您的制作宝登录!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定",
+                    cancelButtonText: "取消",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        $.post("/users/logout",{},function(res){
+                            if(res){
+                                swal("退出成功!", "", "success");
+                            }else{
+                                swal("退出失败，请稍后再试!", "", "error");
+                            }
+                        })
+
+                    }
+                });*/
+    })
+    })
+
+    function clearLocalData(){
+        localStorage.clear();
+        swal("地址已清除!", "", "success")
+    }
+    window.onload=function(){
+        function isWeiXin(){
+            var ua = window.navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                return true;
+            }else{
+                var bod=document.getElementsByTagName("body")[0];
+                bod.innerHTML="<p style='text-align: center;color:#68E868'>请在微信客户端打开页面</p>";
+                swal({
+                            title: '您好，请使用微信客户端浏览！',
+                            text: "即将跳转-制作宝-首页",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确定",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                window.location.href="/users/home";
+                            }
+                        })
+                return false;
+            }
+        }
+        isWeiXin()
+    }
+</script>
+</body>
+</html>
+

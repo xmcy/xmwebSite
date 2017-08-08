@@ -1,0 +1,503 @@
+<style>
+	.sweet-alert>h2>img{
+		width: 250px;
+		height:250px;
+	}
+	.sweet-alert{
+		margin-top: -250px !important;
+	}
+	.myPromote{
+		position: relative;
+	}
+	.promoteDate{
+		left: 480px;
+	}
+	.promotetime{
+		padding: 0 !important;
+		cursor: pointer;
+		width: 80px;
+		height:32px;
+		text-align: center;
+		border-radius: 15px;
+		border: 2px solid gainsboro;
+	}
+	.promotetime>div{
+		width: 64%;
+		height: 30px;
+		text-align: center;
+		line-height:30px;
+		border-radius: 14px;
+		margin-top: -1px;
+		margin-left: -1px;
+	}
+	.offcolor{
+		background-color: gainsboro;
+		color: #fff;
+	}
+	.oncolor{
+		background-color: #6bccf0;
+		color: #fff;
+	}
+	.floatleft{
+		float: left;
+	}
+	.floatright{
+		float: right;
+	}
+	#pagination{
+		margin-left:30%;
+		margin-bottom: 30px;
+	}
+	ul.pagination>li>a{
+		margin-right:8px;
+	}
+	.adChoice{
+		width: 100%;
+		height: 35px;
+		margin-top: 45px;
+	}
+	.adChoice>ul{
+		height:35px;
+		margin:0 auto;
+		width:350px;
+	}
+	.adChoice>ul>li{
+		display: inline-block;
+		width:80px;
+		height: 30px;
+		line-height: 30px;
+		margin-right: 8px;
+		border: 1px gainsboro solid;
+		border-radius: 4px;
+		color: rgb(112,112,112);
+		text-align: center;
+		font-size: 13px;
+	}
+	.newResource{
+		float: right;
+	}
+	.promote_delete>a{
+		display: block;
+		height: 20px;
+		outline: none;
+		text-decoration: none;
+	}
+	.promote_line{
+		height: auto;
+	}
+	.promoteinfo{
+		z-index: 999;
+		width:100%;
+		height: 280px;
+		border: 2px solid red;
+		background-color: #fff;
+
+	}
+	.promoteinfowarper{
+		width:94%;
+		margin: 0 auto;
+		padding-top: 120px;
+	}
+	.precisePromoteContent>div>ul>li{
+		width: auto;
+		padding-right:5px;
+		text-align: left;
+		font-size: 16px;
+		float: left;
+		height: 30px;
+		line-height: 30px;
+	}
+	.precisePromoteContent>.precisePromoteSelect>ul>li{
+		margin-right: 20px;
+	}
+	 .precisePromoteContent{
+		width: 620px;
+		float: left;
+	}
+	.effect{
+		width: 290px;
+		float: right;
+		height: 100%;
+		padding-top: 40px;
+	}
+	.effect>div{
+		width: 100%;
+		height: auto;
+		padding-top:20px;
+	}
+	.effect>div>i{
+		float: left;
+		margin-right: 20px;
+		font-size: 16px;
+	}
+	.effect>div>span{
+		display: inline-block;
+		max-width: 200px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-size: 16px;
+	}
+	.effect>div>a>button{
+		margin-right: 20px;
+		background-color: #da2f2f;
+		margin-left: 83px;
+		width: 100px;
+	}
+	.effect .close{
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		margin-right: 4px;
+		margin-top: -38px;
+	}
+	.isPrecisePromote{
+		height: 60px;
+		width: 135%;
+		position: relative;
+		overflow: visible;
+	}
+	.isPrecisePromote>input{
+		width: 29px;
+		height: 29px;
+		position: absolute;
+		top: 16px;
+		left: 29px;
+	}
+	.isPrecisePromote>span{
+		font-size: 24px;
+		position: absolute;
+		top: 16px;
+		left: 60px;
+	}
+	.isPrecisePromote>p{
+		font-size: 14px;
+		position: absolute;
+		top: 24px;
+		left: 210px;
+		z-index: 999;
+		width: auto;
+	}
+	.isPrecisePromote>div{
+		position: absolute;
+		top:24px;
+		right: 0;
+		font-size: 15px;
+	}
+	.precisePromoteDescript{
+		width: 100%;
+		height: 20px;
+		padding-left: 30px;
+		margin-top: 4px;
+		position: relative;
+	}
+	.precisePromoteDescript>span{
+		padding-right: 20px;
+		font-size: 16px;
+	}
+	.precisePromoteDescript>p{
+		font-size: 14px;
+		position: absolute;
+		top: 0px;
+		left: 60px;
+	}
+	.precisePromoteTime{
+		width: 100%;
+		height: 60px;
+		padding: 15px 0 0px 30px;
+	}
+	.precisePromoteTime>ul{
+		width: 100%;
+		height: 100%;
+	}
+	.precisePromoteTime>ul>li{
+		float: left;
+		width: 106px;
+		height: 35px;
+		line-height: 35px;
+		text-align: center;
+		margin-right: 20px;
+		font-size: 18px;
+		border-radius: 3px;
+		position: relative;
+		cursor: pointer;
+	}
+	.precisePromoteTime>ul>.servicedate{
+		text-align: left;
+	}
+	.precisePromoteSelect{
+		width: 100%;
+		height: 44px;
+		padding-left: 30px;
+		font-size: 18px;
+	}
+	.precisePromoteSelect>ul{
+		width: 100%;
+		height:40px;
+	}
+	.priceaccount{
+		margin-left: 328px;
+	}
+	.bandpromote>li{
+		width: 120px !important;
+	}
+	.bandpromote>li>input{
+		width: 14px;
+		height: 14px;
+	}
+	.precisePromoteSelect>ul>li>label{
+		font-weight: 400;
+		margin-left: -14px;
+	}
+	.precisePromoteTime>ul>li>div{
+		width: 110px;
+		height: 100%;
+		text-align: center;
+		border: 1px solid grey;
+		position: relative;
+		border-radius: 3px;
+	}
+	.discount{
+		position: absolute;
+		top: -6px;
+		right: 6px;
+		font-size: 13px;
+		color: rgb(232, 163, 105);
+	}
+	.precisePromoteSelect>ul>li>select{
+		width: 110px;
+		height: 28px;
+		border: 1px solid grey;
+		text-align: center;
+		font-size: 15px;
+		border-radius: 3px;
+	}
+	.precisePromotePrice{
+		display: inline-block;
+		margin: 0 8px;
+		font-size: 20px;
+	}
+	.paynum{
+		padding-left: 30px;
+		font-size: 18px;
+		height: 50px;
+		margin-top: -12px;
+	}
+	.paynum>ul>li{
+		margin-right: 20px;
+		height: 50px !important;
+		line-height:50px !important;
+	}
+	.paynum>ul>li>a>button{
+		margin-left:66px;
+		height:30px;
+		line-height: 30px;
+		width:110px;
+		text-align: center;
+		background-color: #da2f2f;
+		border: 1px solid #da2f2f;
+	}
+	.paynum>ul>li>span{
+		display: inline-block;
+		margin-top: -3px;
+		height: 50px;
+		line-height:50px;
+	}
+	.pricemakesure>div{
+		font-size: 20px;
+		height: 30px;
+		line-height: 30px;
+	}
+	.noorder{
+		margin-top: 50px;
+		padding-left: 20px;
+		font-size: 16px;
+	}
+	.serviceareachoose{
+		margin-left:5px;
+		line-height: 40px !important;
+	}
+	.choosebordr{
+		border: 1px solid rgb(232, 163, 105) !important;
+	}
+	.payWay{
+		width: 88px !important;
+		text-align: center !important;
+		border-radius: 3px;
+		cursor: pointer;
+		margin-right: 0 !important;
+		line-height: 40px !important;
+	}
+	.payWay>input{
+		float: left;
+		margin-top:12px;
+		width: 14px;
+		height: 16px;
+	}
+</style>
+<div class="myPromote"  ng-controller="myResourceController">
+			    		<h2>我的资源</h2>
+			    		<div class="newResource bgRed "><a href="../resource/reIndex" class="whiteFont">发布新资源</a></div>
+			    		<div class="adChoice">
+							<ul>
+								<li  ng-class="{redBorder:border=='Manufacture'}" ng-click="collect('Manufacture')"><a>广告制作</a></li>
+								<li  ng-class="{redBorder:border=='Material'}" ng-click="collect('Material')"><a>广告材料</a></li>
+								<li  ng-class="{redBorder:border=='Equipment'}" ng-click="collect('Equipment')"><a>广告设备</a></li>
+							</ul>
+						</div>
+                       <div class="admake"  >
+						   <div class="promote_list">
+							   <div class="promote_line" ng-repeat="item in dataList track by $index">
+								   <div class="promotePic"><img ng-src="{{item.images[0]}}/100.100" /></div>
+								   <div class="promoteInfo">
+									   <p>信息号<span>{{item.resNum}}</span></p>
+									   <p class="titleOverflow">{{item.title}}</p>
+									   <p>{{item.categoryL2.name}}-{{item.categoryL3.name}}</p>
+									   <p>{{item.createdAt|timeFilter}}</p>
+								   </div>
+								   <div class="promoteDate">
+									   <div class="promotetime" ng-click="triggerResShow(item)" >
+										   <div ng-show="item.isShowing"  ng-class="{oncolor:item.isShowing,floatleft:item.isShowing}">{{item.isShowing|defilter}}</div>
+										   <div ng-show="!item.isShowing"  ng-class="{offcolor:!item.isShowing,floatright:!item.isShowing}">{{item.isShowing|defilter}}</div>
+									   </div>
+									   <p class="skin_count" ng-if="!!item.pageview">浏览<span>{{item.pageview}}</span></p>
+								   </div>
+								   <div class="promote_handle blueColor">
+									   <ul>
+										   <li ><a ng-href="/resource/{{item.resType}}ForEdit?parentID={{item.categoryL1}}&id={{item.resNum}}" target="_blank">修改</a></li>
+										   <li ng-click="refresh(item)"><a>刷新</a></li>
+										   <li ng-click="triggerResTop(item)" ng-if="!item.isTop"><a  >{{item.isTop|topfilter}}</a></li>
+										   <li ng-click="triggerResTopForNo(item)" ng-if="item.isTop"><a ng-class="{redFont:item.isTop}">{{item.isTop|topfilter}}</a></li>
+									   </ul>
+								   </div>
+								   <div class="promote_delete blueColor">
+									   <a ng-click="delete(item)">删除</a>
+									   <a class="redFont" ng-click="precisePromoteshow($index,item)" ng-if="item|itemToPro">推广中</a>
+									   <a class="redFont" ng-click="precisePromoteshow($index,item)" ng-if="!(item|itemToPro)">精准推广</a>
+									   <div class="clickforinfo"><a ng-href="/resource/{{item.resType|toD}}?id={{item.resNum}}" target="_blank">查看详情</a></div>
+								   </div>
+								   <div class="promoteinfowarper">
+									   <div class="promoteinfo" ng-show="index==$index&&hasBill">
+										   <div class="precisePromoteContent">
+											   <div class="isPrecisePromote">
+												   <input disabled type="checkbox" name="" id="" value="" checked/>
+												   <span class=" redFont">{{preciseList.title}}</span>
+												   <p class="blueColor">使用精准推广功能，资源信息将在该类目录列表顶端展示，精准锁定目标人群，找买主快准狠!</p>
+											   </div>
+											   <div class="precisePromoteDescript">
+												   <span>订单编号</span>
+												   <span ng-if="preciseList.bill">{{preciseList.bill.billNum}}</span>
+												   <span ng-if="!preciseList.bill">已购买品牌推广</span>
+											   </div>
+											   <div class="precisePromoteTime">
+												   <ul>
+													   <li>推广周期</li>
+													   <li class="promoteTime" ng-if="preciseList.period">{{preciseList.period}}</li>
+													   <li class="promoteTime" ng-if="preciseList.promotionEnd">{{preciseList.promotionEnd.split('T')[0]}}</li>
+												   </ul>
+											   </div>
+											   <div class="precisePromoteSelect">
+												   <ul>
+													   <li>推广类目</li>
+													   <li class="servicecategory">{{preciseList.pubHistory.resType|valToType}}</li>
+													   <li class="servicearea" ng-if="preciseList.bill">{{preciseList.pubHistory.promotionRegions|joinStr}}</li>
+												   </ul>
+											   </div>
+											   <div class="precisePromoteSelect" ng-if="preciseList.bill">
+												   <ul>
+													   <li>支付方式</li>
+													   <li class="serviceType">{{preciseList.bill.payType}}</li>
+												   </ul>
+											   </div>
+											   <div class="precisePromoteSelect" ng-if="!preciseList.bill">
+												   <ul>
+													   <li>推广地区</li>
+													   <li class="serviceType">全国</li>
+												   </ul>
+											   </div>
+											   <div class="paynum" ng-if="preciseList.bill">
+												   <ul>
+													   <li>支付金额</li>
+													   <li  ng-if="preciseList.bill"><span class="precisePromotePrice redFont">{{preciseList.bill.price}}</span><span>元</span></li>
+													   <li ng-if="!preciseList.bill"><span class="precisePromotePrice redFont" >{{preciseList.bill.price}}</span><span>元</span></li>
+													   <li ng-if="preciseList.bill.billState=='未支付'"><a> <button class="payGetQr" ng-click="submitOrder(preciseList)">确认付款</button></a>  </li>
+
+												   </ul>
+											   </div>
+
+										   </div>
+										   <div class="effect">
+											   <div class="close geryborder" ng-click="precisePromoteshow($index,item)"></div>
+											   <div><i>资源标题</i><span>{{item.title}}</span></div>
+											   <div><i>资源图片</i><span><img ng-src="{{item.images[0]}}/100.100" /></span></div>
+											   <div><a ng-href="/resource/{{item.resType|toD}}?id={{item.resNum}}" target="_blank"><button>查看详情</button></a></div>
+										   </div>
+
+									   </div>
+									   <div class="promoteinfo" ng-show="index==$index&&!hasBill">
+										   <div class="precisePromoteContent">
+											   <div class="isPrecisePromote">
+												   <input disabled type="checkbox" name="" id="" value="" checked/>
+												   <span class=" redFont">精准推广服务</span> <p class="blueColor">使用精准推广功能，资源信息将在该类目录列表顶端展示，精准锁定目标人群，找买主快准狠!</p>
+											   </div>
+
+											   <div class="precisePromoteTime">
+												   <ul>
+													   <li>推广周期</li>
+													   <li  class="promoteTime"><div ng-class="{choosebordr:dateborder==1}" ng-click="choosedate(1)">1季度<span class="discount">折</span></div></li>
+													   <li  class="promoteTime"><div ng-class="{choosebordr:dateborder==2}" ng-click="choosedate(2)">半年<span class="discount">折</span></div></li>
+													   <li  class="promoteTime"><div ng-class="{choosebordr:dateborder==3}" ng-click="choosedate(3)">1年<span class="discount">折</span></div></li>
+												   </ul>
+											   </div>
+											   <div class="precisePromoteSelect">
+												   <ul>
+													   <li>推广地区</li>
+													   <li>
+														   <!--<select class="selectpicker" multiple id="supplyRegions" title="选择地区" data-max-options="5"-->
+																   <!--data-width="114px" data-max-options-text="省份最多选择5个" ng-bind-html="strOption|trusted" on-finish-render-filters>-->
+														   <!--</select></li>-->
+													   <select class="selectpicker" multiple id="supplyRegions" title="选择地区" data-max-options="5"
+															   data-width="114px" data-max-options-text="省份最多选择5个"  >
+														   <option  ng-repeat="dis in ChineseDistricts" >{{dis.address}}</option>
+													   </select></li>
+													   <li class="serviceareachoose">支付方式</li>
+													   <li class="payWay" ng-click="chooseBorder(1)"><input type="radio" name="precisePayway" id="alipay"/><label for="alipay">支付宝</label></li>
+													   <li class="payWay" ng-click="chooseBorder(2)"><input type="radio" name="precisePayway" id="weichartpay"/><label for="weichartpay">微信</label></li>
+													   <!--<li class="payWay" ng-click="chooseBorder(1)">支付宝</li>-->
+													   <!--<li class="payWay" ng-click="chooseBorder(2)">微信</li>-->
+												   </ul>
+											   </div>
+											   <div class="precisePromoteSelect">
+												   <ul>
+													   <li>推广类目</li>
+													   <li>{{preciseList.resType|valToType}}</li>
+												   </ul>
+											   </div>
+											   <div class="paynum">
+												   <ul>
+													   <li>支付金额</li>
+													   <li><span class="precisePromotePrice redFont">{{price|noNull}}</span><span>元</span></li>
+													   <li><a> <button class="payGetQr" ng-click="submitOrder(preciseList)">确认付款</button></a>  </li>
+
+												   </ul>
+											   </div>
+
+										   </div>
+										   <div class="effect">
+											   <div class="close geryborder" ng-click="precisePromoteshow($index,item)"></div>
+											   <div><i>资源标题</i><span>{{item.title}}</span></div>
+											   <div><i>资源图片</i><span><img ng-src="{{item.images[0]}}/100.100" /></span></div>
+											   <div><a ng-href="/resource/{{item.resType|toD}}?id={{item.resNum}}" target="_blank"><button>查看详情</button></a></div>
+										    </div>
+									   </div>
+								   </div>
+
+							   </div>
+							   <div class="littlemargin" ng-if="!dataList.length">暂未发布资源</div>
+						   </div>
+					   </div>
+	<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+				next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+				items-per-page="itemsPerPage"></pagination>
+
+</div>

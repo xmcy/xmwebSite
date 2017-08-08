@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="/themes/<%=staticforder%>/css/base.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/themes/<%=staticforder%>/css/resourceRelease.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/plugins/citypicker/css/city-picker.css" rel="stylesheet">
+		<link href="/plugins/wangEditor/css/wangEditor.min.css" rel="stylesheet">
+		<script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/bootstrap/js/bootstrap.js"></script>
+		<script src="/plugins/citypicker/city-picker.data.js"></script>
+		<script src="/plugins/citypicker/city-picker.js"></script>
+		<script src="/plugins/wangEditor/js/wangEditor.min.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				var editor = new wangEditor('wangEditor');
+				editor.config.menus = [
+					'fontsize',
+					'bold',
+					'underline',
+					'strikethrough',
+					'undo',
+					'redo'
+				];
+				editor.config.colors = {
+					'#880000': '暗红色',
+					'#800080': '紫色',
+					'#ff0000': '红色'
+				};
+
+				// 字体
+				editor.config.familys = [
+					'宋体', '黑体', '楷体', '微软雅黑',
+					'Arial', 'Verdana', 'Georgia'
+				];
+
+				// 字号
+				editor.config.fontsizes = {
+					// 格式：'value': 'title'
+					1: '10px',
+					2: '13px',
+					3: '16px',
+					4: '19px',
+					5: '22px',
+					6: '25px',
+					7: '28px'
+				};
+				editor.create();
+			});
+		</script>
+	</head>
+	<style type="text/css">
+		body{
+			color: rgb(112,112,112);
+			background-color: #FFFFFF;
+		}
+		/*头部*/
+		.Head{
+			width: 100%;
+			height: 80px;
+			margin:23px 0 22px 0;
+			background-color: #f6f4f4;
+			position: relative;
+		}
+		.position{
+			position: absolute;
+			top:40px;
+			left:200px;
+		}
+		.city-picker-input {
+			width: 237px;
+		}
+		.current_position{
+			display: inline-block;
+			width: 50px;
+			height: 18px;
+			position: relative;
+		}
+		/*.city-picker-input {*/
+			/*font-size: 18px;*/
+			/*font-weight: 500;*/
+			/*color: rgb(112,112,112);*/
+			/*opacity: 1 !important;*/
+			/*width: 53px;*/
+            /*top:0;*/
+            /*left:-10px;*/
+            /*position: absolute;*/
+			/*background-color:#f6f4f4;*/
+			/*cursor: pointer;*/
+		/*}*/
+		.select-item{
+			display: none;
+		}
+		.change_position{
+			color: #e7c276;
+		}
+		.privateAccount{
+			position: absolute;
+			top: -20px;
+			right:180px;
+			width: 201px;
+			height: 22px;
+		}
+		.privateAccount>ul{
+			height: 22px;
+		}
+		.privateAccount>ul>li{
+			height: 20px;
+			float: left;
+			margin-right: 5px;
+		}
+		.privateAccount .addmore{
+			display:inline-block;
+		    width:0; 
+		    height:0; 
+		    border-left:5px solid transparent;
+		    border-right:5px solid transparent;
+		    border-top:7px solid grey;
+		    margin: 0 7px 0 7px;
+		}
+		.contenWrap{
+			width: 100%;
+		}
+		.myRelease{
+			width: 1600px;
+			margin: 0 auto;
+			height: 500px;
+			position: relative;
+			padding-left: 250px;
+		}
+		.releaseStep{
+			width: 840px;
+			height: 40px;
+			margin-left: -50px;
+		}
+
+		.step_one{
+			background-position:-33px -52px;
+			line-height: 40px;
+			font-size: 19px;
+			color: #FFFFFF;
+			text-align: center;
+		}
+		.step_two{
+			background-position: -21px -100px;
+			line-height: 40px;
+			font-size: 19px;
+			color: #9b9a9a;
+			text-align: center;
+		}
+		form{
+			width: 100%;
+			color: #9b9a9a;
+			margin-top: 5px;
+		}
+		form>div{
+			height: 70px;
+			position: relative;
+			font-size: 17px;
+			margin-bottom: 10px;
+		}
+		form>.mertia{
+			height: 140px;
+		}
+		form>div>div,form>div>input{
+			display: inline-block;
+			position: absolute;
+		}
+		form .icon{
+			display: inline-block;
+			margin-top: 25px;
+			margin-left: 0px;
+			width: 15px;
+			height: 25px;
+			line-height: 17px;
+			font-size: 23px;
+			color: red;
+		}
+		form .releaseOption{
+			display: inline-block;
+			margin-top: 15px;
+			margin-left: 20px;
+			width: 115px;
+			height: 30px;
+			line-height: 30px;
+		} 
+		form .select,form input{
+			top: 15px;
+			left: 200px;
+			width: 300px;
+			height: 35px;
+			border: 1px solid #9b9a9a;
+			font-size: 15px;
+			padding-left: 15px;
+		}
+		form .select ul{
+            margin: 0px;
+            padding: 0;
+        }
+        form .select .top{
+            position: relative;
+        }
+        form .select .top i{
+        	font-size: 16px;
+            width: 300px;
+            height: 35px;
+            display: block;
+            line-height: 35px;
+			font-style:normal;
+        }
+        form .select .word{
+            position:absolute ;
+            left: 0;
+            top:33px;
+            display: none;
+            margin-left: -16px;
+            z-index: 99999;
+            border: 1px solid #9b9a9a;
+        }
+        form .select .word li{
+            width: 301px;
+            height: 40px;
+            line-height: 35px;
+            padding-left: 15px;
+            border-bottom: 1px solid #9b9a9a;
+            background-color: #fff;
+            font-size: 16px;
+        }
+        form .select .word li:hover{
+            background-color:#eca677;
+        }
+		form .budgetUnit{
+			top: 22px;
+			left: 523px;
+		}
+		form .annotation{
+			top: 54px;
+			left: 206px;
+			font-size: 14px;
+		}
+		form .budget_annotation{
+			color: red;
+		}
+		.mertia>.chioces{
+			clear: both;
+			margin-top:70px;
+			margin-left:20px;
+		}
+		.mertia>.chioces>div{
+			position: relative;
+		}
+		.mertia>.chioces>div>input,.mertia>.chioces>div>span{
+			position: absolute;
+		}
+		.mertia>.chioces>div>span{
+            width: 80px;
+			display: inline-block;
+		}
+		.mertia>.chioces>div>input{
+			height: 10px;
+			width: 10px;
+		}
+		.mertia>.chioces>div>.payWay{
+			top: 8px;
+			left:0px;
+		}
+		.mertia>.chioces>div>.payWay1{
+			top: 15px;
+			left:200px;
+		}
+		.mertia>.chioces>div>.buyerPay{
+			top: 8px;
+			left:220px;
+		}
+		.mertia>.chioces>div>.payWay2{
+			top: 15px;
+			left:340px;
+		}
+		.mertia>.chioces>div>.bossPay{
+			top: 8px;
+			left:360px;
+		}
+		.mertia>.chioces>div>.installWay{
+			top: 42px;
+			left:0px;
+		}
+		.mertia>.chioces>div>.installWay1{
+			top: 49px;
+			left:200px;
+		}
+		.mertia>.chioces>div>.freeInstall{
+			top: 42px;
+			left:220px;
+		}
+		.mertia>.chioces>div>.installWay2{
+			top:49px;
+			left:340px;
+		}
+		.mertia>.chioces>div>.payInstall{
+			top: 42px;
+			left:360px;
+		}
+		.mertia>.chioces>div>.installWay3{
+			top:49px;
+			left:470px;
+		}
+		.mertia>.chioces>div>.noInstall{
+			top:42px;
+			left:490px;
+		}
+		form .detail{
+			width: 480px;
+			height: 250px;
+		}
+		.wangEditor-container{
+			margin-left: 200px !important;
+			width: 400px;
+		}
+		form .detailInfo{
+			width: 100%;
+			height: 235px;
+		}
+		.wangeditor-menu-img-ccw,.wangeditor-menu-img-cw{
+			color: #7c9bd5;
+		}
+		.wangEditor-menu-container {
+			background-color: #f1f1f1;
+			border-bottom: 1px solid gainsboro;
+		}
+		form button{
+			background-color: #da2f2f;
+			border:  1px solid #da2f2f;
+			color: #ffffff;
+			width: 150px;
+			height: 30px;
+			margin-left: 350px;
+			font-size: 20px;
+		}
+		.city-picker-span{width: 138px !important;}
+	</style>
+	<body>
+		<div class="Head">
+			<a href="secondDemand"><div class="adLogo"></div></a>
+			<div class="position"><span class="current_position">
+					<!--<input class="form-control" onfocus="this.blur()" type="text" data-toggle="city-picker"
+						   data-level="province"   style="border: 0;/*display: none*/">
+				</span><span class="change_position"> [ 切换城市 ]</span>-->
+				<div style="position:relative; left: 200px;top: 15px;">
+								<input readonly type="text" data-toggle="city-picker" value="北京市/北京市/东城区" name="region">
+							</div>
+			</div>
+			<div class="privateAccount">
+					<ul>
+						<li><a>cyw99</a><span class="addmore"></span></li>
+						<li><a>消息</a><span class="addmore"></span></li>
+						<li><a>帮助</a><span></span></li>
+				    </ul>
+				</div>
+		</div>
+		<div class="contenWrap">
+			<div class="myRelease">
+				<div class="releaseStep">
+					<div class="step_one">1、填写信息</div><div class="step_two">2、完成发布</div>
+				</div>
+				<form action="" method="">
+					<div class="categories">
+						<div class="icon">*</div>
+						<div class="releaseOption">所在区域</div>
+							<div style="position:relative; left: 200px;top: 15px;">
+								<input readonly type="text" data-toggle="city-picker" value="北京市/北京市/东城区" name="region">
+							</div>
+
+					</div>
+					<div class="industries">
+						<div class="icon">*</div>
+						<div class="releaseOption">供货地区</div>
+						<div class="select">
+					        <ul>
+					            <li class="top"> <i>你好，select!</i>
+					                <ul class="word">
+					                    <li>你好，word01！</li>
+					                    <li>你好，word02！</li>
+					                    <li>你好，word03！</li>
+					                    <li>你好，word04！</li>
+					                </ul>
+					            </li>
+					        </ul>
+					    </div>
+					    <div class="selectIcon"></div>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">材料类别</div>
+						<div class="select">
+							<ul>
+								<li class="top"> <i>你好，select!</i>
+									<ul class="word">
+										<li>你好，word01！</li>
+										<li>你好，word02！</li>
+										<li>你好，word03！</li>
+										<li>你好，word04！</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="selectIcon"></div>
+					</div>
+					<div class="mertia">
+						<div class="icon">*</div>
+						<div class="releaseOption">材料品牌</div>
+						<div class="select">
+							<ul>
+								<li class="top"> <i>你好，select!</i>
+									<ul class="word">
+										<li>你好，word01！</li>
+										<li>你好，word02！</li>
+										<li>你好，word03！</li>
+										<li>你好，word04！</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="selectIcon"></div>
+						<div class="chioces">
+							<div><span class="payWay">运费支付</span>
+								<input type="radio" name="payWay" class="payWay1"/><span class="buyerPay">买家支付</span>
+								<input type="radio" name="payWay" class="payWay2"/><span class="bossPay">卖家支付</span></div>
+							<div><span class="installWay">安装</span>
+								<input class="installWay1" type="radio" name="installWay"/><span class="freeInstall">免费安装</span>
+								<input  class="installWay2" type="radio" name="installWay" /><span class="noInstall">不包安装</span>
+								<input  class="installWay3" type="radio" name="installWay" /><span class="payInstall">付费安装</span></div>
+						</div>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">原价</div>
+						<input type="" name="" id="" value="" /><div class="budgetUnit">元</div>
+						<div class="annotation budget_annotation"><div></div>不填则为面议</div>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">折扣价</div>
+						<input type="" name="" id="" value="" /><div class="budgetUnit">元</div>
+						<div class="annotation budget_annotation"><div></div>不填则为面议</div>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">上传图片</div>
+						<div class="upload"><div></div><span></span></div>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">标题</div>
+						<input type="" name="" id="" value="" placeholder="请输入标题"/>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">联系人</div>
+						<input type="" name="" id="" value="" placeholder="请输入联系人"/>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">联系电话</div>
+						<input type="" name="" id="" value="" placeholder="请输入联系电话"/>
+					</div>
+					<div class="detail">
+						<div class="icon">*</div>
+						<div class="releaseOption">详细信息</div>
+						<div class="detailInfo" id="wangEditor">
+							<p>请输入内容……</p>
+						</div>
+					</div>
+					
+					<button>发&nbsp;布</button>
+				</form>
+			</div>
+		</div>
+		<script>
+	        $(function(){
+	            $('.categories i').click(function(){
+	                $('.categories .word').slideToggle();
+	            })
+	            $('.categories .word li').click(function(){
+	                var Oname=$(this).html();
+	                $('.categories i').html(Oname);
+	                $('.categories .word').slideUp()
+	            })
+	             $('.industries i').click(function(){
+	                $('.industries .word').slideToggle();
+	            })
+	            $('.industries .word li').click(function(){
+	                var iname=$(this).html();
+	                $('.industries i').html(iname);
+	                $('.industries .word').slideUp()
+	            })
+				$(".city-select dl dd a").on("click",function () {
+					console.log($(".city-picker-input").val());
+					setTimeout(function () {
+						window.localStorage.setItem("area",$(".city-picker-input").val());
+					},0)
+				});
+				$(".city-picker-input").val(window.localStorage.getItem("area"));
+
+	        })
+    </script>
+	</body>
+</html>

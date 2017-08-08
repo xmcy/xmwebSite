@@ -1,0 +1,818 @@
+
+<style>
+    .paging{
+        clear: both;
+        width:100%;
+        height: 80px;
+        margin-bottom: 40px;
+    }
+    .paging>ul{
+        position: relative;
+        left: 550px;
+    }
+    .table>li{
+        float: left;
+        margin-right: 30px;
+        margin-top: 5px;
+    }
+    .contentshow{
+        height: auto;
+        font-size: 13px;
+    }
+    .contentlist{
+        width: 100%;
+        height: auto;
+    }
+    .contentlist>div{
+        display: inline-block;
+        width:297px;
+        height: 180px;
+        margin-left: 25px;
+        margin-bottom: 20px;
+        position: relative;
+    }
+    .contentlist>div>img{
+        width: 297px;
+        height: 180px;
+        margin-bottom: 2px;
+        border-left: 1px solid gainsboro;
+        border-right: 1px solid gainsboro;
+    }
+    .contentlist>div>.mask{
+        width: 297px;
+        height: 180px;
+        font-size: 15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity:0.6;
+        background-color: #000;
+        display: none;
+    }
+    .contentlist>div>.mask>.handleremind{
+        float:left ;
+        margin-left: 18%;
+        margin-top:25%;
+        width: 200px;
+        height: 40px;
+        opacity: 1;
+        cursor: pointer;
+        position:relative;
+    }
+    .contentlist>div>.mask>.handleremind>a{
+        position:absolute;
+        top: 10px;
+        left: 60px;
+        width: 80px;
+        color: #fff;
+    }
+    .fileInput{
+        height: 200px;
+        overflow: hidden;
+        font-size: 300px;
+        position: absolute;
+        right: 0px;
+        top: -40px;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        cursor: pointer;
+        width: 200px;
+        height: 115px;
+
+    }
+    .addfileInput{
+        height:100px;
+        width: 290px;
+        overflow: hidden;
+        font-size: 300px;
+        position:absolute;
+        right:0px;
+        top:20px;
+        opacity: 0;
+        filter:alpha(opacity=0);
+        cursor:pointer;
+    }
+    .contentlist>div>.mask>.deleteIcon{
+        width: 25px;
+        height: 25px;
+        float: right;
+        margin-top: 150px;
+        opacity: 1;
+        background:url("/themes/lanmai/images/privatecenter.png") -28px -77px ;
+    }
+    .contentlist>div>.mask>.deleteIcon>a{
+        width: 25px;
+        height: 25px;
+        display: block;
+    }
+    .contentlist>div>.relevant{
+        width: 100%;
+        height: 20px;
+    }
+    .contentlist>div>.relevant>span{
+        float: right;
+        padding-top: 1px;
+    }
+    .dropdown>button{
+        background-color: #fff;
+        color: rgb(112,112,112);
+        width:100px;
+        border-radius:0 ;
+        font-size: 13px;
+        float: left;
+        border: 1px solid gainsboro;
+    }
+    .dropdown{
+        float: left;
+    }
+    #update .btn{
+        font-size: 12px;
+        padding-top: 1px;
+        padding-left: 1px;
+        padding-bottom: 1px;
+        border-radius: 0;
+        outline: none;
+    }
+    .dropdown, .dropup, .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+        width: 100px;
+    }
+    .handle{
+        width: 300px;
+        margin: 0 auto;
+    }
+    .handle>button{
+        width: 120px;
+        height: 30px;
+        background-color: #da2f2f;
+        border: 1px solid  #da2f2f;
+        margin: 100px 28px 80px 0;
+    }
+</style>
+
+<div class="row" ng-controller="BrandPromotion" >
+    <div class="col-xs-12">
+        <div class="panel">
+            <a href="#addNewPromotion" role="button" class="btn btn-primary btn-sm" data-toggle="modal"><span class="fa fa-plus-square" aria-hidden="true">&nbsp;</span>新增品牌推广</a>
+            <a href="#addNewUser" role="button" class="btn btn-primary btn-sm" data-toggle="modal"><span class="fa fa-plus-square" aria-hidden="true">&nbsp;</span>新增用户</a>
+        </div>
+          <div class="box">
+            <div class="box-body table-responsive no-padding" >
+                <table class="table">
+                    <tr>
+                        <td>
+                            <input readonly type="text" data-toggle="city-picker" value="" id="region" >
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" type="button" id="resetDistrict"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 重置地区</button>
+                        </td>
+                        <td>公司名称：
+                            <input  type="text"  value="" ng-model="companyName">
+                        </td>
+                        <td>购买服务：
+                            <input type="checkbox" class="mini" id="ckPriorShow1" ng-model="ckPriorShow" disabled/>优先展示
+                            <input type="checkbox" class="mini" id="ckEbook1" ng-model="ckEbook"/>数字期刊
+                            <input type="checkbox" class="mini" id="ckVR1" ng-model="ckVR"/>VR展馆
+                            <input type="checkbox" class="mini" id="ckWeMedia1" ng-model="ckWeMedia"/>自媒体渠道
+                        </td>
+                        <td>支付状态：
+                            <select id="selProPay" ng-model="billState">
+                                <option value="" >全部</option>
+                                <option value="未支付" >未支付</option>
+                                <option value="已支付" >已支付</option>
+                            </select>
+                        </td>
+                        <td>推广周期：
+                            <select id="selProPeriod" ng-model="period">
+                                <option value=""  >全部</option>
+                                <option value="1季度" >1季度</option>
+                                <option value="半年" >半年</option>
+                                <option value="1年">1年</option>
+                            </select>
+                        </td>
+                        <td>过期状态：
+                            <select id="selProPeriod" ng-model="expire">
+                                <option value="" >全部</option>
+                                <option value="false" >未过期</option>
+                                <option value="true" >已过期</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" type="button" ng-click="searchForEbookManage()"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 搜索</button>
+                        </td>
+                    </tr>
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+        <div class="box">
+            <div class="box-body table-responsive no-padding" >
+                <table class="table table-hover">
+                    <tr>
+                        <th><input type="checkbox" class="mini" id="selectAll"/></th>
+                        <th>地区</th>
+                        <th>公司</th>
+                        <th>联系人</th>
+                        <th>电话</th>
+                        <th>邮箱</th>
+                        <th>支付状态</th>
+                        <th>推广周期</th>
+                        <th>截至时间</th>
+                        <th>优先展示</th>
+                        <th>数字期刊</th>
+                        <th>VR展馆</th>
+                        <th>自媒体渠道</th>
+                    </tr>
+                    <tr class="datalist" ng-repeat="item in dataList">
+                        <td><input type="checkbox" name="listItem" class="mini" value="{{user._id}}" ng-click="getNewIds()"/></td>
+                        <td class="  ">{{item.company.region}}</td>
+                        <td class=" ">{{item.company.companyName}}</td>
+                        <td class=" ">{{item.company.contacts}}</td>
+                        <td class=" ">{{item.company.phoneNum}}</td>
+                        <td class=" ">{{item.company.email}}</td>
+                        <td class=" ">{{item.bill.billState}}</td>
+                        <td class=" ">{{item.period}}</td>
+                        <td class=" ">{{item.promotionEnd}}</td><!-- 当状态不为'未购买'时，后面要有更新按钮，点击更新按钮弹出模态框，可以更新状态可以更新图片资源 -->
+                        <td class=" ">{{item.priorShowState}}  <a href="#update" data-whatever="{{item._id}}" data-type="priorShowState" ng-if="item.priorShowState!=='未购买'" role="button" class="btn btn-primary btn-sm" data-toggle="modal">更新</a></td>
+                        <td class=" ">{{item.eBookState}}<a href="#update" data-whatever="{{item._id}}" data-type="eBookState" ng-if="item.eBookState!=='未购买'" role="button" class="btn btn-primary btn-sm" data-toggle="modal">更新</a></td>
+                        <td class=" ">{{item.VRState}}<a href="#update" data-whatever="{{item._id}}" data-type="VRState" ng-if="item.VRState!=='未购买'" role="button" class="btn btn-primary btn-sm" data-toggle="modal">更新</a></td>
+                        <td class=" ">{{item.weMediaState}}<a href="#update" data-whatever="{{item._id}}" data-type="weMediaState" ng-if="item.weMediaState!=='未购买'" role="button" class="btn btn-primary btn-sm" data-toggle="modal">更新</a></td>
+
+                    </tr>
+                </table>
+            </div><!-- /.box-body -->
+            <div class="paging">
+                <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页" first-text="第一页" last-text="最后一页"
+                            next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+                            items-per-page="itemsPerPage"></pagination>
+            </div>
+        </div><!-- /.box -->
+
+    </div><!-- /.col -->
+
+
+</div>
+<!--添加新增品牌推广模态窗口-->
+<div class="modal fade" id="addNewPromotion">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增品牌推广</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal" id="addNewPromotionBody">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">用户</label>
+                        <div class="col-sm-6">
+                            <input type="text" placeholder="输入用户手机号" id="user">
+                            <input type="button" value="查询" id="searchCompany">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">公司</label>
+                        <div class="col-sm-6">
+                            <input readonly type="text" id="companyName">
+                            <input readonly type="hidden" id="companyId">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">地区</label>
+                        <div class="col-sm-6"><!-- 这里不是地址控件 拼接显示查询出的公司地区 -->
+                            <input readonly type="text" id="region5">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">联系人</label>
+                        <div class="col-sm-6">
+                            <input readonly type="text" id="contacts">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">电话</label>
+                        <div class="col-sm-6">
+                            <input readonly type="text" id="phoneNum">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">邮箱</label>
+                        <div class="col-sm-6">
+                            <input readonly type="text" id="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">推广周期</label>
+                        <div class="col-sm-6">
+                            <select id="selProPeriod2">
+                                <option value="" selected="selected"></option>
+                                <option value="1季度" >1季度</option>
+                                <option value="半年" >半年</option>
+                                <option value="1年">1年</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">购买服务</label>
+                        <div class="col-sm-6"><!-- 优先展示为必选 -->
+                            <input type="checkbox" class="mini"  id="ckPriorShow" disabled/>优先展示
+                            <input type="checkbox" class="mini" id="ckEbook"/>数字期刊
+                            <input type="checkbox" class="mini" id="ckVR"/>VR展馆
+                            <input type="checkbox" class="mini" id="ckWeMedia"/>自媒体渠道
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">总价格</label>
+                        <div class="col-sm-6">
+                            <input readonly type="text" id="totalPrice">
+                            <button type="submit" class="btn btn-primary" id="totalPriceSearch">查询价格</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="submit">提交</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--添加新用户-->
+</div>
+
+<div class="modal fade" id="addNewUser">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增用户</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal" id="addNewUserBody">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">用户</label>
+                        <div class="col-sm-6">
+                            <input type="text" placeholder="输入用户手机号" id="phoneNum1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">地区</label>
+                        <div class="col-sm-6">
+                            <input  type="text" data-toggle="city-picker" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">公司名称</label>
+                        <div class="col-sm-6">
+                            <input  type="text" id="companyName1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">联系人</label>
+                        <div class="col-sm-6">
+                            <input  type="text" id="contacts1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">电话</label>
+                        <div class="col-sm-6">
+                            <input  type="text" id="phoneNum2">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">邮箱</label>
+                        <div class="col-sm-6">
+                            <input  type="text" id="email1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">注：</label>
+                        <div class="col-sm-6">
+                            <label class="control-label">用户手机号公司名为必填其它选填</label>
+                            <label class="control-label">密码随机生成并短信发送给用户</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="submit1">提交</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div><!-- /.row -->
+
+<div class="modal fade bs-example-modal-lg" id="update" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">更改状态</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal" id="addUpdateBody">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">状态</label>
+                        <select class="col-sm-3" id="state">
+                            <option value="未购买">未购买</option>
+                            <option value="沟通传递素材">沟通传递素材</option>
+                            <option value="制作中">制作中</option>
+                            <option value="服务中">服务中</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-1">图片</label>
+                        <div  class="contentshow col-sm-11">
+                            <div class="contentlist " id="bannercontentlist">
+                                <div class="bannercontent" id="AddFile">
+                                    <img src="/themes/lanmai/images/addfile.png"/>
+                                    <input class="addfileInput banneraddfile" id="" type="file" name="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="submit2">提交</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div><!-- /.row -->
+
+<script>
+    $(function () {
+        var editId="";
+        var type="";
+        var nowObj={};
+        var str="";
+        var listitem;
+        var deleteIcon=$(".deleteIcon");
+        var bannerimgcount=$(".bannerimg").length;
+        listitem=$(".contentlist div .shopimg");
+        $(listitem).bind("mouseover",function () {
+            $(this).next().show();
+        })
+        $(".mask").bind("mouseout",function () {
+            $(this).hide();
+        })
+        $(".banneraddfile").change(function (e) {
+            if($(".contentlist>div").length==7){
+                swal({
+                    title: "达到上传图片上限，请删除后再上传图片!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            var that=this;
+            var file = this.files[0];
+            var fileType=file.type.split('/')[1];
+            $.getCos("promotion/BrandPromotion","",fileType,file,function (res) {
+                str='<div class="bannercontent">'+'<img class="shopimg bannerimg" src="'+res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net')+'"/>'+
+                        ' <div class="mask" style="display: none">'+ '<div class="handleremind"><a>点击修改</a><input class="fileInput" id="" type="file" name="">'+
+                        '</div> <div class="deleteIcon"><a></a></div> </div></div>';
+                $("#bannercontentlist").prepend($(str));
+                listitem=$(".contentlist div .shopimg");
+                $(listitem).bind("mouseover",function () {
+                    $(this).next().show();
+                })
+                $(".mask").bind("mouseout",function () {
+                    $(this).hide();
+                })
+                $(".deleteIcon").on("click",function () {
+                    $(this).parent().parent().remove();
+                })
+            })
+        })
+        $(deleteIcon).on("click",function () {
+            $(this).parent().parent().remove();
+        })
+        $("input[type='file']").change(function(e){
+            var that=this;
+            var file = this.files[0];
+            var fileType=file.type.split('/')[1];
+            $.getCos("promotion/BrandPromotion","",fileType,file,function (res) {
+                console.log(res)
+                $(that).parent().parent().parent().children(".shopimg").attr("src",res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+            })
+        })
+
+        $("#resetDistrict").on("click",function () {
+            $('#region').citypicker("reset");
+            $("#region").scope().regionStr="";
+            $("#region").scope().region={}
+            $("#region").scope().regionForSearch={}
+            $("#region").scope().$apply();
+        })
+        document.addEventListener("listen", function (e) {
+            $("#region").scope().regionStr=finalText;
+            $("#region").scope().$apply();
+        }, false);
+
+        $("#ckPriorShow").prop("checked",true)
+
+        $("#ckPriorShow1").prop("checked",true)
+
+        $("#searchCompany").on("click",function () {
+            var user=$("#user").val();
+            if(user==""||user.length!==11){
+                swal({
+                    title: "请填写正确手机号码再搜索!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+            }
+            $.post("/admin/manage/queryCompanyInfoByPhoneNum",{
+                phoneNum:user
+            },function (res) {
+                if(typeof res=="object"){
+                    if(res.company.company.companyName&&res.company.company.companyName!==""){
+                        $("#companyName").val(res.company.company.companyName);
+                    }else{
+                        $("#companyName").val("已经查到商铺但无商铺名");
+                    }
+                    $("#companyId").val(res.company.company._id)
+                    $("#email").val(res.company.company.email)
+                    $("#contacts").val(res.company.company.contacts)
+                    $("#region5").val(res.company.company.region)
+                    $("#phoneNum").val(res.company.company.phoneNum)
+                }else {
+                    swal({
+                        title: "此手机号查不到关联店铺!",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                }
+            })
+        })
+
+        $("#totalPriceSearch").on("click",function () {
+            var selProPeriod2=$("#selProPeriod2").val();
+            var ckEbook=$("#ckEbook").prop("checked");
+            var ckVR=$("#ckVR").prop("checked");
+            var ckWeMedia=$("#ckWeMedia").prop("checked");
+
+            if(selProPeriod2==""){
+                swal({
+                    title: "请选择周期再搜索!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+            }
+            $.post("/queryBrandPromotionPrice",{
+                period:selProPeriod2,
+                priorShow:1,
+                eBook:ckEbook,
+                VR:ckVR,
+                weMedia:ckWeMedia
+            },function (res) {
+                if(typeof res=="object"){
+                    $("#totalPrice").val(res.discountPrice)
+                }else {
+                    swal({
+                        title: "查询失败!",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                }
+            })
+        })
+
+        $("#submit").on('click',function () {
+            var selProPeriod2=$("#selProPeriod2").val();
+            var companyId=$("#companyId").val();
+            var eBook=$("#ckEbook").prop("checked")
+            var VR=$("#ckVR").prop("checked")
+            var weMedia=$("#ckWeMedia").prop("checked")
+            var phoneNum=$("#user").val()
+
+            if(selProPeriod2==""||companyId==""){
+                swal({
+                    title: "请填写完整",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            $.post("/admin/manage/addNewPromotion",{
+                companyId:companyId,
+                period:selProPeriod2,
+                eBook:eBook,
+                VR:VR,
+                phoneNum:phoneNum,
+                weMedia:weMedia
+            },function (res) {
+                if(res=="success"){
+                    swal({
+                        title: "提交成功",
+                        type: "success",
+                        confirmButtonText: "确定"
+                    });
+                    $('#companyId').scope().flag=Math.random();
+                    $('#companyId').scope().$apply();
+                    $("#addNewPromotion").modal('hide')
+                }else {
+                    swal({
+                        title: res,
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                }
+            })
+        })
+
+        $("#submit1").on('click',function () {
+            var phoneNum1=$("#phoneNum1").val();
+            var companyName1=$("#companyName1").val();
+            var contacts1=$("#contacts1").val();
+            var email1=$("#email1").val();
+            var region=finalText.split('/')
+            var regionObj={}
+            regionObj.province=region[0];
+            regionObj.city=region[1];
+            if(region.length==3){
+                regionObj.district=region[2];
+            }else{
+                regionObj.district="";
+            }
+            if(phoneNum1==""||companyName1==""){
+                swal({
+                    title: "请填写完整",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            var dataForPost={
+                phoneNum:phoneNum1,
+                region:regionObj,
+                companyName:companyName1,
+                email:email1,
+                contacts:contacts1
+            }
+            $.ajax({
+                url:"/admin/manage/addNewUser",
+                data:JSON.stringify(dataForPost),
+                type:"POST",
+                dataType:"json",
+                contentType:"application/json",
+                success:function(res){
+                    if(res.result=="success"){
+                        swal({
+                            title: "发布成功!",
+                            type: "success",
+                            confirmButtonText: "确定"
+                        });
+                        $('#companyId').scope().flag=Math.random();
+                        $('#companyId').scope().$apply();
+                        $("#addNewUser").modal('hide')
+                    }else{
+                        swal({
+                            title: res,
+                            type: "error",
+                            confirmButtonText: "确定"
+                        });
+                    }
+                },
+                error:function (res) {
+                    swal({
+                        title: res,
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    console.log("error"+res);
+                }
+            })
+        })
+
+        $("#submit2").on('click',function () {
+            var priorShow=0;
+            var eBook=0;
+            var VR=0;
+            var weMedia=0;
+            var imgsForPost=[]
+            var bannerimg=$('.bannerimg');
+            var bannerimgcount=bannerimg.length;
+            for (var i=0;i<bannerimgcount;i++){
+                imgsForPost.push($(bannerimg[i]).attr("src"));
+            }
+            var stateForPost=$("#state").val();
+            if(type=="priorShowState"){
+                priorShow=1
+            }else if(type=="eBookState"){
+                eBook=1
+            }else if(type=="VRState"){
+                 VR=1
+            }else if(type=="weMediaState"){
+                weMedia=1
+            }
+
+            var dataForPost={
+                promotionId:editId,
+                priorShow:priorShow,
+                eBook:eBook,
+                VR:VR,
+                weMedia:weMedia,
+                state:stateForPost,
+                imgs:imgsForPost
+            }
+            $.ajax({
+                url:"/admin/manage/updatePromotion",
+                data:JSON.stringify(dataForPost),
+                type:"POST",
+                dataType:"json",
+                contentType:"application/json",
+                success:function(res){
+                    if(res.result=="success"){
+                        swal({
+                            title: "发布成功!",
+                            type: "success",
+                            confirmButtonText: "确定"
+                        });
+                        $('#companyId').scope().flag=Math.random();
+                        $('#companyId').scope().$apply();
+                        $("#update").modal('hide')
+                    }else{
+                        swal({
+                            title: res,
+                            type: "error",
+                            confirmButtonText: "确定"
+                        });
+                    }
+                },
+                error:function (res) {
+                    swal({
+                        title: res,
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    console.log("error"+res);
+                }
+            })
+        })
+
+
+        $('#addNewPromotion').on('show.bs.modal', function (event) {
+            $("#searchCompany").val("查询")
+        }).on('hidden.bs.modal', function (e) {
+           $("#addNewPromotionBody input").val("")
+        });
+
+
+        $('#addNewUser').on('show.bs.modal', function (event) {
+
+        }).on('hidden.bs.modal', function (e) {
+            $("#addNewUserBody input").val("")
+        });
+
+        $('#update').on('show.bs.modal', function (event) {
+            var obj = $(event.relatedTarget);
+            editId = obj.data('whatever');
+            type=obj.data('type');
+            var dataList=$('#region').scope().dataList
+            nowObj={}
+            var imgArr=[]
+            var state=''
+            for(var i=0;i<dataList.length;i++){
+                if(dataList[i]._id==editId){
+                    nowObj=dataList[i]
+                }
+            }
+            if(type=="priorShowState"){
+                imgArr=nowObj.priorShowImgs
+                state=nowObj.priorShowState
+            }else if(type=="eBookState"){
+                imgArr=nowObj.ebookImgs
+                state=nowObj.eBookState
+            }else if(type=="VRState"){
+                imgArr=nowObj.vrImgs
+                state=nowObj.VRState
+            }else if(type=="weMediaState"){
+                imgArr=nowObj.weMediaImgs
+                state=nowObj.weMediaState
+            }
+            $("#state").val(state)
+
+            if(imgArr.length>0){
+                var str=''
+                for(var j=0;j<imgArr.length;j++){
+                    str='<div class="bannercontent">'+'<img class="shopimg bannerimg" src="'+imgArr[j]+'"/>'+
+                            ' <div class="mask" style="display: none">'+ '<div class="handleremind"><a>点击修改</a><input class="fileInput" id="" type="file" name="">'+
+                            '</div> <div class="deleteIcon"><a></a></div> </div></div>';
+                    $("#bannercontentlist").prepend($(str));
+                }
+                listitem=$(".contentlist div .shopimg");
+                $(listitem).bind("mouseover",function () {
+                    $(this).next().show();
+                })
+                $(".mask").bind("mouseout",function () {
+                    $(this).hide();
+                })
+                $(".deleteIcon").on("click",function () {
+                    $(this).parent().parent().remove();
+                })
+            }
+
+        }).on('hidden.bs.modal', function (e) {
+            $("#state").val("")
+            $("#bannercontentlist").children("").not("#AddFile").remove()
+        });
+    })
+
+</script>

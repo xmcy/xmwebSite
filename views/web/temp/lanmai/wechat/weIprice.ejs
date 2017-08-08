@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height;initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>制作宝-我要报价</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/weui.min.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/myStyle.css">
+     <!--引入 WeUI -->
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/0.4.0/weui.min.css">
+   <script src="/themes/<%=staticforder%>/js/zepto.min.js"></script>
+    <style>
+        .weui-picker{position:fixed;width:100%;left:0;bottom:0;z-index:5000;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateY(100%);transform:translateY(100%);-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s}
+    </style>
+</head>
+<body ontouchstart>
+	<div class="weMyContainer">
+        <!--banner搜索的部分开始-->
+        <div class="lmPriceBanner"><!--lmIndexBanner-->
+            <!--位置信息的显示开始-->
+            <div class="lmPriceLocation"><!--lmIndexLocatin-->
+                <img src="/themes/<%=staticforder%>/images/web0102.png" alt="">
+                <span id="cascadePickerBtn">武汉.洪山</span>
+            </div>
+            <!--位置信息的显示结束-->
+        </div>
+        <!--banner搜索的部分结束-->
+        <div class="lmAskPriceListKinds clearfix">
+            <div class="lmAskPriceListTitle clearfix">
+                <a href="javascript:;">
+                    <i><img src="/themes/<%=staticforder%>/images/web0501.png"></i>
+                    <span>印刷</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="/themes/<%=staticforder%>/images/web0502.png"></i>
+                    <span>立体字</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="/themes/<%=staticforder%>/images/web0503.png"></i>
+                    <span>喷绘写真</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="/themes/<%=staticforder%>/images/web0504.png"></i>
+                    <span>灯箱标识</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="/themes/<%=staticforder%>/images/web0505.png"></i>
+                    <span>展示器材</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="/themes/<%=staticforder%>/images/web0506.png"></i>
+                    <span>展览布置</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="/themes/<%=staticforder%>/images/web0508.png"></i>
+                    <span>门头招牌</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="/themes/<%=staticforder%>/images/web0507.png"></i>
+                    <span>广告定制</span>
+                </a>
+            </div>
+            <script>
+                $(function(){
+                    $('.lmAskPriceListTitle a').on("click",function(){
+                        $(this)/*.css({"border-bottom":"1px solid #FB6383"})*/.children("span").css({color:"#FB6383"}).parents().siblings()/*.css({"border-bottom":"1px solid #fff"})*/.children("span").css({color:"#b3b3b3"});
+                    })
+                })
+            </script>
+            <div class="lmIGivePriceListContainer">
+                <ul>
+                    <li class="lmGivePriceListForm">
+                        <ul class="lmGivePriceListForm01">
+                            <li>
+                                <span style="color: #717070;padding-left: 1.5em">印刷广告</span>
+                                <span style="margin-left: 7em;">报价</span>
+                                <input type="text" value="" placeholder="输入报价">
+                                <span>元/ <i>平米</i> </span>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+        <script src="/themes/<%=staticforder%>/js/weui.min.js"></script>
+        <script src="/themes/<%=staticforder%>/js/mystyle.js"></script>
+    </div>
+</body>
+</html>
+

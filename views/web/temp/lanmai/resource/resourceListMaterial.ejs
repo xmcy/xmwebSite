@@ -1,0 +1,1045 @@
+<style type="text/css">
+	.warningInfoData{
+		margin: 0 auto;
+		width: 200px !important;
+		height: 50px !important;
+	}
+	.warningInfoData:hover{
+		background-color: #fff !important;
+
+	}
+	.paging{
+		clear: both;
+		width:100%;
+		height: 80px;
+		margin-bottom: 40px;
+	}
+	.paging>ul{
+		position: relative;
+		left: 250px;
+	}
+
+	body,a{
+		color: grey;
+	}
+	input,button{
+		outline: none;
+	}
+	.contenWrap{
+		padding-top: 20px;
+		margin-top: 20px;
+	}
+	.privateNav>ul{
+		float: right;
+		height: 22px;
+	}
+	.privateNav>ul>li{
+		height: 20px;
+		float: left;
+		width:85px;
+		text-align: center;
+		margin-right: 5px;
+	}
+	.privateNav>ul>li a{
+		color: #b0b0b0;
+	}
+	.privateNav .addmore{
+		display:inline-block;
+		width:0;
+		height:0;
+		border-left:5px solid transparent;
+		border-right:5px solid transparent;
+		border-top:7px solid grey;
+		margin: 0 7px 0 7px;
+	}
+	.header .city-picker-input {
+		font-size: 15px;
+		font-weight: 500;
+		color: rgb(112,112,112);
+		opacity: 1 !important;
+		width: 77px;
+		top:0;
+		left:0px;
+		position: absolute;
+		cursor: pointer;
+		background-color: #fff !important;
+		text-align: center;
+		z-index: -99;
+	}
+	.header .city-picker-span{
+		width: 138px ;
+		left: 0;
+	}
+	.nav{
+		width: 100%;
+		font-size: 15px;
+		margin-bottom: 20px;
+		margin-top: 15px;
+	}
+	.nav>.categoeries{
+		display: block;
+		width: 1200px;
+
+		padding-left: 20px;
+		border-left: 1px solid #eeeeee;
+		border-right: 1px solid #eeeeee;
+	}
+	.nav>.categoeries>div{
+		border-top: 1px dotted #eeeeee;
+	}
+	.nav>.categoeries>div:last-child{
+		border-bottom: 1px solid #eeeeee;
+	}
+	.nav>div li{
+		cursor: pointer;
+	}
+	.allcategoery{
+		width: 100%;
+		border:none !important;
+		font-size: 14px;
+		height: 28px;
+		line-height:28px;
+	}
+	.allcategoery>div{
+		float: left;
+		width:140px;
+		margin-right: 25px;
+		height: 28px;
+		line-height:28px;
+		cursor: pointer;
+		position: relative;
+	}
+	.allcategoery>div>.navWord{
+		position: absolute;
+		top:0px;
+		left: 3px;
+		width: 126px;
+		text-align: center;
+		height: 25px;
+		line-height: 25px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		border: 0;
+	}
+	.allcategoery>.navcate{
+		width:82px;
+		font-size: 16px;
+	}
+	.allcategoery>.navArea,.allcategoery>.navArea>.navWord{
+		width:100px;
+		display: none;
+	}
+	/*.allcategoery>.navArea{*/
+		/*color: #e7c276*/
+	/*}*/
+	.allcategoery>div>.deleteIcon{
+		position: absolute;
+		top:1px;
+		right: 2px;
+	}
+	.allcategoery>ul>li{
+		float: left;
+		width:118px;
+		height:40px;
+		line-height:40px;
+		margin-right:5px;
+		text-align: left;
+	}
+	.allcategoery>ul>li>.deleteIcon{
+		display: inline-block;
+	}
+	.demandChoice{
+		float: left;
+		width: 85%;
+
+	}
+	.demandChoice>div{
+		float: left;
+		width: 70px;
+		margin-right: 30px;
+		height:40px;
+		line-height:40px;
+	}
+	.demandChoice>ul{
+		display: inline-block;
+		width: 90%;
+		height: 40px;
+		overflow: hidden;
+	}
+	.demandChoice>ul>li{
+		float: left;
+		height: 40px;
+		line-height: 40px;
+		width:110px;
+		text-align: center;
+		margin-right: 16px;
+	}
+	.demandChoice>ul>li>a{
+		display: inline-block;
+		height: 40px;
+		line-height:40px;
+	}
+	.chooseMore{
+		float: right;
+		width: 53px;
+		cursor: pointer;
+	}
+	.chooseArea,.budget{
+		clear: both;
+		border-bottom:1px solid #eeeeee;
+	}
+	.budget{
+		border-top:1px solid #eeeeee;
+	}
+	.chooseArea>div{
+		display: inline-block;
+		margin-right:30px;
+		height:40px;
+		line-height:40px;
+	}
+	.areaoption{
+		top:0 !important;
+		left: 100px !important;
+	}
+	.budget>ul,.budget>div{
+		display: inline-block;
+		height: 40px;
+		line-height:40px;
+		margin-right: 1%;
+	}
+	.budget>div{
+		width: 70px;
+		float: left;
+		margin-right: 30px;
+	}
+	.budget>ul{
+		width:52%;
+	}
+	.budget>ul>li{
+		float: left;
+		height: 40px;
+		line-height:40px;
+		width: 110px;
+		text-align: center;
+		margin-right:16px;
+	}
+	.demandChoice>ul>li:first-child,.budget>ul>li:first-child,.yunFeiPay>ul>li:first-child,.fixKinds>ul>li:first-child{
+		text-align: left!important;
+		width: 90px !important;
+	}
+	.budget>.user_define{
+		float: right;
+		width: 36%;
+		position: relative;
+	}
+	.user_define>div,.user_define>span{
+		float: left;
+	}
+	.user_define>div{
+		width: 70px;
+		height: 20px;
+	}
+	.user_define>div>input{
+		width: 70px;
+		height: 22px;
+		border: 1px solid gainsboro;
+		font-size: 12px;
+		text-align: center;
+	}
+	.user_define>span{
+		margin:11px 10px 0 10px;
+		height: 20px;
+		line-height: 20px;
+	}
+	.budget .budgetSure{
+		position: absolute;
+		top: -2px;
+		right:-8%;
+		width: 45px;
+		height: 24px;
+		border-radius: 2px;
+		line-height: 22px;
+		border: 1px solid #da2f2f;
+		background-color:#da2f2f ;
+		color: #fff;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	.demandChoice>div{
+		float: left;
+		width: 70px;
+		margin-right: 30px;
+	}
+
+	.yunFeiPay,.fixKinds{
+		line-height: 40px;
+		width:100%;
+		display: block;
+		margin-bottom: 5px;
+		border-bottom:1px solid #eeeeee;
+	}
+	.yunFeiPay>ul,.fixKinds>ul{
+		margin-left: 100px;
+		height: 40px;
+	}
+	.yunFeiPay>ul>li,.fixKinds>ul>li{
+		float: left;
+		width: 110px;
+		margin-right:16px;
+		text-align: center;
+	}
+	.yunFeiPay>ul>li>a,.fixKinds>ul>li>a{
+		color:grey;
+		margin-left: 3px;
+	}
+	.contentLeft{
+		width: 74%;
+		float: left;
+		font-size: 15px;
+	}
+	.contentRight{
+		width:23%;
+		float: right;
+	}
+	.contentLeft>div{
+		position: relative;
+		width: 100%;
+		padding-left: 20px;
+		height: 169px;
+		margin-top: 15px;
+	}
+	.contentLeft>div:hover{
+		background-color:#f0f0f0 ;
+	}
+	.sorting{
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
+		background-color:#f0f0f0 ;
+	}
+	.sorting>div,.sorting>ul{
+		float: left;
+	}
+	.sorting>div>a:hover{
+		color: #b0b0b0;
+	}
+	.sorting>ul{
+		margin-left: 35px;
+	}
+	.sorting>ul>li{
+		float: left;
+		width: 80px;
+		margin-right: 15px;
+		cursor: pointer;
+	}
+	.sorting .hotLine{
+		float: right;
+		margin-right: 7px;
+		height: 40px;
+		line-height: 40px;
+		font-size: 18px;
+		color: #da2f2f;
+		background-color:#f0f0f0 ;
+	}
+	.promotbar{
+		width: 100%;
+		height: 282px;
+		background-color: #f0f0f0;
+		margin-top: 15px;
+	}
+	.promotbar>p{
+		font-size: 14px;
+		margin-top: 2px;
+		margin-left: 5px;
+	}
+	.promotbar>.promotePrice{
+		font-size: 14px;
+		color: #da2f2f;
+	}
+	.paging{
+		clear: both;
+		width:100%;
+		height: 80px;
+		margin-bottom: 40px;
+	}
+	.paging>p{
+		float: left;
+		margin: 2% 5% 0 20px;
+		height: 30px;
+	}
+	.paging>p>span{
+		margin-right: 10px;
+		font-size: 15px;
+	}
+	.paging>form{
+		display: inline-block;
+	}
+	.paging li{
+		float: left;
+		display: inline-block;
+		margin-right: 7px;
+	}
+	.pagination>li:first-child>a,.pagination>li:last-child>a{
+		border: none;
+		font-size: 15px;
+	}
+	.bandPromoteTitle{
+		font-size: 22px;
+		color: #da2f2f;
+		background-color:#f0f0f0 ;
+		height: 50px;
+		line-height: 50px;
+		margin-bottom:50px;
+		padding-left: 4px;
+		font-weight:500;
+	}
+	.specificDemand{
+		width: 70%;
+		position: absolute;
+		left: 25%;
+		top: 78px;
+		background-color: #f7f5f5;
+		z-index: 999;
+		border: 2px solid #fd4848;
+		padding-right: 12px;
+		padding-left: 10px;
+	}
+	.specificDemand>h2{
+		color: #555555;
+		font-size: 22px;
+		padding: 20px 40px 20px 0;
+	}
+	.specificDemand>ul{
+		width: 100%;
+		margin-top: 10px;
+	}
+	.specificDemand>ul>li{
+		float: left;
+		width: 32%;
+		margin-right:1%;
+		height: 33px;
+		line-height: 33px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.specificDemand>ul>li>span{
+		margin: 0;
+		height: 33px;
+		line-height: 33px;
+	}
+	.specificDemand>p{
+		display: block;
+		width: 100%;
+		margin:6px 0 20px 0;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 5;
+		overflow: hidden;
+	}
+	.header .current_position span.city-picker-span{
+		width: 85px !important;
+		height: 47px !important;
+		opacity: 0;
+		filter:alpha(opacity=0) !important;
+	}
+	.header .city-select-tab{
+		display: none;
+	}
+	.header .city-picker-input{
+		font-family: "微软雅黑" !important;
+	}
+	.form-control{
+		box-shadow:none; ;
+	}
+	.resourceListName{
+		font-size: 21px;
+		color: #E12929;
+		font-weight: 500;
+		float: left;
+	}
+	.resourceListTitle{
+		width:126px;
+		height: 126px !important;
+		display: block;
+		overflow: hidden;
+		float: left;
+		margin-top: 20px;
+	}
+	.resourceListTitle>img{
+		width: 100%;
+		height: 100%;
+	}
+	.resourceListCon{
+		margin-top: 20px;
+		float: left;
+		width: 600px;
+		text-align: justify;
+		text-justify: inter-ideograph;
+	}
+	.resourceListCon_01{
+		font-size: 21px;
+	}
+	.resourceListCon_01>a{
+		color:#DA2F2F;
+	}
+	.resourceListCon>ul>li{
+		height: 50px;
+		margin-left: 20px;
+	}
+	.resourceListCon>ul>li>i{
+		width: 34px;
+		height: 34px;
+		display: block;
+		float: left;
+	}
+	.resourceListCon>ul>li.resourceListCon_01{
+		width: 100%;
+	}
+	.resourceListCon>ul>li.resourceListCon_01>a{
+		float: left;
+		width: 440px;
+	}
+	.resourceListCon>ul>li.resourceListCon_01>i{
+		margin-left: 5px;
+	}
+	.preview01{
+		width: 100px !important;
+		text-align: right;
+		font-size: 14px;
+		height: 34px;
+		line-height: 34px;
+		position: absolute;
+		top:16px;
+		right:50px;
+	}
+	.fromPerson{
+		display: inline-block;
+		width:300px;
+		background: url(/themes/lanmai/images/homeIcon.png) 0px -94px no-repeat;
+		padding-left: 30px;
+	}
+	.weekPrice{
+		position: absolute;
+		right: 50px;
+		top:64px;
+	}
+	.chooseArea span.select-item{
+		color:#B0B0B0;
+	}
+	.chooseArea{
+		position: relative;
+	}
+	.chooseArea .city-picker-span{
+		width: 230px !important;
+		border-bottom: none !important;
+		background: none !important;
+		height: 40px !important;
+		line-height: 40px !important;
+	}
+	.chooseArea .city-picker-span .arrow{
+		display: none ;
+	}
+	.city-picker-span.focus, .city-picker-span.open{
+		border-bottom-color: #B0B0B0 !important;
+	}
+	.materialListTitleOut{
+		width: 100%;
+		height: 50px;
+		display: block;
+		overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
+	}
+	.resourceListCon>ul>li>i.renzheng{
+		font-size: 15px;
+		width: 66px;
+		color: rgb(21, 150, 219);
+		border: 1px solid #d6e2ea;
+		background: #f9fdff;
+		line-height: 28px;
+		padding-left: 3px;
+		height: 28px;
+		cursor: pointer;
+	}
+	.resourceListCon>ul>li>i.renzheng1{
+		font-size: 15px;
+		width: 66px;
+		color: rgb(21, 150, 219);
+		border: 1px solid #d6e2ea;
+		background: #f9fdff;
+		line-height: 28px;
+		padding-left: 3px;
+		height: 28px;
+		cursor: pointer;
+	}
+</style>
+<div ng-controller="resourceListMaterialController">
+	<div class="nav">
+		<div class="allcategoery">
+			<div class="navcate">所有类别&nbsp;></div>
+			<%if(typeThreeObj.name){%>
+			<div class="navcate"><%=typeThreeObj.name%>></div>
+			<%}%>
+			<div class="navArea"><input hidden class="navWord" ng-model="regionData"/></div>
+			<div class="navLeibie"><input class="navWord" ng-model="typesData"/><span class="deleteIcon"></span></div>
+			<div class="navHangye"><input class="navWord" ng-model="classifyData"/><span class="deleteIcon"></span></div>
+			<div class="navPrice"><input class="navWord" ng-model="priceData"/><span class="deleteIcon"></span></div>
+			<div class="navPay"><input class="navWord" ng-model="freightTypeData"/><span class="deleteIcon"></span></div>
+		</div>
+		<div class="chooseArea"><div>选择地区</div>
+			<div class="areaoption" style="position:absolute; left: 106px;top: -5px;">
+				<input readonly type="text" data-toggle="city-picker" value="北京市/北京市/东城区" name="region" id="region">
+			</div>
+		</div>
+		<div id="">
+			<div class="demandChoice">
+				<div class="chooseProject">材料类别</div>
+				<ul class="leibie">
+					<%for(var i=0,long=currentCateList.length;i<long;i++){%>
+					<li data-selected="false" id="<%=currentCateList[i]._id%>"><%=currentCateList[i].name%></li>
+					<%}%>
+				</ul>
+			</div>
+			<div data-flag="true" class="chooseMore">更多<div class="addIcon"></div></div>
+		</div>
+		<div id="">
+			<div class="demandChoice">
+				<div class="chooseProject">材料品牌</div>
+				<ul class="hangye">
+					<%for(var i=0;i<cailiaopinpai.length;i++){%>
+					<li data-selected="false" ><%=cailiaopinpai[i]%></li>
+					<%}%>
+				</ul>
+			</div>
+			<div data-flag="true" class="chooseMore">更多<div class="addIcon"></div></div>
+		</div>
+		<div class="budget">
+			<div class="">价格区间</div>
+			<ul class="price">
+				<li data-selected="false">低于1000元</li>
+				<li data-selected="false">1000--5000元</li>
+				<li data-selected="false">5000--1万元</li>
+				<li data-selected="false">1万--5万元</li>
+				<li data-selected="false">5万元以上</li>
+			</ul>
+			<div class="user_define"><div><input class="budgetmin" type="number"  /></div><span>-</span><div><input class="budgetmax" type="number" /></div><span>元</span><span class="budgetSure">确认</span></div>
+
+		</div>
+		<div class="yunFeiPay">
+			<div style="float: left;">运费支付</div>
+			<ul class="payway">
+				<li data-selected="false">买家支付</li>
+				<li data-selected="false">卖家支付</li>
+			</ul>
+		</div>
+	</div>
+	<div class="contenWrap">
+		<div class="sorting">
+			<div><a>综合排序</a></div>
+			<ul>
+				<li class="sortingBySkin"  data-flag="true" ng-click="changeOrder('pageview')">浏览量<span class="addIcon"></span></li>
+				<li class="sortingByTime"  data-flag="true" ng-click="changeOrder('refreshedAt')">更新时间<span class="addIcon"></span></li>
+				<li class="sortingByPrice"  data-flag="true" ng-click="changeOrder('discountPrice')">价格<span class="addIcon"></span></li>
+			</ul>
+			<div class="hotLine">推广热线 : 027-87551680</div>
+		</div>
+		<div class="contentLeft">
+			<div style="position: relative;" ng-repeat="(key,item) in dataList">
+				<span class="resourceListTitle"><img src="/themes/lanmai/images/re_machine_03.png" ng-if="item.images[0]=='original'">
+				<img ng-src="{{item.images[0]}}/126.126" ng-if="item.images[0]!=='original'"></span>
+				<div class="resourceListCon"  ng-mouseenter="showModal(key,item)" ng-mouseleave="hiddenModal()">
+					<ul>
+						<li class="resourceListCon_01 demand_summary clearfix" >
+							<i class="prisePro" ng-if="item.isPromotion"></i>
+							<a href="../../resource/dmaterial?id={{item.resNum}}"  class="aTitle titleOverflow" target="_blank">{{item.title}}</a>
+							<i ng-if="item.user.idCardIdentify.status=='审核通过'" class="renzheng">实名认证</i>
+							<i ng-if="item.user.companyIdentify.status=='审核通过'" class="renzheng1">企业认证</i>
+							<i class="preview01">浏览{{item.pageview}}</i>
+						</li>
+						<div class="specificDemand"  ng-show="showid==key">
+							<div></div>
+							<h2>{{item.title}}</h2>
+							<ul>
+								<li class="theKindsMaterial">类别：<span>{{item.categoryL2.name}}-{{item.categoryL3.name}}</span></li><li>行业：<span>广告</span></li><li class="long">联系人：<span title="{{item|itemToName}}">{{item|itemToName}}</span></li>
+								<li>区域：<span>{{item.region.province}} {{item.region.city}}</span></li><li>价格：{{item.discountPrice|toZero}}<span></span></li><li>更新时间：{{item.refreshedAt|date:'yyyy-MM-dd'}}<span></span></li>
+							</ul>
+							<p  class="details" ng-bind="item.details|contentFilter"></p>
+						</div>
+						<li>
+							<span class="materialListTitleOut details" ng-bind="item.details|contentFilter"></span>
+							<span class="weekPrice" style="font-size: 21px;color:#DA2F2F;">{{item.discountPrice|toZero}}</span>
+						</li>
+						<li>
+							<span class="fromPerson">来自 {{item|itemToName}}</span>
+							<span style="margin-left: 30px">{{item.region.province}}&nbsp;&nbsp;&nbsp;{{item.region.city}}&nbsp;&nbsp;&nbsp;{{item.region.district}}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="warningInfoData" ng-if="warningInfoData!==''">{{warningInfoData}}</div>
+		</div>
+		<div class="contentRight">
+			<%for(var i=0;i<promotionForMaterial.length;i++){%>
+			<div class="promotbar">
+				<a href="/resource/dmaterial?id=<%=promotionForMaterial[i].resNum%>" target="_blank"><div class="promoteImg"><img src="<%=promotionForMaterial[i].images[0]%>/276.200"/></div></a>
+				<%if(promotionForMaterial[i].discountPrice){%>
+				<p class="promotePrice"><%=promotionForMaterial[i].discountPrice%>元</p>
+				<%}else {%>
+				<p class="promotePrice">面议</p>
+				<%}%>
+				<p><span class=""><%=promotionForMaterial[i].region.province%></span>&nbsp;-<span class="">&nbsp;<%=promotionForMaterial[i].region.city%></span></p>
+				<p class="promotionTitle" title="<%=promotionForMaterial[i].title%>"><%=promotionForMaterial[i].title%></p>
+			</div>
+			<%}%>
+		</div>
+		<div class=" paging">
+			<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+						next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+						items-per-page="itemsPerPage"></pagination>
+		</div>
+	</div>
+	<div class="bandPromote">
+		<div class="bandPromoteTitle">优秀品牌推荐</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		document.addEventListener("listen", function (e) {
+			$(navArea).children("input").val(finalText);
+			$(navArea).children("input").scope().regionData=finalText;
+			$(navArea).children("input").scope().$apply();
+		}, false);
+		var arrFortypes=[]
+		$(".leibie>li").each(function () {
+			arrFortypes.push($(this).attr("id"))
+		})
+		$(".leibie").scope().types=arrFortypes
+		$(".leibie").scope().$apply()
+		$(".leibie").scope().postData()
+		var demandSummary = $(".demand_summary"),
+				sorting = $(".addIcon").parent(),
+				requireselect = $(".nav li"),
+				budgetmin = $(".budgetmin"),
+				budgetmax = $(".budgetmax"),
+				deletecategory = $(".deleteIcon").parent(),
+				cancleSelect=$(".yunFeiPay>ul>li,.fixKinds>ul>li"),
+				maxnum, minnum;
+		var strId="";
+		var str1 = "";
+		var str2 = "";
+		var str3 = "";
+		var str4 = "";
+		var str5 = "";
+		var navLeibie = $(".allcategoery .navLeibie");
+		var navArea = $(".allcategoery .navArea");
+		var navHangye = $(".allcategoery .navHangye");
+		var navPrice = $(".allcategoery .navPrice");
+		var navPay = $(".allcategoery .navPay");
+		var navInstall = $(".allcategoery .navInstall");
+
+
+		$(deletecategory).on("click", function () {
+			var deleteinfo = $(this).attr("class");
+			$(this).children(".navWord").val("");
+			$(this).hide();
+
+			switch (deleteinfo) {
+				case ("navLeibie"):
+					$(".leibie").children().css("background-color", "#fff").css("color", "grey");
+					$(".leibie").children().data("selected", false);
+					str1 = "";
+					strId="";
+					$(navLeibie).children(".navWord").scope().currentCateListData=arrFortypes.join('、')+'、'
+					$(navLeibie).children(".navWord").scope().$apply();
+					break;
+				case ("navHangye"):
+					$(".hangye").children().css("background-color", "#fff").css("color", "grey");
+					$(".hangye").children().data("selected", false);
+					str2 = "";
+					$(navHangye).children(".navWord").scope().classifyData=str2;
+					$(navHangye).children(".navWord").scope().$apply();
+					break;
+				case ("navPrice"):
+					$(".price").children().css("background-color", "#fff").css("color", "grey");
+					$(".price").children().data("selected", false);
+					str3 = "";
+					$(navPrice).children(".navWord").scope().priceData=str3;
+					$(navPrice).children(".navWord").scope().$apply();
+					break;
+				case ("navPay"):
+					$(".payway").children().css("background-color", "#fff").css("color", "grey");
+					$(".payway").children().data("selected", false);
+					str4 = "";
+					$(".payway").scope().freightTypeData=str4;
+					$(".payway").scope().$apply();
+					break;
+				case ("navInstall"):
+					$(".install").children().css("background-color", "#fff").css("color", "grey");
+					$(".install").children().data("selected", false);
+					str5 = "";
+					break;
+				default:
+					return;
+			}
+		})
+
+		sorting.on("click", function () {
+			if ($(this).data("flag")) {
+				$(this).children().css("background-position", " -300px -8px");
+				$(this).parent().children().children("ul").css("height", "90px").css("overflow", "auto");
+			} else {
+				$(this).children().css("background-position", " -274px -8px");
+				$(this).parent().children().children("ul").css("height", "40px").css("overflow", "hidden")
+			}
+			$(this).data("flag", !$(this).data("flag"));
+		})
+
+		requireselect.on("click", function () {
+			var selectedValue = $(this).text() + "、";
+			var classValue = $(this).parent("ul").attr("class");
+
+			if ($(this).data("selected")) {
+				$(this).css("background-color", "#fff").css("color", "grey");
+				switch (classValue) {
+					case ("leibie"):
+						var selectedValueId=$(this).attr("id")+"、";
+						strId=strId.replace(selectedValueId,"");
+						str1 = str1.replace(selectedValue, "");
+						$(navLeibie).children(".navWord").val(str1);
+						if(strId==""||strId.trim()==""){
+							$(navLeibie).children(".navWord").scope().currentCateListData=arrFortypes.join('、')+'、'
+						}else{
+							$(navLeibie).children(".navWord").scope().currentCateListData=strId
+						}
+						$(navLeibie).children(".navWord").scope().$apply();
+						break;
+					case ("hangye"):
+						str2 = str2.replace(selectedValue, "");
+						$(navHangye).children(".navWord").val(str2);
+						$(navHangye).children(".navWord").scope().classifyData=str2;
+						$(navHangye).children(".navWord").scope().$apply();
+						break;
+					case ("price"):
+						str3 = str3.replace(selectedValue, "");
+						$(navPrice).children(".navWord").val(str3);
+						$(navPrice).children(".navWord").scope().priceData=str3;
+						$(navPrice).children(".navWord").scope().$apply();
+						break;
+					case ("payway"):
+						str4 = str4.replace(selectedValue, "");
+						$(navPay).children(".navWord").val(str4);
+						$(navPay).children(".navWord").scope().freightTypeData=str4;
+						$(navPay).children(".navWord").scope().$apply();
+						break;
+					case ("install"):
+						str5 = str5.replace(selectedValue, "");
+						$(navInstall).children(".navWord").val(str5);
+						break;
+					default:
+						return
+				}
+				if ($(navLeibie).children(".navWord").val() == "") {
+					$(navLeibie).css("display", "none");
+					$(navLeibie).children().css("display", "none");
+
+				}
+				if ($(navHangye).children(".navWord").val() == "") {
+					$(navHangye).css("display", "none");
+					$(navHangye).children().css("display", "none");
+
+				}
+				if ($(navPrice).children(".navWord").val() == "") {
+					$(navPrice).css("display", "none");
+					$(navPrice).children().css("display", "none");
+
+				}
+				if ($(navPay).children(".navWord").val() == "") {
+					$(navPay).css("display", "none");
+					$(navPay).children().css("display", "none");
+
+				}
+				if ($(navInstall).children(".navWord").val() == "") {
+					$(navInstall).css("display", "none");
+					$(navInstall).children().css("display", "none");
+
+				}
+			} else {
+				if ($(navLeibie).children(".navWord").val() == "") {
+					$(navLeibie).css("display", "none");
+					$(navLeibie).children().css("display", "none");
+				}
+				if ($(navHangye).children(".navWord").val() == "") {
+					$(navHangye).css("display", "none");
+					$(navHangye).children().css("display", "none");
+				}
+				if ($(navPrice).children(".navWord").val() == "") {
+					$(navPrice).css("display", "none");
+					$(navPrice).children().css("display", "none");
+				}
+				if ($(navPay).children(".navWord").val() == "") {
+					$(navPay).css("display", "none");
+					$(navPay).children().css("display", "none");
+
+				}
+				if ($(navInstall).children(".navWord").val() == "") {
+					$(navInstall).css("display", "none");
+					$(navInstall).children().css("display", "none");
+
+				}
+				$(this).css("background-color", "#f0f0f0").css("color", "#261f1a");
+				switch (classValue) {
+					case ("leibie"):
+						var selectedValueId=$(this).attr("id")+"、";
+						$(navLeibie).css("display", "block").css("border","1px solid #da2f2f");
+						str1 += selectedValue;
+						strId+=selectedValueId;
+						$(navLeibie).children(".navWord").val(str1);
+						$(navLeibie).children(".navWord").scope().currentCateListData=strId;
+						$(navLeibie).children(".navWord").scope().$apply();
+						$(navLeibie).children().css("display", "inline-block")
+						break;
+					case ("hangye"):
+						$(navHangye).css("display", "block").css("border","1px solid #da2f2f");
+						str2 += selectedValue;
+						$(navHangye).children(".navWord").val(str2);
+						$(navHangye).children(".navWord").scope().classifyData=str2;
+						$(navHangye).children(".navWord").scope().$apply();
+						$(navHangye).children().css("display", "inline-block")
+						break;
+					case ("payway"):
+						$(navPay).css("display", "block").css("border","1px solid #da2f2f");
+
+						if (str4 !== "") {
+							str4 = selectedValue;
+							$(navPay).children(".navWord").val(str4);
+							$(navPay).children(".navWord").scope().freightTypeData=str4;
+							$(navPay).children(".navWord").scope().$apply();
+							$(navPay).children().css("display", "inline-block");
+							$(this).parent().children().css("background-color", "#fff").css("color", "grey");
+							$(this).css("background-color", "#f0f0f0").css("color", "#261f1a");
+							return;
+						} else {
+							str4 += selectedValue;
+							$(navPay).children(".navWord").val(str4);
+							$(navPay).children(".navWord").scope().freightTypeData=str4;
+							$(navPay).children(".navWord").scope().$apply();
+							$(navPay).children().css("display", "inline-block")
+						}
+						break;
+					case ("install"):
+						$(navInstall).css("display", "block").css("border","1px solid #da2f2f");
+						if (str5 !== "") {
+							str5 = selectedValue;
+							$(navInstall).children(".navWord").val(str5);
+							$(navInstall).children().css("display", "inline-block");
+							$(this).parent().children().css("background-color", "#fff").css("color", "grey");
+							$(this).css("background-color", "#f0f0f0").css("color", "#261f1a");
+							return;
+						} else {
+							str5 += selectedValue;
+							$(navInstall).children(".navWord").val(str5);
+							$(navInstall).children().css("display", "inline-block");
+						}
+						break;
+					case ("price"):
+						$(navPrice).css("display", "block").css("border","1px solid #da2f2f");
+						$(".user_define div input").val("");
+						if (str3 !== "") {
+							str3 = selectedValue;
+							$(navPrice).children(".navWord").val(str3);
+							$(navPrice).children(".navWord").scope().priceData=str3;
+							$(navPrice).children(".navWord").scope().$apply();
+							$(navPrice).children().css("display", "inline-block");
+							$(this).parent().children().css("background-color", "#fff").css("color", "grey");
+							$(this).css("background-color", "#f0f0f0").css("color", "#261f1a");
+							return;
+						} else {
+							str3 += selectedValue;
+							$(navPrice).children(".navWord").val(str3);
+							$(navPrice).children(".navWord").scope().priceData=str3;
+							$(navPrice).children(".navWord").scope().$apply();
+							$(navPrice).children().css("display", "inline-block")
+						}
+						break;
+					default:
+						return
+				}
+			}
+			$(this).data("selected", !$(this).data("selected"));
+			console.log(str1)
+		})
+
+		cancleSelect.on("click",function () {
+			$(this).css("border","none")
+
+		})
+
+		$(".budgetSure").on("click", function () {
+			maxnum = parseInt(budgetmax.val());
+			minnum =parseInt(budgetmin.val());
+			console.log(minnum);
+			if(minnum==""){
+				swal({
+					title: "请填写最小价格",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			if(maxnum==""){
+				swal({
+					title: "请填写最大价格",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			if(minnum<0){
+				swal({
+					title: "最大价格不可小于0！",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+			}
+			if(maxnum<0){
+				swal({
+					title: "最大价格不可小于0！",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			if (maxnum && minnum &&minnum>0&&maxnum>0) {
+				if (maxnum < minnum) {
+					swal({
+						title: "最大价格不可小于最小价格！",
+						type: "error",
+						confirmButtonText: "确定"
+					});
+					budgetmax.val(minnum);
+					budgetmin.val(maxnum);
+					$(navPrice).children(".navWord").scope().maxnum=minnum;
+					$(navPrice).children(".navWord").scope().minnum=maxnum;
+					$(navPrice).children(".navWord").scope().priceData="自定义"
+					$(navPrice).scope().$apply();
+				}else{
+					$(navPrice).children(".navWord").scope().maxnum=maxnum;
+					$(navPrice).children(".navWord").scope().minnum=minnum;
+					$(navPrice).children(".navWord").scope().priceData="自定义"
+					$(navPrice).scope().$apply();
+				}
+			}
+			$(".budget ul li").css("background-color", "#fff").css("color", "#b0b0b0");
+			$(".budget ul li").data("selected", false);
+			str3="";
+			$(".navPrice").css("display", "none");
+		})
+
+
+
+	});
+</script>

@@ -1,0 +1,62 @@
+<style>
+    .bannerimg{
+        width: 100%;
+        height: auto;
+    }
+    .showcontent{
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .showimg{
+        width: 100%;
+        max-height: 800px;
+        margin:60px 0 60px 0;
+    }
+</style>
+
+<div ng-controller="shopspecific1">
+    <div class="headnav">
+        <div>
+            <div><a href="/users/shopIndex">企业中心</a></div>
+            <div><a href="/users/shopSpecific2?id=<%=companyInfo.user%>">全部资源</a></div>
+            <%if(companyInfo.businessScope){for(var i=0;i<companyInfo.businessScope.length;i++){%>
+            <%for(var j=0;j<categorySettingList.length;j++){if(categorySettingList[j].category.name==companyInfo.businessScope[i]){%>
+            <div onclick="window.location.href='/users/shopSpecific2?id=<%=companyInfo.user%>'"><a><%=companyInfo.businessScope[i]%></a></div>
+            <%}}%>
+            <%}}%>
+            <div><a href="/users/shopcomment?id=<%=companyInfo.user%>">企业评价</a></div>
+        </div>
+    </div>
+    <%if(companyInfo.homePageBanner){%>
+    <%if(companyInfo.homePageBanner.length==1){%>
+    <a href="<%=companyInfo.homePageBanner[0].resId%>"><img class="bannerimg" src="<%=companyInfo.homePageBanner[0].img%>"/></a>
+    <%}%>
+    <%if(companyInfo.homePageBanner.length>1){%>
+    <div class="shopbanner flexslider bannerCons">
+        <ul class="index_banner_con slides clearfix">
+            <% for(var i=0;i<companyInfo.homePageBanner.length;i++){%>
+            <li><a href="<%=companyInfo.homePageBanner[i].resId%>"><img src="<%=companyInfo.homePageBanner[i].img%>"/></a></li>
+            <%}%>
+        </ul>
+    </div>
+
+    <%}%>
+    <%}%>
+
+    <%if(companyInfo.homePageBody){%>
+    <div class="showcontent">
+            <% for(var i=0;i<companyInfo.homePageBody.length;i++){%>
+            <a href="<%=companyInfo.homePageBody[i].resId%>"><img class="showimg" src="<%=companyInfo.homePageBody[i].img%>"/></a>
+        <%}%>
+    </div>
+    <%}%>
+
+    <%if(companyInfo.homePageBanner.length==0&&companyInfo.homePageBody.length==0){%>
+    <div class="notice">
+        <p>企业还未发布任何图片和资源，可前往<a href="shopindex">企业首页</a>对企业进行相关维护！</p>
+    </div>
+    <%}%>
+
+</div>

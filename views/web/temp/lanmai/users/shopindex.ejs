@@ -1,0 +1,518 @@
+<style>
+    .bottom_lanmai{
+        display: none;
+    }
+   .contentshow{
+       width: 100%;
+       height: auto;
+       font-size: 13px;
+       margin-top: 120px;
+   }
+   .contentshow>p{
+       height: 20px;
+       line-height: 20px;
+       font-size: 17px;
+       margin-bottom: 15px;
+   }
+    .contentlist{
+        width: 100%;
+        height: auto;
+    }
+   .contentlist>div{
+       display: inline-block;
+       width:297px;
+       height: 140px;
+       margin-left: 25px;
+       margin-bottom: 30px;
+       position: relative;
+   }
+   .contentlist>div>img{
+       width: 297px;
+       height: 118px;
+       margin-bottom: 2px;
+       border-left: 1px solid gainsboro;
+       border-right: 1px solid gainsboro;
+   }
+   .contentlist>div>.addfileimg{
+     margin-top: 22px;
+       height: 140px;
+   }
+   .contentlist>div>.mask{
+       width: 297px;
+       height: 118px;
+       font-size: 15px;
+       position: absolute;
+       top: 0;
+       left: 0;
+       opacity:0.6;
+       background-color: #000;
+       display: none;
+   }
+   .contentlist>div>.mask>.handleremind{
+       float:left ;
+       margin-left: 18%;
+       margin-top:14%;
+       width: 200px;
+       height: 40px;
+       opacity: 1;
+       cursor: pointer;
+       position:relative;
+   }
+   .contentlist>div>.mask>.handleremind>a{
+       position:absolute;
+       top: 10px;
+       left: 60px;
+       width: 80px;
+       color: #fff;
+   }
+   .fileInput {
+       height: 200px;
+       overflow: hidden;
+       font-size: 300px;
+       position: absolute;
+       right: 0px;
+       top: -40px;
+       opacity: 0;
+       filter: alpha(opacity=0);
+       cursor: pointer;
+       width: 250px;
+       height: 115px;
+   }
+   .addfileInput{
+       height:100px;
+       width: 290px;
+       overflow: hidden;
+       font-size: 300px;
+       position:absolute;
+       right:0px;
+       top:20px;
+       opacity: 0;
+       filter:alpha(opacity=0);
+       cursor:pointer;
+   }
+   .contentlist>div>.mask>.deleteIcon{
+       width: 25px;
+       height: 25px;
+       float: right;
+       margin-top: 90px;
+       opacity: 1;
+       background:url("/themes/lanmai/images/privatecenter.png") -56px -76px ;
+   }
+   .contentlist>div>.mask>.deleteIcon>a{
+       width: 25px;
+       height: 25px;
+       display: block;
+   }
+   .contentlist>div>.relevant{
+       width: 100%;
+       height: 30px;
+   }
+   .contentlist>div>.relevant>span{
+       float: right;
+       width: 195px;
+       padding-top: 1px;
+       font-size: 13px;
+   }
+   .dropdown>button{
+       background-color: #fff;
+       color: rgb(112,112,112);
+       width:150px;
+       border-radius:0 ;
+       font-size: 13px;
+       float: left;
+       border: 1px solid gainsboro;
+   }
+   .dropdown{
+       float: left;
+   }
+   .btn{
+       font-size: 12px;
+       padding-top: 1px;
+       padding-left: 1px;
+       padding-bottom: 1px;
+       border-radius: 0;
+       outline: none;
+   }
+  .dropdown, .dropup, .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+       width: 100%;
+       height: 30px;
+   }
+   .bootstrap-select.btn-group .dropdown-toggle .filter-option{
+       text-align: center;
+   }
+    .handle{
+        width: 304px;
+        margin: 0 auto;
+        margin-top: -100px;
+    }
+   .handle>button{
+       width: 120px;
+       height: 30px;
+       background-color: #da2f2f;
+       border: 1px solid  #da2f2f;
+       margin: 0px 28px 80px 0;
+   }
+   .handle>button>a:hover{
+      color:  #fff;
+   }
+    .frendlytip{
+        float: right;
+        padding-top: 20px;
+    }
+</style>
+<script type="application/javascript">
+    $(function () {
+        console.log(navigator.userAgent)
+        function getBrowserInfo() {
+            var agent = navigator.userAgent.toLowerCase();
+
+            var regStr_ie = /msie [\d.]+;/gi;
+            var regStr_ie2 = /Trident\/ [\d.]+;/gi;
+            //IE
+            if (agent.indexOf("msie") > 0) {
+                return agent.match(regStr_ie) ;
+            }
+            return false
+        }
+        var browser = getBrowserInfo() ;
+        if(browser){
+            var verinfo = (browser+"").replace(/[^0-9.]/ig,"");
+            if(8<parseInt(verinfo)<=9){
+                swal({
+                            title: "您的浏览器版本过低，无法使用上传图片功能",
+                            text:"若使用360,qq,搜狗,2345,uc等浏览器,请切换成极速模式,若使用IE浏览器,请升级浏览器版本或安装其它浏览器",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            cancelButtonText: "取消",
+                            confirmButtonText: "查看帮助",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm){
+                            if(isConfirm){
+                                window.location.href="/users/helperCenter#uploadImg"
+                            }
+                        });
+            }else if(parseInt(verinfo)<=8){
+                alert("您的浏览器版本过低，无法使用上传图片功能,请升级浏览器版或安装其它浏览器")
+            }
+        }
+
+    })
+</script>
+
+
+
+<div class="">
+    <div class="shopname">
+        <div class="storePic2"></div>
+        <h2>企业首页维护</h2>
+    </div>
+    <div>
+        <div  class="contentshow">
+            <p>上传首页banner图片</p>
+            <div class="contentlist " id="bannercontentlist">
+                <div class="example">
+                    <img src="/themes/lanmai/images/shopcenterex1.png"/>
+                    <div class="relevant bannerrelevant">
+                        <div class="dropdown">
+                            <select class="selectpicker bannerselectpicker" data-dropup-auto="false" data-live-search="true">
+                                <option readonly="readonly" value="" data-tokens="不添加连接">不添加连接</option>
+                                <%for(var j=0;j< allRes.length;j++){%>
+                                <%if(allRes[j].resType=="Manufacture"){%>
+                                <option readonly="readonly" value="/resource/dMake?id=<%= allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}else if(allRes[j].resType=="Material"){%>
+                                <option readonly="readonly" value="/resource/dmaterial?id= <%=allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}else {%>
+                                <option readonly="readonly" value="/resource/dMachine?id=<%= allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}}%>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <%if(companyInfo.homePageBanner!==[]){for(var i=0;i<companyInfo.homePageBanner.length;i++){%>
+                <div class="bannercontent">
+                    <img class="shopimg bannerimg" src="<%=companyInfo.homePageBanner[i].img%>"/>
+                    <div class="mask">
+                        <div class="deleteIcon"><a></a></div>
+                    </div>
+                    <div class="relevant bannerrelevant">
+                        <div class="dropdown">
+                            <select class="selectpicker bannerselectpicker" data-dropup-auto="false" data-live-search="true" data-res="<%=companyInfo.homePageBanner[i].resId%>">
+                                <option readonly="readonly" value="" data-tokens="不添加连接">不添加连接</option>
+                                <%for(var j=0;j< allRes.length;j++){%>
+                                <%if(allRes[j].resType=="Manufacture"){%>
+                                <option readonly="readonly" value="/resource/dMake?id=<%= allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}else if(allRes[j].resType=="Material"){%>
+                                <option readonly="readonly" value="/resource/dmaterial?id= <%=allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}else {%>
+                                <option readonly="readonly" value="/resource/dMachine?id=<%= allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}}%>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <%}}%>
+
+                <div class="bannercontent">
+                    <img class="addfileimg" src="/themes/lanmai/images/addfile.png"/>
+                    <input class="addfileInput" id="" type="file" multiple name="">
+                </div>
+                <div class="frendlytip">
+                    在企业详情页点击图片将跳转至关联的资源详情页;图片尺寸宽度设置为1920px，高度设置在500至900px之间，大小10M以内，仅支持JPG、JPEG、PNG格式，请尽量上传高清图片，最多上传4张。
+                </div>
+            </div>
+        </div>
+
+        <div  class="contentshow">
+            <p>上传首页展示图片</p>
+            <div class="contentlist" id="morecontentlist">
+                <div class="example">
+                    <img src="/themes/lanmai/images/shopcenterex2.png"/>
+                    <div class="relevant contentrelevant">
+                        <div class="dropdown">
+                            <select class="selectpicker contentselectpicker" data-dropup-auto="false" data-live-search="true">
+                                <option readonly="readonly" value="" data-tokens="不添加连接">不添加连接</option>
+                                <%for(var j=0;j< allRes.length;j++){%>
+                                <%if(allRes[j].resType=="Manufacture"){%>
+                                <option readonly="readonly" value="/resource/dMake?id=<%= allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}else if(allRes[j].resType=="Material"){%>
+                                <option readonly="readonly" value="/resource/dmaterial?id= <%=allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}else {%>
+                                <option readonly="readonly" value="/resource/dMachine?id=<%= allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}}%>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <%if(companyInfo.homePageBody!==[]){for(var i=0;i<companyInfo.homePageBody.length;i++){%>
+                <div class="morecontent">
+                    <img class="shopimg contentimg" src="<%=companyInfo.homePageBody[i].img%>"/>
+                    <div class="mask">
+                        <div class="deleteIcon"><a></a></div>
+                    </div>
+                    <div class="relevant contentrelevant">
+                        <div class="dropdown">
+                            <select class="selectpicker contentselectpicker" data-live-search="true" data-dropup-auto="false" data-res="<%=companyInfo.homePageBody[i].resId%>">
+                             <option readonly="readonly" value="" data-tokens="不添加连接">不添加连接</option>
+                                <%for(var j=0;j< allRes.length;j++){%>
+                                <%if(allRes[j].resType=="Manufacture"){%>
+                                <option readonly="readonly" value="/resource/dMake?id=<%= allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}else if(allRes[j].resType=="Material"){%>
+                                <option readonly="readonly" value="/resource/dmaterial?id= <%=allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}else {%>
+                                <option readonly="readonly" value="/resource/dMachine?id=<%= allRes[j].resNum%>" data-tokens="<%= allRes[j].title%>"><%= allRes[j].title%></option>
+                                <%}}%>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <%}}%>
+
+                <div class="morecontent">
+                    <img class="addfileimg" src="/themes/lanmai/images/addfile.png"/>
+                    <input class="addfileInput" id="" type="file" multiple name="">
+                </div>
+                <div class="frendlytip">在企业详情页点击图片将跳转至关联的资源详情页;图片尺寸宽度设置为1920px，高度设置在500至900px之间，大小10M以内，仅支持JPG、JPEG、PNG格式，请尽量上传高清图片，最多上传4张。
+                </div>
+            </div>
+        </div>
+
+        <div  class="contentshow">
+            <div class="handle">
+                <button class="makesure">保存</button>
+                <button><a href="/users/shopSpecific1?id=<%=userInfo._id%>" target="_blank">查看首页效果</a></button>
+            </div>
+
+        </div>
+    </div>
+    <input type="hidden" value="<%=companyInfo._id%>" id="id">
+    <input type="hidden" value="<%=userInfo._id%>" id="idForUser">
+</div>
+<script>
+    $(function () {
+        var str="";
+        var listitem;
+        var bannerrelevant=$(".bannercontent .bannerrelevant");
+        var contentrelevant=$(".morecontent .contentrelevant");
+        var bannerimgcount=$(".bannerimg").length;
+        var contentimgcount=$(".contentimg").length;
+        listitem=$(".contentlist div .shopimg");
+        $(listitem).bind("mouseover",function () {
+            $(this).next().show();
+        })
+        $(".mask").bind("mouseout",function () {
+            $(this).hide();
+        })
+        $(".deleteIcon").on("click",function () {
+            $(this).parent().parent().remove();
+        })
+        $("#bannercontentlist .addfileInput").change(function (e) {
+            var that=this;
+            str=""
+            if($(".bannerimg").length+that.files.length>=5){
+                swal({
+                    title: "上传图片数达到限制数5张，请删除再上传!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            window.fileArr=[]
+            for(var i=0;i<that.files.length;i++){
+            var file = this.files[i];
+            var fileType=file.type.split('/')[1];
+            var filePath=$("#idForUser").val();
+            $.getCos("users",filePath,fileType,file,function (res) {
+                $("#bannercontentlist>div>img[name='" + res.data.resource_path + "']").attr("src", res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com', 'https://cdn.adquan.net'))
+            })
+                str+= '<div class="bannercontent">' + '<img class="shopimg bannerimg" src="" name="/1253780958/adquan/users/' + $("#idForUser").val() + '/' + window.fileArr[i] + '"/>' +
+                        ' <div class="mask" style="display: none">' + '<div class="handleremind"><a>点击修改</a><input class="fileInput" id="" type="file" name="">' +
+                        '</div> <div class="deleteIcon"><a></a></div> </div><div class="relevant bannerrelevant"><div class="dropdown">' + $(".bannerrelevant").find("select.bannerselectpicker")[0].outerHTML + '</div></div></div>';
+            }
+                $(that).parent().parent().prepend($(str));
+                $(".bannercontent .bannerselectpicker").selectpicker('refresh')
+
+                listitem=$(".contentlist div .shopimg");
+                $(listitem).bind("mouseover",function () {
+                    $(this).next().show();
+                })
+                $(".mask").bind("mouseout",function () {
+                    $(this).hide();
+                })
+
+                $(".deleteIcon").on("click",function () {
+                    $(this).parent().parent().remove();
+                })
+
+                $(".fileInput").change(function(e){
+                    var that=this;
+                    var file = this.files[0];
+                    var fileType=file.type.split('/')[1];
+                    var filePath=$("#idForUser").val();
+                    $.getCos("users",filePath,fileType,file,function (res) {
+                        console.log(res)
+                        $(that).parent().parent().parent().children(".shopimg").attr("src",res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+                    })
+                });
+
+        })
+        
+        
+        $("#morecontentlist .addfileInput").change(function (e) {
+            var that=this;
+            str=""
+            if($(".contentimg").length+that.files.length>=5){
+                swal({
+                    title: "上传图片数达到限制数5张，请删除再上传!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            window.fileArr=[]
+            for(var i=0;i<that.files.length;i++) {
+                var file = this.files[i];
+                var fileType = file.type.split('/')[1];
+                var filePath = $("#idForUser").val();
+                $.getCos("users", filePath, fileType, file, function (res) {
+                    $("#morecontentlist>div>img[name='" + res.data.resource_path + "']").attr("src", res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com', 'https://cdn.adquan.net'))
+                })
+                str+= '<div class="morecontent">' + '<img class="shopimg contentimg" src="" name="/1253780958/adquan/users/' + $("#idForUser").val() + '/' + window.fileArr[i] + '"/>' +
+                        ' <div class="mask" style="display: none">' + '<div class="handleremind"><a>点击修改</a><input class="fileInput" id="" type="file" name="">' +
+                        '</div> <div class="deleteIcon"><a></a></div> </div><div class="relevant contentrelevant"><div class="dropdown">' + $(".contentrelevant").find("select.contentselectpicker")[0].outerHTML + '</div></div></div>';
+
+            }
+                $(that).parent().parent().prepend($(str));
+                $(".morecontent .contentselectpicker").selectpicker('refresh')
+
+                listitem=$(".contentlist div .shopimg");
+                $(listitem).bind("mouseover",function () {
+                    $(this).next().show();
+                })
+                $(".mask").bind("mouseout",function () {
+                    $(this).hide();
+                })
+
+                $(".deleteIcon").on("click",function () {
+                    $(this).parent().parent().remove();
+                })
+
+                $(".fileInput").change(function(e){
+                    var that=this;
+                    var file = this.files[0];
+                    var fileType=file.type.split('/')[1];
+                    var filePath=$("#idForUser").val();
+                    $.getCos("users",filePath,fileType,file,function (res) {
+                        console.log(res)
+                        $(that).parent().parent().parent().children(".shopimg").attr("src",res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+                    })
+                });
+        })
+
+        $(".makesure").on("click",function () {
+            var relaventresource=$(".contentlist>div:not(.example) .bannerselectpicker");
+            var relaventcontent=$(".contentlist .contentselectpicker");
+            var bannerimg=$('.bannerimg');
+            var contentimg=$('.contentimg');
+            var bannerimgcount=bannerimg.length;
+            var contentimgcount=contentimg.length;
+            var homePageBanner=[];
+            var homePageBody=[];
+            var homePageBannerobj={};
+            var homePageBodyobj={};
+            for (var i=0;i<bannerimgcount;i++){
+                homePageBannerobj={"img":$(bannerimg[i]).attr("src"),"resId":$(relaventresource[i]).selectpicker("val")};
+                homePageBanner.push(homePageBannerobj);
+            }
+            for (var j=0;j<contentimgcount;j++){
+                homePageBodyobj={"img":$(contentimg[j]).attr("src"),"resId":$(relaventcontent[j]).selectpicker("val")};
+                homePageBody.push(homePageBodyobj);
+            }
+            var data={
+                companyId:$("#id").val(),
+                homePageBanner:homePageBanner,
+                homePageBody:homePageBody
+            }
+            $.ajax({
+                url:"/users/updateHomepage",
+                data:JSON.stringify(data),
+                type:"POST",
+                dataType:"json",
+                contentType:"application/json",
+                success:function(res){
+                    if(res.result=="success") {
+                        swal({
+                            title: "提交成功!",
+                            type: "success",
+                            confirmButtonText: "确定"
+                        });
+                        window.location.reload();
+                    }else {
+                        swal({
+                            title: "提交失败!",
+                            type: "error",
+                            confirmButtonText: "确定"
+                        });
+                    }
+
+                },
+                error:function (error) {
+                    console.log("error!!!!")
+                }
+            })
+        })
+
+        $(".bannercontent .bannerselectpicker").on('loaded.bs.select', function (e) {
+            $(".bannercontent .bannerselectpicker").each(function (index,item) {
+                $(item).selectpicker('val', $(item).data("res"));
+            })
+        });
+        $(".morecontent .contentselectpicker").on('loaded.bs.select', function (e) {
+            $(".morecontent .contentselectpicker").each(function (index,item) {
+                $(item).selectpicker('val', $(item).data("res"));
+            })
+        });
+
+    })
+</script>

@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height;initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>制作宝-查报价</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/weui.min.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/myStyle.css">
+     <!--引入 WeUI -->
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/0.4.0/weui.min.css">
+   <script src="/themes/<%=staticforder%>/js/zepto.min.js"></script>
+    <style>
+        .weui-picker{position:fixed;width:100%;left:0;bottom:0;z-index:5000;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateY(100%);transform:translateY(100%);-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s}
+    </style>
+</head>
+<body ontouchstart>
+	<div class="weMyContainer">
+        <!--banner搜索的部分开始-->
+        <div class="lmPriceBanner"><!--lmIndexBanner-->
+            <a class="IWantPrice" href="iprice.html
+            ">我要报价</a>
+            <!--位置信息的显示开始-->
+            <div class="lmPriceLocation"><!--lmIndexLocatin-->
+                <img src="images/web0102.png" alt="">
+                <span id="cascadePickerBtn">武汉.洪山</span>
+            </div>
+            <!--位置信息的显示结束-->
+            <!--搜索框部分的内容开始-->
+            <div class="page__bd">
+                <!--<a href="javascript:;" class="weui-btn weui-btn_primary">点击展现searchBar</a>-->
+                <div class="weui-search-bar" id="searchBar">
+                    <form class="weui-search-bar__form">
+                        <div class="weui-search-bar__box">
+                            <i class="weui-icon-search"></i>
+                            <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="查报价" required/>
+                            <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                        </div>
+                        <label class="weui-search-bar__label" id="searchText">
+                            <i class="weui-icon-search"></i>
+                            <span>查报价</span>
+                        </label>
+                    </form>
+                    <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+                </div>
+                <div class="weui-cells searchbar-result" id="searchResult">
+                    <div class="weui-cell weui-cell_access">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>实时搜索文本</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell weui-cell_access">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>实时搜索文本</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell weui-cell_access">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>实时搜索文本</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell weui-cell_access">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>实时搜索文本</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                $(function(){
+                    $('#cascadePickerBtn').click(function(){
+                        $('.weui-picker').css({    animation: "a ease .3s forwards;"})
+                    })
+                    var $searchBar = $('#searchBar'),
+                            $searchResult = $('#searchResult'),
+                            $searchText = $('#searchText'),
+                            $searchInput = $('#searchInput'),
+                            $searchClear = $('#searchClear'),
+                            $searchCancel = $('#searchCancel');
+
+                    function hideSearchResult(){
+                        $searchResult.hide();
+                        $searchInput.val('');
+                    }
+                    function cancelSearch(){
+                        hideSearchResult();
+                        $searchBar.removeClass('weui-search-bar_focusing');
+                        $searchText.show();
+                    }
+
+                    $searchText.on('click', function(){
+                        $searchBar.addClass('weui-search-bar_focusing');
+                        $searchInput.focus();
+                    });
+                    $searchInput
+                            .on('blur', function () {
+                                if(!this.value.length) cancelSearch();
+                            })
+                            .on('input', function(){
+                                if(this.value.length) {
+                                    $searchResult.show();
+                                } else {
+                                    $searchResult.hide();
+                                }
+                            })
+                    ;
+                    $searchClear.on('click', function(){
+                        hideSearchResult();
+                        $searchInput.focus();
+                    });
+                    $searchCancel.on('click', function(){
+                        cancelSearch();
+                        $searchInput.blur();
+                    });
+                });
+            </script>
+            <!--搜索框部分的内容结束-->
+        </div>
+        <!--banner搜索的部分结束-->
+        <div class="lmAskPriceListKinds clearfix">
+            <div class="lmAskPriceListTitle clearfix">
+                <a href="javascript:;">
+                    <i><img src="images/web0501.png"></i>
+                    <span style="color:#FB6383">印刷</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="images/web0502.png"></i>
+                    <span>立体字</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="images/web0503.png"></i>
+                    <span>喷绘写真</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="images/web0504.png"></i>
+                    <span>灯箱标识</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="images/web0505.png"></i>
+                    <span>展示器材</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="images/web0506.png"></i>
+                    <span>展览布置</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="images/web0508.png"></i>
+                    <span>门头招牌</span>
+                </a>
+                <a href="javascript:;">
+                    <i><img src="images/web0507.png"></i>
+                    <span>广告定制</span>
+                </a>
+            </div>
+            <script>
+                $(function(){
+                    $('.lmAskPriceListTitle a').on("click",function(){
+                        $(this)/*.css({"border-bottom":"1px solid #FB6383"})*/.children("span").css({color:"#FB6383"}).parents().siblings()/*.css({"border-bottom":"1px solid #fff"})*/.children("span").css({color:"#b3b3b3"});
+                        var myIndex=$(this).index();
+                        $(".lmAskPriceListContainer>ul").hide().eq(myIndex).show();
+                    })
+                })
+            </script>
+            <div class="lmAskPriceListContainer">
+                <ul class="yinShua">
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">室内写真</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/平米</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">室内写真</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/平米</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">室内写真</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/平米</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">室内写真</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/平米</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">室内写真</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/平米</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">室内写真</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/平米</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">室内写真</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/平米</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul style="display: none" class="liTiZi">
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">立体字</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/个</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul style="display: none" class="penHui">
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">喷绘写真</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/个</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul style="display: none" class="dengXi">
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">灯箱标识</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/个</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul style="display: none" class="zhanShi">
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">展示器材</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/个</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul style="display: none" class="zhanlan">
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">展览布置</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/个</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul style="display: none" class="menTou">
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">门头招牌</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/个</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul style="display: none" class="dingZhi">
+                    <li class="lmAskPriceListName">
+                        <ul class="clearfix">
+                            <li class="lmAskPriceListName01"><a href="javascript:;">广告定制</a> </li>
+                            <li class="lmAskPriceListName02">报价区间<span>100-200元/个</span></li>
+                            <li class="lmAskPriceListName03">来自 <span>123</span> 条报价</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+        <script src="/themes/<%=staticforder%>/js/weui.min.js"></script>
+        <script src="/themes/<%=staticforder%>/js/mystyle.js"></script>
+    </div>
+</body>
+</html>
+

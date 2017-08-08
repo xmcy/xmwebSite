@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>企业中心-制作宝</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=0.2,minimum-scale=0.2,maximum-scale=5" />
+		<link href="/plugins/bootstrap/css/bootstrap.min.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/plugins/bootstrapSelect/css/bootstrap-select.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="/themes/<%=staticforder%>/css/base.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/themes/<%=staticforder%>/css/layoutForAccountSet.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/themes/<%=staticforder%>/css/accountBinding.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/plugins/datetimePicker/dateSelect.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<link href="/plugins/citypicker/css/city-picker.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+		<script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/javascripts/angular.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.12.0.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/bootstrapSelect/bootstrap/js/bootstrap.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/bootstrapSelect/js/bootstrap-select.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+
+	</head>
+
+	<body ng-app="layoutForshop" ng-cloak class="ng-cloak" ng-controller="layoutForshopController">
+		<div class="navHead bgRed" >
+			<div class="navHeadContent">
+				<a href="/users/home"><span class="adLogo"></span></a>
+				<div class="navList">
+					<a  href="/users/recentDemandAndResource">个人中心</a>
+					<a  href="/users/safetySet">账户设置</a>
+					<a  href="/users/shopcenter">企业中心</a>
+					<!--<a  href="/citypartner/cityPartner">城市运营商</a>-->
+				</div>
+				<div class="privateAccount">
+					<ul>
+						<li>你好<a  style="color:#DA2F2F" href="/users/recentDemandAndResource">
+								<%if(userInfo.nickName){%>
+								<%=userInfo.nickName%>
+								<%}else {%>
+								<%=userInfo.userName%>
+								<%}%>
+							</a></li>
+						<li><a rel="nofollow" href="/users/logout" id="userLoginOut">退出</a></li>
+						<li><a href="/users/messageManagement">消息</a>
+							<%if(userInfo.msg_count && userInfo.msg_count>0){%>
+							<a href="javascript:;"><a href="/users/messageManagement"><span class="badge" id="u_notify_num"><%=userInfo.msg_count%></span></a></a>
+							<%}%></li>
+						<li><a href="/users/helperCenter">帮助</a><span></span></li>
+				    </ul>
+				</div>
+			</div>
+		</div>
+		<div class="contenWrap">
+			<div class="myContent">
+				<div class="slidebar bgGrey">
+				   <ul>
+					   <li  ng-class="{activeSlidebar:activeSlidebar=='shopcenter'}"><a class="maginForA" href="/users/shopcenter">企业中心</a></li>
+					   <li  ng-class="{activeSlidebar:activeSlidebar=='shopaccount'}"><span  class="imgForIcon001 imgForIcon shop" alt=""></span><a  href="/tender/shopaccount">企业账户</a></li>
+					   <li ng-class="{activeSlidebar:activeSlidebar=='shopinfo'}"><span  class="imgForIcon002 imgForIcon shop" alt=""></span><a href="/users/shopinfo">企业资料</a></li>
+					   <li  ng-class="{activeSlidebar:activeSlidebar=='shoptender'}"><span  class="imgForIcon003 imgForIcon shop" alt=""></span><a  href="/tender/shoptender">企业招标</a></li>
+					   <li  ng-class="{activeSlidebar:activeSlidebar=='shopbid'}"><span  class="imgForIcon004 imgForIcon shop" alt=""></span><a  href="/tender/shopbid">企业投标</a></li>
+					   <li ng-class="{activeSlidebar:activeSlidebar=='shopcertificate'||activeSlidebar=='licenseCertification'}"><span  class="imgForIcon005 imgForIcon shop" alt=""></span><a  href="/users/shopcertificate">企业认证</a></li>
+					   <li ng-class="{activeSlidebar:activeSlidebar=='shoppromote'}"><span  class="imgForIcon006 imgForIcon shop" alt=""></span><a  href="/users/shoppromote">品牌推广</a></li>
+					   <li ng-class="{activeSlidebar:activeSlidebar=='shopindex'}"><span  class="imgForIcon007 imgForIcon shop" alt=""></span><a  href="/users/shopindex">企业首页</a></li>
+				   </ul>
+			    </div>
+			    <div class="contentArea">
+					<%-body %>
+
+				</div>
+		    </div>
+		</div>
+		<div class="bottom_lanmai">
+			<ul>
+				<li><a href="/users/helperCenter#1" target="_blank">关于制作宝</a></li>
+				<li><a href="/users/helperCenter#2" target="_blank">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;帮助中心</a></li>
+			</ul>
+			<p>武汉蓝迈网络科技有限公司2016-<script>document.write((new Date()).getFullYear())</script>&nbsp;鄂&nbsp;ICP&nbsp;备 &nbsp;16023329号</p>
+		</div>
+		<!--<script src="/plugins/layer-v3.0.3/layer/layer.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>-->
+		<script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/datetimePicker/dateSelect.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/citypicker/city-picker.data.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/plugins/citypicker/city-picker.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/themes/<%=staticforder%>/js/cos-js-sdk-v4.js?vesion=<%=siteConfig.version%>"></script>
+		<script src="/themes/<%=staticforder%>/js/moment.min.js?vesion=<%=siteConfig.version%>"></script>
+		<script src="/themes/<%=staticforder%>/js/directive.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/themes/<%=staticforder%>/js/modules.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/themes/<%=staticforder%>/js/layoutForShopController.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/themes/<%=staticforder%>/js/tool.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+		<script src="/themes/<%=staticforder%>/js/hack.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+
+	</body>
+</html>

@@ -1,0 +1,559 @@
+<style type="text/css">
+	.privatePic>img{
+		display: block;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	.privateCenter{
+		height: 170px;
+		width: 100%;
+		border-top-left-radius: 85px;
+		border-bottom-left-radius: 85px;
+		margin-bottom: 30px;
+		overflow: hidden;
+		position: relative;
+	}
+	.privateCenter>div{
+		position: absolute;
+	}
+	.privateInfo{
+		top: 20px;
+		left: 195px;
+		height:150px ;
+	}
+	.privateInfo>ul{
+		height: 100%;
+	}
+	.privateInfo>ul>li{
+		height: 23%;
+	}
+	.privateInfo>ul>li .privateName{
+		font-size: 20px;
+		margin-right: 30px;
+	}
+	.privateInfo>ul>li .privateMobile{
+		float: left;
+		width: 100px;
+		height: 18px;
+		line-height: 19px;
+		padding-left: 4px;
+		background-color: rgb(275,170,111);
+		color: #FFFFFF;
+		font-size: 13px;
+		margin-top: 4px;
+	}
+	.privateInfo>ul>li>.privateMessege{
+		display: inline-block;
+		padding-top: 10px;
+		font-size: 13px;
+	}
+	.privateInfo>ul>li>.privateMessege>.privateMessegeCount{
+		margin: 5px;
+		color: rgb(218,47,47);
+	}
+	.privateContact{
+		width: 120px;
+	}
+	.privateContact>.messegeContact{
+		background-position: -40px -355px;
+	}
+	.privateContact>.qqContact{
+		background-position: -13px -357px;
+	}
+	.privateContact>.weichartContact{
+		background-position: -73px -355px;
+	}
+	.privateContact>.messegeContact:hover,.privateContact>.messegeContactHover{
+		background-position: -40px -375px;
+	}
+	.privateContact>.qqContact:hover,.privateContact>.qqContactHover{
+		background-position: -13px -377px;
+	}
+	.privateContact>.weichartContact:hover,.privateContact>.weichartContactHover{
+		background-position: -73px -375px;
+	}
+	.privateInfo>ul .privateSlogan{
+		color: #d7d7d7;
+		width: 336px;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp:2;
+		overflow: hidden;
+		height: 25%;
+	}
+	.storeName{
+		right: 10px;
+		top: 25px;
+		font-size: 18px;
+		height: 30px;
+		width: 240px;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp:1;
+		overflow: hidden;
+	}
+	.storePic{
+		top: 25PX;
+		right: 260PX;
+		width: 130PX;
+		height: 130PX;
+	}
+	.storePic>img{
+		width:130PX;
+		height:130PX;
+	}
+	.storeInfo{
+		top: 64PX;
+		right: 90PX;
+		width: 140PX;
+		height: 100PX;
+	}
+	.storeInfoincon{
+		top: 60PX;
+		right: 230PX;
+		width: 26PX;
+		height: 100PX;
+		background:url("/themes/lanmai/images/privatecenter.png") 0 4px ;
+	}
+	.storeInfo>ul{
+		display: block;
+		height: 33.3%;
+		font-size: 15px;
+		color: #ccc;
+		font-size: 13px;
+	}
+	.storeInfo>ul>li{
+		float: left;
+		margin-left: 3px;
+		height: 100%;
+		overflow: hidden;
+		max-width: 116px;;
+	}
+	.storeInfo>ul>li>span{
+		margin: 0 12px;
+	}
+	.certificateicon {
+		top: 74px;
+		right: 66px;
+		width: 28px;
+		height: 80px;
+	}
+	.certificateicon>div{
+		width: 28px;
+		height: 40px;
+		background-image: url(/themes/lanmai/images/privatecenter.png);
+	}
+	.idCardIdentify{
+		background-position: 27px 4px;
+	}
+	.companyIdentify{
+		background-position: 27px 64px;
+	}
+	.certificateinfo {
+		position: absolute;
+		top: 90px;
+		right: 0;
+		width: 66px;
+		height: 76px;
+	}
+	.certificateinfo>li{
+		height: 50%;
+		font-size: 13px;
+	}
+	.certificateinfo>li>a{
+		color: #ccc;
+		display: block;
+		text-align: center;
+	}
+	.recentAction{
+		height: 30px;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.recentAction>div{
+		width: 96px;
+		height: 22px;
+		border-radius: 3px;
+		display: inline-block;
+		margin-left: 8px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.myPromote{
+		margin-bottom: 50px;
+	}
+	 .precisePromote{
+		 width: 1030px;
+		 height: 250px;
+		 border: 2px solid red;
+		 display: none;
+		 position: fixed;
+		 top: 355px;
+		 left:450px;
+		 background-color: #FFFFFF;
+	 }
+	.precisePromoteContent{
+		width: 800px;
+		float: left;
+	}
+	.effect{
+		width: 225px;
+		float: right;
+		height: 100%;
+	}
+	.isPrecisePromote{
+		height: 70px;
+		width: 100%;
+		position: relative;
+	}
+	.isPrecisePromote>input{
+		width: 29px;
+		height: 29px;
+		position: absolute;
+		top: 28px;
+		left: 29px;
+	}
+	.isPrecisePromote>span{
+		font-size: 24px;
+		position: absolute;
+		top: 25px;
+		left: 70px;
+	}
+	.precisePromoteDescript{
+		width: 100%;
+		height: 20px;
+		position: relative;
+	}
+	.precisePromoteDescript>p{
+		font-size: 14px;
+		position: absolute;
+		top: 0px;
+		left: 70px;
+	}
+	.precisePromoteTime{
+		width: 100%;
+		height: 45px;
+		margin: 20px 0 20px 0;
+	}
+	.precisePromoteTime>ul{
+		width: 100%;
+		height: 100%;
+		margin-left: 29px;
+	}
+	.precisePromoteTime>ul>li{
+		float: left;
+		width: 95px;
+		height: 35px;
+		line-height: 35px;
+		text-align: center;
+		margin-right: 13px;
+		border: 1px solid gainsboro;
+		border-radius: 3px;
+		position: relative;
+	}
+	.precisePromoteSelect{
+		width: 100%;
+		height: 40px;
+		padding-left: 29px;
+		font-size: 20px;
+	}
+	.precisePromoteSelect>ul{
+		width: 100%;
+		height:40px;
+	}
+	.precisePromoteSelect>ul>li{
+		width: 25%;
+		height: 40px;
+		line-height: 40px;
+		float: left;
+	}
+	.precisePromoteTime>ul>li>div{
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	.precisePromoteTime>ul>li .discount{
+		position: absolute;
+		top: -8px;
+		right: 5px;
+		font-size: 12px;
+		color: rgb(232,163,105);
+	}
+	.precisePromoteSelect>ul>li>select{
+		width: 125px;
+		height: 30px;
+		border: 1px solid grey;
+		text-align: center;
+	}
+	.precisePromotePrice{
+		display: inline-block;
+		margin: 0 10px 0 10px;
+	}
+	.precisePromoteSelect>ul>li>button{
+		background-color: red;
+		width: 97px;
+		height: 30px;
+		margin-left: 56px;
+	}
+	.effect>div{
+		display: inline-block;
+		margin-top: 10px;
+	}
+	.effect .close{
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		margin-left: 124px;
+	}
+	.effect>ul{
+		height: 200px;
+		width: 100%;
+		margin-top: 20px;
+	}
+	.effect>ul>li{
+		height: 25%;
+		width: 100%;
+		position: relative;
+	}
+	.effect>ul>li>div{
+		display: inline-block;
+		margin-right: 5px;
+	}
+	.effect .effectProgress{
+		width: 140px;
+		height:35px;
+		background-position: -77px -484px;
+	}
+	.effect .effectLogo{
+		width: 27px;
+		height: 27px;
+		background-color: #dad8d8;
+		margin-top: -2px;
+	}
+	.effectActiveColor{
+		background-color: #f6cca9 !important;
+	}
+	.effect .effectActiveLogo{
+		width: 30px;
+		height: 30px;
+		line-height: 29px;
+		text-align: center;
+		font-size: 20px;
+		border: 1px solid #f6cca9;
+		position: absolute;
+		top: 4px;
+		right: 8px;
+	}
+	.effect .preciseProgress{
+		background-position: -77px -415px ;
+	}
+</style>
+<div class="myDemand" ng-controller="recentDemandAndResourceController">
+			    		<div class="privateCenter bgGrey">
+			    			<div class="privatePic"><img src=<%=userInfo.avatar%>/140.140 alt="头像"></div>
+			    			<div class="privateInfo">
+			    				<ul>
+			    					<li><span class="privateName"><%=userInfo.nickName%></span><span class="privateMessege">消息<a href="messageManagement" class="privateMessegeCount"><%=msgForUserNoReadCount%></a>条未读</span></li>
+			    					<li><div><div class="privateMobileLogo"></div><div class="privateMobile"><%=userInfo.phoneNum%></div></div></li>
+			    					<li><div class="privateContact">
+											<% if(userInfo.isBindEmailChecked){ %>
+											<span class="messegeContactHover"></span>
+											<% }else{ %>
+											<span class="messegeContact"></span>
+											<% } %>
+											<% if(userInfo.qqBind){ %>
+											<span class="qqContactHover"></span>
+											<% }else{ %>
+											<span class="qqContact"></span>
+											<% } %>
+											<% if(userInfo.wechatBind){ %>
+											<span class="weichartContactHover"></span>
+											<% }else{ %>
+											<span class="weichartContact"></span>
+											<% } %>
+										</div></li>
+			    					<li class="privateSlogan" title="<%=userInfo.comments%>"><%=userInfo.comments%></li>
+			    				</ul>
+			    			</div>
+							<%if(company.companyName){if(company.companyName.length<=10){%>
+		    				<div class="storeName"><%=company.companyName%></div>
+							<%}else {%>
+		    				<div class="storeName" title="<%=company.companyName%>"><%=company.companyName%></div>
+							<%}}%>
+							<%if(isBrand){%>
+		    				<div class="storePromoteIcon"></div>
+							<%}%>
+		    				<div class="storePic"><img src="<%=company.companyLogo%>/130.130"/></div>
+							<div class="storeInfoincon"></div>
+		    				<div class="storeInfo">
+		    					<ul>
+									<%if(!company.businessScope){%>
+									<li>暂未填写</li>
+									<%}else {if(company.businessScope.length>2){
+									for(var i=0;i<2;i++){%>
+									<li><%=company.businessScope[i]%></li>
+									<%}
+									}else {%>
+									<%for(var i=0;i<company.businessScope.length;i++){%>
+									<li><%=company.businessScope[i]%></li>
+									<%}}}%>
+								</ul>
+		    					<ul><%if(!company.region){%>
+									<li class="titleOverflow"> 暂未填写</li>
+									<%}else{%>
+									<li class="titleOverflow"><%=company.region.province%><%if(company.region.city){%>-<%=company.region.city%><%}%></li>
+									<%}%>
+								</ul>
+		    					<ul><li>资源数<span><%=resCount%></span> </li></ul>
+		    				</div>
+							<div class="certificateicon">
+								<div class="idCardIdentify" title="实名认证"></div>
+								<div class="companyIdentify" title="企业认证"></div>
+							</div>
+							<ul class="certificateinfo">
+								<li><a title="实名认证" href="certificationManagement">
+										<%if(!idCardIdentify){%>
+											未认证
+										<%}else if(idCardIdentify.status=="审核中"){%>
+											审核中
+										<%}else if(idCardIdentify.status=="已认证"){%>
+											已认证
+										<%}else {%>
+											<%=idCardIdentify.status%>
+										<%}%>
+									</a></li>
+								<li>
+									<a title="企业认证" href="licenseCertification">
+										<%if(!companyIdentify){%>
+										未认证
+										<%}else if(companyIdentify.status=="审核中"){%>
+										审核中
+										<%}else if(companyIdentify.status=="已认证"){%>
+										已认证
+										<%}else {%>
+										<%=companyIdentify.status%>
+										<%}%>
+									</a></li>
+							</ul>
+			    		</div>
+			    		<div class="recentAction">
+							<div ng-class="{redBorder:flag}"  ng-click="changeForm(1)">最近发布资源</div>
+			    			<div ng-class="{redBorder:!flag}" ng-click="changeForm(2)">最近发布需求</div>
+			    		</div>
+			    		<div class="demandContent" ng-if="!flag">
+			    			<div class="demandList  bgGrey">
+			    				<div class="demand_categories">需求类别</div>
+			    				<div class="demand_trade">行业</div>
+			    				<div class="demand_area">地区</div>
+			    				<div class="demand_budget">预算</div>
+			    				<div class="demand_sketch">需求简述</div>
+			    				<div class="demand_skin">浏览量</div>
+			    				<div class="demand_handle">操作</div>
+			    				<div class="demand_status">状态</div>
+			    			</div>
+							<div ng-if="!latestDe.length" class="littlemargin"> 暂未发布需求</div>
+			    			<div class="demandList" ng-repeat="item in latestDe">
+			    				<div class="demand_categories">{{item.categoryL1.name}}</div>
+			    				<div class="demand_trade">{{item.classify}}</div>
+			    				<div class="demand_area">{{item.region.province}}</div>
+			    				<div class="demand_budget">{{item.price}}</div>
+			    				<div class="demand_sketch"><span class="titleOverflow" style="display:inline-block;width: 235px !important;">{{item.title}}</span></div>
+			    				<div class="demand_skin">{{item.pageview}}</div>
+			    				<div class="demand_handle blueColor">
+			    					<ul>
+				    					<li><a ng-href="/resource/demandReleaseEdit?id={{item.resNum}}" target="_blank">修改</a></li>
+				    					<li  ng-click="refreshde(item)"><a>刷新</a></li>
+				    					<li  ng-click="deletede(item)"><a>删除</a></li>
+										<li><a ng-href="../resource/dDemand?id={{item.resNum}}" target="_blank">详情</a></li>
+			    				    </ul>
+			    				</div>
+			    				<div class="demand_status" ng-click="triggerDeShow(item)"  ng-class="{redFont:item.isShowing,pastColor:!item.isShowing}">{{item.isShowing|myfilter}}</div>
+			    			</div>
+			    		</div>
+						<div class="myPromote" ng-show="flag">
+							<div ng-if="!latestRes.length" class="littlemargin"> 暂未发布资源</div>
+							<div class="promote_list">
+								<div class="promote_line" ng-repeat="item in latestRes">
+									<div class="promotePic"><img ng-src="{{item.images[0]}}/100.100"/></div>
+									<div class="promoteInfo">
+										<p>信息号<span>{{item.resNum}}</span></p>
+										<p class="titleOverflow">{{item.title}}</p>
+										<p>{{item.categoryL2.name}}-{{item.categoryL3.name}}</p>
+										<p>{{item.createdAt|timeFilter}}</p>
+									</div>
+									<div class="promoteDate">
+										<div class="promoteTime" ng-if="item|itemToPro">
+											<span class="orangeColor">推广中</span><p class="greenColor">(<span class="promote_time_begin">2017-04-01</span>至<span class="promote_time_end">2017-07-01</span>)</p>
+										</div>
+										<p class="skin_count">浏览<span>{{item.pageview}}</span></p>
+									</div>
+									<div class="promote_handle">
+										<ul>
+											<li><a ng-href="/resource/{{item.resType}}ForEdit?parentID={{item.categoryL1}}&id={{item.resNum}}" target="_blank">修改</a></li>
+											<li ng-click="refresh(item)"><a>刷新</a></li>
+											<li ng-click="triggerResTop(item)" ng-if="!item.isTop"><a  >{{item.isTop|topfilter}}</a></li>
+											<li ng-click="triggerResTopForNo(item)" ng-if="item.isTop"><a ng-class="{redFont:item.isTop}">{{item.isTop|topfilter}}</a></li>
+										</ul>
+									</div>
+									<div class="promote_delete">
+										<a ng-click="delete(item)">删除</a>
+										<span ng-click="triggerResShow(item)" ng-class="{redFont:item.isShowing,pastColor:!item.isShowing}">{{item.isShowing|myfilter}}</span>
+										<div class="clickforinfo"><a ng-href="/resource/{{item.resType|toD}}?id={{item.resNum}}" target="_blank">查看详情</a></div>
+									</div>
+								</div>
+		                    </div>
+							</div>
+						<div class="precisePromote">
+	<div class="precisePromoteContent">
+		<div class="isPrecisePromote">
+			<input type="checkbox" name="" id="" value="" /><span class=" redFont">精准推广</span>
+		</div>
+		<div class="precisePromoteDescript blueColor">
+			<p>使用精准推广功能，资源信息将在该类目录列表顶端展示，精准锁定目标区域人群，找买主快准狠</p>
+		</div>
+
+		<div class="precisePromoteTime">
+			<ul>
+				<li><div class="">1天</div></li>
+				<li><div class="">7天</div></li>
+				<li><div class="">15天<span class="discount">折</span></div></li>
+				<li><div class="">30天<span class="discount">折</span></div></li>
+				<li><div class="">1季度<span class="discount">折</span></div></li>
+				<li><div class="">半年<span class="discount">折</span></div></li>
+				<li><div class="">1年<span class="discount">折</span></div></li>
+			</ul>
+		</div>
+
+		<div class="precisePromoteSelect">
+			<ul>
+				<li><select><option>选择类目</option></select></li>
+				<li><select><option>选择地区</option></select></li>
+				<li>价格<span class="precisePromotePrice redFont">98.00</span>元</li>
+				<li><button>确认付款</button></li>
+			</ul>
+		</div>
+	</div>
+	<div class="effect">
+		<div class="blueColor"><p>展示效果</p></div>
+		<div class="close geryborder"></div>
+		<ul>
+			<li><div class="effectLogo effectActiveColor"></div><div class="effectProgress preciseProgress"></div><div class="effectActiveLogo redFont">精</div></li>
+			<li><div class="effectLogo"></div><div class="effectProgress"></div></li>
+			<li><div class="effectLogo"></div><div class="effectProgress"></div></li>
+			<li><div class="effectLogo"></div><div class="effectProgress"></div></li>
+		</ul>
+	</div>
+</div>
+	</div>
+<script>
+	$(function () {
+		$(".promoteTime p a").bind("click",function () {
+			$(".precisePromote").show();
+		})
+		$(".close").bind("click",function () {
+			console.log("ok");
+			$(".precisePromote").hide();
+		})
+	})
+</script>

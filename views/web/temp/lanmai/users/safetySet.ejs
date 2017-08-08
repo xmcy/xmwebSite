@@ -1,0 +1,98 @@
+<style type="text/css">
+	.bottom_lanmai{
+		margin-top: 250px;
+	}
+	.safetySet>h2{
+		display: block;
+		margin-bottom: 30px;
+	}
+	.safetySet,.safetySet>ul,.safetySet>ul>li{
+		width: 100%;
+	}
+	.safetySet>ul>li{
+		height: 40px;
+		position: relative;
+		margin-bottom: 4px;
+		background-color:#f6f4f4 ;
+	}
+	.safetySet>ul>li>div{
+		position: absolute;
+		top: 0;
+		height: 40px;
+		line-height: 40px;
+		text-align: left;
+		font-size: 13px;
+	}
+	.safetySet .projetcName{
+		left: 22px;
+		width: 150px;
+	}
+	.safetySet .projetcName>div{
+		display: inline-block;
+		height: 40px;
+		line-height: 40px;
+	}
+	.safetySet .projetInstruction{
+		left: 165px;
+		width: 700px;
+	}
+	.safetySet .projetHandle{
+		position: absolute;
+		left: 880px;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+	}
+	.safetySet>ul>li a{
+		color: rgb(112,112,112);
+	}
+	.safetySet .safetySetNav{
+		background-color: #c1ebff;
+	}
+	.safetySet .safetySetNav div{
+		font-size: 15px;
+	}
+	.safetySet .safetySetNav .projetcName>div{
+		margin-left: 20px;
+	}
+	.safetySet .projetcStatus-ok{
+		background-position: -146px -19px;
+	}
+
+	.safetySet .projetcStatus-no{
+		background-position: -273px -19px;
+	}
+</style>
+<div class="safetySet">
+			    		<h2>安全设置</h2>
+			    		<ul>
+			    			<li class="safetySetNav">
+			    				<div class="projetcName"><div>项目名称</div></div>
+			    				<div class="projetInstruction">说明</div>
+			    				<div class="projetHandle">操作</div>
+			    			</li>
+			    			<li class="safetySetPassword">
+			    				<div class="projetcName"><div class="projetcStatus-ok"></div><div>登录密码</div></div>
+			    				<div class="projetInstruction">安全强度高的密码可以使账号更安全，建议您设置一个包含数字和字母，并且长度6位以上的登陆密码</div>
+			    				<a href="/users/modifyPassword"><div class="projetHandle">修改</div></a>
+			    			</li>
+			    			<li class="safetySetTele">
+			    				<div class="projetcName"><div class="projetcStatus-ok"></div><div>手机已认证</div></div>
+			    				<div class="projetInstruction">您的认证手机号：<%=userInfo.phoneNum%></div>
+			    				<a href="/users/mobileBinding"><div class="projetHandle">修改</div></a>
+			    			</li>
+			    			<li class="safetySetEail">
+								<% if(user.emailVerified){ %>
+								<div class="projetcName"><div class="projetcStatus-ok"></div><div>邮箱已认证</div></div>
+								<div class="projetInstruction">认证邮箱可提高账户安全性和信任级别，同时也是找回密码等操作验证您身份的途径之一</div>
+								<a href="/users/confirmIdForEmail"><div class="projetHandle">修改</div></a>
+								<% }else{ %>
+								<div class="projetcName"><div class="projetcStatus-no"></div><div>邮箱未认证</div></div>
+								<div class="projetInstruction">认证邮箱可提高账户安全性和信任级别，同时也是找回密码等操作验证您身份的途径之一</div>
+								<a href="/users/emailBinding"><div class="projetHandle">认证</div></a>
+								<% } %>
+
+			    			</li>
+			    		</ul>
+			    	</div>
+			    	 

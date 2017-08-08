@@ -1,0 +1,685 @@
+<style>
+	.bottom_lanmai{
+		margin-top: 600px;
+	}
+	.modifyContent>h2{
+		margin: 3px 0 20px 0;
+	}
+	.modifyContent>div{
+		clear: both;
+	}
+	.modifyContent h3{
+		display: block;
+		width: 100%;
+		height: 28px;
+		padding-left: 8px;
+		margin-bottom: 10px;
+		color: rgb(218,47,47);
+		border-bottom: 3px solid rgb(218,47,47);
+		font-size: 18px;
+	}
+	.picreq{
+		margin: 0 0 10px 30px;
+	}
+	.privatemodifyPic{
+		height: 270px;
+		position: relative;
+	}
+	.privatemodifyPic>.shoplogo{
+		position: absolute;
+		top:56px;
+		left:32px;
+		width: 150px;
+		height: 90px;
+		background: url(/themes/lanmai/images/addfile.png) no-repeat -41px -24px;
+	}
+	.privatemodifyPic>img{
+		position: absolute;
+		top:0;
+		left: 30px;
+		width: 220px;
+		height: 220px;
+	}
+	.privatemodifyPic>.updatelogo{
+		position: absolute;
+		top:0;
+		left: 30px;
+		height:220px;
+		width: 220px;
+		overflow: hidden;
+		font-size: 300px;
+		opacity: 0;
+		filter:alpha(opacity=0);
+		cursor:pointer;
+		padding: 0;
+		margin: 0;
+		z-index: 9999;
+	}
+	.tip{
+		position: absolute;
+		top:225px;
+		left: 36px;
+		color: red;
+		display: none;
+	}
+	.modifyContact>div,.modifyInfo>div{
+		margin: 20px 0 20px 35px;
+		height: 35px;
+	}
+	.modifyInfo>div>span:first-child{
+		display: inline-block;
+		width: 90px;
+		margin-right: 35px;
+	}
+	.changeIcon>a{
+		display: inline-block;
+		width: 20px;
+		height: 25px;
+	}
+	.sexSelect{
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	.modifyInfo .sexSelect>input{
+		height: 14px;
+		width: 20px;
+		margin-left: 32px;
+		margin-right: 0;
+	}
+	.sexSelect>span{
+		display: inline-block;
+		margin-right: 83px;
+	}
+	.sexSelect a{
+		display: inline-block;
+		position: absolute;
+		top:1px;
+	}
+	.sexSelect a:last-child{
+		left: 236px;
+	}
+	.modifyInfo>div input{
+		height:30px;
+		margin-right: 10px;
+		width: 237px;
+		padding-left: 10px;
+	}
+	.modifyInfo>div select{
+		width: 65px;
+		height: 22px;
+		line-height: 22px;
+		border: 1px solid rgb(142,142,142);
+	}
+	.city-picker-span{
+		border: none;
+	}
+	.modifyInfo>.sign{
+		height: 150px;
+		position: relative;
+	}
+	.modifyInfo>.sign>span{
+		position: absolute;
+		top: 0;
+	}
+	.modifyInfo>.sign>div{
+		position: absolute;
+		left:133px;
+	}
+	.modifyInfo>.sign>div>div{
+		width: 305px;
+		height: 145px;
+		border: none;
+	}
+	.modifyInfo>.sign>div>div>textarea{
+		width: 100%;
+		height: 100%;
+		max-height: 100%;
+		max-width: 100%;
+		resize: none;
+		border:1px solid #bdbcbc;
+		font-family: "微软雅黑";
+		font-size: 15px;
+	}
+	.modifyInfo>.sign .signtip{
+		margin-left: 92px;
+	}
+	.modifyInfo>.sign .signtip>a{
+		color: red;
+	}
+	.modifyContent button.submit-btn{
+		margin:20px 0 0 300px;
+		width: 170px;
+		height: 40px;
+		color: #FFFFFF;
+		border-radius: 3px;
+		background-color: rgb(218,47,47);
+		border:1px solid rgb(218,47,47);
+		font-size: 17px;
+		margin-bottom: 50px;
+	}
+	.file-loading {
+		top: 0;
+		right: 0;
+		width: 25px;
+		height: 25px;
+		font-size: 999px;
+		text-align: right;
+		color: #fff;
+		background: transparent url('../../../../../public/themes/lanmai/images/xmloading.gif') top left no-repeat;
+		border: none;
+	}
+
+	.file-object {
+		margin: 0 0 -5px 0;
+		padding: 0;
+	}
+
+	.btn-file {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.btn-file input[type=file] {
+		position: absolute;
+		top: 0;
+		right: 0;
+		min-width: 100%;
+		min-height: 100%;
+		text-align: right;
+		opacity: 0;
+		background: none repeat scroll 0 0 transparent;
+		cursor: inherit;
+		display: block;
+	}
+
+	.file-caption-name {
+		display: inline-block;
+		overflow: hidden;
+		height: 20px;
+		word-break: break-all;
+	}
+
+	.input-group-lg .file-caption-name {
+		height: 25px;
+	}
+
+	.file-preview-detail-modal {
+		text-align: left;
+	}
+
+	.file-caption-disabled {
+		background-color: #EEEEEE;
+		cursor: not-allowed;
+		opacity: 1;
+	}
+
+	.file-preview {
+		/*border-radius: 5px;
+        border: 1px solid #ddd;
+
+        width: 100%;
+        */
+		width: 850px;
+		margin-left: 50px;
+		margin-bottom: 5px;
+		padding: 5px;
+	}
+
+	.file-preview-frame {
+		display: inline-block;
+		margin-left: 10px;
+		border: 1px solid #ddd;
+		box-shadow: 1px 1px 5px 0 #a2958a;
+		padding: 3px;
+		text-align: center;
+		vertical-align: middle;
+		float: left;
+        overflow: hidden;
+	}
+
+	.file-preview-hbs {
+		overflow-y: hidden;
+		overflow-x: auto;
+		white-space: nowrap;
+		padding-bottom:20px;
+	}
+
+	/*.file-preview-frame:not(.file-preview-error):hover {*/
+	/*box-shadow: 3px 3px 5px 0 #333;*/
+	/*}*/
+
+	.file-preview-image {
+		height: 160px;
+		vertical-align: middle;
+	}
+
+	.file-preview-text {
+		text-align: left;
+		width: 160px;
+		margin-bottom: 2px;
+		color: #428bca;
+		background: #fff;
+		overflow-x: hidden;
+	}
+
+	.file-preview-other {
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+		width: 160px;
+		height: 160px;
+		border: 2px solid #999;
+		border-radius: 30px;
+		opacity: 0.8;
+	}
+
+	.file-actions, .file-other-error {
+		text-align: left;
+	}
+
+	.file-icon-lg {
+		font-size: 1.2em;
+	}
+
+	.file-icon-2x {
+		font-size: 2.4em;
+	}
+
+	.file-icon-4x {
+		font-size: 4.8em;
+	}
+
+	.file-input-new .file-preview, .file-input-new .close, .file-input-new .glyphicon-file,
+	.file-input-new .fileinput-remove-button, .file-input-new .fileinput-upload-button,
+	.file-input-ajax-new .fileinput-remove-button, .file-input-ajax-new .fileinput-upload-button {
+		display: none;
+	}
+
+	.fileinput-upload-button > span {
+		margin-left:8px;
+	}
+
+	.file-actions {
+		margin-top: 5px;
+	}
+
+	.file-footer-buttons {
+		float: right;
+	}
+
+	.file-upload-indicator {
+		padding-top: 2px;
+		cursor: default;
+		opacity: 0.8;
+		width: 60%;
+	}
+
+	.file-upload-indicator:hover {
+		font-weight: bold;
+		opacity: 1;
+	}
+
+	.file-footer-caption {
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		width: 160px;
+		text-align: center;
+		padding-top: 4px;
+		font-size: 11px;
+		color: #777;
+		margin: 5px auto 10px auto;
+	}
+
+	.file-preview-frame:not(.file-preview-error) .file-footer-caption:hover {
+		color: #000;
+	}
+
+	.file-drop-zone {
+		border: 1px dashed #aaa;
+		height: 100%;
+		text-align: center;
+		vertical-align: middle;
+		padding: 2px;
+	}
+
+	.file-drop-zone-title {
+		color: #aaa;
+		font-size: 40px;
+		padding: 85px 10px;
+	}
+
+	.file-highlighted {
+		border: 2px dashed #999 !important;
+		background-color: #f0f0f0;
+	}
+
+	.file-uploading {
+		background: url('../../../../../public/themes/lanmai/images/xmloading.gif') no-repeat center bottom 10px;
+		opacity: 0.65;
+	}
+
+	.file-error-message .close {
+		margin-top: 5px;
+	}
+
+	.file-thumb-progress .progress, .file-thumb-progress .progress-bar {
+		height: 10px;
+		font-size: 9px;
+		line-height: 10px;
+	}
+
+	.file-thumbnail-footer {
+		position: relative;
+	}
+
+	.file-thumb-progress {
+		position: absolute;
+		top: 22px;
+		left: 0;
+		right: 0;
+	}
+
+	/* IE 10 fix */
+	.btn-file ::-ms-browse {
+		width:100%;
+		height:100%;
+	}
+
+
+	.fileinput-button {
+		position: relative;
+		overflow: hidden;
+		display: inline-block;
+		padding: 4px 6px !important;
+	}
+	.fileinput-button input {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 0;
+		opacity: 0;
+		-ms-filter: 'alpha(opacity=0)';
+		/*font-size: 200px;*/
+		font-size: 30px;
+		direction: ltr;
+		cursor: pointer;
+	}
+	/* Fixes for IE < 8 */
+	@media screen\9 {
+		.fileinput-button input {
+			filter: alpha(opacity=0);
+			font-size: 100%;
+			height: 100%;
+		}
+	}
+	.file-drop-zone {
+		width: 280px;
+	}
+</style>
+<link href="/plugins/datetimePicker/dateSelect.css" rel="stylesheet">
+<script src="/plugins/datetimePicker/dateSelect.js"></script>
+
+<script type="application/javascript">
+	$(function () {
+		console.log(navigator.userAgent)
+		function getBrowserInfo() {
+			var agent = navigator.userAgent.toLowerCase();
+
+			var regStr_ie = /msie [\d.]+;/gi;
+			var regStr_ie2 = /Trident\/ [\d.]+;/gi;
+			//IE
+			if (agent.indexOf("msie") > 0) {
+				return agent.match(regStr_ie) ;
+			}
+			return false
+		}
+		var browser = getBrowserInfo() ;
+		if(browser){
+			var verinfo = (browser+"").replace(/[^0-9.]/ig,"");
+			if(8<parseInt(verinfo)<=9){
+				swal({
+							title: "您的浏览器版本过低，无法使用上传图片功能",
+							text:"若使用360,qq,搜狗,2345,uc等浏览器,请切换成极速模式,若使用IE浏览器,请升级浏览器版本或安装其它浏览器",
+							showCancelButton: true,
+							confirmButtonColor: "#DD6B55",
+							cancelButtonText: "取消",
+							confirmButtonText: "查看帮助",
+							closeOnConfirm: false
+						},
+						function(isConfirm){
+							if(isConfirm){
+								window.location.href="/users/helperCenter#uploadImg"
+							}
+						});
+			}else if(parseInt(verinfo)<=8){
+				alert("您的浏览器版本过低，无法使用上传图片功能,请升级浏览器版或安装其它浏览器")
+			}
+		}
+
+	})
+</script>
+
+
+
+<form class="modifyContent">
+			    		<h2>个人资料</h2>
+			    		<div>
+			    			<h3>修改头像</h3>
+							<div class="picreq">请将图片大小控制在5M以内,图片格式：JPGE、PNG、JPG等</div>
+							<div class="privatemodifyPic">
+								<div class="shoplogo"></div>
+								<input class="updatelogo" type="file" name="" id="" value=""/>
+								<img src="/themes/<%=staticforder%>/images/personnal.png"/>
+								<span class="tip">点击图片可重新修改Logo</span>
+							</div>
+			    		</div>
+	<input type="hidden" value="<%=userInfo._id%>" id="idForUser">
+
+	<div class="modifyContact">
+			    			<h3>修改联系方式</h3>
+                            <% if(userInfo.phoneNumVerified){ %>
+                            <div><span>手机：</span><span><%=userInfo.phoneNum%></span> <span class="changeIcon"><a href="mobileBinding1"></a></span></div>
+                            <% } %>
+                            <% if(userInfo.isBindEmailChecked){ %>
+                            <div><span>邮箱：</span><span><%=userInfo.email%></span> <span class="changeIcon"><a href=""></a></span></div>
+                            <% }else{ %>
+                            <div><span>邮箱：</span><span><a href="emailBinding">去填写邮箱并认证</a></span></div>
+                            <% } %>
+			    		</div>
+			    		<div class="modifyInfo">
+			    			<h3>修改资料</h3>
+			    			<div id="">
+			    				<span id="">昵称&nbsp;&nbsp:</span>
+			    			    <input class="geryborder" type="" name="nickName" id="" value="<%=userInfo.nickName%>"/>
+			    			</div>
+			    			<div id="">
+			    				<div class="sexSelect">
+			    					<span id="">性别&nbsp;&nbsp:</span>
+									<%if(userInfo.gender=="女"){%>
+			    					<input type="radio" name="gender" id="" value="male" /><a>男</a>
+					    	        <input type="radio" name="gender" id="" value="female" checked/><a>女</a>
+									<%}else {%>
+									<input type="radio" name="gender" id="" value="male" checked/><a>男</a>
+									<input type="radio" name="gender" id="" value="female" /><a>女</a>
+									<%}%>
+			    				</div>
+			    			</div>
+
+			    			<div id="">
+			    				<span>生日&nbsp;&nbsp:</span>
+								<%if(userInfo.brithday){%>
+								<input class="geryborder" type="text" id="date" readonly name="brithday" value="<%=userInfo.brithday%>"/>
+								<%}else {%>
+								<input class="geryborder" type="text" id="date" readonly name="brithday"/>
+								<%}%>
+			    			</div>
+			    		    <div id="">
+			    		   	  <span>所在地&nbsp;&nbsp:</span>
+								<div style="position:relative; left: 128px;top: -22px;">
+									<%if(userInfo.region&&userInfo.region.district){%>
+									<input readonly type="text" data-toggle="city-picker" value="<%=userInfo.region.province%>/<%=userInfo.region.city%>/<%=userInfo.region.district%>" name="region">
+									<%}else if(userInfo.region){%>
+									<input readonly type="text" data-toggle="city-picker" value="<%=userInfo.region.province%>/<%=userInfo.region.city%>" name="region">
+									<%}else {%>
+									<input readonly type="text" data-toggle="city-picker" value="北京市/北京市/东城区" name="region">
+									<%}%>
+								</div>
+			    		    </div>
+				    		<div class="sign">
+				    			<span id="">个性签名&nbsp;&nbsp;:</span>
+				    			<div id="">
+									<%if(userInfo.comments){%>
+				    			    <div><textarea  type="" name="comments" id="" value="" ><%=userInfo.comments%></textarea></div>
+									<%}else {%>
+									<div><textarea placeholder="春光甚好~" type="" name="comments" id="" value="春光甚好~" ></textarea></div>
+									<%}%>
+				    		        <span>(58字符以内)</span><span class="signtip">最多还可写<a>58</a>个字符</span>
+				    			</div>
+				    			
+				    		</div>
+			    		</div>
+			    		<button class="submit-btn">完成修改</button>
+			    	</form>
+<input type="hidden" value="<%=userInfo._id%>" id="idForUser">
+
+<script type="application/javascript">
+	$(function() {
+		$("input[type='file']").change(function(e) {
+			var that = this;
+			var file = this.files[0];
+			var fileType=file.type.split('/')[1];
+			var filePath=$("#idForUser").val()
+			$.getCos("users",filePath,fileType,file, function (res) {
+				console.log(res)
+				$(that).next().attr("src", res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+				$(".shoplogo").css("background","none")
+				$.post("/users/setAvatar",{
+					avatar:res.data.source_url
+				},function (res) {
+					if(res=="success"){
+						swal({
+							title: "修改头像成功！",
+							type: "success",
+							confirmButtonText: "确定"
+						});
+					}else {
+						swal({
+							title: res,
+							type: "error",
+							confirmButtonText: "确定"
+						});
+					}
+
+				})
+				$(".tip").show()
+			})
+		});
+		$("#date").dateSelect();
+		$("button.submit-btn").on("click",function () {
+			var nickName=$("input[name='nickName']").val();
+			var gender=$("input[name='gender']:checked").val()=="male"?"男":"女";
+			var brithday=$("input[name='brithday']").val();
+			var regionStr=$("input[name='region']").val();
+
+			var comments=$("textarea[name='comments']").val();
+			if(nickName==""){
+				swal({
+					title: "请填写昵称！",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			if(gender==""){
+				swal({
+					title: "请填写性别！",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			if(brithday==""){
+				swal({
+					title: "请填写生日！",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			if(regionStr==""){
+				swal({
+					title: "请填写所在地！",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			if(comments==""){
+				swal({
+					title: "请填写个性签名！",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			var region={
+				province:regionStr.split("/")[0],
+				city:regionStr.split("/")[1],
+				district:regionStr.split("/").length==3?regionStr.split("/")[2]:""
+			};
+			var data={
+					nickName:nickName,
+					gender:gender,
+					brithday:brithday,
+					region:region,
+					comments:comments
+			}
+			$.ajax({
+				url:"/users/modifyPersonalInfo",
+				data:JSON.stringify(data),
+				type:"POST",
+				dataType:"json",
+				contentType:"application/json",
+				success:function(res){
+					console.log(res)
+					if(res.result=="success"){
+						swal({
+							title: "提交成功!",
+							type: "success",
+							confirmButtonText: "确定"
+						});
+					}else {
+						swal({
+							title: "提交失败!",
+							type: "error",
+							confirmButtonText: "确定"
+						});
+					}
+				},
+				error:function (res) {
+					swal({
+						title: "提交失败!",
+						type: "error",
+						confirmButtonText: "确定"
+					});
+					console.log("error"+res);
+				}
+			})
+
+		});
+		$("textarea").on("input propertychange", function() {
+			var $this = $(this),
+				_val = $this.val(),
+				_length=_val.length,
+			    remain_length=parseInt(58-parseInt(_length));
+			$(".sign a").text(remain_length);
+			if (_val.length > 57) {
+				$this.val(_val.substring(0, 57));
+			}
+		});
+	})
+
+</script>

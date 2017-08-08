@@ -1,0 +1,142 @@
+<style type="text/css">
+	.uploadLicenseimg{
+		display: inline-block;
+		height: 188px !important;
+		width:240px !important;
+		background:none !important;
+	}
+
+	.uploadLicenseimg>img{
+		height: 160px;
+		width: 230px;
+	}
+	.certificatContent{
+		margin-top: 57px;
+		padding-left: 275px;
+		margin-bottom: 50px;
+	}
+	.certificatContent>div{
+		margin-bottom: 30px;
+	}
+	.certificatContent>div span:first-child{
+		height: 36px;
+		display: inline-block;
+		width: 65px;
+		margin:0 45px 0 45px;
+		vertical-align: top;
+	}
+	.certificatContent>div>input{
+		border: 1px solid rgb(112,112,112);
+		width: 202px;
+	}
+	.certificatContent .dateLine{
+		width: 80px;
+		margin-left: 10px;
+		margin-top: 2px;
+		border: 1px solid rgb(112,112,112);
+	}
+	.certificatContent .checkDate{
+		position: relative;
+	}
+	.certificatContent .checkDate>input{
+		position: absolute;
+		top: -6px;
+		left: 153px;
+		width: 14px;
+		height: 15px;
+	}
+	.certificatContent .checkRemind{
+		position: absolute;
+		top: -5px;
+		left: 214px;
+		font-size:13px;
+		color:rgb(275,170,111);
+	}
+	.certificatContent .remindForlong{
+		position: absolute;
+		top: -5px;
+		left: 178px;
+		font-size: 13px;
+	}
+	.certificatContent .uploadRemind{
+		display: block;
+		margin-left: 154px;
+	}
+	.certificatContent button{
+		margin-left: 154px;
+		width: 202px;
+		height: 40px;
+	}
+</style>
+<div class="license">
+			    		<div class="checkStep">
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_one_active"></div>
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_two_active"></div>
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_three_active"></div>
+			    	    <div class="navStep stepActive"></div>
+			    	    <ul>
+		    	    		<li>填写信息</li>
+				    		<li>等待审核</li>
+				    		<li class="redFont">审核结果</li>
+			    	    </ul>
+				    	</div>
+				    	<form class="certificatContent">
+							<div class="">
+								<span id="">企业名称</span><span> <%=LicenseCertification2Data.name%></span>
+							</div>
+							<div class="">
+								<span id="">信用代码</span><span>  <%=LicenseCertification2Data.num%></span>
+							</div>
+							<div class="">
+								<span id="">法人代表</span><span>  <%=LicenseCertification2Data.owner%></span>
+							</div>
+							<%if(LicenseCertification2Data.region){%>
+							<div class="">
+								<span id="">所在地区</span><span>  <%=LicenseCertification2Data.region.province%> <%=LicenseCertification2Data.region.city%> <%=LicenseCertification2Data.region.district%></span>
+							</div>
+							<%}else {%>
+							<div class="">
+								<span id="">所在地区</span><span>  </span>
+							</div>
+							<%}%>
+							<div class="">
+								<div class="">
+									<% if(LicenseCertification2Data.expired=="长期"){ %>
+									<span id="">营业期限</span><span id="">长期</span>
+									<% }else{ %>
+									<span id="">营业期限</span><span id=""><%=LicenseCertification2Data.createdAt.split("T")[0]%>至</span><span id=""> <%=LicenseCertification2Data.expired%></span>
+									<% } %>
+								</div>
+
+							</div>
+							<div class="">
+								<span id="">上传凭证</span><a><div class="uploadLicenseimg"><img src="<%=LicenseCertification2Data.img%>/230.160" alt="凭证"></div></a>
+							</div>
+							<% if(LicenseCertification2Data.status=="审核通过"){ %>
+							<button>审核通过</button>
+							<% }else{ %>
+					         <div><span>审核信息</span><%=LicenseCertification2Data.rejectMsg%></div>
+							<button title="点击重新提交" id="reSubmit">审核失败</button><p class="licensetip">注：点击按钮可重新上传提交信息</p>
+							<% } %>
+
+				    	</form>
+			    	</div>
+
+
+<script>
+	$(function () {
+		$("#reSubmit").on("click",function () {
+			$.post("/users/clearIdentity",{
+				typeIdentity:"company"
+			},function (res) {
+				if(res=="success"){
+					window.location.reload()
+				}else {
+					swal("请刷新页面重新点击")
+				}
+
+			})
+		})
+
+	})
+</script>

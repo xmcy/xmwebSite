@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height;initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>制作宝-活动页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/weui.min.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/myStyle.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/common.css">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+     <!--引入 WeUI -->
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/0.4.0/weui.min.css">
+    <script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+</head>
+<body ontouchstart>
+    <div class="activityPage">
+        <div class="activityPageTitle">
+            <img src="/themes/<%=staticforder%>/images/web0801.png" alt="">
+        </div>
+        <div class="activityPageIntroduce">
+            <img src="/themes/<%=staticforder%>/images/web0802.png" alt="">
+        </div>
+        <div class="activityPageCross">
+            <img src="/themes/<%=staticforder%>/images/web0803.png" alt="">
+            <div class="keyCode">
+                <input class="addmobile" type="text " value="">
+                <a class="sendqr">发送邀请码</a>
+            </div>
+        </div>
+        <div class="WhatIsEMagazine">
+            <img src="/themes/<%=staticforder%>/images/web0804.png" alt="">
+            <a href="magazine.html">点击阅读</a>
+        </div>
+        <div class="whatIsAds">
+            <img src="/themes/<%=staticforder%>/images/web0805.png" alt="">
+            <a href="javascript:;">点击了解更多</a>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(function () {
+        var restmobible = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+        $(".sendqr").on("touchend ",function (e) {
+            var data={
+                phoneNum:$(".addmobile").val()
+            }
+            if(data.phoneNum==""){
+                swal({
+                    title: "请先填写有效电话号码",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            if (!restmobible.test($(".addmobile").val())){
+                swal({
+                    title: "请先填写有效电话号码！",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return false;
+            }else{
+                $.ajax({
+                    url:"/users/getInviteCode",
+                    data:JSON.stringify(data),
+                    type:"POST",
+                    dataType:"json",
+                    contentType:"application/json",
+                    success:function(res){
+                        if(res.code) {
+                           window.location.href='/wechat/weActivityNext'
+                        }else {
+                            console.log(res)
+                        }
+                    },
+                    error:function (error) {
+                        if(error.responseText=="请登录后完成操作"){
+                            swal({
+                                        title: error.responseText,
+                                        type: "warning",
+                                        showCancelButton: true,
+                                        confirmButtonColor: "#DD6B55",
+                                        confirmButtonText: "点击去登陆",
+                                        closeOnConfirm: false
+                                    },
+                                    function(){
+                                        window.location.href="/wechat/weRegister"
+                                    });
+                        }else {
+                            swal(error.responseText)
+                        }
+
+                    }
+                })
+            }
+            e.preventDefault();
+        })
+
+
+    })
+</script>
+</html>
+

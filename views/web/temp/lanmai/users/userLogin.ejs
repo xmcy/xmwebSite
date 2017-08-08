@@ -1,0 +1,459 @@
+<style>
+	.login-content>.content>.reg{
+		width: 128px;
+		height: 30px;
+		position: absolute;
+		top: 20px;
+		left: 91px;
+		text-align: center;
+		line-height: 30px;
+		color: #bbbaba;
+		font-size: 15px;
+	}
+	.login-content>.content>.container{
+		width: 242px;
+		height: 390px;
+		margin: 60px 32px 26px 36px;
+
+	}
+	.login-content>.content>.container>.header{
+		width: 100%;
+		height: 24px;
+	}
+	.login-content>.content>.container>.header>ul{
+		width: 100%;
+		height: 100%;
+	}
+	.login-content>.content>.container>.header>ul>li{
+		width: 121px;
+		height: 100%;
+		border-bottom: 1px solid #d8d9d9;
+		float: left;
+		text-align: center;
+		line-height: 24px;
+	}
+	.login-content>.content>.container>.header>ul>li>a{
+		color: #bbbaba;
+	}
+	.login-content>.content>.container>.form-container-username{
+		height: 230px;
+		width: 100%;
+		/*border: 1px solid #d8d9d9;*/
+	}
+	.login-content>.content>.container>.form-container-username>.loginname{
+		width: 100%;
+		height: 38px;
+		margin-top:20px;
+		border: 1px solid #d8d9d9;
+		position: relative;
+	}
+	.login-content>.content>.container>.form-container-username>.loginname>i:first-of-type{
+		background-position:-32px -2px;
+	}
+	.login-content>.content>.container>.form-container-username>.loginname>input{
+		height: 100%;
+		width: 192px;
+		padding-left: 8px;
+		border: none;
+		float: left;
+	}
+
+	.login-content>.content>.container>.form-container-username>.loginname-tip{
+		display: block;
+		height:40px;
+		width: 100%;
+	}
+	.login-content>.content>.container>.form-container-username>.loginname-tip>div>i{
+		background-position: -83px -18px;
+	}
+	.login-content>.content>.container>.form-container-username>.loginname-tip>div>span{
+		color: #e25e5e;
+		font-size: 12px;
+	}
+	.login-content>.content>.container>.form-container-username>.loginpwd{
+		width: 100%;
+		height: 38px;
+		/*margin-top: 20px;*/
+		border: 1px solid #d8d9d9;
+		position: relative;
+	}
+	.login-content>.content>.container>.form-container-username>.loginpwd>i:first-of-type{
+		background-position:9px -1px;
+	}
+	.login-content>.content>.container>.form-container-username>.loginpwd>input{
+		height: 100%;
+		width: 192px;
+		padding-left: 8px;
+		border: none;
+		float: left;
+	}
+
+	.login-content>.content>.container>.form-container-username>.loginpwd-tip{
+		display: block;
+		height:20px;
+		width: 100%;
+	}
+	.login-content>.content>.container>.form-container-username>.loginpwd-tip>div>i{
+		background-position: -83px -18px;
+	}
+	.login-content>.content>.container>.form-container-username>.loginpwd-tip>div>span{
+		color: #e25e5e;
+		font-size: 12px;
+	}
+	.login-content>.content>.container>.form-container-username>.autologin{
+		color: #bbbaba;
+		font-size: 14px;
+		height: 20px;
+		width: 100%;
+		line-height: 20px;
+	}
+	.login-content>.content>.container>.form-container-username>.autologin>input[type="checkbox"]{
+		width: 15px;
+		height: 15px;
+		margin-top: 4px;
+		margin-left: 2px;
+		float: left;
+	}
+	.login-content>.content>.container>.form-container-username>.autologin>a{
+		color: #bbbaba;
+		font-size: 14px;
+		float: right;
+	}
+	.login-content>.content>.container>.form-container-username>.errorMessage{
+		width: 100%;
+		height: 25px;
+		font-size: 12px;
+		color: #da2f2f;
+		text-align: left;
+		line-height: 25px;
+	}
+	.login-content>.content>.container>.form-container-username>a>input[type="submit"]{
+		width: 100%;
+		height: 38px;
+		font-size: 18px;
+		margin-top: 10px;
+		color: white;
+		background-color: #da2f2f;
+		border: 1px solid #da2f2f;
+		border-radius: 3px;
+		cursor: pointer;
+	}
+
+	/*下面是手机验证登录的样式*/
+	.login-content>.content>.container>.form-container-tele{
+		height: 230px;
+		width: 100%;
+		/*border: 1px solid #d8d9d9;*/
+	}
+	.login-content>.content>.container>.form-container-tele>.loginTele{
+		width: 100%;
+		height: 38px;
+		margin-top: 20px;
+		border: 1px solid #d8d9d9;
+		position: relative;
+	}
+	.login-content>.content>.container>.form-container-tele>.loginTele>i:first-of-type{
+		background-position:-30px 0px;
+	}
+	.login-content>.content>.container>.form-container-tele>.loginTele>input{
+		height: 100%;
+		width: 135px;
+		padding-left: 8px;
+		border: none;
+		float: left;
+	}
+	.login-content>.content>.container>.form-container-tele>.loginTele>.intervalBtn{
+		width: 55px;
+		height: 24px;
+		background-color: #da2f2f;
+		position: absolute;
+		right: 2px;
+		top: 6px;
+		border-radius: 3px;
+		font-size: 12px;
+		text-align: center;
+		line-height: 24px;
+		color: white;
+		cursor: pointer;
+	}
+	/*.login-content>.content>.container>.form-container-tele>.loginTele>.intervalBtn>a{*/
+
+	/*}*/
+
+	.login-content>.content>.container>.form-container-tele>.loginTele-tip{
+		display: block;
+		height: 40px;
+		width: 100%;
+	}
+	.login-content>.content>.container>.form-container-tele>.loginTele-tip>div>i{
+		background-position: -83px -18px;
+	}
+	.login-content>.content>.container>.form-container-tele>.loginTele-tip>div>span{
+		color: #e25e5e;
+		font-size: 12px;
+	}
+	.login-content>.content>.container>.form-container-tele>.loginQr{
+		width: 100%;
+		height: 38px;
+		/*margin-top: 20px;*/
+		border: 1px solid #d8d9d9;
+		position: relative;
+	}
+	.login-content>.content>.container>.form-container-tele>.loginQr>i:first-of-type{
+		background-position:10px 0px;
+	}
+	.login-content>.content>.container>.form-container-tele>.loginQr>input{
+		height: 100%;
+		width: 192px;
+		padding-left: 8px;
+		border: none;
+		float: left;
+	}
+
+	.login-content>.content>.container>.form-container-tele>.loginQr-tip{
+		display: block;
+		height: 20px;
+		width: 100%;
+	}
+	.login-content>.content>.container>.form-container-tele>.loginQr-tip>div>i{
+		background-position: -83px -18px;
+	}
+	.login-content>.content>.container>.form-container-tele>.loginQr-tip>div>span{
+		color: #e25e5e;
+		font-size: 12px;
+	}
+	.login-content>.content>.container>.form-container-tele>.errorMessage{
+		width: 100%;
+		height: 25px;
+		font-size: 12px;
+		color: #da2f2f;
+		text-align: left;
+		line-height: 25px;
+	}
+	.login-content>.content>.container>.form-container-tele>.autologin{
+		color: #bbbaba;
+		font-size: 14px;
+		height: 20px;
+		width: 100%;
+		line-height: 20px;
+	}
+	.login-content>.content>.container>.form-container-tele>.autologin>input[type="checkbox"]{
+		width: 15px;
+		height: 15px;
+		margin-top: 4px;
+		margin-left: 2px;
+		float: left;
+	}
+	.login-content>.content>.container>.form-container-tele>.autologin>a{
+		color: #bbbaba;
+		font-size: 14px;
+		float: right;
+	}
+
+	.login-content>.content>.container>.form-container-tele>a>input[type="submit"]{
+		width: 100%;
+		height: 38px;
+		font-size: 18px;
+		margin-top: 10px;
+		color: white;
+		background-color: #da2f2f;
+		border: 1px solid #da2f2f;
+		border-radius: 3px;
+		cursor: pointer;
+	}
+	.login-content>.content>.container>.footer{
+		width: 100%;
+		position: relative;
+		margin-top: 30px;
+	}
+	.login-content>.content>.container>.footer>span{
+		color: #bbbaba;
+		position: absolute;
+		font-size: 14px;
+		left:95px;
+		top:2px;
+	}
+	.login-content>.content>.container>.footer>a{
+		display: inline-block;
+		width: 70px;
+		border-bottom: 1px solid #bdbcbc !important;
+		position: absolute;
+		top:12px;
+	}
+	.login-content>.content>.container>.footer>.liner1{
+		left: 0;
+	}
+	.login-content>.content>.container>.footer>.liner2{
+		right: 0;
+	}
+	.login-content>.content>.container>.footer>.corporation{
+		width: 125px;
+		height: 30px;
+		position: absolute;
+		left:60px;
+		top:30px;
+	}
+	.login-content>.content>.container>.footer>.corporation>.icon-a-first,.icon-a-last{
+		display: block;
+		width: 32px;
+		height: 100%;
+		float: left;
+	}
+	.login-content>.content>.container>.footer>.corporation>.icon-a-last{
+		display: block;
+		width: 32px;
+		height: 100%;
+		float:right;
+	}
+	.login-content>.content>.container>.footer>.corporation>.icon-a-first{
+		background-image:url(/themes/lanmai/images/regandloginicon.png) ;
+		background-position: -40px -35px;
+	}
+	/*.login-content>.content>.container>.footer>.corporation>.icon-a-first:hover{*/
+		/*background-position: -40px -35px;*/
+	/*}*/
+	.login-content>.content>.container>.footer>.corporation>.icon-a-last{
+		background-image:url(/themes/lanmai/images/regandloginicon.png) ;
+		background-position: -80px -35px;
+	}
+	/*.login-content>.content>.container>.footer>.corporation>.icon-a-last:hover{*/
+		/*background-position: -80px -35px;*/
+	/*}*/
+	.corporation>img{
+		width: 120px;
+		height:120px;
+		float: left;
+		display: none;
+	}
+	.content>.goReg{
+		float: right;
+		margin-top: 5px;
+		color: #b9b7bb;
+		font-size: 13px;
+	}
+	.weicahrtqr{
+		margin-left: -78px;
+		margin-top: 30px;
+	}
+	.qqqr{
+		margin-left: 60px;
+	}
+</style>
+
+			<div class="content" ng-controller="loginController">
+				<a class="reg" href="/users/reg">
+					没有账户？<span style="color:#2C9ADE">去注册</span>
+				</a>
+				<div class="container">
+					<div class="header">
+						<ul class="clearfix">
+							<li ng-class="{red:!flag}" ng-click="changeForm(2)" name="user"><a href="javascript:void(0);" >账号密码登陆</a></li>
+							<li ng-class="{red:flag}" ng-click="changeForm(1)" name="tele"><a href="javascript:void(0);" >手机动态码登录</a></li>
+						</ul>
+					</div>
+					<!--账号密码登录-->
+					<form  name="user" ng-submit="loginUsersWithUsername()" class="form-container-username" ng-show="!flag" novalidate="novalidate">
+						<div class="loginname">
+							<i class="login-first-i"></i>
+							<input type="text" id="userName" value="" name="userName" ng-model="userName" autocomplete="off" placeholder="手机号/账户名/邮箱"
+								   ng-pattern="/(^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$)|(^1[34578]\d{9}$)/" />
+							<i class=" login-green-check-ok" ng-show="user.userName.$dirty&&user.userName.$valid"></i>
+						</div>
+						<div class="loginname-tip" >
+							<div ng-show="user.userName.$dirty&&user.userName.$invalid">
+								<i class="login-tip-div-i"></i><span>手机号/账户名/邮箱错误</span>
+								</div>
+						</div>
+						<div class="loginpwd">
+							<i class="login-first-i"></i>
+							<input type="password" id="password" name="password" ng-model="password"
+								value="" autocomplete="off" placeholder="密码" required />
+							<i class=" login-green-check-ok" ng-show="user.password.$dirty&&user.password.$valid"></i>
+						</div>
+						<div class="loginpwd-tip" >
+							<div ng-show="user.password.$dirty&&user.password.$invalid">
+								<i class="login-tip-div-i"></i><span>您还没有输入密码</span>
+							</div>	
+						</div>
+						<div class="errorMessage">{{errorMessage}}</div>
+						<div class="autologin">
+							<input type="checkbox" name="autologin" id="autologin" ng-model="autologin" value=""  ng-checked="true"/>
+							<span>下次自动登陆</span>
+							<a href="/users/passwordReset">忘记密码</a>
+						</div>
+						<a href="javascript:void(0)">
+							<input type="submit" value="登 录" ng-class="{disableBtn:user.$invalid}" ng-disabled="user.$invalid"/>
+						</a>
+					</form>
+					
+					<!--手机验证码登录-->
+					<form  name="tele"  class="form-container-tele" ng-show="flag" novalidate="novalidate" ng-submit="loginUsersWithTele()">
+						<div class="loginTele">
+							<i class="login-first-i"></i>
+							<input type="text" id="phoneNum"  ng-pattern="/^1[34578]\d{9}$/"
+								 ng-model="phoneNum" name="phoneNum" autocomplete="off" placeholder="手机号" required />
+							<div down-tick></div>
+							<i class="login-green-check-ok" ng-show="tele.phoneNum.$dirty&&tele.phoneNum.$valid"></i>
+						</div>
+						<div class="loginTele-tip" >
+							<div ng-show="tele.phoneNum.$dirty&&tele.phoneNum.$invalid">
+								<i class="login-tip-div-i"></i><span>手机号不存在</span>
+							</div>
+						</div>
+						<div class="loginQr">
+							<i class="login-first-i"></i>
+							<input type="text" id="code" name="code" value="" ng-model="code"
+								autocomplete="off" placeholder="动态验证码" required />
+							<i class="login-green-check-ok" ng-show="tele.code.$dirty&&tele.code.$valid"></i>
+						</div>
+						<div class="loginQr-tip">
+							<div ng-show="tele.code.$dirty&&tele.code.$invalid">
+								<i class="login-tip-div-i"></i><span>验证码不能为空</span>
+							</div>
+						</div>
+						<div class="errorMessage">{{errorMessage}}</div>
+						<div class="autologin">
+							<input type="checkbox" name="autologin" id="autologin" value="" ng-model="autologin" ng-checked="true"/>
+							<span>下次自动登陆</span>
+						</div>
+						<a href="javascript:void(0)">
+						<input type="submit" value="登  录" ng-class="{disableBtn:tele.$invalid}" ng-disabled="tele.$invalid"/>
+						</a>
+					</form>
+					<div class="footer">
+						<a class="liner1"></a><span>关注我们</span><a class="liner2"></a>
+						<div class="corporation clearfix">
+							<a href="" class="icon-a-first"></a>
+							<a href="" class="icon-a-last"></a>
+							<img class="weicahrtqr" src="/themes/<%=staticforder%>/images/weicahrtqr.png"/>
+							<img class="qqqr" src="/themes/<%=staticforder%>/images/qqqr.png"/>
+						</div>
+					</div>
+				</div>
+			</div>
+<script>
+	$(function () {
+		$(".icon-a-first").on("mouseenter",function () {
+			
+		})
+		$(".icon-a-first").on("mouseleave",function () {
+
+		})
+		$(".icon-a-last").on("mouseenter",function () {
+
+		})
+		$(".icon-a-last").on("mouseleave",function () {
+
+		})
+		$(".icon-a-first").hover(function(){
+			$(".weicahrtqr").show();
+		},function(){
+			$(".weicahrtqr").hide();
+		})
+		$(".icon-a-last").hover(function(){
+			$(".qqqr").show();
+		},function(){
+			$(".qqqr").hide();
+		})
+	})
+</script>

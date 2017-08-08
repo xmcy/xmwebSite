@@ -1,0 +1,223 @@
+<style>
+    .table>li{
+        float: left;
+        margin-right: 30px;
+        margin-top: 5px;
+    }
+    .modifyPic>.shoplogo{
+        left:-105px;
+    }
+    .modifyPic>.updatelogo, .modifyPic>img{
+        left: 14px;
+    }
+    .tip{
+        left: 15px;
+    }
+    .modal-lg{
+        min-width: 1500px;
+    }
+    .wangEditor-container{
+        width: 100%;
+        height: 500px;
+    }
+    .wangEditor-txt{
+        height: 450px !important;
+    }
+</style>
+<div class="row" ng-controller="newsManage">
+<div class="col-xs-12">
+    <div class="panel">
+        <div class="box">
+            <div class="box-body table-responsive no-padding" >
+                <ul class="table" style="list-style: none">
+                    <li>是否删除：
+                        <select id="isDeleted" ng-model="isDeleted">
+                            <option value="">全部</option>
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </li>
+                    <li>是否置顶：
+                        <select id="isTop" ng-model="isTop">
+                            <option value="">全部</option>
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </li>
+                    <li>标题：
+                        <input  type="text"  value="" ng-model="titleFor">
+                    </li>
+                    <li>
+                        <button class="btn btn-primary btn-sm" type="button" ng-click="searchForSlideManage()"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 搜索</button>
+                    </li>
+                    <li>
+                        <a href="#addContentTags" role="button" class="btn btn-primary btn-sm" data-toggle="modal"><span class="fa fa-plus-square" aria-hidden="true">&nbsp;</span>新增新闻</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="box">
+        <div class="box-body table-responsive no-padding" >
+            <table class="table table-hover">
+                <tr>
+                    <th><input type="checkbox" class="mini" id="selectAll"/></th>
+                    <th>文章标题</th>
+                    <th>新闻来源</th>
+                    <th>文章发布时间</th>
+                    <th>是否删除标识</th>
+                    <th>是否置顶显示</th>
+                    <th>操作</th>
+                </tr>
+                <tr class="datalist" ng-repeat="item in dataList">
+                    <td><input type="checkbox" name="listItem" class="mini" value="{{item._id}}" ng-click="getNewIds()"/></td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.website}}</td>
+                    <td>{{item.newsDate | date : "yyyy-MM-dd"}}</td>
+                    <td>{{item.isDeleted}}</td>
+                    <td>{{item.isTop}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-xs" data-whatever="{{item._id}}" data-toggle="modal" data-target="#addContentTags" ng-click="edit(item)" ng-if="!item.isDeleted"><span class="fa fa-fw fa-edit" aria-hidden="true"></span>编辑</button>&nbsp;
+                        <button class="btn btn-default btn-xs" type="button" title="置顶" ng-click="toTop(item._id)" ng-if="!item.isTop&&!item.isDeleted">置顶</button>
+                        <button class="btn btn-default btn-xs" type="button" title="取消置顶" ng-click="cancletoTop(item._id)" ng-if="item.isTop&&!item.isDeleted">取消置顶</button>
+                        <button class="btn btn-default btn-xs" type="button" title="删除" ng-click="delOneItem(item._id)" ng-if="!item.isDeleted"><i class="fa fa-trash-o"></i></button>
+                    </td>
+                </tr>
+            </table>
+            <div class="paging">
+                <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页" first-text="第一页" last-text="最后一页"
+                            next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+                            items-per-page="itemsPerPage"></pagination>
+            </div>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+
+</div><!-- /.col -->
+    <div class="modal fade bs-example-modal-lg" id="addContentTags">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加搜索</h4>
+                    <p class="myInfoBox bg-warning text-warning"><i class="icon fa fa-warning"></i> 信息填写完整无误才可提交</p>
+                </div>
+                <div class="modal-body">
+                    <form role="form" class="form-horizontal" name="myForm"  novalidate>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">新闻标题</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="title" id="title" required/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">新闻来源</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="website" id="website" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">在线浏览url</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="onlineView" id="onlineView"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">文章发布时间</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="newsDate" id="newsDate" readonly placeholder="点击选择文章发布时间" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">封面图片</label>
+                            <div class="modifyPic col-sm-4 ">
+                                <div class="shoplogo "></div>
+                                <input  class="updatelogo col-md-4" type="file" name=""  value=""/>
+                                <img  id="coverImg" src=""/>
+                                <span class="tip">点击图片可重新修改Logo</span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="submit">提交</button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+    </div><!-- /.row -->
+
+<!--添加用户组模态窗口-->
+</div>
+
+<script>
+    $(function () {
+        var newsDate=$("#newsDate").scope().formData.newsDate;
+        $("#newsDate").flatpickr({
+            onClose:function (dateObject, dateString) {
+                newsDate=dateString
+            }
+        });
+
+        $("input[type='file']").change(function(e) {
+            var that = this;
+            var file = this.files[0];
+            var fileType=file.type.split('/')[1];
+            $.getCos("promotion/article","",fileType,file, function (res) {
+                console.log(res)
+                $(that).next().attr("src", res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+            })
+        });
+
+        $("#submit").on("click",function () {
+            swal({
+                        title: "确定提交新闻?",
+                        text: "请检查内容",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "提交",
+                        closeOnConfirm: false
+                    },
+                    function(){
+                        var title=$("#title").val()
+                        var website=$("#website").val()
+                        var onlineView=$("#onlineView").val()
+                        var coverImg=$("#coverImg").attr("src")
+                        var itemId=$("#itemId").val()
+                        var dataForPost={
+                            title:title,
+                            website:website,
+                            onlineView:onlineView,
+                            coverImg:coverImg,
+                            newsDate:newsDate,
+                            itemId:itemId
+                        }
+                        $.post("/admin/manage/addNews",dataForPost,function (res) {
+                            if(res=="success"){
+                                swal({
+                                    title: "提交成功",
+                                    type: "success",
+                                    confirmButtonText: "确定"
+                                });
+                                $("#addContentTags").modal('hide')
+                                window.location.reload()
+                            }else {
+                                swal({
+                                    title: "提交失败",
+                                    type: "error",
+                                    confirmButtonText: "确定"
+                                });
+                                console.log(res)
+                                $("#addContentTags").modal('hide')
+                            }
+                        })
+                    });
+
+
+        })
+
+    })
+
+</script>

@@ -1,0 +1,121 @@
+<style>
+    .paging{
+        clear: both;
+        width:100%;
+        height: 80px;
+        margin-bottom: 40px;
+    }
+    .paging>ul{
+        position: relative;
+        left: 550px;
+    }
+    .table>li{
+        float: left;
+        margin-right: 30px;
+        margin-top: 5px;
+    }
+</style>
+<div class="row" ng-controller="vrManage">
+    <div class="col-xs-12">
+        <div class="panel">
+            <div class="box">
+                <div class="box-body table-responsive no-padding" >
+                    <ul class="table" style="list-style: none">
+
+                        <li>
+                            <input readonly type="text" data-toggle="city-picker" value="" id="region">
+                        </li>
+                        <li>
+                            <button class="btn btn-primary btn-sm" type="button" id="resetDistrict"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 重置地区</button>
+                        </li>
+                        <li>标题：
+                            <input  type="text"  value="" ng-model="title">
+                        </li>
+                        <li>类别：
+                            <select ng-model="type">
+                                <option value="">全部</option>
+                                <option value="Manufacture">制作</option>
+                                <option value="Material">材料</option>
+                                <option value="Equipment">设备</option>
+                            </select>
+                        </li>
+                        <li>是否推荐：
+                            <select ng-model="recommend">
+                                <option value="">全部</option>
+                                <option ng-value="true" >是</option>
+                                <option ng-value="false">否</option>
+                            </select>
+                        </li>
+                        <li>
+                            <button class="btn btn-primary btn-sm" type="button" ng-click="searchForEbookManage()"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 搜索</button>
+                        </li>
+                        <li>
+                            <a class="btn-group" href="/admin/manage/addVrManage">
+                                <button class="btn btn-primary btn-sm" type="button"><span class="fa fa-plus-square" aria-hidden="true">&nbsp;</span> 添加VR展馆资源</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th><input type="checkbox" class="mini" id="selectAll"/></th>
+                        <th>类别</th>
+                        <th>地区</th>
+                        <th>标题</th>
+                        <th>关联的商铺</th>
+                        <th>在线浏览url</th>
+                        <th>是否推荐</th>
+                        <th>开始推荐时间</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr class="datalist" ng-repeat="item in dataList">
+                        <td><input type="checkbox" name="listItem" class="mini" value="{{item._id}}" ng-click="getNewIds()"/></td>
+                        <td>{{item.type|valToType}}</td>
+                        <td>{{item.region.province}}-{{item.region.city}}-{{item.region.district}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.company}}</td>
+                        <td>{{item.onlineView}}</td>
+                        <td>{{item.recommend}}</td>
+                        <td>{{item.recommendAt| date : "yyyy-MM-dd HH:mm:ss"}}</td>
+                        <td>{{item.createdAt | date : "yyyy-MM-dd HH:mm:ss"}}</td>
+                        <td>
+                            <a href="/admin/manage/addVrManage?uid={{item._id}}" role="button"  title="编辑" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-default btn-xs" type="button" title="删除" ng-click="delOneItem(item._id)"><i class="fa fa-trash-o"></i></button>
+                        </td>
+                    </tr>
+                </table>
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                <div class="paging">
+                    <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页" first-text="第一页" last-text="最后一页"
+                                next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+                                items-per-page="itemsPerPage"></pagination>
+                </div>
+            </div>
+            <div class="overlay hide" id="dataLoading">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+        </div><!-- /.box -->
+    </div>
+</div>
+<script>
+    $('#region').citypicker({
+        level:"province"
+    });
+    $("#resetDistrict").on("click",function () {
+        $('#region').citypicker("reset");
+        $("#region").scope().regionStr="";
+        $("#region").scope().region={}
+        $("#region").scope().$apply();
+    })
+    document.addEventListener("listen", function (e) {
+        $("#region").scope().regionStr=finalText;
+        $("#region").scope().$apply();
+    }, false);
+</script>

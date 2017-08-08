@@ -1,0 +1,569 @@
+/*资源发布页面的头部区域*/
+input{
+    outline: none;
+}
+.re_header_nav{
+    width: 1200px;
+    height: 24px;
+    margin: 0 auto;
+}
+.re_header_nav ul{
+    float: right;
+}
+.re_header_nav ul li{
+    width: auto;
+    margin-left: 15px;
+}
+.re_header_nav ul li>a:hover{
+    color: #da2f2f;
+}
+.re_header_nav ul li>a.re_header_nav_name{
+    padding:0 10px;
+    color:#DA2F2F;
+    float: left;
+}
+
+.re_header_nav ul li a.re_header_nav_info{
+    padding-right: 20px;
+    background: url(../images/re_announce02.png) -175px 8px no-repeat;
+}
+.re_header_title{
+    height: 80px;
+    width: 100%;
+    background: #fff;
+}
+.re_header_con{
+    width: 1200px;
+    height: 80px;
+    margin: 0 auto;
+}
+.re_header_con ul li{
+    float: left;
+}
+.re_header_con ul>li>a{
+    font-size: 17px;
+}
+.re_header_con ul>li>a>span{
+    font-size: 14px;
+    color: #e89c52;
+}
+.re_header_area{
+    margin-top: 38px;
+}
+.re_header_area>a>em{
+    font-style: normal;
+    font-size: 17px;
+}
+/*头部公共样式结束*/
+/*资源发布首页的内容开始*/
+.re_announce_con{
+    width: 1200px;
+    margin: 0 auto;
+}
+.re_announce_con .re_announce_top{
+    height: 30px;
+    background: url(../images/re_announce01.png) 0 0 no-repeat;
+    margin-top: 26px;
+}
+.re_announce_top>ul>li{
+    width: 400px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    float: left;
+    color:#a8a8a8;
+    font-size: 21px;
+}
+.re_source_list{
+    width: 400px;
+    margin-top: 25px;
+}
+.re_source_list>ul>li{
+    width: 200px;
+    height: 70px;
+    text-align: left;
+    line-height: 70px;
+/*    float: left;*/
+}
+.re_source_list>ul>li>a{
+    padding: 5px 8px;
+    font-size: 21px;
+    color:#7BAFEC;
+}
+.re_source_list>ul>li>a:hover{
+    background: #F6F4F4;
+    border-radius: 10px;
+}
+/******************资源发布首页的内容结束************************/
+/*广告设备的发布页面开始*/
+.re_announce_con_machine,.re_announce_con_sale,.re_announce_con_radio,.re_announce_con_tv,.re_announce_con_media,.re_announce_con_material,.re_announce_con_magazine,.re_announce_con_paper,.re_announce_con_out,.re_announce_con_make{
+    width: 1200px;
+    margin: 0 auto;
+}
+.re_announce_con_machine .re_announce_top,.re_announce_con_sale .re_announce_top,.re_announce_con_radio .re_announce_top,.re_announce_con_tv .re_announce_top,.re_announce_con_media .re_announce_top,.re_announce_con_material .re_announce_top,.re_announce_con_magazine .re_announce_top,.re_announce_con_paper .re_announce_top,.re_announce_con_out .re_announce_top,.re_announce_con_make .re_announce_top{
+    height: 30px;
+    background: url(../images/re_announce01.png) 0 -63px no-repeat;
+    margin-top: 26px;
+}
+.re_announce_con_machine .re_announce_top>ul>li>a,.re_announce_con_sale .re_announce_top>ul>li>a,.re_announce_con_radio .re_announce_top>ul>li>a,.re_announce_con_tv .re_announce_top ul>li>a,.re_announce_con_media .re_announce_top>ul>li>a,.re_announce_con_material .re_announce_top>ul>li>a,.re_announce_con_magazine .re_announce_top>ul>li>a,.re_announce_con_paper .re_announce_top>ul>li>a,.re_announce_con_out .re_announce_top ul>li>a,.re_announce_con_make .re_announce_top>ul>li>a{
+    font-size: 15px;
+    color:#5a85cc ;
+}
+.re_source_machine,.re_source_sale,.re_source_radio,.re_source_tv,.re_source_media,.re_source_material,.re_source_magazine,.re_source_paper,.re_source_out,.re_source_make{
+    width: 780px;
+    margin-left: 145px;
+    color: grey;
+    margin-top: 30px;
+}
+.re_source_machine>ul>li,.re_source_sale>ul>li,.re_source_radio>ul>li,.re_source_tv>ul>li,.re_source_media>ul>li,.re_source_material>ul>li,.re_source_magazine>ul>li,.re_source_paper>ul>li,.re_source_out>ul>li,.re_source_make>ul>li{
+    height: 80px;
+    line-height: 80px;
+    font-size: 16px;
+    padding-left: 20px;
+}
+/*.re_main input{*/
+    /*padding-left: 5px;*/
+/*}*/
+.re_source_machine ul li.re_main,.re_source_sale ul li.re_main,.re_source_radio ul li.re_main,.re_source_tv ul li.re_main,.re_source_media ul li.re_main,.re_source_material ul li.re_main,.re_source_magazine ul li.re_main,.re_source_paper ul li.re_main,.re_source_out ul li.re_main,.re_source_make ul li.re_main{
+    background: url(../images/re_main.png) 0 0 no-repeat;
+}
+.re_source_sale ul li span,.re_source_radio ul li span,.re_source_tv ul li span,.re_source_media ul li span,.re_source_material>ul>li>span,.re_source_magazine ul li span,.re_source_paper ul li span,.re_source_out>ul>li>span,.re_source_make>ul>li>span{
+    width: 73px;
+    height: 80px;
+    line-height: 80px;
+    display: block;
+    float: left;
+}
+.re_source_machine>ul>li>input,.re_source_sale ul li input,.re_source_radio ul li input,.re_source_tv ul li input,.re_source_media ul li input,.re_source_material>ul>li>input,.re_source_magazine ul li input,.re_source_paper ul li input,.re_source_out ul li input,.re_source_make>ul>li>input{
+    float: left;
+    width: 320px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 20px;
+    border: 1px solid #ACACAC;
+    padding-left: 5px;
+    font-size: 16px;
+    font-family: "Microsoft YaHei";
+    color: #ACAAAA;
+    margin-left: 15px;
+}
+.re_machine_chioce,.re_machine_fix,.re_sale_chioce,.re_sale_fix,.re_radio_chioce,.re_radio_fix,.re_tv_chioce,.re_tv_fix,.re_material_chioce,.re_media_chioce,.re_media_fix,.re_material_chioce,.re_material_fix,.re_magazine_chioce,.re_magazine_fix,.re_paper_chioce,.re_paper_fix,.re_out_chioce,.re_out_fix,.re_make_chioce,.re_make_fix{
+    width: 30px !important;
+    border: 0 !important;
+}
+.re_source_machine>ul>li>i,.re_source_sale ul li i,.re_source_radio ul li i,.re_source_tv ul li i,.re_source_media ul li i,.re_source_material>ul>li>i,.re_source_magazine ul li i,.re_source_paper ul li i,.re_source_magazine ul li i,.re_source_out ul li i,.re_source_make>ul>li>i{
+    font-style: normal;
+    padding: 0 30px 0 20px;
+    float: left;
+    line-height: 76px;
+}
+.re_machine_tips01,.re_sale_tips01,.re_radio_tips01,.re_tv_tips01,.re_media_tips01,.re_material_tips01,.re_magazine_tips01,.re_paper_tips01,.re_out_tips01,.re_make_tips01{
+    position: absolute;
+    width: 260px !important;
+    height: 20px !important;
+    line-height: 20px !important;
+    display: block;
+    top:65px;
+    left: 166px;
+    font-size: 10px;
+    color: #DA2F2F;
+    overflow: hidden;
+    padding-left: 15px;
+    background: url(../images/re_announce02.png) -205px -66px no-repeat;
+}
+.re_source_machine>ul>li>ul>li,.re_source_sale>ul>li>ul>li,.re_source_radio>ul>li>ul>li,.re_source_tv>ul>li>ul>li,.re_source_media>ul>li>ul>li,.re_source_material>ul>li>ul>li,.re_source_magazine>ul>li>ul>li,.re_source_paper>ul>li>ul>li,.re_source_out>ul>li>ul>li,.re_source_make>ul>li>ul>li{
+    width: 134px;
+    height: 114px;
+    margin-top: 30px;
+    margin-right: 20px;
+    float: left;
+    padding-left: 0;
+}
+.re_source_machine ul>li>ul>li>img,.re_source_material ul>li>ul>li>img,.re_source_make>ul>li>ul>li>img{
+    height: 100%;
+}
+.re_source_machine ul>li>ul>li>input,.re_source_material>ul li ul li input,.re_source_make ul li ul li input{
+    border: 0;
+    outline: none;
+    width: 134px;
+    height: 30px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.re_machine_file,.re_material_file,.re_make_file{
+    border: 1px solid #ACACAC;
+    background: url(../images/re_announce02.png) -2px -74px no-repeat;
+}
+.re_machine_file input,.re_material_file input,.re_magazine_file input,.re_out_file input,.re_make_file input{
+    margin-top: 0 !important;
+    width: 142px !important;
+    height: 113px !important;
+    opacity: 0;
+    cursor: pointer;
+}
+.re_source_machine ul li ul p,.re_source_sale ul li ul p,.re_source_radio ul li ul p,.re_source_tv ul li ul p,.re_source_media ul li ul p,.re_source_material ul li ul p,.re_source_magazine ul li ul p,.re_source_paper ul li ul p,.re_source_out ul li ul p,.re_source_make ul li ul p{
+    font-size: 14px;
+    margin-left: 149px;
+    line-height: 20px;
+}
+.re_machine_kinds i,.re_machine_brand i,.re_sale_kinds i,.re_radio_kinds i,.re_radio_brand i,.re_tv_kinds i,.re_tv_brand i,.re_media_kinds i,.re_media_brand i,.re_material_kinds i,.re_material_brand i,.re_magazine_kinds i,.re_magazine_brand i,.re_magazine_styles i,.re_radio_styles i,.re_tv_styles i,.re_magazine_face i,.re_paper_kinds i,.re_paper_brand i,.re_paper_styles i,.re_paper_face i,.re_out_kinds i,.re_out_brand i,.re_out_styles i,.re_out_face i,.re_make_kinds i,.re_make_brand i{
+    width: 325px;
+    height: 40px;
+    display: block;
+    line-height: 40px !important;
+    border:1px solid #ACACAC;
+    padding:0 0 0 5px !important;
+    margin-top: 20px;
+
+}
+.re_machine_kinds i,.re_machine_brand i,.re_machine_area input,.re_sale_area input,.re_machine_apply input,.re_radio_kinds i,.re_radio_brand i,.re_radio_area input,.re_radio_apply input,.re_tv_kinds i,.re_tv_brand i,.re_tv_area input,.re_tv_apply input,.re_media_kinds i,.re_media_brand i,.re_media_area input,.re_media_apply input,.re_material_kinds i,.re_material_brand i,.re_material_area input,.re_material_apply input,.re_magazine_kinds i,.re_magazine_brand i,.re_magazine_area input,.re_magazine_styles i,.re_radio_styles i,.re_tv_styles i,.re_magazine_face i,.re_paper_kinds i,.re_paper_brand i,.re_paper_area input,.re_paper_styles i,.re_paper_face i,.re_out_kinds i,.re_out_brand i,.re_out_area input,.re_out_styles i,.re_out_face i,.re_make_kinds i,.re_make_brand i,.re_make_area input,.re_make_apply input,.re_sale_kinds i{
+    background: url(../images/re_announce02.png) 98px -368px no-repeat;
+    cursor: pointer;
+}
+.re_machine_brand,.re_machine_kinds,.re_sale_kinds,.re_radio_brand,.re_radio_kinds,.re_tv_brand,.re_tv_kinds,.re_media_brand,.re_media_kinds,.re_material_brand,.re_material_kinds,.re_magazine_brand,.re_magazine_styles,.re_radio_styles,.re_tv_styles,.re_magazine_face,.re_magazine_kinds,.re_paper_brand,.re_paper_styles,.re_paper_face,.re_paper_kinds,.re_out_brand,.re_out_styles,.re_out_face,.re_out_kinds,.re_make_brand,.re_make_kinds{
+    position: relative;
+}
+
+.re_magazine_size input,.re_paper_size input,.re_tv_size{
+    width: 116px !important;
+    height: 40px !important;
+    float: left;
+}
+.re_out_size input{
+    width: 50px !important;
+    height: 40px !important;
+    float: left;
+}
+.re_out_size input.re_out_size04{
+    width: 100px !important;
+    height: 40px !important;
+    float: left;
+}
+.re_magazine_size span,.re_paper_size span,.re_out_size span,.re_tv_size span{
+    float: left ;
+}
+.re_tv_size{
+    background: url(../images/re_announce02.png) -100px -164px no-repeat;
+}
+.re_machine_details,.re_sale_details,.re_radio_details,.re_tv_details,.re_media_details,.re_material_details,.re_magazine_details,.re_paper_details,.re_out_details,.re_make_details{
+    width: 478px;
+    height: 258px;
+  /*  border: 1px solid darkslategray;*/
+    float: left;
+    margin-top: 20px;
+}
+.re_out_location a{
+    width: 200px;
+    height: 70px;
+    display: block;
+    background: url(../images/re_announce02.png) 0px -299px no-repeat;
+    float: left;
+    padding-left: 40px;
+    font-size: 16px;
+    color: #ACAAAA;
+}
+.re_extend{
+    width: 100%;
+    height: 50px;
+}
+.re_extend p{
+    height: 25px;
+    line-height: 25px;
+    margin-top: 50px;
+    font-size: 24px;
+    color:#acaaaa;
+    padding-left: 50px;
+}
+ .precisePromote{
+    width: 100%;
+    height: 250px;
+    border: 2px solid red;
+    background-color: #FFFFFF;
+     color: rgb(112,112,112);
+     margin-bottom: 50px;
+}
+.precisePromoteContent{
+    width: 910px;
+    float: left;
+}
+.effect{
+    width: 225px;
+    float: right;
+    height: 100%;
+}
+.isPrecisePromote{
+    height: 70px;
+    width: 100%;
+    position: relative;
+}
+.isPrecisePromote>input{
+    width: 29px;
+    height: 29px;
+    position: absolute;
+    top: 26px;
+    left: 29px;
+}
+.isPrecisePromote>span{
+    font-size: 24px;
+    position: absolute;
+    top: 25px;
+    left: 70px;
+}
+.precisePromoteDescript{
+    width: 100%;
+    height: 20px;
+    position: relative;
+}
+.precisePromoteDescript>p{
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 70px;
+    color: rgb(87,151,223);
+}
+.precisePromoteTime{
+    width: 58%;
+    height: 45px;
+    margin: 20px 0 20px 0;
+    float: left;
+}
+.precisePromoteType{
+    width: 40%;
+    height: 45px;
+    margin: 20px 0 20px 0;
+    float: right;
+}
+.precisePromoteTime>ul{
+    width: 100%;
+    height: 100%;
+    margin-left: 70px;
+}
+.precisePromoteType>ul{
+    width: 100%;
+    height: 100%;
+    margin-left:40px;
+}
+.precisePromoteTime>ul>li,.precisePromoteType>ul>li{
+    float: left;
+    width:90px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-right: 40px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    position: relative;
+    font-size: 16px;
+}
+.precisePromoteType>ul>li{
+    border: 0;
+    margin-right: 0;
+}
+.precisePromoteSelect{
+    width: 100%;
+    height: 40px;
+    padding-left: 70px;
+    font-size: 20px;
+}
+.precisePromoteSelect>ul{
+    width: 100%;
+    height:40px;
+}
+.precisePromoteSelect>ul>li{
+    width: 33%;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    cursor: pointer;
+}
+.precisePromoteTime>ul>span{
+    float: left;
+    margin-right: 30px;
+    border: 0 !important;
+    margin-top: 4px;
+    font-size: 16px;
+}
+.precisePromoteTime>ul>li>div{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
+.precisePromoteType>ul>li>div{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
+.precisePromoteType>ul>li>div>input{
+    float: left;
+    height: 16px;
+    width: 18px;
+    margin-top: 6px;
+    margin-left: 4px;
+}
+.precisePromoteType>ul>li>div>label{
+   font-weight: 500;
+}
+.precisePromoteTime>ul>li .discount{
+    position: absolute;
+    top: -6px;
+    right: 5px;
+    font-size: 12px;
+    color: rgb(232,163,105);
+}
+.precisePromoteSelect>ul>li>select{
+    width: 125px;
+    height: 30px;
+    border: 1px solid grey;
+    text-align: center;
+    font-size: 18px;
+}
+.precisePromotePrice{
+    display: inline-block;
+    margin: 0 10px 0 10px;
+    color: red;
+}
+.precisePromoteSelect>ul>li>button{
+    background-color: red;
+    width: 97px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 56px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid red;
+    border-radius: 3px;
+}
+.effect>div{
+    display: inline-block;
+    margin-top: 10px;
+    color: rgb(87,151,223);
+    font-size: 16px;
+}
+.effect>div>p{
+    margin-bottom: 0px;
+}
+.effect .close{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    border: 1px solid grey;
+    background: url(/themes/lanmai/images/accountSetIcon.png) -404px -419px;
+}
+.effect>ul{
+    height: 200px;
+    width: 100%;
+    margin-top: 10px;
+}
+.effect>ul>li{
+    height: 25%;
+    width: 100%;
+    position: relative;
+}
+.effect>ul>li>div{
+    display: inline-block;
+    margin-right: 5px;
+}
+.effect .effectProgress {
+    background: url(/themes/lanmai/images/accountSetIcon.png) -77px -426px;
+}
+.effect .effectProgress{
+    width: 140px;
+    height:35px;
+    background-position: -77px -484px;
+}
+.effect .effectLogo{
+    width: 27px;
+    height: 27px;
+    background-color: #dad8d8;
+    margin-top: -2px;
+}
+.effectActiveColor{
+    background-color: #f6cca9 !important;
+}
+.effect .effectActiveLogo{
+    width: 30px;
+    height: 30px;
+    line-height: 29px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #f6cca9;
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    color: red;
+}
+.effect .preciseProgress{
+    background-position: -77px -415px ;
+}
+
+/*****************广告设备的发布页面结束******************/
+/*****************杂志广告的发布页面样式补充开始******************/
+
+/*****************杂志广告的发布页面结束******************/
+
+/*日期选择插件的css*/
+.date_selector, .date_selector *{width: auto;height: auto;border: none;background: none;margin: 0;padding: 0;text-align: left;text-decoration: none;}
+
+.date_selector{background:#fbfbfb;border: 1px solid #ccc;padding: 10px;margin:0;margin-top:-1px;position: absolute;z-index:100000;display:none;border-radius: 3px;box-shadow: 0 0 5px #aaa;box-shadow:0 2px 2px #ccc; width:305px;}
+
+.date_selector_ieframe{position: absolute;z-index: 99999;/* display: none; */}
+
+.date_selector .nav{width: 17.5em;}
+
+.date_selector .nav p{clear: none;}
+
+.date_selector .month_nav, .date_selector .year_nav{margin: 0 0 3px 0;padding: 0;display: block;position: relative;text-align: center;}
+
+.date_selector .month_nav{float: left;width: 42%;}
+
+.date_selector .year_nav{float: left;width: 48%;margin-right: -8px;}
+
+.date_selector .month_name, .date_selector .year_name{font-weight: bold !important;line-height: 20px !important;width: 60px !important; float: none !important;height: 1px !important;display: inline !important; }
+
+.date_selector .button{display: block;position: absolute;top: 0;width:18px;height:18px;line-height:16px;font-weight:bold;color:#DA2F2F;text-align: center;font-size:12px;overflow:hidden;border: 1px solid #ccc;border-radius:2px;}
+
+.date_selector .button:hover, .date_selector .button.hover{background:#DA2F2F;color: #fff;cursor: pointer;border-color:#DA2F2F;}
+
+.date_selector .prev{left: 0;}
+
+.date_selector .next{right: 0;}
+
+.date_selector table{border-spacing: 0;border-collapse: collapse;clear: both;margin: 0; width:304px;}
+
+.date_selector th, .date_selector td{width: 2.5em;height: 2em;padding: 0 !important;text-align: center !important;color: #666;font-weight: normal;}
+
+.date_selector th{font-size: 12px;}
+
+.date_selector td{border:1px solid #f1f1f1;line-height: 2em;text-align: center;white-space: nowrap;color:#DA2F2F;background: #fff;}
+
+.date_selector td.today{background: #eee;}
+
+.date_selector td.unselected_month{color: #ccc;}
+
+.date_selector td.selectable_day{cursor: pointer;}
+
+.date_selector td.selected{background:#DA2F2F;color: #fff;font-weight: bold;}
+
+.date_selector td.selectable_day:hover, .date_selector td.selectable_day.hover{background:#DA2F2F;color: #fff;}
+.date_picker{
+    background: url(../images/re_announce02.png) 284px -201px no-repeat;
+}
+.wangEditor-drop-list span{
+    height: 32px !important;
+    line-height: 32px !important;
+}
+.menu-item i{
+    float: none !important;
+}
+.wangEditor-drop-panel div a i{
+    line-height: 25px !important;
+    padding: 0 !important;
+    width: 25px;
+    height: 25px;
+    display: block;
+    float: left;
+    text-align: center;
+}

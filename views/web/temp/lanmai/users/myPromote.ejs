@@ -1,0 +1,180 @@
+<style>
+	.bottom_lanmai{
+		display: none;
+	}
+	.noorder{
+		margin-top: 30px;
+	}
+</style>
+<div class="myPromote">
+			    		<h2>我的推广</h2>
+			    		<div class="PromoteIcon"><div class="newResource bgRed whiteFont"><a href="myResource">推广新资源</a></div></div>
+	<%if(precisePromotion.length==0){%>
+	<div class="noorder">您暂时还没有任何推广!</div>
+	<%}else{%>
+	<%for(var i=0;i<precisePromotion.length;i++){if(precisePromotion[i].pubHistory){%>
+	<div class="promote_list">
+		<div class="promote_line">
+			<div class="promotePic"><img src="<%=precisePromotion[i].pubHistory.images[0]%>/100.100"/></div>
+			<div class="promoteInfo">
+				<p>信息号<span><%=precisePromotion[i].pubHistory.resNum%></span></p>
+				<p><%=precisePromotion[i].pubHistory.title%></p>
+				<p><%=precisePromotion[i].category.name%>-<%=precisePromotion[i].pubHistory.region.province%></p>
+				<p><%=moment(precisePromotion[i].createdAt).format("YYYY-MM-DD HH:mm:ss")%></p>
+			</div>
+			<div class="promoteDate">
+				<div class="promoteTime">
+					<%if(precisePromotion[i].isShowing){%>
+					<span class="orangeColor">推广中</span>
+					<%}else {%>
+					<span class="orangeColor">关闭中</span>
+					<%}%>
+					<p class="greenColor">(<span class="promote_time_begin"><%=moment(precisePromotion[i].promotionBegin).format("YYYY-MM-DD")%></span>至<span class="promote_time_end"><%=moment(precisePromotion[i].promotionEnd).format("YYYY-MM-DD")%></span>)</p>
+				</div>
+				<p class="skin_count">浏览<span><%=precisePromotion[i].pubHistory.pageview%></span></p>
+			</div>
+			<div class="promote_handle blueColor">
+				<ul>
+					<!--<li><a class="refreshPro">刷新</a></li>-->
+					<!--<li><a class="refreshPro">置顶</a></li>-->
+					<li><a class="delPro" data-id="<%=precisePromotion[i].pubHistory._id%>">删除</a></li>
+					<li>
+						<%if(precisePromotion[i].isShowing){%>
+						<a class="closePro" data-id="<%=precisePromotion[i].pubHistory._id%>">关闭</a>
+						<%}else {%>
+						<a class="openPro" data-id="<%=precisePromotion[i].pubHistory._id%>">开启</a>
+						<%}%>
+
+					</li>
+					<li><input hidden class="restype" value="<%=precisePromotion[i].pubHistory.resType%>"/></li>
+				</ul>
+			</div>
+			<!--<div class="promote_delete blueColor"><a>删除</a></div>-->
+		</div>
+
+	</div>
+	<%}}}%>
+
+			    	</div>
+					<!--<div class="precisePromote">-->
+						<!--<div class="precisePromoteContent">-->
+							<!--<div class="isPrecisePromote">-->
+								<!--<input type="checkbox" name="" id="" value="" /><span class=" redFont">精准推广</span>-->
+							<!--</div>-->
+							<!--<div class="precisePromoteDescript blueColor">-->
+								<!--<p>使用精准推广功能，资源信息将在该类目录列表顶端展示，精准锁定目标区域人群，找买主快准狠</p>-->
+							<!--</div>-->
+
+							<!--<div class="precisePromoteTime">-->
+								<!--<ul>-->
+									<!--<li><div class="">1季度<span class="discount">折</span></div></li>-->
+									<!--<li><div class="">半年<span class="discount">折</span></div></li>-->
+									<!--<li><div class="">1年<span class="discount">折</span></div></li>-->
+								<!--</ul>-->
+							<!--</div>-->
+
+							<!--<div class="precisePromoteSelect">-->
+								<!--<ul>-->
+									<!--<li><select><option>选择类目</option></select></li>-->
+									<!--<li><select><option>选择地区</option></select></li>-->
+									<!--<li>价格<span class="precisePromotePrice redFont">98.00</span>元</li>-->
+									<!--<li><button>确认付款</button></li>-->
+								<!--</ul>-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="effect">-->
+							<!--<div class="blueColor"><p>展示效果</p></div>-->
+							<!--<div class="close geryborder"></div>-->
+							<!--<ul>-->
+								<!--<li><div class="effectLogo effectActiveColor"></div><div class="effectProgress preciseProgress"></div><div class="effectActiveLogo redFont">精</div></li>-->
+								<!--<li><div class="effectLogo"></div><div class="effectProgress"></div></li>-->
+								<!--<li><div class="effectLogo"></div><div class="effectProgress"></div></li>-->
+								<!--<li><div class="effectLogo"></div><div class="effectProgress"></div></li>-->
+							<!--</ul>-->
+						<!--</div>-->
+					<!--</div>-->
+<script>
+	$(function () {
+		var resId;
+		var that;
+		var resType;
+//		$(".promoteTime p a").bind("click",function () {
+//			$(".precisePromote").show();
+//		})
+//		$(".close").bind("click",function () {
+//			console.log("ok");
+//			$(".precisePromote").hide();
+//		})
+		$(".closePro").on("click",function () {
+			 that=this;
+			 resId=$(that).data("id");
+			 resType=$(".resType").val();
+			swal({
+						title: "确定关闭此条推广?",
+				        text:"关闭后将不会在相关资源列表中显示!",
+						showCancelButton: true,
+						confirmButtonColor: "#DD6B55",
+						confirmButtonText: "确定",
+						closeOnConfirm: false
+					},
+					function(){
+						$.post("/users/triggerResShow",{resId:resId,resType:resType},function (res) {
+							if(res=="success"){
+								window.location.reload()
+							}else {
+								swal("关闭失败")
+							}
+						})
+
+
+					}
+			)
+		})
+		$(".openPro").on("click",function () {
+			that=this;
+			resId=$(that).data("id");
+			resType=$(".resType").val();
+			swal({
+						title: "确定开启此条推广?",
+						showCancelButton: true,
+						confirmButtonColor: "#DD6B55",
+						confirmButtonText: "确定",
+						closeOnConfirm: false
+					},
+					function(){
+						$.post("/users/triggerResShow",{resId:resId,resType:resType},function (res) {
+							if(res=="success"){
+								window.location.reload()
+							}else {
+							swal("开启失败")
+							}
+						})
+
+
+					}
+			)
+		})
+		$(".delPro").on("click",function () {
+			that=this;
+			resId=$(that).data("id")
+			swal({
+						title: "确定删除此条推广?",
+						showCancelButton: true,
+						confirmButtonColor: "#DD6B55",
+						confirmButtonText: "确定",
+						closeOnConfirm: false
+					},
+					function(){
+						$.post("/users/deletePro",{resId:resId},function (res) {
+							if(res=="success"){
+								window.location.reload()
+							}else{
+								swal({title:res})
+							}
+						})
+					}
+			)
+		})
+	})
+</script>
+			    	

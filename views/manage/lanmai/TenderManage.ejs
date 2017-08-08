@@ -1,0 +1,136 @@
+<style>
+    .city-picker-dropdown{
+        top:9% !important;
+    }
+    .file-drop-zone{
+        width: 250px !important;
+    }
+    .file-preview-thumbnails{
+        width: 250px !important;
+    }
+    .uploadPic{
+        width: 300px;
+        height: 250px;
+    }
+    .uploadPic>img{
+        width: 300px;
+        height: 250px;;
+    }
+    .file-preview{
+        margin-left: 40px !important;
+    }
+    .paging{
+        clear: both;
+        width:100%;
+        height: 80px;
+        margin-bottom: 40px;
+    }
+    .paging>ul{
+        position: relative;
+        left: 700px;
+    }
+    .table>li{
+        float: left;
+        margin-right: 30px;
+        margin-top: 5px;
+    }
+</style>
+<div class="row" ng-controller="tenderManageController">
+    <div class="col-xs-12">
+        <div class="panel">
+            <div class="box-body table-responsive no-padding" >
+                <ul class="table" style="list-style: none">
+                    <li>
+                        <input readonly type="text" data-toggle="city-picker" value="" id="region1" data-level="province">
+                    </li>
+                    <li>
+                        <button class="btn btn-primary btn-sm" type="button" id="resetDistrict"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 重置地区</button>
+                    </li>
+                    <li>招标类型：
+                        <select id="status" ng-model="tenderType">
+                            <option value="">全部</option>
+                            <option value="1">公开招标</option>
+                            <option value="2">邀请招标</option>
+                        </select>
+                    </li>
+                    <li>招标状态：
+                        <select id="status" ng-model="status">
+                            <option value="">全部</option>
+                            <option value="1">发布招标</option>
+                            <option value="2">选择服务商</option>
+                            <option value="3">缴纳定金</option>
+                            <option value="4">制作验收</option>
+                            <option value="5">缴纳尾款</option>
+                            <option value="6">评价</option>
+                        </select>
+                    </li>
+                    <li>文字内容：
+                        <input  type="text"  value="" ng-model="textForSearch">
+                    </li>
+                    <li>
+                        <button class="btn btn-primary btn-sm" type="button" ng-click="searchForSlideManage()"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 搜索</button>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-body table-responsive no-padding" >
+                <table class="table table-hover">
+                    <tr>
+                        <th><input type="checkbox" class="mini" id="selectAll"/></th>
+                        <th>标题</th>
+                        <th>类型</th>
+                        <th>招标区域</th>
+                        <th>保证金</th>
+                        <th>招标方式</th>
+                        <th>状态类型</th>
+                        <th>联系人</th>
+                        <th>联系电话</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr class="datalist" ng-repeat="item in dataList">
+                        <td><input type="checkbox" name="listItem" class="mini" value="{{item._id}}" ng-click="getNewIds()"/></td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.categoryL1.name}}-{{item.categoryL2.name}}</td>
+                        <td>{{item.region.province}}-{{item.region.city}}-{{item.region.district}}</td>
+                        <td>{{item.deposit}}</td>
+                        <td>{{item.tenderType|valToTenderType}}</td>
+                        <td>{{item.status|valToStatus}}</td>
+                        <td>{{item.contacts}}</td>
+                        <td>{{item.phoneNum}}</td>
+                        <td>{{item.createdAt | date : "yyyy-MM-dd HH:mm:ss"}}</td>
+                        <td>
+                            <a class="btn btn-primary btn-xs" data-whatever="{{item._id}}" href="/tender/tenderinfo?id={{item._id}}" target="_blank"><span class="fa fa-fw fa-edit" aria-hidden="true"></span>查看详情</a>&nbsp;
+                            <button class="btn btn-default btn-xs" type="button" title="删除" ng-click="delOneItem(item._id)"><i class="fa fa-trash-o"></i></button>
+                        </td>
+                    </tr>
+                </table>
+                <div class="paging">
+                    <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页" first-text="第一页" last-text="最后一页"
+                                next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+                                items-per-page="itemsPerPage"></pagination>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+    </div><!-- /.col -->
+</div>
+
+</div>
+
+<script>
+    $(function () {
+        $("#resetDistrict").on("click",function () {
+            $('#region1').citypicker("reset");
+            $("#region1").scope().regionStr="";
+            $("#region1").scope().regionForSearch={}
+            $("#region1").scope().$apply();
+        })
+        document.addEventListener("listen", function (e) {
+            $("#region1").scope().regionStr=finalText;
+            $("#region1").scope().$apply();
+        }, false);
+    })
+</script>

@@ -1,0 +1,134 @@
+<style>
+    .contentwarper{
+        width: 1200px;
+        margin: 0 auto;
+        color: #908E8E;
+    }
+   .contentnav{
+       width: 1200px;
+       margin-top: 15px;
+       min-height: 120px;
+       padding-bottom: 30px;
+       border: 1px solid #eeeeee;
+       margin-bottom: 30px;
+   }
+   .contentnav>ul{
+       width: 100%;
+       padding-left: 30px;
+       min-height: 80px;
+       border-bottom: 1px dotted gainsboro;
+   }
+   .allresource{
+       height: 30px;
+       line-height: 30px;
+       font-size: 16px;
+       margin-top: 30px;
+       font-size: 22px;
+       margin-bottom: 10px;
+   }
+   .contentnav>ul>li{
+       width: 80px;
+       height: 30px;
+       line-height: 39px;
+       float: left;
+       margin-right: 30px;
+   }
+    .showcontent{
+        width: 1200px;
+    }
+    .showcontent>div{
+        display: inline-block;
+        width: 200px;
+        height: 256px;
+        border: 1px solid gainsboro;
+        margin-right: 45px;
+        margin-bottom: 70px;
+    }
+    .showcontent>div:nth-child(5n){
+        margin-right: 0;
+    }
+    .showcontent>div>img{
+        width: 198px;
+        height:200px;
+    }
+    .showcontent>div>p{
+        width: 196px;
+        height:25px;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        line-height: 25px;
+        text-align: center;
+        margin: 0;
+        cursor: pointer;
+    }
+    .showcontent>div>p>a{
+        color: rgb(144,142,142);
+    }
+    .showcontent>div>p>a:hover{
+        text-decoration: none;
+    }
+    .showcontent>div>div>a{
+        display: block;
+        width: 70px;
+        height: 22px;
+        line-height: 22px;
+        text-align: center;
+        margin: 0 auto;
+        background-color: #ff0000;
+        color: #fff;
+        margin-top: 4px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .pageing{
+        width: 1200px;
+        margin: 0 auto;
+        height:80px;
+        margin-bottom: 60px;
+    }
+    #pagination {
+        margin-left: 415px;
+    }
+    .pagination>li>a{
+        margin-right: 8px;
+    }
+</style>
+<div  ng-controller="shopspecific2">
+    <div class="headnav">
+        <div>
+            <div><a href="/users/shopSpecific1?id=<%=companyInfo.user%>">首页</a></div>
+            <div><a ng-click="changeType('','全部资源')">全部资源</a></div>
+            <%if(companyInfo.businessScope){for(var i=0;i<companyInfo.businessScope.length;i++){%>
+            <%for(var j=0;j<categorySettingList.length;j++){if(categorySettingList[j].category.name==companyInfo.businessScope[i]){%>
+            <div ng-click="changeType('<%=categorySettingList[j].category._id%>','<%=companyInfo.businessScope[i]%>')"><a><%=companyInfo.businessScope[i]%></a></div>
+            <%}}%>
+            <%}}%>
+            <div><a href="/users/shopcomment?id=<%=companyInfo.user%>">企业评价</a></div>
+        </div>
+    </div>
+    <div class="contentwarper">
+        <div class="allresource">{{nowType}}</div>
+        <!--<div>{{warningInfoData}}</div>-->
+        <div class="showcontent">
+            <div ng-repeat="item in dataList">
+                <a ng-href="/resource/{{item.resType|toD}}?id={{item.resNum}}"><img ng-src="{{item.images[0]}}/200.200" />
+                </a>
+                <p title="{{item.title}}"><a ng-href="/resource/{{item.resType|toD}}?id={{item.resNum}}">{{item.title}}</a></p>
+                <div><a ng-href="/resource/{{item.resType|toD}}?id={{item.resNum}}">查看详情</a></div>
+            </div>
+
+        </div>
+        <div class="pageing" ng-if="dataList.length!==0">
+            <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+                        next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+                        items-per-page="itemsPerPage"></pagination>
+        </div>
+    </div>
+
+
+    <div class="notice" ng-if="dataList.length==0" >
+        <p>您还未发布相关图片和资源，可前往<a href="shopindex">企业首页</a>对您的企业进行相关维护！</p>
+    </div>
+</div>
+

@@ -1,0 +1,71 @@
+<style type="text/css">
+	.bottom_lanmai{
+		margin-top: 250px;
+	}
+	.newPromote{
+		float: right;
+		width: 140px;
+		height: 30px;
+		line-height:30px;
+		font-size: 18px;
+		text-align: center;
+		border-radius: 3px;
+	}
+	.demandContent{
+		clear: both;
+		margin-top: 45px;
+	}
+	.newResource{
+		float: right;
+	}
+	.newResource a{
+		color:#fff ;
+	}
+	#pagination {
+		margin-left: 255px;
+		margin-top:-30px;
+	}
+	ul.pagination>li>a{
+		margin-right: 6px;
+	}
+</style>
+<div class="myDemand" ng-controller="myDemandController">
+			    		<h2>我的需求</h2>
+	                    <div class="newResource bgRed "><a href="../resource/demandRelease">发布新需求</a></div>
+			    		<div class="newPromote redBg whiteFont">发布新需求</div>
+			    		<div class="demandContent">
+			    			<div class="demandList  bgGrey">
+			    				<div class="demand_categories">需求类别</div>
+			    				<div class="demand_trade">行业</div>
+			    				<div class="demand_area">地区</div>
+			    				<div class="demand_budget">预算</div>
+			    				<div class="demand_sketch">需求简述</div>
+			    				<div class="demand_skin">浏览量</div>
+			    				<div class="demand_handle">操作</div>
+			    				<div class="demand_status">状态</div>
+			    			</div>
+			    			<div class="demandList"  ng-repeat="item in dataList">
+								<div class="demand_categories">{{item.categoryL1.name}}</div>
+								<div class="demand_trade">{{item.classify}}</div>
+								<div class="demand_area">{{item.region.province}}</div>
+								<div class="demand_budget">{{item.price}}</div>
+								<div class="demand_sketch"><span class="titleOverflow">{{item.title}}</span></div>
+								<div class="demand_skin">{{item.pageview}}</div>
+								<div class="demand_handle blueColor">
+									<ul>
+										<li><a ng-href="/resource/demandReleaseEdit?id={{item.resNum}}" target="_blank">修改</a></li>
+										<li  ng-click="refreshde(item)"><a>刷新</a></li>
+										<li  ng-click="deletede(item)"><a>删除</a></li>
+										<li><a ng-href="../resource/dDemand?id={{item.resNum}}" target="_blank">详情</a></li>
+									</ul>
+								</div>
+								<div class="demand_status" ng-click="triggerDeShow(item)"  ng-class="{redFont:item.isShowing,pastColor:!item.isShowing}">{{item.isShowing|myfilter}}</div>
+			    			</div>
+							<div class="littlemargin" ng-if="!dataList.length">暂未发布需求</div>
+						</div>
+						<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+									next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+									items-per-page="itemsPerPage">
+
+						</pagination>
+			    	</div>

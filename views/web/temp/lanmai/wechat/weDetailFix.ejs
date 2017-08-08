@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height;initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>制作宝-<%=detailList[0].title%></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/weui.min.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/myStyle.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/common.css">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+
+</head>
+<body>
+    <div class="dFixCon">
+        <div class="dFixConLists">
+            <div class="dFixConTitle"><%=detailList[0].title%></div>
+        </div>
+        <div class="dFixContainer">
+            <ul>
+                <li>
+                    <span>联系人：</span>
+                    <i><%=detailList[0].name%></i>
+                </li>
+                <li>
+                    <span>联系方式：</span>
+                    <i><%=detailList[0].phoneNum%></i>
+                </li>
+                <li>
+                    <span>服务地区：</span>
+                    <i><%=detailList[0].serviceRegion.province%>&nbsp;&nbsp;<%=detailList[0].serviceRegion.city%>&nbsp;&nbsp;<%=detailList[0].serviceRegion.district%></i>
+                </li>
+                <li>
+                    <i class="detailListHtml"><%=detailList[0].details%></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="weDetailContact clearfix">
+        <div class="weDetailName">
+            <span><%=detailList[0].name%></span>
+        </div>
+        <div class="weDetailTel clearfix">
+            <a href="tel:<%=detailList[0].phoneNum%>">
+                <span><img src="/themes/<%=staticforder%>/images/weDetail02.png"></span>
+                <i>电话</i>
+            </a>
+        </div>
+    </div>
+    <script>
+        function delHtmlTag(str){
+            return str.replace(/<[^>]+>/g,"");//去掉所有的html标记
+        }
+        for(var i=0;i<=$('.dFixContainer').length;i++){
+            var tagCon = $(".detailListHtml").eq(i).text();
+            $(".detailListHtml").eq(i).text(delHtmlTag(tagCon));
+        }
+        window.onload=function(){
+            function isWeiXin(){
+                var ua = window.navigator.userAgent.toLowerCase();
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                    return true;
+                }else{
+                    var bod=document.getElementsByTagName("body")[0];
+                    bod.innerHTML="<p style='text-align: center;color:#68E868'>请在微信客户端打开页面</p>";
+                    swal({
+                                title: '您好，请使用微信客户端浏览！',
+                                text: "即将跳转-制作宝-安装资源列表",
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "确定",
+                                closeOnConfirm: false
+                            },
+                            function(isConfirm) {
+                                if (isConfirm) {
+                                    window.location.href="/resource/resourceFixList";
+                                }
+                            })
+                    return false;
+                }
+            }
+            isWeiXin()
+        }
+    </script>
+</body>
+</html>

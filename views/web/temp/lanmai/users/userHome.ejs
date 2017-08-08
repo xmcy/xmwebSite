@@ -1,0 +1,375 @@
+<style>
+    .equipmentShowImg{
+        width: 190px;
+        height: 260px;
+    }
+    .index_out02>li>a{
+        cursor: pointer;
+    }
+    .flex-viewport{
+        height: 420px !important;
+        z-index: 1;
+    }
+    .city-select-content .city-select dl dd a{
+        float: left;
+    }
+    .flex-direction-nav li a.flex-prev{
+        top:50px;
+    }
+    .flex-direction-nav li a.flex-next{
+        top:50px;
+    }
+    .city-picker-span{
+        border: none;
+        background: none;
+        position: absolute;
+        left: 50px;
+        top:-3px;
+        width: 79px !important;
+        height: 52px !important;
+    }
+    .city-picker-span .title span{
+        width: 60px;
+        height: 40px;
+
+    }
+    .city-picker-span .title span:hover{
+        background: none;
+    }
+    .arrow{display: none}
+    .city-picker-dropdown{
+        width: 345px !important;
+        top:50px !important;
+        left: 52px !important;
+    }
+    .city-picker-dropdown dl dd a{
+        font-size: 13px !important;
+    }
+    .city-picker-span .title>span.select-item{
+        position: absolute;
+        left:11px;
+        top:5px;
+        color:#908E8E;
+    }
+    .city-select-tab{
+        display: none;
+    }
+    .slides li{
+        height:420px;
+    }
+    .slides li>a>img{
+        width: 908px;
+        height: 420px;
+    }
+    .slides li>p{
+        width: 908px;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+    .rotateimg {
+        transition: All 0.4s ease-in-out;
+        -webkit-transition: All 0.4s ease-in-out;
+        -moz-transition: All 0.4s ease-in-out;
+        -o-transition: All 0.4s ease-in-out;
+    }
+
+    .rotateimg:hover {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+        -moz-transform:rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+    }
+    .promoteImg{
+        width: 280px;
+        height: 236px;
+    }
+
+</style>
+<div class="index_content">
+    <!--BANNER区域-->
+    <div class="index_content_banner clearfix">
+        <div class="index_tab_list bannerCons">
+            <div class="leftBar">
+                    <div class="leftBarTitle"><span class="leftBarTitleName">广告制作</span><span class="navIcon guangMake"></span></div>
+                    <ul class="adMake clearfix">
+                        <%for(var i=0;i<8;i++){%>
+                        <li id="<%=parentIdCateList[i].defaultUrl%>"> <a href="/resource/<%=parentIdCateList[i].defaultUrl%>" target="_blank"><%=parentIdCateList[i].comments%></a> </li>
+                        <%}%>
+                        <li><a href="../resource/resourceListMake" target="_blank">更多</a></li>
+                    </ul>
+                    <div class="leftBarTitle"><span class="leftBarTitleName">广告材料</span><span class="navIcon guangMaterial"></span></div>
+                    <ul class="adMaterial clearfix">
+                        <%for(var i=0;i<8;i++){%>
+                        <li id="<%=parentIdCateList01[i].defaultUrl%>"> <a href="/resource/<%=parentIdCateList01[i].defaultUrl%>" target="_blank"><%=parentIdCateList01[i].comments%></a> </li>
+                        <%}%>
+                        <li><a href="../resource/resourceListMaterial" target="_blank">更多</a></li>
+                    </ul>
+
+                    <div class="leftBarTitle"><span class="leftBarTitleName">广告设备</span><span class="navIcon guangMachine"></span></div>
+                    <ul class="adMachine clearfix">
+                        <%for(var i=0;i<8;i++){%>
+                        <li id="<%=parentIdCateList02[i].defaultUrl%>"> <a href="/resource/<%=parentIdCateList02[i].defaultUrl%>" target="_blank"><%=parentIdCateList02[i].comments%></a> </li>
+                        <%}%>
+                        <li><a href="../resource/resourceListMachine" target="_blank">更多</a></li>
+                    </ul>
+                </div>
+        </div>
+        <div class="index_banner flexslider bannerCons">
+            <ul class="index_banner_con slides clearfix">
+                <%for(var i=0,length=slideList.length;i<length;i++){if(slideList[i].jump=="#"){%>
+                <li><a href="javascirpt:"><img src="<%=slideList[i].img%>/compress.only" alt="" /></a></li>
+                <%}else {%>
+                <li><a href="<%=slideList[i].jump%>" target="_blank"><img src="<%=slideList[i].img%>/compress.only" alt="" /></a></li>
+                <%}}%>
+            </ul>
+        </div>
+    </div>
+    <div class="imgPromote">
+        <ul class="clearfix">
+            <li class="imgPromote1"><a href="../resource/brandWin"><img src="/themes/lanmai/images/home4.png"/></a></li>
+            <li class="imgPromote2">
+                <a href="../tender/tender">
+                   <img src="/themes/lanmai/images/totender.png"/>
+                </a>
+            </li>
+            <li class="imgPromote3">
+                <a href="../tender/tenderlist">
+                   <img src="/themes/lanmai/images/tobid.png"/>
+                </a>
+            </li>
+            <li class="imgPromote4">
+                <a href="../resource/digitalMagazine">
+                  <img src="/themes/lanmai/images/mage.png"/>
+                </a>
+                <a class="formage" href="../resource/digitalMagazine">
+                <img src="/themes/lanmai/images/home2.png"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+        <div class="index_ad_making">
+            <div class="index_ad_title" style="background: #B68882">
+                <ul class="index_out01">
+                    <li>广告制作</li>
+                </ul>
+                <ul class="index_out02 indexADMake">
+                    <%for(var i=0;i<categoryRecommendListForManufacture.items.split("#").length;i++){%>
+                    <li> <a data-i="<%=categoryRecommendListForManufacture.items.split('#')[i]%>" class="resourceListMake" ><span data-hover="<%=categoryRecommendListForManufacture.items.split("#")[i]%>"><%=categoryRecommendListForManufacture.items.split("#")[i]%></span></a> </li>
+                    <%}%>
+                </ul>
+            </div>
+            <div class="index_ad_make_con">
+               <div class="charonAdMake01 clearfix">
+                   <div class="charonMakeBigPic"><img src="/themes/<%=staticforder%>/images/charonAdMake01.png" alt=""></div>
+                   <div class="charonAdMakeCon01">
+                        <div class="charonAdMakeConFirst clearfix">
+                            <ul>
+                                <li><a href="/resource/<%=categorySettingListForManufacture[0].category.defaultUrl%>"><img class="rotateimg" src="<%=categorySettingListForManufacture[0].icon%>" alt=""><span ><%=categorySettingListForManufacture[0].category.name%></span></a></li>
+                                <li><a href="/resource/<%=categorySettingListForManufacture[1].category.defaultUrl%>"><img class="rotateimg" src="<%=categorySettingListForManufacture[1].icon%>" alt=""><span><%=categorySettingListForManufacture[1].category.name%></span></a></li>
+                            </ul>
+                            <ul style="border-left: 1px solid #F0F0F0;">
+                                <li><a href="/resource/<%=categorySettingListForManufacture[2].category.defaultUrl%>"><img class="rotateimg" src="<%=categorySettingListForManufacture[2].icon%>" alt=""><span><%=categorySettingListForManufacture[2].category.name%></span></a></li>
+                                <li><a href="/resource/<%=categorySettingListForManufacture[3].category.defaultUrl%>"><img class="rotateimg" src="<%=categorySettingListForManufacture[3].icon%>" alt=""><span><%=categorySettingListForManufacture[3].category.name%></span></a></li>
+                            </ul>
+                        </div>
+                   </div>
+                   <div class="charonAdMakeCon01">
+                       <div class="charonAdMakeConFirst clearfix">
+                           <ul>
+                               <li><a href="/resource/<%=categorySettingListForManufacture[4].category.defaultUrl%>"><img class="rotateimg" src="<%=categorySettingListForManufacture[4].icon%>" alt=""><span><%=categorySettingListForManufacture[4].category.name%></span></a></li>
+                               <li><a href="/resource/<%=categorySettingListForManufacture[5].category.defaultUrl%>"><img class="rotateimg" src="<%=categorySettingListForManufacture[5].icon%>" alt=""><span><%=categorySettingListForManufacture[5].category.name%></span></a></li>
+                           </ul>
+                           <ul style="border-left: 1px solid #F0F0F0;">
+                               <li><a href="/resource/<%=categorySettingListForManufacture[6].category.defaultUrl%>"><img class="rotateimg" src="<%=categorySettingListForManufacture[6].icon%>" alt=""><span><%=categorySettingListForManufacture[6].category.name%></span></a></li>
+                               <li><a href="/resource/<%=categorySettingListForManufacture[7].category.defaultUrl%>"><img class="rotateimg" src="<%=categorySettingListForManufacture[7].icon%>" alt=""><span><%=categorySettingListForManufacture[7].category.name%></span></a></li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class="charonAdMake02">
+                   <ul class="clearfix">
+                       <%for(var i=0;i<6;i++){if(companyList[i]&&companyList[i].company){%>
+                       <li><a href="/users/shopSpecific2?id=<%=companyList[i].company.user%>" target="_blank"><span><img data-original="<%=companyList[i].priorShowImgs[0]%>" alt=""></span></a></li>
+                       <%}}%>
+                   </ul>
+               </div>
+            </div>
+        </div>
+        <!--广告材料-->
+        <div class="index_ad_material">
+            <div class="index_ad_title" style="background: #75A899">
+                <ul class="index_out01">
+                    <li>广告材料</li>
+                </ul>
+                <ul class="index_out02">
+                    <%for(var i=0;i<categoryRecommendListForMaterial.items.split("#").length;i++){%>
+                    <li> <a class="resourceListMaterial" data-i="<%=categoryRecommendListForMaterial.items.split("#")[i]%>" ><span data-hover="<%=categoryRecommendListForMaterial.items.split("#")[i]%>"><%=categoryRecommendListForMaterial.items.split("#")[i]%></span></a> </li>
+                    <%}%>
+                </ul>
+            </div>
+            <div class="index_ad_material_con">
+                <div class="charonAdMakeMaterial01">
+                    <div class="charonAdMakeMaterialImg">
+                        <img data-original="/themes/<%=staticforder%>/images/charonAdMaterial01.png" alt="">
+                    </div>
+                    <div class="charonAdMaterialImgs">
+                        <ul class="clearfix">
+                            <%for(var i=0,length=categorySettingListForMaterial.length;i<length;i++){%>
+                            <li><a href="/resource/<%=categorySettingListForMaterial[i].category.defaultUrl%>"><img class="rotateimg" data-original="<%=categorySettingListForMaterial[i].icon%>" alt=""><span><%=categorySettingListForMaterial[i].category.name%></span></a></li>
+                            <%}%>
+                        </ul>
+                    </div>
+                </div>
+                <div class="charonAdMake02">
+                    <ul class="clearfix">
+                        <%for(var i=6;i<12;i++){if(companyList[i]&&companyList[i].company){%>
+                        <li><a href="/users/shopSpecific2?id=<%=companyList[i].company.user%>" target="_blank"><span><img data-original="<%=companyList[i].priorShowImgs[0]%>" alt=""></span></a></li>
+                        <%}}%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--广告设备-->
+        <div class="index_ad_machine">
+            <div class="index_ad_title" style="background: #E8AA7D">
+                <ul class="index_out01">
+                    <li>广告设备</li>
+                </ul>
+                <ul class="index_out02">
+                    <%for(var i=0;i<categoryRecommendListForEquipment.items.split("#").length;i++){%>
+                    <li> <a class="resourceListMachine" data-i="<%=categoryRecommendListForEquipment.items.split("#")[i]%>" ><span data-hover="<%=categoryRecommendListForEquipment.items.split("#")[i]%>"><%=categoryRecommendListForEquipment.items.split("#")[i]%></span></a> </li>
+                    <%}%>
+                </ul>
+            </div>
+            <div class="index_ad_machine_con">
+                <div class="charonAdMachine01 clearfix">
+                    <ul class="charonAdMachineLeft">
+                        <li>
+                            <img class="equipmentShowImg" data-original="/themes/<%=staticforder%>/images/home11.png" alt="">
+                        </li>
+                    </ul>
+                    <ul class="charonAdMachineRight clearfix">
+                        <li><a href="/resource/<%=categorySettingListForEquipment[0].category.defaultUrl%>"><img class="rotateimg" data-original="<%=categorySettingListForEquipment[0].icon%>" alt=""><span><%=categorySettingListForEquipment[0].category.name%></span></a></li>
+                        <li><a href="/resource/<%=categorySettingListForEquipment[1].category.defaultUrl%>"><img class="rotateimg" data-original="<%=categorySettingListForEquipment[1].icon%>" alt=""><span><%=categorySettingListForEquipment[1].category.name%></span></a></li>
+                        <li><a href="/resource/<%=categorySettingListForEquipment[2].category.defaultUrl%>"><img class="rotateimg" data-original="<%=categorySettingListForEquipment[2].icon%>" alt=""><span><%=categorySettingListForEquipment[2].category.name%></span></a></li>
+                        <li><a href="/resource/<%=categorySettingListForEquipment[3].category.defaultUrl%>"><img class="rotateimg" data-original="<%=categorySettingListForEquipment[3].icon%>" alt=""><span><%=categorySettingListForEquipment[3].category.name%></span></a></li>
+
+                    </ul>
+                    <div class="charonAdMake02">
+                        <ul class="clearfix">
+                            <%for(var i=12;i<15;i++){if(companyList[i]&&companyList[i].company){%>
+                            <li><a href="/users/shopSpecific2?id=<%=companyList[i].company.user%>" target="_blank"><span><img data-original="<%=companyList[i].priorShowImgs[0]%>" alt=""></span></a></li>
+                            <%}}%>
+                        </ul>
+                    </div>
+                </div>
+                <div class="charonAdMachine01 clearfix" style="margin-left: 27px">
+                    <ul class="charonAdMachineLeft">
+                        <li>
+                            <img data-original="/themes/<%=staticforder%>/images/home22.png" alt="">
+                        </li>
+                    </ul>
+                    <ul class="charonAdMachineRight clearfix">
+                        <li><a href="/resource/<%=categorySettingListForEquipment[4].category.defaultUrl%>"><img class="rotateimg" data-original="<%=categorySettingListForEquipment[4].icon%>" alt=""><span><%=categorySettingListForEquipment[4].category.name%></span></a></li>
+                        <li><a href="/resource/<%=categorySettingListForEquipment[5].category.defaultUrl%>"><img class="rotateimg" data-original="<%=categorySettingListForEquipment[5].icon%>" alt=""><span><%=categorySettingListForEquipment[5].category.name%></span></a></li>
+                        <li><a href="/resource/<%=categorySettingListForEquipment[6].category.defaultUrl%>"><img class="rotateimg" data-original="<%=categorySettingListForEquipment[6].icon%>" alt=""><span><%=categorySettingListForEquipment[6].category.name%></span></a></li>
+                        <li><a href="/resource/<%=categorySettingListForEquipment[7].category.defaultUrl%>"><img class="rotateimg" data-original="<%=categorySettingListForEquipment[7].icon%>" alt=""><span><%=categorySettingListForEquipment[7].category.name%></span></a></li>
+
+                    </ul>
+                    <div class="charonAdMake02">
+                        <ul class="clearfix">
+                            <%for(var i=15;i<18;i++){if(companyList[i]){%>
+                            <li><a href="/users/shopSpecific2?id=<%=companyList[i].company.user%>" target="_blank"><span><img data-original="<%=companyList[i].priorShowImgs[0]%>" alt=""></span></a></li>
+                            <%}}%>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="charonAdHotResources">
+        <div class="charonAdHotTitle">
+            <div style="width: 40%;border-bottom: 1px solid #C1C1C0;margin-top: 20px;"></div>
+            <div style="width: 20%;color: #DB3838;text-align: center;font-size: 21px;">热门资源推荐</div>
+            <div style="width: 40%;border-bottom: 1px solid #C1C1C0;margin-top: 20px;"></div>
+        </div>
+        <div class="charonAdHotCon">
+            <ul class="clearfix">
+                <%for(var i=0;i<promotionForAll.length;i++){%>
+                <li>
+                    <%if(promotionForAll[i].resType=="Manufacture"){%>
+                    <a href="/resource/dMake?id=<%=promotionForAll[i].resNum%>" target="_blank"><img class="promoteImg" data-original="<%=promotionForAll[i].images[0]%>/280.236" alt="<%=promotionForAll[i].title%>"></a>
+                    <%}else if(promotionForAll[i].resType=="Manufacture"){%>
+                    <a href="/resource/dmaterial?id=<%=promotionForAll[i].resNum%>" target="_blank"><img class="promoteImg" data-original="<%=promotionForAll[i].images[0]%>/280.236" alt="<%=promotionForAll[i].title%>"></a>
+                    <%}else {%>
+                     <a href="/resource/dMachine?id=<%=promotionForAll[i].resNum%>" target="_blank"><img class="promoteImg" data-original="<%=promotionForAll[i].images[0]%>/280.236" alt="<%=promotionForAll[i].title%>"></a>
+                     <%}%>
+                    <p title="<%=promotionForAll[i].title%>"><%=promotionForAll[i].title%></p>
+                    <ul class="charonAdHotConList">
+                        <li>资源类型:
+                            <%if(promotionForAll[i].resType=="Manufacture"){%>
+                            广告制作
+                            <%}else if(promotionForAll[i].resType=="Manufacture"){%>
+                            广告材料
+                            <%}else {%>
+                            广告设备
+                            <%}%>
+                        </li>
+                        <li>服务地区：<%=promotionForAll[i].region.province%></li>
+                    </ul>
+                </li>
+                <%}%>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<div class="index_pull_search">
+    <div class="index_pull_con" style="position: relative">
+        <img src="/themes/<%=staticforder%>/images/index_logo.png" alt="" height="80%">
+        <div class="kindSelect" style="float: left;margin-top: 5px; margin-left: 20%">
+            <input class="serchKindName" type="hidden" value="all">
+            <a class="searchKinds" href="javascript:;">全部</a>
+            <dl style="display: none">
+                <dt  id="all">全部</dt>
+                <%
+                for(var i=0;i<cateList.length;i++){%>
+                <dt id="<%=cateList[i].defaultUrl%>"><%=cateList[i].name%></dt>
+                <%}%>
+                <dt id="xuqiu">广告需求</dt>
+                <dt id="zhaobiao">广告招标</dt>
+                <dt id="anzhuang">广告安装</dt>
+            </dl>
+        </div>
+        <input type="text" class="searchText1" value="" placeholder="广告制作">
+        <a class="index_buttom1" href="javascript:;"></a>
+    </div>
+
+</div>
+<!--左侧的浮动条-->
+<div class="index_left_float">
+    <ul>
+        <li><a href="javascript:;">户外</a></li>
+        <li><a href="javascript:;">制作</a></li>
+        <li><a href="javascript:;">材料</a></li>
+        <li><a href="javascript:;">设备</a></li>
+        <li><a href="javascript:;">策划</a></li>
+        <li><a href="javascript:;">电视</a></li>
+        <li><a href="javascript:;">广播</a></li>
+        <li><a href="javascript:;">杂志</a></li>
+        <li><a href="javascript:;">报纸</a></li>
+        <li><a href="javascript:;">自媒体</a></li>
+        <li><a style="border: none" href="javascript:;">新媒体</a></li>
+        <li id="index_get_top" style="background: #CBCBCB"><a href="javascript:;">顶部</a></li>
+    </ul>
+</div>
+<script>
+    $(function () {
+        $("img").lazyload();
+        $("img").lazyload({
+            threshold : 200
+        });
+    })
+</script>

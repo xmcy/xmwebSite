@@ -1,0 +1,656 @@
+<style>
+	.sweet-alert>h2>img{
+		width: 250px;
+		height:250px;
+	}
+	.sweet-alert{
+		margin-top: -110px !important;
+		margin-left: -128px;
+	}
+    .alipay{
+		margin-top: 20px;
+	}
+	.shopinfo>.shopname{
+		margin: 20px 0 50px 0;
+	}
+	.shopname>h2{
+		padding-top: 4px;
+		margin-bottom: 14px;
+	}
+	.shopname>h3{
+		display: inline-block;
+	}
+	.Withdrawals{
+		float: right;
+		margin-top: -8px;
+	}
+	.forcash{
+		display: inline-block;
+		width: 100px;
+		height: 36px;
+		text-align: center;
+		line-height: 36px;
+		background-color: #da2f2f;
+		border: 1px solid #da2f2f;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.Withdrawals>h3{
+		display: inline-block;
+		margin: 0 20px 0px 76px;
+	}
+	.bindingwrap{
+		width: 780px;
+		margin: 0 auto;
+		padding:10px 20px;
+	}
+	.bindstatus{
+		float: left;
+		width: 370px;
+		height: 80px;
+		background-color: #f6f4f4;
+		padding:20px 0 20px 0;
+		border-radius: 4px;
+	}
+	.bindicon{
+		width: 50px;
+		height:50px;
+		float: left;
+		margin: 0 30px 0 40px;
+		background:url(/themes/lanmai/images/tendericon.png)  878px 143px ;
+	}
+	.nobindicon{
+		width: 50px;
+		height:50px;
+		float: left;
+		margin: 0 30px 0 46px;
+		background:url(/themes/lanmai/images/tendericon.png)  737px 141px ;
+	}
+	.bindinfo{
+		line-height: 25px;
+		font-size: 16px;
+	}
+	.bindinfo a{
+		color: #40aadc;
+	}
+	.tip{
+		font-size: 14px;
+		text-align: center;
+	}
+	.title{
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+	.deallist{
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		padding-left: 70px;
+		border-bottom: 3px solid #fff;
+		background-color: #f6f4f4;
+	}
+	.deallist>span{
+		display: inline-block;
+		width: 24%;
+	}
+	.deallist:hover{
+		background-color: gainsboro;
+	}
+	.bggrey{
+		background-color: gainsboro;
+	}
+	#pagination{
+		margin-left:30%;
+		margin-bottom: 30px;
+	}
+	ul.pagination>li>a{
+		margin-right:8px;
+	}
+	.bindalipay,.bindalipay2,.bindweichartpay,.bindweichartpay2{
+		border: 2px solid #da2f2f;
+		padding: 40px 30px;
+		position: fixed;
+		top: 28%;
+		left: 38%;
+		background-color: #fff;
+		width: 570px;
+		font-size: 16px;
+		display: none;
+	}
+	.promisetocash{
+		border: 2px solid #da2f2f;
+		padding: 40px 30px;
+		position: fixed;
+		top: 30%;
+		left: 40%;
+		background-color: #fff;
+		width: 570px;
+		font-size: 16px;
+		display: none;
+		z-index: 99999;
+	}
+	.bindalipay h3,.bindalipay2 h3,.bindweichartpay h3,.bindweichartpay2 h3{
+		margin-bottom: 30px;
+	}
+	.bindalipay span,.bindalipay2 span,.bindweichartpay span,.bindweichartpay2 span,.promisetocash span{
+		display: inline-block;
+		width: 100px;
+		margin-right: 34px;
+	}
+	.bindalipay input,.bindalipay2 input,.bindweichartpay input,.bindweichartpay2 input,.promisetocash input{
+		width: 250px;
+		height: 40px;
+		padding-left: 10px;
+		margin-bottom: 20px;
+	}
+	.forpassword{
+		height: 35px;
+		line-height: 35px;
+		text-align: center;
+		background-color: gainsboro;
+		color: #fff;
+		border-radius: 4px;
+		margin-left: 20px;
+		margin-right: 0 !important;
+	}
+	.surebuttom{
+		width: 90px;
+		height: 35px;
+		line-height: 35px;
+		text-align: center;
+		background-color: #da2f2f;
+		color: #fff;
+		border-radius: 4px;
+		margin-left: 190px;
+		margin-top: 16px;
+		cursor: pointer;
+	}
+	.close{
+		width: 30px !important;
+		height: 30px;
+		float: right;
+		background:url(/themes/lanmai/images/tendericon.png)  976px 121px ;
+		margin: -92px -30px 0 0 !important;
+	}
+	.nomargin{
+		margin-top: -42px !important; ;
+	}
+	.tipforpass{
+		width: auto !important;
+		margin-left: 133px;
+		font-size: 14px;
+	}
+	.password,.wxpassword{
+		margin-bottom: 0 !important;
+	}
+	.paycash{
+		position: absolute;
+		top:130px;
+		left: 600px;
+		width: 500px;
+		height: 220px;
+		padding: 30px;
+		background-color: #fff;
+		border: 2px solid #da2f2f;
+		font-size: 16px;
+		display: none;
+	}
+	.paycash>h3{
+		margin-bottom: 30px;
+	}
+	.paycash>form{
+		margin: 20px 0;
+	}
+	.paycash>form>span{
+		margin-right: 40px;
+	}
+	.paycash>form>label{
+		margin-right: 30px;
+		font-weight: 500;
+	}
+	.surepay{
+		display: inline-block;
+		width: 90px;
+		height: 32px;
+		line-height: 32px;
+		text-align: center;
+		background-color: #da2f2f;
+		color: #fff;
+		border-radius: 4px;
+		cursor: pointer;
+		margin-left: 10px;
+	}
+	.yellow{
+		color: #e9bc84;
+	}
+	.tocashtip{
+		margin: 20px 0;
+	}
+</style>
+<input type="hidden" id="phoneNum" value="<%=userInfo.phoneNum%>">
+<div class="shopinfo" ng-controller="shopaccountController">
+	<div class="paycash">
+		<h3>企业保证金</h3>
+		<div class="close"></div>
+		<form class="contactway">
+			<span>支付金额</span>
+			<input class="re_machine_fix" type="radio" name="paynum" id="two" checked value="2000"> <label for="two" class="change_style">2000</label>
+			<input class="re_machine_fix" type="radio" name="paynum" id="five"  value="5000"> <label for="five" class="change_style">5000</label>
+			<input class="re_machine_fix" type="radio" name="paynum" id="ten"  value="10000"> <label for="ten" class="change_style">10000</label>
+		</form>
+		<form class="payType"><span>支付方式</span>
+			<input type="radio" name="precisePayway" id="alipay" checked value="支付宝"/><label for="alipay">支付宝</label>
+			<input type="radio" name="precisePayway" id="weichartpay" value="微信"/><label for="weichartpay">微信</label><span class="surepay">确认支付</span>
+		</form>
+	</div>
+	<div class="shopname">
+		<div class="storePic2"></div>
+		<h2><%=company.companyName%></h2>
+		<h3>
+			企业保证金：<%if(company.depositAccount||company.depositAccount!==0){%><a class="promisecashnum"><%=company.depositAccount%></a>元<%}else {%>未缴纳<%}%>
+		</h3>
+		<div class="Withdrawals">
+			<%if(company.depositAccount||company.depositAccount>0){%>
+			<a class="yellow topaycash">（追加保证金）</a>
+			<span class="forcash promisecash">提 现</span>
+			<%}else {%>
+			<span class="forcash topaycash">去缴纳</span>
+			<%}%>
+			<h3>现金账户：<%if(company.cashAccount){%><a class="cashnum"><%=company.cashAccount%></a><%}else {%><a class="cashnum">0</a><%}%>元</h3>
+			<span class="forcash acountcash">提 现</span>
+		</div>
+	</div>
+	<div class="alipay">
+      <div class="title">绑定提现账户</div>
+		<div class="bindingwrap">
+			<%if(company.withdrawAccount.length==1){%>
+				<%if(company.withdrawAccount[0].type=="alipay"){%>
+				<div class="bindstatus">
+					<div class="bindicon"></div>
+					<div class="bindinfo">
+					<div>支付宝账号：<%=company.withdrawAccount[0].account%></div>
+					<div><a class="changebind">换绑支付宝</a></div>
+					</div>
+				</div>
+				<div class="bindstatus">
+					<div class="nobindicon"></div>
+					<div class="bindinfo">
+						<div>您还未绑定微信</div>
+						<div><a class="forbindweichart">点击绑定</a></div>
+					</div>
+				</div>
+				<%}else{%>
+				<div class="bindstatus">
+					<div class="nobindicon"></div>
+					<div class="bindinfo">
+						<div>您还未绑定支付宝</div>
+						<div><a class="forbind">点击绑定</a></div>
+					</div>
+				</div>
+				<div class="bindstatus">
+					<div class="bindicon"></div>
+					<div class="bindinfo">
+						<div>微信账号：<%=company.withdrawAccount[0].account%></div>
+						<div><a class="changeweichart">换绑微信</a></div>
+					</div>
+				</div>
+			<%}}else if(company.withdrawAccount.length==2){%>
+			    <%if(company.withdrawAccount[0].type=="alipay"){%>
+			      <div class="bindstatus">
+					<div class="bindicon"></div>
+					<div class="bindinfo">
+						<div>支付宝账号：<%=company.withdrawAccount[0].account%></div>
+						<div><a class="changebind">换绑支付宝</a></div>
+					</div>
+				  </div>
+			     <div class="bindstatus">
+				<div class="bindicon"></div>
+				<div class="bindinfo">
+					<div>微信账号：<%=company.withdrawAccount[1].account%></div>
+					<div><a class="changeweichart">换绑微信</a></div>
+				</div>
+			</div>
+				<%}else{%>
+				<div class="bindstatus">
+					<div class="bindicon"></div>
+					<div class="bindinfo">
+						<div>支付宝账号：<%=company.withdrawAccount[1].account%></div>
+						<div><a class="changebind">换绑支付宝</a></div>
+					</div>
+				</div>
+				<div class="bindstatus">
+					<div class="bindicon"></div>
+					<div class="bindinfo">
+						<div>微信账号：<%=company.withdrawAccount[0].account%></div>
+						<div><a class="changeweichart">换绑微信</a></div>
+					</div>
+				</div>
+				<%}%>
+			<%}else{%>
+			<div class="bindstatus">
+				<div class="nobindicon"></div>
+				<div class="bindinfo">
+					<div>您还未绑定支付宝</div>
+					<div><a class="forbind">点击绑定</a></div>
+				</div>
+			</div>
+			<div class="bindstatus">
+				<div class="nobindicon"></div>
+				<div class="bindinfo">
+					<div>您还未绑定微信</div>
+					<div><a class="forbindweichart">点击绑定</a></div>
+				</div>
+			</div>
+			<%}%>
+			<div class="redFont tip">绑定的账号作为提现资金的收款账户（默认支付宝账户），即通过制作宝提现的资金，将会流向您绑定的账号中</div>
+		</div>
+	</div>
+    <div class="alipay" >
+		<div class="title">账户交易记录</div>
+		<div class="deallist bggrey">
+            <span>流水交易号</span>
+			<span>交易项目</span>
+			<span>交易时间</span>
+			<span>交易金额</span>
+		</div>
+		<div class="deallist" ng-repeat="item in dataList track by $index">
+			<span>{{item.transNum}}</span>
+			<span>{{item.transType}}</span>
+			<span>{{item.createdAt|timeFilter}}</span>
+			<span>{{item.price}}元</span>
+		</div>
+		<div class="littlemargin" ng-if="!dataList.length">暂无账户交易记录</div>
+	</div>
+	<div class="bindalipay">
+		<h3>绑定支付宝</h3>
+		<span class="close"></span>
+		<div>
+			<span>支付宝账号</span><input class="aliacount" placeholder="请输入支付宝账号" />
+		</div>
+		<div>
+			<span>   验  证  码</span><input class="password" placeholder="请输入验证码" /><span class="tipforpass">注：验证码已发送到您的手机，请查收</span>
+		</div>
+
+		<div class="surebuttom bindaliacount">确 认</div>
+	</div>
+	<div class="bindalipay2">
+		<h3>换绑支付宝</h3>
+		<span class="close"></span>
+		<div>
+			<span>支付宝账号</span><input class="newaliacount" placeholder="请输入新的支付宝账号" />
+		</div>
+		<div>
+			<span>   验  证  码</span><input class="password2" placeholder="请输入验证码" /><span class="tipforpass">注：验证码已发送到您的手机，请查收</span>
+		</div>
+
+		<div class="surebuttom changealiacount">确 认</div>
+	</div>
+	<div class="bindweichartpay">
+		<h3>绑定微信</h3>
+		<span class="close"></span>
+		<div>
+			<span>微信账号</span><input class="wxacount" placeholder="请输入微信账号" />
+		</div>
+		<div>
+			<span>   验  证  码</span><input class="wxpassword" placeholder="请输入验证码" /><span class="tipforpass">注：验证码已发送到您的手机，请查收</span>
+		</div>
+
+		<div class="surebuttom bindwxacount">确 认</div>
+	</div>
+	<div class="bindweichartpay2">
+		<h3>换绑微信</h3>
+		<span class="close"></span>
+		<div>
+			<span>微信账号</span><input class="newwxacount" placeholder="请输入新的微信账号" />
+		</div>
+		<div>
+			<span>   验  证  码</span><input class="wxpassword2" placeholder="请输入验证码" /><span class="tipforpass">注：验证码已发送到您的手机，请查收</span>
+		</div>
+
+		<div class="surebuttom changewxacount">确 认</div>
+	</div>
+	<div class="promisetocash">
+		<span class="close nomargin"></span>
+		<h3>企业保证金提现</h3>
+		<div class="tocashtip">友情提醒：提现的资金将按您缴纳企业保证金选择的方式原路退回</div>
+		<span>   验  证  码</span><input class="tocashpassword" placeholder="请输入验证码" /><span class="tipforpass">注：验证码已发送到您的手机，请查收</span>
+		<div class="surebuttom suretocash">确 认</div>
+	</div>
+	<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+				next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+				items-per-page="itemsPerPage"></pagination>
+</div>
+
+<script>
+	$(function () {
+		$(".bindwxacount").on("click",function () {
+			var aliacount=$(".wxacount").val();
+			var password=$(".wxpassword").val();
+			$.post("/tender/bindWithdrawAccount",{
+				code:password,
+				type:"wxpay",
+				account:aliacount,
+				isBind:true
+			},function (res) {
+				if(res.result=="success"){
+					swal({
+						title: "绑定成功",
+						type: "success",
+						confirmButtonText: "确定"
+					});
+					window.location.reload()
+				}else{
+					swal(res.error);
+					$(".bindalipay").hide();
+				}
+			})
+		})
+
+		$(".bindaliacount").on("click",function () {
+			var aliacount=$(".aliacount").val();
+			var password=$(".password").val();
+			$.post("/tender/bindWithdrawAccount",{
+				code:password,
+				type:"alipay",
+				account:aliacount,
+				isBind:true
+			},function (res) {
+				if(res.result=="success"){
+					swal({
+						title: "绑定成功",
+						type: "success",
+						confirmButtonText: "确定"
+					});
+					window.location.reload()
+				}else{
+					swal(res.error);
+					$(".bindalipay").hide();
+				}
+			})
+		})
+
+		$(".changealiacount").on("click",function () {
+			var aliacount=$(".newaliacount").val();
+			var password=$(".password2").val();
+			$.post("/tender/bindWithdrawAccount",{
+				code:password,
+				type:"alipay",
+				account:aliacount,
+				isBind:false
+			},function (res) {
+				if(res.result=="success"){
+					swal({
+						title: "换绑成功",
+						type: "success",
+						confirmButtonText: "确定"
+					});
+					window.location.reload()
+				}else{
+					swal(res.error);
+					$(".bindalipay").hide();
+				}
+			})
+		})
+
+		$(".changewxacount").on("click",function () {
+			var aliacount=$(".newwxacount").val();
+			var password=$(".wxpassword2").val();
+			$.post("/tender/bindWithdrawAccount",{
+				code:password,
+				type:"wxpay",
+				account:aliacount,
+				isBind:false
+			},function (res) {
+				if(res.result=="success"){
+					swal({
+						title: "换绑成功",
+						type: "success",
+						confirmButtonText: "确定"
+					});
+					window.location.reload()
+				}else{
+					swal(res.error);
+					$(".bindalipay").hide();
+				}
+			})
+		})
+
+		$(".forbind").on("click",function () {
+			$(".bindalipay").show()
+			$.post("/users/sendVerifyCodeDirect",{
+				phoneNum:$("#phoneNum").val()
+			},function (res) {
+
+			})
+		})
+
+		$(".forbindweichart").on("click",function () {
+			$(".bindweichartpay").show()
+			$.post("/users/sendVerifyCodeDirect",{
+				phoneNum:$("#phoneNum").val()
+			},function (res) {
+
+			})
+		})
+
+		$(".changebind").on("click",function () {
+			$(".bindalipay2").show()
+			$.post("/users/sendVerifyCodeDirect",{
+				phoneNum:$("#phoneNum").val()
+			},function (res) {
+
+			})
+		})
+
+		$(".changeweichart").on("click",function () {
+			$(".bindweichartpay2").show()
+			$.post("/users/sendVerifyCodeDirect",{
+				phoneNum:$("#phoneNum").val()
+			},function (res) {
+
+			})
+		})
+
+		$(".close").on("click",function () {
+			$(this).parent().hide()
+		})
+        $(".acountcash").on("click",function () {
+			if($(".cashnum").text()==0){
+				swal("您的账户暂无余额可以提现!")
+			}else{
+				swal("请前往您已交付的订单页面提现!")
+			}
+		})
+		$(".promisecash").on("click",function () {
+			if($(".promisecashnum").text()==0){
+				swal("您的账户暂无余额可以提现!")
+			}else{
+				$(".promisetocash").show()
+				$.post("/users/sendVerifyCodeDirect",{
+					phoneNum:$("#phoneNum").val()
+				},function (res) {
+
+				})
+			}
+		})
+		$(".suretocash").on("click",function () {
+			var tocashpassword=$(".tocashpassword").val()
+			if(tocashpassword==""){
+				swal("验证码不能为空")
+			}else{
+				$.post("/tender/refundCompanyDeposit",{
+					code:tocashpassword
+				},function (res) {
+					if(res.error){
+						swal("提现失败", res.error)
+					}else if(res.result=="退款成功，请打开微信或支付宝查询退款结果"){
+						$(".promisetocash").hide()
+						swal("退款成功!", "请打开微信或支付宝查询退款结果")
+						setTimeout(function () {
+							window.location.reload()
+						},1000)
+					}
+				})
+			}
+		})
+
+		$(".topaycash").on("click",function () {
+			$(".paycash").show()
+		})
+         var money;
+		 var payType
+		$(".surepay").on("click",function () {
+			if($("#two").is(":checked")){
+				money=$("#two").val();
+			}else if($("#five").is(":checked")){
+				money=$("#five").val();
+			}else{
+				money=$("#ten").val();
+			}
+			if($("#weichartpay").is(":checked")){
+				payType=$("#weichartpay").val();
+			}else{
+				payType=$("#alipay").val();
+			}
+			swal({
+						title:'<img src="/tender/payCompanyDeposit?money='+money+'&payType='+payType+'支付" >',
+						text: "请打开"+payType+"扫码支付",
+						showCancelButton: true,
+						confirmButtonColor: "#DD6B55",
+						confirmButtonText: "支付完成",
+						cancelButtonText: "支付遇到问题",
+						closeOnConfirm: false,
+						closeOnCancel: false,
+						html: true
+					},
+					function(isConfirm){
+						if (isConfirm) {
+							window.location.reload()
+						} else {
+							swal({
+										title: "<h1>即将为您联系在线客服</h1>",
+										showCancelButton: true,
+										confirmButtonColor: "#DD6B55",
+										cancelButtonText: "取消",
+										confirmButtonText: "联系客服",
+										closeOnConfirm: false,
+										closeOnCancel: false,
+										html: true
+									},
+									function(isConfirm){
+										if (isConfirm) {
+											window.location.href="/users/helperCenter#5"
+										} else {
+											swal.close()
+
+										}
+									});
+						}
+					});
+
+		})
+
+	})
+</script>

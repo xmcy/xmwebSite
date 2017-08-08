@@ -1,0 +1,31 @@
+<style>
+	.bottom_lanmai{
+		margin-top: 250px;
+	}
+</style>
+<div class="Binding" ng-controller="shopcertificationController">
+	                <div class="shopname">
+						<div class="storePic2"></div>
+						<h2>认证管理</h2>
+					</div>
+					<div >
+
+						<div class="accountbing bgGrey">
+							<div class="imglogo certificatPic"></div>
+							<h2>营业执照认证</h2>
+							<ul>
+								<li><a>认证快捷</a></li>
+								<li><a>需要上传清晰的营业执照照片</a></li>
+							</ul>
+							<%if(infoCertificationManagement.companyIdentifystatus==null){%>
+							<button title="查看认证信息" ><a href="/users/licenseCertification">去认证</a></button>
+							<%}else if(infoCertificationManagement.companyIdentifystatus=="审核中"){%>
+							<button title="查看认证信息" ><a href="/users/licenseCertification">审核中</a></button>
+							<%}else{%>
+							<button title="查看认证信息" ><a href="/users/licenseCertification"><%=infoCertificationManagement.companyIdentifystatus%></a></button>
+							<%}%>
+
+						</div>
+					</div>
+
+ </div>

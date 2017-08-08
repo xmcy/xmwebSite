@@ -1,0 +1,283 @@
+<style>
+    .table>li{
+        float: left;
+        margin-right: 30px;
+        margin-top: 5px;
+    }
+    .modifyPic>.shoplogo{
+        left:-105px;
+    }
+    .modifyPic>.updatelogo, .modifyPic>img{
+        left: 14px;
+    }
+    .tip{
+        left: 15px;
+    }
+    .modal-lg{
+        min-width: 1500px;
+    }
+    .wangEditor-container{
+        width: 100%;
+        height: 500px;
+    }
+    .wangEditor-txt{
+        height: 450px !important;
+    }
+</style>
+<div class="row" ng-controller="articleManage">
+<div class="col-xs-12">
+    <div class="panel">
+        <div class="box">
+            <div class="box-body table-responsive no-padding" >
+                <ul class="table" style="list-style: none">
+
+                    <li>来源：
+                        <select id="fromFor1" ng-model="fromFor">
+                            <option value="">全部</option>
+                            <option value="1">原创</option>
+                            <option value="2">转载</option>
+                        </select>
+                    </li>
+                    <li>是否删除：
+                        <select id="isDeleted" ng-model="isDeleted">
+                            <option value="">全部</option>
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </li>
+                    <li>是否置顶：
+                        <select id="isTop" ng-model="isTop">
+                            <option value="">全部</option>
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </li>
+                    <li>标题：
+                        <input  type="text"  value="" ng-model="titleFor">
+                    </li>
+                    <li>
+                        <button class="btn btn-primary btn-sm" type="button" ng-click="searchForSlideManage()"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 搜索</button>
+                    </li>
+                    <li>
+                        <a href="#addContentTags" role="button" class="btn btn-primary btn-sm" data-toggle="modal"><span class="fa fa-plus-square" aria-hidden="true">&nbsp;</span>新增文章</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="box">
+        <div class="box-body table-responsive no-padding" >
+            <table class="table table-hover">
+                <tr>
+                    <th><input type="checkbox" class="mini" id="selectAll"/></th>
+                    <th>文章标题</th>
+                    <th>原作者</th>
+                    <th>来源</th>
+                    <th>创建时间</th>
+                    <th>更新时间</th>
+                    <th>是否删除标识</th>
+                    <th>是否置顶显示</th>
+                    <th>操作</th>
+                </tr>
+                <tr class="datalist" ng-repeat="item in dataList">
+                    <td><input type="checkbox" name="listItem" class="mini" value="{{item._id}}" ng-click="getNewIds()"/></td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.oldAuthor}}</td>
+                    <td>{{item.from|fromFilter}}</td>
+                    <td>{{item.createdAt | date : "yyyy-MM-dd HH:mm:ss"}}</td>
+                    <td>{{item.updateDate | date : "yyyy-MM-dd HH:mm:ss"}}</td>
+                    <td>{{item.isDeleted}}</td>
+                    <td>{{item.isTop}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-xs" data-whatever="{{item._id}}" data-toggle="modal" data-target="#addContentTags" ng-click="edit(item)" ng-if="!item.isDeleted"><span class="fa fa-fw fa-edit" aria-hidden="true"></span>编辑</button>&nbsp;
+                        <button class="btn btn-default btn-xs" type="button" title="置顶" ng-click="toTop(item._id)" ng-if="!item.isTop&&!item.isDeleted">置顶</button>
+                        <button class="btn btn-default btn-xs" type="button" title="取消置顶" ng-click="cancletoTop(item._id)" ng-if="item.isTop&&!item.isDeleted">取消置顶</button>
+                        <button class="btn btn-default btn-xs" type="button" title="删除" ng-click="delOneItem(item._id)" ng-if="!item.isDeleted"><i class="fa fa-trash-o"></i></button>
+                    </td>
+                </tr>
+            </table>
+            <div class="paging">
+                <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页" first-text="第一页" last-text="最后一页"
+                            next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+                            items-per-page="itemsPerPage"></pagination>
+            </div>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+
+</div><!-- /.col -->
+    <div class="modal fade bs-example-modal-lg" id="addContentTags">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加搜索</h4>
+                    <p class="myInfoBox bg-warning text-warning"><i class="icon fa fa-warning"></i> 信息填写完整无误才可提交</p>
+                </div>
+                <div class="modal-body">
+                    <form role="form" class="form-horizontal" name="myForm"  novalidate>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">文章标题</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="title" id="title" required/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">来源</label>
+                            <select class="selectpicker col-sm-4" id="from" title="请选择来源">
+                                <option value="1">原创</option>
+                                <option value="2">转载</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">文章类型</label>
+                            <select class="selectpicker col-sm-4" id="category" title="请选择文章类型">
+                                <%for(var i=0;i<contentType.length;i++){%>
+                                <option value="<%=contentType[i]._id%>"><%=contentType[i].name%></option>
+                                <%}%>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">简述</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="tags" id="tags"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">关键词</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="keywords" id="keywords" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">原作者</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="oldAuthor" id="oldAuthor"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">文章小图</label>
+                            <div class="modifyPic col-sm-4 ">
+                                <div class="shoplogo "></div>
+                                <input  class="updatelogo col-md-4" type="file" name=""  value=""/>
+                                <img  id="sImg" src=""/>
+                                <span class="tip">点击图片可重新修改Logo</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">文章详情</label>
+                            <div class="col-sm-10">
+                                <div class="re_tv_details" id="wangEditor">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="submit">提交</button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+    </div><!-- /.row -->
+
+<!--添加用户组模态窗口-->
+</div>
+
+<script>
+    $(function () {
+            var editor = new wangEditor('wangEditor');
+            // 字体
+            editor.config.familys = [
+                '宋体', '黑体', '楷体', '微软雅黑',
+                'Arial', 'Verdana', 'Georgia'
+            ];
+            editor.config.colors = {
+                '#880000': '暗红色',
+                '#800080': '紫色',
+                '#ff0000': '红色'
+            };
+
+            // 字号
+            editor.config.fontsizes = {
+                // 格式：'value': 'title'
+                1: '10px',
+                2: '13px',
+                3: '16px',
+                4: '19px',
+                5: '22px',
+                6: '25px',
+                7: '28px'
+            };
+            editor.create();
+            window.editor=editor;
+        $("input[type='file']").change(function(e) {
+            var that = this;
+            var file = this.files[0];
+            var fileType=file.type.split('/')[1];
+            $.getCos("promotion/article","",fileType,file, function (res) {
+                console.log(res)
+                $(that).next().attr("src", res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+            })
+        });
+
+        $("#submit").on("click",function () {
+            swal({
+                        title: "确定提交文章?",
+                        text: "请检查内容!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "提交",
+                        closeOnConfirm: false
+                    },
+                    function(){
+                        var title=$("#title").val()
+                        var tags=$("#tags").val()
+                        var keywords=$("#keywords").val()
+                        var oldAuthor=$("#oldAuthor").val()
+                        var sImg=$("#sImg").attr("src")
+                        var discription=editor.$txt.html()
+                        var from=$("#from").selectpicker('val');
+                        var category=$("#category").selectpicker('val');
+                        var itemId=$("#itemId").val()
+                        var dataForPost={
+                            title:title,
+                            tags:tags,
+                            keywords:keywords,
+                            oldAuthor:oldAuthor,
+                            sImg:sImg,
+                            discription:discription,
+                            category:category,
+                            from:from,
+                            itemId:itemId
+                        }
+                        $.post("/admin/manage/addArticle",dataForPost,function (res) {
+                            if(res=="success"){
+                                swal({
+                                    title: "提交成功",
+                                    type: "success",
+                                    confirmButtonText: "确定"
+                                });
+                                $("#addContentTags").modal('hide')
+                                window.location.reload()
+                            }else {
+                                swal({
+                                    title: "提交失败",
+                                    type: "error",
+                                    confirmButtonText: "确定"
+                                });
+                                console.log(res)
+                                $("#addContentTags").modal('hide')
+                            }
+                        })
+                    });
+
+
+        })
+
+    })
+
+</script>

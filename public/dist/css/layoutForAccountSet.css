@@ -1,0 +1,785 @@
+		body{
+			color: rgb(112,112,112);
+		}
+		a{
+			color: rgb(112, 112, 112);
+		}
+		a:hover{
+		  color: rgb(112, 112, 112);
+		}
+		.badge{
+			padding:2px 7px;
+			margin-top: -3px;
+		}
+		.licensetip{
+			color: #da2f2f;
+			margin-left: 153px;
+			margin-top: 4px;
+		}
+		/*头部导航*/
+		.navHead{
+			width: 100%;
+			height: 80px;
+			margin:23px 0 22px 0;
+		}
+		.navHead>.navHeadContent{
+			width: 1200px;
+			margin: 0 auto;
+			position: relative;
+		}
+		.privateAccount{
+			position: absolute;
+			top: -20px;
+			right:16px;
+			height: 22px;
+		}
+		.privateAccount>ul{
+			height: 22px;
+		}
+		.privateAccount>ul>li{
+			height: 20px;
+			float: left;
+			margin-left: 15px;
+		}
+		.privateAccount .addmore{
+			display:inline-block;
+		    width:0; 
+		    height:0; 
+		    border-left:5px solid transparent;
+		    border-right:5px solid transparent;
+		    border-top:7px solid grey;
+		    margin: 0 7px 0 7px;
+		}
+		.navHead .adLogo{
+			display:inline-block;
+			width: 168px;
+			height:80px;
+			position: absolute;
+			left: 0px;
+			background:rgb(218,47,47) url(/themes/lanmai/images/logofff.png);
+			overflow: hidden;
+		}
+		.navHead .navList{
+			position:absolute;
+			top:23px;
+			left: 225px;
+		}
+		.navHead .navList .list_icon{
+			display: inline-block;
+			margin-left: 6px;
+		    width: 0;
+		    height: 0;
+		    border-left: 6px solid transparent;
+		    border-right:6px solid transparent;
+		    border-top: 8px solid white;
+		}
+		.navHead .navList>a{
+			color: #FFFFFF;
+			font-size: 26px;
+		    display: inline-block;
+			margin-right: 50px;
+		}
+		/*.navHead .navList>a:nth-child(2){*/
+			/*margin:0 74px 0 74px;*/
+		/*}*/
+		.contenWrap{
+			width: 100%;
+		}
+		.myContent{
+			width: 1200px;
+			margin: 0 auto;
+			height: 500px;
+			position: relative;
+		}
+		/*侧栏*/
+		.slidebar{
+			position: absolute;
+			left: 0px;
+			width: 164px;
+			height: 700px;
+			margin-right:57px;
+		}
+		.slidebar>ul>li{
+			list-style: none;
+			height: 73px;
+			width:164px;
+			font-size: 16px;
+			/*background: url('../images/iconForCenter.png') 0 0 no-repeat;*/
+		}
+		.maginForA{
+			margin-left: 30px;
+		}
+		.imgForIcon{
+			float: left;
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			margin-top: 13px;
+		}
+		.imgForIcon1{
+			background: url('/themes/lanmai/images/iconForCenter.png') -244px 0 no-repeat;
+		}
+		.imgForIcon01{
+			background: url('/themes/lanmai/images/iconForCenter.png') -120px 0 no-repeat;
+		}
+		.imgForIcon001{
+			background: url('/themes/lanmai/images/iconForCenter.png') 0px 0 no-repeat;
+		}
+		.imgForIcon2{
+			background: url('/themes/lanmai/images/iconForCenter.png') -244px -73px no-repeat;
+		}
+		.imgForIcon02{
+			background: url('/themes/lanmai/images/iconForCenter.png') -120px -73px no-repeat;
+		}
+		.imgForIcon002{
+			background: url('/themes/lanmai/images/iconForCenter.png') 0px -73px no-repeat;
+		}
+		.imgForIcon3{
+			background: url('/themes/lanmai/images/iconForCenter.png') -244px -145px no-repeat;
+		}
+		.imgForIcon03{
+			background: url('/themes/lanmai/images/iconForCenter.png') -120px -145px no-repeat;
+		}
+		.imgForIcon003{
+			background: url('/themes/lanmai/images/iconForCenter.png') 0px -145px no-repeat;
+		}
+		.imgForIcon4{
+			background: url('/themes/lanmai/images/iconForCenter.png') -244px -214px no-repeat;
+		}
+		.imgForIcon04{
+			 background: url('/themes/lanmai/images/iconForCenter.png') -120px -214px no-repeat;
+		 }
+		.imgForIcon004{
+			background: url('/themes/lanmai/images/iconForCenter.png') 0px -214px no-repeat;
+		}
+		.imgForIcon5{
+			background: url('/themes/lanmai/images/iconForCenter.png') -244px -290px no-repeat;
+		}
+		.imgForIcon05{
+			background: url('/themes/lanmai/images/iconForCenter.png') -120px -290px no-repeat;
+		}
+		.imgForIcon005{
+			background: url('/themes/lanmai/images/iconForCenter.png') 0px -290px no-repeat;
+		}
+		.imgForIcon6{
+			background: url('/themes/lanmai/images/iconForCenter.png') -242px -363px no-repeat;
+		}
+		.imgForIcon006{
+			background: url('/themes/lanmai/images/iconForCenter.png') 0px -363px no-repeat;
+		}
+		.imgForIcon7{
+			background: url('/themes/lanmai/images/iconForCenter.png') -242px -436px no-repeat;
+		}
+		.imgForIcon007{
+			background: url('/themes/lanmai/images/iconForCenter.png') 0px -436px no-repeat;
+		}
+		.activeSlidebar{
+			background-color: gainsboro;
+		}
+		.activeSlidebar>span.private{
+			background-position-x: -306px;
+		}
+		.activeSlidebar>span.account{
+			background-position-x: -184px;
+		}
+		.activeSlidebar>span.shop{
+			background-position-x: -60px;
+		}
+		.slidebar>ul>li>a{
+			float: left;
+			display: block;
+			height: 73px;
+			line-height: 73px;
+			width:100px;
+			text-align: center;
+			color: rgb(112,112,112);
+		}
+		.slidebar>ul>li:first-child{
+			font-size: 24px;
+			border-bottom: 1px solid gainsboro;
+			border-radius: 13px;
+		}
+		.contentArea{
+			float: right;
+			/*margin-right: 200px;*/
+			width: 976px;
+		}
+		.contentArea h2{
+			color: rgb(232,163,105);
+		}
+		.orangeColor{
+			color: rgb(232,163,105);
+		}
+		.blueColor{
+			color: rgb(87,151,223);
+		}
+		.greenColor{
+			color: rgb(76,169,54);
+		}
+		.pastColor{
+			color: rgb(122,234,199);
+		}
+		.bgGrey{
+			background-color: rgb(246,244,244);
+		}
+		.bgRed{
+			background-color: rgb(218,47,47);
+		}
+		.redFont{
+			color: red;
+		}
+		.redBorder{
+			border: 1px red solid !important;
+		}
+        .whiteFont{
+        	color: #FFFFFF;
+        }
+		.geryborder{
+			border: 1px solid #bdbcbc;
+		}
+        button{
+			color: #FFFFFF;
+        	border-radius: 3px;
+        	background-color: #efb780;
+        	border:1px solid #efb780;
+        	font-size: 17px;
+        }
+		button>a{
+			color: #FFFFFF;
+		}
+		/*解绑步骤*/
+		.stepActive{
+			background-position: -35px -42px;
+		}
+		.stepNotyet{
+			background-position: -35px -8px;
+		}
+		.step_one_active{
+			background-position: -0px -7px;
+		}
+		.step_two_active{
+			background-position: -116px -43px;
+		}
+		.step_two_notyet{
+			background-position: -118px -9px;
+		}
+		.step_three_active{
+			background-position: -235px -75px;
+		}
+		.step_three_notyet{
+			background-position: -232px -10px;
+		}
+		.step_four_active{
+        	background-position: -3px -310px;
+        }
+        .step_four_notyet{
+        	background-position: -38px -310px;
+        }
+		.checkStep{
+			width:450px;
+			margin: 0 auto;
+			margin-top: 40px;
+		}
+		.checkStep>div{
+			display: inline-block;
+			height: 30px;
+			background-image:url(../images/accountSetStepIcon.png);
+		}
+		.checkStep>.navStep{
+			width: 73px;
+		}
+		.checkStep>.nav_step_logo{
+			width: 35px;
+		}
+		.checkStep>ul{
+			width: 375px;
+			height:35px;
+			display: block;
+			margin:2px 0 10px 60px;
+		}
+		.checkStep>ul>li{
+			float: left;
+			list-style: none;
+			width: 33.33%;
+		}
+        .checkStep2>ul{
+			width: 450px;
+		}
+		.checkStep2>ul>li{
+			width: 25%;
+		}
+		/*.mobileBinding1>form>div:nth-child(2),.identify2>form>div:nth-child(2){*/
+			/*margin:20px 0 30px 0;*/
+		/*}*/
+		.marginSetting{
+			margin:20px 0 30px 0;
+			border: none;
+		}
+		/*.mobileBinding1>form .certificatNumber,.identify2>form .certificatNumber{*/
+			/*width: 100%;*/
+		/*}*/
+		/*.mobileBinding1>form .mobilePassword,.identify2>form .mobilePassword{*/
+			/*width: 60%;*/
+		/*}*/
+		/*.mobileBinding1>form>div>span,.identify2>form>div>span{*/
+			/*font-size: 14px;*/
+			/*display: inline-block;*/
+			/*width: 38%;*/
+			/*height: 29px;*/
+			/*line-height: 29px;*/
+			/*text-align: center;*/
+			/*border: 1px solid grey;*/
+			/*border-left: none;*/
+			/*margin: 0 0 0 -4px;*/
+		/*}*/
+		/*.mobileBinding1>form>button,.identify2>form>button{*/
+			/*width: 200px;*/
+			/*height: 40px;*/
+		/*}*/
+		.mobileBinding1 form,.identify2 form{
+        	height: 300px;
+        	width: 200px;
+        	margin: 0 auto;
+        }
+        .mobileBinding1>form>.loginTele,.identify2>form>.loginTele{
+			width: 100%;
+			height: 38px;
+			margin-top: 20px;
+			border: 1px solid #d8d9d9;
+			position: relative;
+        }
+		.mobileBinding1>form>.loginTele>input{
+			height: 100%;
+			width: 135px;
+			padding-left: 8px;
+			border: none;
+			float: left;
+		}
+		.mobileBinding1>form>.loginTele>.intervalBtn{
+			width: 55px;
+			height: 24px;
+			background-color: #da2f2f;
+			position: absolute;
+			right: 1px;
+			top: 6px;
+			border-radius: 3px;
+			font-size: 8px;
+			text-align: center;
+			line-height: 24px;
+			color: white;
+			cursor: pointer;
+		}
+		.mobileBinding1>form>.loginTele-tip{
+			display: block;
+			height: 20px;
+			width: 100%;
+		}
+		.mobileBinding1>form>.loginTele-tip>div>i{
+			background-position: -83px -18px;
+		}
+		.mobileBinding1>form>.loginTele-tip>div>span{
+			color: #e25e5e;
+			font-size: 12px;
+		}
+		.mobileBinding1>form>.loginQr{
+			width: 100%;
+			height: 38px;
+			/*margin-top: 20px;*/
+			border: 1px solid #d8d9d9;
+			position: relative;
+		}
+		.mobileBinding1>form>.loginQr>input{
+			height: 100%;
+			width: 198px;
+			padding-left: 8px;
+			border: none;
+			float: left;
+		}
+
+		.mobileBinding1>form>.loginQr>.loginQr-tip{
+			display: block;
+			height: 20px;
+			width: 100%;
+		}
+		.mobileBinding1>form>.loginQr-tip>div>i{
+			background-position: -83px -18px;
+		}
+		.mobileBinding1>form>.loginQr-tip>div>span{
+			color: #e25e5e;
+			font-size: 12px;
+		}
+		.mobileBinding1>form>.errorMessage{
+			width: 100%;
+			height: 25px;
+			font-size: 12px;
+			color: #da2f2f;
+			text-align: left;
+			line-height: 25px;
+		}
+		.mobileBinding1>form>input[type="submit"]{
+			width: 100%;
+			height: 38px;
+			font-size: 18px;
+			color: white;
+			background-color: #da2f2f;
+			border: 1px solid #da2f2f;
+			border-radius: 3px;
+			cursor: pointer;
+		}
+
+		.conllectInfo_list>.conllectInfo .messegeIcon{
+			position: absolute;
+			left:65px;
+			top: 14px;
+			width: 28px;
+			height: 28px;
+			margin-right: 30px;
+			background:  url(../images/accountSetIcon.png) -272px 893px;
+		}
+
+		.login-tip-div-i{
+			display: block;
+			float: left;
+			width: 16px;
+			height: 18px;
+			margin-right: 5px;
+			background-image:url(../images/regandloginicon.png) ;
+		}
+		.login-green-check-ok{
+			display: block;
+			position: absolute;
+			width: 18px;
+			height: 20px;
+			right:-25px;
+			top: 10px;
+			border: none;
+			background-image: url(../images/regandloginicon.png);
+			background-position:-110px -44px;
+		}
+
+		.myConllect_list .conllectSearch>.searchIcon{
+			float: right;
+			width: 44px;
+			height: 27px;
+			background:rgb(246,205,177) url(../images/accountSetIcon.png)  379px 984px;
+			border: 1px solid rgb(246,205,177);
+			border-radius: 0;
+			cursor: pointer;
+			outline: none;
+		}
+		.promotePic{
+			width:100px ;
+			height:100px ;
+			position: absolute;
+			top: 8px;
+			left: 30px;
+		}
+		.promotePic>img{
+			width:100px ;
+			height:100px ;
+		}
+		.adequipment .promotePic{
+			background-image: url(../images/index_04.png);
+		}
+		.admaterial  .promotePic{
+			background-image: url(../images/index_10.png);
+		}
+		.admake .promotePic{
+			background-image: url(../images/shiyong.png);
+		}
+		.PromoteIcon{
+			float: right;
+			width:240px;
+			height: 30px;
+			background:  url(../images/accountSetIcon.png) -259px -371px;
+			padding-left: 100px;
+		}
+		.myPromote,.promote_list,.promote_line{
+			width: 100%;
+		}
+		.newResource{
+			width: 140px;
+			height: 30px;
+			line-height:30px;
+			font-size: 18px;
+			text-align: center;
+			border-radius: 3px;
+		}
+		.newResource>a{
+			color: #fff;
+		}
+		.promote_list{
+			clear: both;
+			margin-top:10px;
+		}
+		.promote_line{
+			position: relative;
+			height: 116px;
+			background-color: rgb(246,244,244);
+			margin-bottom: 10px;
+		}
+		.promoteInfo{
+			width:230px ;
+			height:100px ;
+			position: absolute;
+			top: 15px;
+			left: 145px;
+		}
+		.promoteInfo>p{
+			display: block;
+			height: 25%;
+			width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.promoteInfo>p>span{
+			margin-left: 10px;
+		}
+		.promoteDate{
+			width:260px ;
+			height:60px ;
+			position: absolute;
+			top: 37px;
+			left: 420px;
+		}
+		.promoteTime>p{
+			display: inline-block;
+			margin-left: 25px;
+		}
+		.promoteDate>p>span{
+			display: inline-block;
+			margin:15px 0 0 10px;
+		}
+		.promote_handle{
+			width:80px ;
+			height:100px ;
+			position: absolute;
+			top: 20px;
+			left: 750px;
+		}
+		.promote_handle>ul{
+			height: 100%;
+		}
+		.promote_handle>ul>li{
+			height: 33.3%;
+		}
+		.promote_delete{
+			width:60px ;
+			height:20px ;
+			position: absolute;
+			top: 20px;
+			left: 850px;
+		}
+		.promote_delete a,.promote_delete span{
+			display: block;
+			margin-bottom: 13px;
+			cursor: pointer;
+		}
+		.promote_delete a:first-child:hover{
+			color: rgb(87,151,223);
+		}
+		.effect .effectProgress{
+			background:  url(../images/accountSetIcon.png) -77px -426px;
+		}
+		.effect .close{
+			background:  url(../images/accountSetIcon.png) -404px -419px;
+		}
+		.storePromoteIcon{
+			right: 6px;
+			top:54px;
+			width: 90px;
+			height: 30px;
+			background:url(../images/accountSetIcon.png) repeat scroll -266px -374px;
+		}
+		.storePic2{
+			float: left;
+			width: 100PX;
+			height: 100PX;
+			background:url(../images/accountSetIcon.png) -318px -35px;
+		}
+		.shopname>h2{
+			padding-top: 16px;
+		}
+		.privateContact>span{
+			display: inline-block;
+			width: 24px;
+			height: 21px;
+			margin-right: 12px;
+			background: #d7d7d7 url(../images/accountSetIcon.png);
+		}
+		.privateMobileLogo{
+			float: left;
+			width: 20px;
+			height: 18px;
+			background: #e89c52 url(../images/accountSetIcon.png) -142px -359px;
+			margin-top: 4px;
+		}
+		.privatePic{
+			top: 17px;
+			left: 32px;
+			width: 140px;
+			height: 140px;
+			border-radius:70px;
+			overflow: hidden;
+		}
+		.modifyContact>div>.changeIcon{
+			display: inline-block;
+			width: 30px;
+			height: 25px;
+			margin-left:10px;
+			background: url(../images/accountSetIcon.png)  -370px -9px;
+		}
+		.modifyPic .uploadPic{
+			width: 200px;
+			height: 150px;
+			/*margin-left: 300px;*/
+			float: left;
+			background-size: 140px 140px;
+			margin-top: 20px;
+		}
+		.modifyPic .uploadPic>img{
+			display: block;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		.certificatContent .uploadimg{
+			display: inline-block;
+			height: 188px;
+			width:468px;
+			background:url(../images/accountSetIcon.png) -21px -555px;
+		}
+		.certificatContent .uploadimgCertify{
+			display: inline-block;
+			height: 190px;
+			width:490px;
+			background:url(../images/accountSetIcon.png) -21px -555px;
+		}
+		.safetySet .projetcStatus{
+			float: left;
+			margin-top: 8px;
+			width: 27px;
+			background-image: url(../images/accountSetIcon.png);
+		}
+		.safetySet .projetcStatus-ok{
+			float: left;
+			margin-top: 8px;
+			width: 27px;
+			background-image: url(../images/accountSetIcon.png);
+		}
+		.safetySet .projetcStatus-no{
+			float: left;
+			margin-top: 8px;
+			width: 27px;
+			background-image: url(../images/accountSetIcon.png);
+		}
+		.login-green-check-ok{
+			background-image: url(../images/accountSetIcon.png);
+			background-position: -146px -19px;
+		}
+		.login-tip-div-i{
+			background-position: -283px -17px;
+		}
+		.demandContent{
+			width: 100%;
+			margin-bottom: 100px;
+		}
+		.demandList{
+			position: relative;
+			width: 100%;
+			height: 50px;
+			border-bottom: 2px solid #fff;
+		}
+		.demandList:hover{
+			background-color: rgb(246,244,244);;
+		}
+		.demandList>div{
+			display: inline-block;
+			position: absolute;
+			margin-top: 15px;
+			overflow: hidden;
+		}
+		.demand_categories{
+			left: 18px;
+			width: 60px;
+		}
+		.demand_trade{
+			left:110px;
+			width:60px;
+		}
+		.demand_area{
+			left:200px;
+			width: 35px;
+		}
+		.demand_budget{
+			left: 265px;
+			width:75px;
+		}
+		.demand_sketch{
+			left: 355px;
+			width:240px;
+		}
+		.demand_sketch>span{
+			display: inline;
+			margin-right: 10px;
+		}
+		.demand_skin{
+			left:628px;
+			width:50px;
+			text-align: center;
+		}
+		.demand_handle{
+			left:708px;
+			width:190px;
+		}
+		.demand_handle>ul{
+			display: inline-block;
+			width: 100%;
+		}
+		.demand_handle>ul>li{
+			float: left;
+			width: 25%;
+		}
+		.demand_handle>ul>li:hover a,.promote_handle>ul>li:hover a{
+			color:rgb(87,151,223);
+		}
+		.demand_status{
+			left: 920px;
+			width:50px;
+			cursor: pointer;
+		}
+		.confirmIdForEmailTip{
+			width: 100%;
+			height: 100px;
+			line-height: 100px;
+			font-size: 16px;
+			padding-left: 50px;
+		}
+		.bottom_lanmai{
+			display: block;
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			margin-top: 400px;
+			background-color: white;
+			padding-top: 10px;
+			border-top: 2px solid rgb(246,244,244);
+		}
+		.bottom_lanmai>ul{
+			width: 200px;
+			height: 100%;
+			margin-left: 35%;
+			float: left;
+		}
+		.bottom_lanmai>ul>li{
+			float: left;
+		}
+		.bottom_lanmai>p{
+			float: left;
+			width: 400px;
+			height: 100%;
+		}
+		.littlemargin{
+			padding-left: 20px;
+		}

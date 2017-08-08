@@ -1,0 +1,138 @@
+<style>
+    .charonDigitalHeaderTopCon>ul>li>a{
+        color: #908e8e;
+    }
+    .charonDigitalMenu>ul>li>a:hover{
+        color: #da2f2f !important;
+    }
+    .haveListForMoney{
+        position: relative;
+    }
+    .haveListForMoney img {
+        position: absolute;
+        width: 20%;
+        top: -4px;
+        right: -2px;
+    }
+    .bgimg{
+        margin-top: 10px;
+        width: 100%;
+        height: 340px;
+        background: url("/themes/<%=staticforder%>/images/newsbg.png");
+    }
+    .bgimg>img{
+        width: 1200px;
+        height: 340px;
+        display: block;
+        margin: 0 auto;
+    }
+    #pagination {
+        margin-left: 220px;
+        margin-top:50px;
+    }
+    ul.pagination>li>a{
+        margin-right: 6px;
+    }
+    .content{
+        height: 2000px;
+        width: 1200px;
+        margin:0 auto;
+    }
+    .choosebar{
+        height: 100%;
+        width: 170px;
+        border-right: 1px grey solid;
+        float: left;
+    }
+    .choosecontent{
+        height: 100%;
+        width: 960px;
+        margin-left: 70px;
+        float: left;
+    }
+    .choosebar>div{
+        text-align: right;
+        padding-top: 30px;
+        font-size: 18px;
+        margin-right: 20px;
+        cursor: pointer;
+        line-height: 30px;
+    }
+    .choosebar>div>a{
+        color: #908e8e;
+        text-decoration: none;
+    }
+    .choosebar>div>a:hover{
+        text-decoration: none;
+    }
+    .choosebar>img{
+        float: right;
+        margin-top: -85px;
+        margin-right: -11px;
+    }
+    .choosed{
+        color: #da2f2f !important;
+    }
+    .choosecontent>a{
+        display: block;
+        width: 100%;
+        height: 350px;
+        margin-top: 30px;
+        color: #908e8e;
+        text-decoration: none;
+    }
+    a:active,a:hover,a:link,a:visited{
+        color: #908e8e !important;
+        text-decoration: none !important;
+    }
+    .choosecontent>a>div{
+        line-height: 30px;
+    }
+    .choosecontent>a>div>img{
+        width: 230px;
+        height: 230px;
+    }
+    .title{
+        font-size: 18px;
+        color: black;
+    }
+    .summary{
+        width: 800px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-spacing: normal;
+    }
+</style>
+<link href="/plugins/bootstrap/css/bootstrap.min.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+<link href="/plugins/datetimePicker/dateSelect.css" rel="stylesheet">
+<script src="/plugins/datetimePicker/dateSelect.js"></script>
+<script src="/javascripts/angular.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/plugins/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.12.0.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+
+<div ng-app="layoutNewslist" ng-controller="layoutforNewslist">
+      <div class="bgimg"><img src="/themes/<%=staticforder%>/images/news.png"/></div>
+    <div class="content">
+        <div class="choosebar">
+            <div class="choosed">文章头条</div>
+            <div><a href="reportslist">媒体报道</a></div>
+            <img src="/themes/<%=staticforder%>/images/quan.png"/>
+        </div>
+        <div class="choosecontent" >
+             <a ng-repeat="item in dataList" ng-href="/resource/newscontent?id={{item.contentNum}}" target="_blank">
+                 <div class="title" title="{{item.title}}">{{item.title}}</div>
+                 <div>{{item.createdAt|date : "yyyy-MM-dd HH:mm"}}</div>
+                 <div class="summary">{{item.keywords}}</div>
+                 <div><img ng-src="{{item.sImg}}"/></div>
+             </a>
+            <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+                        next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+                        items-per-page="itemsPerPage">
+            </pagination>
+        </div>
+    </div>
+
+
+
+</div>
+<script src="/themes/<%=staticforder%>/js/modules.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/layoutNewslistController.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>

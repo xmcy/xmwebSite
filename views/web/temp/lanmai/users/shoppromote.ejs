@@ -1,0 +1,395 @@
+<style>
+    .billStatus{
+        left: 520px;
+    }
+     .storePic3{
+         float: left;
+         width: 100px;
+         height: 60px;
+         background: url("/themes/lanmai/images/shopcenter.png") 227px -4px;
+     }
+     .promotedate{
+         clear: both;
+         position: relative;
+         width: 100%;
+         padding-left: 100px;
+         font-size: 16px;
+         margin-top: 45px;
+         height: 20px;
+     }
+     .promotedate>span{
+         position: absolute;
+         top:0;
+         height: 20px;
+         line-height: 20px;
+     }
+    .datetitle{
+        left: 105px;
+    }
+    .dateinfo{
+        left: 198px;
+    }
+     .dateinfo>span{
+         margin: 0 5px;
+     }
+    .promotedate .continuicon{
+        width:25px;
+        height:25px;
+        left: 505px;
+        top: -3px;
+        background:  url("/themes/lanmai/images/shopcenter.png") -212px -8px;
+    }
+    .continufee{
+        left:538px;
+    }
+     .service{
+         width: 100%;
+         padding-left: 100px;
+         height: auto;
+         margin: 15px auto;
+         font-size: 16px;
+         clear: both;
+     }
+   .service>ul{
+        width: 100%;
+        height: auto;
+    }
+     .service>ul>li{
+         float: left;
+         width: auto;
+         height: 25px;
+         margin:0 30px 5px 5px;
+     }
+     .service>ul>.servicescope{
+        margin-right: 46px;
+    }
+     .addservice{
+         width:25px;
+         height:25px;
+         float: left;
+         margin-right: 6px;
+         background:  url("/themes/lanmai/images/shopcenter.png") -239px -8px;
+     }
+     .clearfix{
+         clear: both;
+     }
+     .promotrcontent{
+         width: 70%;
+         height: 280px;
+         display: inline-block;
+         margin-top: 35px;
+         font-size: 16px;
+         margin-left: 100px;
+     }
+     .shoppromote_contentlist{
+         width: 100%;
+         height: 25%;
+         position: relative;
+     }
+     .shoppromote_contentlist>span{
+         position: absolute;
+         top: 3px;
+         left: 0;
+     }
+     .shoppromote_contentlist>.step1_2{
+         position: absolute;
+         left:100px;
+         height:40px;
+         width: 480px;
+         background:  url("/themes/lanmai/images/shopcenter.png") -2px -218px;
+     }
+     .shoppromote_contentlist>.step1_3{
+         position: absolute;
+         top: 0px;
+         left:100px;
+         height:40px;
+         width: 480px;
+         background:  url("/themes/lanmai/images/shopcenter.png") -2px -268px;
+     }
+     .shoppromote_contentlist>.step2{
+         position: absolute;
+         left:100px;
+         height:40px;
+         width: 550px;
+         background:  url("/themes/lanmai/images/shopcenter.png") -2px -67px;
+     }
+     .shoppromote_contentlist>.step3{
+         position: absolute;
+         top: 0px;
+         left:100px;
+         height:40px;
+         width: 550px;
+         background:  url("/themes/lanmai/images/shopcenter.png") -2px -116px;
+     }
+     .shoppromote_contentlist>.step4{
+         position: absolute;
+         top: 0px;
+         left:100px;
+         height:40px;
+         width: 550px;
+         background:  url("/themes/lanmai/images/shopcenter.png") -2px -166px;
+     }
+     .attention{
+         width:166px;
+         padding: 0 3px;
+         float: right;
+         margin-top: 50px;
+     }
+     .attention>a{
+         display: block;
+         width:160px;
+         height: 160px;
+         overflow: hidden;
+     }
+     .attention>a>img{
+         margin: -1px 0 0 -1px;
+         width:162px;
+         height: 162px;
+         margin-bottom:7px;
+     }
+     .forwemedia{
+         display: none;
+         border: 2px solid gainsboro;
+     }
+     .attention>.forwemedia>p{
+         height: 15px;
+         width: 160px;
+         text-align: center;
+         margin-bottom:5px;
+         font-size: 14px;
+     }
+     .attention>.forwemedia>div{
+         width: 160px;
+         margin-top: 30px;
+         position: relative;
+     }
+     .skin {
+         width: 40px;
+         height: 15px;
+         position: absolute;
+         bottom:6px;
+         left: 40px;
+     }
+     .skinicon {
+         width: 20px;
+         height: 15px;
+         float: left;
+         background: url(/themes/lanmai/VRimages/vricon.png) -86px -7px;
+     }
+     .admakeskin>span {
+         float: right;
+         font-size: 12px;
+     }
+     .collect {
+         width: 40px;
+         height: 15px;
+         position: absolute;
+         bottom: 6px;
+         left: 90px;
+     }
+     .collecticon {
+         width: 20px;
+         height: 16px;
+         float: left;
+         background: url(/themes/lanmai/VRimages/vricon.png) -110px -8px;
+         cursor: pointer;
+     }
+     .attention>.forwemedia>div>span {
+         float: right;
+         font-size: 12px;
+     }
+     .identifyicon{
+         padding-left: 60px;
+         background-position: -124px -2px !important;
+     }
+     .identifystatus{
+         display: inline-block;
+         padding: 24px 0 0 10px;
+     }
+    .unpromotion{
+        margin: 20px 20px;
+    }
+    .bottom_lanmai{
+        margin-top: 250px;
+    }
+</style>
+<div class="">
+    <div class="shopname">
+        <div class="storePic3"></div>
+        <h2>品牌推广</h2>
+    </div>
+<%if(!promotion||promotion.promotionEnd<new Date() ) {%>
+    <div class="unpromotion">您的企业还未进行品牌推广，制作宝品牌推广为您的企业准备了多种渠道，点击了解更多！<button><a href="/resource/brandWin" title="点解了解更多关于品牌推广">了解更多</a></button></div>
+<%}else {%>
+    <div class="promotedate">
+        <span class="datetitle">推广日期</span>
+        <%if(promotion.bill.billState=="已支付"){if(promotion.period=="1季度"){%>
+        <span class="dateinfo"><span><%=moment(promotion.promotionBegin).format("YYYY[年]MM[月]DD[日]")%></span> 至 <span><%=moment(promotion.promotionEnd).format("YYYY[年]MM[月]DD[日]")%></span></span>
+        <%}else if(promotion.period=="半年"){%>
+        <span class="dateinfo"><span><%=moment(promotion.promotionBegin).format("YYYY[年]MM[月]DD[日]")%></span> 至 <span><%=moment(promotion.promotionEnd).format("YYYY[年]MM[月]DD[日]")%></span></span>
+        <%}else if(promotion.period=="1年"){%>
+        <span class="dateinfo"><span><%=moment(promotion.promotionBegin).format("YYYY[年]MM[月]DD[日]")%></span> 至 <span><%=moment(promotion.promotionEnd).format("YYYY[年]MM[月]DD[日]")%></span></span>
+        <%}}else {if(promotion.period=="1季度"){%>
+        <span class="dateinfo"><span><%=moment(promotion.promotionBegin).format("YYYY[年]MM[月]DD[日]")%></span> 至 <span><%=moment(promotion.promotionEnd).add(3,"months").format("YYYY[年]MM[月]DD[日]")%></span></span>
+        <%}else if(promotion.period=="半年"){%>
+        <span class="dateinfo"><span><%=moment(promotion.promotionBegin).format("YYYY[年]MM[月]DD[日]")%></span> 至 <span><%=moment(promotion.promotionEnd).add(6,"months").format("YYYY[年]MM[月]DD[日]")%></span></span>
+        <%}else if(promotion.period=="1年"){%>
+        <span class="dateinfo"><span><%=moment(promotion.promotionBegin).format("YYYY[年]MM[月]DD[日]")%></span> 至 <span><%=moment(promotion.promotionEnd).add(12,"months").format("YYYY[年]MM[月]DD[日]")%></span></span>
+        <%}}%>
+        <%if(promotion.bill&&promotion.bill.billState=="已支付"){%>
+        <!--<span class="continuicon"><a></a></span>-->
+        <!--<span class="continufee"><a>续费</a></span>-->
+        <%}else {%>
+        <span class="billStatus">未支付</span>
+        <%}%>
+
+    </div>
+    <div class="service">
+        <ul><li>服务项目</li>
+            <%if(promotion.priorShowState=="未购买" ) {%>
+            <%}else{%>
+            <li>优先展示</li>
+            <%}%>
+            <%if(promotion.eBookState=="未购买" ) {%>
+            <%}else{%>
+            <li>数字期刊</li>
+            <%}%>
+            <%if(promotion.VRState=="未购买" ) {%>
+            <%}else{%>
+            <li>VR展馆</li>
+            <%}%>
+            <%if(promotion.weMediaState=="未购买" ) {%>
+            <%}else{%>
+            <li>自媒体渠道</li>
+            <%}%>
+            <!--<li><a><div class="addservice"></div>增加服务项目</a></li>-->
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <%if(!promotion ) {%>
+    <div class="unpromotion">您的企业还未进行品牌推广，制作宝品牌推广为您的企业准备了多种渠道，点击了解更多！<button><a href="/resource/brandWin" title="点解了解更多关于品牌推广">了解更多</a></button></div>
+    <%}else {%>
+    <div>
+        <div class="promotrcontent">
+            <%if(promotion.priorShowState=="沟通传递素材" ) {%>
+            <div class="shoppromote_contentlist">
+                <span>优先展示</span>
+                <div class="step1_2"></div>
+            </div>
+            <%}else{%>
+            <div class="shoppromote_contentlist priorShow">
+                <span>优先展示</span><input hidden value="<%=promotion.priorShowImgs%>"/>
+                <div class="step1_3"></div>
+            </div>
+            <%}%>
+
+            <%if(promotion.eBookState=="未购买" ) {%>
+            <%}else if(promotion.eBookState=="沟通传递素材"){%>
+            <div class="shoppromote_contentlist ">
+                <span>数字期刊</span>
+                <div class="step2"></div>
+            </div><%}else if(promotion.eBookState=="制作中"){%>
+            <div class="shoppromote_contentlist">
+                <span>数字期刊</span>
+                <div class="step3"></div>
+            </div>
+            <%}else{%>
+            <div class="shoppromote_contentlist eBooks">
+                <span>数字期刊</span><input hidden value="<%=promotion.ebookImgs%>"/>
+                <div class="step4"></div>
+            </div>
+            <%}%>
+
+            <%if(promotion.VRState=="未购买" ) {%>
+            <%}else if(promotion.VRState=="沟通传递素材"){%>
+            <div class="shoppromote_contentlist ">
+                <span>VR展馆</span>
+                <div class="step2"></div>
+            </div><%}else if(promotion.VRState=="制作中"){%>
+            <div class="shoppromote_contentlist">
+                <span>VR展馆</span>
+                <div class="step3"></div>
+            </div>
+            <%}else{%>
+            <div class="shoppromote_contentlist VR">
+                <span>VR展馆</span><input hidden value="<%=promotion.vrImgs%>"/>
+                <div class="step4"></div>
+            </div>
+            <%}%>
+
+            <%if(promotion.weMediaState=="未购买" ) {%>
+            <%}else if(promotion.weMediaState=="沟通传递素材"){%>
+            <div class="shoppromote_contentlist">
+                <span>自媒体渠道</span>
+                <div class="step2"></div>
+            </div><%}else if(promotion.weMediaState=="制作中"){%>
+            <div class="shoppromote_contentlist">
+                <span>自媒体渠道</span>
+                <div class="step3"></div>
+            </div>
+            <%}else{%>
+            <div class="shoppromote_contentlist weMedia">
+                <span>自媒体渠道</span><input hidden value="<%=promotion.weMediaImgs%>"/>
+                <div class="step4"></div>
+            </div>
+            <%}%>
+        </div>
+
+        <div class="attention">
+            <a href="../resource/vr"> <img /></a>
+            <div class="forwemedia">
+                <p>扫码手机查阅</p>
+                <p>制作宝公众号宣传文</p>
+                <div>
+                    <div class="skin"><span class="skinicon"></span><span>66</span></div>
+                    <div class="collect"><span class="collecticon"></span><span>66</span></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <%}%>
+    <%}%>
+</div>
+<script>
+    $(function () {
+        if($(".weMedia")){
+            $(".weMedia").on("mouseenter",function () {
+                var imgsrc=$(this).children("input").val()
+                $(".attention img").attr("src",imgsrc);
+                $(".attention a").attr("href","");
+                $(".forwemedia").show()
+            });
+
+        }
+
+        if($(".VR")){
+            $(".VR").on("mouseenter",function () {
+                var imgsrc=$(this).children("input").val()
+                $(".attention img").attr("src",imgsrc);
+                $(".attention a").attr("href","../resource/vr");
+                $(".forwemedia").hide()
+            });
+        }
+
+        if($(".eBooks")){
+            $(".eBooks").on("mouseenter",function () {
+                var imgsrc=$(this).children("input").val()
+                $(".attention img").attr("src",imgsrc);
+                $(".attention a").attr("href","../resource/digitalMagazine");
+                $(".forwemedia").hide()
+            });
+        }
+
+        if($(".priorShow")){
+            $(".priorShow").on("mouseenter",function () {
+                var imgsrc=$(this).children("input").val()
+                $(".attention img").attr("src",imgsrc);
+                $(".attention a").attr("href","../resource/brandWin");
+                $(".forwemedia").hide()
+            });
+        }
+
+    })
+</script>

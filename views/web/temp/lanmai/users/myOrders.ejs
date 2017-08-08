@@ -1,0 +1,751 @@
+<style>
+    .bottom_lanmai{
+        margin-top: 350px;
+    }
+    .sweet-alert>h2>img{
+        width: 250px;
+        height:250px;
+    }
+    .sweet-alert{
+        margin-top: -250px !important;
+    }
+
+    .conllectInfo_list>.conllectInfo{
+        color: rgb(112,112,112);
+        background-color: rgb(246,244,244);
+        margin-top: 50px;
+    }
+    .conllectInfo_list>.conllectInfo>li{
+        line-height: 58px;
+        border-bottom: 2px solid #FFFFFF;
+        font-size: 15px;
+    }
+    .conllectInfo_list>.conllectInfo>li>.conllectInfoWrapper{
+        height: 58px;
+        line-height: 58px;
+        position: relative;
+    }
+    .conllectInfo_list>.conllectInfo>li:first-child>.conllectInfoWrapper{
+        background-color: #c1ebff;
+    }
+    .conllectInfo_list>.conllectInfo>li>div>.checkone{
+        background-color: #FFFFFF;
+        position: absolute;
+        top:21px;
+        left:30px;
+        width: 17px;
+        height: 17px;
+        border: 1px solid rgb(157,156,156);
+        overflow: hidden;
+    }
+    .conllectInfo_list>.conllectInfo>li>div>.checkone>input{
+        display: block;
+        margin-top: -1px;
+        margin-left: -1px;
+        width: 20px;
+        height: 20px;
+    }
+    .conllectInfo_list>.conllectInfo>li:first-child>div>div:first-child{
+        visibility: hidden;
+    }
+    .conllectInfo_list>.conllectInfo>li>div>.messegeStatus{
+        position: absolute;
+        right: 210px;
+        width: 73px;
+        text-align: center;
+    }
+    .conllectInfo_list>.conllectInfo>li>div>.deletehandle{
+        position: absolute;
+        right: 40px;
+        width: 140px;
+        text-align: center;
+    }
+    .conllectInfo_list>.conllectInfo>li>div>.deletehandle>span{
+        display: inline-block;
+        width: 44px;
+        height: 22px;
+        line-height: 22px;
+        margin:-4px 13px;
+        text-align: center;
+        background-color: #da2f2f;
+        color: #fff;
+        border-radius: 3px;
+    }
+    .conllectInfo_list>.conllectInfo .messegeSender{
+        position: absolute;
+        left:90px;
+        text-align: center;
+    }
+    .conllectInfo_list>.conllectInfo .conllectTitle{
+        position: absolute;
+        left:350px;
+        text-align: center;
+    }
+    .conllectInfo_list>.conllectInfo .conllectTime{
+        width:116px;
+        position: absolute;
+        right:340px;
+        text-align: center;
+    }
+    .conllectInfo_list>.checkall{
+        margin-top: 25px;
+        margin-left:30px;
+        margin-bottom: 50px;
+    }
+    .conllectInfo_list>.checkall>div{
+        float: left;
+        margin-top:4px;
+        margin-right: 17px;
+        width: 17px;
+        height: 17px;
+        border: 1px solid rgb(157,156,156);
+        overflow: hidden;
+    }
+    .conllectInfo_list>.checkall>div>input{
+        margin-top: -1px;
+        margin-left: -1px;
+        width: 21px;
+        height:21px;
+        background-color: #FFFFFF;
+    }
+    .conllectInfo_list>.checkall>span{
+        font-size: 15px;
+        color: rgb(112,112,112);
+        cursor: pointer;
+    }
+    .conllectInfo_list>.checkall>button{
+        font-size: 15px;
+        margin-left:35px;
+        color: rgb(112,112,112);
+        border: 1px solid rgb(112,112,112);
+        background-color: rgb(246,244,244);
+        padding:1px 5px;
+    }
+    .promoteinfo{
+        z-index: 999;
+        width:100%;
+        height: 280px;
+        border: 2px solid red;
+        background-color: #fff;
+        display: none;
+    }
+    .promoteinfo>.precisePromoteContent>.precisePromoteTime{
+        height: 36px;
+        margin-bottom: 0 !important;
+    }
+    .promoteinfo>.precisePromoteContent>div>ul>li{
+        width: auto;
+        padding-right:5px;
+        text-align: left;
+        font-size: 16px;
+        float: left;
+    }
+    .promoteinfo>.precisePromoteContent>.precisePromoteSelect>ul>li{
+        margin-right: 19px;
+    }
+    .promoteinfo .precisePromoteContent{
+        width: 650px;
+        float: left;
+    }
+    .effect{
+        width: 280px;
+        float: right;
+        height: 100%;
+    }
+    .isPrecisePromote{
+        height: 60px;
+        width: 100%;
+        position: relative;
+    }
+    .isPrecisePromote>input{
+        width: 29px;
+        height: 29px;
+        position: absolute;
+        top: 28px;
+        left: 29px;
+    }
+    .isPrecisePromote>span{
+        font-size: 24px;
+        position: absolute;
+        top: 16px;
+        left: 70px;
+    }
+    .isPrecisePromote>div{
+        position: absolute;
+        top:18px;
+        left:230px;
+        font-size: 15px;
+    }
+    .precisePromoteDescript{
+        width: 100%;
+        height: 20px;
+        position: relative;
+    }
+    .precisePromoteDescript>p{
+        font-size: 14px;
+        position: absolute;
+        top: 0px;
+        left: 70px;
+    }
+    .precisePromoteTime{
+        width: 100%;
+        height: 45px;
+        margin: 35px 0 0px 70px;
+    }
+    .precisePromoteTime>ul{
+        width: 100%;
+        height: 100%;
+    }
+    .precisePromoteTime>ul>li{
+        float: left;
+        width: 106px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        margin-right: 20px;
+        font-size: 18px;
+        border-radius: 3px;
+        position: relative;
+        cursor: pointer;
+    }
+    .precisePromoteTime>ul>.servicedate{
+        text-align: left;
+    }
+    .precisePromoteSelect{
+        width: 100%;
+        height: 40px;
+        padding-left: 70px;
+        font-size: 18px;
+    }
+    .precisePromoteSelect>ul{
+        width: 90%;
+        height:40px;
+    }
+    .precisePromoteSelect>ul>li{
+        width: 160px;
+        margin-right: 4px;
+        height: 40px;
+        line-height: 40px;
+        float: left;
+    }
+    .priceaccount{
+        margin-left: 328px;
+    }
+    .bandpromote>li{
+        width: 120px !important;
+    }
+    .bandpromote>li>input{
+        width: 14px;
+        height: 14px;
+    }
+    .precisePromoteSelect>ul>li>label{
+        font-weight: 400;
+        margin-left: 6px;
+    }
+    .precisePromoteTime>ul>li>div{
+        width: 100%;
+        height: 100%;
+        border: 1px solid gainsboro;
+        position: relative;
+    }
+    .precisePromoteSelect>ul>li>select{
+        width: 125px;
+        height: 30px;
+        border: 1px solid gainsboro;
+        text-align: center;
+        font-size: 15px;
+    }
+    .precisePromotePrice{
+        display: inline-block;
+        margin: 0 8px;
+        font-size: 20px;
+    }
+    .paynum{
+        padding-left: 70px;
+        font-size: 18px;
+    }
+    .paynum>ul>li{
+        margin-right: 20px;
+        height: 50px;
+        line-height:50px;
+    }
+    .paynum>ul>li>a>button{
+        margin-left:30px;
+        height:30px;
+        line-height: 30px;
+        width:110px;
+        text-align: center;
+        background-color: #da2f2f;
+        border: 1px solid #da2f2f;
+    }
+    .paynum>ul>li>span{
+        display: inline-block;
+        margin-top: -3px;
+        height: 50px;
+        line-height:50px;
+    }
+    .pricemakesure>div{
+        font-size: 20px;
+        height: 30px;
+        line-height: 30px;
+    }
+    /*.effect>div{*/
+        /*display: inline-block;*/
+    /*}*/
+    .topmargin{
+       margin-top: 62px;
+    }
+    .effect>div>i{
+       float: left;
+        margin-right: 20px;
+        font-size: 16px;
+    }
+    .effect>div>span{
+        float: left;
+        max-width: 194px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 16px;
+    }
+    .effect>div>a>button{
+        margin-top: 24px;
+        height: 28px;
+        line-height: 28px;
+        margin-right: 20px;
+        background-color: #da2f2f;
+        margin-left: 83px;
+        width: 100px;
+    }
+    .effect p{
+        display: inline-block;
+        width: 70px;
+        height: 20px;
+        margin-right: 4px;
+    }
+    .effect .close{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 4px;
+    }
+    .effect>ul{
+        height: 200px;
+        width: 100%;
+        margin-top: -10px;
+    }
+    .effect>ul>li{
+        height: 25%;
+        width: 100%;
+        position: relative;
+    }
+    .effect>ul>li>div{
+        display: inline-block;
+        margin-right: 5px;
+    }
+    .effect .effectProgress{
+        width: 140px;
+        height:35px;
+        background-position: -77px -484px;
+    }
+    .effect .effectLogo{
+        width: 27px;
+        height: 27px;
+        background-color: #dad8d8;
+        margin-top: -2px;
+    }
+    .effectActiveColor{
+        background-color: #f6cca9 !important;
+    }
+    .effect .effectActiveLogo{
+        width: 30px;
+        height: 30px;
+        line-height: 29px;
+        text-align: center;
+        font-size: 20px;
+        border: 1px solid #f6cca9;
+        position: absolute;
+        top: 4px;
+        right: 30px;
+    }
+    .effect .preciseProgress{
+        background-position: -77px -415px ;
+    }
+    .noorder{
+        margin-top: 50px;
+        padding-left: 20px;
+        font-size: 16px;
+    }
+</style>
+<div class="conllectInfo_list" ng-controller="myOrdersController">
+    <h2>我的订单</h2>
+    <%if(bills.length==0){%>
+    <div class="noorder">您暂时还没有任何订单!</div>
+    <%}else{%>
+    <ul class="conllectInfo">
+        <li>
+            <div class="conllectInfoWrapper">
+                <div class="checkone"><input type="checkbox"/></div>
+                <a  class="messegeSender">订单编号</a>
+                <a class="conllectTitle"><span>商品名称</span></a>
+                <a class="conllectTime"><span>商品种类</span></a>
+                <span class="messegeStatus">支付状态</span>
+                <a class="deletehandle">操作</a>
+            </div>
+        </li>
+    <%for(var i=0;i<bills.length;i++){%>
+
+                <li class="toggleLi">
+                    <div class="conllectInfoWrapper">
+                        <div class="checkone"><input id="<%=bills[i].id%>" type="checkbox" ng-checked="selectAll" /></div>
+                        <a  class="messegeSender"><%=bills[i].billNum%></a>
+                        <a class="conllectTitle"><span><%=bills[i].billName%></span></a>
+                        <a class="conllectTime"><span><%=bills[i].billType%></span></a>
+                        <span class="messegeStatus"><%=bills[i].billState%></span>
+                        <%if(bills[i].billState=="未支付"){%>
+                        <a class="deletehandle"><input type="hidden" value="<%=bills[i]._id%>"/><span class="clickpay">支付</span></a>
+                        <%}else{%>
+                        <a class="deletehandle"><input type="hidden" value="<%=bills[i]._id%>"/><span class="clickcheck">查看</span></a>
+                        <%}%>
+                    </div>
+                    <div class="promoteinfo">
+                        <div class="precisePromoteContent">
+                            <div class="isPrecisePromote">
+                                <input disabled type="checkbox" name="" id="" value="" checked/>
+                                <span class=" redFont"><%=bills[i].billName%></span>
+                                <div>订单编号&nbsp;&nbsp;<%=bills[i].billNum%></div>
+                            </div>
+                            <div class="precisePromoteDescript blueColor">
+                                <%if(bills[i].billName=="精准推广服务"){%>
+                                <p>使用精准推广功能，资源信息将在该类目录列表顶端展示，精准锁定目标人群，找买主快准狠!</p>
+                                <%}else{%>
+                                <p>使用品牌推广功能，助力企业拓展渠道，发展业务，加深品牌影响力！</p>
+                                <%}%>
+                            </div>
+
+                            <div class="precisePromoteTime">
+                                <ul>
+                                    <li>服务期限</li>
+                                    <%if(bills[i].billState=="未支付"){%>
+                                    <li class="promoteTime"></li>
+                                    <%}else if(bills[i].billState=="已支付"){%>
+                                    <li class="promoteTime"></li>
+                                    <%}%>
+                                </ul>
+                            </div>
+                            <div class="precisePromoteSelect">
+                                <ul>
+                                    <%if(bills[i].billName=="精准推广服务"){%>
+                                    <li>推广类目</li>
+                                    <li class="servicecategory"></li>
+                                    <li class="servicearea"></li>
+                                    <%}else{%>
+                                    <li>服务项目</li>
+                                    <li class="serviceitems"></li>
+                                    <%}%>
+                                </ul>
+                            </div>
+                            <div class="precisePromoteSelect">
+                                <ul>
+                                    <li>支付方式</li>
+                                    <%if(bills[i].billState=="未支付"){%>
+                                    <li class="payWay" ><input type="radio" name="precisePayway" id="alipay"   value="支付宝"/><label for="alipay">支付宝</label></li>
+                                    <li class="payWay"><input type="radio" name="precisePayway" id="weichartpay"  value="微信"/><label for="weichartpay">微信</label></li>
+                                    <%}else {%>
+                                    <li class="serviceType"><%=bills[i].payType%></li>
+                                    <%}%>
+                                </ul>
+                            </div>
+                            <div class="paynum">
+                                <ul>
+                                    <li>支付金额</li>
+                                    <li><span>价格</span><span class="precisePromotePrice redFont">0</span><span>元</span></li>
+                                    <%if(bills[i].billState=="未支付"){%>
+                                    <li><a>
+                                            <input type="hidden" value="<%=bills[i].billName%>" class="promotionTypeFor"/>
+                                            <input type="hidden" value="<%=bills[i].payType%>" class="payTypeFor"/>
+                                            <input type="hidden" value="<%=bills[i].billNum%>" class="billNumFor"/>
+                                            <button class="payGetQr">确认付款</button>
+                                        </a></li>
+                                    <%}else {%>
+                                    <li><a><button><%=bills[i].billState%></button></a> </li>
+                                    <%}%>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <%if(bills[i].billName=="精准推广服务"){%>
+                        <div class="effect">
+                            <div class="close geryborder"></div>
+                            <div class="topmargin"><i>资源标题</i><span  class="billForPubSpan"></span></div>
+                            <div><i>资源图片</i><span><img  class="billForPubImg"/></span></div>
+                            <div><a  class="billForPubHref"><button>查看详情</button></a></div>
+                        </div>
+                        <%}else{%>
+                        <div class="effect">
+                            <p class="blueColor">展示效果</p>
+                            <div class="close geryborder"></div>
+                            <ul>
+                                <li><div class="effectLogo effectActiveColor"></div><div class="effectProgress preciseProgress"></div><div class="effectActiveLogo redFont">精</div></li>
+                                <li><div class="effectLogo"></div><div class="effectProgress"></div></li>
+                                <li><div class="effectLogo"></div><div class="effectProgress"></div></li>
+                                <li><div class="effectLogo"></div><div class="effectProgress"></div></li>
+                            </ul>
+                        </div>
+                        <%}%>
+
+                    </div>
+                </li>
+        <%}%>
+    </ul>
+
+<div  class="checkall">
+    <div><input type="checkbox" ng-model="selectAll" ng-click="all()"  /></div>
+    <button ng-click="all()">全选</button><button class="deleteorders">删除</button>
+</div>
+<%}%>
+</div>
+<script>
+    $(function () {
+
+        $(".clickpay").bind("click",function () {
+            var that=$(this)
+            if(!$(this).hasClass("abc")){
+                var billNum=$(this).parent().children("input").val()
+                var promotionType=$(this).parent().parent().children(".conllectTitle").children().text();
+                var data={
+                    billNum:billNum,
+                    promotionType:promotionType
+                }
+                $.post("/users/queryBillDetail",data,function (res) {
+                    console.log(res)
+                    if(res=="订单不存在"){
+                        swal("订单不存在")
+                    }else {
+                        $.post("/users/searchResByOrderId", {
+                            id: billNum
+                        }, function (data) {
+                            if (data == "查询失败") {
+
+                            } else {
+                                $(".billForPubSpan").text(data.pubHistory.title);
+                                $(".billForPubImg").attr("src",data.pubHistory.images[0]+"/100.100");
+                                if(data.pubHistory.resType=="Manufacture"){
+                                    $(".billForPubHref").attr("href","/resource/dMake?id="+data.pubHistory.resNum);
+                                }else if(data.pubHistory.resType=="Material"){
+                                    $(".billForPubHref").attr("href","/resource/dmaterial?id="+data.pubHistory.resNum);
+                                }else {
+                                    $(".billForPubHref").attr("href","/resource/dMachine?id="+data.pubHistory.resNum);
+                                }
+                            }
+                        })
+                        if(res.billDetail.bill.billName=="品牌推广服务"){
+                            var serviceitems=""
+                            if(res.billDetail.priorShowState!=="未购买"){
+                                serviceitems+="优先展示 "
+                            }
+                            if(res.billDetail.eBookState!=="未购买"){
+                                serviceitems+="数字期刊 "
+                            }
+                            if(res.billDetail.VRState!=="未购买"){
+                                serviceitems+="VR展馆 "
+                            }
+                            if(res.billDetail.weMediaState!=="未购买"){
+                                serviceitems+="自媒体渠道"
+                            }
+                            $(".serviceitems").text(serviceitems)
+                        }else {
+                                $(".servicecategory").text(res.billDetail.category.name)
+                        }
+                        that.parent().parent().next().find("input[name='precisePayway'][value="+res.billDetail.bill.payType+"]").prop("checked",true);
+                        if(res.billDetail.regions){
+                            $(".servicearea").text(res.billDetail.regions.join(' '))
+                        }
+                        $(".precisePromotePrice").text(res.billDetail.bill.price)
+                        if (res.billDetail.period) {
+                            $(".promoteTime").text(res.billDetail.period)
+                        }
+                    }
+                })
+                $(this).parent().parent().parent().parent().find(".promoteinfo").hide();
+                $(this).parent().parent().parent().parent().find(".clickpay").removeClass("abc");
+                $(this).parent().parent().parent().parent().find(".clickcheck").removeClass("abcd");
+                $(this).parent().parent().parent().find(".promoteinfo").show();
+                $(this).addClass("abc");
+            }else{
+                $(this).parent().parent().parent().find(".promoteinfo").hide();
+                $(".precisePromotePrice").text("")
+                $(".serviceType").text("")
+                $(".promoteTime").text("")
+                $(this).removeClass("abc");
+            }
+        })
+
+        $(".clickcheck").bind("click",function () {
+            if(!$(this).hasClass("abcd")){
+                var billNum=$(this).parent().children("input").val()
+                var promotionType=$(this).parent().parent().children(".conllectTitle").children().text();
+                var data={
+                    billNum:billNum,
+                    promotionType:promotionType
+                }
+                $.post("/users/queryBillDetail",data,function (res) {
+                    if(res=="订单不存在"){
+                        console.log("订单不存在")
+                    }else {
+                        $.post("/users/searchResByOrderId",{
+                            id:billNum
+                        },function (data) {
+                            if(data=="查询失败"){
+
+                            }else {
+                                $(".billForPubSpan").text(data.pubHistory.title);
+                                $(".billForPubImg").attr("src",data.pubHistory.images[0]+"/100.100");
+                                if(data.pubHistory.resType=="Manufacture"){
+                                    $(".billForPubHref").attr("href","/resource/dMake?id="+data.pubHistory.resNum);
+                                }else if(data.pubHistory.resType=="Material"){
+                                    $(".billForPubHref").attr("href","/resource/dmaterial?id="+data.pubHistory.resNum);
+                                }else {
+                                    $(".billForPubHref").attr("href","/resource/dMachine?id="+data.pubHistory.resNum);
+                                }
+                            }
+                        })
+
+                        $(".promoteTime").text(res.billDetail.period);
+
+                        if(res.billDetail.bill.billName=="品牌推广服务"){
+                            var serviceitems=""
+                            if(res.billDetail.priorShowState!=="未购买"){
+                                serviceitems+="优先展示 "
+                            }
+                            if(res.billDetail.eBookState!=="未购买"){
+                                serviceitems+="数字期刊 "
+                            }
+                            if(res.billDetail.VRState!=="未购买"){
+                                serviceitems+="VR展馆 "
+                            }
+                            if(res.billDetail.weMediaState!=="未购买"){
+                                serviceitems+="自媒体渠道"
+                            }
+                            $(".serviceitems").text(serviceitems)
+                        }else {
+                            $(".servicecategory").text(res.billDetail.category.name)
+                        }
+                        if(res.billDetail.regions){
+                            $(".servicearea").text(res.billDetail.regions.join(' '))
+                        } else {
+                            $(".servicearea").text('')
+                        }
+                        $(".precisePromotePrice").text(res.billDetail.bill.price)
+                        $(".serviceType").text(res.billDetail.bill.payType)
+                    }
+                })
+                $(this).parent().parent().parent().parent().find(".promoteinfo").hide();
+                $(this).parent().parent().parent().parent().find(".clickcheck").removeClass("abcd");
+                $(this).parent().parent().parent().parent().find(".clickpay").removeClass("abc");
+                $(this).parent().parent().parent().find(".promoteinfo").show();
+                $(this).addClass("abcd");
+            }else{
+                $(this).parent().parent().parent().find(".promoteinfo").hide();
+                $(".precisePromotePrice").text("")
+                $(".serviceType").text("")
+                $(".servicearea").text("")
+                $(".promoteTime").text("")
+                $(this).removeClass("abcd");
+            }
+        })
+
+        $(".close").on("click",function () {
+            $(this).parent().parent().hide();
+        })
+
+        $(".deleteorders").on("click",function () {
+            swal({
+                        title: "确定删除这些订单?",
+                        text: "删除此这些订单将不再出现在列表中",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+                        closeOnConfirm: false
+                    },
+                    function () {
+                        swal.close();
+                        var choosebox=$(".checkone").children("input:checked");
+                        console.log($(choosebox));
+                        var chooseboxid=[];
+                        for(j=0;j<$(choosebox).length;j++){
+                            chooseboxid[j]=$(choosebox[j]).attr("id");
+                        }
+                        var data={
+                            billNums:chooseboxid
+                        }
+                        $.ajax({
+                            url:"/users/deleteBill",
+                            type:"POST",
+                            data:JSON.stringify(data),
+                            dataType:"json",
+                            contentType:"application/json",
+                            success:function(res){
+                                if(typeof res=="object"&&res.result=="success"){
+                                    window.location.reload()
+                                }else {
+                                    swal({
+                                        title: "已支付订单不允许删除!",
+                                        type: "error",
+                                        confirmButtonText: "确定"
+                                    });
+                                }
+                            }
+                        })
+                    });
+        })
+
+        $(".payGetQr").on("click",function () {
+            var billNumFor=$(this).siblings(".billNumFor").val()
+            var payTypeFor=$(this).parent().parent().parent().parent().prev().find("input[name='precisePayway']:checked").val();
+            if(!payTypeFor||payTypeFor==""||payTypeFor.trim()==""){
+                swal({
+                    title: "请选择支付方式!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return
+            }
+            var promotionTypeFor=$(this).siblings(".promotionTypeFor").val()
+            var url='<img src="/users/payPromotionBill?billNum='+billNumFor+'&payType='+payTypeFor+'支付'+'&promotionType='+promotionTypeFor+'">'
+            getQr(url,payTypeFor)
+        })
+        function getQr(url,payType) {
+            swal({
+                        title: url,
+                        text: "请打开"+payType+"扫码支付",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "支付完成",
+                        cancelButtonText: "支付遇到问题",
+                        closeOnConfirm: false,
+                        closeOnCancel: false,
+                        html: true
+                    },
+                    function(isConfirm){
+                        if (isConfirm) {
+                            window.location.href="/users/myOrders"
+                        } else {
+                            swal({
+                                        title: "<h1>即将为您联系在线客服</h1>",
+                                        showCancelButton: true,
+                                        confirmButtonColor: "#DD6B55",
+                                        cancelButtonText: "取消",
+                                        confirmButtonText: "联系客服",
+                                        closeOnConfirm: false,
+                                        html: true
+                                    },
+                                    function(){
+                                        window.location.href="/users/helperCenter#5"
+                                    });
+                        }
+                    });
+        }
+    })
+</script>

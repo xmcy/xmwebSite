@@ -1,0 +1,90 @@
+
+.login-content{
+    width: 100%;
+    height: 640px;
+    margin: 0 auto;
+    position: relative;
+    background-image: url(http://cdn.adquan.net/images/bigimg/bcpi.png/compress.only);
+    background-size: 100% 100%;
+}
+.login-content>.content{
+    width: 310px;
+    height: 450px;
+    position: absolute;
+    left: 50%;
+    margin-left: 190px;
+    top:60px;
+    z-index: 1000;
+    background-color: white;
+}
+
+.login-content>.showpic{
+    width: 665px;
+    height: 450px;
+    position: absolute;
+    top:60px;
+    left:50%;
+    margin-left: -500px;
+}
+.login-content>.showpic>img{
+    width: 680px;
+    height: 450px;
+}
+.login-green-check-ok{
+    display: block;
+    position: absolute;
+    width: 18px;
+    height: 20px;
+    right:-25px;
+    top: 10px;
+    border: none;
+    background-image: url(../images/regandloginicon.png);
+    background-position:-110px -44px;
+}
+.login-tip-div-i{
+    display: block;
+    float: left;
+    width: 16px;
+    height: 18px;
+    margin-right: 5px;
+    background-image:url(../images/regandloginicon.png) ;
+}
+.login-first-i{
+    display: block;
+    width: 40px;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #D8D9D9;
+    background-image: url(../images/regandloginicon.png);
+}
+
+body>.footer {
+    width: 100%;
+    height:300px;
+   position: relative;
+}
+body>.footer>ul{
+    position: absolute;
+    width: 400px;
+    height: 30px;
+    top: 20px;
+    left: 50%;
+    margin-left: -120px;
+}
+body>.footer>ul>li{
+    float: left;
+    width: 133px;
+}
+body>.footer>ul>li>a{
+    color: #908e8e;
+
+}
+body>.footer>p{
+    color: #908e8e;
+    position: absolute;
+    width:416px;
+    height: 30px;
+    top: 60px;
+    left: 50%;
+    margin-left: -208px;
+}

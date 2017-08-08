@@ -1,0 +1,31 @@
+<style>
+	.bottom_lanmai{
+		margin-top: 250px;
+	}
+</style>
+<div class="Binding" ng-controller="certificationManagementController">
+			    	<h2>认证管理</h2>
+	<div class="hidden"><%=infoCertificationManagement.idCardIdentifystatus%></div>
+
+					<div >
+						<div class="accountbing bgGrey">
+							<div class="imglogo identify"></div>
+							<h2>实名认证</h2>
+							<ul>
+								<li><a>认证简单</a></li>
+								<li><a>需要上传清晰的手持身份证照片</a></li>
+							</ul>
+							<% if(infoCertificationManagement.idCardIdentifystatus=="已认证"){ %>
+							<button title="查看认证信息" ><a href="/users/identifying">已认证</a></button>
+							<% }else if(!infoCertificationManagement.idCardIdentifystatus){ %>
+							<button title="查看认证信息" class="changcorlor" ><a href="/users/identifying">去认证</a></button>
+							<% }else if(infoCertificationManagement.idCardIdentifystatus=="审核中"){%>
+							<button title="查看认证信息" class="changcorlor"><a href="/users/identifying"><%= infoCertificationManagement.idCardIdentifystatus%></a></button>
+							<%}else {%>
+							<button title="查看认证信息" class="changcorlor"><a href="/users/identifying"><%=infoCertificationManagement.idCardIdentifystatus%></a></button>
+							<%} %>
+						</div>
+
+					</div>
+
+ </div>

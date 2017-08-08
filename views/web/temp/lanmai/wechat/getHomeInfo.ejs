@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height;initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>制作宝 - 专业的广告制作服务平台</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/weui.min.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/myStyle.css">
+    <!--<link rel="stylesheet" href="/themes/<%=staticforder%>/css/dropload.css">-->
+     <!--引入 WeUI -->
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/0.4.0/weui.min.css">
+    <link href="/plugins/citypicker/css/city-picker.css" rel="stylesheet">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="http://api.map.baidu.com/api?ak=qRQ3AcmkBmZQGl1v4HG61Ltot2lGZRHU&v=2.0&services=false"></script>
+    <script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+
+    <style>
+        .weui-picker{position:fixed;width:100%;left:0;bottom:0;z-index:5000;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateY(100%);transform:translateY(100%);-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s}
+        .arrow{
+            display: none;
+        }
+        .city-picker-span{
+            width: 60% !important;
+            background: none !important;
+            border-bottom: none !important;
+            position: absolute;
+            top:3em;
+            left: 39%;
+
+        }
+        .city-picker-span > .placeholder{
+            color:#fff !important;
+            font-family: "Microsoft YaHei UI" !important;
+            font-size: 1.3em !important;
+        }
+        .title>span{
+            color:#fff !important;
+            font-family: "Microsoft YaHei UI" !important;
+            font-size: 1.3em !important;
+        }
+        .city-picker-span>title{
+            width: 30em !important;
+        }
+        #wrapper{
+            overflow: visible !important;
+        }
+        .fixedCover{
+            width: 100%;
+            z-index: 5555;
+            position: fixed;
+            top:0 ;
+            left:0;
+        }
+    </style>
+</head>
+<body ontouchstart>
+	<div class="weMyContainer">
+        <!--banner搜索的部分开始-->
+        <div class="lmIndexBanner">
+            <!--位置信息的显示开始-->
+            <div class="lmIndexLocatin">
+                <img src="/themes/<%=staticforder%>/images/web0102.png" alt="">
+                <span id="cascadePickerBtn" style="opacity: 0">武汉</span>
+            </div>
+            <input class="homelocation" readonly type="text" data-toggle="city-picker" placeholder="河南/许昌">
+            <!--位置信息的显示结束-->
+            <!--搜索框部分的内容开始-->
+            <div class="page__bd">
+                <!--<a href="javascript:;" class="weui-btn weui-btn_primary">点击展现searchBar</a>-->
+                <div class="weui-search-bar" id="searchBar">
+                    <form class="weui-search-bar__form">
+                        <div class="weui-search-bar__box">
+                            <i class="weui-icon-search"></i>
+                            <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索想要查找的安装资源" required/>
+                            <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                        </div>
+                        <label class="weui-search-bar__label" id="searchText">
+                            <i class="weui-icon-search"></i>
+                            <span>搜索想要查找的安装资源</span>
+                        </label>
+                    </form>
+                    <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                $(function(){
+                    $('#cascadePickerBtn').click(function(){
+                        $('.weui-picker').css({    animation: "a ease .3s forwards;"})
+                    })
+                    var $searchBar = $('#searchBar'),
+                            $searchResult = $('#searchResult'),
+                            $searchText = $('#searchText'),
+                            $searchInput = $('#searchInput'),
+                            $searchClear = $('#searchClear'),
+                            $searchCancel = $('#searchCancel');
+
+                    function hideSearchResult(){
+                        $searchResult.hide();
+                        $searchInput.val('');
+                    }
+                    function cancelSearch(){
+                        hideSearchResult();
+                        $searchBar.removeClass('weui-search-bar_focusing');
+                        $searchText.show();
+                    }
+
+                    $searchText.on('click', function(){
+                        $searchBar.addClass('weui-search-bar_focusing');
+                        $searchInput.focus();
+                    });
+                    $searchInput
+                            .on('blur', function () {
+                                if(!this.value.length) cancelSearch();
+                            })
+                            .on('input', function(){
+                                if(this.value.length) {
+                                    $searchResult.show();
+                                } else {
+                                    $searchResult.hide();
+                                }
+                            })
+                    ;
+                    $searchClear.on('click', function(){
+                        hideSearchResult();
+                        $searchInput.focus();
+                    });
+                    $searchCancel.on('click', function(){
+                        cancelSearch();
+                        $searchInput.blur();
+                    });
+                });
+            </script>
+            <!--搜索框部分的内容结束-->
+        </div>
+        <!--banner搜索的部分结束-->
+        <div class="lmIndexListKinds clearfix">
+            <div class="lmIndexKinds01">
+                <img src="/themes/<%=staticforder%>/images/web0103.png" alt="">
+                <span>找安装</span>
+            </div>
+            <div class="lmIndexKinds02">
+                <img src="/themes/<%=staticforder%>/images/web0104.png" alt="">
+                <span>找制作</span>
+            </div>
+            <div class="lmIndexKinds03">
+                <img src="/themes/<%=staticforder%>/images/web0105.png" alt="">
+                <span>看杂志</span>
+            </div>
+        </div>
+        <script>
+            $(function(){
+                $('.lmIndexKinds01').click(function(){
+                    window.location.href="weFixList";
+                })
+                $('.lmIndexKinds02').click(function(){
+                    window.location.href="weMakeList";
+                })
+                $('.lmIndexKinds03').click(function(){
+                    window.location.href="weMagazine";
+                })
+            })
+        </script>
+        <div class="lmIndexKindsListitle">
+            <span>为您推荐</span>
+        </div>
+        <div class="lmIndexKindsList">
+            <%for(var i=0;i<promotionForManufacture.length;i++){%>
+                <div class="lmIndexKindsListNum clearfix">
+                    <input type="hidden" value="<%=promotionForManufacture[i]._id%>">
+                        <div class="lmIndexKindsListImg">
+                            <a href="weMakeDetail?value=<%=promotionForManufacture[i]._id%>"><img onclick="backStatus()" src="<%=promotionForManufacture[i].images[0]%>/117.130" alt=""></a>
+                        </div>
+                        <div class="lmIndexKindsListIntroduce">
+                            <ul>
+                                <%if(promotionForManufacture[i].title.length>20){%>
+                                <li class="lmIndexKindsListIntrotitle"><a  href="javascript:;"><%=promotionForManufacture[i].title.substr(0,20)%>...</a></li>
+                                <%}else{%>
+                                <li class="lmIndexKindsListIntrotitle"><a  href="javascript:;"><%=promotionForManufacture[i].title%></a></li>
+                                <%}%>
+                                <li class="star clearfix">
+                                    <!--<a href="javascript:;"><img src="/themes/staticforder/images/web0107.png"></a>-->
+                                    <%if(promotionForManufacture[i].discountPrice){%>
+                                    <a href="javascript:;">价格：<span><%=promotionForManufacture[i].discountPrice%>元</span></a>
+                                    <%}else{%>
+                                    <a href="javascript:;">价格：<span>面议</span></a>
+                                    <%}%>
+                                    <span><%=promotionForManufacture[i].pageview%>次浏览</span>
+                                </li>
+                                <li class="makeArea0630"><span>服务区域：</span><%=promotionForManufacture[i].region.province%> <%=promotionForManufacture[i].region.city%></li>
+                                <li class="lmIndexKindsListIntrodital"><span><%=promotionForManufacture[i].details%></span> </li>
+                            </ul>
+                        </div>
+
+
+            </div>
+            <%}%>
+
+        </div>
+
+
+    </div>
+    <div class="weui_tabbar weui_tabbar01">
+        <a href="getHomeInfo" class="weui_tabbar_item ">
+            <div class="weui_tabbar_icon">
+                <img src="/themes/<%=staticforder%>/images/web0108.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">首页</p>
+        </a>
+        <a href="userCenter" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="/themes/<%=staticforder%>/images/web0109.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">我的</p>
+        </a>
+    </div>
+    <div class="fixedCover"></div>
+    <!--<script src="/themes/<%=staticforder%>/js/weui.min.js"></script>-->
+    <!--<script src="/themes/<%=staticforder%>/js/mystyle.js"></script>-->
+    <script src="/plugins/citypicker/city-picker.data.js"></script>
+    <script src="/plugins/citypicker/city-picker.js"></script>
+    <script>
+        window.onload=function(){
+            var topArea=window.localStorage.getItem("area");
+            if(!topArea||topArea==""){
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var lat = position.coords.latitude;
+                    var lon = position.coords.longitude;
+                    var point = new BMap.Point(lon, lat);  // 创建坐标点
+                    // 根据坐标得到地址描述
+                    var myGeo = new BMap.Geocoder();
+                    myGeo.getLocation(point, function (result) {
+                        var province = result.addressComponents.province;
+                        var Oprovince = province.replace(/省/,"");
+                        var city = result.addressComponents.city;
+                        var Ocity = city.replace(/市/,"");
+                        $(".city-picker-span>.placeholder").html(Oprovince+"/"+Ocity);
+                        window.localStorage.setItem("area", Oprovince+"/"+Ocity);
+                    });
+                });
+            }else{
+                var parentId=document.getElementsByClassName('city-picker-span')[0];
+                var childId=parentId.getElementsByClassName('placeholder')[0];
+                childId.innerHTML=topArea
+            }
+            function isWeiXin(){
+             var ua = window.navigator.userAgent.toLowerCase();
+             if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+             return true;
+             }else{
+             var bod=document.getElementsByTagName("body")[0];
+             bod.innerHTML="<p style='text-align: center;color:#68E868'>请在微信客户端打开页面</p>";
+             swal({
+             title: '您好，请使用微信客户端浏览！',
+             text: "即将跳转-制作宝-首页",
+             confirmButtonColor: "#DD6B55",
+             confirmButtonText: "确定",
+             closeOnConfirm: false
+             },
+             function(isConfirm) {
+             if (isConfirm) {
+             window.location.href="/users/home";
+             }
+             })
+             return false;
+             }
+             }
+             isWeiXin()
+        }
+    </script>
+    <script>
+        $(function(){
+            var toArea=window.localStorage.getItem("area");
+            if(toArea=="null" ||toArea==""||toArea==null){
+                var toArea="湖北/武汉";
+                window.localStorage.setItem("area",toArea );
+            }else{
+                window.localStorage.setItem("area", toArea);
+            }
+
+            $(".city-select").click(function(){
+                //var mmmm= finalText
+                setTimeout(function(){
+                    var homelocation=$(".homelocation").val();
+                    window.localStorage.setItem("area", homelocation);
+                },0)
+            })
+            window.localStorage.setItem("area", toArea);
+            $("#searchInput").on('keypress',function(e){
+                var keycode = e.keyCode;
+                var searchName = $(this).val();
+                var homelocation=$('.homelocation').val();
+                if(keycode=='13') {
+                    e.preventDefault();
+                window.location.href=searchName!=""&&searchName?'weFixList?text='+escape(searchName):'weFixList'
+                }
+            });
+            /*$(".lmIndexKindsList").on("click",".lmIndexKindsListImg,.lmIndexKindsListIntrotitle",function(){
+                var tops=document.body.scrollTop;
+                sessionStorage.setItem("top",tops);
+                //alert(tops)
+            })*/
+            $(".lmIndexListKinds").on("click",function(){
+                sessionStorage.clear()
+            })
+
+            //点击跳转去详情页
+            $(".lmIndexKindsListNum").click(function(){
+                var Oval = $(this).children("input").val();
+                window.location.href="weMakeDetail?value="+Oval;
+            })
+
+            //地区点击遮罩层弹出
+            /*$(".weMyContainer").on("click",".city-picker-span",function(){
+                alert(0)
+            })*/
+            $(".city-picker-span").click(function(){
+                var Oheight = $(document).height();
+                $(".fixedCover").css({height:Oheight})
+                $(".fixedCover").show();
+            })
+            $(".fixedCover").click(function(){
+                $(this).hide()
+            })
+
+        })
+        function delHtmlTag(str){
+            return str.replace(/<[^>]+>/g,"");//去掉所有的html标记
+        }
+        for(var i=0;i<=$('.lmIndexKindsListNum').length;i++){
+            var tagCon = $(".lmIndexKindsListIntrodital>span").eq(i).text();
+            $(".lmIndexKindsListIntrodital>span").eq(i).text(delHtmlTag(tagCon));
+        }
+        function backStatus() {
+            sessionStorage.setItem("backStatus","0");
+            var iTops=document.body.scrollTop;
+            sessionStorage.setItem("iTops",iTops)
+        }
+        /*var pTops =parseInt(sessionStorage.getItem("iTops"));
+        if(pTops>0){
+            document.body.scrollTop=pTops ;
+        }else{
+            document.body.scrollTop = 0 ;
+        }*/
+
+    </script>
+
+</body>
+</html>
+

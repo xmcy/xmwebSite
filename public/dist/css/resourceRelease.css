@@ -1,0 +1,31 @@
+.Head .adLogo{
+    display:inline-block;
+    width: 164px;
+    height:80px;
+    position: absolute;
+    left: 200px;
+    background-image: url(../images/guanggaoquan.png);
+    background-position: -3px -2px;
+    overflow: hidden;
+}
+.releaseStep>div{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    background-image: url(../images/resourceRelease.png) ;
+}
+
+form .selectIcon{
+    width: 30px;
+    height: 25px;
+    top: 25px;
+    left: 455px;
+    background: url(../images/resourceRelease.png)  -196px -19px;
+    z-index: -99;
+}
+form .budget_annotation>div{
+    width: 25px;
+    height: 21px;
+    display: inline-block;
+    background: url(../images/resourceRelease.png) -65px -10px;
+}

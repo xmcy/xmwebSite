@@ -1,0 +1,303 @@
+<style>
+
+	.login-content>.content>.container{
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	.login-content>.content>.container>.login{
+		width: 128px;
+		height: 30px;
+		position: absolute;
+		top:15px;
+		left: 91px;
+		text-align: center;
+		line-height: 30px;
+		color: #bbbaba;
+		font-size: 15px;
+	}
+	.login-content>.content>.container>.form-container-tele{
+		/*margin-top: 20px;*/
+		position: absolute;
+		left: 0;
+		top: 40px;
+		height: 100%;
+		width: 100%;
+	}
+	.login-content>.content>.container>.form-container-tele>form{
+		width: 100%;
+		height: 100%;
+		position: relative;
+		margin-top: 20px;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regTele{
+		width: 248px;
+		height: 36px;
+		position: absolute;
+		top: 5px;
+		left: 32px;
+		border: 1px solid #D8D9D9;
+
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regTele>i:first-of-type{
+		background-position:10px -67px;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regTele>input{
+		height: 36px;
+		width: 141px;
+		padding-left: 8px;
+		border: none;
+		float: left;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regTele>.intervalBtn{
+		display: block;
+		width: 55px;
+		height: 24px;
+		background-color: #da2f2f;
+		position: absolute;
+		right: 2px;
+		top: 6px;
+		border: 1px solid red;
+		border-radius: 3px;
+		font-size: 12px;
+		text-align: center;
+		line-height: 24px;
+		color: white;
+		cursor: pointer;
+	}
+	/*.login-content>.content>.container>.form-container-tele>form>.regTele>.intervalBtn>a{*/
+
+	/*}*/
+
+	.login-content>.content>.container>.form-container-tele>form>.regTele-tip{
+		width: 248px;
+		height: 30px;
+		position: absolute;
+		top: 38px;
+		left: 32px;
+		padding-top: 6px;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regTele-tip>div>span{
+		color: #e25e5e;
+		font-size: 12px;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regQr{
+		width: 248px;
+		height: 36px;
+		position: absolute;
+		top: 75px;
+		left: 32px;
+		border: 1px solid #D8D9D9;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regQr>i:first-of-type{
+		background-position:9px -3px;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regQr>input{
+		height: 36px;
+		width: 198px;
+		padding-left: 8px;
+		border: none;
+		float: left;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regQr-tip{
+		width: 248px;
+		height:30px;
+		position: absolute;
+		top: 105px;
+		left: 32px;
+		padding-top: 6px;
+	}
+
+	.login-content>.content>.container>.form-container-tele>form>.regQr-tip>div>span{
+		color: #e25e5e;
+		font-size: 12px;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.reqPwd{
+		width: 248px;
+		height: 36px;
+		position: absolute;
+		top: 140px;
+		left: 32px;
+		border: 1px solid #D8D9D9;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.reqPwd>i:first-of-type{
+		background-position:-75px -65px;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.reqPwd>input{
+		height: 36px;
+		width: 198px;
+		padding-left: 8px;
+		border: none;
+		float: left;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regAgainPwd{
+		width: 248px;
+		height: 36px;
+		position: absolute;
+		top: 205px;
+		left: 32px;
+		border: 1px solid #D8D9D9;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regAgainPwd>i:first-of-type{
+		background-position:-130px -67px;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regAgainPwd>input{
+		height: 36px;
+		width: 198px;
+		padding-left: 8px;
+		border: none;
+		float: left;
+	}
+
+	.login-content>.content>.container>.form-container-tele>form>.regAgainPwd-tip{
+		width: 248px;
+		height: 25px;
+		position: absolute;
+		top: 234px;
+		left: 32px;
+		padding-top: 6px;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regAgainPwd-tip>div>span{
+		color: #e25e5e;
+		font-size: 12px;
+	}
+
+	.login-content>.content>.container>.form-container-tele>form>.errorMessage{
+		width: 250px;
+		height: 25px;
+		position: absolute;
+		top:  261px;
+		left: 35px;
+		font-size: 12px;
+		color: #da2f2f;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regAgreePro{
+		height: 25px;
+		width: 250px;
+		position: absolute;
+		top: 280px;
+		left: 37px;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regAgreePro>input{
+		/*margin-top: 4px;*/
+		display: block;
+		width: 15px;
+		height: 15px;
+		float: left;
+		margin-top: 3px;
+	}
+	.login-content>.content>.container>.form-container-tele>form>.regAgreePro>a{
+		font-size: 13px;
+		color: #bbbaba;
+		display:inline-block ;
+		height: 20px;
+		width: 220px;
+		line-height: 20px;
+		margin-left: 3px;
+		margin-bottom: 3px;
+		float: left;
+	}
+
+	.login-content>.content>.container>.form-container-tele>form>input[type="submit"]{
+		width: 248px;
+		height: 38px;
+		position: absolute;
+		bottom: 80px;
+		left: 32px;
+		font-size: 18px;
+		color: white;
+		background-color: #da2f2f;
+		border: 1px solid #da2f2f;
+		border-radius: 3px;
+		cursor: pointer;
+
+	}
+	.ng-cloak { display: none; }
+	.clickChange{
+		background-color: #d8d8d8 !important;
+		border: none !important;
+	}
+	.reg-green-check-ok{
+		display: block;
+		position: absolute;
+		width: 18px;
+		height: 20px;
+		right:-25px;
+		top: 10px;
+		border: none;
+		background-image: url(/themes/lanmai/images/regandloginicon.png);
+		background-position:-110px -44px;
+	}
+	.reg-first-i{
+		display: block;
+		width: 40px;
+		height: 36px;
+		float: left;
+		border-right: 1px solid #D8D9D9;
+		background-image: url(/themes/lanmai/images/regandloginicon.png);
+	}
+	.reg-tip-div-i{
+		display: block;
+		float: left;
+		width: 16px;
+		height: 18px;
+		margin-right: 5px;
+		background-image:url(/themes/lanmai/images/regandloginicon.png) ;
+		background-position: -83px -18px;
+	}
+
+
+</style>
+<div class="content clearfix" ng-controller="regController">
+				<div class="container">	
+					<a class="login" href="/users/login">
+						已有账户？<span style="color:#2C9ADE">去登录</span>
+					</a>
+					<!--注册-->
+					<div class="form-container-tele">
+						<form  name="tele"   novalidate="novalidate" ng-submit="regUser()">
+						<div class="regTele">
+							<i class="reg-first-i"></i>
+							<input type="text" id="phoneNum"  ng-pattern="/^1[34578]\d{9}$/"
+								 ng-model="phoneNum" name="phoneNum" autocomplete="off" placeholder="手机号" required />
+							<div down-tick ></div>
+							<i class="reg-green-check-ok" ng-show="tele.phoneNum.$dirty&&tele.phoneNum.$valid"></i>
+						</div>
+						<div class="regTele-tip" >
+							<div ng-show="tele.phoneNum.$dirty&&tele.phoneNum.$invalid&&phoneNum.length">
+								<i class="reg-tip-div-i"></i><span>手机号不存在</span>
+							</div>
+						</div>
+						<div class="regQr">
+							<i class="reg-first-i"></i>
+							<input type="text" id="code" name="code" value="" ng-model="code"
+								autocomplete="off" placeholder="动态验证码" required />
+							<i class="reg-green-check-ok" ng-show="tele.code.$dirty&&tele.code.$valid"></i>
+						</div>
+						<div class="regQr-tip" >
+							<div ng-show="tele.code.$dirty&&tele.code.$invalid">
+								<i class="reg-tip-div-i"></i><span>验证码不能为空</span>
+							</div>
+						</div>
+						<div class="reqPwd">
+							<i class="reg-first-i"></i>
+							<input type="password" id="password" name="password" value="" ng-model="password"
+								autocomplete="off" placeholder="设置密码(6-12位)" required />
+							<i class="reg-green-check-ok" ng-show="tele.password.$dirty&&tele.password.$valid"></i>
+						</div>
+						<div class="regAgainPwd">
+							<i class="reg-first-i"></i>
+							<input type="text" id="inviteCode" name="inviteCode" value=""
+								ng-model="inviteCode" autocomplete="off" placeholder="邀请码（选填）"  />
+						</div>
+						<div class="errorMessage">{{errorMessage}}</div>
+						<div class="regAgreePro">
+							<input type="checkbox" name="regAgreePro" id="regAgreePro" ng-model="regAgreePro" value=""  required/>
+							<a href="/users/helperCenter#7" target="_blank">阅读并同意 《制作宝用户注册协议》</a>
+						</div>
+						<input type="submit" draggable value="注 册"  ng-class="{disableBtn:tele.$invalid}" ng-disabled="tele.$invalid"/>
+					</form>
+					</div>
+				</div>
+			</div>
+

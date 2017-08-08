@@ -1,0 +1,73 @@
+<style>
+
+	.checkStep > ul{
+		width: 450px;
+	}
+	.checkStep > ul > li{
+		width: 25%;
+		text-align: left;
+	}
+	.certificatContent{
+		margin-top: 57px;
+		width: 650px;
+		margin: 0 auto;
+	}
+	.certificatContent>div{
+		margin-bottom: 30px;
+	}
+	.certificatContent>div>span:first-child{
+		height: 35px;
+		display: inline-block;
+		width: 65px;
+		margin:0 45px 0 45px;
+		vertical-align: top;
+	}
+	.certificatContent button{
+		margin-left: 160px;
+		width: 202px;
+		height: 40px;
+	}
+	.uploadimg1>img{
+		height: 160px;
+		width: 230px;
+		margin-right: 10px;
+	}
+	.uploadimg1{
+		display: inline-block;
+		height: 188px;
+		width:480px;
+		background:none !important;
+	}
+</style>
+<div class="identify2">
+			    	<h2>认证管理</h2>
+			    	<div class="checkStep">
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_one_active"></div>
+			    		<div class="navStep stepNotyet"></div><div class="nav_step_logo step_two_active"></div>
+			    	    <div class="navStep stepNotyet"></div><div class="nav_step_logo step_three_notyet"></div>
+						<div class="navStep stepNotyet"></div>
+			    	    <ul>
+		    	    		<li>填写信息</li>
+		    	    		<li class="redFont">等待审核</li>
+		    	    		<li>完成认证</li>
+			    	    </ul>
+			    	</div>
+					<div class="certificatContent">
+						<div class="">
+							<span id="">真实姓名</span><span><%=Identifying2Data.realName%></span>
+						</div>
+						<div class="">
+							<span id="">身份证号</span><span><%=Identifying2Data.idCardNum%></span>
+						</div>
+						<div class="">
+							<span id="">手机号</span><span><%=userInfo.phoneNum%></span>
+						</div>
+						<div class="">
+							<span id="">上传证件</span><a> <div class="uploadimg1">
+									<img src="<%=Identifying2Data.frontImg%>" alt="身份证正面"><img src="<%=Identifying2Data.backImg%>" alt="身份证反面">
+								</div></a>
+						</div>
+						<button>审 核 中</button>
+					</div>
+
+			    </div>

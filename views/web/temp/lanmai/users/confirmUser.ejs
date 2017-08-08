@@ -1,0 +1,23 @@
+<link href="/themes/<%=staticforder%>/css/confirmUser.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+<div class="reset-content" ng-controller="confirmController">
+				<div class="icon"></div>
+				<div class="user">当前用户名：{{userName}}</div>
+				<form ng-submit="resetSecond()" name="tele" novalidate>
+					<div class="userwapper">
+						<input type="text" class="username" id="phoneNum" value="" name="phoneNum" ng-model="phoneNum" ng-disabled="true" />
+						<div down-tick></div>
+					</div>
+					<input type="text"  class="code" id="code" name="code" value="" ng-model="code"
+						   autocomplete="off" placeholder="验证码" required />
+					<div class="wrapper">
+						<div class="code-tip" >
+							<div ng-show="tele.code.$dirty&&tele.code.$invalid">
+								<i class="login-tip-div-i"></i><span>验证码不能为空</span>
+							</div>
+						</div>
+
+					</div>
+					<div class="errorMessage">{{errorMessage}}</div>
+					<input type="submit" class="submitBtn" ng-class="{disableBtn:tele.$invalid}" value="提    交" ng-disabled="tele.$invalid"/>
+				</form>
+			</div>

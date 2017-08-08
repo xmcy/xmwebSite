@@ -1,0 +1,8 @@
+User-agent:*
+Disallow: /cache/
+Disallow: /api/
+Disallow: /plugins/
+Disallow: /adminlte/
+Disallow: /ueditor/
+
+Sitemap:http://www.91zhizuo.com/sitemap.xml

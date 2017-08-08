@@ -1,0 +1,162 @@
+<style type="text/css">
+    .bottom_lanmai{
+        margin-top: 250px;
+    }
+    .demandContent{
+        clear: both;
+        margin-top: 45px;
+    }
+    #pagination {
+        margin-left: 255px;
+        margin-top:-30px;
+    }
+    ul.pagination>li>a{
+        margin-right: 6px;
+    }
+    .demand_trade{
+        width: 120px;
+    }
+    .demand_area{
+        width: 160px;
+        left: 220px;
+    }
+    .demand_budget{
+        left: 390px;
+        width: 120px;
+    }
+    .demand_sketch{
+        left: 520px;
+        width: 60px;
+    }
+    .demand_skin{
+        left: 610px;
+    }
+    .demand_skin,.demand_handle{
+        width: 80px;
+    }
+    .demand_handle{
+        left: 730px;
+    }
+    .demand_status{
+        left: 860px;
+        width: 180px;
+    }
+    .demand_status>ul>li{
+        float: left;
+        width: auto;
+        margin-right: 20px;
+    }
+    .selector{
+        margin-top: 40px;
+        height: 80px;
+        padding-left: 18px;
+    }
+    .selector>ul{
+        height: 30px;
+        margin-bottom: 10px;
+    }
+    .selector>ul>li{
+        float: left;
+        height: 30px;
+        line-height: 30px;
+    }
+    .demandContent{
+        margin-top: 10px;
+    }
+    .selector>ul>li>input[type=text]{
+        width: 170px;
+        height: 26px;
+        margin: 0 6px;
+    }
+    .selector>ul>li>input[type=checkbox]{
+        float: left;
+        margin: 8px 2px 0 40px;
+        width: 16px;
+        height: 16px;
+    }
+    .selector>ul>.conllectSearch{
+        float: right;
+        height: 30px;
+        width:160px;
+        background:rgb(246,205,177);
+        margin-right: 0;
+    }
+    .conllectSearch>input{
+        float: left;
+        height: 29px;
+        width:120px;
+        border: 3px solid rgb(246,205,177);
+        margin: 0;
+        padding: 0;
+        outline: none;
+    }
+    .searchIcon{
+        float: right;
+        width: 40px;
+        height: 27px;
+        background: #f6cdb1 url(/themes/lanmai/images/accountSetIcon.png) 379px 984px;
+        cursor: pointer;
+        outline: none;
+    }
+    .sign{
+        margin-left: 40px;
+    }
+</style>
+
+<link href="/plugins/datetimePicker/dateSelect.css" rel="stylesheet">
+<script src="/plugins/datetimePicker/dateSelect.js"></script>
+<div class="myDemand" ng-controller="userinfoController">
+    <h2>注册用户信息</h2>
+    <div class="selector">
+        <ul>
+            <li>筛选用户 ：</li>
+            <li><input  type="text" id="date1" />  至  <input class="geryborder" type="text" id="date2" /></li>
+        </ul>
+        <ul>
+            <li class="sign"><input type="checkbox"/>标记</li>
+            <li><input type="checkbox"/>资源数</li>
+            <li><input type="checkbox"/>精准推广</li>
+            <li><input type="checkbox"/>品牌推广</li>
+            <li class="conllectSearch"><input ng-model="text"/><span class="searchIcon"></span></li>
+        </ul>
+    </div>
+    <div class="demandContent">
+        <div class="demandList  bgGrey">
+            <div class="demand_categories">用户名</div>
+            <div class="demand_trade">注册时间</div>
+            <div class="demand_area">认证情况</div>
+            <div class="demand_budget">联系方式</div>
+            <div class="demand_sketch">资源数</div>
+            <div class="demand_skin">精准推广</div>
+            <div class="demand_handle">品牌推广</div>
+            <div class="demand_status">操作</div>
+        </div>
+        <div class="demandList"  >
+            <div class="demand_categories">再得瑟</div>
+            <div class="demand_trade">2017-08-08</div>
+            <div class="demand_area">个人认证 企业认证</div>
+            <div class="demand_budget">13898876655</div>
+            <div class="demand_sketch"><span class="titleOverflow"></span>8条</div>
+            <div class="demand_skin">6条</div>
+            <div class="demand_handle">是</div>
+            <div class="demand_status">
+                <ul>
+                    <li><a class="redFont">标记</a></li>
+                    <li><a class="blueColor">发短信</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="littlemargin" >暂无任何用户</div>
+    </div>
+    <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+                next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+                items-per-page="itemsPerPage">
+
+    </pagination>
+</div>
+<script>
+    $(function () {
+        $("#date1").dateSelect();
+        $("#date2").dateSelect();
+    })
+</script>

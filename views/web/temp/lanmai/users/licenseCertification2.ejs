@@ -1,0 +1,89 @@
+<style type="text/css">
+	.uploadLicenseimg{
+		display: inline-block;
+		height: 188px !important;
+		width:240px !important;
+		background:none !important;
+	}
+
+	.uploadLicenseimg>img{
+		height: 160px;
+		width: 230px;
+	}
+	.certificatContent{
+		margin-top: 57px;
+		padding-left: 275px;
+	}
+	.certificatContent>div{
+		margin-bottom: 30px;
+	}
+	.certificatContent>div span:first-child{
+		height: 36px;
+		display: inline-block;
+		width: 65px;
+		margin:0 45px 0 45px;
+		vertical-align: top;
+	}
+	.certificatContent>div>input{
+		border: 1px solid rgb(112,112,112);
+		width: 202px;
+	}
+	.certificatContent .dateLine{
+		width: 80px;
+		margin-left: 10px;
+		margin-top: 2px;
+		border: 1px solid rgb(112,112,112);
+	}
+	.certificatContent .checkDate{
+		position: relative;
+		margin-bottom: 20px;
+	}
+	.certificatContent .checkDate>input{
+		position: absolute;
+		top: -6px;
+		left: 153px;
+		width: 14px;
+		height: 15px;
+	}
+	/*.certificatContent .checkRemind{*/
+		/*position: absolute;*/
+		/*top: -5px;*/
+		/*left: 214px;*/
+		/*font-size:13px;*/
+		/*color:rgb(275,170,111);*/
+	/*}*/
+	.certificatContent .remindForlong{
+		position: absolute;
+		top: 0px;
+		left:160px;
+		font-size: 14px;
+	}
+	.certificatContent .uploadRemind{
+		display: block;
+		margin-left: 154px;
+	}
+	.certificatContent button{
+		margin-left: 154px;
+		width: 202px;
+		height: 40px;
+	}
+</style>
+<div class="license">
+			    		<div class="checkStep">
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_one_active"></div>
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_two_active"></div>
+			    		<div class="navStep stepNotyet"></div><div class="nav_step_logo step_three_notyet"></div>
+			    	    <div class="navStep stepNotyet"></div>
+			    	    <ul>
+		    	    		<li>填写信息</li>
+				    		<li class="redFont">等待审核</li>
+				    		<li>审核结果</li>
+			    	    </ul>
+				    	</div>
+				    	<form class="certificatContent">
+				    		<div class="">
+				    			<span id="">上传凭证</span><a href="<%=LicenseCertification2Data.img%>" target="_blank"><div class="uploadLicenseimg"><img src="<%=LicenseCertification2Data.img%>/230.160" alt="凭证"></div></a>
+				    		</div>
+				    		<button>审核中</button>
+				    	</form>
+			    	</div>

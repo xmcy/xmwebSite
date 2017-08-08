@@ -1,0 +1,178 @@
+
+<div class="row" ng-controller="addEbookManage">
+    <input type="hidden" id="isEdit" value="<%=editIs%>">
+    <div class="col-xs-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <div class="alert alert-success alert-dismissable fade in hide" role="alert" id="addSuccess">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <p><i class="icon fa fa-check"></i> <strong>恭喜！</strong>内容添加成功</p>
+                </div>
+                <p class="myInfoBox bg-warning text-warning"><i class="icon fa fa-warning"></i> 信息填写完整无误才可提交</p>
+            </div>
+            <div class="box-body">
+                <%if(editIs){%>
+                <form role="form" class="form-horizontal" name="myForm"  novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">地区（省份）</label>
+                        <div class="col-sm-5">
+                            <div style="position:relative; left: 0px;top: 0px;"  ng-model="region" >
+                                <input readonly type="text" data-toggle="city-picker" value="<%=addEbookManage.doc.region.province%>/<%=addEbookManage.doc.region.city%>/<%=addEbookManage.doc.region.district%>" name="region" id="region"required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">标题</label>
+                        <div class="col-sm-3">
+                            <input type="hidden" id="title" value="<%=addEbookManage.doc.title%>">
+                            <input type="text" class="form-control input-sm"  name="title"  ng-model="formData.title"  required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.title.$invalid && !myForm.title.$pristine"><i class="fa fa-times-circle-o"></i> 标题非空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">封面</label>
+                        <div class="modifyPic col-sm-4 ">
+                            <div class="shoplogo "></div>
+                            <input  class="updatelogo col-md-4" type="file" name="" id="updatelogo" value=""/>
+                            <img src="<%=addEbookManage.doc.coverImg%>"/>
+                            <span class="tip">点击图片可重新修改Logo</span>
+                        </div>
+                    </div>
+                    <div class="form-group"></div>
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">在线浏览地址</label>
+                        <div class="col-sm-5">
+                            <input type="hidden" id="onlineView" value="<%=addEbookManage.doc.onlineView%>">
+                            <input type="text" class="form-control input-sm"  name="onlineView"  ng-model="formData.onlineView" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.onlineView.$invalid && !myForm.onlineView.$pristine"><i class="fa fa-times-circle-o"></i>在线浏览地址非空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">下载地址</label>
+                        <div class="col-sm-5">
+                            <input type="hidden" id="downloadUrl" value="<%=addEbookManage.doc.downloadUrl%>">
+                            <input type="text" class="form-control input-sm"  name="downloadUrl"   ng-model="formData.downloadUrl" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.downloadUrl.$invalid && !myForm.downloadUrl.$pristine"><i class="fa fa-times-circle-o"></i>下载地址非空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">在线浏览量</label>
+                        <div class="col-sm-5">
+                            <input type="hidden" id="onlineConut" value="<%=addEbookManage.doc.onlineConut%>">
+                            <input type="text" class="form-control input-sm" name="onlineConut"  ng-model="formData.onlineConut" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">下载量</label>
+                        <div class="col-sm-5">
+                            <input type="hidden" id="downloadConut" value="<%=addEbookManage.doc.downloadConut%>">
+                            <input type="text" class="form-control input-sm" name="downloadConut"  ng-model="formData.downloadConut" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="processForm(myForm.$valid)">发布</a>
+                    </div>
+                </form>
+                <%}else{%>
+                <form role="form" class="form-horizontal" name="myForm"  novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">地区（省份）</label>
+                        <div class="col-sm-5">
+                            <div style="position:relative; left: 0px;top: 0px;">
+                                <input readonly type="text" data-toggle="city-picker" value="" name="region" id="region" ng-model="region" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">标题</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-sm" name="title"  ng-model="formData.title" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.title.$invalid && !myForm.title.$pristine"><i class="fa fa-times-circle-o"></i> 标题非空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">封面</label>
+                        <div class="modifyPic col-sm-4 ">
+                            <div class="shoplogo "></div>
+                            <input  class="updatelogo col-md-4" type="file" name="" id="updatelogo" value=""/>
+                            <img src=""/>
+                            <span class="tip">点击图片可重新修改Logo</span>
+                        </div>
+                    </div>
+                    <div class="form-group"></div>
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">在线浏览地址</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control input-sm" name="onlineView"  ng-model="formData.onlineView" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.onlineView.$invalid && !myForm.onlineView.$pristine"><i class="fa fa-times-circle-o"></i>在线浏览地址非空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">下载地址</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control input-sm" name="downloadUrl"  ng-model="formData.downloadUrl" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.downloadUrl.$invalid && !myForm.downloadUrl.$pristine"><i class="fa fa-times-circle-o"></i>下载地址非空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">在线浏览量</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control input-sm" name="onlineConut"  ng-model="formData.onlineConut" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">下载量</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control input-sm" name="downloadConut"  ng-model="formData.downloadConut" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="processForm(myForm.$valid)">发布</a>
+                    </div>
+                </form>
+                <%}%>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    $(function () {
+        $("input[type='file']").change(function(e) {
+            var that = this;
+            var file = this.files[0];
+            var fileType=file.type.split('/')[1];
+            $.getCos("promotion/ebook","",fileType,file, function (res) {
+                console.log(res)
+                $(that).next().attr("src", res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+                $(".tip").show()
+                $(".tip").scope().coverImg= res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net');
+            })
+        });
+        document.addEventListener("listen", function (e) {
+            $("#region").scope().region=finalText;
+            $("#region").scope().$apply();
+        }, false);
+
+        if($("#isEdit").val()=="true"){
+            $("#region").scope().region=$("#region")[0].defaultValue;
+            $("#region").scope().formData.title=$("#title").val();
+            $("#region").scope().formData.onlineConut=$("#onlineConut").val();
+            $("#region").scope().formData.downloadConut=$("#downloadConut").val();
+            $("#region").scope().formData.title=$("#title").val();
+            $("#region").scope().formData.onlineView=$("#onlineView").val();
+            $("#region").scope().coverImg=$(".modifyPic img").attr("src");
+            $("#region").scope().formData.downloadUrl=$("#downloadUrl").val();
+            $("#region").scope().isEdit=true;
+            $("#region").scope().$apply();
+        }
+
+
+    })
+
+</script>
+

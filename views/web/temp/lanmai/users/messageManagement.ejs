@@ -1,0 +1,249 @@
+<style>
+	.bottom_lanmai{
+		margin-top: 250px;
+	}
+	.conllectInfo_list>.status{
+		width: 180px;
+		margin: 0 auto;
+		height: 35px;
+	}
+	.conllectInfo_list>.status>li{
+		list-style: none;
+		float: left;
+		width:85px ;
+		height: 35px;
+		line-height: 35px;
+		margin-right: 5px;
+		border: 1px gainsboro solid;
+		border-radius: 4px;
+		color: rgb(112,112,112);
+		text-align: center;
+		font-size: 14px;
+	}
+	.conllectInfo_list .messegeCount{
+		margin-top:27px;
+		width: 225px;
+		height: 30px;
+		font-size: 15px;
+		color: rgb(112,112,112);
+		border: none;
+	}
+	.conllectInfo_list .messegeCount p{
+		float: left;
+		margin-top: 3px;
+		margin-left: 20px;
+	}
+	.conllectInfo_list .messegeCount span{
+		margin: 0 3px 0 3px;
+	}
+	.conllectInfo_list .messegeCount select{
+		float: right;
+		border: 1px solid gainsboro;
+		width: 60px;
+		height: 22px;
+		outline: none;
+	}
+	.conllectInfo_list>.conllectInfo{
+		color: rgb(112,112,112);
+		background-color: rgb(246,244,244);
+	}
+	.conllectInfo_list>.conllectInfo>li{
+		line-height: 58px;
+		border-bottom: 2px solid #FFFFFF;
+		font-size: 15px;
+		font-weight: 600 ;
+	}
+	.conllectInfo_list>.conllectInfo>li>.conllectInfoWrapper{
+		height: 58px;
+		line-height: 58px;
+		position: relative;
+	}
+	.conllectInfo_list>.conllectInfo>li>div>.checkone{
+		background-color: #FFFFFF;
+		position: absolute;
+		top:21px;
+		left:30px;
+		width: 17px;
+		height: 17px;
+		border: 1px solid rgb(157,156,156);
+		overflow: hidden;
+	}
+	.conllectInfo_list>.conllectInfo>li>div>.checkone>input{
+		display: block;
+		margin-top: -1px;
+		margin-left: -1px;
+		width: 20px;
+		height: 20px;
+	}
+	.conllectInfo_list>.conllectInfo>li:first-child>div>div:first-child{
+		visibility: hidden;
+	}
+	.conllectInfo_list>.conllectInfo>li>div>.messegeStatus{
+		position: absolute;
+		right: 100px;
+		width: 73px;
+	}
+	.conllectInfo_list>.conllectInfo>li>div>.deletehandle{
+		position: absolute;
+		right: 0px;
+		width: 73px;
+	}
+	.conllectInfo_list>.conllectInfo .messegeSender{
+		position: absolute;
+		left:110px;
+		text-align: center;
+	}
+	.conllectInfo_list>.conllectInfo .conllectTitle{
+		position: absolute;
+		left:225px;
+		text-align: center;
+	}
+	.conllectInfo_list>.conllectInfo .conllectTime{
+		width:116px;
+		position: absolute;
+		right:225px;
+		text-align: center;
+	}
+	.conllectInfo_list>.conllectInfo>li:first-child .messegeIcon{
+		visibility: hidden;
+	}
+	.conllectInfo_list>.checkall{
+		margin-top: 25px;
+		margin-left:30px;
+		height: 30px;
+	}
+	.conllectInfo_list>.checkall>div{
+		float: left;
+		margin-top:4px;
+		margin-right: 17px;
+		width: 17px;
+		height: 17px;
+		border: 1px solid rgb(157,156,156);
+		overflow: hidden;
+	}
+	.conllectInfo_list>.checkall>div>input{
+		margin-top: -1px;
+		margin-left: -1px;
+		width: 21px;
+		height:21px;
+		background-color: #FFFFFF;
+	}
+	.conllectInfo_list>.checkall>span{
+		font-size: 15px;
+		color: rgb(112,112,112);
+		cursor: pointer;
+	}
+	.conllectInfo_list>.checkall>button{
+		font-size: 15px;
+		margin-left:35px;
+		color: rgb(112,112,112);
+		border: 1px solid rgb(112,112,112);
+		background-color: rgb(246,244,244);
+		padding:1px 5px;
+	}
+	.conllectInfo_list>.conllectInfo>li>.specificinfo{
+		z-index: 999;
+		width:100% ;
+		border: 1px solid gainsboro;
+		border-top: none;
+		background-color: #fff;
+		font-weight: 400;
+	}
+	.conllectInfo_list>.conllectInfo>li>.specificinfo>div{
+		width: 90%;
+		margin: 0 auto;
+	}
+	.conllectInfo_list>.conllectInfo>li>.specificinfo>div>h4{
+		padding-top: 20px;
+	}
+	.conllectInfo_list>.conllectInfo>li>.specificinfo>div>span{
+		margin-right: 50px;
+	}
+	.conllectInfo_list>.conllectInfo>li>.specificinfo>div>p{
+		margin-bottom: 30px;
+		line-height: 32px;
+	}
+	#pagination{
+		margin-left:30%;
+		margin-bottom: 100px;
+	}
+	ul.pagination>li>a{
+		margin-right:8px;
+	}
+	.fontweight{
+		font-weight: 400 !important;
+	}
+	.consult{
+		margin-top: 20px;
+		margin-left: 36px;
+	}
+</style>
+<div class="conllectInfo_list" ng-controller="messageManagementController">
+				    	<h2>消息管理</h2>
+				    	<ul class="status">
+				    		<li ng-click="changeForm(1)" ng-class="{redBorder:flag}"><a>系统消息</a></li>
+				    		<li ng-click="changeForm(2)" ng-class="{redBorder:!flag}"><a>客户咨询</a></li>
+				    	</ul>
+
+						<div class="messegeCount" ng-show="flag">
+								<p>共<span class="redFont">{{dataList.length}}</span>条消息<span class="redFont">{{dataList|noReadCount}}</span>条未读</p>
+							<select ng-init="isRead = sites[0]" ng-model="isRead" ng-options="x.url for x in sites" ng-change="isReadChange()">
+							</select>
+
+						</div>
+						<div class="messegeCount" ng-show="!flag">
+							<p>共<span class="redFont">0</span>条消息<span class="redFont">0</span>条未读</p>
+							<select>
+								<option>全部</option>
+								<option>未读</option>
+								<option>已读</option>
+							</select>
+						</div>
+	                    <div class="consult" ng-show="!flag">制作宝欢迎您的咨询！</div>
+						<ul class="conllectInfo" ng-show="flag">
+							<li>
+								<div class="conllectInfoWrapper">
+									<div class="checkone"><input type="checkbox" ng-checked="selectAll" ng-model="conllectInfo.state1"/></div>
+									<span class="messegeIcon"></span>
+									<a  class="messegeSender">发件人</a>
+									<a class="conllectTitle"><span>消息内容</span></a>
+									<a class="conllectTime"><span>时间</span></a>
+									<span class="messegeStatus">状态</span>
+									<a class="deletehandle"><span>操作</span></a>
+								</div>
+							</li>
+							<div class="littlemargin" ng-if="!dataList.length">暂无任何消息</div>
+							<li class="toggleLi"  ng-repeat="item in dataList track by $index" ng-class="{fontweight:item.isRead}">
+								<div class="conllectInfoWrapper">
+									<div class="checkone">
+										<input id="{{accessors.getId(item)}}"  type="checkbox" ng-checked="selectAll" ng-model="item.state"/>
+									</div>
+									<span class="messegeIcon"></span>
+									<a  class="messegeSender" >管理员</a>
+									<a class="conllectTitle" ng-click="messageShow(accessors.getId(item),$index)"><span>{{item.notify.title}}</span></a>
+									<a class="conllectTime" ng-click="messageShow(accessors.getId(item),$index)"><span>{{item.date|timeFilter}}</span></a>
+									<span class="messegeStatus" ng-click="messageShow(accessors.getId(item),$index)">{{item.isRead|isresdfilter}}</span>
+									<a class="deletehandle" ><span ng-click="deleteone(item)">删除</span></a>
+
+								</div>
+								<div class="specificinfo" ng-if="index==$index">
+									<div>
+										<h4>标题：{{item.notify.title}}</h4>
+										<span>时间：{{item.date|timeFilter}}</span>
+										<p>
+											详细内容：{{item.notify.content|contentFilter}}
+										</p>
+									</div>
+								</div>
+							</li>
+
+						</ul>
+	                    <div  class="checkall" ng-show="flag">
+							<div><input type="checkbox" ng-model="selectAll" ng-click="all()"  /></div>
+							<span ng-click="all()">全选</span><button ng-click="deleteMany()">删除选中</button><button ng-click="handleMany()">设为已读</button>
+						</div>
+	            <pagination ng-show="flag" total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页" first-text="第一页" last-text="最后一页"
+				next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+				items-per-page="itemsPerPage"></pagination>
+
+			     </div>

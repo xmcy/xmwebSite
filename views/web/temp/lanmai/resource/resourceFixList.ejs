@@ -1,0 +1,637 @@
+<style type="text/css">
+	.warningInfoData{
+		margin: 0 auto;
+		width: 200px !important;
+		height: 50px !important;
+	}
+	.warningInfoData:hover{
+		background-color: #fff !important;
+
+	}
+	.paging{
+		clear: both;
+		width:100%;
+		height: 80px;
+		margin-bottom: 40px;
+	}
+	.paging>ul{
+		position: relative;
+		left: 250px;
+	}
+	body,a{
+		color: grey;
+	}
+	input,button{
+		outline: none;
+	}
+	.privateNav>ul{
+		float: right;
+		height: 22px;
+	}
+	.privateNav>ul>li{
+		height: 20px;
+		float: left;
+		width:85px;
+		text-align: center;
+		margin-right: 5px;
+	}
+	.privateNav>ul>li a{
+		color: #b0b0b0;
+	}
+	.privateNav .addmore{
+		display:inline-block;
+		width:0;
+		height:0;
+		border-left:5px solid transparent;
+		border-right:5px solid transparent;
+		border-top:7px solid grey;
+		margin: 0 7px 0 7px;
+	}
+	.city-picker-input {
+		font-size: 18px;
+		font-weight: 500;
+		color: rgb(112,112,112);
+		opacity: 1 !important;
+		width: 77px;
+		top:0;
+		left:0px;
+		position: absolute;
+		cursor: pointer;
+		background-color: #fff !important;
+		text-align: center;
+		z-index: -99;
+	}
+	.city-picker-span{
+		width: 138px ;
+		left: 0;
+	}
+	.city-select-content{
+		margin-top: 32px;
+	}
+	.select-item{
+		display: none;
+	}
+	.nav{
+		width: 100%;
+		font-size: 15px;
+		margin-bottom: 20px;
+		margin-top: 15px;
+	}
+	.nav>.categoeriesFixList{
+		display: block;
+		width: 1200px;
+	}
+	/*.nav>.categoeriesFixList>div{
+		border-top: 1px dotted #eeeeee;
+	}*/
+	.nav>.categoeriesFixList>div:last-child{
+		border-bottom: 1px solid #eeeeee;
+	}
+	.nav>div li{
+		cursor: pointer;
+	}
+	.allcategoery{
+		width: 100%;
+		border:none !important;
+		font-size: 14px;
+		height: 28px;
+		line-height: 28px;
+	}
+	.allcategoery>div{
+		float: left;
+		width:150px;
+		margin-right: 25px;
+		height:28px;
+		line-height:28px;
+		cursor: pointer;
+		position: relative;
+	}
+	.allcategoery>div>.navWord{
+		position: absolute;
+		top:0px;
+		left: 3px;
+		width: 136px;
+		text-align: center;
+		height:25px;
+		line-height:25px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		border: 0;
+	}
+	.allcategoery>.navcate{
+		width: 97px;
+		font-size: 16px;
+	}
+	.allcategoery>.navArea,.allcategoery>.navArea>.navWord{
+		width:100px;
+		display: none;
+	}
+	.allcategoery>div>.deleteIcon{
+		position: absolute;
+		top:1px;
+		right: 2px;
+	}
+	.allcategoery>ul>li{
+		float: left;
+		width:118px;
+		height:40px;
+		line-height:40px;
+		margin-right:5px;
+		text-align: left;
+	}
+	.allcategoery>ul>li>.deleteIcon{
+		display: inline-block;
+	}
+	.demandChoice{
+		float: left;
+		width: 85%;
+	}
+	.demandChoice>div{
+		float: left;
+		width: 70px;
+		height:40px;
+		line-height:40px;
+		margin-right: 30px;
+	}
+	.demandChoice>ul{
+		display: inline-block;
+		width: 90%;
+		height: 40px;
+		overflow: hidden;
+	}
+	.demandChoice>ul>li{
+		float: left;
+		height: 40px;
+		line-height: 40px;
+		width:110px;
+		text-align: center;
+		margin-right: 16px;
+	}
+	.demandChoice>ul>li:first-child,.budget>ul>li:first-child,.yunFeiPay>ul>li:first-child,.fixKinds>ul>li:first-child{
+		text-align: left!important;
+		width: 90px !important;
+	}
+	.demandChoice>ul>li>a{
+		display: inline-block;
+		height: 40px;
+		line-height:40px;
+	}
+	.chooseMore{
+		float: right;
+		width: 53px;
+		cursor: pointer;
+	}
+	.chooseArea,.budget{
+		clear: both;
+	}
+	.chooseArea>.clickchoose{
+		left: 100px !important;
+		top:0px !important;
+	}
+	.chooseArea>div{
+		display: inline-block;
+		margin-right:30px;
+		width: 70px;
+		height:40px;
+		line-height:40px;
+	}
+	.budget{
+		margin-bottom: 25px;
+	}
+	.budget>ul,.budget>div{
+		display: inline-block;
+		height: 40px;
+		line-height:40px;
+		margin-right: 1%;
+	}
+	.budget>div{
+		width: 70px;
+		float: left;
+		height:40px;
+		margin-right: 30px;
+	}
+	.budget>ul{
+		width:52%;
+	}
+	.budget>ul>li{
+		float: left;
+		height: 40px;
+		line-height:40px;
+		width: 110px;
+		text-align: center;
+		margin-right:16px;
+	}
+	.budget>.user_define{
+		float: right;
+		width: 36%;
+		position: relative;
+	}
+	.user_define>div,.user_define>span{
+		float: left;
+	}
+	.user_define>div{
+		width: 70px;
+		height: 20px;
+	}
+	.user_define>div>input{
+		width: 70px;
+		height: 22px;
+		border: 1px solid gainsboro;
+		font-size: 12px;
+		text-align: center;
+	}
+	.user_define>span{
+		margin:11px 10px 0 10px;
+		height: 20px;
+		line-height: 20px;
+	}
+	.budget .budgetSure{
+		position: absolute;
+		top: -2px;
+		right:-8%;
+		width: 45px;
+		height: 24px;
+		border-radius: 2px;
+		line-height: 22px;
+		border: 1px solid #da2f2f;
+		background-color:#da2f2f ;
+		color: #fff;
+		text-align: center;
+		cursor: pointer;
+	}
+	.contentLeft{
+		width: 74%;
+		float: left;
+		font-size: 15px;
+	}
+	.contentRight{
+		width:23%;
+		float: right;
+	}
+	.contentLeft>div{
+		position: relative;
+		width: 100%;
+		padding-left: 20px;
+		height: 80px;
+		margin-top: 15px;
+	}
+	.contentLeft>div:hover{
+		background-color:#f0f0f0 ;
+	}
+
+	.contentLeft>.contentHeader{
+		height: 30px;
+		background-color:#f0f0f0 ;
+		/*color: #767575;*/
+	}
+	.contentLeft>.contentHeader span{
+		margin-top: 0;
+	}
+	.contentLeft span{
+		position: absolute;
+		height: 30px;
+		line-height: 30px;
+		margin-top: 20px;
+	}
+	.contentLeft .industries{
+		left: 12%;
+	}
+	.contentLeft .area{
+		left: 21%;
+	}
+	.contentLeft .budget{
+		left: 28%;
+	}
+	.contentLeft .demand_summary{
+		left: 37%;
+	}
+	.contentLeft .demand_summary a{
+		margin-left: 6px;
+	}
+	.contentLeft .contacter{
+		left: 68%;
+	}
+	.contentLeft .contact_way{
+		left: 78%;
+	}
+	.contentLeft .skin{
+		left: 91%;
+		width: 50px;
+		text-align: center;
+	}
+	.sortingFixList{
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
+		background-color:#f0f0f0 ;
+	}
+	.sortingFixList>div,.sortingFixList>ul{
+		float: left;
+		color: #767575;
+		cursor: pointer;
+		font-size: 15px;
+	}
+	.sortingFixList>div{
+		margin-left: 20px;
+	}
+	.sortingFixList>ul{
+		margin-left: 35px;
+	}
+	.sortingFixList>ul>li{
+		float: left;
+		width: 85px;
+		margin-right: 15px;
+
+	}
+	.sortingFixList .hotLine{
+		float: right;
+		margin-right: 7px;
+		height: 40px;
+		line-height: 40px;
+		font-size: 18px;
+		color: #da2f2f;
+		background-color:#f0f0f0 ;
+	}
+	.promotbar{
+		width: 100%;
+		height: 272px;
+		background-color: #f0f0f0;
+		margin-top: 15px;
+	}
+	.promotbar>p{
+		font-size: 14px;
+		margin-left: 5px;
+	}
+	.promotbar>.promotePrice{
+		font-size: 14px;
+		color: #da2f2f;
+	}
+	.paging{
+		clear: both;
+		width:100%;
+		height: 80px;
+		margin-bottom: 40px;
+	}
+	.paging>p{
+		float: left;
+		margin: 2% 5% 0 20px;
+		height: 30px;
+	}
+	.paging>p>span{
+		margin-right: 10px;
+		font-size: 15px;
+	}
+	.paging>form{
+		display: inline-block;
+	}
+	.paging li{
+		float: left;
+		display: inline-block;
+		margin-right: 7px;
+	}
+	.pagination>li:first-child>a,.pagination>li:last-child>a{
+		border: none;
+		font-size: 15px;
+	}
+	.bandPromote{
+		width: 100%;
+	}
+	.bandPromoteTitle{
+		font-size: 18px;
+		color: #da2f2f;
+		background-color:#f0f0f0 ;
+		height: 50px;
+		line-height: 50px;
+		margin-bottom:50px;
+		padding-left: 20px;
+		font-weight:500;
+	}
+	.specificDemand{
+		width: 62%;
+		position: absolute;
+		left: 30%;
+		top: 78px;
+		background-color: #f7f5f5;
+		z-index: 999;
+		border: 2px solid #fd4848;
+		padding-right: 12px;
+		padding-left: 10px;
+	}
+	.specificDemand>h2{
+		margin: 20px 0 20px 0;
+		color: #555555;
+	}
+	.specificDemand>ul{
+		width: 100%;
+		height: 66px;
+	}
+	.specificDemand>ul>li{
+		float: left;
+		width: 33.33%;
+		height: 33px;
+		line-height: 33px;
+	}
+	.specificDemand>ul>li>span{
+		margin: 0;
+		height: 33px;
+		line-height: 33px;
+	}
+	.specificDemand>p{
+		display: block;
+		width: 100%;
+		margin:30px 0 20px 0;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 5;
+		overflow: hidden;
+	}
+	.header .current_position span.city-picker-span{
+		width: 85px !important;
+		height: 47px !important;
+		opacity: 0;
+		filter:alpha(opacity=0) !important;
+	}
+	.header .city-select-tab{
+		display: none;
+	}
+	.header .city-picker-input{
+		font-family: "微软雅黑" !important;
+	}
+	.form-control{
+		box-shadow:none; ;
+	}
+	.chooseArea .city-picker-span{
+		width: 230px !important;
+		border-bottom: none !important;
+		background: none !important;
+		height: 40px !important;
+		line-height: 40px !important;
+	}
+	.chooseArea .city-picker-span .arrow{
+		display: none ;
+	}
+	.chooseArea span.select-item{
+		color:#B0B0B0;
+	}
+	.chooseArea .city-picker-span{
+		width: 256px !important;
+	}
+	.chooseArea .city-picker-input{
+		width: 256px !important;
+		border: none !important;
+		text-align: left !important;
+		color:#B0B0B0 !important;
+		font-size: 15px;
+	}
+	.chooseArea .city-select-content{
+		margin-top: 0px !important;
+	}
+	.chooseArea .title{
+		display: none !important;
+	}
+	.chooseArea .title>span.select-item{
+		color:#B0B0B0 !important;
+	}
+	.fixListNum{
+		width: 100%;
+		background: #fff;
+		position: relative;
+		color:grey;
+		padding-bottom: 10px;
+		border-bottom: 1px dashed #c0c0c0;
+		margin-top: 10px;;
+	}
+	.fixListNum>ul{
+		list-style: none;
+		margin: 0 ;
+		padding: 0;
+	}
+	.fixListNum>ul>li{
+		margin-top: 5px;
+	}
+	.fixListNumTitle i{
+		color:#3d84cd;
+		font-size: 18px;
+		font-weight: bold;
+		font-style: normal;
+	}
+	.fixListNumTitle>span{
+		color:#3d84cd;
+		cursor: pointer;
+	}
+	.fixIntroduce em{
+		font-style: normal;
+		color:#3d84cd;
+		cursor: pointer;
+	}
+	.fixContactPhone{
+		position: absolute;
+		color:#daa42f;
+		left:80%;
+		top:27px;
+	}
+	.fixContactName{
+		position: absolute;
+		top:3px;
+		left:80%;
+	}
+	.fixIntroduceDetail em{
+		font-style: normal;
+		color:#3d84cd;
+		cursor: pointer;
+		display: block;
+	}
+	.fixContent{
+		width: 74%;
+		float: left;
+	}
+	.fixServiceArea{
+		margin-right: 30px;
+	}
+	.newInstall{
+		float: right !important;
+	}
+	.newInstall>a{
+		width: 100px;
+		height: 40px;
+		display: block;
+		line-height: 40px;
+		text-align: center;
+		background: #da2f2f;
+		font-size: 18px;
+		color:#fff;
+		border-radius: 5px;
+	}
+</style>
+<div ng-controller="layoutForFixListController">
+			<div class="nav">
+				<div class="allcategoery">
+					<div class="newInstall"><a href="/resource/myFix">发布安装</a></div>
+					<div class="navArea"><input hidden class="navWord" ng-model="regionData" value="" /><span class="deleteIcon"></span></div>
+				</div>
+				<div class="categoeriesFixList">
+					<div class="chooseArea" style="position: relative">
+						<div>选择地区</div>
+						<div class="clickchoose" style="position:absolute; left: 106px;top: -1px;">
+							<input readonly type="text" data-toggle="city-picker" value="北京市/北京市/东城区" name="region" id="region">
+						</div>
+					</div>
+				</div>
+
+			</div>
+		    <div class="contenWrap">
+		    	<div class="sortingFixList">
+				    <div>综合排序</div>
+				    <ul>
+						<li class="sortingBySkin"  data-flag="true" ng-click="changeFixOrder('pageview')">浏览量<span class="addIcon"></span></li>
+						<li class="sortingByTime"  data-flag="true" ng-click="changeFixOrder('refreshedAt')">更新时间<span class="addIcon"></span></li>
+				    </ul>
+				    <div class="hotLine">推广热线 : 027-87551680</div>
+		    	</div>
+		    	<div class="fixContent" >
+					<!--第一条的安装开始-->
+					<div class="fixListNum" ng-repeat="(key,item) in dataList|fixcontentFilter" >
+						<ul>
+							<li class="fixListNumTitle"><input type="hidden" value="{{item|itemToId}}"><i>{{item.title|fixtitle}}</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>{{item.pageview}}</span>次浏览</li>
+							<li class="fixAreaAndTime">服务地区：<span class="fixServiceArea">{{item.serviceRegion.province}}&nbsp;&nbsp; {{item.serviceRegion.city}}&nbsp;&nbsp;{{item.serviceRegion.district}}</span>更新时间：<span>{{item.refreshedAt|date:'yyyy-MM-dd'}}</span></li>
+							<li ng-hide="shownum==key" class="fixIntroduce">{{item.details|fixdetails}} <em ng-if="item.j" class="fixIntroduce01" ng-click="viewNum(item,key)">点击查看更多＞＞</em></li>
+							<li class="fixContactName">联系人：{{item.name|limitTo:4}}</li>
+							<li  class="fixContactPhone">联系方式：{{item.phoneNum}}</li>
+							<li class="fixIntroduceDetail" ng-show="showid==key">{{item.details}} <em ng-click="clearAway(item,key)"  class="fixIntroduceDetail01">＜＜收起</em></li>
+						</ul>
+					</div>
+					<!--第一条的安装结束-->
+				</div>
+
+				<div class="contentRight">
+					<%for(var i=0;i<promotionForAll.length;i++){%>
+					<div class="promotbar">
+						<%if(promotionForAll[i].resType=="Manufacture"){%>
+						<a href="/resource/dMake?id=<%=promotionForAll[i].resNum%>" target="_blank"><div class="promoteImg"><img src="<%=promotionForAll[i].images[0]%>/276.200"/></div></a>
+						<%}else if(promotionForAll[i].resType=="Manufacture"){%>
+						<a href="/resource/dmaterial?id=<%=promotionForAll[i].resNum%>" target="_blank"><div class="promoteImg"><img src="<%=promotionForAll[i].images[0]%>/276.200"/></div></a>
+						<%}else {%>
+						<a href="/resource/dMachine?id=<%=promotionForAll[i].resNum%>" target="_blank"><div class="promoteImg"><img src="<%=promotionForAll[i].images[0]%>/276.200"/></div></a>
+						<%}%>
+						<%if(promotionForAll[i].discountPrice){%>
+						<p class="promotePrice"><%=promotionForAll[i].discountPrice%>元</p>
+						<%}else {%>
+						<p class="promotePrice">面议</p>
+						<%}%>
+						<p><span class=""><%=promotionForAll[i].region.province%></span>&nbsp;-<span class="">&nbsp;<%=promotionForAll[i].region.city%></span></p>
+						<p class="promotionTitle" title="<%=promotionForAll[i].title%>"><%=promotionForAll[i].title%></p>
+					</div>
+					<%}%>
+				</div>
+	<div class=" paging">
+		<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+					next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageFixChanged(bigCurrentPage)"
+					items-per-page="itemsPerPage"></pagination>
+	</div>
+				<div class="bandPromote">
+					<div class="bandPromoteTitle">优秀品牌推荐</div>
+
+				</div>
+</div>
+	</div>

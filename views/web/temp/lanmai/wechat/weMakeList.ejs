@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>找制作 - 资源搜索 - 制作宝</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/weui.min.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/myStyle.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/common.css">
+    <link href="/plugins/citypicker/css/city-picker.css" rel="stylesheet">
+     <!--引入 WeUI -->
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/0.4.0/weui.min.css">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="http://api.map.baidu.com/api?ak=qRQ3AcmkBmZQGl1v4HG61Ltot2lGZRHU&v=2.0&services=false"></script>
+    <script src="/javascripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <style>
+        .weMakeListArea .city-picker-span{
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+            padding: 0;
+            margin: 0;
+            display: block;
+            opacity: 0;
+        }
+        .haveNowAdress{
+            position: absolute;
+            left: 2%;
+            top:.6em;
+            background: #FB6383;
+            color:#fff;
+            display: block;
+            width: 14%;
+            height: 2em;
+            text-align: center;
+            border-radius: 5px;
+            line-height: 2em;
+            overflow: hidden;
+        }
+        .makeListSearch .weui-search-bar{
+            position: absolute;
+            right: 0;
+        }
+        .scroller{
+            padding-bottom: 4em;
+        }
+        .scroller>ul{
+            border-bottom: 1px solid #dcdcdc;
+        }
+        .fixedCover{
+            width: 100%;
+            z-index: 5555;
+            position: fixed;
+            top:0 ;
+            left:0;
+        }
+    </style>
+    <script>
+        $(function(){
+            var page;
+            if(window.sessionStorage.length>0){
+                var adress = window.localStorage.getItem("area");
+                if(adress&&adress!=""){
+                    var Oadress = adress.split("/");
+                    if(Oadress.length==1){
+                        if(Oadress[0].length>2){
+                            var OName=Oadress[0].substr(0,2);
+                            $(".haveNowAdress").html(OName+"▪▪▪")
+                        }else{
+                            $(".haveNowAdress").html(Oadress[0])
+                        }
+                    }else if(Oadress.length==2){
+                        if(Oadress[0].length>2){
+                            var OName=Oadress[1].substr(0,2);
+                            $(".haveNowAdress").html(OName+"▪▪▪")
+                        }else{
+                            $(".haveNowAdress").html(Oadress[1])
+                        }
+                    }else if(Oadress.length==3){
+                        if(Oadress[0].length>2){
+                            var OName=Oadress[2].substr(0,2);
+                            $(".haveNowAdress").html(OName+"▪▪▪")
+                        }else{
+                            $(".haveNowAdress").html(Oadress[2])
+                        }
+                    }
+                }
+                //order
+                var discountPrice =sessionStorage.getItem("discountPrice");
+                var pageview =sessionStorage.getItem("pageview");
+                var discountPrice =sessionStorage.getItem("discountPrice");
+                var pageview =sessionStorage.getItem("pageview");
+                if(discountPrice||pageview){
+                    if(discountPrice){
+                        if(discountPrice=="-1"){
+                            var order={discountPrice:-1}
+                        }else{
+                            var order={discountPrice:1}
+                        }
+                    }
+                    if(pageview){
+                        if(pageview=="-1"){
+                            var order={pageview:-1}
+                        }else{
+                            var order={pageview:1}
+                        }
+                    }
+                }else{
+                    var order={createdAt:-1}
+                }
+
+                //diqu
+                var homelocation=window.localStorage.getItem("area");
+                if(homelocation==""){
+                    var region="";
+                }else{
+                    var OhomeLocation = homelocation.split("/");
+                    if(OhomeLocation.length==1){
+                        var region = {province: homelocation }
+                    }else if(OhomeLocation.length==2){
+                        var region={province:OhomeLocation[0],city:OhomeLocation[1]}
+                    }else if(OhomeLocation.length==3){
+                        var region={province:OhomeLocation[0],city:OhomeLocation[1],district:OhomeLocation[2]}
+                    }
+                }
+                //resType
+                var resType = "Manufacture";
+                var mlPage=parseInt(sessionStorage.getItem("mlPage"));
+                if(!mlPage){
+                    mlPage=1
+                }else{
+                    var mlPage=parseInt(sessionStorage.getItem("mlPage"));
+                }
+                var mlText=sessionStorage.getItem("mlText");
+                var mlTops=sessionStorage.getItem("mlTops");
+                var page =1;
+                $.ajax({
+                    type:"POST",
+                    url:"/searchResFilter",
+                    data:JSON.stringify({
+                        text:mlText,
+                        region:region,
+                        resType:resType,
+                        order:order,
+                        limit:mlPage*15,
+                        page:page
+                    }),
+                    contentType: "application/json",
+                    success:function(res){
+                        var NOTFONDCODE="查询为空";
+                        var BACKCODE="<p style='text-align: center'>您的查询结果为空!</p>"
+                        if(res.docs){
+                            for(var i=0;i<res.docs.length;i++){
+                                var listcontents="<div class='lmIndexKindsListNum clearfix'><input type='hidden' value='"+res.docs[i]._id+"'><div class='lmIndexKindsListImg'><img src='"+res.docs[i].images[0]+"/117.114'></div><div class='lmIndexKindsListIntroduce'><ul><li class='lmIndexKindsListIntrotitle clearfix'><span style='float: left;'>"+(res.docs[i].isPromotion==1?'<em>精</em>':'')+"<i style='font-style: normal;'>"+((res.docs[i].title.length>20)?res.docs[i].title.substr(0,20)+"...":res.docs[i].title)+"</i></span></li><li style='color:#717070'class='star clearfix'>价格：<em style='font-style: normal;color:#FB6383'>"+(res.docs[i].discountPrice==undefined?'面议':res.docs[i].discountPrice)+"</em><span>"+res.docs[i].pageview+"浏览</span></li><li class='lmIndexKindsListIntrodital'>"+delHtmlTag(res.docs[i].details)+"</li></ul></div></div>";
+                                $("#wrapper").show();
+                                $("#wrapper>.scroller>ul").append(listcontents).css({height:"auto"})
+                            }
+                            if(!mlPage){
+                                page=1
+                            }else{
+                                page = mlPage
+                            }
+                            if(res.docs.length>=mlPage*15){
+                                $('.more').show();
+                            }else if(res.docs.length>=0&&res.docs.length<mlPage*15){
+                                $('.more').show()
+                                $('.more>span').html("没有更多了！")
+                            }
+                        }else if(res==NOTFONDCODE){
+                            $(".more").hide();
+                            $("#wrapper>.scroller>ul").html(BACKCODE)
+                        }
+                        document.body.scrollTop = mlTops
+
+                    }
+
+                })
+
+
+
+            }else{
+                var toArea=window.localStorage.getItem("area");
+                if(toArea==null ||toArea==""||toArea=="null"){
+                    var toArea="湖北/武汉";
+                    window.localStorage.setItem("area", toArea);
+                }else{
+                    window.localStorage.setItem("area", toArea);
+                }
+                var adress = window.localStorage.getItem("area");
+                if(adress&&adress!=""){
+                    var Oadress = adress.split("/");
+                    if(Oadress.length==1){
+                        if(Oadress[0].length>2){
+                            var OName=Oadress[0].substr(0,2);
+                            $(".haveNowAdress").html(OName+"▪▪▪")
+                        }else{
+                            $(".haveNowAdress").html(Oadress[0])
+                        }
+                    }else if(Oadress.length==2){
+                        if(Oadress[0].length>2){
+                            var OName=Oadress[1].substr(0,2);
+                            $(".haveNowAdress").html(OName+"▪▪▪")
+                        }else{
+                            $(".haveNowAdress").html(Oadress[1])
+                        }
+                    }else if(Oadress.length==3){
+                        if(Oadress[0].length>2){
+                            var OName=Oadress[2].substr(0,2);
+                            $(".haveNowAdress").html(OName+"▪▪▪")
+                        }else{
+                            $(".haveNowAdress").html(Oadress[2])
+                        }
+                    }
+                }else{
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var lat = position.coords.latitude;
+                        var lon = position.coords.longitude;
+                        var point = new BMap.Point(lon, lat);  // 创建坐标点
+                        // 根据坐标得到地址描述
+                        var myGeo = new BMap.Geocoder();
+                        myGeo.getLocation(point, function (result) {
+                            var province = result.addressComponents.province;
+                            var Oprovince = province.replace(/省/,"")
+                            var city = result.addressComponents.city;
+                            var Ocity = city.replace(/市/,"");
+                            window.localStorage.setItem("area", Oprovince+"/"+Ocity);
+                            var nowLocalArea =Ocity;
+                            if(nowLocalArea.length>2){
+                                var nowLocalArea01 = nowLocalArea.substr(0,2)+"▪▪▪";
+                            }else{
+                                var nowLocalArea01 = nowLocalArea;
+                            }
+                            $('.haveNowAdress').html(nowLocalArea01);
+                        });
+                    })
+                }
+                //kaishi
+                var searchName=$("#searchInputMakeList").val();
+                var homelocation=window.localStorage.getItem("area");
+                if(homelocation==""){
+                    var region="";
+                }else{
+                    var OhomeLocation = homelocation.split("/");
+                    if(OhomeLocation.length==1){
+                        var region = {province: homelocation }
+                    }else if(OhomeLocation.length==2){
+                        var region={province:OhomeLocation[0],city:OhomeLocation[1]}
+                    }else if(OhomeLocation.length==3){
+                        var region={province:OhomeLocation[0],city:OhomeLocation[1],district:OhomeLocation[2]}
+                    }
+                }
+                var discountPrice =sessionStorage.getItem("discountPrice");
+                var pageview =sessionStorage.getItem("pageview");
+                if(discountPrice||pageview){
+                    if(discountPrice){
+                        if(discountPrice=="-1"){
+                            var order={discountPrice:-1}
+                        }else{
+                            var order={discountPrice:1}
+                        }
+                    }
+                    if(pageview){
+                        if(pageview=="-1"){
+                            var order={pageview:-1}
+                        }else{
+                            var order={pageview:1}
+                        }
+                    }
+                }else{
+                    var order={createdAt:-1}
+                }
+
+                var resType = "Manufacture";
+                $(".scroller>ul").children().remove();
+                $(".lmIndexKindsListNum").remove();
+                //请求搜索接口
+                page=1
+                $.ajax({
+                    type:"POST",
+                    url:"/searchResFilter",
+                    data:JSON.stringify({
+                        text:searchName,
+                        region:region,
+                        resType:resType,
+                        page:page,
+                        order:order
+                    }),
+                    contentType: "application/json",
+                    success:function(res){
+                        var NOTFONDCODE="查询为空";
+                        var BACKCODE="<p style='text-align: center'>您的查询结果为空!</p>"
+                        if(res.docs){
+                            for(var i=0;i<res.docs.length;i++){
+                                var listcontents="<div class='lmIndexKindsListNum clearfix'><input type='hidden' value='"+res.docs[i]._id+"'><div class='lmIndexKindsListImg'><img src='"+res.docs[i].images[0]+"/117.114'></div><div class='lmIndexKindsListIntroduce'><ul><li class='lmIndexKindsListIntrotitle clearfix'><span style='float: left;'>"+(res.docs[i].isPromotion==1?'<em>精</em>':'')+"<i style='font-style: normal;'>"+((res.docs[i].title.length>20)?res.docs[i].title.substr(0,20)+"...":res.docs[i].title)+"</i></span></li><li style='color:#717070'class='star clearfix'>价格：<em style='font-style: normal;color:#FB6383'>"+(res.docs[i].discountPrice==undefined?'面议':res.docs[i].discountPrice)+"</em><span>"+res.docs[i].pageview+"浏览</span></li><li class='lmIndexKindsListIntrodital'>"+delHtmlTag(res.docs[i].details)+"</li></ul></div></div>";
+                                $("#wrapper").show();
+                                $("#wrapper>.scroller>ul").append(listcontents).css({height:"auto"})
+                            }
+                            if(res.docs.length>=15){
+                                $('.more').show();
+                            }else if(res.docs.length>=0&&res.docs.length<15){
+                                $('.more').show()
+                                $('.more>span').html("没有更多了！")
+                            }
+
+                        }else if(res==NOTFONDCODE){
+                            $(".more").hide();
+                            $("#wrapper>.scroller>ul").html(BACKCODE)
+                        }
+
+                    }
+                })
+            }
+
+            $(".scroller").on("click",".lmIndexKindsListIntrotitle,.lmIndexKindsListImg",function(){
+                var mlTops=document.body.scrollTop;
+                sessionStorage.setItem("mlTops",mlTops);
+                sessionStorage.setItem("backStatus","1");
+            })
+
+
+        })
+            //默认加载的项目
+        /*$(function(){
+            var myurl=GetQueryString("text");
+            if(myurl !=null && myurl.toString().length>1)
+            {
+                var valueName = GetQueryString("text");
+                $("#searchInput").val(valueName);
+                $('.weui-search-bar__label>span').html(valueName);
+            }else{
+                var valueName = $("#searchInput").val();
+                $("#searchInput").val(valueName);
+                $('.weui-search-bar__label>span').html("搜索想要查找的广告制作资源");
+            }
+            $("#searchInputMakeList").val(valueName);
+
+            var searchName=$("#searchInputMakeList").val();
+            var homelocation=window.localStorage.getItem("area");
+            if(homelocation==""){
+                var region="";
+            }else{
+                var OhomeLocation = homelocation.split("/");
+                if(OhomeLocation.length==1){
+                    var region = {province: homelocation }
+                }else if(OhomeLocation.length==2){
+                    var region={province:OhomeLocation[0],city:OhomeLocation[1]}
+                }else if(OhomeLocation.length==3){
+                    var region={province:OhomeLocation[0],city:OhomeLocation[1],district:OhomeLocation[2]}
+                }
+            }
+            var pageOrder=$('.changePreviewVal').val();
+            if(pageOrder==1){
+                $('.changePreviewVal').val("-1");
+                var order={pageview:-1}
+            }else{
+                $('.changePreviewVal').val(1);
+                var order={pageview:1}
+            }
+
+            var resType = "Manufacture";
+            $(".scroller>ul").children().remove();
+            $(".lmIndexKindsListNum").remove();
+            //请求搜索接口
+            page=1
+            $.ajax({
+                type:"POST",
+                url:"/searchResFilter",
+                data:JSON.stringify({
+                    text:searchName,
+                    region:region,
+                    resType:resType,
+                    order:order
+                }),
+                contentType: "application/json",
+                success:function(res){
+                    var NOTFONDCODE="查询为空";
+                    var BACKCODE="<p style='text-align: center'>您的查询结果为空!</p>"
+                    if(res.docs){
+                        for(var i=0;i<res.docs.length;i++){
+                                var listcontents="<div class='lmIndexKindsListNum clearfix'><input type='hidden' value='"+res.docs[i]._id+"'><div class='lmIndexKindsListImg'><img src='"+res.docs[i].images[0]+"/117.114'></div><div class='lmIndexKindsListIntroduce'><ul><li class='lmIndexKindsListIntrotitle clearfix'><span style='float: left;'>"+(res.docs[i].isPromotion==1?'<em>精</em>':'')+"<i style='font-style: normal;'>"+((res.docs[i].title.length>10)?res.docs[i].title.substr(0,10)+"...":res.docs[i].title)+"</i></span></li><li style='color:#717070'class='star clearfix'>价格：<em style='font-style: normal;color:#FB6383'>"+(res.docs[i].discountPrice==undefined?'面议':res.docs[i].discountPrice)+"</em><span>"+res.docs[i].pageview+"浏览</span></li><li class='lmIndexKindsListIntrodital'>"+res.docs[i].details+"</li></ul></div></div>";
+                            $("#wrapper").show();
+                            $("#wrapper>.scroller>ul").append(listcontents).css({height:"auto"})
+                            var detailsLeng = $(".lmIndexKindsListNum").eq(i).children().children().children(".lmIndexKindsListIntrodital").html();
+                            $(".lmIndexKindsListNum").eq(i).children().children().children(".lmIndexKindsListIntrodital").text(delHtmlTag(detailsLeng));
+                            var thisTitleHow = $(".lmIndexKindsListNum").eq(i).children(".lmIndexKindsListIntroduce").children("ul").children(".lmIndexKindsListIntrotitle").children("span").children("i").html();
+                            if((thisTitleHow.length)>13){
+                                var nowLength = thisTitleHow.substr(0,13);
+                                $(".lmIndexKindsListNum").eq(i).children(".lmIndexKindsListIntroduce").children("ul").children(".lmIndexKindsListIntrotitle").children("span").children("i").html(nowLength+"...");
+                            }else{
+                                $(".lmIndexKindsListNum").eq(i).children(".lmIndexKindsListIntroduce").children("ul").children(".lmIndexKindsListIntrotitle").children("span").children("i").html(thisTitleHow);
+                            }
+                        }
+                        if(res.docs.length>=15){
+                            $('.more').show();
+                        }else if(res.docs.length>=0&&res.docs.length<15){
+                            $('.more').show()
+                            $('.more>span').html("没有更多了！")
+                        }
+
+                    }else if(res==NOTFONDCODE){
+                        $(".more").hide();
+                        $("#wrapper>.scroller>ul").html(BACKCODE)
+                    }
+
+                }
+            })
+        })*/
+    </script>
+</head>
+<body ontouchstart>
+	<div class="makeContainer">
+        <div class="makeListSearch">
+            <!--搜索框部分的内容开始-->
+            <div class="page__bd">
+                <span class="haveNowAdress"></span>
+                <!--<a href="javascript:;" class="weui-btn weui-btn_primary">点击展现searchBar</a>-->
+                <div class="weui-search-bar" id="searchBar">
+                    <form class="weui-search-bar__form">
+                        <div class="weui-search-bar__box">
+                            <i class="weui-icon-search"></i>
+                            <input type="hidden" value="" id="searchInputMakeList">
+                            <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索想要查找的广告制作资源" required/>
+                            <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                        </div>
+                        <label class="weui-search-bar__label" id="searchText">
+                            <i class="weui-icon-search"></i>
+                            <span>搜索想要查找的广告制作资源</span>
+                        </label>
+                    </form>
+                    <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                $(function(){
+                    $('#cascadePickerBtn').click(function(){
+                        $('.weui-picker').css({    animation: "a ease .3s forwards;"})
+                    })
+                    var $searchBar = $('#searchBar'),
+                            $searchResult = $('#searchResult'),
+                            $searchText = $('#searchText'),
+                            $searchInput = $('#searchInput'),
+                            $searchClear = $('#searchClear'),
+                            $searchCancel = $('#searchCancel');
+
+                    function hideSearchResult(){
+                        $searchResult.hide();
+                        $searchInput.val('');
+                    }
+                    function cancelSearch(){
+                        hideSearchResult();
+                        $searchBar.removeClass('weui-search-bar_focusing');
+                        $searchText.show();
+                    }
+
+                    $searchText.on('click', function(){
+                        $searchBar.addClass('weui-search-bar_focusing');
+                        $searchInput.focus();
+                    });
+                    $searchInput
+                            .on('blur', function () {
+                                if(!this.value.length) cancelSearch();
+                            })
+                            .on('input', function(){
+                                if(this.value.length) {
+                                    $searchResult.show();
+                                } else {
+                                    $searchResult.hide();
+                                }
+                            })
+                    ;
+                    $searchClear.on('click', function(){
+                        hideSearchResult();
+                        $searchInput.focus();
+                    });
+                    $searchCancel.on('click', function(){
+                        cancelSearch();
+                        $searchInput.blur();
+                    });
+                });
+            </script>
+            <!--搜索框部分的内容结束-->
+        </div>
+        <div class="makeListTab">
+            <ul class="clearfix">
+                <li class=" weMakeListArea clearfix" style="position: relative;">
+                    <span><img src="/themes/<%=staticforder%>/images/web0301.png" alt=""></span>
+                    <i>地区</i>
+                    <input class="homelocation" readonly type="text" data-toggle="city-picker" placeholder="湖北/武汉"   >
+                </li>
+                <input class="changePreviewVal" type="hidden" value="-1">
+                <li class="weMakeListPreview clearfix">
+                    <span><img src="/themes/<%=staticforder%>/images/web0302.png" alt=""></span>
+                    <i>浏览量</i>
+                </li>
+                <input class="changePriceVal" type="hidden" value="-1">
+                <li class="weMakeListPrice clearfix">
+                    <span><img src="/themes/<%=staticforder%>/images/web0303.png" alt=""></span>
+                    <i>价格</i>
+                </li>
+            </ul>
+        </div>
+        <div class="makeListContent">
+            <div id="wrapper">
+                <div class="scroller">
+                    <ul>
+                        <!--第一条开始-->
+
+                        <!--第一条结束-->
+                    </ul>
+                    <div class="more" ><i class="pull_icon"></i><span>上拉加载...</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="weui_tabbar weui_tabbar01">
+            <a href="getHomeInfo" class="weui_tabbar_item ">
+                <div class="weui_tabbar_icon">
+                    <img src="/themes/<%=staticforder%>/images/web0108.png" alt="">
+                </div>
+                <p class="weui_tabbar_label">首页</p>
+            </a>
+            <a href="userCenter" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <img src="/themes/<%=staticforder%>/images/web0109.png" alt="">
+                </div>
+                <p class="weui_tabbar_label">我的</p>
+            </a>
+        </div>
+        <script type="text/javascript">
+            var page = 1;
+            var ispost = temp = true;
+            function checkload(){
+                if ($(window).scrollTop() + $(window).height() + 50 >= $(document).height() &&　temp == true) {
+                    loadlist();
+                }
+            }
+            $(function(){
+                //loadlist('add');
+                //滚动加载
+                $(window).bind('scroll',function(){
+                    checkload();
+                });
+            });
+
+            function loadlist(){
+                if(ispost && temp){
+                    temp = false;
+                    var searchName = $("#searchInputMakeList").val();
+                    var homelocation=window.localStorage.getItem("area");
+                    var resType = "Manufacture";
+                    var discountPrice =sessionStorage.getItem("discountPrice");
+                    var pageview =sessionStorage.getItem("pageview");
+                    //var page=sessionStorage.getItem("mlPage")
+                    if(discountPrice||pageview){
+                        if(discountPrice){
+                            if(discountPrice=="-1"){
+                                var order={discountPrice:-1}
+                            }else{
+                                var order={discountPrice:1}
+                            }
+                        }
+                        if(pageview){
+                            if(pageview=="-1"){
+                                var order={pageview:-1}
+                            }else{
+                                var order={pageview:1}
+                            }
+                        }
+                    }else{
+                        var order={createdAt:-1}
+                    }
+                    if(homelocation==""){
+                        var region="";
+                    }else{
+                        var OhomeLocation = homelocation.split("/");
+                        if(OhomeLocation.length==1){
+                            var region = {province: homelocation }
+                        }else if(OhomeLocation.length==2){
+                            var region={province:OhomeLocation[0],city:OhomeLocation[1]}
+                        }else if(OhomeLocation.length==3){
+                            var region={province:OhomeLocation[0],city:OhomeLocation[1],district:OhomeLocation[2]}
+                        }
+                    }
+                    var mlPage=parseInt(sessionStorage.getItem("mlPage"));
+                    if(mlPage){
+                        page=mlPage+1;
+                        sessionStorage.clear();
+                    }else{
+                        page=page+1;
+                    }
+
+                    $.ajax({
+                        url:"/searchResFilter",
+                        type:'POST',
+                        data:JSON.stringify({
+                            text:searchName,
+                            region:region,
+                            page:page,
+                            order:order,
+                            resType:resType
+                        }),
+                        contentType:'application/json',
+                        success:function(res){
+                            temp = true;
+                            var NOTFONDCODE="查询为空";
+                            console.log(res)
+                            if(res.docs){
+                                for(var i=0;i<res.docs.length;i++){
+                                    var listcontents="<div class='lmIndexKindsListNum clearfix'><input type='hidden' value='"+res.docs[i]._id+"'><div class='lmIndexKindsListImg'><img src='"+res.docs[i].images[0]+"/117.114'></div><div class='lmIndexKindsListIntroduce'><ul><li class='lmIndexKindsListIntrotitle clearfix'><span style='float: left;'>"+(res.docs[i].isPromotion==1?'<em>精</em>':'')+"<i style='font-style: normal;'>"+((res.docs[i].title.length>13)?res.docs[i].title.substr(0,13)+"...":res.docs[i].title)+"</i></span></li><li style='color:#717070'class='star clearfix'>价格：<em style='font-style: normal;color:#FB6383'>"+(res.docs[i].discountPrice==undefined?'面议':res.docs[i].discountPrice)+"</em><span>"+res.docs[i].pageview+"浏览</span></li><li class='lmIndexKindsListIntrodital'>"+delHtmlTag(res.docs[i].details)+"</li></ul></div></div>";
+                                    $("#wrapper").show();
+                                    $("#wrapper>.scroller>ul").append(listcontents).css({height:"auto"})
+
+                                }
+                                if(res.docs.length>=15){
+                                    $('.more').show();
+                                    sessionStorage.setItem("mlPage",page);
+                                }else if(res.docs.length>0&&res.docs.length<15){
+                                    $('.wrapper').show()
+                                    $('.more').html("没有更多了！")
+                                    sessionStorage.setItem("mlPage",page);
+                                }
+
+                            }else if(res==NOTFONDCODE){
+                                $("#wrapper").show()
+                                $('.more').html("没有更多了！")
+                            }
+                        },
+                        error: function(e){
+
+                        }
+
+                    });
+                }
+            }
+            function delHtmlTag(str){
+                str = str.replace(/<\/?[^>]*>/g, ''); //去除HTML tag
+                str = str.replace(/[ | ]*\n/g, '\n'); //去除行尾空白
+                //str = str.replace(/\n[\s| | ]*\r/g,'\n'); //去除多余空行
+                str = str.replace(/&nbsp;/ig, ''); //去掉&nbsp;
+                return str
+            }
+        </script>
+    </div>
+    <div class="fixedCover"></div>
+</body>
+</html>
+<script src="/plugins/citypicker/city-picker.data.js"></script>
+<script src="/plugins/citypicker/city-picker.js"></script>
+<script>
+    $(function(){
+        $(".scroller").on("click",".lmIndexKindsListNum",function(){
+            var index=$(this).index();
+            var mlPage =parseInt(index/15)+1;
+
+            sessionStorage.setItem("mlPage",mlPage)
+            var value= $(this).children("input").val();
+            window.location.href="weMakeDetail?value="+value;
+        });
+        $(".scroller").on('click',".lmIndexKindsListIntrotitle>span",function(){
+            var index=$(this).parents(".lmIndexKindsListNum").index();
+            var mlPage =parseInt(index/15)+1;
+            sessionStorage.setItem("mlPage",mlPage)
+            var value= $(this).parent().parent().parent().prev().prev().val();
+            window.location.href="weMakeDetail?value="+value;
+        })
+
+        //
+        $(".city-picker-span").click(function(){
+            var Oheight = $(document).height();
+            $(".fixedCover").css({height:Oheight})
+            $(".fixedCover").show();
+        })
+        $(".fixedCover").click(function(){
+            $(this).hide()
+        })
+        //制作列表的搜索
+        $("#searchInput").on('keypress',function(e) {
+            var keycode = e.keyCode;
+            var searchName = $(this).val();
+            var homelocation=window.localStorage.getItem("area");
+            var resType = "Manufacture";
+            if(homelocation==""){
+                var region="";
+            }else{
+                var OhomeLocation = homelocation.split("/");
+                if(OhomeLocation.length==1){
+                    var region = {province: homelocation }
+                }else if(OhomeLocation.length==2){
+                    var region={province:OhomeLocation[0],city:OhomeLocation[1]}
+                }else if(OhomeLocation.length==3){
+                    var region={province:OhomeLocation[0],city:OhomeLocation[1],district:OhomeLocation[2]}
+                }
+            }
+
+            if(keycode=='13') {
+                e.preventDefault();
+                sessionStorage.clear()
+                sessionStorage.setItem("mlText",searchName);
+                window.location.href=searchName!=""&&searchName?'weMakeList?text='+escape(searchName):'weMakeList'
+            }
+        })
+        //地区搜索
+        $(document.body).on('click', '.city-select a', function () {
+            sessionStorage.clear()
+            var discountPrice =sessionStorage.getItem("discountPrice");
+            var pageview =sessionStorage.getItem("pageview");
+            if(discountPrice||pageview){
+                if(discountPrice){
+                    if(discountPrice=="-1"){
+                        var order={discountPrice:-1}
+                    }else{
+                        var order={discountPrice:1}
+                    }
+                }
+                if(pageview){
+                    if(pageview=="-1"){
+                        var order={pageview:-1}
+                    }else{
+                        var order={pageview:1}
+                    }
+                }
+            }else{
+                var order={createdAt:-1}
+            }
+                var OsName = $(this).html();
+            if(OsName.length>2){
+                var OName=OsName.substr(0,2);
+                $(".haveNowAdress").html(OName+"▪▪▪")
+            }else{
+                $(".haveNowAdress").html(OsName)
+            }
+                var con=$(".homelocation").val();
+                window.localStorage.setItem("area", con);
+                var searchName = $("#searchInputMakeList").val();
+                var homelocation=window.localStorage.getItem("area");
+                if(homelocation==""){
+                    var region="";
+                }else{
+                    var OhomeLocation = homelocation.split("/");
+                    if(OhomeLocation.length==1){
+                        var region = {province: homelocation }
+                    }else if(OhomeLocation.length==2){
+                        var region={province:OhomeLocation[0],city:OhomeLocation[1]}
+                    }else if(OhomeLocation.length==3){
+                        var region={province:OhomeLocation[0],city:OhomeLocation[1],district:OhomeLocation[2]}
+                    }
+                }
+                var resType = "Manufacture";
+                $(".scroller>ul").children().remove();
+                $(".lmIndexKindsListNum").remove();
+                //请求搜索接口
+                page=1
+                $.ajax({
+                    type:"POST",
+                    url:"/searchResFilter",
+                    data:JSON.stringify({
+                        text:searchName,
+                        region:region,
+                        order:order,
+                        resType:resType
+                    }),
+                    contentType: "application/json",
+                    success:function(res){
+                        var NOTFONDCODE="查询为空";
+                        var BACKCODE="<p style='text-align: center'>您的查询结果为空!</p>";
+                        if(res.docs){
+                            for(var i=0;i<res.docs.length;i++){
+                                var listcontents="<div class='lmIndexKindsListNum clearfix'><input type='hidden' value='"+res.docs[i]._id+"'><div class='lmIndexKindsListImg'><img src='"+res.docs[i].images[0]+"/117.114'></div><div class='lmIndexKindsListIntroduce'><ul><li class='lmIndexKindsListIntrotitle clearfix'><span style='float: left;'>"+(res.docs[i].isPromotion==1?'<em>精</em>':'')+"<i style='font-style: normal;'>"+((res.docs[i].title.length>20)?res.docs[i].title.substr(0,20)+"...":res.docs[i].title)+"</i></span></li><li style='color:#717070'class='star clearfix'>价格：<em style='font-style: normal;color:#FB6383'>"+(res.docs[i].discountPrice==undefined?'面议':res.docs[i].discountPrice)+"</em><span>"+res.docs[i].pageview+"浏览</span></li><li class='lmIndexKindsListIntrodital'>"+delHtmlTag(res.docs[i].details)+"</li></ul></div></div>";
+                                $("#wrapper").show();
+                                $("#wrapper>.scroller>ul").append(listcontents).css({height:"auto"})
+                            }
+                            if(res.docs.length>=15){
+                                $('.more').show();
+                            }else if(res.docs.length>=0&&res.docs.length<15){
+                                $('.more').show()
+                                $('.more').html("没有更多了！")
+                            }
+                        }else if(res==NOTFONDCODE){
+                            $(".more").hide();
+                            $("#wrapper>.scroller>ul").html(BACKCODE);
+                        }
+                    }
+                })
+            /*}*/
+
+        })
+        //浏览量
+        $('.weMakeListPreview').click(function(){
+            sessionStorage.clear()
+            var searchName = $("#searchInputMakeList").val();
+            var homelocation=window.localStorage.getItem("area");
+            if(homelocation==""){
+                var region="";
+            }else{
+                var OhomeLocation = homelocation.split("/");
+                if(OhomeLocation.length==1){
+                    var region = {province: homelocation }
+                }else if(OhomeLocation.length==2){
+                    var region={province:OhomeLocation[0],city:OhomeLocation[1]}
+                }else if(OhomeLocation.length==3){
+                    var region={province:OhomeLocation[0],city:OhomeLocation[1],district:OhomeLocation[2]}
+                }
+            }
+            var pageOrder=$('.changePreviewVal').val();
+            if(pageOrder==1){
+                $('.changePreviewVal').val("-1");
+                var order={pageview:-1}
+                sessionStorage.setItem("pageview","-1");
+                sessionStorage.removeItem('discountPrice')
+            }else{
+                $('.changePreviewVal').val(1);
+                var order={pageview:1}
+                sessionStorage.setItem("pageview","1");
+                sessionStorage.removeItem('discountPrice')
+            }
+
+            var resType = "Manufacture";
+            $(".scroller>ul").children().remove();
+            $(".lmIndexKindsListNum").remove();
+            //请求搜索接口
+            page=1
+            $.ajax({
+                type:"POST",
+                url:"/searchResFilter",
+                data:JSON.stringify({
+                    text:searchName,
+                    region:region,
+                    resType:resType,
+                    order:order
+                }),
+                contentType: "application/json",
+                success:function(res){
+                    var NOTFONDCODE="查询为空";
+                    var BACKCODE="<p style='text-align: center'>您的查询结果为空!</p>"
+                    if(res.docs){
+                        for(var i=0;i<res.docs.length;i++){
+                            var listcontents="<div class='lmIndexKindsListNum clearfix'><input type='hidden' value='"+res.docs[i]._id+"'><div class='lmIndexKindsListImg'><img src='"+res.docs[i].images[0]+"/117.114'></div><div class='lmIndexKindsListIntroduce'><ul><li class='lmIndexKindsListIntrotitle clearfix'><span style='float: left;'>"+(res.docs[i].isPromotion==1?'<em>精</em>':'')+"<i style='font-style: normal;'>"+((res.docs[i].title.length>20)?res.docs[i].title.substr(0,20)+"...":res.docs[i].title)+"</i></span></li><li style='color:#717070'class='star clearfix'>价格：<em style='font-style: normal;color:#FB6383'>"+(res.docs[i].discountPrice==undefined?'面议':res.docs[i].discountPrice)+"</em><span>"+res.docs[i].pageview+"浏览</span></li><li class='lmIndexKindsListIntrodital'>"+delHtmlTag(res.docs[i].details)+"</li></ul></div></div>";
+                            $("#wrapper").show();
+                            $("#wrapper>.scroller>ul").append(listcontents).css({height:"auto"})
+                        }
+                        if(res.docs.length>=15){
+                            $('.more').show();
+                        }else if(res.docs.length>=0&&res.docs.length<15){
+                            $('.more').show()
+                            $('.more').html("没有更多了！")
+                            return
+                        }
+                    }else if(res==NOTFONDCODE){
+                        $(".more").hide();
+                        $("#wrapper>.scroller>ul").html(BACKCODE)
+                    }
+
+                }
+            })
+        })
+        //价格
+        $('.weMakeListPrice').click(function(){
+            sessionStorage.clear()
+            var searchName = $("#searchInputMakeList").val();
+            var homelocation=window.localStorage.getItem("area");
+            if(homelocation==""){
+                var region="";
+            }else{
+                var OhomeLocation = homelocation.split("/");
+                if(OhomeLocation.length==1){
+                    var region = {province: homelocation }
+                }else if(OhomeLocation.length==2){
+                    var region={province:OhomeLocation[0],city:OhomeLocation[1]}
+                }else if(OhomeLocation.length==3){
+                    var region={province:OhomeLocation[0],city:OhomeLocation[1],district:OhomeLocation[2]}
+                }
+            }
+            var priceVal = $(".changePriceVal").val();
+            if(priceVal==1){
+                $('.changePriceVal').val("-1");
+                var order={discountPrice:1}
+                sessionStorage.setItem("discountPrice","1");
+                sessionStorage.removeItem('pageview')
+            }else{
+                $('.changePriceVal').val(1);
+                var order={discountPrice:-1}
+                sessionStorage.setItem("discountPrice","-1");
+                sessionStorage.removeItem('pageview')
+            }
+            var resType = "Manufacture";
+            $(".scroller>ul").children().remove();
+            $(".lmIndexKindsListNum").remove();
+            //请求搜索接口
+            page=1
+            $.ajax({
+                type:"POST",
+                url:"/searchResFilter",
+                data:JSON.stringify({
+                    text:searchName,
+                    region:region,
+                    resType:resType,
+                    order:order
+                }),
+                contentType: "application/json",
+                success:function(res){
+                    var NOTFONDCODE="查询为空";
+                    var BACKCODE="<p style='text-align: center'>您的查询结果为空!</p>";
+                    if(res.docs){
+                        for(var i=0;i<res.docs.length;i++){
+                            var listcontents="<div class='lmIndexKindsListNum clearfix'><input type='hidden' value='"+res.docs[i]._id+"'><div class='lmIndexKindsListImg'><img src='"+res.docs[i].images[0]+"/117.114'></div><div class='lmIndexKindsListIntroduce'><ul><li class='lmIndexKindsListIntrotitle clearfix'><span style='float: left;'>"+(res.docs[i].isPromotion==1?'<em>精</em>':'')+"<i style='font-style: normal;'>"+((res.docs[i].title.length>20)?res.docs[i].title.substr(0,20)+"...":res.docs[i].title)+"</i></span></li><li style='color:#717070'class='star clearfix'>价格：<em style='font-style: normal;color:#FB6383'>"+(res.docs[i].discountPrice==undefined?'面议':res.docs[i].discountPrice)+"</em><span>"+res.docs[i].pageview+"浏览</span></li><li class='lmIndexKindsListIntrodital'>"+delHtmlTag(res.docs[i].details)+"</li></ul></div></div>";
+                            $("#wrapper").show();
+                            $("#wrapper>.scroller>ul").append(listcontents).css({height:"auto"})
+                        }
+                        if(res.docs.length>=15){
+                            $('.more').show();
+                        }else if(res.docs.length>=0&&res.docs.length<15){
+                            $('.more').show()
+                            $('.more').html("没有更多了！")
+                        }
+                    }else if(res==NOTFONDCODE){
+                        $(".more").hide();
+                        $("#wrapper>.scroller>ul").html(BACKCODE)
+                    }
+                }
+            })
+        })
+        function delHtmlTag(str){
+            str = str.replace(/<\/?[^>]*>/g, ''); //去除HTML tag
+            str = str.replace(/[ | ]*\n/g, '\n'); //去除行尾空白
+            //str = str.replace(/\n[\s| | ]*\r/g,'\n'); //去除多余空行
+            str = str.replace(/&nbsp;/ig, ''); //去掉&nbsp;
+            return str
+        }
+      /*  changeTitleName();*/
+        /*var backstus=sessionStorage.getItem("backStatus")
+        if(backstus==1){
+            setTimeout(function(){
+                sessionStorage.clear();
+            },1500)
+        }*/
+
+    })
+    //标题长度的修改
+
+    //参数截取
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+    window.onload=function(){
+        function isWeiXin(){
+            var ua = window.navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                return true;
+            }else{
+                var bod=document.getElementsByTagName("body")[0];
+                bod.innerHTML="<p style='text-align: center;color:#68E868'>请在微信客户端打开页面</p>";
+                swal({
+                            title: '您好，请使用微信客户端浏览！',
+                            text: "即将跳转-制作宝-制作资源列表",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确定",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                window.location.href="/resource/resourceListMake";
+                            }
+                        })
+                return false;
+            }
+        }
+        isWeiXin()
+    }
+</script>

@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="<%=siteConfig.cmsDescription%>">
+    <meta content="<%=siteConfig.keywords%>" name="keywords" />
+    <title><%=title%></title>
+    <meta name="viewport" content="width=device-width,initial-scale=0.2,minimum-scale=0.2,maximum-scale=5" />
+    <link href="/plugins/bootstrap/css/bootstrap.min.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/common.css">
+    <link href="/plugins/bootstrapSelect/css/bootstrap-select.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="/plugins/wangeditor/css/wangEditor.min.css" rel="stylesheet">
+    <link href="/plugins/citypicker/css/city-picker.css" rel="stylesheet">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/resource.css">
+    <link href="/themes/<%=staticforder%>/css/upload.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/plugins/wangeditor/js/wangEditor.min.js"></script>
+    <script src="/plugins/bootstrapSelect/bootstrap/js/bootstrap.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/plugins/bootstrapSelect/js/bootstrap-select.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <style>
+        .dropdown-header{
+            font-weight: bold;
+            font-size: 14px !important;
+        }
+        .wangEditor-container{
+            float: left;
+            width: 70%;
+        }
+        .wangEditor-container .wangEditor-txt p{
+            line-height: 1.2 !important;
+            margin: 0 !important;
+            font-size: 16px !important;
+        }
+        .re_header_area .city-picker-span{
+            opacity:0;
+            filter:alpha(opacity=0);
+            position: absolute;
+            left: 0;
+            top:5px;
+            width: 111px !important;
+
+        }
+        .city-picker-dropdown{
+            max-width: 350px !important;
+        }
+        .re_header_area .city-picker-dropdown{
+            width: 350px !important;
+        }
+        .re_header_area .city-select-tab{
+            display: none;
+        }
+        .re_out_size input.re_out_size01{
+            width: 70px !important;
+            min-width: 60px;
+        }
+        .re_out_size input.re_out_size02{
+            width: 70px !important;
+            min-width: 60px;
+        }
+        .re_out_size input.re_out_size03{
+            width: 70px !important;
+            min-width: 60px;
+        }
+        .re_out_size input.re_out_size04{
+            width: 80px !important;
+            min-width: 60px;
+        }
+        .menu-item a i{
+            line-height: 17px !important;
+            padding: 0 !important;
+        }
+        .re_header_nav>ul>li{
+            float: left;
+        }
+        ul>li>form>input[type=radio]{
+            height: 16px;
+            margin-left: 20px;
+        }
+    </style>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?89323d159de3da4db3d8ba79f8643edd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+	<!--资源发布的首页开始-->
+    <div class="re_header">
+        <div class="re_header_nav">
+            <ul>
+                <% if(!logined){ %>
+                <li><a href="/users/login">登录</a>&nbsp;&nbsp;<a href="/users/reg">注册</a></li>
+                <li><a href="/users/login">个人中心</a></li>
+                <% }else{ %>
+                <li >您好&nbsp;<a style="color:#DA2F2F" href="/users/recentDemandAndResource">
+                        <%if(userInfo.nickName){%>
+                        <%=userInfo.nickName%>
+                        <%}else {%>
+                        <%=userInfo.userName%>
+                        <%}%></a>
+                </li>
+                <li><a rel="nofollow" href="/users/logout" id="userLoginOut">退出</a></li>
+                <li><a href="/users/recentDemandAndResource">个人中心</a></li>
+                <% } %>
+                <li class="reHeaderCon"><a class="re_header_nav_info" href="/users/messageManagement">消息</a></li>
+                <li class="reHeaderCon"><a href="../users/helperCenter">帮助</a></li>
+            </ul>
+        </div>
+        <div class="re_header_title">
+            <div class="re_header_con constrict">
+                <ul>
+                    <li><a href="../users/home"><img src="/themes/<%=staticforder%>/images/re_logo.png" alt=""/></a></li>
+                    <li class="re_header_area regionHead" style="position: relative;"><a href="javascript:;"> <em>湖北</em> <span>[切换区域]</span></a>
+                        <input type="hidden" value="" class="resource_for_area">
+                        <input class="form-control" readonly type="text" data-toggle="city-picker" data-level="province"  placeholder="湖北" style="border: 0;display: none">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript">
+        $(function () {
+            console.log(navigator.userAgent)
+            function getBrowserInfo() {
+                var agent = navigator.userAgent.toLowerCase();
+
+                var regStr_ie = /msie [\d.]+;/gi;
+                var regStr_ie2 = /Trident\/ [\d.]+;/gi;
+                //IE
+                if (agent.indexOf("msie") > 0) {
+                    return agent.match(regStr_ie) ;
+                }
+                return false
+            }
+            var browser = getBrowserInfo() ;
+            if(browser){
+                var verinfo = (browser+"").replace(/[^0-9.]/ig,"");
+                if(8<parseInt(verinfo)<=9){
+                    swal({
+                                title: "您的浏览器版本过低，无法使用上传图片功能",
+                                text:"若使用360,qq,搜狗,2345,uc等浏览器,请切换成极速模式,若使用IE浏览器,请升级浏览器版本或安装其它浏览器",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                cancelButtonText: "取消",
+                                confirmButtonText: "查看帮助",
+                                closeOnConfirm: false
+                            },
+                            function(isConfirm){
+                                if(isConfirm){
+                                    window.location.href="/users/helperCenter#uploadImg"
+                                }
+                            });
+                }else if(parseInt(verinfo)<=8){
+                    alert("您的浏览器版本过低，无法使用上传图片功能,请升级浏览器版或安装其它浏览器")
+                }
+            }
+
+        })
+    </script>
+
+    <%-body %>
+    <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/themes/<%=staticforder%>/js/cos-js-sdk-v4.js?vesion=<%=siteConfig.version%>"></script>
+    <script src="/themes/<%=staticforder%>/js/moment.min.js?vesion=<%=siteConfig.version%>"></script>
+    <script src="/plugins/citypicker/city-picker.data.js"></script>
+    <script src="/plugins/citypicker/city-picker.js"></script>
+    <script  src="/themes/<%=staticforder%>/js/resource.js"></script>
+    <script src="/themes/<%=staticforder%>/js/tool.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/themes/<%=staticforder%>/js/hack.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+
+</body>
+</html>

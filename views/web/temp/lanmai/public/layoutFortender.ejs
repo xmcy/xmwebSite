@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title><%=title%></title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=0.2,minimum-scale=0.2,maximum-scale=5" />
+	<meta name="Keywords" content="<%=siteConfig.keywords%>"/>
+	<meta name="Description" content="<%=siteConfig.cmsDescription%>"/>
+	<link href="/plugins/bootstrap/css/bootstrap.min.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+	<link href="/themes/<%=staticforder%>/css/common.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+	<link href="/themes/<%=staticforder%>/css/detail.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+	<link href="/themes/<%=staticforder%>/css/core.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+	<link href="/plugins/timePicker/dist/flatpickr.min.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+	<link href="/themes/<%=staticforder%>/css/resource.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+	<link href="/themes/<%=staticforder%>/css/upload.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+	<link href="/plugins/bootstrapSelect/css/bootstrap-select.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+	<link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+	<link href="/plugins/wangeditor/css/wangEditor.min.css" rel="stylesheet">
+	<link href="/plugins/citypicker/css/city-picker.css" rel="stylesheet">
+	<!--[if IE 9]>
+	<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/ie.css">
+	<![endif]-->
+	<script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+	<script src="/plugins/wangeditor/js/wangEditor.min.js"></script>
+	<script src="/plugins/bootstrapSelect/bootstrap/js/bootstrap.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+	<script src="/plugins/bootstrapSelect/js/bootstrap-select.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+	<script src="/plugins/timePicker/dist/flatpickr.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<style>
+	.index_local a{
+		color:#c8c7c7 ;
+	}
+	.index_local .city-select-content .city-select dl dd a{
+		float: left;
+	}
+	.index_local .flex-direction-nav li a.flex-prev{
+		top:50px;
+	}
+	.index_local .flex-direction-nav li a.flex-next{
+		top:50px;
+	}
+	.index_local .city-picker-span{
+		border: none;
+		background: none;
+		position: absolute;
+		left: 50px;
+		top:-3px;
+		width: 79px !important;
+		height: 52px !important;
+	}
+	.index_local .city-picker-span .title span{
+		width: 60px;
+		height: 40px;
+
+	}
+	.index_local .city-picker-span .title span:hover{
+		background: none;
+	}
+	.index_local .arrow{
+		display: none
+	}
+	.index_local .city-picker-dropdown{
+		width: 345px !important;
+		top:50px !important;
+		left: 52px !important;
+	}
+	.index_local .city-picker-dropdown dl dd a{
+		font-size: 13px !important;
+	}
+	.index_local .city-picker-span .title>span.select-item{
+		position: absolute;
+		left:11px;
+		top:5px;
+		color:#908E8E;
+	}
+	.index_local .city-select-tab{
+		display: none;
+	}
+	.charonAdIndexAboutUs{
+		width: 464px;
+	}
+	.charonAdIndexWhite{
+		width: 128px;
+		top:23px;
+	}
+	.haveListForMoney {
+		position: relative;
+		margin-right: 14px;
+	}
+	.haveListForMoney img {
+		position: absolute;
+		width: 20%;
+		top: -11px;
+		right: -2px;
+	}
+	.index_search_box a.index_buttom{
+		height: 35px;
+		margin-left: -6px;
+	}
+</style>
+
+	<!--[if IE 8]>
+	<style>
+		.index_ad_title ul.index_out02 li{
+			font-size: 14px;
+			margin-left: 5px;
+			background: rgb(255,255,255);
+			filter:alpha(opacity=20);
+			position: static;
+			zoom: 1;
+		}
+		.index_ad_title ul.index_out02 li a{
+			position: relative;
+		}
+		.index_ad_title ul.index_out02 li a:hover{
+			height: 24px;
+			padding: 0 6px;
+			border: 1px solid rgb(255,255,255);
+		}
+	</style>
+	<![endif]-->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?89323d159de3da4db3d8ba79f8643edd";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</head>
+<body>
+<!--页面的header部分开始-->
+<div class="index_header" id="top">
+	<div class="index_header_top">
+		<div class="index_header_top_con">
+			<ul>
+				<% if(!logined){ %>
+				<li><a href="/users/login">登录</a>&nbsp;&nbsp;<a href="/users/reg">注册</a></li>
+				<li><a href="/users/login">个人中心</a></li>
+				<% }else{ %>
+
+				<li style="width: 126px">您好&nbsp;<a style="color:#DA2F2F" href="/users/recentDemandAndResource">
+						<%if(userInfo.nickName){%>
+						<%=userInfo.nickName%>
+						<%}else {%>
+						<%=userInfo.userName%>
+						<%}%>
+					</a>
+				</li>
+				<li style="width: 40px"><a rel="nofollow" href="/users/logout" id="userLoginOut">退出</a></li>
+				<li><a href="/users/recentDemandAndResource">个人中心</a></li>
+				<% } %>
+				<!--<li><a href="login">登录</a>&nbsp;&nbsp;<a href="reg">注册</a></li>-->
+				<li class="forwebnav">网站导航</li>
+				<li><a href="/users/helperCenter">帮助中心</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="index_header_mid">
+		<div class="index_logo">
+			<a href="/users/home"> <img src="/themes/<%=staticforder%>/images/index_logo.png" alt=""> </a>
+		</div>
+		<div class="index_local constrict">
+			<ul>
+				<li class="index_address" style="margin-top: 25px;position: relative">
+					<span class="indexLocation_icon"><img src="/themes/<%=staticforder%>/images/location.png" alt=""/></span>&nbsp;
+					<a class="index_local_area" href="javascript:void(0)"></a>
+					<input type="hidden" value="" class="index_for_area">
+					<div style="position: relative;" class="regionHead">
+						<input readonly type="text" data-toggle="city-picker" placeholder="湖北" data-level="province" style="display: none"  >
+					</div>
+				</li>
+				<li class="index_place" style="font-size: 13px;margin-top: 8px;">
+					<a href="javascript:void(0)">[ 切换区域 ]</a>
+				</li>
+			</ul>
+		</div>
+		<div class="index_search">
+			<div class="index_search_box">
+				<div class="kindSelect" style="float: left">
+					<input class="serchKindName" type="hidden" value="all">
+					<a class="searchKinds" href="javascript:;">全部</a>
+					<dl style="display: none">
+						<dt id="all">广告全部</dt>
+						<%
+						for(var i=0;i<cateList.length;i++){%>
+						<dt id="<%=cateList[i].defaultUrl%>"><%=cateList[i].name%></dt>
+						<%}%>
+						<dt id="xuqiu">广告需求</dt>
+						<dt id="zhaobiao">广告招标</dt>
+						<dt id="anzhuang">广告安装</dt>
+					</dl>
+				</div>
+
+				<%if(searchRecommendForSearch&&searchRecommendForSearch.text){var i;i=parseInt(Math.random()*searchRecommendForSearch.text.split("#").length)%>
+				<input class="searchText" type="text" value="" placeholder="<%=searchRecommendForSearch.text.split("#")[i]%>">
+				<%}else {%>
+				<input class="searchText" type="text" value="" placeholder="">
+				<%}%>
+
+				<a class="index_buttom" href="javascript:;"></a>
+				<div style="clear: both;"></div>
+				<ul class="clearfix" id="searchRecommendForManufacture" style="display: none">
+					<%if(searchRecommendForManufacture){for(var i=0;i<searchRecommendForManufacture.text.split('#').length;i++){%>
+					<a href="javascript:;" data-id="<%=searchRecommendForManufacture.text.split('#')[i]%>"><%=searchRecommendForManufacture.text.split('#')[i]%></a>
+					<%}}%>
+				</ul>
+				<ul class="clearfix" id="searchRecommendForMaterial" style="display: none">
+					<%if(searchRecommendForMaterial){for(var i=0;i<searchRecommendForMaterial.text.split('#').length;i++){%>
+					<a href="javascript:;" data-id="<%=searchRecommendForMaterial.text.split('#')[i]%>"><%=searchRecommendForMaterial.text.split('#')[i]%></a>
+					<%}}%>
+				</ul>
+				<ul class="clearfix" id="searchRecommendForEquipment" style="display: none">
+					<%if(searchRecommendForEquipment){for(var i=0;i<searchRecommendForEquipment.text.split('#').length;i++){%>
+					<a href="javascript:;" data-id="<%=searchRecommendForEquipment.text.split('#')[i]%>"><%=searchRecommendForEquipment.text.split('#')[i]%></a>
+					<%}}%>
+				</ul>
+				<ul class="clearfix" id="searchRecommendForDemands" style="display: none">
+					<%if(searchRecommendForDemands){for(var i=0;i<searchRecommendForDemands.text.split('#').length;i++){%>
+					<a href="javascript:;" data-id="<%=searchRecommendForDemands.text.split('#')[i]%>"><%=searchRecommendForDemands.text.split('#')[i]%></a>
+					<%}}%>
+				</ul>
+			</div>
+		</div>
+		<div class="index_for_resource">
+			<a href="../resource/reIndex">免费发布广告资源</a>
+			<a href="../tender/tender" style="width: 100px;">发布招标</a>
+		</div>
+	</div>
+</div>
+<div class="index_header_menu">
+	<div class="index_nav">
+		<ul>
+			<li><a class="active" href="/users/home">首页</a></li>
+			<li class="haveListForMoney"><a href="../tender/tenderlist" class="redFont">接单赚钱</a><img src="/themes/<%=staticforder%>/images/hot.gif" alt=""></li>
+			<li><a href="../resource/resourceFixList" >找安装</a></li>
+			<li><a href="../resource/digitalMagazine">数字期刊</a></li>
+			<li><a href="../resource/vr">VR展馆</a></li>
+			<li><a href="/resource/secondDemand">需求中心</a></li>
+			<li class="aboutUsForMa"><a href="javascript:;">关注我们</a>
+				<span class="charonAdIndexWhite"></span>
+				<div class="charonAdIndexAboutUs">
+					<ul class="clearfix">
+						<li class="clearfix">
+							<a href="javascript:;"><img src="/themes/<%=staticforder%>/images/weicahrtqr.png" alt=""/></a>
+							<span style="color:#d33737;font-size: 14px;padding-top: 2px;">制作宝微信服务号</span>
+							<span>重要提醒不要错过</span>
+							<span>核心操作更加简单</span>
+						</li>
+						<li class="clearfix">
+							<a href="javascript:;"><img src="/themes/<%=staticforder%>/images/serviceqr.jpg" alt=""/></a>
+							<span style="color:#d33737;font-size: 14px;padding-top: 2px;">制作宝微信订阅号</span>
+							<span>重要提醒不要错过</span>
+							<span>核心操作更加简单</span>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li id="indexBrandsGet"><a href="../resource/brandWin">品牌推广服务</a></li>
+		</ul>
+	</div>
+</div>
+<!--页面header部分结束-->
+<%-body %>
+<!--首页底部部分-->
+<div class="index_footer">
+	<div class="index_footer_con clearfix">
+		<ul class="focusus">
+			<li class="focustitlt">关注我们</li>
+			<li class="focusicon"><a><img class="footqq" src="/themes/lanmai/images/footqq.png"/><img class="footweichart" src="/themes/lanmai/images/footweichart.png"/></a></li>
+			<li class="focusqr"><a><img class="footqqqr" src="https://cdn.adquan.net/images/bigimg/qqqr.png/compress.only"/><img class="footweichartqr" src="/themes/lanmai/images/weicahrtqr.png"/></a></li>
+		</ul>
+		<ul class="index_footer_right">
+			<li style="font-size: 18px;margin-bottom: 6px;"><a href="../users/helperCenter#1">关于制作宝</a></li>
+			<li><a href="../users/helperCenter#7">服务条款</a></li>
+			<li><a href="../users/helperCenter#4">隐私申明</a></li>
+			<li><a href="../users/helperCenter#3">版权申明</a></li>
+		</ul>
+		<ul class="index_footer_right">
+			<li style="font-size: 18px;margin-bottom: 6px;"><a href="../users/helperCenter#2">帮助中心</a></li>
+			<li><a href="../users/helperCenter#2">新手入门</a></li>
+			<li><a href="../users/helperCenter#2">品牌推广</a></li>
+			<li><a href="../users/helperCenter#2">发布资源</a></li>
+		</ul>
+		<ul class="index_footer_right">
+			<li style="font-size: 18px;margin-bottom: 6px;"><a href="../users/helperCenter#5">客服中心</a></li>
+			<li><a href="../users/helperCenter#5">联系客服</a></li>
+			<li><a href="../users/helperCenter#5">意见反馈</a></li>
+		</ul>
+		<ul class="index_footer_right">
+			<li class="digmagazine">
+				<%if(ebookData[0]){%>
+				<a href="../resource/digitalMagazine"><img src="<%=ebookData[0].coverImg%>/compress.only"/></a>
+				<span><%=ebookData[0].title%></span>
+				<%}%>
+			</li>
+		</ul>
+	</div>
+	<div class="copyright">
+		<!--<ul>-->
+		<!--<li>友情链接</li>-->
+		<!--<li><a>大吉</a></li></li>-->
+		<!--<li><a>如意</a></li></li>-->
+		<!--<li><a>萌爷</a></li></li>-->
+		<!--<li><a>颖子</a></li></li>-->
+		<!--<li><a>九九</a></li></li>-->
+		<!--<li><a>大个</a></li></li>-->
+		<!--<li><a>财百万</a></li></li>-->
+		<!--<li><a class="morelinks">更多</a></li></li>-->
+		<!--</ul>-->
+		<span>武汉蓝迈网络科技有限公司2016-<script>document.write((new Date()).getFullYear())</script>&nbsp;鄂&nbsp;ICP&nbsp;备 &nbsp;16023329号</span>
+	</div>
+</div>
+
+<div class="index_right_float">
+	<ul>
+		<li><a class="index_user_tender" href="../tender/tender">1</a></li>
+		<li><a class="index_user_center" href="/users/recentDemandAndResource">1</a></li>
+		<li><a class="index_server_quick" href="/users/myCollect">2</a></li>
+		<!-- <li><a class="index_bag" href="javascript:;">3</a></li>-->
+		<li class="index_right_top02" ><a class="index_right_top"  href="javascript:;">4</a>
+			<ul>
+				<li class="index_right_top1"> <a href="javascript:;">返回顶部</a> </li>
+			</ul>
+		</li>
+
+	</ul>
+</div>
+
+
+<div class="webnav">
+	<div>
+		<div class="webnavb"><a>找资源</a></div>
+		<ul>
+			<li><a href="/resource/resourceListMake">制作</a></li>
+			<li><a href="/resource/resourceListMachine">设备</a></li>
+			<li><a href="/resource/resourceListMaterial">材料</a></li>
+		</ul>
+	</div>
+	<div>
+		<div class="webnavb"><a>发布信息</a></div>
+		<ul>
+			<li><a href="/resource/demandRelease">发布需求</a></li>
+			<li><a href="/resource/myFix">发布安装</a></li>
+			<li><a href="/resource/reIndex">发布资源</a></li>
+		</ul>
+	</div>
+	<div>
+		<div class="webnavb"><a>个人中心</a></div>
+		<ul>
+			<li><a href="privateInfo">个人资料</a></li>
+			<li><a href="myOrders">个人订单</a></li>
+			<li><a href="safetySet">账户设置</a></li>
+		</ul>
+	</div>
+	<div>
+		<div class="webnavb"><a>企业中心</a></div>
+		<ul>
+			<li><a href="../tender/shopaccount">企业账户</a></li>
+			<li><a href="../tender/shoptender">企业招标</a></li>
+			<li><a href="../tender/shopbid">企业投标</a></li>
+		</ul>
+	</div>
+	<div>
+		<div class="webnavb"><a>品牌推广</a></div>
+		<ul>
+			<li><a href="/resource/digitalMagazine">数字期刊</a></li>
+			<li><a class="redFont" href="/resource/brandWin">品牌推广</a></li>
+			<li><a href="/resource/vr">VR展馆</a></li>
+		</ul>
+	</div>
+	<div>
+		<div class="webnavb"><a>关注我们</a></div>
+		<img src="/themes/lanmai/images/weicahrtqr.png"/>
+	</div>
+</div>
+</body>
+<script src="/themes/<%=staticforder%>/js/jquery.flexslider-min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/plugins/citypicker/city-picker.data.js"></script>
+<script src="/plugins/citypicker/city-picker.js"></script>
+<script src="/themes/<%=staticforder%>/js/cos-js-sdk-v4.js?vesion=<%=siteConfig.version%>"></script>
+<script src="/themes/<%=staticforder%>/js/moment.min.js?vesion=<%=siteConfig.version%>"></script>
+<script src="/themes/<%=staticforder%>/js/tool.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/core.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/hack.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+</html>

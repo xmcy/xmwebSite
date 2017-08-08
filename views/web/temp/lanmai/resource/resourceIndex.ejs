@@ -1,0 +1,32 @@
+
+    <!--资源发布首页内容区域开始-->
+    <div class="re_announce_con">
+        <div class="re_announce_top">
+            <ul>
+                <li style="color: #fff">1 选择大类</li>
+                <li>2 填写信息</li>
+                <li>3 完成发布</li>
+            </ul>
+        </div>
+        <div class="re_source_list">
+            <ul>
+                <%for(var i=0;i<cateList.length;i++){%>
+                <li id="nav_<%=cateList[i]._id%>"><a href="<%=cateList[i].defaultUrl%>?parentID=<%=cateList[i]._id%>"><%=cateList[i].name%></a></li>
+                <%}%>
+                <li id=""><a href="../../resource/demandRelease">需&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;求</a></li>
+                <li><a href="../../resource/myFix">安&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;装</a></li>
+                <!--<li><a href="reOut">户外广告</a></li>-->
+                <!--<li><a href="reSale">营销策划</a></li>-->
+                <!--<li><a href="reMake">广告制作</a></li>-->
+                <!--<li><a href="reTv">电视广告</a></li>-->
+                <!--<li><a href="reMaterial">广告材料</a></li>-->
+                <!--<li><a href="reRadio">广播广告</a></li>-->
+                <!--<li><a href="reMachine">广告设备</a></li>-->
+                <!--<li><a href="reMagazine">杂志广告</a></li>-->
+                <!--<li><a href="rePaper">报纸广告</a></li>-->
+                <!--<li><a href="reNewsMedia">新媒体</a></li>-->
+            </ul>
+        </div>
+    </div>
+
+    <!--资源发布首页内容区域结束-->

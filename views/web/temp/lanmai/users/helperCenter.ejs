@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>帮助中心-制作宝</title>
+    <meta name="Keywords" content="<%=siteConfig.keywords%>"/>
+    <meta name="Description" content="<%=siteConfig.cmsDescription%>"/>
+    <meta name="viewport" content="width=device-width,initial-scale=0.2,minimum-scale=0.2,maximum-scale=5" />
+    <link href="/plugins/bootstrap/css/bootstrap.min.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="/themes/<%=staticforder%>/css/base.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?89323d159de3da4db3d8ba79f8643edd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<style>
+    body{
+        background-color: #f2f2f2;
+        font-size: 16px;
+    }
+    .privateAccount{
+        width: 100%;
+        height: 32px;
+    }
+    .accountcontent{
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .accountcontent>ul{
+        float: right;
+        margin-right: 5px;
+    }
+    .accountcontent>ul>li{
+        margin-top: 5px;
+        height: 20px;
+        float: left;
+        width: auto;
+        margin-left: 15px;
+        line-height: 20px;
+    }
+    .accountcontent>ul>li>a{
+        color: grey;
+        font-size: 14px;
+    }
+    .accountcontent>ul>li>a:hover{
+        color:#da2f2f ;
+    }
+    .accountcontent .addmore{
+        display:inline-block;
+        width:0;
+        height:0;
+        border-left:5px solid transparent;
+        border-right:5px solid transparent;
+        border-top:7px solid grey;
+        margin: 0 7px 0 7px;
+    }
+    .header{
+        width: 100%;
+        height: 80px;
+        background-color: #fff;
+    }
+    .headcontent{
+        width: 1200px;
+        height: 80px;
+        margin: 0 auto;
+        border-bottom: 2px solid #ce2e2f;
+    }
+    .headcontent>div{
+        float: left;
+        font-size: 18px;
+        height:80px;
+        margin-right: 20px;
+    }
+    .logo{
+        width: 238px;
+        background: url("/themes/lanmai/images/re_logo.png") no-repeat;
+    }
+    .headcontent>div>a{
+        display: block;
+        height: 30px;
+        width: 80px;
+        margin-top: 50px;
+        color: grey;
+    }
+    .headcontent>.logo>a{
+        display: block;
+        width: 238px;
+        height: 80px;
+        cursor: pointer;
+        margin-top: 0px !important;
+    }
+    .helpcenter{
+        width: 80px;
+        padding-top: 50px;
+        color: #e1b32e;
+    }
+    .helpcontent{
+        width: 1200px;
+        margin: 0 auto;
+        height: auto;
+        position: relative;
+        border-top: 24px solid  #f2f2f2;
+    }
+    .helpnav{
+        width: 240px;
+        height: auto;
+        min-height: 570px;
+        border-right: 20px solid  #f2f2f2;
+        border-top: 24px solid  #fff;
+        position: absolute;
+        top: 0;
+        left:0;
+        background-color: #fff;
+    }
+    .helpnav>div{
+        width: 220px;
+        height: 50px;
+        border-bottom: 20px solid #fff;
+        background-color: #fff;
+    }
+    .helpnav>div>a{
+        display: block;
+        width: 220px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color:grey ;
+        font-size: 17px;
+    }
+    .active{
+        background-color: #f2f2f2 ;
+        color:#e1b32e !important;
+    }
+    .helperspecific{
+        width: 960px;
+        height: auto;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #fff;
+    }
+    .panel-group{
+        padding-left: 60px;
+    }
+    .panel-default>.panel-heading{
+        border: 0;
+        background-color: #fff;
+    }
+    .panel-heading{
+        padding-left: 0;
+    }
+    .panel-default{
+        border-color:#fff;
+    }
+    .panel-title>a{
+        color: #5083d1;
+        text-decoration: none;
+    }
+    .collapse.in{
+        border: 1px solid #e1b32e;
+        background-color: #f8f0d9;
+    }
+    .panel-body{
+        color: grey;
+    }
+    .helperspecific>ul{
+        display: none;
+        padding-bottom: 150px;
+    }
+    .helperspecific>.aboutguanggaoquan{
+        display: block;
+    }
+    .helperspecific li{
+        line-height: 38px;
+        /*border-bottom: 2px solid #FFFFFF;*/
+        font-size: 15px;
+        margin-left:54px;
+        padding-right: 10px;
+    }
+    .helperspecific li>.infoWrapper{
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .helperspecific li>.specificinfo{
+        z-index: 999;
+        width:100% ;
+        border: 1px solid gainsboro;
+        border-top: none;
+        background-color: #fff;
+        display: block;
+    }
+    .helperspecific li:nth-child(2)>.specificinfo{
+        display: block;
+    }
+    .helperspecific li>.specificinfo>div{
+        width: 100%;
+        padding:10px 20px;
+        border: 1px solid  #e1b32e;
+        background-color:#f8f0d9 ;
+        color: grey;
+    }
+    .helperspecific li>.specificinfo>div>img{
+        display: block;
+        margin: 0 auto;
+    }
+    .helperspecific .title{
+        font-size: 20px;
+        color: grey;
+        margin: 30px 0 0px 50px;
+    }
+    ul>li{
+        color: grey;
+    }
+    .forbbid>li{
+        margin-left: 26px;
+    }
+    .aboutservice>li{
+        margin-bottom: 10px;
+    }
+    .aboutcustomerservice>li>ul>li{
+        font-size: 16px;
+    }
+    .aboutcustomerservice>li>ul>li>span{
+        display: inline-block;
+        width: 100px;
+    }
+    .res{
+        width: 44%;
+        margin-bottom: 30px;
+    }
+    .res>div>ul{
+        padding-left: 20px;
+    }
+    .aboutcustomerservice>.title{
+        margin-left: 104px;
+    }
+    .aboutcustomerservice>.contact{
+        margin-left: 128px;
+    }
+</style>
+<body>
+<div class="privateAccount">
+    <div class="accountcontent">
+        <ul>
+            <% if(!logined){ %>
+            <li><a href="/users/login">登录</a>&nbsp;&nbsp;<a href="/users/reg">注册</a></li>
+            <li><a href="/users/login">个人中心</a></li>
+            <% }else{ %>
+
+            <li>您好&nbsp;<a style="color:#DA2F2F" href="/users/recentDemandAndResource">
+                    <%if(userInfo.nickName){%>
+                    <%=userInfo.nickName%>
+                    <%}else {%>
+                    <%=userInfo.userName%>
+                    <%}%>
+                </a>
+            </li>
+            <li><a rel="nofollow" href="/users/logout" id="userLoginOut">退出</a></li>
+            <li><a href="/users/recentDemandAndResource">个人中心</a></li>
+            <% } %>
+            <!--<li><a href="login">登录</a>&nbsp;&nbsp;<a href="reg">注册</a></li>-->
+            <li><a href="/users/helperCenter">帮助中心</a></li>
+        </ul>
+
+    </div>
+</div>
+<div class="header">
+    <div class="headcontent">
+        <div class="logo"><a href="home"></a></div>
+        <div><a href="home">首页</a></div>
+        <div class="helpcenter">帮助中心</div>
+    </div>
+</div>
+<div class="helpcontent">
+    <div class="helpnav">
+        <div><a class="guanggaoquan active">关于我们</a></div>
+        <div><a class="usualproblem">常见问题</a></div>
+        <div><a class="copyright">版权申明</a></div>
+        <div><a class="privacy">关于隐私</a></div>
+        <div><a class="customerservice">联系客服</a></div>
+        <div><a>友情链接</a></div>
+        <div><a class="sercive">服务条款</a></div>
+    </div>
+    <div class="helperspecific">
+        <ul class="aboutguanggaoquan">
+            <li class="title">关于制作宝</li>
+            <li>制作宝网站是国内目前唯一一家致力于提供专业广告制作资源信息的服务平台。<br>
+                业务落点精确具体，涵盖广告制作、广告材料、广告设备等方面，网站至上线以来，受到广告人的热烈欢迎和支持。</li>
+            <li class="title">核心价值观</li>
+            <li>用户第一&nbsp;&nbsp;&nbsp;&nbsp;真实可信&nbsp;&nbsp;&nbsp;&nbsp;创新发展</li>
+            <li class="title">网站发展宗旨</li>
+            <li>平衡广告制作行业的价格趋势，提供真实可靠合理的广告制作资源和报价；<br>
+                助力于广告制作人和企业拓展渠道，同时也为有广告制作需求的用户提供便捷高效的获取途径。</li>
+            <li class="title">业务范畴</li>
+            <li>目前制作宝作为覆盖广告制作资源的服务平台，业务覆盖整个广告制作产业链，包括制作、安装、材料及设备;在用户服务层面，制作宝不仅仅只是一个资源展示撮合平台，更是广告制作一站式服务平台，力求为企业用户提供全方位成熟的市场品牌营销和推广方案。</li>
+        </ul>
+        <ul class="aboutaccount">
+            <li class="title">一、关于注册、登陆、账号</li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>1、如何注册成为用户</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：首先，在任意页面的上部点击“注册”，跳转到注册新用户的页面，按照提示填写好个人资料，阅读并同意服务条款后点击“同意服务条款并注册”，在注册资料填写正确的前提下，会提示您注册成功。您就成为制作宝的用户了！ 注册成为用户后，可以直接进行身份认证，保护账户安全。
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>2、忘记密码</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：首先，在任意页面的上部点击“登录”，跳转到登录的页面，点击输入框中部的“忘记密码”，按照提示步骤输入手机验证码，设置一个新的登录密码即可。
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>3、修改密码</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：登录到制作宝后，点击首页右上角的用户名，进入个人中心。在“账户设置”-“安全设置”下，找到登录密码项目，点击“修改”,按照步骤提示修改即可。
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>4、修改绑定手机号/邮箱</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：登录到制作宝后，点击首页右上角的用户名，进入个人中心。在“账户设置”-“个人资料”下，找到绑定的手机号/邮箱，点击后面的铅笔修改图标，按照步骤提示修改即可；或者在“账户设置”-“安全认证”下，找到“手机认证”/“邮箱认认证”项目，点击“解绑”，按照提示换邦一个新的手机号/邮箱。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="title">二、关于资源信息</li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>1、如何发布资源</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：在首页点击右上部“免费发布资源”按钮，跳转至发布页面，按要求填入信息点击发布即可；或者在“个人中心”-“资源发布”页面，点击“发布新资源”按钮来发布也可以。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>2、如何管理资源</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p> 答：成功发布资源后，在“个人中心”-“资源发布”页面，有管理资源的功能字样，“修改”“刷新”“置顶”“删除”“精准推广”，按实际需求来操作即可；或者在“企业中心”-“企业资源”页面下来操作同样可行。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>3、如何查找资源</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：如果是查找网站的资源，可以点击首页上部搜索框，输入您想要查找的内容关键字即可；当跳转至列表页面时，还可以根据页面上部条件选择来精细筛选。如果是查找自己发布的资源，在“个人中心”-“资源发布页面”上部有搜索框，输入内容查找即可。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>4、我能发布多少条资源</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：非注册用户不能发布资源；注册用户发布资源的总数制作宝不限制，但“广告制作”“广告材料”“广告设备”三个大类别下的每个小类别只能发布一条资源；例如，“广告制作”下有八个小类别，“印刷”是其中一类，“印刷”下又细分了24个小类，所以关于印刷的资源最多只能发布24条。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>5、发布的资源是怎么排序的</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：制作宝对于用户发布的资源展示排序遵循以下原则：品牌推广资源>精准推广资源>企业认证资源>个人认证资源>其他资源；其他资源的排序遵循更新时间最近排在最前。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>6、同一条资源能刷新几次</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：注册用户名下的每条资源每天可以刷新一次。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="title">三、关于招投标</li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>1、什么是制作宝“接单赚钱”</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：接单赚钱”是制作宝招投标板块的谐称，有制作需求的用户在该板块发布招标信息，有意向的服务商进行投标，双方完成需求与技术交换的完整流程称之为一次“招投标”。制作宝旨在为有具体制作需求的用户和资深实力的服务商搭建一个公平可靠的平台，通过保证金体系确保交易平等可控，一方面帮助需求方找到最优服务商，另一方面也解决了服务商货款难以收回的问题，实现双方双赢互惠。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>2、什么是企业保证金/什么是招标保证金/什么是保证金体系</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p> 答：入驻招投标板块的企业需要在平台缴纳企业保证金，无论用户使用招标者的身份还是投标者的身份，企业保证金都是企业诚信的最好说明，一旦招投标过程中任何一方出现违约行为，平台都会启用保证金来确保另一方的利益，对于双方来说都非常公正公平，非招投标期间，企业保证金随时可退，平台不会以任何名义形式冻结，真正做到随时退还；此外，制作宝为招标方单独设置了招标保证金，发布招标信息时，招标方自由选择是否缴纳，招标保证金只针对某一次招投标流程，一旦交易完成，自动按原路返还到招标方账户中，无需单独提现；企业保证金和招标保证金共同构成保证金体系，把控整个招投标流程正常公平走完，也为制作宝筛选出一批有实力讲诚信的优质服务商。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>3、保证金退还规则</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：企业保证金在非招投标期间随时可退，点击企业中心-企业账户-保证金账户“提现”按钮，将原路退还至绑定的支付宝账号或微信账号；招标保证金在该次招投标介绍后自动原路返还，不需要单独提现操作。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>4、如何发布招标信息</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：登陆后点击网站各页面“发布招标”按钮，填写完整的招标信息，点击发布即可。填写发布信息时，需要注意填写内容，投标时间，选标时间，制作时间分别对应服务商投标截止，招标方选标截止和中标服务商制作截止时间；招投方式为邀请招标时，可以根据实际情况来邀请服务商；当不想某服务商来参加投标时可以选其为屏蔽厂家；招标保证金根据意愿自由缴纳；设计稿和安装等细节都选择说明。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>5、如何投标</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：在“接单赚钱”信息详情页面，选择有意愿的招标信息，点击投标按钮，填写投标信息，包括报价，需要招标方支付的定金比例，详细的投标工艺流程说明，承诺的完工时间，联系信息，提交即可。开标前可在“企业中心”-“企业投标”页面关注中标情况。如果是邀请招标的标的则只有被邀请才具有竞投该标的的权利，出于双方安全考虑，企业需进行认证后才能进行投标操作!</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>6、不能发布招标的情况</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：用户一个自然月内违反招投标细则累计达到三次，不能在平台发布招标信息。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>7、不能投标的情况</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：用户不能参与投标，可能存在以下几种情况。普通用户每日在平台投标次数上限为五次，已达到投标上限（购买了品牌推广的用户没有投标次数限制）；用户被招标方选为屏蔽厂家，不能参与投标；用户一个自然月内违反招投标细则累计达到三次，不能参与投标。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>8、每次招标最多可以有多少服务商投标</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p> 答：发布招标时未缴纳招标保证金的招标方，系统默认最多可以有5个服务商参与投标；而缴纳了招标保证金的招标方，投标服务商数量的上限与缴纳金额成正比 投标数量=保证金/100+5 如缴纳500元则最多可以获得10个投标</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>9、定金、尾款如何提取</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：中标后，招标方支付比例定金，服务商此时不能提取该定金，该定金此时在平台“现金账户”托管，只有完成验收交付整个流程后，服务商才能将定金和尾款提取出来。在“企业中心”-“企业投标”-“已交付”点击“提现”按钮即可。需注意的是，提取定金尾款将扣除3%的平台手续费。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>10、招投标终止关闭的情况说明以及责任划分</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：a、截止投标前取消招标-无责任 b、投标时间截止后 投标数量未达到预期数量 在选标阶段关闭招投标-无责任 c、投标时间截止后 投标数量已达到预期数量 在选标阶段关闭招投标-招标方责任 d、招标数量未达到预期数量 选标时间截止后招标方未能选择中标方导致招投标关闭-无责任 e、招标数量已达到预期数量 选标时间截止后招标方未能选择中标方导致招投标关闭-招标方责任  f、支付定金时间截止后 招标方未支付定金导致招标关闭-招标方责任  g、制作验收时间截止后 中标服务商未按时交付导致招标关闭-中标方责任 h、制作验收时间截止后 中标服务商按时交付 招标方未按时验收导致招标关闭-招标方责任 j、支付尾款时间截止后 招标方未按时支付尾款导致招标关闭-招标方责任。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>11、招投标违约情况说明</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：招标方违约情况：a、选择中标服务商后未按时支付定金 b、验收环节拒绝验收服务商 c、验收后不按时支付尾款 。投标方违约情况：a、未按照承诺时间交付货品 b、货品存在严重质量问题 c、未生产安装完毕要求支付尾款 e、不按照质保时间提供质保。每个自然月违规累计达到三次将无法参与招投标。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="title">四、关于制作宝的推广服务</li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>1、什么是精准推广</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：精准推广是针对个人用户发布的资源进行的推广，可以明确推广地区，明确推广资源的分类，并优先展示，精准锁定目标人群。精准推广只针对单条资源，适合资源数量较少的用户。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>2、什么是品牌推广</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p> 答：品牌推广是针对企业用户的综合推广，推广内容涵盖了企业的品牌，资源，产品等方面。其推广渠道也不仅限于制作宝网站，也包含制作宝微信公众号以及线下人工渠道；其推广方式是灵活组合的，企业用户可以根据自身的实际需求来选择优先展示，数字期刊，VR展馆，自媒体渠道四个服务项目中的一个或多个；品牌推广适合初创期需要开展业务渠道，扩大规模的企业，也适合于拥有众多资源需要整合展示的企业。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>3、精准推广和品牌推广有什么区别联系</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：精准推广服务于某一条资源，购买了精准推广的资源将在在制作宝网站搜索结果中列表优先展示；品牌推广内容更加丰满，是针对的企业定制化的多渠道综合推广，让企业品牌在同质化商品的竞争中占据优势!。
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>4、进行中的精准推广怎么停止</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：在“个人中心”-“资源发布”页面下，推广中的资源会显示“推广中”字样，点击该字样，将状态切换至“已关闭”，其他用户将看不见该条资源，但精准推广服务仍在进行，不会停止计时；点击“删除”字样，删除该条资源，则精准推广同时停止，但不会退还未到期限的费用。精准推广默认到期自动停止，续费需要用户自己手动操作。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>5、品牌推广到期了怎么办</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：若品牌推广到期后，企业用户还想要继续该服务，可以在“企业中心”-“品牌推广”页面下点击“续费”字样，也可以直接联系专属客服。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>6、推广服务怎么收费</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：精准推广按时计费，用户选择推广期限后，系统将自动计算费用，期限越长，折扣优惠越多，用户直接线上支付即可；品牌推广根据用户选择的期限、服务项目不同，费用不同，系统结算时，将给出预估费用，客服联系企业用户制定推广方案后，将明确费用，用户线下线上支付都可以。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="title">五、关于企业中心</li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>1、什么是企业中心</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：制作宝为注册用户默认开启了企业中心，即每一个注册用户同时拥有个人中心和企业中心。企业中心是管理用户企业资源的功能中心，类似于淘宝商铺的概念，用户可以填写企业信息，进行企业认证，管理发布的资源，把控企业的品牌推广服务的情况，也可以调整更换企业首页（商铺首页）的展示图片，宣传广告。当个人用户拥有的资源逐渐积累时，可以向企业用户过渡，经营属于自己的企业，或者说商铺。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>2、企业中心怎么开通/关闭</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：企业中心在用户注册成为制作宝会员时就已经默认开通，若用户不想使用，不进行管理维护即可。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>3、企业首页的图片怎么修改/删除</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：在“企业中心”-“企业首页”页面下，将鼠标移至想要操作的图片上，出现“修改”/删除图标，点击操作并在下方确认保存即可。点击“查看首页”即可了解详情。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>4、怎么进行企业认证</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：在“企业中心”-“企业认证”页面下，点击“认证”按钮，按照提示步骤上传清晰的企业工商营业执照图片即可。认证后的企业，资源将优先于未认证企业资源展示，并将获得更多用户信赖。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>5、怎么拥有企业数字期刊</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：成为制作宝的品牌推广服务会员，选择“数字期刊”服务项目，制作宝将在数字期刊展示企业资源。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>6、怎么加入企业VR展馆</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：成为制作宝的品牌推广服务会员，选择“VR展馆”服务项目，制作宝将在VR展馆展示企业。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="title">六、其他</li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>1、电话被冒用了怎么办</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：手机号是用户作为制作宝注册会员最重要的账户识别信息，一定要妥善保护好，若发生冒用的情况，请第一时间联系制作宝客服，我们将根据实际情况来进行账户停用处理。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>2、个人认证需要上传什么证件
+                    </a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：个人认证需要上传一张清晰的手持身份证图片，在“账户设置”“认证管理”页面下，有示例图片展示，用户可以参照上传。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>3、怎么查看我参加的活动情况</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：在“个人中心”-“我的活动”页面，用户可以查看参加的活动情况。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>4、不想收到制作宝系统邮件</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：请联系客户处理。制作宝为用户推送的邮件可能包含重要的信息提示，以及重要的资源和品牌信息，请慎重考虑。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi " id="uploadImg">
+                <div class="infoWrapper">
+                    <a  >5、上传图片失败时如何调整浏览器模式</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：使用360极速浏览器、360安全浏览器、QQ浏览器、搜狗浏览器、UC浏览器上传图片时，请按照图片提示调整浏览器模式为极速模式或者高速模式.</p>
+                        <img src="/themes/lanmai/images/jianrong.png"/>
+                    </div>
+                </div>
+            </li>
+            <li class="toggleLi">
+                <div class="infoWrapper">
+                    <a>6、其他问题</a>
+                </div>
+                <div class="specificinfo">
+                    <div>
+                        <p>答：在此页面若没有找到您需要解答的问题，请联系客服，我们将记录您的问题，尽快回复，感谢支持！</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="aboutcopyright">
+            <li class="title">版权申明</li>
+            <li>&nbsp; &nbsp; &nbsp; &nbsp;蓝迈科技有限公司是制作宝网（www.91zhizuo.com）的所有者，制作宝网上刊载的所有内容，包括但不限于文字报导、图片、声音、录像、图表、标志、标识、广告、商标、商号、域名、软件、程序、版面设计、专栏目录与名称、内容分类标准等的版权以及为注册用户提供的任何或所有信息，均属蓝迈科技有限公司或相关权利人所有，受《中华人民共和国著作权法》、《中华人民共和国商标法》、《中华人民共和国专利法》及其它相关法律的保护。<br></li>
+          <li>
+              &nbsp; &nbsp; &nbsp; &nbsp;本平台上所有内容的汇编是制作宝的排他财产，受中国和国际版权法的保护。本平台上所有软件都是蓝迈科技或其关联公司或其软件供应商的财产，受中国和国际版权法的保护。任何被授权的浏览、复制、打印和传播属于制作宝平台网站内信息内容都不得用于商业目的且所有信息内容及其任何部分的使用都必须包括此版权声明。
+              用户一旦接受本协议，即表明该用户主动将其在任何时间段在本平台发表的任何形式的信息内容（包括但不限于用户评价、用户咨询、各类话题文章等信息内容）的财产性权利等任何可转让的权利，如著作权财产权（包括并不限于：复制权、发行权、出租权、展览权、表演权、放映权、广播权、信息网络传播权、摄制权、改编权、翻译权、汇编权以及应当由著作权人享有的其他可转让权利），全部独家且不可撤销地转让给制作宝所有，用户同意制作宝有权就任何主体侵权而单独提起诉讼。
+              <br>制作宝平台以下内容不可任意转载：<br>
+              &nbsp; &nbsp; &nbsp; &nbsp;（1）本平台内发布的所有信息；<br>
+              &nbsp; &nbsp; &nbsp; &nbsp;（2）已作出不得转载或未经许可不得转载声明的内容；<br>
+              &nbsp; &nbsp; &nbsp; &nbsp;（3）本平台中特有的图形、标志、页面风格、编排方式、程序等；<br>
+              &nbsp; &nbsp; &nbsp; &nbsp;（4）本平台中必须具有特别授权或具有注册用户资格方可知晓的内容；<br>
+              &nbsp; &nbsp; &nbsp; &nbsp;（5）其他法律不允许或本平台认为不适合转载的内容。<br>
+              &nbsp; &nbsp; &nbsp; &nbsp;使用者将制作宝提供的内容与服务用于商业、盈利、广告性目的时，需征得制作宝或相关权利人的书面特别授权，注明作者及文章出处""制作宝""，并按有关国际公约和中华人民共和国法律的有关规定向相关权利人支付版税。未经制作宝的授权，任何人不得建立该网站的镜像。对于不当引用制作宝网站内容而引起的纷争等或因纠纷等造成的任何损失，制作宝不承担相关法律责任。对不遵守本声明的用户或其他违法、恶意使用制作宝网站内容者，蓝迈科技保留追究其法律责任的权利。
+              制作宝平台相关声明版权及其修改权、更新权和法律允许范围内的最终解释权均属蓝迈科技所有。
+          </li>
+        </ul>
+        <ul class="aboutprivacy">
+            <li class="title">关于隐私</li>
+            <li>
+                1、蓝迈科技将在制作宝平台公布并不时修订隐私权条款，隐私权条款构成本协议的有效组成部分。
+            </li>
+            <li>
+                2、您知悉并认可：制作宝可能会与第三方合作向用户提供相关的网络服务，在此情况下，如制作宝旗下相应主体已与该第三方签署了适当的保密条款，则制作宝有权将用户的注册资料等提供给该第三方。另外，在不透露单个用户隐私资料的前提下，制作宝有权对整个用户数据库进行分析并对用户数据库进行商业上的利用。
+            </li>
+            <li>
+                3、制作宝将运用各种安全技术和程序建立完善的管理制度来保护您的个人信息，以免遭受未经授权的访问、使用或披露。对此您表示理解和认同。用户一旦注册成功，将得到唯一的用户名和密码。用户须妥善保管您的用户名和密码，不得告诉他人，否则因此产生的风险和损失由用户自行承担。用户要对以用户名进行的所有活动和事件负全部责任。用户可随时根据需要更改您的密码。用户若发现任何非法使用自己的用户名的情况，请立即通告本网。
+            </li>
+            <li>
+                4、制作宝不会将您的个人信息转移或披露给任何非关联的第三方，除非：<br>
+                &nbsp;   &nbsp;   &nbsp;   &nbsp;（1）相关法律法规或法院、政府机关要求；<br>
+                &nbsp;   &nbsp;   &nbsp;   &nbsp;（2）为完成合并、分立、收购或资产转让而转移；<br>
+                &nbsp;   &nbsp;   &nbsp;   &nbsp;（3）或为提供您要求的服务所必需。
+            </li>
+            <li>
+                5、您知悉并认可：制作宝通过推广或其他方式向您提供链接，使您可以接入第三方服务或网站。您使用该等第三方的服务时，须受该第三方的服务条款及隐私政策约束，您需要仔细阅读其条款。本协议仅适用于58同城提供的服务器所收集的信息，并不适用于任何第三方提供的服务或第三方的信息使用规则，制作宝对任何第三方使用由您提供的信息不承担任何责任。
+            </li>
+            <li>
+                6、制作宝不对用户所发布信息的删除或储存失败负责。制作宝并不承诺对用户的存储信息进行无限期保留。
+            </li>
+            <li>
+                7、任何时候如果您认为我们违背了上述原则，请发送电子邮件通知我们，公司邮箱地址adquan@adquan.net，我们将尽一切努力，在合理适当的范围内立即加以解决。
+            </li>
+        </ul>
+        <ul class="aboutservice">
+            <li class="title">制作宝用户服务协议</li>
+            <li>
+                1、制作宝服务条款的接受<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;通过完成制作宝注册程序，用户便表明其接受了本服务协议的条款，并同意受本服务协议的约束；同时，用户保证其提交的信息真实、准确、
+                及时和完整。本服务协议所称的用户是指完全同意所有条款(以下简称“服务条款”)并完成注册程序的服务接受者。
+            </li>
+            <li>
+                2、 服务条款的变更和修改<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;制作宝保留依其自主判断在将来的任何时间变更、修改、增加或删除本服务协议条款的权利。所有修改的协议均构成本服务协议的一部分。制作宝有权随时对服务条款进行修改，一旦发生服务条款的变动，制作宝将提示修改的内容；当用户使用制作宝的特殊服务时，应接受制作宝随时提供的与该特殊服务相关的规则或说明，并且此规则或说明均构成本服务条款的一部分。用户如果不同意服务条款的修改，可以主动取消已经获得的网络服务；如果用户继续享用网络服务，则视为用户已经接受服务条款的修改。
+            <li>
+                3、 服务说明<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;制作宝运用自己的操作系统通过国际互联网向用户提供丰富的网上资源，包括各种信息工具、网上论坛、个性化内容等(以下简称本服务)。除非另有明确规定，增强或强化目前服务的任何新功能，包括新产品，均无条件地适用本服务条款。<br>
+                除非本协议中另有规定，否则制作宝对网络服务不承担任何责任，即用户对网络服务的使用承担风险。制作宝不保证服务一定会满足用户的使用要求，也不保证服务不会受中断，对服务的及时性、安全性、准确性也不作担保。<br>
+                A. 为使用本服务，用户必须：<br>
+                <ul class="forbbid">
+                    <li>(1) 自行配备进入国际互联网所必需的设备，包括计算机、数据机，其他存取装置或接受服务所需其它设备；</li>
+                    <li>(2) 自行支付与此服务有关的费用。</li>
+                </ul>
+                B. 用户接受本服务须同意：<br>
+                <ul class="forbbid">
+                    <li>(1) 提供完整、真实、准确、最新的个人资料；</li>
+                    <li>(2)不断更新注册资料。</li>
+                </ul>
+                &nbsp; &nbsp; &nbsp; &nbsp;若用户提供任何错误、不实、过时或不完整的资料，或者制作宝有合理理由怀疑前述资料为错误、不实、过时或不完整，制作宝有权暂停或终止用户的帐号，并拒绝其现在或将来使用本服务的全部或一部分。制作宝有权规定并修改使用本服务的一般措施，包括但不限于决定保留电子邮件讯息或其他上载内容的时间、限制本服务一个帐号可接收信息的数量等措施。如制作宝未能储存或删除本服务的内容或其他讯息，制作宝不负担任何责任。对于用户3个月未使用的帐号，制作宝有权(但无义务)予以删除。
+                由于用户经由本服务张贴或传送内容、与本服务连线、违反本服务条款或侵害其他人的任何权利导致任何第三方提出权利主张或使制作宝遭受任何形式的罚款或处罚，用户同意以适当方式充分消除对制作宝的不利影响，赔偿制作宝及其分公司、关联公司、代理人或其他合作伙伴及员工的损失，并使其免受损害。
+            </li>
+            <li>
+                4、 用户应遵守以下法律及法规<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;用户同意遵守中华人民共和国法律法规，尤其是《中华人民共和国保守国家秘密法》、《中华人民共和国计算机信息系统安全保护条例》、《计算机软件保护条例》等有关计算机及互联网的法律法规和实施办法。在任何情况下，如果制作宝有合理理由认为用户的行为可能违反上述法律、法规，制作宝可以在任何时候，不经事先通知终止向该用户提供服务。用户应了解国际互联网的无国界性，应特别注意遵守当地所有有关的法律和法规。
+            </li>
+            <li>
+                5、 用户隐私权<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;当用户注册制作宝的服务时，用户须提供个人信息。制作宝收集个人信息的目的是为用户提供尽可能多的个人化网上服务以及为广告商提供一个方便的途径来接触到适合的用户，并且可以发送相关的信息和广告。在此过程中，广告商绝对不会接触到用户的个人信息。<br>
+                A. 制作宝不会在未经合法用户授权时，公开、编辑或透露其个人信息及保存在制作宝中的非公开内容，除非有下列情况：<br>
+                <ul class="forbbid">
+                    <li>(1) 有关法律规定或制作宝合法服务程序规定；</li>
+                    <li>(2) 在紧急情况下，为维护用户及公众的权益；</li>
+                    <li>(3) 为维护制作宝的合法权益；</li>
+                    <li>(4) 其他需要公开、编辑或透露个人信息的情况。</li>
+                </ul>
+                B. 在以下(包括但不限于)几种情况下，制作宝有权使用用户的个人信息：<br>
+                <ul class="forbbid">
+                    <li>(1) 在进行促销或抽奖时，制作宝可能会与赞助商共享用户的个人信息，在这些情况下制作宝会在发送用户信息之前进行提示，并且用户可以通过不参与来终止传送过程。</li>
+                    <li>(2) 制作宝可以将用户信息与第三方数据匹配。</li>
+                    <li>(3) 制作宝会通过透露合计用户统计数据，向未来的合作伙伴、广告商及其他第三方以及为了其他合法目的而描述制作宝的服务。</li>
+                    <li>(4)制作宝会向用户发送客户订制的信息或者制作宝认为用户会感兴趣的其他信息。如果用户不希望收到这样的信息，只需在提供个人信息时或其他任何时候告知即可。另外，制作宝会采取行业惯用措施保护用户信息的安全，但制作宝不能确信或保证任何个人信息的安全性，用户须自己承担风险。比如用户联机公布可被公众访问的个人信息时，用户有可能会收到未经用户同意的信息；制作宝的合作伙伴和可通过制作宝访问的第三方因特网站点和服务；通过抽奖、促销等活动得知用户个人信息的第三方会进行独立的数据收集工作等活动。制作宝对用户及其他任何第三方的上述行为，不承担任何责任。</li>
+                </ul> 
+            </li>
+            <li>
+                6、 用户帐号、密码和安全<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;用户一旦注册成功，便成为制作宝的合法用户，将得到一个密码和帐号。用户有义务保证密码和帐号的安全。用户对利用该密码和帐号所进行的一切活动负全部责任；因此所衍生的任何损失或损害，制作宝无法也不承担任何责任。
+                用户的密码和帐号遭到未授权的使用或发生其他任何安全问题，用户可以立即通知制作宝，并且用户在每次连线结束，应结束帐号使用，否则用户可能得不到制作宝的安全保护。
+                 
+            </li>
+            <li>
+                7、 对用户信息的存储和限制<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;制作宝不对用户所发布信息的删除或储存失败负责。制作宝有权判断用户的行为是否符合制作宝服务条款规定的权利，如果制作宝认为用户违背了服务条款或《制作宝新用户首发资源信息须知》的规定，制作宝有权删除用户发布或发送的信息（包括但不限于对其执行《虚假资源信息处理系统规则》的处罚），乃至中断或终止向其提供网络服务。 
+            </li>
+            <li>
+                8、 禁止用户从事以下行为：
+                <ul class="forbbid">
+                    <li>(1) 上载、张贴、发送或传送任何非法、有害、淫秽、粗俗、猥亵的，胁迫、骚扰、中伤他人的，诽谤、侵害他人隐私或诋毁他人名誉或商誉的，种族歧视或其他不适当的信息或电子邮件，包括但不限于资讯、资料、文字、软件、音乐、照片、图形、信息或其他资料(以下简称内容)。</li>
+                    <li>(3) 冒充任何人或机构，或以虚伪不实的方式谎称或使人误认为与任何人或任何机构有关。</li>
+                    <li>(4) 伪造标题或以其他方式操控识别资料，使人误认为该内容为制作宝所传送。</li>
+                    <li>(5) 上载、张贴、发送电子邮件或以其他方式传送无权传送的内容(例如内部资料、机密资料)。</li>
+                    <li>(6) 上载、张贴、发送电子邮件或以其他方式传送侵犯任何人的专利、商标、著作权、商业秘密或其他专属权利之内容。</li>
+                    <li>(7) 在制作宝网站专供张贴广告的区域之外，上载、张贴、发送电子邮件或以其他方式传送广告函件、促销资料、"垃圾邮件"等。</li>
+                    <li>(8) 上载、张贴、发送电子邮件或以其他方式传送有关干扰、破坏或限制任何计算机软件、硬件或通讯设备功能的软件病毒或其他计算机代码、档案和程序之资料。</li>
+                    <li>(9) 干扰或破坏本服务或与本服务相连的服务器和网络，或不遵守本服务协议之规定。</li>
+                    <li>(10) 故意或非故意违反任何相关的中国法律、法规、规章、条例等其他具有法律效力的规范。</li>
+                    <li>(11) 跟踪或以其他方式骚扰他人。</li>
+                    <li>(12) 其它被制作宝视为不适当的行为。</li>
+                </ul>
+                &nbsp; &nbsp; &nbsp; &nbsp;用户对经由本服务上载、张贴、发送电子邮件或传送的内容负全部责任；对于经由本服务而传送的内容，制作宝不保证前述内容的正确性、完整性或品质。用户在接受本服务时，有可能会接触到令人不快、不适当或令人厌恶的内容。在任何情况下，制作宝均不对任何内容负责，包括但不限于任何内容发生任何错误或纰漏以及衍生的任何损失或损害。制作宝有权(但无义务)自行拒绝或删除经由本服务提供的任何内容。用户使用上述内容，应自行承担风险。
+                制作宝有权利在下述情况下，对内容进行保存或披露：<br>
+                <ul class="forbbid">
+                    <li>(1) 法律程序所规定；</li>
+                    <li>(2) 本服务条款规定；</li>
+                    <li>(3) 被侵害的第三人提出权利主张；</li>
+                    <li>(4) 为保护制作宝、其使用者及社会公众的权利、财产或人身安全；</li>
+                    <li>(5) 其他制作宝认为有必要的情况。</li>
+                </ul> 
+            </li>
+            <li>
+                9、 关于用户在制作宝的公开使用区域张贴内容：<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;“公开使用区域”包括网上论坛和其它一般公众可以使用的区域；<br>
+                用户一旦在本服务公开使用区域张贴内容，即视为用户授予制作宝该内容著作权之免费及非独家许可使用权，制作宝有权为展示、传播及推广前述张贴的内容之服务目的，对上述内容进行复制、修改、出版。由此展示、传播及推广行为所产生的损失或利润，均由制作宝承担或享受。制作宝有权自主决定是否给予此类用户鼓励或奖励。
+                因用户进行上述张贴，而导致任何第三方提出索赔要求或衍生的任何损害或损失，用户须承担全部责任。
+                用户不得对他人张贴在公开使用区域或本服务其他内容进行复制、出售或用作其他商业用途。 
+            </li>
+            <li>
+                10、 关于链接<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;本服务可能会提供与其他国际互联网网站或资源进行链接。对于前述网站或资源是否可以利用，制作宝不予担保。因使用或依赖上述网站或资源所产生的损失或损害，制作宝也不承担任何责任。
+            </li>
+            <li>
+                11、 服务的修改和终止<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;制作宝有权在任何时候，暂时或永久地修改或终止本服务或其中任何一部分，无论是否通知。制作宝对本服务的修改或终止对用户和任何第三人不承担任何责任。制作宝有权基于任何理由，终止用户的帐号、密码或拒绝其使用本服务，或删除、转移用户存储、发布在本服务的内容，制作宝采取上述行为均不需通知，并且对用户和任何第三人不承担任何责任。 
+            </li>
+            <li>
+                12、 通知<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;制作宝向用户发出的通知，可以采用电子邮件、页面公告、常规信件或制作宝认为适合的形式。服务条款的修改或其他事项变更时，制作宝将会以上述形式进行通知。
+            </li>
+            <li>
+                13、全部协议<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;本服务协议规范用户使用本服务，将取代用户先前与制作宝签署的任何协议。本服务协议和制作宝的其他服务条款构成完整的协议。同时您也同意遵守以下两项服务管理规定和办法：<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;(1)、《互联网电子公告服务管理规定》;<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;(2)、《互联网信息服务管理办法》;
+            </li>
+            <li>
+                14、 法律的适用和管辖<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;本服务条款的生效、履行、解释及争议的解决均适用中华人民共和国法律，发生的争议提交上海仲裁委员会，其仲裁裁决是终局的。如果本服务协议中某项条款因与中华人民共和国现行法律相抵触而导致无效，将不影响其他部分的效力。
+            </li>
+            <li>15、 生效条件<br>
+                &nbsp; &nbsp; &nbsp; &nbsp;除非另行通知，本协议自2017年01月01日起生效。</li>
+        </ul>
+        <ul class="aboutcustomerservice">
+            <li class="res">
+                <div class="title">联系客服</div>
+                <div>
+                    <ul>
+                        <li><span>电话：</span>027-87551680</li>
+                        <li><span>E-Mail：</span>adquan@adquan.net</li>
+                        <li><span>QQ：</span><a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1546574114&amp;site=www.91zhizuo.com&amp;menu=yes" target="_blank"><img src="http://wpa.qq.com/pa?p=2:123456789:41"></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="title">地址</li>
+            <li class="contact">湖北省武汉市洪山区光谷广场世界城尚都2栋2010</li>
+            <li class="title">工作时间</li>
+            <li class="contact">周一至周五，早9：00--晚7：00</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+<script>
+    $(function () {
+        var hashvalue=window.location.hash;
+        $(".helperspecific li").parent().find(".specificinfo").hide();
+        $(".helperspecific li").bind("click",function () {
+            var that=this
+            $(that).parent().find(".specificinfo").hide();
+
+            if(!$(that).hasClass("abcd")){
+                $(that).addClass("abcd");
+                $(that).children(".specificinfo").show();
+            }else{
+                $(that).removeClass("abcd");
+            }
+
+        })
+
+        $(document).bind('click',function(e){
+            var e = e || window.event; //浏览器兼容性
+            var elem = e.target || e.srcElement;
+            while (elem) { //循环判断至跟节点，防止点击的是div子元素
+                if (elem.className && elem.className=='toggleLi abcd') {
+                    return;
+                }
+                elem = elem.parentNode;
+            }
+            $('.specificinfo').css('display','none'); //点击的不是div或其子元素
+        });
+
+        var choosecontent=function(nav,target){
+            $(nav).parent().parent().children().children("a").removeClass("active");
+            $(nav).addClass("active");
+            $(target).parent().children("ul").css("display","none");
+            $(target).css("display","block");
+            $(".helperspecific").height($(target).innerHeight());
+            $(".helpnav").height($(target).innerHeight()-20);
+        };
+        switch(hashvalue){
+            case(""):
+                choosecontent($('.guanggaoquan'),$(".aboutguanggaoquan"))
+                break;
+            case("#1"):
+                choosecontent($('.guanggaoquan'),$(".aboutguanggaoquan"))
+                break;
+            case("#2"):
+                choosecontent($('.usualproblem'),$(".aboutaccount"))
+                break;
+            case("#3"):
+              choosecontent($('.copyright'),$(".aboutcopyright"))
+                break;
+            case("#4"):
+                choosecontent($('.privacy'),$(".aboutprivacy"))
+                break;
+            case("#5"):
+                choosecontent($('.customerservice'),$(".aboutcustomerservice"))
+                break;
+            case("#6"):
+                choosecontent($('.copyright'),$(".aboutcopyright"))
+                break;
+            case("#7"):
+                choosecontent($('.sercive'),$(".aboutservice"))
+                break;
+            case("#uploadImg"):
+                choosecontent($('.usualproblem'),$(".aboutaccount"))
+                $(".helperspecific li .specificinfo").hide()
+                $("#uploadImg .specificinfo").show()
+                $("#uploadImg").addClass("abcd");
+                setTimeout(function () {
+                    document.documentElement.scrollTop=2000
+                    document.body.scrollTop=2000
+                },500)
+                break;
+        }
+        $(".guanggaoquan").on("click",function (){
+            choosecontent($('.guanggaoquan'),$(".aboutguanggaoquan"));
+        })
+        $(".copyright").on("click",function (){
+            choosecontent($('.copyright'),$(".aboutcopyright"));
+        })
+        $(".privacy").on("click",function (){
+            choosecontent($('.privacy'),$(".aboutprivacy"));
+        })
+        $(".usualproblem").on("click",function (){
+            choosecontent($('.usualproblem'),$(".aboutaccount"));
+        })
+        $(".sercive").on("click",function (){
+            choosecontent($('.sercive'),$(".aboutservice"));
+        })
+        $(".customerservice").on("click",function (){
+            choosecontent($('.customerservice'),$(".aboutcustomerservice"));
+        })
+
+    })
+</script>
+</html>

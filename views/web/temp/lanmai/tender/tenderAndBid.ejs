@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>招投标介绍页-制作宝</title>
+    <meta name="Keywords" content="<%=siteConfig.keywords%>"/>
+    <meta name="Description" content="<%=siteConfig.cmsDescription%>"/>
+    <meta name="viewport" content="width=device-width,initial-scale=0.5,minimum-scale=0.2,maximum-scale=5" />
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/common.css?vesion=<%=siteConfig.version%>">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/digitalMagazine.css?vesion=<%=siteConfig.version%>">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?89323d159de3da4db3d8ba79f8643edd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<style>
+    .charonDigitalMenu{
+        width: auto;
+    }
+    .charonDigitalMenu>ul>li{
+        width: 130px;
+    }
+    .haveListForMoney{
+        position: relative;
+        margin-right: 38px;
+    }
+    .haveListForMoney img {
+        position: absolute;
+        width: 20%;
+        top: -4px;
+        right: -2px;
+    }
+    .contentwarper{
+        width: 100%;
+        background-color: #140224;
+        position: relative;
+        margin-top: 20px;
+    }
+    .contentwarper>img{
+        display: block;
+        margin: 0 auto;
+    }
+    .contentwarper>a{
+        position: absolute;
+        width: 327px;
+        height: 60px;
+        bottom: 120px;
+        left: 680px;
+    }
+    .index_footer{
+        clear: both;
+        margin-top: 0px;
+    }
+    .clear{
+        clear: both;
+    }
+
+    .forwebnav{
+        color: #908e8e;
+    }
+    .webnav{
+        width: 1200px;
+        height: 210px;
+        margin: 0 auto;
+        position: fixed;
+        top: 25px;
+        left: 50%;
+        margin-left: -600px;
+        background-color: #fff;
+        border:1px solid gainsboro;
+        border-top: 0;
+        z-index: 99 !important;
+        display: none;
+    }
+    .forwenavstyle{
+        color: #DA2F2F;
+        background-color:#fff;
+        font-weight: 600;
+    }
+    .webnav>div{
+        float: left;
+        width: 160px;
+        margin: 23px 18px;
+        border-right: 1px solid gainsboro;
+    }
+    .webnav>div:last-child{
+        border-right:0;
+    }
+    .webnav>div>img{
+        float: left;
+        width: 110px;
+        height: 110px;
+        margin-left: -10px;
+    }
+    .webnav>div>.webnavb{
+        font-size: 22px;
+        height: 35px;
+        line-height: 30px;
+    }
+    .webnav>div>.webnavb>a{
+        color: #DA2F2F;
+    }
+    .webnav>div>ul>li{
+        font-size: 16px;
+        height: 42px;
+        line-height: 42px;
+    }
+    .webnav>div>ul>li>a{
+        color: #908e8e;
+        text-decoration: none;
+    }
+    .webnav>div>ul>li>a:hover{
+        color: #DA2F2F;
+        text-decoration: none;
+    }
+</style>
+<body>
+<div class="charonDigitalHeaderPart">
+    <div class="charonDigitalHeaderTop">
+        <div class="charonDigitalHeaderTopCon">
+            <ul>
+                <% if(!logined){ %>
+                <li><a href="/users/login">登录</a>&nbsp;&nbsp;<a href="/users/reg">注册</a></li>
+                <li><a href="/users/login">个人中心</a></li>
+                <% }else{ %>
+                <li class="charonDigitalUsername">您好！<a href="../users/recentDemandAndResource">
+                        <%if(userInfo.nickName){%>
+                        <%=userInfo.nickName%>
+                        <%}else {%>
+                        <%=userInfo.userName%>
+                        <%}%>
+                    </a></li>
+                <%}%>
+                <li class="forwebnav">网站导航</li>
+                <li><a href="javascript:;">帮助中心</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="charonDigitalHeaderNav">
+        <div class="charonDigitalLogo">
+            <a href="../users/home"><img src="/themes/<%=staticforder%>/images/charonDigitalLogo.png" alt=""></a>
+        </div>
+        <div class="charonDigitalMenu">
+            <ul>
+                <li><a href="../users/home">首页</a></li>
+                <li><a href="../resource/digitalMagazine">数字期刊</a></li>
+                <li><a href="../resource/vr">VR展馆</a></li>
+                <li class="haveListForMoney"><a class="redFont" href="../tender/tenderlist">接单赚钱</a><img src="/themes/lanmai/images/hot.gif" alt=""></li>
+                <li><a href="../resource/reIndex">发布资源</a></li>
+                <li><a class="redFont" href="../resource/brandWin">品牌推广</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="contentwarper">
+  <img  src="http://cdn.adquan.net/images/bigimg/aboutTenderAndBid.png/compress.only"/>
+    <a href="shopaccount" target="_blank"></a>
+</div>
+<div class="webnav">
+    <div>
+        <div class="webnavb"><a>找资源</a></div>
+        <ul>
+            <li><a href="/resource/resourceListMake">制作</a></li>
+            <li><a href="/resource/resourceListMachine">设备</a></li>
+            <li><a href="/resource/resourceListMaterial">材料</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>发布信息</a></div>
+        <ul>
+            <li><a href="/resource/demandRelease">发布需求</a></li>
+            <li><a href="/resource/myFix">发布安装</a></li>
+            <li><a href="/resource/reIndex">发布资源</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>个人中心</a></div>
+        <ul>
+            <li><a href="privateInfo">个人资料</a></li>
+            <li><a href="myOrders">个人订单</a></li>
+            <li><a href="safetySet">账户设置</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>企业中心</a></div>
+        <ul>
+            <li><a href="../tender/shopaccount">企业账户</a></li>
+            <li><a href="../tender/shoptender">企业招标</a></li>
+            <li><a href="../tender/shopbid">企业投标</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>品牌推广</a></div>
+        <ul>
+            <li><a href="/resource/digitalMagazine">数字期刊</a></li>
+            <li><a href="/resource/brandWin">品牌推广</a></li>
+            <li><a href="/resource/vr">VR展馆</a></li>
+        </ul>
+    </div>
+    <div>
+        <div class="webnavb"><a>关注我们</a></div>
+        <img src="/themes/lanmai/images/weicahrtqr.png"/>
+    </div>
+
+</div>
+<div class="index_footer">
+    <div class="index_footer_con clearfix">
+        <ul class="focusus">
+            <li class="focustitlt">关注我们</li>
+            <li class="focusicon"><a><img class="footqq" src="/themes/lanmai/images/footqq.png"/><img class="footweichart" src="/themes/lanmai/images/footweichart.png"/></a></li>
+            <li class="focusqr"><a><img class="footqqqr" src="/themes/lanmai/images/qqqr.png"/><img class="footweichartqr" src="/themes/lanmai/images/weicahrtqr.png"/></a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li style="font-size: 18px;margin-bottom: 6px;"><a href="../users/helperCenter#1">关于制作宝</a></li>
+            <li><a href="../users/helperCenter#7">服务条款</a></li>
+            <li><a href="../users/helperCenter#4">隐私申明</a></li>
+            <li><a href="../users/helperCenter#3">版权申明</a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li style="font-size: 18px;margin-bottom: 6px;"><a href="../users/helperCenter#2">帮助中心</a></li>
+            <li><a href="../users/helperCenter#2">新手入门</a></li>
+            <li><a href="../users/helperCenter#2">品牌推广</a></li>
+            <li><a href="../users/helperCenter#2">发布资源</a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li style="font-size: 18px;margin-bottom: 6px;"><a href="../users/helperCenter#5">客服中心</a></li>
+            <li><a href="../users/helperCenter#5">联系客服</a></li>
+            <li><a href="../users/helperCenter#5">意见反馈</a></li>
+        </ul>
+        <ul class="index_footer_right">
+            <li class="digmagazine">
+                <%if(ebookData[0]){%>
+                <a href="../resource/digitalMagazine"><img src="<%=ebookData[0].coverImg%>/compress.only"/></a>
+                <span><%=ebookData[0].title%></span>
+                <%}%>
+            </li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <!--<ul>-->
+        <!--<li>友情链接</li>-->
+        <!--<li><a>大吉</a></li></li>-->
+        <!--<li><a>如意</a></li></li>-->
+        <!--<li><a>萌爷</a></li></li>-->
+        <!--<li><a>颖子</a></li></li>-->
+        <!--<li><a>九九</a></li></li>-->
+        <!--<li><a>大个</a></li></li>-->
+        <!--<li><a>财百万</a></li></li>-->
+        <!--<li><a class="morelinks">更多</a></li></li>-->
+        <!--</ul>-->
+        <span>武汉蓝迈网络科技有限公司2016-<script>document.write((new Date()).getFullYear())</script>&nbsp;鄂&nbsp;ICP&nbsp;备 &nbsp;16023329号</span>
+    </div>
+</div>
+
+</body>
+<script>
+   $(function () {
+       $(".forwebnav").on("mouseenter",function () {
+           $(this).addClass("forwenavstyle");
+           $(".webnav").show();
+       })
+       $(".webnav").on("mouseenter",function () {
+           $(".webnav").show();
+           $(".forwebnav").addClass("forwenavstyle");
+       })
+       $(".webnav").on("mouseleave",function () {
+           $(".webnav").hide();
+           $(".forwebnav").removeClass("forwenavstyle");
+       })
+       $(".footqq").on("mouseenter",function () {
+           $(".footweichartqr").css("display","none");
+           $(".footqqqr").css("display","block");
+       })
+       $(".footweichart").on("mouseenter",function () {
+           $(".footqqqr").css("display","none");
+           $(".footweichartqr").css("display","block");
+       })
+
+   })
+</script>
+</html>
+			    	

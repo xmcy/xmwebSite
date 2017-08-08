@@ -1,0 +1,343 @@
+
+
+<div class="row" ng-controller="addEbookManage">
+    <input type="hidden" id="isEdit" value="<%=editIs%>">
+    <div class="col-xs-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <div class="alert alert-success alert-dismissable fade in hide" role="alert" id="addSuccess">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <p><i class="icon fa fa-check"></i> <strong>恭喜！</strong>内容添加成功</p>
+                </div>
+                <p class="myInfoBox bg-warning text-warning"><i class="icon fa fa-warning"></i> 信息填写完整无误才可提交</p>
+            </div>
+            <div class="box-body">
+                <%if(editIs){%>
+                <form role="form" class="form-horizontal" name="myForm"  novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">地区（省份）</label>
+                        <div class="col-sm-5">
+                            <!--<input type="text" class="form-control input-sm" name="title" ng-minlength="5" ng-maxlength="50" ng-model="formData.title" required/>-->
+                            <div style="position:relative; left: 0px;top: 0px;">
+                                <input  type="text" data-toggle="city-picker" value="<%=addVrManage.region.province%>/<%=addVrManage.region.city%>/<%=addVrManage.region.district%>" name="region" id="region" >
+                            </div>
+                            <!--<label for="inputError" class="control-label text-danger" ng-show="myForm.title.$invalid && !myForm.title.$pristine"><i class="fa fa-times-circle-o"></i> 5-50个非特殊字符</label>-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">类别</label>
+                        <input type="hidden" id="typeVal" value="<%=addVrManage.type%>">
+                        <select name="" id="type" class="col-sm-1" >
+                            <option value="Manufacture">制作</option>
+                            <option value="Material">材料</option>
+                            <option value="Equipment">设备</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">标题</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-sm" name="title" id="title"  value="<%=addVrManage.title%>"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">封面</label>
+                        <div  class="contentshow col-sm-6">
+                            <div class="contentlist " id="bannercontentlist">
+                                <%if(addVrManage.imgs!==[]){for(var i=0;i<addVrManage.imgs.length;i++){%>
+                                <div class="bannercontent">
+                                    <img class="shopimg bannerimg" src="<%=addVrManage.imgs[i]%>"/>
+                                    <div class="mask">
+                                        <div class="handleremind"><a>点击修改</a> <input class="fileInput" id="" type="file" name=""></div>
+                                        <div class="deleteIcon"><a></a></div>
+                                    </div>
+                                </div>
+                                <%}}%>
+                                <div class="bannercontent">
+                                    <img src="/themes/lanmai/images/addfile.png"/>
+                                    <input class="addfileInput banneraddfile" id="" type="file" name="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">在线浏览url</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-sm" name="onlineView"  id="onlineView" value="<%=addVrManage.onlineView%>"/>
+                        </div>
+                    </div>
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">关联的商铺</label>
+                        <input type="hidden"  id="companyId" value="<%=addVrManage.company%>" readonly/>
+                        <div class="col-sm-2">
+                            <%if(addVrManage.companyName){%>
+                            <input type="text" class="form-control input-sm" name="company" id="company"  value="<%=addVrManage.companyName%>" readonly/>
+                            <%}else {%>
+                            <input type="text" class="form-control input-sm" name="company" id="company"  value="已经查到商铺但无商铺名" readonly/>
+                            <%}%>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control input-sm" name="phoneNum" id="phoneNum" placeholder="请输入手机号" />
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="button" class="form-control btn btn-primary" name="searchCompany" id="searchCompany" >查询商铺</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">是否推荐</label>
+                        <input type="hidden" id="recommendVal" value="<%=addVrManage.recommend%>">
+                        <select name="recommend" id="recommend" class="col-sm-1">
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" id="submitBtn">发布</a>
+                    </div>
+                </form>
+
+                <%}else{%>
+                <form role="form" class="form-horizontal" name="myForm"  novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">地区（省份）</label>
+                        <div class="col-sm-5">
+                            <!--<input type="text" class="form-control input-sm" name="title" ng-minlength="5" ng-maxlength="50" ng-model="formData.title" required/>-->
+                            <div style="position:relative; left: 0px;top: 0px;">
+                                <input readonly type="text" data-toggle="city-picker" value="" name="region" id="region"  required>
+                            </div>
+                            <!--<label for="inputError" class="control-label text-danger" ng-show="myForm.title.$invalid && !myForm.title.$pristine"><i class="fa fa-times-circle-o"></i> 5-50个非特殊字符</label>-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">类别</label>
+                        <select name="" id="type" class="col-sm-1">
+                            <option value="Manufacture">制作</option>
+                            <option value="Material">材料</option>
+                            <option value="Equipment">设备</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">标题</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-sm" name="title" id="title"  required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">封面</label>
+                        <div  class="contentshow col-sm-6">
+                            <div class="contentlist " id="bannercontentlist">
+                                <div class="bannercontent">
+                                    <img src="/themes/lanmai/images/addfile.png"/>
+                                    <input class="addfileInput banneraddfile" id="" type="file" name="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">在线浏览url</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-sm" name="onlineView"  id="onlineView" required/>
+                        </div>
+                    </div>
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <input type="hidden"  id="companyId" readonly/>
+                        <label class="control-label col-sm-3">关联的商铺</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control input-sm" name="company" id="company" readonly/>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control input-sm" name="phoneNum" id="phoneNum" placeholder="请输入手机号"/>
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="button" class="form-control btn btn-primary" name="searchCompany" id="searchCompany" >查询商铺</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">是否推荐</label>
+                        <select name="recommend" id="recommend" class="col-sm-1">
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" id="submitBtn">发布</a>
+                    </div>
+                </form>
+                <%}%>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    $(function () {
+        var str="";
+        var listitem;
+        var deleteIcon=$(".deleteIcon");
+        var bannerimgcount=$(".bannerimg").length;
+        listitem=$(".contentlist div .shopimg");
+        $(listitem).bind("mouseover",function () {
+            $(this).next().show();
+        })
+        $(".mask").bind("mouseout",function () {
+            $(this).hide();
+        })
+        $(".banneraddfile").change(function (e) {
+            if($(".contentlist>div").length==7){
+                swal({
+                    title: "达到上传图片上限，请删除后再上传图片!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            var that=this;
+            var file = this.files[0];
+            var fileType=file.type.split('/')[1];
+            $.getCos("promotion/vr","",fileType,file,function (res) {
+                str='<div class="bannercontent">'+'<img class="shopimg bannerimg" src="'+res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net')+'"/>'+
+                        ' <div class="mask" style="display: none">'+ '<div class="handleremind"><a>点击修改</a><input class="fileInput" id="" type="file" name="">'+
+                        '</div> <div class="deleteIcon"><a></a></div> </div></div>';
+                $("#bannercontentlist").prepend($(str));
+                listitem=$(".contentlist div .shopimg");
+                $(listitem).bind("mouseover",function () {
+                    $(this).next().show();
+                })
+                $(".mask").bind("mouseout",function () {
+                    $(this).hide();
+                })
+                $(".deleteIcon").on("click",function () {
+                    $(this).parent().parent().remove();
+                })
+            })
+        })
+        $(deleteIcon).on("click",function () {
+            $(this).parent().parent().remove();
+        })
+        $("input[type='file']").change(function(e){
+            var that=this;
+            var file = this.files[0];
+            var fileType=file.type.split('/')[1];
+            $.getCos("promotion","",fileType,file,function (res) {
+                console.log(res)
+                $(that).parent().parent().parent().children(".shopimg").attr("src",res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+            })
+        })
+
+
+        $("#searchCompany").on("click",function () {
+            var phoneNum=$("#phoneNum").val();
+            if(phoneNum==""||phoneNum.length!==11){
+                swal({
+                    title: "请填写正确手机号码再搜索!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+            }
+            $.post("/admin/manage/queryCompanyInfoByPhoneNum",{
+                phoneNum:phoneNum
+            },function (res) {
+                if(typeof res=="object"){
+                    if(res.company.company.companyName&&res.company.company.companyName!==""){
+                        $("#company").val(res.company.company.companyName);
+                    }else{
+                        $("#company").val("已经查到商铺但无商铺名");
+                    }
+                    $("#companyId").val(res.company.company._id)
+                }else {
+                    swal({
+                        title: "此手机号查不到关联店铺!",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                }
+            })
+        })
+
+        if($("#isEdit").val()=="true"){
+            $("#type").val($("#typeVal").val())
+            $("#recommend").val($("#recommendVal").val())
+
+        }
+
+        $("#submitBtn").on("click",function () {
+            var imgs=[];
+            var bannerimg=$('.bannerimg');
+            var bannerimgcount=bannerimg.length;
+            var title=$("#title").val()
+            var type=$("#type").val()
+            var company=$("#companyId").val()
+            var onlineView=$("#onlineView").val()
+            var recommend=$("#recommend").val()
+            if(finalText!==""&&bannerimgcount>0&&title!==""&&type!==""&&company!==""&&onlineView!==""&&recommend!==""){
+                var region=finalText.split('/')
+                var regionObj={}
+                regionObj.province=region[0];
+                regionObj.city=region[1];
+                if(region.length==3){
+                    regionObj.district=region[2];
+                }else{
+                    regionObj.district="";
+                }
+                var url="/admin/manage/updateVR"
+                region=JSON.stringify(regionObj)
+                for (var i=0;i<bannerimgcount;i++){
+                    imgs.push($(bannerimg[i]).attr("src"));
+                }
+                dataForPost={
+                    region:region,
+                    imgs:imgs,
+                    title:title,
+                    company:company,
+                    type:type,
+                    onlineView:onlineView,
+                    recommend:recommend
+                }
+                $.ajax({
+                    url:url,
+                    data:JSON.stringify(dataForPost),
+                    type:"POST",
+                    dataType:"json",
+                    contentType:"application/json",
+                    success:function(res){
+                        if(res.result=="success"){
+                            swal({
+                                title: "发布成功!",
+                                type: "success",
+                                confirmButtonText: "确定"
+                            });
+                        }else{
+                            swal({
+                                title: "发布失败!",
+                                type: "error",
+                                confirmButtonText: "确定"
+                            });
+                        }
+                    },
+                    error:function (res) {
+                        swal({
+                            title: "发布失败!",
+                            type: "error",
+                            confirmButtonText: "确定"
+                        });
+                        console.log("error"+res);
+                    }
+                })
+
+            }else{
+                swal({
+                    title: "请填写完整!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+            }
+        })
+
+
+    })
+
+</script>
+

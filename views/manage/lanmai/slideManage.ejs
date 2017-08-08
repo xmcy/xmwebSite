@@ -1,0 +1,112 @@
+<style>
+    .paging{
+        clear: both;
+        width:100%;
+        height: 80px;
+        margin-bottom: 40px;
+    }
+    .paging>ul{
+        position: relative;
+        left: 550px;
+    }
+    .table>li{
+        float: left;
+        margin-right: 30px;
+        margin-top: 5px;
+    }
+</style>
+<div class="row" ng-controller="slideManage">
+    <div class="col-xs-12">
+
+        <div class="panel">
+            <div class="box">
+                <div class="box-body table-responsive no-padding" >
+                    <ul class="table" style="list-style: none">
+
+                        <li>
+                            <input readonly type="text" data-toggle="city-picker" value="" id="region">
+                        </li>
+                        <li>
+                            <button class="btn btn-primary btn-sm" type="button" id="resetDistrict"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 重置地区</button>
+                        </li>
+                        <li>位置：
+                            <select ng-model="where">
+                                <option value="">全部</option>
+                                <option value="homepage">首页</option>
+                                <option value="second">二级</option>
+                            </select>
+                        </li>
+                        <li>
+                            <button class="btn btn-primary btn-sm" type="button" ng-click="searchForSlideManage()"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 搜索</button>
+                        </li>
+                        <li>
+                            <a class="btn-group" href="/admin/manage/addSlideManage">
+                                <button class="btn btn-primary btn-sm" type="button"><span class="fa fa-plus-square" aria-hidden="true">&nbsp;</span> 添加轮播图</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="box">
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th><input type="checkbox" class="mini" id="selectAll"/></th>
+                        <th>位置</th>
+                        <th>地区</th>
+                        <th>图片url</th>
+                        <th>跳转地址</th>
+                        <th>权重值</th>
+                        <th>是否显示</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr class="datalist" ng-repeat="item in dataList">
+                        <td><input type="checkbox" name="listItem" class="mini" value="{{item._id}}" ng-click="getNewIds()"/></td>
+                        <td>{{item.where|valToWhere}}</td>
+                        <td>{{item.region.province}}-{{item.region.city}}-{{item.region.district}}</td>
+                        <td>{{item.img}}</td>
+                        <td>{{item.jump}}</td>
+                        <td>{{item.rank|toNull}}</td>
+                        <td ng-switch on="item.isShowing">
+                            <span ng-switch-when="true"><a href="" class="label label-success">true</a></span>
+                            <span ng-switch-when="false"><a href="" class="label label-danger">false</a></span>
+                        </td>
+                        <td>{{item.createdAt | date : "yyyy-MM-dd HH:mm:ss"}}</td>
+                        <td>
+                            <a href="/admin/manage/addSlideManage?uid={{item._id}}" role="button"  title="编辑" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-default btn-xs" type="button" title="删除" ng-click="delOneItem(item._id)"><i class="fa fa-trash-o"></i></button>
+                        </td>
+                    </tr>
+                </table>
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                <div class="paging">
+                    <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页" first-text="第一页" last-text="最后一页"
+                                next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+                                items-per-page="itemsPerPage"></pagination>
+                </div>
+            </div>
+            <div class="overlay hide" id="dataLoading">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+        </div><!-- /.box -->
+    </div>
+</div>
+<script>
+    $('#region').citypicker({
+        level:"province"
+    });
+    $("#resetDistrict").on("click",function () {
+        $('#region').citypicker("reset");
+        $("#region").scope().regionStr="";
+        $("#region").scope().region={}
+        $("#region").scope().$apply();
+    })
+    document.addEventListener("listen", function (e) {
+        $("#region").scope().regionStr=finalText;
+        $("#region").scope().$apply();
+    }, false);
+</script>

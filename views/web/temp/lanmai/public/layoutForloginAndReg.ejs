@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=title%></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=0.2,minimum-scale=0.2,maximum-scale=5" />
+    <meta name="description" content="<%=siteConfig.cmsDescription%>">
+    <meta content="<%=siteConfig.keywords%>" name="keywords" />
+    <link href="/plugins/citypicker/css/city-picker.css" rel="stylesheet">
+    <link href="/themes/<%=staticforder%>/css/base.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="/themes/<%=staticforder%>/css/layoutForloginAndReg.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <title><%=siteConfig.title%></title>
+    <script src="/javascripts/jquery-1.10.2.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/plugins/citypicker/city-picker.data.js"></script>
+    <script src="/plugins/citypicker/city-picker.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?89323d159de3da4db3d8ba79f8643edd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<style>
+    .re_header_title{
+        height: 80px;
+        width: 100%;
+        background: #fff;
+    }
+    .re_header_title a em{
+        color: #bbbaba !important;
+    }
+    .re_header_con{
+        width: 72%;
+        height: 80px;
+        margin: 0 auto;
+    }
+    .headNav{
+        float: right;
+        height: 35px;
+        width: 500px;
+        padding-top: 45px;
+    }
+    .headNav>li{
+        width: 25%;
+        text-align: center;
+    }
+    .headNav>li>a{
+        color: #908e8e;
+    }
+    .re_header_area .city-picker-span {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        display: inline-block;
+        width: 111px !important;
+        height: 38px !important;
+        position: absolute;
+        left: 0;
+        top:5px;
+    }
+    .re_header_con ul li{
+        float: left;
+    }
+    .re_header_con ul>li>a{
+        font-size: 17px;
+    }
+    .re_header_con ul>li>a>span{
+        font-size: 14px;
+        color: #e89c52;
+    }
+    .re_header_area{
+        margin-top:45px;
+        margin-left: 20px;
+    }
+    .re_header_area>a>em{
+        font-style: normal;
+        font-size: 17px;
+    }
+    .city-picker-dropdown{
+        max-width: 350px !important;
+    }
+    .re_header_area .city-picker-dropdown{
+        width: 350px !important;
+    }
+    .re_header_area .city-select-tab{
+        display: none;
+    }
+    .re_out_size input.re_out_size01{
+        width: 70px !important;
+        min-width: 60px;
+    }
+    .re_out_size input.re_out_size02{
+        width: 70px !important;
+        min-width: 60px;
+    }
+    .re_out_size input.re_out_size03{
+        width: 70px !important;
+        min-width: 60px;
+    }
+    .re_out_size input.re_out_size04{
+        width: 80px !important;
+        min-width: 60px;
+    }
+    .menu-item a i{
+        line-height: 17px !important;
+        padding: 0 !important;
+    }
+    .headerLogo{
+        width: 180px;
+        height: 80px;
+    }
+</style>
+<body ng-app="layoutForloginAndReg" ng-cloak class="ng-cloak">
+<!--<div class="login-header">-->
+<div class="re_header">
+    <div class="re_header_title">
+        <div class="re_header_con constrict">
+            <ul>
+                <li><a href="../users/home"><img src="/themes/lanmai/images/login_header.png" alt="" class="headerLogo"/></a></li>
+                <li class="re_header_area" style="position: relative;" class="regionHead"><a href="javascript:;"> <em>湖北</em> <span>[切换区域]</span></a>
+                    <input type="hidden" value="" class="resource_for_area">
+                    <input class="form-control" readonly type="text" data-toggle="city-picker" data-level="province"  placeholder="湖北" style="border: 0;display: none">
+                </li>
+            </ul>
+            <ul class="headNav">
+                <li><a href="../users/home">首页</a></li>
+                <li><a href="../resource/digitalMagazine">数字期刊</a></li>
+                <li><a href="../resource/vr">VR展馆</a></li>
+                <li><a href="../resource/secondDemand">需求中心</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--</div>-->
+<div class="login-content">
+    <div class="showpic"><img src="/themes/lanmai/images/showpic.png"/></div>
+    <%-body %>
+</div>
+<div class="footer">
+    <ul>
+        <li><a href="/users/helperCenter#1" target="_blank">关于制作宝</a></li>
+        <li><a href="/users/helperCenter#2" target="_blank">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;帮助</a></li>
+    </ul>
+    <p>武汉蓝迈网络科技有限公司2016-<script>document.write((new Date()).getFullYear())</script>&nbsp;鄂&nbsp;ICP&nbsp;备 &nbsp;16023329号</p>
+</div>
+
+<script src="/javascripts/angular.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/directive.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/modules.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/layoutForloginAndRegController.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/tool.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/themes/<%=staticforder%>/js/hack.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script>
+    $(function () {
+        var reArea = window.localStorage.getItem("area");
+        $('.re_header_area em').html(reArea)
+
+        $('.re_header_area .city-select a').click(function(){
+            var con =$(this).html();
+            $('.re_header_area em').html(con).css({color:"#908E8E"});
+            $('.resource_for_area').val(con);
+            //setCookie("area",con);
+            window.localStorage.setItem("area",con);
+            //document.cookie="area="+con;
+            console.log(con)
+        })
+    })
+</script>
+
+</body>
+</html>

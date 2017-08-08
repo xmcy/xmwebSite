@@ -1,0 +1,369 @@
+<style>
+    a{
+        outline:none;
+    }
+    .city-picker-span {
+        border: none;
+        background: none;
+        position: absolute;
+        left: 50px;
+        top: -3px;
+        width: 79px !important;
+        height: 52px !important;
+    }
+    .arrow{
+        display: none;
+    }
+    .city-select-tab{
+        display: none;
+    }
+    .city-picker-dropdown{
+        left: 50px !important;
+        top:50px !important;
+    }
+    .city-select>dl>dd{
+        text-align: left;
+    }
+    .city-picker-span>.title{
+        position: absolute;
+        top:8px;
+        left: 19px;
+    }
+    .city-picker-span>.title>span{
+        color: #908E8E;
+    }
+    .city-picker-span>.title>span:hover{
+        background: none !important;
+    }
+    .dOut_content_rightShop .company_confirm{
+        margin: 10px 0 10px;
+        padding-left: 30px;
+        height: auto !important;
+        text-align: center;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+</style>
+                        <!--户外广告详情页面的内容部分开始-->
+    <div class="dOut_container">
+        <input type="hidden" id="qq" value="<%=company.qq%>"/>
+
+        <div class="dOut_content">
+            <div class="dOut_title">
+                <span>所有分类</span> >
+                <span>广告设备</span> >
+                <span><%=equipment.region.province%></span>
+            </div>
+            <input type="hidden" id="resNum" value="<%=equipment.resNum%>"/>
+            <input type="hidden" id="title" value="<%=equipment.title%>"/>
+            <div class="dOut_content_top">
+                <div class="dOut_content_top_main">
+                    <div class="dOut_content_top_banner">
+                        <ul class="dOut_content_banner">
+                            <%for(var i=0;i<equipment.images.length;i++){%>
+                            <li><a href="javascript:;">
+                                    <%if(equipment.images[i]=='original'){%>
+                                    <img src="/themes/<%=staticforder%>/images/dout_02.png/514.384"  alt="" class="bigImg"/>
+                                    <%}else{%>
+                                    <img src="<%=equipment.images[i]%>/514.384" class="bigImg"   alt=""/>
+                                    <%}%>
+                                </a></li>
+                            <%}%>
+                        </ul>
+                    </div>
+                    <div class="dOut_content_top_thumbnail">
+                        <div class="dOut_content_thumbnail">
+                            <ul>
+                                <%for(var i=0;i<equipment.images.length;i++){%>
+                                <li><a href="javascript:;">
+                                        <%if(equipment.images[i]=='original'){%>
+                                        <img src="/themes/<%=staticforder%>/images/dout_02.png/129.84"  alt=""/>
+                                        <%}else{%>
+                                        <img src="<%=equipment.images[i]%>/129.84"  alt=""/>
+                                        <%}%>
+                                    </a></li>
+                                <%}%>
+                            </ul>
+                            <span class="dOut_prev"></span>
+                            <span class="dOut_next"></span>
+                        </div>
+                    </div>
+                    <div class="dOut_content_share">
+                        <ul>
+                            <%if(equipment.isCollect){%>
+                            <li class="dOut_content_share01"><a href="javascript:;" id="collectRes"><span></span><em id="collectText">取消收藏</em></a></li>
+                            <%}else{%>
+                            <li class="dOut_content_share01"><a href="javascript:;" id="collectRes"><span></span><em id="collectText">收藏</em></a></li>
+                            <%}%>
+                            <li class="dOut_content_share02"><a href="javascript:;"><span></span><em>分享</em></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--参数的部分-->
+                <div class="dOut_content_params">
+                    <ul>
+                        <li class="dOut_params_01 clearfix">
+                            <%if(equipment.isPromotion){%>
+                            <i></i>
+                            <%}%>
+                            <span title="<%=equipment.title%>"><%=equipment.title%></span></li>
+                        <li>更新时间<span style="padding-left: 55px;padding-right: 25px; "><%=equipment.refreshedAt.split('T')[0]%></span>浏览<em style="paddingleft: 10px;fontstyle: normal;"><%=equipment.pageview%></em></li>
+                        <%if(equipment.discountPrice){%>
+                        <li class="dOut_params_02 clearfix"> <a>价格：</a> <span><%=equipment.discountPrice%>元</span>
+                            <%if(equipment.originalPrice){%>
+                            <span class="originalPrice"><%=equipment.originalPrice%>元</span>
+                            <%}%>
+                        </li>
+                        <%}else {%>
+                        <li class="dOut_params_02 clearfix"> <a>价格：</a> <span style="color: rgb(144, 142, 142);">面议</span><span></span>  </li>
+                        <%}%>
+                        <!--<em>[6.7折]</em>-->
+                        <%if(equipment.region.district){%>
+                        <li class="dOut_params_04 clearfix"><a>所在位置：</a> <span><%=equipment.region.province%> <%=equipment.region.city%> <%=equipment.region.district%></span></li>
+                        <%}else {%>
+                        <li class="dOut_params_04 clearfix"><a>所在位置：</a> <span><%=equipment.region.province%> <%=equipment.region.city%></span></li>
+                        <%}%>
+                        <li class="dOut_params_06 clearfix"><a>设备类型：</a> <span><%=equipment.categoryL2.name%> <%=equipment.categoryL3.name%></span></li>
+                        <li class="dOut_params_07 clearfix"><a>联系人：</a> <span><%=equipment.contacts%></span></li>
+                    </ul>
+                    <div class="dOut_content_rightShop">
+                        <h3>企业信息</h3>
+                        <ul>
+                            <li class="company_confirm"><img src="<%=company.companyLogo%>/110.110"/></li>
+                            <li class="company_confirm" style="font-weight: bold;"><%=company.companyName%></li>
+                            <li class="company_confirm">
+                                <%if(company.businessScope){for(var i=0;i<company.businessScope.length && i<3;i++){%>
+                                <span><%=company.businessScope[i]%></span>
+                                <%}}%></li>
+                            <%if(company.region){%>
+                            <li class="company_confirm" ><%=company.region.province%> <%=company.region.city%> <%=company.region.district%></li>
+                            <%}%>
+                            <li class="company_confirm clearfix" style="margin-top:20px;">
+                                <%if(companyIdentify&&companyIdentify.status=="审核通过"){%>
+                                <span class="spanon"></span><em>企业认证已完成</em>
+                                <%}else{ %>
+                                <span class="spanoff"></span><em>企业认证未完成</em>
+                                <%}%>
+                            </li>
+
+                            <li class="personal_confirm clearfix">
+                                <%if(companyIdentify&&companyIdentify.status=="审核通过"){%>
+                                <span class="spantrue"></span><em>实名认证已完成</em>
+                                <%}else{ %>
+                                <span class="spanfalse"></span><em>实名认证未完成</em>
+                                <%}%>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dOut_params_08 clearfix">
+                        <%if(logined){%>
+                        <a class="tel" href="javascript:;"  title="<%=equipment.phoneNum%>" ><%=equipment.phoneNum%></a>
+                        <span class="tipForTell">联系我时，请说是在制作宝上看到的，谢谢！</span>
+                        <%}else {%>
+                        <a class="tel" href="javascript:;"  title="登录查看联系方式" >登录查看联系方式</a>
+                        <%}%>
+                        <%if(company.qq){%>
+                        <a class="talk" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<%=company.qq%>&amp;site=www.91zhizuo.com&amp;menu=yes" target="_blank">点击交谈</a>
+                        <%}else{%>
+                        <a class="talk" href="javascript:void(0)" >点击交谈</a>
+                        <%}%>
+                        <a class="dOut_moreShops" href="/users/shopSpecific2?id=<%=equipment.user%>">查看更多该企业的资源>></a>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="dOut_content_information clearfix">
+                <div class="dOut_info01">
+                    <h2>热门资源推荐</h2>
+                    <ul>
+                        <%for(var i=0;i<promotionForEquipment.length;i++){%>
+                        <li class="dOut_hotResource">
+                            <a href="/resource/dMachine?id=<%=promotionForEquipment[i].resNum%>">
+                                <img class="imgForShow" src="<%=promotionForEquipment[i].images[0]%>/248.188"/>
+                            </a>
+                            <%if(promotionForEquipment[i].discountPrice){%>
+                            <p class="dOut_hotPrice"><span><%=promotionForEquipment[i].discountPrice%>元</span>/月</p>
+                            <%}else{%>
+                            <p class="dOut_hotPrice">面议</p>
+                            <%}%>
+                            <p class="dOut_hotAddress"><%=promotionForEquipment[i].region.province%> <%=promotionForEquipment[i].region.city%></p>
+                            <p class="dOut_hotDetailAddress" title="<%=promotionForEquipment[i].title%>"><%=promotionForEquipment[i].title%></p>
+                        </li>
+                        <%}%>
+                    </ul>
+                </div>
+                <div class="dOut_info02">
+                    <div class="dOut_info02_title">
+                        <ul  class="clearfix">
+                            <li>广告设备详情</li>
+                            <!--<li>媒体地图</li>-->
+                        </ul>
+                    </div>
+                    <div class="dOut_tab">
+                        <div class="dOut_tabParams">
+                            <ul class="clearfix">
+                                <li>设备类型：<span><%=equipment.categoryL2.name%>-<%=equipment.categoryL3.name%></span> </li>
+                                <li>设备品牌：<span><%=equipment.brand%></span></li>
+                                <li>运费支付：<span><%=equipment.freightType%></span></li>
+                                <li>安装方式：<span><%=equipment.installType%></span></li>
+                                <li>所在位置：<span><%=equipment.region.province%> <%=equipment.region.city%> <%=equipment.region.district%></span></li>
+                            </ul>
+                        </div>
+                        <div class="dOut_tabContent">
+                            <input type="hidden" value="<%=equipment.details%>" id="detailsData">
+                            <div id="details"></div>
+                            <%for(var i=0;i<equipment.images.length;i++){%>
+                            <img src="<%=equipment.images[i]%>/compress.only"/>
+                            <%}%>
+                        </div>
+                    </div>
+                    <div class="dOut_tab" style="display: none">
+                        百度地图
+                    </div>
+                    <div class="dOut_goodNess">
+                        <p class="goodNess">平台优势 </p>
+                        <div class="one_newResource clearfix">
+                            <span class="one_newResourceIcon" style="background: url(/themes/<%=staticforder%>/images/detail_icon.png) -20px -20px no-repeat;"></span>
+                            <p class="one_newResourceCon">
+                                <span>分类细致 定位精准</span><br>
+                                <i>制作宝网站将广告制作资源分为广告材料，广告设备，广告制作，广告安装四个大类别，用户可以轻松搜索获取想要的信息；除此，网站针对有制作需求的用户和制作实力的服务商提供专业招投标平台“接单赚钱”，实现需求与技术交换的互惠双赢。
+                                </i>
+                            </p>
+                        </div>
+                        <div class="one_newResource clearfix">
+                            <span class="one_newResourceIcon" style="background: url(/themes/<%=staticforder%>/images/detail_icon.png) -20px -20px no-repeat;"></span>
+                            <p class="one_newResourceCon">
+                                <span>渠道多样 综合发力</span><br>
+                                <i>除了在网站展示资源，也能在网站解决需求，制作宝更拓展了线下线上多种渠道。除了我们的门户网站支持以外，还有微信服务号订阅号，配合推送宣传，再加上线下人工渠道和行业热门展会的辅助，发展业务SO EASY!
+                                </i>
+                            </p>
+                        </div>
+                        <div class="one_newResource clearfix">
+                            <span class="one_newResourceIcon" style="background: url(/themes/<%=staticforder%>/images/detail_icon.png) -20px -114px no-repeat;"></span>
+                            <p class="one_newResourceCon">
+                                <span>信息真实 报价可靠</span><br>
+                                <i>制作宝分析整理了海量的行业数据，认真审核每一条发布的信息资源，设置招投标机制来筛选最优报价，力求为用户提供真实可靠的资源和讯息，旨在为每一位用户负责，为每一位广告人负责。</i>
+                            </p>
+                        </div>
+                        <div class="one_newResource clearfix">
+                            <span class="one_newResourceIcon" style="background: url(/themes/<%=staticforder%>/images/detail_icon.png) -20px -211px no-repeat;"></span>
+                            <p class="one_newResourceCon">
+                                <span>服务定制 选择自由</span><br>
+                                <i>用户根据自己的实际情况选择是否进行资源或品牌推广，自由选择用哪一种形式推广。我们为客户准备了多种解决方案，用户自由搭配。制作宝提供
+                                </i>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="rightTell">
+                        <p class="rightTellTips">权利声明</p>
+                        <p class="rightTellCon">制作宝（91zhizuo.com）的所有媒体信息、资源信息、客户评价、购买咨询、网友讨论等内容，是制作宝重要的经营资源，未经许可禁止非法转载使用。<br>
+                            注：本站所有广告资源信息均来自于合作方，其真实性、准确性和合法性由信息发布者（合作方）负责，本站不提供任何保证，且不承担任何法律责任。</p>  </div>
+
+                </div>
+
+            </div>
+            <!--底部的优秀品牌推荐-->
+            <div class="best_brandRecommend_get">
+                优秀企业推荐
+            </div>
+            <div class="best_brandRecommend flexslider">
+                <ul class="bestBrandRecommend01 slides">
+                    <li>
+                        <ul>
+                            <%for(var i=0;i<4;i++){if(companyList[i]){%>
+                            <li>
+                                <a href="/users/shopSpecific2?id=<%=companyList[i].user%>">
+                                    <img src="<%=companyList[i].priorShowImgs[0]%>"/>
+                                </a>
+                            </li>
+                            <%}}%>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <%for(var i=4;i<8;i++){if(companyList[i]){%>
+                            <li>
+                                <a href="/users/shopSpecific2?id=<%=companyList[i].user%>">
+                                    <img src="<%=companyList[i].priorShowImgs[0]%>"/>
+                                </a>
+                            </li>
+                            <%}}%>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <%for(var i=8;i<12;i++){if(companyList[i]){%>
+                            <li>
+                                <a href="/users/shopSpecific2?id=<%=companyList[i].user%>">
+                                    <img src="<%=companyList[i].priorShowImgs[0]%>"/>
+                                </a>
+                            </li>
+                            <%}}%>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <%for(var i=12;i<16;i++){if(companyList[i]){%>
+                            <li>
+                                <a href="/users/shopSpecific2?id=<%=companyList[i].user%>">
+                                    <img src="<%=companyList[i].priorShowImgs[0]%>"/>
+                                </a>
+                            </li>
+                            <%}}%>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<script>
+    $(function () {
+        $("#details").html($("#detailsData").val())
+        $("#collectRes").on("click",function () {
+            var resNum=$("#resNum").val();
+            var title=$("#title").val();
+            var url=window.location.pathname+"?id="+resNum;
+            var data={
+                resNum:resNum,
+                title:title,
+                url:url,
+                type:"zy"
+            }
+            $.post("/collectRes",data,function (res) {
+                if(res=="success1"){
+                    swal({
+                        title: "取消收藏成功",
+                        type: "success",
+                        confirmButtonText: "确定"
+                    });
+                    $("#collectText").text("收藏")
+                }else if(res=="success2"){
+                    swal({
+                        title: "收藏成功",
+                        type: "success",
+                        confirmButtonText: "确定"
+                    });
+                    $("#collectText").text("取消收藏")
+                }else if(res=="非法参数"){
+                    swal({
+                        title: "请登陆",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                }else{
+                    swal({
+                        title: res,
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                }
+            })
+
+        })
+
+    })
+</script>
+                        <!--户外广告详情页面的内容部分结束-->

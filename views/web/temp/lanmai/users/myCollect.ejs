@@ -1,0 +1,147 @@
+<style type="text/css">
+	.bottom_lanmai{
+		margin-top: 250px;
+	}
+	.myConllect_list>.collectContent{
+		width: 374px;
+		height: 35px;
+		margin: 0 auto;
+		margin-top:20px;
+	}
+	.myConllect_list>.collectContent>li{
+		float: left;
+		width:68px;
+		text-align:center;
+		height: 25px;
+		line-height: 25px;
+		margin-right: 15px;
+		border: 1px solid rgb(112,112,112);
+		border-radius: 3px;
+		cursor: pointer;
+	}
+	.myConllect_list .conllectInfo{
+		margin-top: 49px;
+		color: rgb(112,112,112);
+	}
+	.myConllect_list .conllectInfo>li{
+		height: 58px;
+		line-height: 58px;
+		border-bottom: 3px solid rgb(246,244,244);
+		font-size: 15px;
+		position: relative;
+	}
+	.myConllect_list .conllectInfo>li:hover{
+		background-color: rgb(246,244,244);
+	}
+	.myConllect_list .conllectInfo>li>div{
+		margin: 0 48px 0 24px;
+		background-color: #FFFFFF;
+		display: inline-block;
+		width: 17px;
+		height: 17px;
+		overflow: hidden;
+		position: absolute;
+		top: 20px;
+	}
+	.myConllect_list .conllectInfo>li>div>input{
+		display: block;
+		margin-top: -1px;
+		margin-left: -1px;
+		width: 22px;
+		height: 22px;
+	}
+	.myConllect_list .conllectInfo>li:first-child>div:first-child{
+		visibility: hidden;
+	}
+	.titleOverflow{
+		position: absolute;
+		left: 92px;
+		width: auto;
+	}
+	.myConllect_list .conllectInfo>li>a:last-child{
+		position: absolute;
+		right: 92px;
+		width: 73px;
+	}
+	.myConllect_list .conllectInfo>li>a:last-child:hover{
+		color: red;
+	}
+	.myConllect_list .conllectInfo>li>.conllectTime{
+		width:116px;
+		position: absolute;
+		right:250px;
+		text-align: center;
+	}
+	.myConllect_list .checkHandle{
+		display: inline-block;
+		margin: 26px 48px 0 24px;
+		width: 17px;
+		height: 17px;
+		border: 1px solid gainsboro;
+		overflow: hidden;
+	}
+	.myConllect_list div>input{
+		margin-top: -1px;
+		margin-left: -1px;
+		width: 22px;
+		height:22px;
+		background-color: #FFFFFF;
+	}
+	.myConllect_list span{
+		font-size: 15px;
+		margin-right: 20px;
+		color: rgb(112,112,112);
+		cursor: pointer;
+	}
+	.myConllect_list .conllectSearch{
+		float: right;
+		height: 28px;
+		width: 200px;
+		border: none;
+		margin:-33px 0 0 0;
+		background:rgb(246,205,177)
+	}
+	.myConllect_list .conllectSearch>input{
+		display: inline-block;
+		height: 27px;
+		width:150px;
+		border: 3px solid rgb(246,205,177);
+		margin: 0;
+		padding: 0;
+	}
+	.myConllect_list .conllectSearch>input,.myConllect_list>.conllectSearch>.searchIcon{
+		outline: none;
+	}
+	#pagination {
+		margin-left: 255px;
+	}
+	ul.pagination>li>a{
+		margin-right: 6px;
+	}
+</style>
+<div class="myConllect_list" ng-controller="myCollectController">
+				    	<h2>我的收藏</h2>
+	                    <ul class="collectContent">
+							<li  ng-class="{redBorder:border=='zy'}" ng-click="collect('zy')">收藏资源</li>
+							<li  ng-class="{redBorder:border=='xq'}" ng-click="collect('xq')">收藏需求</li>
+							<!--<li  ng-class="{redBorder:border=='qk'}" ng-click="collect('qk')">收藏期刊</li>-->
+							<li  ng-class="{redBorder:border=='sp'}" ng-click="collect('sp')">收藏商铺</li>
+							<li  ng-class="{redBorder:border=='zb'}" ng-click="collect('zb')">收藏招标</li>
+						</ul>
+	                    <div>
+							<form class="conllectSearch"><input ng-model="text"/><button class="searchIcon" ng-click="searchIcon()"></button></form>
+							<ul class="conllectInfo">
+								<li class=" bgGrey"><div></div><a class="titleOverflow"><span>资源标题</span></a><a class="conllectTime"><span>收藏时间</span></a><a><span>操作</span></a></li>
+								<li ng-repeat="item in dataList"><div><input type="checkbox"  id="{{item.id}}" ng-checked="selectAll" ng-model="item.state" /></div>
+									<a class="titleOverflow" href="{{item.url}}" target="_blank"><span >{{item.title}}</span></a>
+									<a class="conllectTime"><span>{{item.createdAt|timeFilter}}</span></a><a ng-click="delete(item)"><span>删除</span></a></li>
+							</ul>
+							<div ng-if="!dataList.length" class="littlemargin"> 暂无收藏项目</div>
+							<div class="checkHandle"><input type="checkbox" ng-model="selectAll" ng-click="" /></div>
+							<span ng-click="all()">全选</span><span class="deleteall" ng-click="deleteMany()" >删除</span>
+						</div>
+
+	<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+									next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+									items-per-page="itemsPerPage"></pagination>
+				    </div>

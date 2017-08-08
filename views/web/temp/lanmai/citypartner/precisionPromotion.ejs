@@ -1,0 +1,127 @@
+<style type="text/css">
+	.bottom_lanmai{
+		margin-top: 250px;
+	}
+	.demandContent{
+		clear: both;
+		margin-top: 45px;
+	}
+	#pagination {
+		margin-left: 255px;
+		margin-top:-30px;
+	}
+	ul.pagination>li>a{
+		margin-right: 6px;
+	}
+	.demand_trade{
+		width: 120px;
+	}
+	.demand_budget{
+		left: 230px;
+		width: 120px;
+	}
+	.demand_sketch{
+		left: 390px;
+		width: 100px;
+	}
+	.demand_skin{
+		left: 590px;
+		width: 100px;
+		text-align: left;
+	}
+	.demand_skin,.demand_handle{
+		width: 80px;
+	}
+	.demand_handle{
+		left: 730px;
+	}
+	.demand_status{
+		left: 860px;
+		width: 180px;
+	}
+	.selector{
+		margin-top: 40px;
+		padding-left: 18px;
+	}
+	.selector>ul{
+		height: 30px;
+		margin-bottom: 10px;
+	}
+	.selector>ul>li{
+		float: left;
+		height: 30px;
+		line-height: 30px;
+	}
+	.selector>ul>.conllectSearch{
+		float: right;
+		height: 30px;
+		width:160px;
+		background:rgb(246,205,177);
+		margin-right: 0;
+	}
+	.conllectSearch>input{
+		float: left;
+		height: 29px;
+		width:120px;
+		border: 3px solid rgb(246,205,177);
+		margin: 0;
+		padding: 0;
+		outline: none;
+	}
+	.searchIcon{
+		float: right;
+		width: 40px;
+		height: 27px;
+		background: #f6cdb1 url(/themes/lanmai/images/accountSetIcon.png) 379px 984px;
+		cursor: pointer;
+		outline: none;
+	}
+</style>
+
+<link href="/plugins/datetimePicker/dateSelect.css" rel="stylesheet">
+<script src="/plugins/datetimePicker/dateSelect.js"></script>
+<div class="myDemand" ng-controller="precisionController">
+			    		<h2>精准推广收入</h2>
+						<div class="selector">
+							<ul>
+								<li>筛选时间 ：</li>
+								<li><input  type="text" id="date1" />  至  <input class="geryborder" type="text" id="date2" /></li>
+								<li class="conllectSearch"><input ng-model="text"/><span class="searchIcon"></span></li>
+							</ul>
+						</div>
+			    		<div class="demandContent">
+			    			<div class="demandList  bgGrey">
+								<div class="demand_categories">用户名</div>
+								<div class="demand_trade">注册时间</div>
+								<div class="demand_budget">联系方式</div>
+								<div class="demand_sketch">推广截止时间</div>
+								<div class="demand_skin">交易额</div>
+								<div class="demand_handle">提成</div>
+								<div class="demand_status">操作</div>
+			    			</div>
+			    			<div class="demandList">
+								<div class="demand_categories">再得瑟</div>
+								<div class="demand_trade">2017-08-08</div>
+								<div class="demand_budget">13465657878</div>
+								<div class="demand_sketch">2017-08-08</div>
+								<div class="demand_skin">20000.00</div>
+								<div class="demand_handle">2000.00</div>
+								<div class="demand_status blueColor">
+										<a class="blueColor">发短信</a>
+								</div>
+			    			</div>
+							<div class="littlemargin" ng-if="!dataList.length">暂无精准推广</div>
+						</div>
+						<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页"
+									next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+									items-per-page="itemsPerPage">
+
+						</pagination>
+			    	</div>
+
+<script>
+	$(function () {
+		$("#date1").dateSelect();
+		$("#date2").dateSelect();
+	})
+</script>

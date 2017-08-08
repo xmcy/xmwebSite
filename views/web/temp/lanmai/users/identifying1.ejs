@@ -1,0 +1,264 @@
+<style type="text/css">
+	.file-drop-zone {
+		width: 550px;
+		height:240px;
+	}
+	input{
+		height:25px;
+	}
+	.checkStep > .navStep {
+		width: 78px;
+	}
+	.certificatContent{
+		width: 650px;
+		margin: 0 auto;
+		margin-top: 57px;
+	}
+	.certificatContent>div{
+		margin-bottom: 30px;
+	}
+	.certificatContent>div>span:first-child{
+		height: 35px;
+		display: inline-block;
+		width: 65px;
+		margin:0 45px 0 45px;
+		vertical-align: top;
+	}
+	.certificatContent>div>input{
+		border: 1px solid rgb(112,112,112);
+		width: 202px;
+		height: 30px;
+		padding-left: 10px;
+	}
+	.certificatContent .submit-btn{
+		margin-left: 154px;
+		width: 202px;
+		height: 40px;
+		margin-bottom: 100px;
+	}
+	.licensemodifyPic{
+		height: 270px;
+		position: relative;
+	}
+	.licensemodifyPic>.shoplogo{
+		position: absolute;
+		top:56px;
+		left:162px;
+		width: 150px;
+		height: 90px;
+		background: url(/themes/lanmai/images/addfile.png) no-repeat -41px -24px;
+	}
+	.licensemodifyPic>.shoplogo2{
+		position: absolute;
+		top:56px;
+		left:402px;
+		width: 150px;
+		height: 90px;
+		background: url(/themes/lanmai/images/addfile.png) no-repeat -41px -24px;
+	}
+	.licensemodifyPic>img{
+		position: absolute;
+		width: 220px;
+		height: 220px;
+	}
+	.licensemodifyPic>.licenseimg{
+		top:0;
+		left: 160px;
+	}
+	.licensemodifyPic>.licenseimg2{
+		top:0;
+		left: 400px;
+	}
+	.licensemodifyPic>.updatelogo{
+		position: absolute;
+		top:0;
+		left: 160px;
+		height:220px;
+		width: 220px;
+		overflow: hidden;
+		font-size: 300px;
+		opacity: 0;
+		filter:alpha(opacity=0);
+		cursor:pointer;
+		padding: 0;
+		margin: 0;
+		z-index: 9999;
+	}
+	.licensemodifyPic>.updatelogo2{
+		position: absolute;
+		top:0;
+		left: 400px;
+		height:220px;
+		width: 220px;
+		overflow: hidden;
+		font-size: 300px;
+		opacity: 0;
+		filter:alpha(opacity=0);
+		cursor:pointer;
+		padding: 0;
+		margin: 0;
+		z-index: 9999;
+	}
+	.tip{
+		position: absolute;
+		top:230px;
+		left:316px;
+		color: red;
+		display: none;
+	}
+
+</style>
+<script type="application/javascript">
+	$(function () {
+		console.log(navigator.userAgent)
+		function getBrowserInfo() {
+			var agent = navigator.userAgent.toLowerCase();
+
+			var regStr_ie = /msie [\d.]+;/gi;
+			var regStr_ie2 = /Trident\/ [\d.]+;/gi;
+			//IE
+			if (agent.indexOf("msie") > 0) {
+				return agent.match(regStr_ie) ;
+			}
+			return false
+		}
+		var browser = getBrowserInfo() ;
+		if(browser){
+			var verinfo = (browser+"").replace(/[^0-9.]/ig,"");
+			if(8<parseInt(verinfo)<=9){
+				swal({
+							title: "您的浏览器版本过低，无法使用上传图片功能",
+							text:"若使用360,qq,搜狗,2345,uc等浏览器,请切换成极速模式,若使用IE浏览器,请升级浏览器版本或安装其它浏览器",
+							showCancelButton: true,
+							confirmButtonColor: "#DD6B55",
+							cancelButtonText: "取消",
+							confirmButtonText: "查看帮助",
+							closeOnConfirm: false
+						},
+						function(isConfirm){
+							if(isConfirm){
+								window.location.href="/users/helperCenter#uploadImg"
+							}
+						});
+			}else if(parseInt(verinfo)<=8){
+				alert("您的浏览器版本过低，无法使用上传图片功能,请升级浏览器版或安装其它浏览器")
+			}
+		}
+
+	})
+</script>
+
+
+
+<div class="identify1" ng-controller="identifying1Controller">
+			    	<h2>认证管理</h2>
+			    	<div class="checkStep">
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_one_active"></div>
+			    		<div class="navStep stepNotyet"></div><div class="nav_step_logo step_two_notyet"></div>
+			    	    <div class="navStep stepNotyet"></div><div class="nav_step_logo step_three_notyet"></div>
+						<div class="navStep stepNotyet"></div>
+			    	    <ul>
+		    	    		<li class="redFont">填写信息</li>
+		    	    		<li>等待审核</li>
+		    	    		<li>完成认证</li>
+			    	    </ul>
+			    	</div>
+			    	<form class="certificatContent"  name="certificatContent">
+			    		<div class="">
+			    			<span id="">真实姓名</span><input placeholder="请输入真实姓名" type="text" name="realName" id="" value="" required/>
+			    		</div>
+			    		<div class="">
+			    			<span id="">身份证号</span><input placeholder="请输入身份证号" type="text" name="id" id="" value="" required/>
+			    		</div>
+			    		<div class="">
+			    			<span id="">上传证件</span><a> <div class="uploadimgCertify"></div></a>
+			    		</div>
+						<div class="licensemodifyPic">
+							<div class="shoplogo"></div>
+							<input class="updatelogo" type="file" name="" id="" value=""/>
+							<img class="licenseimg" src=""/>
+							<span class="tip">点击图片可重新修改Logo</span>
+							<div class="shoplogo2"></div>
+							<input class="updatelogo2" type="file" name="" id="" value=""/>
+							<img class="licenseimg2" src=""/>
+						</div>
+			    		<button class="submit-btn">提交并保存信息</button>
+			    	</form>
+			    </div>
+<input type="hidden" value="<%=userInfo._id%>" id="idForUser">
+
+<script type="application/javascript">
+	$(function() {
+		$("input[type='file']").change(function(e) {
+			var that = this;
+			var file = this.files[0];
+			var fileType=file.type.split('/')[1];
+			var filePath=$("#idForUser").val()
+			$.getCos("users",filePath,fileType,file, function (res) {
+				console.log(res)
+				$(that).next().attr("src", res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+				$(".tip").show()
+			})
+		});
+		$("button.submit-btn").on("click",function () {
+			var realName=$("input[name='realName']").val();
+			var id=$("input[name='id']").val();
+			var name = /^[\u4E00-\u9FA5]{2,4}$/;
+			var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+			if (!name.test(realName)){
+				swal({
+					title: "姓名填写有误！",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			if (!pattern.test(id)){
+				swal({
+					title: "身份证填写有误！",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			if(realName.trim()==""||id.trim()==""){
+				swal({
+					title: "请填写完整数据！",
+					type: "error",
+					confirmButtonText: "确定"
+				});
+				return false;
+			}
+			if($(".licenseimg").attr('src')==""||$(".licenseimg2").attr('src')==""){
+				swal({
+				title: "请先上传图片，再提交",
+				type: "error",
+				confirmButtonText: "确定"
+			});
+				return false;
+			}
+			$.post("/users/uploadIdCardIdentify",{
+				realName:realName,
+				idCardNum:id,
+				frontImg:$(".licenseimg").attr('src'),
+				backImg:$(".licenseimg2").attr('src')
+			},function (result) {
+				if(result=="success"){
+					$(".shoplogo").css("background","none")
+					swal({
+						title: "成功提交身份认证",
+						type: "success",
+						confirmButtonText: "跳转到下一页面"
+					});
+					window.location.href="/users/identifying";
+				}else{
+					swal({
+						title: result,
+						type: "error",
+						confirmButtonText: "确定"
+					});
+				}
+			})
+		})
+	})
+</script>

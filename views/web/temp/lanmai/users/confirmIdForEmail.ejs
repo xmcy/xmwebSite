@@ -1,0 +1,31 @@
+<div class="mobileBinding1" ng-controller="confirmIdForEmail">
+	<h2>个人资料</h2>
+	<div class="confirmIdForEmailTip">绑定邮箱：&nbsp; <%= userInfo.email %>  &nbsp; &nbsp;换绑请填入验证码验证身份</div>
+	<form name="tele" ng-submit="mobileBindingFirst()" novalidate>
+		<div class="loginTele">
+			<input type="text" id="phoneNum"  ng-pattern="/^1[34578]\d{9}$/"
+				   ng-model="phoneNum" name="phoneNum" autocomplete="off" placeholder="手机号" required />
+			<div down-tick></div>
+			<i class="login-green-check-ok" ng-show="tele.phoneNum.$dirty&&tele.phoneNum.$valid"></i>
+		</div>
+		<div class="loginTele-tip" >
+			<div ng-show="tele.phoneNum.$dirty&&tele.phoneNum.$invalid">
+				<i class="login-tip-div-i"></i><span>手机号不存在</span>
+			</div>
+		</div>
+
+		<div class="loginQr">
+			<i class="login-first-i"></i>
+			<input type="text" id="code" name="code" value="" ng-model="code"
+				   autocomplete="off" placeholder="动态验证码" required />
+			<i class="login-green-check-ok" ng-show="tele.code.$dirty&&tele.code.$valid"></i>
+		</div>
+		<div class="loginQr-tip">
+			<div ng-show="tele.code.$dirty&&tele.code.$invalid">
+				<i class="login-tip-div-i"></i><span>验证码不能为空</span>
+			</div>
+		</div>
+		<div class="errorMessage">{{errorMessage}}</div>
+		<input type="submit" value="解绑" ng-class="{disableBtn:tele.$invalid}" ng-disabled="tele.$invalid"/>
+	</form>
+</div>

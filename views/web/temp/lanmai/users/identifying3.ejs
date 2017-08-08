@@ -1,0 +1,97 @@
+<style>
+	.uploadimg1>img{
+		height: 160px;
+		width: 230px;
+		margin-right: 10px;
+	}
+	.uploadimg1{
+		display: inline-block;
+		height: 188px;
+		width:480px;
+		background:none !important;
+	}
+	.checkStep > ul{
+		width: 450px;
+	}
+	.checkStep > ul > li{
+		width: 25%;
+		text-align: left;
+	}
+	.certificatContent{
+		margin-top: 57px;
+		width: 640px;
+		margin: 0 auto;
+		margin-bottom: 50px;
+	}
+	.certificatContent>div{
+		margin-bottom: 30px;
+	}
+	.certificatContent>div>span:first-child{
+		height: 35px;
+		display: inline-block;
+		width: 65px;
+		margin:0 45px 0 45px;
+		vertical-align: top;
+	}
+	.certificatContent button{
+		margin-left: 160px;
+		width: 202px;
+		height: 40px;
+	}
+</style>
+<div class="identify2">
+			    	<h2>认证管理</h2>
+			    	<div class="checkStep">
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_one_active"></div>
+			    		<div class="navStep stepActive"></div><div class="nav_step_logo step_two_active"></div>
+			    	    <div class="navStep stepActive"></div><div class="nav_step_logo step_three_active"></div>
+						<div class="navStep stepActive"></div>
+			    	    <ul>
+		    	    		<li>填写信息</li>
+		    	    		<li>等待审核</li>
+		    	    		<li class="redFont">完成认证</li>
+			    	    </ul>
+			    	</div>
+					<div class="certificatContent">
+						<div class="">
+							<span id="">真实姓名</span><span><%=Identifying2Data.realName%></span>
+						</div>
+						<div class="">
+							<span id="">身份证号</span><span><%=Identifying2Data.idCardNum%></span>
+						</div>
+						<div class="">
+							<span id="">手机号</span><span><%=userInfo.phoneNum%></span>
+						</div>
+						<div class="">
+							<span id="">上传证件</span><a> <div class="uploadimg1">
+									<img src="<%=Identifying2Data.frontImg%>" alt="身份证正面"><img src="<%=Identifying2Data.backImg%>" alt="身份证反面">
+								</div></a>
+						</div>
+						<% if(Identifying2Data.status=="审核通过"){ %>
+						<button><%=Identifying2Data.status%></button>
+						<% }else{ %>
+						<div><span>审核信息</span><%=Identifying2Data.rejectMsg%></div>
+						<button title="点击重新提交" id="reSubmit"><%=Identifying2Data.status%></button><p class="licensetip">注：点击按钮可重新上传提交信息</p>
+						<% } %>
+					</div>
+
+			    </div>
+
+
+<script>
+	$(function () {
+		$("#reSubmit").on("click",function () {
+			$.post("/users/clearIdentity",{
+				typeIdentity:"person"
+			},function (res) {
+				if(res=="success"){
+					window.location.reload()
+				}else {
+					swal("请刷新页面重新点击")
+				}
+
+			})
+		})
+
+	})
+</script>

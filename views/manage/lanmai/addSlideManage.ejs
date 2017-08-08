@@ -1,0 +1,175 @@
+
+<div class="row" ng-controller="addSlideManage">
+    <!--<a class="btn-group" href="/admin/manage/slideManage">-->
+        <!--<button class="btn btn-primary btn-sm" type="button"> 轮播图列表</button>-->
+    <!--</a>-->
+    <input type="hidden" id="isEdit" value="<%=editIs%>">
+    <div class="col-xs-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <div class="alert alert-success alert-dismissable fade in hide" role="alert" id="addSuccess">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <p><i class="icon fa fa-check"></i> <strong>恭喜！</strong>内容添加成功</p>
+                </div>
+                <p class="myInfoBox bg-warning text-warning"><i class="icon fa fa-warning"></i> 信息填写完整无误才可提交</p>
+            </div>
+            <div class="box-body">
+                <%if(editIs){%>
+                <form role="form" class="form-horizontal" name="myForm"  novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">地区（省份）</label>
+                        <div class="col-sm-5">
+                            <!--<input type="text" class="form-control input-sm" name="title" ng-minlength="5" ng-maxlength="50" ng-model="formData.title" required/>-->
+                            <div style="position:relative; left: 0px;top: 0px;"  ng-model="region" >
+                                <input readonly type="text" data-toggle="city-picker" value="<%=addEbookManage.doc.region.province%>/<%=addEbookManage.doc.region.city%>/<%=addEbookManage.doc.region.district%>" name="region" id="region"required>
+                            </div>
+                            <!--<label for="inputError" class="control-label text-danger" ng-show="myForm.title.$invalid && !myForm.title.$pristine"><i class="fa fa-times-circle-o"></i> 5-50个非特殊字符</label>-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">位置</label>
+                        <div class="col-sm-3">
+                            <select ng-model="formData.where">
+                                <option value="homepage">首页</option>
+                            </select>
+                            <input type="hidden" class="form-control input-sm" id="where" name="where"   value="<%=addEbookManage.doc.where%>" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">图片</label>
+                        <div class="modifyPic col-sm-4 ">
+                            <div class="shoplogo "></div>
+                            <input  class="updatelogo col-md-4" type="file" name="" id="updatelogo" value=""/>
+                            <img src="<%=addEbookManage.doc.img%>"/>
+                            <span class="tip">点击图片可重新修改Logo</span>
+                        </div>
+                    </div>
+                    <div class="form-group"></div>
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">跳转地址</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control input-sm" id="jump" name="jump" value="<%=addEbookManage.doc.jump%>" ng-model="formData.jump" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.jump.$invalid && !myForm.jump.$pristine"><i class="fa fa-times-circle-o"></i>跳转地址非空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">权重值</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control input-sm" id="rank" name="rank" value="<%=addEbookManage.doc.rank%>"  ng-model="formData.rank" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">是否显示</label>
+                        <div class="radio col-sm-4" id="isShowing" data-flag="<%=addEbookManage.doc.isShowing%>" >
+                            <label>
+                                <input type="radio"  class="mini" value="1" name="isShowing" ng-model="formData.isShowing"/>是&nbsp;
+                            </label>
+                            <label>
+                                <input type="radio"  class="mini" name="isShowing" value="0" ng-model="formData.isShowing"/>否
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="processForm(myForm.$valid)">发布</a>
+                    </div>
+                </form>
+                <%}else{%>
+                <form role="form" class="form-horizontal" name="myForm"  novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">地区（省份）</label>
+                        <div class="col-sm-5">
+                            <div style="position:relative; left: 0px;top: 0px;">
+                                <input readonly type="text" data-toggle="city-picker" value="" name="region" id="region" ng-model="region" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">位置</label>
+                        <div class="col-sm-3">
+                            <select ng-model="formData.where">
+                                <option value="homepage">首页</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">图片</label>
+                        <div class="modifyPic col-sm-4 ">
+                            <div class="shoplogo "></div>
+                            <input  class="updatelogo col-md-4" type="file" name="" id="updatelogo" value=""/>
+                            <img src=""/>
+                            <span class="tip">点击图片可重新修改Logo</span>
+                        </div>
+                    </div>
+                    <div class="form-group"></div>
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">跳转地址</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control input-sm" name="jump"  ng-model="formData.jump" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.jump.$invalid && !myForm.jump.$pristine"><i class="fa fa-times-circle-o"></i>跳转地址非空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">权重值</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control input-sm" name="rank"  ng-model="formData.rank"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">是否显示</label>
+                        <div class="radio col-sm-4">
+                            <label>
+                                <input type="radio" class="mini" value="1" name="isShowing" ng-model="formData.isShowing"/>是&nbsp;
+                            </label>
+                            <label>
+                                <input type="radio" class="mini" name="isShowing" value="0" ng-model="formData.isShowing"/>否
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="processForm(myForm.$valid)">发布</a>
+                    </div>
+                </form>
+                <%}%>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    $(function () {
+        $("input[type='file']").change(function(e) {
+            var that = this;
+            var file = this.files[0];
+            var fileType=file.type.split('/')[1];
+            $.getCos("activity","",fileType,file, function (res) {
+                console.log(res)
+                $(that).next().attr("src", res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net'));
+                $(".tip").show()
+                $(".tip").scope().img= res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net');
+            })
+        });
+        document.addEventListener("listen", function (e) {
+            $("#region").scope().region=finalText;
+            $("#region").scope().$apply();
+        }, false);
+
+        if($("#isEdit").val()=="true"){
+            $("#region").scope().region=$("#region")[0].defaultValue;
+            $("#where").scope().formData.where=$("#where")[0].defaultValue;
+            $("#jump").scope().formData.jump=$("#jump")[0].defaultValue;
+            $("#jump").scope().img=$(".modifyPic img").attr("src");
+            $("#rank").scope().formData.rank=$("#rank")[0].defaultValue;
+            $("#rank").scope().formData.isShowing=$("#isShowing").data("flag");
+            $("#rank").scope().isEdit=true;
+            $("#region").scope().$apply();
+        }
+
+
+    })
+
+</script>
+

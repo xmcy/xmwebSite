@@ -1,0 +1,478 @@
+<link href="/themes/<%=staticforder%>/css/resourceRelease.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+	<style type="text/css">
+
+		.contenWrap{
+			width: 100%;
+			margin-top:20px;
+		}
+		.myRelease{
+			width: 1600px;
+			margin: 0 auto;
+			height: 500px;
+			position: relative;
+			padding-left: 250px;
+		}
+		.releaseStep{
+			width: 840px;
+			height: 40px;
+			margin-left: -40px;
+		}
+
+		.step_one{
+			background-position:-33px -52px;
+			line-height: 40px;
+			font-size: 19px;
+			color: #FFFFFF;
+			text-align: center;
+		}
+		.step_two{
+			background-position: -21px -100px;
+			line-height: 40px;
+			font-size: 19px;
+			color: #9b9a9a;
+			text-align: center;
+		}
+		form{
+			width: 84%;
+			color: #9b9a9a;
+			margin: 0 auto;
+			margin-top: 5px;
+		}
+		form>div{
+			height: 70px;
+			position: relative;
+			font-size: 17px;
+			margin-bottom: 10px;
+		}
+		form>div>div,form>div>input{
+			display: inline-block;
+			position: absolute;
+		}
+		form .icon{
+			top: 25px;
+			left: 0px;
+			width: 15px;
+			height: 25px;
+			line-height: 17px;
+			font-size: 23px;
+			color: red;
+		}
+		form .releaseOption{
+			top: 15px;
+			left: 20px;
+			width: 115px;
+			height: 30px;
+			line-height: 30px;
+			color: grey;
+		} 
+		form .select,form input{
+			top: 15px;
+			left: 200px;
+			width: 300px;
+			height: 35px;
+			border: 1px solid #9b9a9a;
+			font-size: 15px;
+			padding-left: 15px;
+		}
+		form .select ul{
+            margin: 0px;
+            padding: 0;
+        }
+        form .select .top{
+            position: relative;
+        }
+        form .select .top i{
+        	font-size: 16px;
+            width: 300px;
+            height: 35px;
+            display: block;
+            line-height: 35px;
+			font-style:normal;
+        }
+        form .select .word{
+            position:absolute ;
+            left: 0;
+            top:33px;
+            display: none;
+            margin-left: -16px;
+            z-index: 99999;
+            border: 1px solid #9b9a9a;
+        }
+        form .select .word li{
+            width: 301px;
+            height: 40px;
+            line-height: 35px;
+            padding-left: 15px;
+            border-bottom: 1px solid #9b9a9a;
+            background-color: #fff;
+            font-size: 16px;
+        }
+        form .select .word li:hover{
+            background-color:#eca677;
+        }
+		form .budgetUnit{
+			top: 22px;
+			left: 523px;
+		}
+		/*form .annotation{*/
+			/*top: 54px;*/
+			/*left: 206px;*/
+			/*font-size: 14px;*/
+		/*}*/
+		form .budget_annotation{
+			color: red;
+		}
+		form .detail{
+			width: 480px;
+			height: 250px;
+		}
+		.wangEditor-container{
+			margin-left: 200px !important;
+			width: 400px;
+		}
+		form .detailInfo{
+			width: 100%;
+			height: 235px;
+		}
+		.wangeditor-menu-img-ccw,.wangeditor-menu-img-cw{
+			color: #7c9bd5;
+		}
+		.wangEditor-menu-container {
+			background-color: #f1f1f1;
+			border-bottom: 1px solid gainsboro;
+		}
+		form div.re_submit_a{
+			background-color: #da2f2f;
+			border:  1px solid #da2f2f;
+			color: #ffffff;
+			width: 150px;
+			height: 30px;
+			line-height: 30px;
+			margin-left: 350px;
+			font-size: 20px;
+			margin-bottom: 50px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.categories .btn-group{
+			margin-left: 200px !important;
+			margin-top: 20px;
+		}
+		.industries .btn-group{
+			margin-left: 200px !important;
+			margin-top: 20px;
+		}
+	</style>
+	<body>
+		<div class="contenWrap">
+			<div class="myRelease">
+				<div class="releaseStep">
+					<div class="step_one">1、填写信息</div><div class="step_two">2、完成发布</div>
+				</div>
+				<%if(DemandRelease.isEdit){%>
+				<input type="hidden" id="isEdit" value="true"/>
+				<input type="hidden" id="demandId" value="<%=DemandRelease._id%>"/>
+				<form >
+					<div class="categories">
+						<div class="icon">*</div>
+						<div class="releaseOption">需求类别</div>
+							<select class="selectpicker demand_kinds" title="请选择需求类别" id="categoryL1">
+								<%for(var i=0;i<currentCateList.length;i++){%>
+								<option value="<%=currentCateList[i]._id%>"><%=currentCateList[i].name%></option>
+								<%}%>
+							</select>
+					</div>
+					<div class="categories">
+						<div class="icon">*</div>
+						<div class="releaseOption">需求子类别</div>
+						<select class="selectpicker demand_kinds_child" title="请选择需求子类别" id="categoryL2">
+
+						</select>
+					</div>
+					<div class="industries">
+						<div class="icon">*</div>
+						<div class="releaseOption">所属行业</div>
+						<select class="selectpicker caiLiao_kinds" title="请选择所属行业" id="classify">
+							<%for(var i=0;i<hangyeleibie.length;i++){%>
+							<option value="<%=hangyeleibie[i]%>"><%=hangyeleibie[i]%></option>
+							<%}%>
+						</select>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">地区</div>
+						<div style="position:relative; left: 205px;top: 15px;">
+							<input readonly type="text" data-toggle="city-picker" value="<%=DemandRelease.region.province%>/<%=DemandRelease.region.city%>/<%=DemandRelease.region.district%>" name="region" id="region">
+						</div>
+						<!--<div class="annotation">注：该地区为媒体主提供服务的地区</div>-->
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">预算</div>
+						<input type="" name="" id="price" value="<%=DemandRelease.price%>"  placeholder="请输入预算"/><div class="budgetUnit">元</div>
+						<!--<div class="annotation budget_annotation"><div></div>不填则为保密</div>-->
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">标题</div>
+						<input type="" name="" id="title" value="<%=DemandRelease.title%>"  placeholder="请输入标题（10-50字）"/>
+					</div>
+					<div class="detail">
+						<div class="icon">*</div>
+						<div class="releaseOption">详细信息</div>
+						<div class="detailInfo" id="wangEditor">
+						</div>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">联系人</div>
+						<input type="text" name="" id="contacts" value="<%=DemandRelease.contacts%>"  placeholder="请输入联系人"/>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">联系方式</div>
+						<input type="" name="" id="phoneNum" value="<%=DemandRelease.phoneNum%>" placeholder="请输入联系方式"/>
+					</div>
+					
+					<div class="re_submit_a">发&nbsp;布</div>
+					<input type="hidden" value="<%=DemandRelease.classify%>" id="classifyData">
+					<input type="hidden" value="<%=DemandRelease.categoryL1%>" id="categoryL1Data">
+					<input type="hidden" value="<%=DemandRelease.categoryL2%>" id="categoryL2Data">
+					<input type="hidden" value="<%=DemandRelease.details%>" id="detailsData">
+					<input type="hidden" value="true" id="edit">
+				</form>
+				<%}else{%>
+				<input type="hidden" id="isEdit" value="false"/>
+				<form >
+					<div class="categories">
+						<div class="icon">*</div>
+						<div class="releaseOption">需求类别</div>
+						<select class="selectpicker demand_kinds" title="请选择需求类别" id="categoryL1">
+							<%for(var i=0;i<currentCateList.length;i++){%>
+							<option value="<%=currentCateList[i]._id%>"><%=currentCateList[i].name%></option>
+							<%}%>
+						</select>
+					</div>
+					<div class="categories">
+						<div class="icon">*</div>
+						<div class="releaseOption">需求子类别</div>
+						<select class="selectpicker demand_kinds_child" title="请选择需求子类别" id="categoryL2">
+
+						</select>
+					</div>
+					<div class="industries">
+						<div class="icon">*</div>
+						<div class="releaseOption">所属行业</div>
+						<select class="selectpicker caiLiao_kinds" title="请选择所属行业" id="classify">
+							<%for(var i=0;i<hangyeleibie.length;i++){%>
+							<option value="<%=hangyeleibie[i]%>"><%=hangyeleibie[i]%></option>
+							<%}%>
+						</select>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">地区</div>
+						<div style="position:relative; left: 205px;top: 15px;">
+							<input readonly type="text" data-toggle="city-picker" value="北京市/北京市/东城区" name="region" id="region">
+						</div>
+						<!--<div class="annotation">注：该地区为媒体主提供服务的地区</div>-->
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">预算</div>
+						<input type="" name="" id="price" value=""  placeholder="请输入预算"/><div class="budgetUnit">元</div>
+						<!--<div class="annotation budget_annotation"><div></div>不填则为保密</div>-->
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">标题</div>
+						<input type="" name="" id="title" value=""  placeholder="请输入标题（10-50字）"/>
+					</div>
+					<div class="detail">
+						<div class="icon">*</div>
+						<div class="releaseOption">详细信息</div>
+						<div class="detailInfo" id="wangEditor">
+						</div>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">联系人</div>
+						<input type="text" name="" id="contacts" value=""  placeholder="请输入联系人"/>
+					</div>
+					<div class="">
+						<div class="icon">*</div>
+						<div class="releaseOption">联系方式</div>
+						<input type="" name="" id="phoneNum" value="" placeholder="请输入联系方式"/>
+					</div>
+
+					<div class="re_submit_a">发&nbsp;布</div>
+				</form>
+				<%}%>
+			</div>
+		</div>
+		<script>
+
+
+	        $(function(){
+				var button_clicked=false
+				var isEdit=$("#isEdit").val()
+				var demandId=$("#demandId").val()?$("#demandId").val():""
+				$('.categories i').click(function(){
+	                $('.categories .word').slideToggle();
+	            })
+	            $('.categories .word li').click(function(){
+	                var Oname=$(this).html();
+	                $('.categories i').html(Oname);
+	                $('.categories .word').slideUp()
+	            })
+	             $('.industries i').click(function(){
+	                $('.industries .word').slideToggle();
+	            })
+	            $('.industries .word li').click(function(){
+	                var iname=$(this).html();
+	                $('.industries i').html(iname);
+	                $('.industries .word').slideUp()
+	            })
+				$(".city-select dl dd a").on("click",function () {
+					console.log($(".city-picker-input").val());
+					setTimeout(function () {
+						window.localStorage.setItem("area",$(".city-picker-input").val());
+					},0)
+				});
+				$(".city-picker-input").val(window.localStorage.getItem("area"));
+
+				$("#categoryL1").on("change",function () {
+					var that=$(this);
+					var valueForParent=that.val();
+					$.post("/resource/getChildType",{
+						parentID:valueForParent
+					},function (res) {
+						var getChildType=res.currentCateList;
+						var str='<select class="selectpicker demand_kinds_child" title="请选择需求子类别" id="categoryL2">';
+						for(var i=0,long=getChildType.length;i<long;i++){
+							str+='<option value="'+getChildType[i]._id+'">'+getChildType[i].name+'</option>';
+						}
+						str+='</select>';
+						var div_child=$("div.demand_kinds_child").parent();
+						$("div.demand_kinds_child").remove();
+						div_child.append($(str))
+						$('#categoryL2').selectpicker('refresh');
+					})
+				})
+
+				$(".re_submit_a").on("click",function () {
+					var regionStr=$("#region").val().split("/");
+					var categoryL1=$("#categoryL1").val();
+					var categoryL2=$("#categoryL2").val();
+					var classify=$("#classify").val();
+					var price=$("#price").val();
+					var title=$("#title").val();
+					var contacts=$("#contacts").val();
+					var phoneNum=$("#phoneNum").val();
+					var details = editor.$txt.html();
+					var pageview=0;
+					var testmobile=/^([0-9]{3,4}-)?[0-9]{7,8}$/;
+					var restmobible = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+					if(categoryL1==""||regionStr==""||categoryL2==""||classify==""||price==""||title==""||contacts==""||phoneNum==""||details==""){
+						swal({
+							title: "必填项不许为空!",
+							type: "error",
+							confirmButtonText: "确定"
+						});
+						return;
+					};
+					if (restmobible.test(phoneNum)||testmobile.test(phoneNum)){
+					}else {
+						swal({
+							title: "联系电话填写有误！",
+							type: "error",
+							confirmButtonText: "确定"
+						});
+						return false;
+					}
+					var region={
+						province:regionStr[0],
+						city:regionStr[1],
+						district:regionStr.length==3?regionStr[2]:""
+					};
+
+					var dataForPost={
+						isEdit:isEdit,
+						demandId:demandId,
+						region:region,
+						classify:classify,
+						categoryL1:categoryL1,
+						categoryL2:categoryL2,
+						price:price,
+						title:title,
+						contacts:contacts,
+						phoneNum:phoneNum,
+						details:details,
+						pageview:pageview
+					};
+					button_clicked=true
+
+					$.ajax({
+						url:"/resource/uploadDemandRelease",
+						data:JSON.stringify(dataForPost),
+						type:"POST",
+						dataType:"json",
+						contentType:"application/json",
+						success:function(res) {
+							if(res.result=="success"){
+								swal({
+									title: "发布成功!",
+									type: "success",
+									confirmButtonText: "确定"
+								});
+								window.location.href="/users/myDemand"
+							}else{
+								swal({
+									title: res,
+									type: "error",
+									confirmButtonText: "确定"
+								});
+								button_clicked=false
+
+							}
+						},
+						error:function (res) {
+							button_clicked=false
+
+							console.log("error"+res);
+						}
+					})
+				})
+
+
+				if($("#edit").val()){
+					$('#categoryL1').on('loaded.bs.select', function (e) {
+						$('#categoryL1').selectpicker('val', $("#categoryL1Data").val());
+						$.post("/resource/getChildType",{
+							parentID:$("#categoryL1Data").val()
+						},function (res) {
+							var getChildType=res.currentCateList;
+							var str='<select class="selectpicker demand_kinds_child" title="请选择需求子类别" id="categoryL2">';
+							for(var i=0,long=getChildType.length;i<long;i++){
+								str+='<option value="'+getChildType[i]._id+'">'+getChildType[i].name+'</option>';
+							}
+							str+='</select>';
+							var div_child=$("div.demand_kinds_child").parent();
+							$("div.demand_kinds_child").remove();
+							div_child.append($(str))
+							$('#categoryL2').selectpicker('refresh');
+							$('#categoryL2').selectpicker('val', $("#categoryL2Data").val());
+						})
+						$('#classify').selectpicker('val', $("#classifyData").val());
+					});
+
+					var detailsData=$("#detailsData").val();
+					setTimeout(function () {
+						editor.$txt.append(detailsData);
+					},0)
+				}
+			})
+
+    </script>
+	</body>
+

@@ -1,0 +1,186 @@
+<style>
+    .table>li{
+        float: left;
+        margin-right: 30px;
+        margin-top: 5px;
+    }
+</style>
+<div class="row" ng-controller="searchRcdManage">
+<% include ../public/modal %>
+<div class="col-xs-12">
+
+    <div class="panel">
+        <div class="box">
+            <div class="box-body table-responsive no-padding" >
+                <ul class="table" style="list-style: none">
+
+                    <li>
+                        <input readonly type="text" data-toggle="city-picker" value="" id="region1" data-level="province">
+                    </li>
+                    <li>
+                        <button class="btn btn-primary btn-sm" type="button" id="resetDistrict"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 重置地区</button>
+                    </li>
+                    <li>类型：
+                        <select id="type1" ng-model="type1">
+                            <option value="">全部</option>
+                            <option value="Manufacture">制作</option>
+                            <option value="Material">材料</option>
+                            <option value="Equipment">设备</option>
+                            <option value="Demands">需求</option>
+                        </select>
+                    </li>
+                    <li>位置：
+                        <select id="where1" ng-model="where1">
+                            <option value="">全部</option>
+                            <option value="searchbox">搜索框</option>
+                            <option value="hotsearch">热搜</option>
+                        </select>
+                    </li>
+                    <li>文字内容：
+                        <input  type="text"  value="" ng-model="textForSearch">
+                    </li>
+                    <li>
+                        <button class="btn btn-primary btn-sm" type="button" ng-click="searchForSlideManage()"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 搜索</button>
+                    </li>
+                    <li>
+                        <a href="#addContentTags" role="button" class="btn btn-primary btn-sm" data-toggle="modal"><span class="fa fa-plus-square" aria-hidden="true">&nbsp;</span>增加一个新标签</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="box">
+        <div class="box-body table-responsive no-padding" >
+            <table class="table table-hover">
+                <tr>
+                    <th><input type="checkbox" class="mini" id="selectAll"/></th>
+                    <th>区域</th>
+                    <th>类型</th>
+                    <th>位置</th>
+                    <th>文字内容</th>
+                    <th>权重值</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                <tr class="datalist" ng-repeat="item in dataList">
+                    <td><input type="checkbox" name="listItem" class="mini" value="{{item._id}}" ng-click="getNewIds()"/></td>
+                    <td>{{item.region.province}}-{{item.region.city}}-{{item.region.district}}</td>
+                    <td>{{item.type}}</td>
+                    <td>{{item.where}}</td>
+                    <td>{{item.text}}</td>
+                    <td>{{item.rank|toNull}}</td>
+                    <td>{{item.createdAt | date : "yyyy-MM-dd HH:mm:ss"}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-xs" data-whatever="{{item._id}}" data-toggle="modal" data-target="#addContentTags" ng-click="edit(item)"><span class="fa fa-fw fa-edit" aria-hidden="true"></span>编辑</button>&nbsp;
+                        <button class="btn btn-default btn-xs" type="button" title="删除" ng-click="delOneItem(item._id)"><i class="fa fa-trash-o"></i></button>
+                    </td>
+                </tr>
+            </table>
+            <div class="paging">
+                <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页" first-text="第一页" last-text="最后一页"
+                            next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+                            items-per-page="itemsPerPage"></pagination>
+            </div>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+
+</div><!-- /.col -->
+
+<!--添加用户组模态窗口-->
+<div class="modal fade" id="addContentTags">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">添加搜索</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal" name="myForm"  novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">地区</label>
+                        <div class="col-sm-4">
+                            <!--<input type="text" class="form-control input-sm" name="title" ng-minlength="5" ng-maxlength="50" ng-model="formData.title" required/>-->
+                            <div style="position:relative; left: 0px;top: 0px;"   >
+                                <input readonly type="text" data-toggle="city-picker"  name="region" id="region" >
+                            </div>
+                            <!--<label for="inputError" class="control-label text-danger" ng-show="myForm.title.$invalid && !myForm.title.$pristine"><i class="fa fa-times-circle-o"></i> 5-50个非特殊字符</label>-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">搜索类型</label>
+                        <select class="selectpicker col-sm-4" id="type" title="请选择搜索类型">
+                            <option value="all">全部</option>
+                            <option value="Manufacture">制作</option>
+                            <option value="Material">材料</option>
+                            <option value="Equipment">设备</option>
+                            <option value="Demands">需求</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">搜索位置</label>
+                        <select class="selectpicker col-sm-4" id="where" title="请选择搜索位置">
+                            <option value="searchbox">搜索框</option>
+                            <option value="hotsearch">热搜</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">文字内容</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="text" ng-model="formData.text" ng-minlength="1"  required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.text.$invalid && !myForm.text.$pristine"><i class="fa fa-times-circle-o"></i> 文字内容不能为空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">权重值</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" name="rank" ng-model="formData.rank"  />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="processForm(myForm.$valid)">提交</button>
+                    </div>
+                </form>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+ </div><!-- /.row -->
+
+</div>
+
+<script>
+    $(function () {
+        document.addEventListener("listen", function (e) {
+            $("#region").scope().region=finalText;
+            $("#region").scope().$apply();
+        }, false);
+        $('#type').on('changed.bs.select', function (e) {
+            $("#type").scope().formData.type=$('#type').selectpicker('val');
+            $("#where").scope().formData.where=$('#where').selectpicker('val');
+            $("#region").scope().$apply();
+
+        });
+        $('#where').on('changed.bs.select', function (e) {
+            $("#where").scope().formData.where=$('#where').selectpicker('val');
+            $("#type").scope().formData.type=$('#type').selectpicker('val');
+            $("#region").scope().$apply();
+
+        });
+
+        $("#resetDistrict").on("click",function () {
+            $('#region1').citypicker("reset");
+            $("#region1").scope().regionStr="";
+            $("#region1").scope().regionForSearch={}
+            $("#region1").scope().$apply();
+        })
+        document.addEventListener("listen", function (e) {
+            $("#region1").scope().regionStr=finalText;
+            $("#region1").scope().$apply();
+        }, false);
+
+
+    })
+
+</script>

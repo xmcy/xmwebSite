@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height;initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>制作宝-<%=detailMakeList[0].title%></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/weui.min.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/myStyle.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/common.css">
+     <!--引入 WeUI -->
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/0.4.0/weui.min.css">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+   <script src="/themes/<%=staticforder%>/js/zepto.min.js"></script>
+    <script src="/themes/<%=staticforder%>/js/swipe.js"></script>
+    <script>
+        $(function(){
+            $('#slide1').swipeSlide({
+                autoSwipe:true,
+                speed:3000,
+                continuousScroll:true,
+                transitionType:'cubic-bezier(0.22, 0.69, 0.72, 0.88)',
+                lazyLoad:true,
+                firstCallback : function(i,sum,me){
+                    me.find('.dot').children().first().addClass('cur');
+                },
+                callback : function(i,sum,me){
+                    me.find('.dot').children().eq(i).addClass('cur').siblings().removeClass('cur');
+                }
+            });
+        });
+    </script>
+</head>
+<body ontouchstart>
+	<div class="detailContainer">
+        <div class="detail_banner">
+            <div class="slide" id="slide1">
+                <ul>
+                    <% for(var i=0;i<detailMakeList[0].images.length;i++){ %>
+                    <li>
+                        <a href="#">
+                            <img src="<%=detailMakeList[0].images[i]%>/compress.only" data-src="<%=detailMakeList[0].images[i]%>" alt="">
+                        </a>
+                    </li>
+                    <%}%>
+                </ul>
+                <div class="dot">
+                    <% for(var i=0;i<detailMakeList[0].images.length;i++){ %>
+                    <span></span>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weDetailTitle">
+        <h3><%=detailMakeList[0].title%></h3>
+        <p class="clearfix">
+            <span class="weDetailTitleTime">发布： <i><%=moment(detailMakeList[0].refreshedAt).format('YYYY-MM-DD HH:MM')%></i> </span>
+            <span class="weDetailTitleNum">浏览： <i><%=detailMakeList[0].pageview%></i> </span>
+        </p>
+    </div>
+    <div class="weDetailDescripe">
+        <ul class="clearfix">
+            <% if(detailMakeList[0].discountPrice){ %>
+                <li>报价：<%=detailMakeList[0].discountPrice%>元</li>
+            <%}else{%>
+                <li>报价：面议</li>
+            <%}%>
+
+            <li>联系人：<%=detailMakeList[0].contacts%></li>
+            <li>联系方式：<%=detailMakeList[0].phoneNum%></li>
+            <li>所在区域：<%=detailMakeList[0].region.province%>&nbsp;&nbsp;<%=detailMakeList[0].region.city%>&nbsp;&nbsp;<%=detailMakeList[0].region.district%></li>
+        </ul>
+        <p class="detailMakeListHtml"><%=detailMakeList[0].details%></p>
+    </div>
+    <div class="weDetailContact clearfix" style="height: 4em">
+        <div class="weDetailName">
+            <span><%=detailMakeList[0].contacts%></span>
+        </div>
+        <div class="weDetailTel clearfix">
+            <a href="tel:<%=detailMakeList[0].phoneNum%>">
+                <span><img src="/themes/<%=staticforder%>/images/weDetail02.png"></span>
+                <i>电话</i>
+            </a>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            /*pushHistory();
+            var backStatus = sessionStorage.getItem("backStatus")
+            window.addEventListener("popstate", function(e) {
+                console.log("我监听到了浏览器的返回按钮事件啦");//根据自己的需求实现自己的功能
+                if(backStatus==0){
+                    window.location.href="/wechat/getHomeInfo"
+                }else if(backStatus==1){
+                    window.location.href="/wechat/weMakeList"
+                }
+
+            }, false);
+            function pushHistory() {
+                var state = {
+                    title: "title",
+                    url: "#"
+                };
+                window.history.pushState(state, "title", "#");
+            }*/
+
+            var data=$(".weDetailTitleTime>i").html();
+            $(".weDetailTitleTime>i").html(data.toLocaleString());
+
+            for(var i=0;i<$('.weDetailDescripe').length;i++){
+                var tagCon = $(".detailMakeListHtml").eq(i).text();
+                $(".detailMakeListHtml").eq(i).text(delHtmlTag(tagCon));
+                function delHtmlTag(str){
+                    return str.replace(/<[^>]+>/g,"");
+                }
+            }
+        })
+        window.onload=function(){
+            function isWeiXin(){
+                var ua = window.navigator.userAgent.toLowerCase();
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                    return true;
+                }else{
+                    var bod=document.getElementsByTagName("body")[0];
+                    bod.innerHTML="<p style='text-align: center;color:#68E868'>请在微信客户端打开页面</p>";
+                    swal({
+                                title: '您好，请使用微信客户端浏览！',
+                                text: "即将跳转-制作宝-制作资源列表",
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "确定",
+                                closeOnConfirm: false
+                            },
+                            function(isConfirm) {
+                                if (isConfirm) {
+                                    window.location.href="/resource/resourceMakeList";
+                                }
+                            })
+                    return false;
+                }
+            }
+            isWeiXin()
+        }
+    </script>
+</body>
+</html>

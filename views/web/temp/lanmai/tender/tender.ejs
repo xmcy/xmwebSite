@@ -1,0 +1,1039 @@
+<style>
+    .autocomplete-suggestions { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); }
+    .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+    .autocomplete-no-suggestion { padding: 2px 5px;}
+    .autocomplete-selected { background: #F0F0F0; }
+    .autocomplete-suggestions strong { font-weight: bold; color: #000; }
+    .autocomplete-group { padding: 2px 5px; font-weight: bold; font-size: 16px; color: #000; display: block; border-bottom: 1px solid #000; }
+
+    .hiddenCompany input { font-size: 28px; padding: 10px; border: 1px solid #CCC; display: block; margin: 20px 0; }
+
+    .tipFor{
+        display: inline-block;
+        width: 350px;
+        height: 25px;
+        margin-left: 815px;
+        margin-top: -18px;
+    }
+    body{
+        background-color: #fff;
+    }
+    .index_nav>ul>li{
+        width: 130px;
+    }
+    .re_announce_con_make>.tip{
+        margin: 30px 0 ;
+        background-color: #da2f2f;
+        height: 38px;
+        width: 100%;
+        padding: 7px 0 6px 100px;
+        color: #fff;
+        border-radius: 4px;
+        font-size: 18px;
+        position: static;
+        display: block;
+    }
+    .sweet-alert>h2>img{
+        width: 250px;
+        height:250px;
+    }
+    input{
+        min-width:auto;
+        margin-right: 5px;
+    }
+    .sweet-alert{
+        margin-top: -250px !important;
+    }
+    .contentlist>div{
+        margin-bottom: 0;
+        margin: 0;
+        width: 140px;
+        height: 120px;
+    }
+    .contentlist>div>img{
+        width: 140px;
+        height: 120px;
+    }
+    .contentlist .addfileInput{
+        width: 140px;
+        height: 120px;
+        right: -4px;
+        top: 0px;
+    }
+    .re_source_make {
+        width: 820px;
+    }
+#imageList>li{
+    position: relative;
+}
+#imageList>li>.first{
+    width: 24px;height: 24px;background: url(/themes/lanman/images/re_announce02.png) -2px -2px no-repeat;display: block;position: absolute;top:0;left: 0;
+}
+#imageList>li>.second{
+    width: 16px;height: 16px;background: url(/themes/laiman/images/re_announce02.png) -2px -266px no-repeat;display: block;position: absolute;bottom: 0;right: 0;cursor: pointer;
+}
+    .tuiguangChioce{
+        float: left;
+    }
+    .tuiguang_choice{
+        width: 20px;
+        height: 20px;
+    }
+    .caiLiao_kinds{
+        margin-left: 14px !important;
+        width: 320px !important;
+        float: left !important;
+        margin-top: 20px;
+    }
+    .btn{
+        padding: 6px 6px !important;
+    }
+    .wangEditor-container{
+        margin-left: 15px;
+    }
+    .btn-default{
+        color:#acaaaa !important;
+    }
+    .dropdown-menu>li>a{
+        color:#acaaaa;
+    }
+    .makeChioce{
+        width: 300px;
+        color:#ACB1C7;
+    }
+    .dropdown-menu{
+        margin-left: 0 !important;
+    }
+    .picGet{
+        margin-left: 80px;
+        font-size: 15px;
+        padding-top: 2px;
+        color: darkgrey;
+    }
+    .relative{
+        position: relative;
+        margin-left: 415px !important;
+    }
+    .picGet>a{
+      color: #da2f2f;
+      cursor: pointer;
+    }
+    .picGet>a:hover{
+       text-decoration: none;
+    }
+    .bossnosee{
+        display: inline-block;
+        font-size: 15px;
+        color: darkgrey;
+    }
+    .re_make_area .city-select-tab a{
+        line-height: 19px;
+    }
+    .re_make_area .title span{
+        color:#aaa;
+    }
+    .re_make_area .city-picker-span{
+        width: 340px !important;
+        height: 31px !important;
+        line-height: 30px !important;
+    }
+    .file-preview{
+        margin-left: 70px;
+    }
+    .change_style{
+        font-style: normal;
+        font-weight: 500;
+        margin-left: 5px;
+        width: 100px;
+    }
+    .invitation{
+        display: none;
+    }
+    .invitation input,.hiddenCompany input{
+        line-height: 40px;
+    }
+    #tenderdate,#makedate{
+        padding-right: 60px;
+    }
+    .re_main>form>input{
+        margin-left: 25px;
+        height: 16px;
+    }
+    .re_submit_a{
+        background-color: #da2f2f;
+        border:  1px solid #da2f2f;
+        border-radius: 3px;
+        color: #ffffff;
+        width: 150px;
+        height: 40px;
+        line-height: 40px;
+        margin-left: 650px;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    .re_submit_aFor{
+        background-color: grey;
+        color: #ffffff;
+        width: 150px;
+        height: 40px;
+        line-height: 40px;
+        margin-left: 650px;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    .re_maincontact{
+        height: 100px !important;
+    }
+    .newnumform{
+        display: none;
+        margin-top: -20px;
+    }
+    #phoneNum,#password{
+        width: 200px;
+        height: 40px;
+        margin-top: 0;
+        margin-left:17px;
+        float: none;
+        padding-left: 5px;
+    }
+    #password{
+        margin-left: 90px;
+        display: block !important;
+    }
+    .forpass{
+        display: inline-block;
+        height: 36px;
+        width: 90px;
+        line-height: 36px;
+        text-align: center;
+        background-color: #dcdbdb;
+        border: 1px solid #dcdbdb;
+        border-radius: 3px;
+        margin-top: 2px;
+        margin-left: 10px;
+        outline: none;
+    }
+    .textarea{
+        width: 478px;
+        height: 258px;
+        /*  border: 1px solid darkslategray;*/
+        float: left;
+    }
+    .fortext{
+        height: 250px;
+        margin-top: 30px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .promisemoney{
+        position: absolute;
+        top: 60px;
+        width: 800px;
+        right: -50%;
+        border: 2px solid #da2f2f;
+        font-size: 16px;
+        line-height: 28px;
+        padding: 20px;
+        background-color: #fff;
+        display: none;
+        z-index: 999;
+    }
+    .wangEditor-container {
+        float: left;
+        width: 70%;
+        margin-left: 15px;
+    }
+    .fileList1{
+        display: none;
+        width: 500px;
+        height: 300px;
+        border: 1px solid grey;
+        overflow-y: auto;
+        position: absolute;
+        top: 135px;
+        left: 108px;
+    }
+    .fileList2, .fileList3{
+        display: none;
+        width: 500px;
+        height: 150px;
+        border: 1px solid grey;
+        overflow-y: auto;
+        position: absolute;
+        top: 84px;
+        left: 108px;
+    }
+
+    .fileList>li{
+        width: 100% !important;
+        height: 30px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block;
+        border-bottom: 1px solid grey;
+    }
+    .fileList>li>span.fileTitle{
+        float: left;
+        display: inline-block;
+        width: 360px;
+        height: 28px;
+        line-height: 28px;
+        padding-left: 18px;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        color: #908e8e;
+    }
+    .fileList>li>span.fileTitle1, .fileList>li>span.fileTitle2{
+        float: left;
+        display: inline-block;
+        width: 400px;
+        height: 28px;
+        line-height: 28px;
+        padding-left: 18px;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        color: #908e8e;
+    }
+     .fileList>li>span.fileTitleForFirst{
+         display: inline-block;
+         width: 200px;
+         height: 28px;
+         line-height: 28px;
+         padding-left: 58px;
+         float: left;
+     }
+    .fileList>li>span.fileTitleForCaozuo{
+       display: inline-block;
+       width: 100px;
+       height: 28px;
+       line-height: 28px;
+        float: right;
+
+    }
+    .fileList>li>a.checkFile{
+        float: left;
+        display: inline-block;
+        width: 50px;
+        height: 28px;
+        line-height: 28px;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+    .fileList>li>a.checkFile:hover{
+       color: rgb(172, 170, 170);
+    }
+    .fileList>li>span.deleteFile{
+        float: left;
+        display: inline-block;
+        width: 50px;
+        height: 28px;
+        line-height: 28px;
+        cursor: pointer;
+        color: rgb(144, 142, 142);
+    }
+    .fileList>li>span.deleteFile:hover{
+        color: rgb(172, 170, 170);
+    }
+    .contentlist{
+        float: left;
+        width: 140px;
+        height: 120px;
+        padding: 0;
+        margin: 0 0 0 15px;
+    }
+    .vnumCode{
+        width: 130px;
+        height: 50px;
+        display: inline-block;
+
+    }
+    .divForFile1{
+        height: 450px !important;
+        margin-top: 250px ;
+        width: 950px ;
+        position: relative ;
+    }
+    .divForFile{
+        height: 150px !important;
+        margin-top: 250px ;
+        width: 950px ;
+        position: relative ;
+    }
+    .hiddenCompany{
+        position: relative ;
+    }
+    .inviteCompany{
+        position: relative ;
+    }
+    .payType{
+        display: none;
+    }
+    .payType>div{
+        margin-left: 30px;
+        width: 100px;
+        float: left;
+        height: 50px;
+        margin-right: 35px;
+    }
+    .payType>div>input{
+        width: 30px;
+        height: 16px;
+        font-size: 16px;
+
+    }
+    .payType>div>label{
+        margin-left: 10px;
+        font-weight: 500;
+    }
+    .tipforpass{
+        width: auto !important;
+        height: auto !important;
+        line-height: normal !important;
+        float: right !important;
+        margin-top: 36px;
+        margin-right: 90px;
+        color: darkgray;
+    }
+    .bigheight{
+        height: 237px !important;
+    }
+</style>
+<script type="application/javascript">
+    $(function () {
+        console.log(navigator.userAgent)
+        function getBrowserInfo() {
+            var agent = navigator.userAgent.toLowerCase();
+
+            var regStr_ie = /msie [\d.]+;/gi;
+            var regStr_ie2 = /Trident\/ [\d.]+;/gi;
+            //IE
+            if (agent.indexOf("msie") > 0) {
+                return agent.match(regStr_ie) ;
+            }
+            return false
+        }
+        var browser = getBrowserInfo() ;
+        if(browser){
+            var verinfo = (browser+"").replace(/[^0-9.]/ig,"");
+            if(8<parseInt(verinfo)<=9){
+                swal({
+                            title: "您的浏览器版本过低，无法使用上传图片功能",
+                            text:"若使用360,qq,搜狗,2345,uc等浏览器,请切换成极速模式,若使用IE浏览器,请升级浏览器版本或安装其它浏览器",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            cancelButtonText: "取消",
+                            confirmButtonText: "查看帮助",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm){
+                            if(isConfirm){
+                                window.location.href="/users/helperCenter#uploadImg"
+                            }
+                        });
+            }else if(parseInt(verinfo)<=8){
+                alert("您的浏览器版本过低，无法使用上传图片功能,请升级浏览器版或安装其它浏览器")
+            }
+        }
+
+    })
+</script>
+
+
+
+    <div class="re_announce_con_make">
+        <div class="tip">
+            <p>参与制作宝保证金体系，保证双方交易公平，且资金安全有保证。80%的欺诈、资金盗取均由线下交易导致，请勿线下交易。</p>
+        </div>
+        <div class="re_source_make">
+            <ul>
+                <li class="re_main re_make_kinds"><span>选择类目</span>
+                    <select class="selectpicker caiLiao_kinds" id="categoryL2"  data-dropup-auto="false" title="请选择招标类目">
+                        <%for(var j=0;j<currentCateListForSecond.length;j++){%>
+                        <option value="<%=currentCateListForSecond[j]._id%>"><%=currentCateListForSecond[j].name%></option>
+                        <%}%>
+                    </select>
+                </li>
+                <li class="re_main"><span>招标标题</span><input type="text"  id="title" placeholder="请输入标题（10-30个字）" value=""/></li>
+                <li  class="re_main fortext"><span>招标描述</span>
+                    <div class="textarea" id="wangEditor" placeholder="请详细描述招标产品、数量、大小等关键信息">
+                        <p>请详细描述招标产品、数量、大小等关键信息</p>
+                    </div>
+                </li>
+                <li class="divForFile" ><span>上传文件</span>
+                    <div class="contentlist " id="bannercontentlist">
+                        <div class="bannercontent">
+                            <img src="/themes/lanmai/images/addfileb2.png"/>
+                            <input class="addfileInput banneraddfile" id="" multiple type="file" name="">
+                        </div>
+                    </div>
+                    <ul class="fileList fileList1">
+                        <li><span class="fileTitleForFirst">文件列表</span><span class="fileTitleForCaozuo">操作</span></li>
+                    </ul>
+                </li>
+                <li class=" re_make_area re_main"><span>招标区域</span>
+                    <div style="position:relative; left: 90px;top: 21px;" class="region">
+                        <input readonly type="text" data-toggle="city-picker" placeholder="请选择地区" name="region" id="region">
+                    </div>
+                    <div class="picGet">（选定地区的服务商才能参加投标,不在选定区域的服务商将无法竞投此标）</div>
+                </li>
+                <li class="hiddenCompany"><span>屏蔽厂家</span>
+                    <input type="text" name="hiddenCompany" id="hiddenCompany" placeholder="请选择您要屏蔽的厂家" />
+                    <!--<select class="selectpicker caiLiao_kinds" multiple id="blackList" data-live-search="true" data-dropup-auto="false" title="请选择您要屏蔽的厂家">-->
+                    <!--</select>-->
+                    <p class="bossnosee">（选中的服务商将不能投标 非必填）</p>
+                    <ul class="fileList fileList2 ">
+                        <li><span class="fileTitleForFirst">厂家列表</span><span class="fileTitleForCaozuo">操作</span></li>
+                    </ul>
+                </li>
+                <li class="re_main">
+                    <span>投标截止</span>
+                    <!--<input class="geryborder" type="text" id="tenderdate" readonly name="brithday" placeholder="点击选择招标截止时间"/>-->
+                    <input class="geryborder" type="text" id="tenderdate" readonly data-enable-time=true placeholder="点击选择投标截止时间" />
+                    <div class="picGet">（设置招标截止时间，时间间隔为1-48小时即可）</div>
+                </li>
+                <li class="re_main">
+                    <span>制作截止</span>
+                    <!--<input class="geryborder" type="text" id="makedate" readonly name="brithday" placeholder="点击选择招标截止时间"/>-->
+                    <input class="geryborder" type="text" id="makedate" readonly data-enable-time=true placeholder="点击选择制作截止时间"/>
+                    <div class="picGet">（选标后服务商需要在该日期之前完成制作）</div>
+                </li>
+                <li><span>保证金</span><input type="text"  id="promisemone" placeholder="请输入整百数的保证金金额" value=""/>
+                    <div class="picGet relative">（保证金可以提升信誉吸引更多服务商投标 <a data-i="false" class="promisemoneyFora">查看详情</a>）
+                        <div class="promisemoney">
+                            关于保证金<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;缴纳保证金可以提升信誉，吸引更多服务商投标，缴纳保证金的数量还会影响到您此次招标可以接受的投标数量，具体规则是：投标数量=保证金÷100+5，如您缴纳500元保证金则您最多可以收到10个投标。保证金存放在平台的安全账户中，在交易完成后即退回到您的企业账户，您可以随时提取到您的银行账户或支付宝账户（注：保证金请按整百数缴纳）。
+                        </div>
+                    </div>
+                </li>
+                <li class="payType"><span>支付方式</span>
+                    <div class=""><input type="radio" name="precisePayway" id="alipay" value="支付宝"/><label for="alipay">支付宝</label></div>
+                    <div class=""><input type="radio" name="precisePayway" id="weichartpay" value="微信"/><label for="weichartpay">微信</label></div>
+                </li>
+                <li  class="re_main"><span>招标方式</span>
+                    <form class="tenderway">
+                        <input class="re_material_chioce" type="radio" name="freightType" id="bosspay" checked value="1" /> <label for="bosspay" class="change_style">公开招标</label>
+                        <input class="re_material_chioce" type="radio" name="freightType" id="buyerpay"  value="2" /> <label for="buyerpay" class="change_style">邀请招标</label>
+                    </form>
+                </li>
+                <li class="invitation hiddenCompany"><span>邀请厂家</span>
+                    <input type="text" name="inviteCompany" id="inviteCompany" placeholder="请选择您要邀请的厂家" />
+                    <p class="bossnosee">（只有您邀请的服务商才能参与此次招标）</p>
+                    <ul class="fileList fileList3 ">
+                        <li><span class="fileTitleForFirst">厂家列表</span><span class="fileTitleForCaozuo">操作</span></li>
+                    </ul>
+                </li>
+                <li  class="re_main"><span>设计稿</span>
+                    <form>
+                        <input class="re_machine_fix" type="radio" name="designs" id="have" checked value="1"> <label for="have" class="change_style">已有</label>
+                        <input class="re_machine_fix" type="radio" name="designs" id="haveno"  value="0"> <label for="haveno" class="change_style">没有</label>
+                    </form>
+                </li>
+                <li  class="re_main"><span>安装</span>
+                    <form>
+                        <input class="re_machine_fix" type="radio" name="installType" id="freeinstall" checked value="1"> <label for="freeinstall" class="change_style">需要</label>
+                        <input class="re_machine_fix" type="radio" name="installType" id="noinstall"  value="0"> <label for="noinstall" class="change_style">不需要</label>
+                    </form>
+                </li>
+                <li class="re_main"><span>联系人</span><input type="text" id="contacts" placeholder="请输入联系人" value=""/></li>
+                <li class=""><span>联系QQ</span><input type="text" id="qqContacts" placeholder="请输入联系QQ" value=""/>
+                    <div class="picGet">（避免电话骚扰，投标阶段只能通过QQ进行需求沟通）</div>
+                </li>
+                <li class="re_main re_maincontact">
+                    <span>联系方式</span>
+                    <form class="contactway">
+                        <input class="re_machine_fix" type="radio" name="contactnum" id="readynum" checked value="<%=userInfo.phoneNum%>"> <label for="readynum" class="change_style"><%=userInfo.phoneNum%></label>
+                        <input class="re_machine_fix" type="radio" name="contactnum" id="newnum"  value="新建"> <label for="newnum" class="change_style">其他联系方式</label>
+                    </form>
+                    <form class="newnumform">
+                        <input type="text"  id="phoneNum" placeholder="请输入手机号码" value=""/>
+                    </form>
+                </li>
+                <li class="re_main"><span>验证码</span><input type="text" id="vnumCode" placeholder="请输入验证码" value=""/><img src="/admin/vnum" class="vnumCode"/><span class="tipforpass">点击可切换图形验证码</span>
+                </li>
+            </ul>
+        </div>
+        <%if(defaultsCount>=3){%>
+        <div class="re_submit_aFor">发&nbsp;布</div>
+        当月您已违约3次，本月您不能发布新的招标
+        <%}else if(defaultsCount<3&&defaultsCount>=1){%>
+        <div class="re_submit_aFor">发&nbsp;布</div>
+        <span class="tipFor">当月您已违约<%=defaultsCount%>次，违约3次，本月您不能发布新的招标</span>
+        <%}else if(defaultsCount==0){%>
+        <div class="re_submit_a">发&nbsp;布</div>
+        <%}%>
+
+    </div>
+<input type="hidden" value="<%=userInfo._id%>" id="idForUser">
+<script src="/plugins/jQuery-Autocomplete-master/dist/jquery.autocomplete.min.js"></script>
+<script>
+    $(function () {
+        $('#hiddenCompany').autocomplete({
+            serviceUrl: '/searchCompany',
+            dataType:'json',
+            paramName:'text',
+            type:'POST',
+            triggerSelectOnValidInput:false,
+            transformResult: function(response) {
+                return {
+                    suggestions: $.map(response.result, function(dataItem) {
+                        return { value: dataItem.companyName, data: dataItem._id };
+                    })
+                };
+            },
+            onSelect: function(suggestion) {
+                console.log(suggestion)
+                for(var i=0;i<$(".fileList2>li").length;i++){
+                    if($($(".fileList2>li")[i]).data("id")==suggestion.data){
+                        swal({
+                            title: "请不要重复选择同一家公司",
+                            type: "error",
+                            confirmButtonText: "确定"
+                        });
+                        return false
+                    }
+                }
+                var str
+                str = '<li data-id='+suggestion.data+'><span class="fileTitle1">' + suggestion.value + '</span><span class="deleteFile">删除</span></li>'
+                $(".fileList2").append($(str))
+                $(".fileList2>li>span.deleteFile").on("click", function () {
+                    $(this).parent().remove()
+                    if ($(".fileList2>li").length == 1) {
+                        $(".fileList2").hide()
+                        $(".fileList2").parent().removeClass("bigheight")
+                    }
+                })
+                $(".fileList2").parent().addClass("bigheight")
+                $(".fileList2").show()
+            },
+            onSearchStart:function (params) {
+                params.region=$("#region").val()
+            }
+        });
+
+        $('#inviteCompany').autocomplete({
+            serviceUrl: '/searchCompany',
+            dataType:'json',
+            paramName:'text',
+            type:'POST',
+            triggerSelectOnValidInput:false,
+            transformResult: function(response) {
+                return {
+                    suggestions: $.map(response.result, function(dataItem) {
+                        return { value: dataItem.companyName, data: dataItem._id };
+                    })
+                };
+            },
+            onSelect: function(suggestion) {
+                console.log(suggestion)
+                for(var i=0;i<$(".fileList3>li").length;i++){
+                    if($($(".fileList3>li")[i]).data("id")==suggestion.data){
+                        swal({
+                            title: "请不要重复选择同一家公司",
+                            type: "error",
+                            confirmButtonText: "确定"
+                        });
+                        return false
+                    }
+                }
+                var str
+                str = '<li data-id='+suggestion.data+'><span class="fileTitle2">' + suggestion.value + '</span><span class="deleteFile">删除</span></li>'
+                $(".fileList3").append($(str))
+                $(".fileList3>li>span.deleteFile").on("click", function () {
+                    $(this).parent().remove()
+                    if ($(".fileList3>li").length == 1) {
+                        $(".fileList3").hide()
+                        $(".fileList3").parent().removeClass("bigheight")
+                    }
+                })
+                $(".fileList3").parent().addClass("bigheight")
+                $(".fileList3").show()
+            },
+            onSearchStart:function (params) {
+                params.region=$("#region").val()
+            }
+        });
+        var listitem;
+        var str="";
+        var deleteIcon=$(".deleteIcon");
+        var tenderdateTime;
+        var makedateTime;
+        var regionCopy;
+        var button_clicked=false
+
+        listitem=$(".contentlist div .shopimg");
+        $(listitem).bind("mouseover",function () {
+            $(this).next().show();
+        })
+        $("#tenderdate").flatpickr({
+            onClose:function (dateObject, dateString) {
+                tenderdateTime=dateString
+            }
+        });
+        $("#makedate").flatpickr({
+            onClose:function (dateObject, dateString) {
+                makedateTime=dateString
+            }
+        });
+        $("#promisemone").on("change",function () {
+            if($(this).val()!==""&&$(this).val().trim()!==""){
+                $(".payType").show()
+            }else {
+                $(".payType").hide()
+            }
+        })
+        $("#promisemone").on("focus",function () {
+            if($(this).val()!==""&&$(this).val().trim()!==""){
+                $(".payType").show()
+            }else {
+                $(".payType").hide()
+            }
+        })
+        $("#promisemone").on("blur",function () {
+            if($(this).val()!==""&&$(this).val().trim()!==""){
+                $(".payType").show()
+            }else {
+                $(".payType").hide()
+            }
+        })
+        $(".deleteIcon").on("click",function () {
+            $(this).parent().parent().remove();
+        })
+        $(".mask").bind("mouseout",function () {
+            $(this).hide();
+        })
+        $(".banneraddfile").change(function (e) {
+//            if($(".contentlist>div").length==11){
+//                swal({
+//                    title: "达到上传文件上限，请删除后再上传图片!",
+//                    type: "error",
+//                    confirmButtonText: "确定"
+//                });
+//                return;
+//            }
+            var that=this;
+            window.fileArr=[]
+            for(var i=0;i<that.files.length;i++) {
+                var file = this.files[i];
+                var filePath = $("#idForUser").val()
+                $.getCosByFile("users", filePath, file, function (res) {
+                    str = ""
+                    var titleArr = res.data.resource_path.split("/")
+                    str = '<li><span class="fileTitle">' + titleArr[titleArr.length - 1] + '</span><a class="checkFile" target="_blank" href="' +
+                            res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com', 'https://cdn.adquan.net') +
+                            '">查看</a><span class="deleteFile">删除</span></li>'
+                    $(".fileList1").append($(str))
+                    $(".fileList1>li>span.deleteFile").on("click", function () {
+                        $(this).parent().remove()
+                        if ($(".fileList1>li").length == 1) {
+                            $(".fileList1").hide()
+                            $(".divForFile1").addClass("divForFile")
+                            $(".divForFile1").removeClass("divForFile1")
+                        }
+                    })
+                })
+                    $(".fileList1").show()
+                    $(".divForFile").addClass("divForFile1")
+                    $(".divForFile").removeClass("divForFile")
+
+            }
+                $(".banneraddfile").val("")
+
+        })
+        $(".fileList1>li>span.deleteFile").on("click",function () {
+            $(this).parent().remove()
+        })
+        $(".vnumCode").on("click",function () {
+            $(this).attr("src","/admin/vnum?"+Math.random())
+        })
+
+        $(".contactway input").on("click",function (){
+            if($("#newnum").is(":checked")){
+                $(".newnumform").show()
+            }else{
+                $(".newnumform").hide()
+            }
+        })
+        $(".tenderway input").on("click",function (){
+            if($("#buyerpay").is(":checked")){
+                $(".invitation").show()
+            }else{
+                $(".invitation").hide()
+            }
+        })
+
+        $(".picGet a").on("click",function (){
+            if($(this).data("i")){
+                $(".promisemoney").hide();
+                $(this).data("i",!$(this).data("i"))
+            }else{
+                $(".promisemoney").show() ;
+                $(this).data("i",!$(this).data("i"))
+            }
+        })
+        $(document).bind('click',function(e){
+            var e = e || window.event; //浏览器兼容性
+            var elem = e.target || e.srcElement;
+            while (elem) { //循环判断至跟节点，防止点击的是div子元素
+                if (elem.className && elem.className=='promisemoneyFora') {
+                    return;
+                }
+                elem = elem.parentNode;
+            }
+            $('.promisemoney').css('display','none'); //点击的不是div或其子元素
+            $(".picGet a").data("i",false)
+        });
+        $(".re_submit_a").on("click",function () {
+            var categoryL1="H124B2BCx";
+            var categoryL2=$("#categoryL2").selectpicker('val');
+            var title=$("#title").val();
+            var promisemone=$("#promisemone").val();
+            var contacts=$("#contacts").val();
+            var phoneNum;
+            var qqContacts=$("#qqContacts").val();
+            var tenderway;
+            var installway;
+            var disign;
+            var fileList=$(".fileList1>li");
+            var fileObj={}
+            var files=[]
+            var blackList= []
+            var inviteList=[]
+            var details = editor.$txt.html();
+            var code=$("#vnumCode").val()
+            for(var i=1;i<$(".fileList2>li").length;i++){
+                blackList.push($($(".fileList2>li")[i]).data("id"))
+            }
+            for(var i=1;i<$(".fileList3>li").length;i++){
+                inviteList.push($($(".fileList3>li")[i]).data("id"))
+            }
+            if($("#newnum").is(":checked")){
+                phoneNum=$("#phoneNum").val();
+            }else{
+                phoneNum=$("#readynum").val();
+            }
+            if($("#bosspay").is(":checked")){
+                tenderway=$("#bosspay").val();
+                inviteList=[]
+            }else{
+                tenderway=$("#buyerpay").val();
+                if(inviteList.length<2){
+                    swal({
+                        title: "邀请招标必须邀请2个以上厂家!",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    return false
+                }
+            }
+            if($("#have").is(":checked")){
+                disign=$("#have").val();
+            }else{
+                disign=$("#haveno").val();
+            }
+            if($("#freeinstall").is(":checked")){
+                installway=$("#freeinstall").val();
+            }else{
+                installway=$("#noinstall").val();
+            }
+            if(categoryL2==""||title==""||title.trim()==""||contacts==""||contacts.trim()==""||phoneNum==""
+                    ||phoneNum.trim()==""||code==""||code.trim()==""||$("#region").val()==""||editor.$txt.formatText()==""||tenderdateTime==undefined||makedateTime==undefined){
+                swal({
+                    title: "必填项不许为空!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            };
+            if(!(/^1[34578]\d{9}$/.test(phoneNum))){
+                swal({
+                    title: "手机号码填写有误!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            if(qqContacts){
+                if(!(/\d/.test(qqContacts))){
+                    swal({
+                        title: "请输入正确格式的qq!",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    return
+                }
+            }
+            if(promisemone) {
+                if (!(/\d/.test(promisemone) && promisemone % 100 == 0)) {
+                    swal({
+                        title: "请缴纳整百数的保证金!",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    return
+                }
+                if(!$("input[name='precisePayway']:checked").val()){
+                    swal({
+                        title: "填写保证金请选择支付方式!",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    return
+                }
+            }
+            var regionStr=$("#region").val().split("/");
+            var region={
+                province:regionStr[0],
+                city:regionStr[1],
+                district:regionStr.length==3?regionStr[2]:""
+            };
+            for(var i=1;i<fileList.length;i++){
+                files.push({name:$(fileList[i]).find(".fileTitle").text(),url:$(fileList[i]).find(".checkFile").attr("href")})
+            }
+            var dataForPost={
+                categoryL1:categoryL1,
+                categoryL2:categoryL2,
+                title:title,
+                details:details,
+                tenderEnd:tenderdateTime,
+                serviceEnd:makedateTime,
+                tenderType:tenderway,
+                hasDesign:disign,
+                needInstall:installway,
+                contacts:contacts,
+                phoneNum:phoneNum,
+                vnum:code,
+                region:region,
+                deposit:promisemone,
+                blackList:blackList,
+                inviteList:inviteList,
+                qqContacts:qqContacts,
+                files:files
+            }
+            button_clicked=true
+
+            $.ajax({
+                url:"/tender/insertTender",
+                data:JSON.stringify(dataForPost),
+                type:"POST",
+                dataType:"json",
+                contentType:"application/json",
+                success:function(res){
+                    if(res.result=="success"){
+                        if(res.billId){
+                            var payType=$("input[name='precisePayway']:checked").val()
+                            swal({
+                                        title:'<img src="/tender/payTenderBill?tenderId='+res.tenderId+'&payType='+payType+'支付'+'&status=2'+'">',
+                                        text: "请打开"+payType+"扫码支付",
+                                        showCancelButton: true,
+                                        confirmButtonColor: "#DD6B55",
+                                        confirmButtonText: "支付完成",
+                                        cancelButtonText: "支付遇到问题",
+                                        closeOnConfirm: false,
+                                        closeOnCancel: false,
+                                        html: true
+                                    },
+                                    function(isConfirm){
+                                        if (isConfirm) {
+                                            window.location.href="/tender/shoptender"
+                                        } else {
+                                            swal({
+                                                        title: "<h1>即将为您联系在线客服</h1>",
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: "#DD6B55",
+                                                        cancelButtonText: "取消",
+                                                        confirmButtonText: "联系客服",
+                                                        closeOnConfirm: false,
+                                                        closeOnCancel: false,
+                                                        html: true
+                                                    },
+                                                    function(isConfirm){
+                                                        if (isConfirm) {
+                                                            window.location.href="/users/helperCenter#5"
+                                                        } else {
+                                                            swal({
+                                                                title: "发布成功!",
+                                                                type: "success",
+                                                                confirmButtonText: "确定"
+                                                            });
+                                                            window.location.href="/tender/shoptender"
+                                                        }
+                                                    });
+                                        }
+                                    });
+
+                        }else {
+                            swal({
+                                title: "发布成功!",
+                                type: "success",
+                                confirmButtonText: "确定"
+                            });
+                            window.location.href="/tender/shoptender"
+                        }
+                    }else{
+                        swal({
+                            title: res.error,
+                            type: "error",
+                            confirmButtonText: "确定"
+                        });
+                        button_clicked=false
+
+                    }
+                },
+                error:function (res) {
+                    swal({
+                        title: "发布失败",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    button_clicked=false
+
+                    console.log("error"+res);
+                }
+            })
+
+        })
+
+
+        var editor = new wangEditor('wangEditor');
+        editor.config.menus = [
+            'fontsize',
+            'bold',
+            'underline',
+            'strikethrough',
+            'undo',
+            'redo',
+            'forecolor'
+        ];
+
+        // 字体
+        editor.config.familys = [
+            '宋体', '黑体', '楷体', '微软雅黑',
+            'Arial', 'Verdana', 'Georgia'
+        ];
+        editor.config.colors = {
+            '#880000': '暗红色',
+            '#800080': '紫色',
+            '#ff0000': '红色'
+        };
+
+        // 字号
+        editor.config.fontsizes = {
+            // 格式：'value': 'title'
+            1: '10px',
+            2: '13px',
+            3: '16px',
+            4: '19px',
+            5: '22px',
+            6: '25px',
+            7: '28px'
+        };
+        editor.create();
+        window.editor=editor;
+    })
+</script>

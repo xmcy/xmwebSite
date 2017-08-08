@@ -1,0 +1,99 @@
+<div class="row" ng-controller="pubHistoryController">
+    <div class="col-xs-12">
+        <div class="panel">
+            <div class="box">
+                <div class="box-body table-responsive no-padding" >
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <input readonly type="text" data-toggle="city-picker" value="" id="region" >
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" type="button" id="resetDistrict"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 重置地区</button>
+                            </td>
+                            <td>标题：
+                                <input  type="text"  value="" ng-model="title">
+                            </td>
+                            <td>资源类别标识：
+                                <select id="selProPeriod" ng-model="resType">
+                                    <option value="Manufacture" >广告制作</option>
+                                    <option value="Material" >广告材料</option>
+                                    <option value="Equipment">广告设备</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" type="button" ng-click="searchForEbookManage()"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 搜索</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        <div class="box">
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th><input type="checkbox" class="mini" id="selectAll"/></th>
+                        <th>标题</th>
+                        <th>资源类别</th>
+                        <th>地区</th>
+                        <th>原价</th>
+                        <th>则扣价格</th>
+                        <th>浏览量</th>
+                        <th>联系人</th>
+                        <th>联系人公司</th>
+                        <th>联系电话</th>
+                        <th>是否删除标识</th>
+                        <th>是否正在显示</th>
+                        <th>是否置顶显示</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr class="datalist" ng-repeat="item in dataList">
+                        <td><input type="checkbox" name="listItem" class="mini" value="{{item._id}}" ng-click="getNewIds()"/></td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.resType|valToType}}</td>
+                        <td>{{item.region.province}}-{{item.region.city}}</td>
+                        <td>{{item.originalPrice}}</td>
+                        <td>{{item.discountPrice}}</td>
+                        <td>{{item.pageview}}</td>
+                        <td>{{item.contacts}}</td>
+                        <td>{{item.user.company.companyName}}</td>
+                        <td>{{item.phoneNum}}</td>
+                        <td>{{item.isDeleted}}</td>
+                        <td>{{item.isShowing}}</td>
+                        <td>{{item.isTop}}</td>
+                        <td>
+                            <a role="button" class="btn btn-primary btn-sm" ng-if="!item.isShowing" ng-click="changeShowing(item._id,item.isShowing)">显示</a>
+                            <a role="button" class="btn btn-primary btn-sm" ng-if="item.isShowing" ng-click="changeShowing(item._id,item.isShowing)">关闭</a>
+                            <a role="button" class="btn btn-primary btn-sm" ng-if="!item.isDeleted" ng-click="delOneItem(item._id)">删除</a>
+                        </td>
+                    </tr>
+                </table>
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                <div class="paging">
+                    <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" previous-text="上一页" first-text="第一页" last-text="最后一页"
+                                next-text="下一页"	id="pagination"	class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"
+                                items-per-page="itemsPerPage"></pagination>
+                </div>
+            </div>
+        </div><!-- /.box -->
+    </div>
+
+
+</div>
+</div>
+<script>
+    $(function () {
+        $("#resetDistrict").on("click",function () {
+            $('#region').citypicker("reset");
+            $("#region").scope().regionStr="";
+            $("#region").scope().region={}
+            $("#region").scope().regionForSearch={}
+            $("#region").scope().$apply();
+        })
+        document.addEventListener("listen", function (e) {
+            $("#region").scope().regionStr=finalText;
+            $("#region").scope().$apply();
+        }, false);
+    })
+</script>

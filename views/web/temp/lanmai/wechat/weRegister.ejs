@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height;initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>制作宝-登录注册</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/weui.min.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/myStyle.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/common.css">
+     <!--引入 WeUI -->
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/0.4.0/weui.min.css">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+    <script src="/javascripts/jquery-1.8.3.min.js?vesion=<%=siteConfig.version%>"></script>
+    <script src="/themes/<%=staticforder%>/js/jionAds.js"></script>
+</head>
+<body ontouchstart>
+    <div class="registerHeader">
+        <img src="http://adquan-1253780958.cosgz.myqcloud.com/images/bigimg/web0902.png" alt="">
+        <div>
+            <a class="registerButton forUsers" href="javascript:;">注册</a>
+            <a class="loginButton forUsers" href="javascript:;">登录</a>
+        </div>
+        <a class="goBackIndex" href="getHomeInfo"></a>
+        <span class="directionIcon">
+            <img src="/themes/<%=staticforder%>/images/web0901.png" alt="">
+        </span>
+        <span class="directionIcon01">
+            <img src="/themes/<%=staticforder%>/images/web0901.png" alt="">
+        </span>
+    </div>
+    <div class="registerBox getBox" style="display: none">
+        <ul>
+            <li class="registerPhone clearfix">
+                <i class="icon" style="padding-top: 2em">
+                    <img src="/themes/<%=staticforder%>/images/web0903.png" alt="">
+                    <span>+86</span>
+                </i>
+                <span class="haveInformation" style="margin-top: 1em;">
+                    <input class="myTelNum" type="text" value="" placeholder="请输入手机号" >
+                    <input type="button" class="sendCode sendCodeRegister" value="发送验证码" disabled>
+                </span>
+                <em id="username_wright-error"></em>
+            </li>
+            <li class="registerCode clearfix">
+                <i class="icon" style="position: relative">
+                    <img style="width: 43%;position: absolute;top:.8em;left:2.2em;" src="/themes/<%=staticforder%>/images/web0904.png" alt="">
+                    <span class="forRegisterCode" style="padding-left: .7em;">验证码</span>
+                </i>
+                <span class="haveInformation" style="width:68% ">
+                    <input class="codeValue" style="margin-top: 1.3em;" type="text" value="" placeholder="请输入验证码">
+                </span>
+                <em id="code_wright-error"></em>
+            </li>
+            <li class="registerHoney clearfix">
+                <i class="icon" style="padding-top: 1em;padding-bottom: 1em;">
+                    <img src="/themes/<%=staticforder%>/images/web0905.png" alt="">
+                    <span>昵称</span>
+                </i>
+                <span class="haveInformation">
+                    <input class="honeyUName" style="margin-top: 1em;" type="text" value="" placeholder="请输入昵称（选填）">
+                </span>
+                <em id="honey_wright-error"></em>
+            </li>
+            <li class="registerPas clearfix">
+                <i class="icon" style="padding-top: 1em;padding-bottom: 1em;">
+                    <img src="/themes/<%=staticforder%>/images/web0906.png" alt="">
+                    <span>密码</span>
+                </i>
+                <span class="haveInformation">
+                    <input class="keepPassword" style="margin-top: 1em;" type="password" value="" placeholder="请输入密码">
+                </span>
+                <em id="pas_wright-error"></em>
+            </li>
+            <li class="registerInvite clearfix" style="border-bottom: none">
+                <i class="icon">
+                    <img style="width: 93%;padding-left: .3em;padding-top: 1em;" src="/themes/<%=staticforder%>/images/web0907.png" alt="">
+                    <span class="inviteCodeForRegister" style="padding-left: .7em;">邀请码</span>
+                </i>
+                <span class="haveInformation" style="width: 68%">
+                    <input class="inviteCode" style="margin-top: 2em;" type="text" value="" placeholder="请输入邀请码（选填）">
+                </span>
+            </li>
+            <li style="border-bottom: none;" class="forRegister"><a href="javascript:;">注&nbsp;&nbsp;&nbsp;&nbsp;册</a> <!--<input type="submit" value="注册" disabled>-->  </li>
+        </ul>
+    </div>
+    <script>
+
+    </script>
+    <div class="loginBox getBox">
+        <ul>
+            <li class="loginPhone clearfix" style="border-bottom: 1px solid #f7f6f6; position: relative;">
+                <i class="icon" style="padding-top: 2em">
+                    <img src="/themes/<%=staticforder%>/images/web0903.png" alt="">
+                    <span>+86</span>
+                </i>
+                <span class="haveInformation" style="margin-top: 1em;">
+                    <input class="loginNum" type="text" value="" placeholder="请输入手机号">
+                </span>
+                <em id="loginName_wright-error"></em>
+            </li>
+            <li class="loginPas clearfix" style="position: relative">
+                <i class="icon" style="padding-top: 1em;padding-bottom: 1em;">
+                    <img src="/themes/<%=staticforder%>/images/web0904.png" alt="">
+                    <span>密码</span>
+                </i>
+                <span class="haveInformation">
+                    <input class="loginPasswordVal" style="margin-top: 1em;" type="password" value="" placeholder="请输入密码">
+                    <a  style="color:#929ADF;background: none" href="weForgetPassword">忘记密码</a>
+                </span>
+                <em id="loginPas_wright-error"></em>
+            </li>
+            <li style="border-bottom: none;" class="forLoginSubmit"><a href="javascript:;">登&nbsp;&nbsp;&nbsp;&nbsp;录</a> </li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    $(function(){
+        $('.loginButton').click(function(){
+            $(".directionIcon").css({display:"none"})
+            $(".directionIcon01").css({display:"block"})
+        })
+        $('.registerButton').click(function(){
+            $(".directionIcon").css({display:"block"})
+            $(".directionIcon01").css({display:"none"})
+        })
+        $(".forUsers").on("click",function(){
+            var myIndex=$(this).index();
+            $('.getBox').hide();
+            $('.getBox').eq(myIndex).show();
+        })
+    })
+</script>
+

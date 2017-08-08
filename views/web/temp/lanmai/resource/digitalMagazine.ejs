@@ -1,0 +1,142 @@
+<style>
+#diditalMagazines{
+	color:#DA2F2F;
+}
+.haveListForMoney{
+	position: relative;
+}
+.haveListForMoney img{
+	position: absolute;
+	width: 20%;
+	top:-4px;
+	right:-2px;
+}
+</style>
+<!--数字期刊内容的部分开始-->
+<div class="charonDigitalContainer">
+	<div class="charonDigitalBanner">
+		<img src="https://cdn.adquan.net/images/bigimg/charonDigitalBanner.png/compress.only" alt="">
+		<div class="charonDigitalBannerCon">
+			<ul class="charonDigitalBannerTitle">
+				<li><span>加入制作宝数字期刊</span><i><img src="/themes/<%=staticforder%>/images/charonDigitalBannerTitle.png" alt=""/></i></li>
+			</ul>
+			<ul class="charonDigitalBannerList">
+				<li><i></i><span>海量广告制作资源，一册集全</span></li>
+				<li><i></i><span>线上线下光速级投递，轻松覆盖目标区域</span></li>
+				<li><i></i><span>图文数据音频综合展现，立体阅读体验</span></li>
+			</ul>
+			<div class="charonDigitalBannerHave">
+				<a href="brandWin#join">点击拥有</a>
+			</div>
+		</div>
+	</div>
+	<!--热门推荐开始-->
+	<div class="charonDigitalHotGet">
+		<div class="charonDigitalHotGetTitle">
+			<i></i> <span>制作宝热门数字期刊推荐</span>
+		</div>
+		<div class="charonDigitalHotCon">
+			<ul class="clearfix">
+				<%if(EbookList){for(var i=0;i<EbookList.length;i++){%>
+				<li>
+					<span class="charonDigitalHots">
+						<a class="charonDigitalHotPic" href="<%=EbookList[i].onlineView%>" target="_blank">
+							<img src="<%=EbookList[i].coverImg%>/compress.only" alt="">
+						</a>
+						<a class="charonDigitalHotOnline"  href="<%=EbookList[i].onlineView%>">在线浏览</a>
+						<a class="charonDigitalHotDownload" href="<%=EbookList[i].downloadUrl%>"><i></i><span>下载</span></a>
+					</span>
+					<i class="charonDigitalHotDate"><%=EbookList[i].title%></i>
+				</li>
+				<%}}%>
+
+			</ul>
+		</div>
+	</div>
+	<!--热门推荐结束-->
+	<!--数字期刊投放渠道开始-->
+	<div class="charonDigitalMagazineSend">
+		<div class="charonDmSendTitle">
+			<i></i> <span>数字期刊投放渠道</span>
+		</div>
+		<div class="charonDmSendCon clearfix">
+			<div class="charonDmSendCon01">
+				<img src="https://cdn.adquan.net/images/bigimg/dGoldLocation.png/compress.only" alt="">
+			</div>
+			<div class="charonDmSendCon02">
+				<div class="charonDmSendCon02Top">
+					<h3>线上渠道</h3>
+					<ul class="dOnlineCon">
+						<li><i></i><span>网站展示</span></li>
+						<li><i></i><span>站内系统邮件推送</span></li>
+						<li><i></i><span>微信公众号推送</span></li>
+					</ul>
+				</div>
+				<div class="charonDmSendCon02Bottom">
+					<ul>
+						<li><i><img src="/themes/<%=staticforder%>/images/dEmail.png" alt=""/></i><span>发送系统邮件 覆盖至制作宝每一位会员</span></li>
+						<li style="margin-left: 27px;"><i><img src="/themes/<%=staticforder%>/images/weiChart.png" alt=""/></i><span>微信公众号推送 手机扫码阅读 快速简单</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="charonDmSendCon clearfix" style="margin-top: 25px;">
+			<div class="charonDmSendCon02" style="margin-left: 0">
+				<div class="charonDmSendCon02Top">
+					<h3>线下渠道</h3>
+					<ul class="dOnlineCon">
+						<li><i></i><span>展会发放</span></li>
+						<li><i></i><span>人工直投</span></li>
+						<li><i></i><span>快递邮寄</span></li>
+					</ul>
+				</div>
+				<div class="charonDmSendCon02Bottom">
+					<ul>
+						<li><i><img src="/themes/<%=staticforder%>/images/pWork.png" alt=""/></i><span>人工直投 送至客户手中</span></li>
+						<li style="margin-left: 27px;"><i><img src="/themes/<%=staticforder%>/images/qSend.png" alt=""/></i><span>快递邮寄 抵达行业企业和工厂</span></li>
+					</ul>
+				</div>
+			</div>
+			<div class="charonDmSendCon01" style="margin-left: 15px;">
+				<img src="https://cdn.adquan.net/images/bigimg/dPrievw.png/compress.only" alt="">
+			</div>
+		</div>
+	</div>
+	<!--数字期刊投放渠道结束-->
+	<!--数字期刊目标人群开始-->
+	<div class="charonDiTarget">
+		<div class="charonDiTargetTitle">
+			<i></i> <span>数字期刊目标人群</span>
+		</div>
+		<div class="charonDiTargetCon">
+			<h3>目标人群基础广泛 轻松锁定</h3>
+			<img src="https://cdn.adquan.net/images/bigimg/charonDiTargetCon01.png/compress.only" alt="">
+		</div>
+	</div>
+	<!--数字期刊目标人群结束-->
+	<!--如何拥有数字期刊开始-->
+	<div class="charonDiHowGet">
+		<div class="charonDiHowTitle">
+			<i></i> <span>如何拥有数字期刊</span>
+		</div>
+		<div class="charonDiHowGetCon clearfix">
+			<div class="charonDiHowGetCon01">
+				<ul>
+					<li><i></i><span>步骤1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加入制作宝品牌推广会员</span><a href="brandWin#join">点击加入</a> </li>
+					<li><i></i><span>步骤2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上传资源图片和材料</span></li>
+					<li><i></i><span>步骤3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;专业设计师帮您免费设计期刊版面</span></li>
+					<li><i></i><span>步骤4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;等待期刊上线</span></li>
+				</ul>
+			</div>
+			<div class="charonDiMore">
+				<div class="charonDiMoreImg">
+					<img src="https://cdn.adquan.net/images/bigimg/charonMore.png/compress.only" alt="">
+					<a href="brandWin#join">点击加入制作宝品牌推广计划</a>
+				</div>
+				<a class="charonGetMoreRight" href="brandWin#learn">了解更多会员特权 GO</a>
+			</div>
+		</div>
+	</div>
+	<!--如何拥有数字期刊结束-->
+</div>
+<!--数字期刊内容的部分结束-->

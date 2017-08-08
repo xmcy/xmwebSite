@@ -1,0 +1,743 @@
+<style>
+    .sweet-alert>h2>img{
+        width: 250px;
+        height:250px;
+    }
+    .sweet-alert{
+        margin-top: -250px !important;
+    }
+    .re_make_area .city-picker-span {
+        width: 340px !important;
+        height: 31px !important;
+        line-height: 30px !important;
+    }
+    .re_source_material  {
+        width: 820px;
+    }
+    #imageList>li{
+        position: relative;
+    }
+    #imageList>li>.first{
+        width: 24px;height: 24px;background: url(/themes/lanman/images/re_announce02.png) -2px -2px no-repeat;display: block;position: absolute;top:0;left: 0;
+    }
+    #imageList>li>.second{
+        width: 16px;height: 16px;background: url(/themes/laiman/images/re_announce02.png) -2px -266px no-repeat;display: block;position: absolute;bottom: 0;right: 0;cursor: pointer;
+    }
+    .re_material_area .city-select-tab a{
+        line-height: 19px;
+    }
+    .re_material_area .title>span{
+        color:#ACB1C7;
+    }
+    .wangEditor-container{
+        margin-left: 14px;
+    }
+    .caiLiao_kinds{
+        margin-left: 14px !important;
+        width: 320px !important;
+        float: left !important;
+        margin-top: 20px;
+    }
+    .btn{
+        padding: 6px 6px !important;
+    }
+    .btn-default{
+        color:#acaaaa !important;
+    }
+    .dropdown-menu>li>a{
+        color:#acaaaa;
+    }
+    .picGet{
+        line-height: 35px;
+        height: 39px;
+        padding-top: 20px;
+        margin-left: 64px;
+        color: darkgray;
+    }
+    .tuiguang_choice{
+        width: 20px;
+        height: 20px;
+    }
+    .makeChioce{
+        color:#ACB1C7;
+    }
+    .dropdown-menu{
+        margin-left: 0 !important;
+    }
+    .file-preview{
+        margin-left: 70px;
+    }
+    .re_material_area .city-picker-span{
+        width: 312px !important;
+        height: 31px !important;
+        line-height: 30px !important;
+    }
+    .change_style{
+        font-style: normal;
+        font-weight: 500;
+    }
+    .re_submit_a{
+        background-color: #da2f2f;
+        border:  1px solid #da2f2f;
+        color: #ffffff;
+        width: 150px;
+        height: 40px;
+        line-height: 40px;
+        margin-left: 650px;
+        font-size: 20px;
+        margin-bottom: 50px;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 30px;
+    }
+    .titletip{
+        width: auto !important;
+        color: darkgrey;
+    }
+</style>
+    <!--资源发布首页内容区域开始-->
+    <div class="re_announce_con_material">
+        <div class="re_announce_top">
+            <ul>
+                <li class="re_big_total">1 <span>广告材料</span><input type="hidden"  id="re_big_kind" value="" /> <a href="reIndex"><b>重选大类</b></a> </li>
+                <li style="color: #fff">2 填写信息</li>
+                <li>3 完成发布</li>
+            </ul>
+        </div>
+        <input type="hidden" value="<%=userInfo._id%>" id="idForUser">
+        <%if(material.isEdit){%>
+        <div class="re_source_material hah">
+            <ul>
+                <li class="re_main re_make_area"><span>所在区域</span>
+                    <div style="position:relative; left: 90px;top: 21px;">
+                        <input readonly type="text" data-toggle="city-picker" value="<%=material.region.province%>/<%=material.region.city%>/<%=material.region.district%>" name="region" id="region">
+                    </div>
+                <li class="re_main re_make_kinds"><span>材料类型</span>
+                    <select class="selectpicker caiLiao_kinds" id="type" data-live-search="true"  data-dropup-auto="false" title="请选择材料类型">
+                        <%for(var i=0;i<currentCateListForSecond.length;i++){%>
+                        <optgroup label="<%=currentCateListForSecond[i].name%>">
+                            <%for(var j=0;j<currentCateList.length;j++){%>
+                            <%if(currentCateList[j].parentID==currentCateListForSecond[i]._id)%>
+                            <option value="<%=currentCateList[j].parentID%>$<%=currentCateList[j]._id%>"><%=currentCateList[j].name%></option>
+                            <%}%>
+                        </optgroup>
+                        <%}%>
+                    </select>
+                </li>
+                <li class="re_material_brand"><span>材料品牌</span>
+                    <select class="selectpicker caiLiao_kinds" id="brand" data-live-search="true" >
+                        <%for(var i=0;i<cailiaopinpai.length;i++){%>
+                        <option value="<%=cailiaopinpai[i]%>"><%=cailiaopinpai[i]%></option>
+                        <%}%>
+                    </select>
+                </li>
+                <li><span>运费支付</span>
+                    <form>
+                        <input class="re_material_chioce" type="radio" name="freightType" id="bosspay" value="卖家支付"> <label for="bosspay" class="change_style">卖家支付</label>
+                        <input class="re_material_chioce" type="radio" name="freightType" id="buyerpay"  value="买家支付" > <label for="buyerpay" class="change_style">买家支付</label>
+                    </form>
+                </li>
+                <li ><span>原价</span><input type="text" placeholder="选填" id="originalPrice" value="<%=material.originalPrice%>"/><span>&nbsp;&nbsp;元</span><br>
+                </li>
+                <li ><span>折扣价</span><input type="text" placeholder="选填" id="discountPrice" value="<%=material.discountPrice%>"/><span>&nbsp;&nbsp;元</span>
+                </li>
+                <li class="re_main" style="height: auto;"><span>上传图片</span>
+                    <div class="contentlist " id="bannercontentlist">
+                        <%if(material.images!==[]){for(var i=0;i<material.images.length;i++){%>
+                        <div class="bannercontent">
+                            <img class="shopimg bannerimg" src="<%=material.images[i]%>/297.180"/>
+                            <div class="mask">
+                                <div class="deleteIcon"><a></a></div>
+                            </div>
+                        </div>
+                        <%}}%>
+                        <div class="bannercontent">
+                            <img src="/themes/lanmai/images/addfileb.png"/>
+                            <input class="addfileInput banneraddfile" id="" multiple type="file" name="">
+                        </div>
+                    </div>
+                    <p class="picGet">(系统默认首张图片作为信息封面，最多上传10张图片，每张大小不超过10M，支持JPG、PNG格式）</p>
+
+                </li>
+                <li class="re_main"><span>标题</span><input type="text"  id="title" placeholder="请输入标题（10-50个字）" value="<%=material.title%>"/><span class="titletip">（适当添加相应的关键字，便于需求方精准搜索资源）</span></li>
+                <li class="re_main"><span>联系人</span><input type="text" id="contacts" placeholder="请输入联系人" value="<%=material.contacts%>"/></li>
+                <li class="re_main"><span>联系方式</span><input type="text"  id="phoneNum" placeholder="请输入联系方式" value="<%=material.phoneNum%>"/></li>
+                <li  style="height: 242px;"><span>详细信息</span>
+                    <div class="re_tv_details" id="wangEditor">
+
+                    </div>
+                </li>
+            </ul>
+            <input type="hidden" value="<%=material.freightType%>" id="freightTypeData">
+            <input type="hidden" value="<%=material.categoryL2%>$<%=material.categoryL3%>" id="typeData">
+            <input type="hidden" value="<%=material.brand%>" id="brandData">
+            <input type="hidden" value="<%=material.details%>" id="detailsData">
+            <input type="hidden" value="true" id="edit">
+
+        </div>
+        <%}else {%>
+        <div class="re_source_material">
+            <ul>
+                <li class="re_main re_material_area">
+                    <span>所在区域</span>
+                    <div style="position:relative; left: 90px;top: 21px;">
+                        <input readonly type="text" data-toggle="city-picker"  name="region" id="region">
+                    </div></li>
+                <li class="re_main re_material_kinds"><span>材料类别</span>
+                    <select class="selectpicker caiLiao_kinds" id="type" data-live-search="true" data-dropup-auto="false" title="请选择材料类别">
+                        <%for(var i=0;i<currentCateListForSecond.length;i++){%>
+                        <optgroup label="<%=currentCateListForSecond[i].name%>">
+                            <%for(var j=0;j<currentCateList.length;j++){
+                            if(currentCateList[j].parentID==currentCateListForSecond[i]._id){%>
+                            <option value="<%=currentCateList[j].parentID%>$<%=currentCateList[j]._id%>"><%=currentCateList[j].name%></option>
+                            <%}}%>
+                        </optgroup>
+                        <%}%>
+                    </select>
+                </li>
+                <li class="re_material_brand"><span>材料品牌</span>
+                    <select class="selectpicker caiLiao_kinds" id="brand"  title="请选择材料品牌" data-live-search="true">
+                        <%for(var i=0;i<cailiaopinpai.length;i++){%>
+                        <option value="<%=cailiaopinpai[i]%>"><%=cailiaopinpai[i]%></option>
+                        <%}%>
+                    </select>
+                </li>
+                <li><span>运费支付</span>
+                    <form>
+                        <input class="re_material_chioce" type="radio" name="freightType" id="bosspay" checked value="卖家支付"> <label for="bosspay" class="change_style">卖家支付</label>
+                        <input class="re_material_chioce" type="radio" name="freightType" id="buyerpay"  value="买家支付"> <label for="buyerpay" class="change_style">买家支付</label>
+                    </form>
+                </li>
+                <li ><span>原价</span><input type="number" id="originalPrice" placeholder="选填" value=""/><span>&nbsp;&nbsp;元</span><br>
+                </li>
+                <li ><span>折扣价</span><input type="number" id="discountPrice" placeholder="选填" value=""/><span>&nbsp;&nbsp;元</span>
+                </li>
+                <li class="re_main" style="height: auto;"><span>上传图片</span>
+                    <div class="contentlist " id="bannercontentlist">
+                        <div class="bannercontent">
+                            <img src="/themes/lanmai/images/addfileb.png"/>
+                            <input class="addfileInput banneraddfile" id="" multiple type="file" name="">
+                        </div>
+                    </div>
+                    <p class="picGet">(系统默认首张图片作为信息封面，最多上传10张图片，每张大小不超过10M，支持JPG、PNG格式）</p>
+                </li>
+                <li class="re_main"><span>标题</span><input type="text" id="title" placeholder="请输入标题（10-50个字）" value=""/><span class="titletip">（适当添加相应的关键字，便于需求方精准搜索资源）</span></li>
+                <li class="re_main"><span>联系人</span><input type="text" id="contacts" placeholder="请输入联系人" value=""/></li>
+                <li class="re_main"><span>联系方式</span><input type="text" id="phoneNum" placeholder="请输入联系方式" value=""/></li>
+                <li  style="height: 242px;"><span >详细信息</span>
+                    <div class="re_tv_details" id="wangEditor">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <%}%>
+
+        <!--资源推广的收费的部分-->
+        <div class="re_extend">
+            <p>马上使用 <a style="color: #DA2F2F;" href="/users/helperCenter#2" title="点击了解什么是精准推广">制作宝精准推广服务</a> ，帖子效果提升3-5倍!</p>
+        </div>
+        <div class="precisePromote">
+            <div class="precisePromoteContent">
+                <div class="isPrecisePromote">
+                    <input type="checkbox" name="" id="isPrecisePromote" value="" checked /><span class=" redFont">精准推广</span>
+                </div>
+                <div class="precisePromoteDescript">
+                    <p>使用精准推广功能，资源信息将在该类目录列表顶端展示，精准锁定目标区域人群，找买主快准狠!</p>
+                </div>
+                <div class="precisePromoteTime">
+                    <ul>
+                        <span>推广时间</span>
+                        <li data-i="1季度"><div class="">1季度<span class="discount">折</span></div></li>
+                        <li data-i="半年"><div class="">半年<span class="discount">折</span></div></li>
+                        <li data-i="1年"><div class="">1年<span class="discount">折</span></div></li>
+                    </ul>
+                </div>
+                <div class="precisePromoteType">
+                    <ul>
+                        <li>支付方式</li>
+                        <li data-i="支付宝"><div class=""><input type="radio" name="precisePayway" id="alipay"/><label for="alipay">支付宝</label></div></li>
+                        <li data-i="微信"><div class=""><input type="radio" name="precisePayway" id="weichartpay"/><label for="weichartpay">微信</label></div></li>
+                    </ul>
+                </div>
+                <div class="precisePromoteSelect">
+                    <ul>
+                        <li><span>推广类目及地区：广告材料</span></li>
+                        <li class="re_main re_make_apply">
+                            <select class="selectpicker" multiple id="supplyRegions" title="选择地区" data-max-options="5" data-width="210px" data-max-options-text="省份最多选择5个">
+                            </select>
+                        </li>
+                        <li style="padding-left: 30px">价格<span class="precisePromotePrice">0.00</span>元</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="effect">
+                <div><p>展示效果</p></div>
+                <ul>
+                    <li><div class="effectLogo effectActiveColor"></div><div class="effectProgress preciseProgress"></div><div class="effectActiveLogo">精</div></li>
+                    <li><div class="effectLogo"></div><div class="effectProgress"></div></li>
+                    <li><div class="effectLogo"></div><div class="effectProgress"></div></li>
+                    <li><div class="effectLogo"></div><div class="effectProgress"></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--资源发布首页内容区域结束-->
+<div class="re_submit_a">发&nbsp;布</div>
+
+<script>
+    $(function () {
+        var url= "/resource/updateOrInsertRes"
+        if($("#edit").val()){
+            url+="?uid="+window.location.search.split('&')[1].split('=')[1]
+        }
+        var payType;
+        var pirice;
+        var period;
+        var provinceNum;
+        var images=[]
+        var str="";
+        var listitem;
+        var button_clicked=false
+        var deleteIcon=$(".deleteIcon");
+        var bannerimgcount=$(".bannerimg").length;
+        listitem=$(".contentlist div .shopimg");
+        $(listitem).bind("mouseover",function () {
+            $(this).next().show();
+        })
+        $(".mask").bind("mouseout",function () {
+            $(this).hide();
+        })
+        $(".banneraddfile").change(function (e) {
+            var that=this;
+            str=""
+            if($(".contentlist>div").length+that.files.length>=12){
+                swal({
+                    title: "达到上传图片上限10张，请删除后再上传图片!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            window.fileArr=[]
+            for(var i=0;i<that.files.length;i++) {
+                var file = this.files[i];
+                var fileType = file.type.split('/')[1];
+                var filePath = $("#idForUser").val()
+                $.getCos("users", filePath, fileType, file, function (res) {
+                    $("#bannercontentlist>div>img[name='" + res.data.resource_path + "']").attr("src", res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com', 'https://cdn.adquan.net') + '/addrespreview')
+                })
+                str += '<div class="bannercontent">' + '<img class="shopimg bannerimg" src="" name="/1253780958/adquan/users/' + $("#idForUser").val() + '/' + window.fileArr[i] + '"/>' +
+                        ' <div class="mask" style="display: none">' +
+                        '<div class="deleteIcon"><a></a></div> </div></div>';
+            }
+                    $("#bannercontentlist").prepend($(str));
+                    listitem = $(".contentlist div .shopimg");
+                    $(listitem).bind("mouseover", function () {
+                        $(this).next().show();
+                    })
+                    $(".mask").bind("mouseout", function () {
+                        $(this).hide();
+                    })
+                    $(".deleteIcon").on("click", function () {
+                        $(this).parent().parent().remove();
+                    })
+        })
+        $(deleteIcon).on("click",function () {
+            $(this).parent().parent().remove();
+        })
+
+        $(".re_submit_a").on("click",function () {
+            if(!button_clicked){
+                images=[]
+                var bannerimg=$('.bannerimg');
+                bannerimgcount=$(".bannerimg").length;
+                var regionStr=$("#region").val().split("/");
+                var type= $('#type').selectpicker('val').split('$');
+                var search=window.location.search
+                if(search.indexOf('&')!=-1){
+                    var categoryL1=search.substr(1).split('&')[0].split('=')[1]
+                }else {
+                    var categoryL1=search.substr(1).split('=')[1]
+                }
+                var categoryL2=type[0]
+                var categoryL3=type[1]
+                var brand=$('#brand').selectpicker('val')=="请选择材料品牌"?"":$('#brand').selectpicker('val');
+                var freightType=$("input[name='freightType']:checked").val();
+                var originalPrice=$("#originalPrice").val();
+                var discountPrice=$("#discountPrice").val();
+                var title=$("#title").val();
+                var contacts=$("#contacts").val();
+                var phoneNum=$("#phoneNum").val();
+                var details = editor.$txt.html();
+                var category=location.search.substr(1).split("=")[1];
+                var testmobile=/^([0-9]{3,4}-)?[0-9]{7,8}$/;
+                var restmobible = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+                if(regionStr==""||type==""||title==""||contacts==""|| contacts.trim() == ""||phoneNum==""){
+                    swal({
+                        title: "必填项不许为空!",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    return;
+                };
+                if(title.trim().length<10||title.trim().length>50){
+                    swal({
+                        title: "标题长度需大于10小于50个字符!",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    return;
+                }
+
+                title=title.trim()
+                contacts=contacts.trim()
+                if (restmobible.test(phoneNum)||testmobile.test(phoneNum)){
+                }else {
+                    swal({
+                        title: "联系电话填写有误！",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    return false;
+                }
+                if(bannerimgcount==0){
+                    swal({
+                                title: "提交提示?",
+                                text: "您还没有上传图片!",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                cancelButtonText:"去上传",
+                                confirmButtonText: "使用默认图片!",
+                                closeOnConfirm: false
+                            },
+                            function(){
+                                images.push("https://cdn.adquan.net/images/def-img/defaultResPic.png");
+                                var region={
+                                    province:regionStr[0],
+                                    city:regionStr[1],
+                                    district:regionStr.length==3?regionStr[2]:""
+                                };
+                                if($("#isPrecisePromote").prop("checked")&&!$("#edit").val()){
+                                    if(!period||period==""||period==null||$("#supplyRegions").selectpicker('val')==""||$("#supplyRegions").selectpicker('val')==null||!payType||payType==""){
+                                        swal({
+                                            title: "勾选精准推广需选择地区和时间和支付方式!",
+                                            type: "error",
+                                            confirmButtonText: "确定"
+                                        });
+                                        return
+                                    }
+                                    var promotion={
+                                        period:period,
+                                        regions:$("#supplyRegions").selectpicker('val'),
+                                        provinceNum:provinceNum,
+                                        payType:payType
+                                    }
+                                    var dataForPost={
+                                        resType:"Material",
+                                        region:region,
+                                        categoryL1:categoryL1,
+                                        categoryL2:categoryL2,
+                                        categoryL3:categoryL3,
+                                        brand:brand,
+                                        freightType:freightType,
+                                        originalPrice:originalPrice,
+                                        discountPrice:discountPrice,
+                                        images:images,
+                                        title:title,
+                                        contacts:contacts,
+                                        phoneNum:phoneNum,
+                                        details:details,
+                                        promotion:promotion
+                                    };
+                                }else {
+                                    var dataForPost={
+                                        resType:"Material",
+                                        region:region,
+                                        categoryL1:categoryL1,
+                                        categoryL2:categoryL2,
+                                        categoryL3:categoryL3,
+                                        brand:brand,
+                                        freightType:freightType,
+                                        originalPrice:originalPrice,
+                                        discountPrice:discountPrice,
+                                        images:images,
+                                        title:title,
+                                        contacts:contacts,
+                                        phoneNum:phoneNum,
+                                        details:details,
+                                        promotion:{}
+                                    };
+                                }
+                                button_clicked=true
+                                $.ajax({
+                                    url:url,
+                                    data:JSON.stringify(dataForPost),
+                                    type:"POST",
+                                    dataType:"json",
+                                    contentType:"application/json",
+                                    success:function(res) {
+                                        if(res.result=="success"){
+                                            if($("#isPrecisePromote").prop("checked")&&!$("#edit").val()){
+                                                getQr(res)
+                                                button_clicked=false
+                                            }else{
+                                                swal({
+                                                    title: "发布成功!",
+                                                    type: "success",
+                                                    confirmButtonText: "确定"
+                                                });
+                                                window.location.href="/users/myResource"
+                                                button_clicked=false
+
+                                            }
+                                        }else{
+                                            swal({
+                                                title: res.error,
+                                                type: "error",
+                                                confirmButtonText: "确定"
+                                            });
+                                            button_clicked=false
+                                        }
+                                    },
+                                    error:function (res) {
+                                        swal({
+                                            title: res,
+                                            type: "error",
+                                            confirmButtonText: "确定"
+                                        });
+                                        button_clicked=false
+                                        console.log("error"+res);
+                                    }
+                                })
+
+                            });
+                }else {
+                    for (var i=0;i<bannerimgcount;i++){
+                        images.push($(bannerimg[i]).attr("src").replace('/addrespreview','').replace('/297.180',''));
+                    }
+                    var region={
+                        province:regionStr[0],
+                        city:regionStr[1],
+                        district:regionStr.length==3?regionStr[2]:""
+                    };
+                    if($("#isPrecisePromote").prop("checked")&&!$("#edit").val()){
+                        if(!period||period==""||period==null||$("#supplyRegions").selectpicker('val')==""||$("#supplyRegions").selectpicker('val')==null||!payType||payType==""){
+                            swal({
+                                title: "勾选精准推广需选择地区和时间和支付方式!",
+                                type: "error",
+                                confirmButtonText: "确定"
+                            });
+                            return
+                        }
+                        var promotion={
+                            period:period,
+                            regions:$("#supplyRegions").selectpicker('val'),
+                            provinceNum:provinceNum,
+                            payType:payType
+                        }
+                        var dataForPost={
+                            resType:"Material",
+                            region:region,
+                            categoryL1:categoryL1,
+                            categoryL2:categoryL2,
+                            categoryL3:categoryL3,
+                            brand:brand,
+                            freightType:freightType,
+                            originalPrice:originalPrice,
+                            discountPrice:discountPrice,
+                            images:images,
+                            title:title,
+                            contacts:contacts,
+                            phoneNum:phoneNum,
+                            details:details,
+                            promotion:promotion
+                        };
+                    }else {
+                        var dataForPost={
+                            resType:"Material",
+                            region:region,
+                            categoryL1:categoryL1,
+                            categoryL2:categoryL2,
+                            categoryL3:categoryL3,
+                            brand:brand,
+                            freightType:freightType,
+                            originalPrice:originalPrice,
+                            discountPrice:discountPrice,
+                            images:images,
+                            title:title,
+                            contacts:contacts,
+                            phoneNum:phoneNum,
+                            details:details,
+                            promotion:{}
+                        };
+                    }
+                    button_clicked=true
+                    $.ajax({
+                        url:url,
+                        data:JSON.stringify(dataForPost),
+                        type:"POST",
+                        dataType:"json",
+                        contentType:"application/json",
+                        success:function(res) {
+                            if(res.result=="success"){
+                                if($("#isPrecisePromote").prop("checked")&&!$("#edit").val()){
+                                    getQr(res)
+                                    button_clicked=false
+                                }else{
+                                    swal({
+                                        title: "发布成功!",
+                                        type: "success",
+                                        confirmButtonText: "确定"
+                                    });
+                                    window.location.href="/users/myResource"
+                                    button_clicked=false
+
+                                }
+                            }else{
+                                swal({
+                                    title: res.error,
+                                    type: "error",
+                                    confirmButtonText: "确定"
+                                });
+                                button_clicked=false
+
+                            }
+                        },
+                        error:function (res) {
+                            swal({
+                                title: res,
+                                type: "error",
+                                confirmButtonText: "确定"
+                            });
+                            button_clicked=false
+
+                            console.log("error"+res);
+
+                        }
+                    })
+                }
+            }
+        })
+        function getQr(result) {
+            swal({
+                        title: '<img src="/users/payPromotionBill?billNum='+result.billNum+'&payType='+payType+'支付'+'&promotionType='+'精准推广服务'+'">',
+                        text: "请打开"+payType+"扫码支付",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "支付完成",
+                        cancelButtonText: "支付遇到问题",
+                        closeOnConfirm: false,
+                        closeOnCancel: false,
+                        html: true
+                    },
+                    function(isConfirm){
+                        if (isConfirm) {
+                            window.location.href="/users/myOrders"
+                        } else {
+                            swal({
+                                        title: "<h1>即将为您联系在线客服</h1>",
+                                        showCancelButton: true,
+                                        confirmButtonColor: "#DD6B55",
+                                        cancelButtonText: "取消",
+                                        confirmButtonText: "联系客服",
+                                        closeOnConfirm: false,
+                                        closeOnCancel: false,
+                                        html: true
+                                    },
+                                    function(isConfirm){
+                                        if(isConfirm){
+                                            window.location.href="/users/helperCenter#5"
+                                        }else {
+                                            window.location.href="/users/myOrders"
+                                        }
+                                    });
+                        }
+                    });
+        }
+
+
+        var ChineseDistricts = [
+                    {code: '340000', address: '安徽'},
+                    {code: '110000', address: '北京'},
+                    {code: '500000', address: '重庆'},
+                    {code: '350000', address: '福建'},
+                    {code: '620000', address: '甘肃'},
+                    {code: '440000', address: '广东'},
+                    {code: '450000', address: '广西'},
+                    {code: '520000', address: '贵州'},
+                    {code: '460000', address: '海南'},
+                    {code: '130000', address: '河北'},
+                    {code: '230000', address: '黑龙江'},
+                    {code: '410000', address: '河南'},
+                    {code: '420000', address: '湖北'},
+                    {code: '430000', address: '湖南'},
+                    {code: '320000', address: '江苏'},
+                    {code: '360000', address: '江西'},
+                    {code: '220000', address: '吉林'},
+                    {code: '210000', address: '辽宁'},
+                    {code: '150000', address: '内蒙古'},
+                    {code: '640000', address: '宁夏'},
+                    {code: '630000', address: '青海'},
+                    {code: '370000', address: '山东'},
+                    {code: '310000', address: '上海'},
+                    {code: '140000', address: '山西'},
+                    {code: '610000', address: '陕西'},
+                    {code: '510000', address: '四川'},
+                    {code: '120000', address: '天津'},
+                    {code: '650000', address: '新疆'},
+                    {code: '540000', address: '西藏'},
+                    {code: '530000', address: '云南'},
+                    {code: '330000', address: '浙江'}]
+        var strOption="";
+        for(var i=0;i<ChineseDistricts.length;i++){
+            strOption+="<option value="+ChineseDistricts[i].address+">"+ChineseDistricts[i].address+"</option>"
+        }
+            $("#supplyRegions").append(strOption);
+        $('#supplyRegions').selectpicker('refresh');
+
+        $(".precisePromoteType ul li").on("click",function () {
+            payType=$(this).data("i")
+        })
+
+        $(".precisePromoteTime ul li").on("click",function () {
+            $(this).parent().children().css("border","1px solid grey")
+            $(this).css("border","1px solid rgb(232,163,105)")
+            period=$(this).data("i")
+            searchPrice()
+        })
+        $('#supplyRegions').on('changed.bs.select', function (e) {
+            if(!period||period==""){
+                return
+            }
+            searchPrice();
+        });
+        function searchPrice() {
+            if(!period||period==""||period==null||$("#supplyRegions").selectpicker('val')==""||$("#supplyRegions").selectpicker('val')==null){
+                return
+            }
+            provinceNum=$("#supplyRegions").selectpicker('val').length
+            $.post("/queryPrecisePromotionPrice",{
+                period:period,
+                provinceNum:provinceNum
+            },function (res) {
+                price=Math.ceil(res.price);
+                $(".precisePromotePrice").text(price)
+            })
+        }
+
+        if($("#edit").val()){
+            $('#type').on('loaded.bs.select', function (e) {
+                $('input[name="freightType"][value='+$("#freightTypeData").val()+']').attr("checked",true);
+                $('#type').selectpicker('val', $("#typeData").val());
+                $('#brand').selectpicker('val', $("#brandData").val());
+            });
+            $(".re_extend").hide()
+            $(".precisePromote").hide()
+            var detailsData=$("#detailsData").val();
+            setTimeout(function () {
+                editor.$txt.append(detailsData);
+            },0)
+        }
+    })
+</script>
