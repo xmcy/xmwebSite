@@ -453,13 +453,13 @@ var adminFunc = {
     return basePath
   },
 
-  authDoraCMS: function (req, res, callBack) {
+  authxmcy: function (req, res, callBack) {
     var params = {
       domain: req.headers.host,
       ipAddress: adminFunc.getClienIp(req)
     }
     if (req.session.adminUserInfo && !req.session.adminUserInfo.auth) {
-      request.post({url: settings.DORACMSAPI + '/system/checkSystemInfo', form: params}, function (err, httpResponse, body) {
+      request.post({url: settings.xmcyAPI + '/system/checkSystemInfo', form: params}, function (err, httpResponse, body) {
         if (!err && httpResponse.statusCode == 200) {
           if (body == 'success') {
             AdminUser.update({'_id': req.session.adminUserInfo._id}, {$set: {auth: true}}, function (err) {

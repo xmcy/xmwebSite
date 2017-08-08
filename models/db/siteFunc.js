@@ -157,7 +157,7 @@ var siteFunc = {
     if (type == 'reg') {
       noticeObj = {
         type: '2',
-        systemSender: 'doraCMS',
+        systemSender: 'xmcy',
         title: '用户注册提醒',
         content: '新增注册用户 ' + value,
         action: type

@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var shortid = require('shortid');
 var Schema = mongoose.Schema;
 
-//mongoose.connect("mongodb://localhost/doracms")
+//mongoose.connect("mongodb://localhost/xmcy")
 
 var AdminGroupSchema = new Schema({
     _id: {

@@ -1,6 +1,6 @@
 /**
  * Created by Administrator on 2015/12/11.
- * doraCMS自定义过滤器
+ * xmcy自定义过滤器
  */
 
 //html转义

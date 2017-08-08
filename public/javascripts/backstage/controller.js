@@ -1,6 +1,6 @@
 /**
  * Created by Administrator on 2015/12/9.
- * doraCMS自定义控制器
+ * xmcy自定义控制器
  */
 var doraApp = angular.module('adminApp',['ui.bootstrap']);
 

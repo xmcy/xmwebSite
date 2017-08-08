@@ -61,7 +61,7 @@ var captcha = require('../util/randomWord').captcha;
 
 //管理员登录页面
 router.get('/', function(req, res) {
-    res.render('manage/adminLogin',{ title: settings.SITETITLE , description : 'DoraCMS后台管理登录'});
+    res.render('manage/adminLogin',{ title: settings.SITETITLE , description : 'xmcy后台管理登录'});
 });
 
 //刷新验证码
@@ -883,7 +883,7 @@ router.get('/manage/installTemp',function(req,res){
         var params = url.parse(req.url,true);
         var tempId = params.query.tempId;
 
-        request(settings.DORACMSAPI + '/system/template/getItem?tempId=' + tempId, function (error, response, body) {
+        request(settings.xmcyAPI + '/system/template/getItem?tempId=' + tempId, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var tempObj = JSON.parse(body);
 

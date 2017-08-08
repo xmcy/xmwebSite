@@ -39,13 +39,13 @@ module.exports = {
     DATABACKFORDER: 'C:/softbak/mongodbConfig/mongodata/', // 服务端数据备份目录
     MONGODBEVNPATH: '/usr/local/mongodb/bin', // LINUXmongodb环境变量(win server下不用管)
     SYSTEMTEMPFORDER: process.cwd() + '/views/web/temp/', // 系统模板安装目录
-    DORACMSAPI: 'http://www.91zhizuo.com', // 系统服务提供商
+    xmcyAPI: 'http://www.91zhizuo.com', // 系统服务提供商
     CMSDISCRIPTION: '',
     SITEKEYWORDS: '',
     SITEBASICKEYWORDS: '', // 基础关键词
 
 
-    SYSTEMMANAGE: ['sysTemManage', 'DoraCMS后台管理'], // 后台模块(系统管理)
+    SYSTEMMANAGE: ['sysTemManage', 'xmcy后台管理'], // 后台模块(系统管理)
     adminUsersList: ['sysTemManage_user', '系统用户管理'],
     adminGroupList: ['sysTemManage_uGroup', '系统用户组管理'],
     adsList: ['sysTemManage_ads', '广告管理'],
