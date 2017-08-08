@@ -2516,7 +2516,6 @@ router.post('/manage/deagreeToSolute', function(req, res, next) {
 
 //新增文章接口
 router.post('/manage/addArticle', function(req, res, next) {
-    console.log('ok')
     var title=req.body.title
     var tags=req.body.tags
     var keywords=req.body.keywords
@@ -2538,7 +2537,7 @@ router.post('/manage/addArticle', function(req, res, next) {
         from:from,
         author:author
     }
-    if(itemId){
+    if(!_.isEmpty(itemId)){
         Content.findOneAndUpdate({contentNum:itemId},doc,function (err,cont) {
             res.end("success")
         })
@@ -2795,7 +2794,7 @@ router.post('/manage/addNews', function(req, res, next) {
             coverImg:coverImg,
             newsDate:newsDate
         }
-        if(itemId){
+        if(!_.isEmpty(itemId)){
             News.findOneAndUpdate({_id:itemId},doc,function (err,cont) {
                 res.end("success")
             })

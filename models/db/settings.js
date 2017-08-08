@@ -9,16 +9,16 @@ module.exports = {
     // debug 为 true 时，用于本地调试//debug 为 false 时，取消本地调试
     debug: true,
     imgZip: true, // 上传图片是否压缩(如果为false则本地不需要安装gm)
-    session_secret: 'doracms_secret', // 务必修改
-    auth_cookie_name: 'doracms',
+    session_secret: 'xmcy', // 务必修改
+    auth_cookie_name: 'xmcy',
     encrypt_key: 'dora',
-    //    数据库配置
-    URL: 'mongodb://adquan:HY123bN5tg@119.23.246.201:27017/doracms',
-    DB: 'doracms',
-    HOST: '10.27.180.155',
+//    数据库配置
+    URL: 'mongodb://127.0.0.1:27017/xmcy',
+    DB: 'xmcy',
+    HOST: '',
     PORT: 27017,
-    USERNAME: 'adquan',
-    PASSWORD: 'HY123bN5tg',
+    USERNAME: '',
+    PASSWORD: '',
 
     appid:"wx9e9ca14e4a5c9f87",
     secret:"7f15f33ccaa50a40a2ae540a4d38095c",
@@ -27,9 +27,9 @@ module.exports = {
     wxsecret:"b9736ed6977fa564f4c6158717eec270",
 
     //    站点基础信息配置
-    SITETITLE: '制作宝', // 站点名称
-    SITEDOMAIN: 'http://www.91zhizuo.com', // 站点域名
-    SITEDOMAINTEST: 'http://www.100ns.cn:81',
+    SITETITLE: '', // 站点名称
+    SITEDOMAIN: 'http://www.whxftdwy.com', // 站点域名
+    // SITEDOMAINTEST: 'http://www.100ns.cn:81',
     SITEICP: '鄂ICP备16023329号', // 站点备案号
     SITEVERSION: 'v1.1.1', // 静态资源版本戳
     SYSTEMMAIL: 'adquan@adquan.net', // 管理员个人邮箱
@@ -40,9 +40,9 @@ module.exports = {
     MONGODBEVNPATH: '/usr/local/mongodb/bin', // LINUXmongodb环境变量(win server下不用管)
     SYSTEMTEMPFORDER: process.cwd() + '/views/web/temp/', // 系统模板安装目录
     DORACMSAPI: 'http://www.91zhizuo.com', // 系统服务提供商
-    CMSDISCRIPTION: '制作宝网站为拥有广告制作资源的厂商和有广告制作需求的用户提供了一个跨媒体，跨区域，跨受众的一站式的资源供求平台。如果你是一线广告制作需求用户，你能轻松找到你想找到的制作资源，不论你是想制作一个门店招牌、商场标示牌、一个大的发光字、精致的迷你字，还是想寻求制作材料设备，大到一台打印机、切割机、冲孔机等小到一瓶写真墨水一块反光膜等，网站都将为你找到最优的服务商。广告材料供应商大全,广告设备供应商大全,发光字制作厂家,优秀的标识公司、标识专家、标牌公司、标识制作工艺,标识标牌制作技术,标识系统设计,标识标牌设计技巧及标识技术互动,标识知识交流,标识经验分享的标牌论坛',
-    SITEKEYWORDS: '名片印刷,写真喷绘,灯箱标识,广告立体字,展示器材,广告定制,门头招牌,展览布置,喷绘材料,写真材料,照明材料,写真耗材,型材板材,广告辅料,制作工具,办公耗材,喷绘设备,雕刻设备,条幅设备,工艺设备,展示设备,办公设备,舞台设备,设备配件',
-    SITEBASICKEYWORDS: '标识,标牌,标识材料,标识标牌,标牌材料,标识制作工艺,标牌制作技术,标牌设计,标识设计,标识系统设计', // 基础关键词
+    CMSDISCRIPTION: '',
+    SITEKEYWORDS: '',
+    SITEBASICKEYWORDS: '', // 基础关键词
 
 
     SYSTEMMANAGE: ['sysTemManage', 'DoraCMS后台管理'], // 后台模块(系统管理)
