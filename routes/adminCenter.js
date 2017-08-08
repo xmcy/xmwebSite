@@ -39,11 +39,7 @@ var WxCheck = require('../models/WxCheck')
 var Wx = require('../models/Wx')
 var PriceConfig = require('../models/admincenter/PriceConfig')
 var PubHistory = require('../models/publish/PubHistory')
-var _tenpay = require('../libs/pay/tenpay/tenpay')
-var _alipay = require('../libs/pay/alipay/alipay_f2f')
-var alipay = new _alipay(require('../libs/pay/alipay/config.js'))
-var tenpay = new _tenpay(require('../libs/pay/tenpay/config.js'))
-var middleware = tenpay.middlewareForExpress()
+
 
 router.caseSensitive = true
 

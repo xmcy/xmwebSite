@@ -34,11 +34,7 @@ var Complain = require('../models/tender/Complain')
 var tenderConfig = require('../models/tender/TenderConfig')
 var CompanyIdentify = require('../models/CompanyIdentify')
 
-var _tenpay = require('../libs/pay/tenpay/tenpay')
-var _alipay = require('../libs/pay/alipay/alipay_f2f')
-var alipay = new _alipay(require('../libs/pay/alipay/config.js'))
-var tenpay = new _tenpay(require('../libs/pay/tenpay/config.js'))
-var middleware = tenpay.middlewareForExpress()
+
 
 // 加密类
 var crypto = require('crypto')

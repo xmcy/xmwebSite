@@ -11,11 +11,6 @@ var PubHistory = require('../models/publish/PubHistory')
 var BrandPromotion = require('../models/admincenter/BrandPromotion')
 var PrecisePromotion = require('../models/admincenter/PrecisePromotion')
 
-var _tenpay = require('../libs/pay/tenpay/tenpay')
-var _alipay = require('../libs/pay/alipay/alipay_f2f')
-var alipay = new _alipay(require('../libs/pay/alipay/config.js'))
-var tenpay = new _tenpay(require('../libs/pay/tenpay/config.js'))
-var middleware = tenpay.middlewareForExpress()
 
 function updatePromotion(res, billNum, payType, payInfo, model) {
     Bill.findOneAndUpdate({ billNum: billNum }, { $set: { billState: '已支付', payType: payType, payInfo: payInfo, paidAt: new Date() } }, function(err, bill) {
