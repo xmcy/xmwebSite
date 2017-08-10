@@ -82,32 +82,26 @@ router.post('/doLogin', function(req, res) {
     if(vnum != req.session.vnum){
         res.end('验证码有误');
     }else{
-        if(validator.isUserName(userName) && validator.isPsd(password)){
-
-            AdminUser.findOne({'userName':userName,'password':newPsd}).populate('group').exec(function(err,user){
-                if(err){
-                    res.end(err);
-                }
-                if(user) {
-                    req.session.adminPower = user.group.power;
-                    req.session.adminlogined = true;
-                    req.session.adminUserInfo = user;
-                    //获取管理员通知信息
-                    adminFunc.getAdminNotices(req,res,function(noticeObj){
-                        req.session.adminNotices = noticeObj;
-                        // 存入操作日志
-                        SystemOptionLog.addUserLoginLogs(req,res,adminFunc.getClienIp(req));
-                        res.end("success");
-                    });
-                }else{
-                    console.log("登录失败");
-                    res.end("用户名或密码错误");
-                }
-            });
-
-        }else{
-            res.end(settings.system_illegal_param)
-        }
+        AdminUser.findOne({'userName':userName,'password':newPsd}).populate('group').exec(function(err,user){
+            if(err){
+                res.end(err);
+            }
+            if(user) {
+                req.session.adminPower = user.group.power;
+                req.session.adminlogined = true;
+                req.session.adminUserInfo = user;
+                //获取管理员通知信息
+                adminFunc.getAdminNotices(req,res,function(noticeObj){
+                    req.session.adminNotices = noticeObj;
+                    // 存入操作日志
+                    SystemOptionLog.addUserLoginLogs(req,res,adminFunc.getClienIp(req));
+                    res.end("success");
+                });
+            }else{
+                console.log("登录失败");
+                res.end("用户名或密码错误");
+            }
+        });
     }
 
 });
