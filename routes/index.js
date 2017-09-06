@@ -29,7 +29,7 @@ var cache = require('../util/cache')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    siteFunc.renderToTargetPageByType(req, res, 'userHome', { title: '主页', page: 'userHome' })
+    res.redirect('/admin')
 })
 
 // 缓存站点地图
