@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>城市合伙人</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.9/jquery.fullPage.css">
-    <link href="/themes/<%=staticforder%>/css/partner.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
-    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="/themes/<%=staticforder%>/css/partner.css?vesion=<%=siteConfig.version%>" rel="stylesheet" />
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.adquan.net/static/js/jquery.fullPage.css" />
+
 </head>
 <body>
 <div id="fullPage">
@@ -21,15 +22,29 @@
                 </div>
                 <div><a href="/resource/brandWin">品牌推广</a></div>
                 <ul>
-                    <li><a href="/users/login">登陆</a> <a href="/users/reg">注册</a></li>
+                    <% if(!logined){ %>
+                    <li><a href="/users/login">登录</a><a href="/users/reg">注册</a></li>
+                    <% }else{ %>
+
+                    <li >您好&nbsp;<a style="color:#DA2F2F" href="/users/recentDemandAndResource">
+                            <%if(userInfo.nickName){%>
+                            <%=userInfo.nickName%>
+                            <%}else {%>
+                            <%=userInfo.userName%>
+                            <%}%>
+                        </a>
+                    </li>
+                    <li style="width: 40px"><a rel="nofollow" href="/users/logout" id="userLoginOut">退出</a></li>
+                    <li><a href="/users/recentDemandAndResource">个人中心</a></li>
+                    <% } %>
                     <li><a href="helperCenter">帮助中心</a></li>
                     <li><a class="forwebnav">网站导航</a></li>
                 </ul>
             </div>
         </div>
-       <div class="title">
-           <span></span><h1>城市运营商</h1><span></span>
-       </div>
+        <div class="title">
+            <span></span><h1>城市合伙人</h1><span></span>
+        </div>
         <p>
             开启<a class="yellow">300+</a>城市合作 共享万亿广告制作市场
         </p>
@@ -82,10 +97,10 @@
         </div>
     </div>
     <div class="section section2">
-        <h1>制作宝城市运营商</h1>
-        <a>旨在寻找每个城市的合作推广商，共享推广成果，共享经济布局升温<br/>
+        <h1>制作宝城市合伙人</h1>
+        <a>旨在寻找每个城市的独家运营商，合作共赢，共享推广成果<br/>
             让制作宝根植于每一座潜力城市</a>
-        <div class="bgimg3"><img src="/themes/lanmai/images/section2.png"/></div>
+        <div class="bgimg3"><img src="https://cdn.adquan.net/images/bigimg/section2.png/compress.only"/></div>
     </div>
     <div class="section section3">
         <div class="imglist">
@@ -95,30 +110,30 @@
         </div>
     </div>
     <div class="section section4">
-        <h1>城市运营商合作模式</h1>
+        <h1>城市合伙人合作模式</h1>
         <ul class="ulone">
-            <li class="uloneone">FREE</li>
-            <li class="ulonetwo">NO EXTRA WORK</li>
+            <li class="uloneone">EXCLUSIVE</li>
+            <li class="ulonetwo">MORE ORDERS</li>
             <li class="ulonethree">COMPLETE SUPPORT</li>
             <li class="ulonefour">APPRAISALS</li>
         </ul>
-         <div class="imglist">
-             <img class="imgone" src="/themes/lanmai/images/section41.png"/>
-             <img class="imgtwo" src="/themes/lanmai/images/section41.png"/>
-             <img class="imgthree" src="/themes/lanmai/images/section41.png"/>
-             <img class="imgfour" src="/themes/lanmai/images/section41.png"/>
-         </div>
+        <div class="imglist">
+            <img class="imgone" src="/themes/lanmai/images/section41.png"/>
+            <img class="imgtwo" src="/themes/lanmai/images/section41.png"/>
+            <img class="imgthree" src="/themes/lanmai/images/section41.png"/>
+            <img class="imgfour" src="/themes/lanmai/images/section41.png"/>
+        </div>
         <ul class="ultwo">
-            <li class="ultwoone">制作宝不收取任何形式的入伙<br/>费保证金加入完全免费</li>
-            <li class="ultwotwo">城市运营商不需要额外去做推<br/>广工作 在日常与广告制作人接<br/>触时顺带推广即可</li>
-            <li class="ultwothree">制作宝准备了齐全的宣传物料<br/>提供专业的营销建议 城市运营<br/>商全无后顾之忧</li>
-            <li class="ultwofour">制作宝对城市运营商有宽松人<br/>性化的考核机制，合伙人没有<br/>业绩压力</li>
+            <li class="ultwoone">不同于大家常见的加盟代理<br/>我们在每座城市只找一家进行<br/><font color="red">独家合作</font></li>
+            <li class="ultwotwo">平台接到的该城市所有订单<br/><font color="red">独家派给合伙人</font> 合伙人不做的<br/>订单我们才在平台发布招投标</li>
+            <li class="ultwothree">制作宝准备了齐全的宣传物料<br/>提供专业的营销建议 城市合伙<br/>人全无后顾之忧</li>
+            <li class="ultwofour">制作宝对城市合伙人有宽松人<br/>性化的考核机制，合伙人没有<br/>业绩压力</li>
         </ul>
     </div>
     <div class="section section5">
-        <div class="encourageone">城市运营商的广告制作资源和品牌<br/>将在平台得到最优的展示</div>
+        <div class="encourageone">平台接到的该城市所有订单<br/>独家派给城市合伙人</div>
         <div class="encouragetwo">所有当月在该城市成交的业务营业额<br/>运营商按比例分成</div>
-        <div class="encouragethree">制作宝的优惠活动将第一时间<br/>惠及我们的城市运营商</div>
+        <div class="encouragethree">制作宝的优惠活动将第一时间<br/>惠及我们的城市合伙人</div>
     </div>
     <div class="section section6">
         <h1>如果你是这样的</h1>
@@ -130,10 +145,10 @@
     </div>
     <div class="section section7">
 
-            <h1>加入我们</h1>
+        <h1>加入我们</h1>
         <div class="joinus">
             <div>
-                <span><a class="redFont">*</a>城  市</span><input class="address" placeholder="请输入您所在的省份和城市，如湖北省武汉市"/>
+                <span><a class="redFont">*</a>城  市</span><input class="region" placeholder="请输入您所在的省份和城市，如湖北省武汉市"/>
             </div>
             <div>
                 <span><a class="redFont">*</a>公司名称</span><input class="companyName" placeholder="请输入您的公司名称"/>
@@ -152,11 +167,25 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.9/jquery.fullPage.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/move.js/0.5.0/move.min.js"></script>
+<script src="https://cdn.adquan.net/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="https://cdn.adquan.net/static/js/jquery.fullPage.js"></script>
+<script src="https://cdn.adquan.net/static/js/move.min.js"></script>
 <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
 <script src="/themes/<%=staticforder%>/js/partner.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else{
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
 </body>
 </html>
 			    	
