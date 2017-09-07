@@ -29,7 +29,7 @@ var cache = require('../util/cache')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.redirect('/admin')
+    res.redirect('/users/cityPartner')
 })
 
 // 缓存站点地图
