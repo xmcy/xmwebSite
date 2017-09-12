@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>城市合伙人</title>
     <link href="/themes/<%=staticforder%>/css/partner.css?vesion=<%=siteConfig.version%>" rel="stylesheet" />
-    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.adquan.net/static/js/jquery.fullPage.css" />
 
 </head>
@@ -13,11 +12,15 @@
 <div id="fullPage">
     <div class="section section1">
         <div class="title">
-            <span></span><h1>肖萌</h1><span></span>
+            <span></span><h1>肖 萌</h1><span></span>
         </div>
-        <p>天道酬勤，我拼我赢</p>
+        <p> Front-end Web developer，天道酬勤，我拼我赢</p>
+        <div id="test" style="position:fixed;top:0px;z-index:99999;"></div>
+        <script src="/javascripts/sketch.min.js"></script>
+        <script src="/javascripts/mousefollow.js"></script>
     </div>
     <div class="section section2">
+        <img src="/themes/lanmai/images/xmphoto.jpg"/>
         <h1>个人信息</h1>
         <div class="personalInfo">
             <span>姓名：肖萌</span><span>年龄：23岁</span>
@@ -29,83 +32,141 @@
     </div>
     <div class="section section3">
         <div class="imglist">
-            <div class="imgone">HTML5</div>
-            <div class="imgtwo">Javascript</div>
-            <div class="imgthree">Bootstrap3</div>
-            <!--<div class="imgone"></div>-->
-            <!--<div class="imgone"></div>-->
-            <!--<div class="imgone"></div>-->
-            <!--<div class="imgone"></div>-->
-            <!--<div class="imgone"></div>-->
-            <!--<div class="imgone"></div>-->
-            <!--<div class="imgone"></div>-->
-            <!--<div class="imgone"></div>-->
-            <!--<div class="imgone"></div>-->
-            <!--<div class="imgone"></div>-->
+            <span class="skills">Skills  List</span>
+            <div class="list1">
+                <div class="imgone">HTML5</div>
+                <div class="imgtwo s_size">Javascript</div>
+                <div class="imgthree">Jquery</div>
+                <div class="imgfour s_size">Angular1</div>
+                <div class="imgfive s_size">Bootstrap</div>
+            </div>
+           <div class="list2">
+               <div class="imgsix">SQL</div>
+               <div class="imgseven">ASP.net</div>
+               <div class="imgeight">Node.js</div>
+               <div class="imgnine s_size">Mongo</div>
+           </div>
+           <div class="list3">
+               <div class="imgten">gulp</div>
+               <div class="imgele">git</div>
+               <div class="imgtwl">Svn</div>
+               <div class="imgtir s_size">Sea.js</div>
+           </div>
+
         </div>
     </div>
     <div class="section section4">
-        <h1>城市合伙人合作模式</h1>
-        <ul class="ulone">
-            <li class="uloneone">EXCLUSIVE</li>
-            <li class="ulonetwo">MORE ORDERS</li>
-            <li class="ulonethree">COMPLETE SUPPORT</li>
-            <li class="ulonefour">APPRAISALS</li>
-        </ul>
-        <div class="imglist">
-            <img class="imgone" src="/themes/lanmai/images/section41.png"/>
-            <img class="imgtwo" src="/themes/lanmai/images/section41.png"/>
-            <img class="imgthree" src="/themes/lanmai/images/section41.png"/>
-            <img class="imgfour" src="/themes/lanmai/images/section41.png"/>
+        <h1>工作经验</h1>
+        <div class="jobs">
+            <h2>2017.3-至今 蓝迈网络科技	 全栈工程师</h2>
+            <ul>
+                <li>1. 负责项目前端架构的设计，web前端的设计和研发工作</li>
+                <li>2. 前端复杂功能的实现，负责在微信小程序的设计和研发</li>
+                <li>3. 专研各种前沿技术及框架，提供前端研发团队生产力</li>
+                <li>4. 后端负责写接口，以及路由设计，后台渲染等</li>
+                <li>5. 负责整个技术团队的项目进度管理，解决初中级工程师的技术问题</li>
+            </ul>
         </div>
-        <ul class="ultwo">
-            <li class="ultwoone">不同于大家常见的加盟代理<br/>我们在每座城市只找一家进行<br/><font color="red">独家合作</font></li>
-            <li class="ultwotwo">平台接到的该城市所有订单<br/><font color="red">独家派给合伙人</font> 合伙人不做的<br/>订单我们才在平台发布招投标</li>
-            <li class="ultwothree">制作宝准备了齐全的宣传物料<br/>提供专业的营销建议 城市合伙<br/>人全无后顾之忧</li>
-            <li class="ultwofour">制作宝对城市合伙人有宽松人<br/>性化的考核机制，合伙人没有<br/>业绩压力</li>
-        </ul>
     </div>
     <div class="section section5">
-        <div class="encourageone">平台接到的该城市所有订单<br/>独家派给城市合伙人</div>
-        <div class="encouragetwo">所有当月在该城市成交的业务营业额<br/>运营商按比例分成</div>
-        <div class="encouragethree">制作宝的优惠活动将第一时间<br/>惠及我们的城市合伙人</div>
+        <h1>工作经验</h1>
+        <div class="jobs">
+            <h2>2015.7-2016.12 云盛联达	 前端工程师/前端主管</h2>
+            <ul>
+                <li>1. 前端页面布局以及前端框架，使用插件以及自定义插件</li>
+                <li>2. 后半年工作升为前端主管，负责与产品经理，后台主管讨论需求以及界面的设计</li>
+                <li>3. 制定前端开发的规范，安排整个项目的前端开发进度计划</li>
+                <li>3. 给初级工程师分配工作任务，负责解决前端工程师的难题，配合测试主管进行bug调试工作</li>
+            </ul>
+        </div>
     </div>
     <div class="section section6">
-        <h1>如果你是这样的</h1>
-        <div class="imglist">
-            <img class="imgone" src="/themes/lanmai/images/section61.png"/>
-            <img class="imgtwo" src="/themes/lanmai/images/section62.png"/>
-            <img class="imgthree" src="/themes/lanmai/images/section63.png"/>
+        <h1>项目经验</h1>
+        <div class="project">
+            <h2>制作宝（www.91zhizuo.com）2017.3-至今</h2>
+            <ul>
+                <li>1. 项目技术选型：Angular+JQuery+express+mongoDB</li>
+                <li>2. 网站分为户客户端部分以及管理员系统，管理员系统前端使用Angular实现，客户端中用户中心和企业中心采Angular，其它部分主要用Jquery实现。网站中比较复杂的功能如上传文件，二级页面过滤，支付以及退款，评价投诉等。</li>
+                <li>3.后台node,我负责数据的接口以及路由的设计，主要有支付和分页查询的功能</li>
+            </ul>
         </div>
+        <div class="slideBox">
+            <div class="bd">
+                <ul>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                </ul>
+            </div>
+        </div>
+
     </div>
     <div class="section section7">
-
-        <h1>加入我们</h1>
-        <div class="joinus">
-            <div>
-                <span><a class="redFont">*</a>城  市</span><input class="region" placeholder="请输入您所在的省份和城市，如湖北省武汉市"/>
-            </div>
-            <div>
-                <span><a class="redFont">*</a>公司名称</span><input class="companyName" placeholder="请输入您的公司名称"/>
-            </div>
-            <div>
-                <span><a class="redFont">*</a>联 系 人</span><input class="contactorName" placeholder="请输入您的姓名"/>
-            </div>
-            <div>
-                <span><a class="redFont">*</a>联系电话</span><input class="contactorNum" placeholder="请输入您的联系电话"/>
-            </div>
-            <div>
-                <span><a class="redFont">*</a>公司地址</span><input class="contactorWay" placeholder="请输入您的公司地址"/>
-            </div>
-            <div class="submmint">提 交</div>
+        <h1>项目经验</h1>
+        <div class="project">
+            <h2>蜂速购电子商城<br>（www.fengsugo.com）2016.8-2016.12</h2>
+            <ul>
+                项目的架构主要是采用Jquery+Bootstrap+Angular实现。<br>
+                这个项目我是负责人，没有参与到代码的编写当中，主要是负责与产品经理，后台主管讨论需求以及界面的设计，制定前端开发的规范，给初级工程师分配工作任务，负责解决前端工程师的难题，配合测试主管进行bug调试工作，安排整个项目的前端开发进度计划。整个项目的开发进度比较快，这也符合互联网开发的“快，准，狠”，基本上花在开发的时间不到两个月。
+            </ul>
         </div>
+        <div class="slideBox">
+            <div class="bd">
+                <ul>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="section section8">
+        <h1>项目经验</h1>
+        <div class="project">
+            <h2>进销存销售财务管理系统2015.9-2016.12</h2>
+            <ul>
+                参与公司项目中的Web前端功能设计、开发和实现。配合架构师与团队UI设计人员、后端开发人员等配合，高质量完成Web前端开发工作。这个系统比较复杂，结合了进销存和财务两大系统于一体。在整个项目用到了模块化和组件化的思想，封装了很多组件，在报表模块，主要是使用了JqGrid，实现数据查询，以及冻结列，分组，分页。使用Bootstrap进行系统页面的布局，配合架构师进行插件的封装，包括下拉框等，以及复杂业务逻辑的实现。这个系统比较复杂，结合了进销存和财务两大系统于一体。 </ul>
+        </div>
+        <div class="slideBox">
+            <div class="bd">
+                <ul>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="section section9">
+        <h1>校园生活</h1>
+        <div class="project">
+            <ul>
+                项目的架构主要是采用Jquery+Bootstrap+Angular实现。<br>
+                这个项目我是负责人，没有参与到代码的编写当中，主要是负责与产品经理，后台主管讨论需求以及界面的设计，制定前端开发的规范，给初级工程师分配工作任务，负责解决前端工程师的难题，配合测试主管进行bug调试工作，安排整个项目的前端开发进度计划。整个项目的开发进度比较快，这也符合互联网开发的“快，准，狠”，基本上花在开发的时间不到两个月。
+            </ul>
+        </div>
+        <div class="slideBox">
+            <div class="bd">
+                <ul>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="section section10">
+       谢谢观看
     </div>
 </div>
 
 <script src="https://cdn.adquan.net/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="https://cdn.adquan.net/static/js/jquery.fullPage.js"></script>
 <script src="https://cdn.adquan.net/static/js/move.min.js"></script>
-<script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+<script src="/javascripts/jquery.SuperSlide.2.1.1.js"></script>
 <script src="/themes/<%=staticforder%>/js/partner.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
 <script>
     (function(){
@@ -119,6 +180,33 @@
         }
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(bp, s);
+
+        var body = document.body,
+                steps = 7;
+        function threedee (e) {
+            var x = Math.round(steps / (window.innerWidth / 2) * (window.innerWidth / 2 - e.clientX)),
+                    y = Math.round(steps / (window.innerHeight / 2) * (window.innerHeight / 2 - e.clientY)),
+                    shadow = '',
+                    color = 190,
+                    radius = 3,
+                    i;
+
+            for (i=0; i<steps; i++) {
+                tx = Math.round(x / steps * i);
+                ty = Math.round(y / steps * i);
+                if (tx || ty) {
+                    color -= 3 * i;
+                    shadow += tx + 'px ' + ty + 'px 0 rgb(' + color + ', ' + color + ', ' + color + '), ';
+                }
+            }
+
+            shadow += x + 'px ' + y + 'px 1px rgba(0,0,0,.2), ' + x*2 + 'px ' + y*2 + 'px 6px rgba(0,0,0,.3)';
+
+
+        }
+
+        document.addEventListener('mousemove', threedee, false);
+        jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",interTime:50,trigger:"click"});
     })();
 </script>
 </body>
