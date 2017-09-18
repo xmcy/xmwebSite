@@ -33,7 +33,7 @@ a{
 }
 .section1 h1{
     color: #fff;
-    font-size: 50px;
+    font-size: 46px;
     font-weight: normal;
     width: 380px;
     display: inline-block;
@@ -46,12 +46,12 @@ a{
 .section1 p{
     margin:0 auto;
     color: #fff;
-    font-size: 36px;
+    font-size: 40px;
     margin-top: 800px;;
 }
 .section1 .title span{
     display: inline-block;
-    width: 300px;
+    width: 330px;
     height: 1px;
     background-color: #fff;
     border: 1px solid #fff;
@@ -193,14 +193,16 @@ a{
 .section4>.jobs{
      width: 1000px;
      height: 600px;
-     margin: 70px 0 0 150px;
+     margin: 70px 0 0 200px;
  }
 .jobs>h2{
     text-align: left;
     font-size: 30px;
+    margin-left: -1000px;
 }
 .jobs>ul{
-   margin-top: 10px;
+    margin-top: 10px;
+    margin-left: -1000px;
 }
 .jobs>ul>li{
     height: 80px;
@@ -209,6 +211,13 @@ a{
     text-align: left;
     list-style: none;
 }
+.jobs>img{
+    float: right!important;
+    margin-top: -360px ;
+    margin-right: -1260px;
+    width: 520px;
+}
+
 /*第五屏样式设置*/
 .section5>h1{
     margin: 80px auto 10px;
@@ -239,22 +248,28 @@ a{
  .project{
     width: 800px;
     margin-left: 100px;
-    font-size: 24px;
-    line-height: 45px;
+    font-size: 22px;
+    line-height: 60px;
     text-align: left;
 }
  .project>h2{
-    margin: 50px 0 50px;
+    margin: 50px 0 40px;
 }
 .project>ul>li{
     list-style: none;
 }
+.section6>.slideBox{
+    width: 650px;
+    height: 385px;
+    background-image: url("/themes/lanmai/images/macBook.png");
+    background-size: 100% 100%;
+    overflow: hidden;
+}
 .slideBox{
     float: right !important;
-    border: 1px solid #000 !important;
-    margin: -400px 140px 0 0;
+    margin: -380px 140px 0 0;
 }
-.slideBox .bd{ position:relative; height:auto;width: 500px; z-index:0; float: right; }
+.slideBox .bd{ position:relative; height:330px; overflow: hidden;width: 500px; z-index:0; float: right;margin-right: 75px;margin-top: 20px}
 .slideBox .bd li{ zoom:1; vertical-align:middle; }
 .slideBox .bd img{  display:block;margin-top:-50px;width: 100%}
 .slideBox .bd ul{list-style: none;}

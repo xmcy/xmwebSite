@@ -9,8 +9,8 @@ $(document).ready(function(){
         afterLoad: function(link, index){
             switch (index){
                 case 1:
-                    move('.section1 h1').scale(1.5).end();
-                    move('.section1 p').set('margin-top','20px').end();
+                    move('.section1 h1').scale(2).end();
+                    move('.section1 p').set('margin-top','30px').end();
                     break;
                 case 2:
                     move('.section2 img').set('margin-left','200px').end();
@@ -23,10 +23,14 @@ $(document).ready(function(){
                     move('.section3 .list3').set('top','30%').end()
                     break;
                 case 4:
-
+                    move('.section4 .jobs h2').set('margin-left','0px').end();
+                    move('.section4 .jobs ul').set('margin-left','0px').end();
+                    move('.section4 .jobs img').set('margin-right','-260px').end();
                     break;
                 case 5:
-
+                    move('.section5 .jobs h2').set('margin-left','0px').end();
+                    move('.section5 .jobs ul').set('margin-left','0px').end();
+                    move('.section5 .jobs img').set('margin-right','-330px').end();
                     break;
                 case 6:
 
@@ -56,12 +60,16 @@ $(document).ready(function(){
                     move('.section3 .list3').set('top','170%').end()
                     break;
                 case 4:
-
+                    move('.section4 .jobs h2').set('margin-left','-1000px').end();
+                    move('.section4 .jobs ul').set('margin-left','-1000px').end();
+                    move('.section4 .jobs img').set('margin-right','-1260px').end();
                     break;
                 case 5:
                     break;
                 case 6:
-
+                    move('.section4 .jobs h2').set('margin-left','-1000px').end();
+                    move('.section4 .jobs ul').set('margin-left','-1000px').end();
+                    move('.section4 .jobs img').set('margin-right','-1260px').end();
                     break;
                 case 7:
 
