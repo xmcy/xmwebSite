@@ -193,7 +193,7 @@ a{
 .section4>.jobs{
      width: 1000px;
      height: 600px;
-     margin: 70px 0 0 200px;
+     margin: 90px 0 0 200px;
  }
 .jobs>h2{
     text-align: left;
@@ -228,7 +228,10 @@ a{
 .section5>.jobs{
     width: 1000px;
     height: 600px;
-    margin: 100px 0 0 150px;
+    margin: 120px 0 0 10%;
+}
+.section5>.jobs>ul{
+    margin-top: 30px;
 }
 .section5{
     background: url(https://cdn.adquan.net/images/bigimg/bc9.png) no-repeat center;
@@ -241,22 +244,23 @@ a{
     background-size: 100%;
 }
 .section6 h1{
-    margin-top: 80px;
+    margin-top: 7%;
     margin-bottom: 20px;
     font-size:46px;
 }
  .project{
     width: 800px;
-    margin-left: 100px;
+    margin-left: 8%;
     font-size: 22px;
     line-height: 60px;
     text-align: left;
 }
  .project>h2{
-    margin: 50px 0 40px;
+    margin: 6% 0 30px;
 }
 .project>ul>li{
     list-style: none;
+    line-height: 70px;
 }
 .section6>.slideBox{
     width: 650px;
@@ -267,7 +271,7 @@ a{
 }
 .slideBox{
     float: right !important;
-    margin: -380px 140px 0 0;
+    margin: -400px 140px 0 0;
 }
 .slideBox .bd{ position:relative; height:330px; overflow: hidden;width: 500px; z-index:0; float: right;margin-right: 75px;margin-top: 20px}
 .slideBox .bd li{ zoom:1; vertical-align:middle; }
@@ -282,6 +286,13 @@ a{
     margin-top: 80px;
     margin-bottom: 20px;
     font-size:46px;
+}
+.section7>.slideBox{
+    width: 650px;
+    height: 385px;
+    background-image: url("/themes/lanmai/images/macBook.png");
+    background-size: 100% 100%;
+    overflow: hidden;
 }
 /*第八屏样式设置*/
 .section8{
@@ -299,10 +310,25 @@ a{
     background-size: 100%;
 }
 .section9 h1{
-    margin-top: 80px;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 5px;
     font-size:46px;
     color: #fff;
+}
+.section9>div{
+    float: left;
+    margin:0 -5% 0 14%;
+    width: 31.2%;
+}
+.section9>div>span{
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 600;
+}
+.section9>div>img{
+    display: block;
+    width:80%;
+    margin:15px auto;
 }
 /*第十屏样式设置*/
 .section10{

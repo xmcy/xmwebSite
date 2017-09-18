@@ -25,12 +25,12 @@ $(document).ready(function(){
                 case 4:
                     move('.section4 .jobs h2').set('margin-left','0px').end();
                     move('.section4 .jobs ul').set('margin-left','0px').end();
-                    move('.section4 .jobs img').set('margin-right','-260px').end();
+                    move('.section4 .jobs img').set('margin-right','-26%').end();
                     break;
                 case 5:
                     move('.section5 .jobs h2').set('margin-left','0px').end();
                     move('.section5 .jobs ul').set('margin-left','0px').end();
-                    move('.section5 .jobs img').set('margin-right','-330px').end();
+                    move('.section5 .jobs img').set('margin-right','-35%').end();
                     break;
                 case 6:
 
@@ -60,16 +60,19 @@ $(document).ready(function(){
                     move('.section3 .list3').set('top','170%').end()
                     break;
                 case 4:
-                    move('.section4 .jobs h2').set('margin-left','-1000px').end();
-                    move('.section4 .jobs ul').set('margin-left','-1000px').end();
-                    move('.section4 .jobs img').set('margin-right','-1260px').end();
+                    move('.section4 .jobs h2').set('margin-left','-1500px').end();
+                    move('.section4 .jobs ul').set('margin-left','-1500px').end();
+                    move('.section4 .jobs img').set('margin-right','-1760px').end();
                     break;
                 case 5:
+                    move('.section5 .jobs h2').set('margin-left','-1500px').end();
+                    move('.section5 .jobs ul').set('margin-left','-1500px').end();
+                    move('.section5 .jobs img').set('margin-right','-1760px').end();
                     break;
                 case 6:
-                    move('.section4 .jobs h2').set('margin-left','-1000px').end();
-                    move('.section4 .jobs ul').set('margin-left','-1000px').end();
-                    move('.section4 .jobs img').set('margin-right','-1260px').end();
+                    move('.section4 .jobs h2').set('margin-left','-1500px').end();
+                    move('.section4 .jobs ul').set('margin-left','-1500px').end();
+                    move('.section4 .jobs img').set('margin-right','-180px').end();
                     break;
                 case 7:
 
