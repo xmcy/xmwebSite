@@ -32,6 +32,7 @@
     </div>
     <div class="section section3">
         <div class="imglist">
+            <img src="/themes/lanmai/images/computer.png">
             <span class="skills">Skills  List</span>
             <div class="list1">
                 <div class="imgone">HTML5</div>
@@ -52,7 +53,6 @@
                <div class="imgtwl">Svn</div>
                <div class="imgtir s_size">Sea.js</div>
            </div>
-
         </div>
     </div>
     <div class="section section4">
@@ -77,7 +77,7 @@
                 <li>1. 前端页面布局以及前端框架，使用插件以及自定义插件</li>
                 <li>2. 后半年工作升为前端主管，负责与产品经理/后台主管讨论需求以及界面的设计</li>
                 <li>3. 制定前端开发的规范，安排整个项目的前端开发进度计划</li>
-                <li>3. 给初级工程师分配工作任务，负责前端工程师的难题，配合测试进行bug调试工作</li>
+                <li>3. 给初级工程师分配工作任务，负责前端工程的难题，配合测试进行bug调试工作</li>
             </ul>
             <img src="../themes/lanmai/images/zhixin.jpg">
         </div>
@@ -93,11 +93,13 @@
                 <li>4.后台node,我负责数据的接口以及路由的设计，主要有支付和分页查询的功能</li>
             </ul>
         </div>
-        <div class="slideBox">
+        <div class="picScroll-left">
             <div class="bd">
                 <ul>
-                    <li><img src="../themes/lanmai/images/zhizuobao.jpg"></li>
-                    <li><img src="../themes/lanmai/images/zhizuobao2.jpg"></li>
+                    <li><img src="../themes/lanmai/images/lanmai1.png"></li>
+                    <li><img src="../themes/lanmai/images/lanmai2.png"></li>
+                    <li><img src="../themes/lanmai/images/lanmai3.png"></li>
+                    <li><img src="../themes/lanmai/images/lanmai4.png"></li>
                 </ul>
             </div>
         </div>
@@ -127,17 +129,16 @@
         <div class="project">
             <h2>进销存销售财务管理系统2015.9-2016.12</h2>
             <ul>
-                <li>这个系统比较复杂，结合了进销存和财务两大系统于一体</li>
-                <li>参与公司项目中的Web前端功能设计、开发和实现。配合架构师与团队UI设计人员、后端开发人员等配合，高质量完成Web前端开发工作</li>
-                <li>在整个项目用到了模块化和组件化的思想，封装了很多组件，在报表模块，主要是使用了JqGrid，实现数据查询，以及冻结列，分组，分页。使用Bootstrap进行系统页面的布局，配合架构师进行插件的封装，以及复杂业务逻辑的实现</li>
+                <li>1.这个系统比较复杂，结合了进销存和财务两大系统于一体</li>
+                <li>2.参与公司项目中的Web前端功能设计、开发和实现。配合架构师与团队UI设计人员、后端开发人员等配合，高质量完成Web前端开发工作</li>
+                <li>3.在整个项目用到了模块化和组件化的思想，封装了很多组件，在报表模块，主要是使用了JqGrid，实现数据查询，以及冻结列，分组，分页。使用Bootstrap进行系统页面的布局，配合架构师进行插件的封装，以及复杂业务逻辑的实现</li>
             </ul>
         </div>
         <div class="slideBox">
             <div class="bd">
                 <ul>
-                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
-                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
-                    <li><img src="https://cdn.adquan.net/images/bigimg/bc5.png"></li>
+                    <li> <img src="../themes/lanmai/images/erp1.jpg"></li>
+                    <li> <img src="../themes/lanmai/images/erp2.jpg"></li>
                 </ul>
             </div>
         </div>
@@ -147,11 +148,11 @@
         <h1>校园生活剪影</h1>
         <div>
             <span>2012.09--至今<br>武汉大学测绘学院研究生篮球联赛/足球赛/排球赛</span>
-            <img src="../themes/lanmai/images/sports.jpg">
+            <img src="../themes/lanmai/images/bs.jpg">
         </div>
         <div>
             <span>2012.09--2014.09<br>武汉大学艺术文化协会周末艺苑副部长</span>
-            <img src="../themes/lanmai/images/sports.jpg">
+            <img src="../themes/lanmai/images/yixie.jpg">
         </div>
         <div>
             <span>2016.09--2017.06<br>武汉大学测绘学院1605党支部书记</span>
@@ -162,7 +163,13 @@
         </div>
     </div>
     <div class="section section10">
-       谢谢观看
+        <div class="title">
+            <span></span><h1>谢谢观看</h1><span></span>
+        </div>
+        <p> Front-end Web developer，我是肖萌，我拼我赢</p>
+        <div id="test" style="position:fixed;top:0px;z-index:99999;"></div>
+        <script src="/javascripts/sketch.min.js"></script>
+        <script src="/javascripts/mousefollow.js"></script>
     </div>
 </div>
 
@@ -210,6 +217,7 @@
 
         document.addEventListener('mousemove', threedee, false);
         jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",interTime:50,trigger:"click"});
+        jQuery(".picScroll-left").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:1});
     })();
 </script>
 </body>

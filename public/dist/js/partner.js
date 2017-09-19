@@ -35,8 +35,9 @@ $(document).ready(function(){
                 case 6:
 
                     break;
-                case 7:
-
+                case 10:
+                    move('.section10 h1').scale(2).end();
+                    move('.section10 p').set('margin-top','30px').end();
                     break;
                 default :
                     break;
@@ -74,8 +75,9 @@ $(document).ready(function(){
                     move('.section4 .jobs ul').set('margin-left','-1500px').end();
                     move('.section4 .jobs img').set('margin-right','-180px').end();
                     break;
-                case 7:
-
+                case 10:
+                    move('.section10 h1').scale(1).end();
+                    move('.section10 p').set('margin-top','800px').end();
                     break;
                 default :
                     break;
