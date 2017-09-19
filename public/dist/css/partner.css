@@ -274,7 +274,7 @@ a{
     float: right !important;
     width:540px;
     height:780px;
-    background-image: url("/themes/lanmai/images/iphone.png");
+    background-image: url("http://xmcy-1254086716.cossh.myqcloud.com/static/images/iphone.png");
     background-size: 100% 100%;
     overflow: hidden;
     margin: -600px 160px 0 0;
@@ -305,7 +305,7 @@ a{
 .section7>.slideBox{
     width: 650px;
     height: 385px;
-    background-image: url("/themes/lanmai/images/macBook.png");
+    background-image: url("http://xmcy-1254086716.cossh.myqcloud.com/static/images/macBook.png");
     background-size: 100% 100%;
     overflow: hidden;
 }
@@ -322,7 +322,7 @@ a{
 .section8>.slideBox{
     width: 650px;
     height: 385px;
-    background-image: url("/themes/lanmai/images/macBook.png");
+    background-image: url("http://xmcy-1254086716.cossh.myqcloud.com/static/images/macBook.png");
     background-size: 100% 100%;
     overflow: hidden;
 }

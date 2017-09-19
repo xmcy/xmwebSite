@@ -20,7 +20,7 @@
         <script src="/javascripts/mousefollow.js"></script>
     </div>
     <div class="section section2">
-        <img src="/themes/lanmai/images/xmphoto.jpg"/>
+        <img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/xmphoto.jpg"/>
         <h1>个人信息</h1>
         <div class="personalInfo">
             <span>姓名：肖萌</span><span>年龄：23岁</span>
@@ -32,7 +32,7 @@
     </div>
     <div class="section section3">
         <div class="imglist">
-            <img src="/themes/lanmai/images/computer.png">
+            <img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/computer.png">
             <span class="skills">Skills  List</span>
             <div class="list1">
                 <div class="imgone">HTML5</div>
@@ -66,7 +66,7 @@
                 <li>4. 后端负责写接口，以及路由设计，后台渲染等</li>
                 <li>5. 负责整个技术团队的项目进度管理，解决初中级工程师的技术问题</li>
             </ul>
-            <img src="../themes/lanmai/images/lanmai.jpg">
+            <img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/lanmai.jpg">
         </div>
     </div>
     <div class="section section5">
@@ -79,7 +79,7 @@
                 <li>3. 制定前端开发的规范，安排整个项目的前端开发进度计划</li>
                 <li>3. 给初级工程师分配工作任务，负责前端工程的难题，配合测试进行bug调试工作</li>
             </ul>
-            <img src="../themes/lanmai/images/zhixin.jpg">
+            <img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/zhixin.jpg">
         </div>
     </div>
     <div class="section section6">
@@ -96,10 +96,10 @@
         <div class="picScroll-left">
             <div class="bd">
                 <ul>
-                    <li><img src="../themes/lanmai/images/lanmai1.png"></li>
-                    <li><img src="../themes/lanmai/images/lanmai2.png"></li>
-                    <li><img src="../themes/lanmai/images/lanmai3.png"></li>
-                    <li><img src="../themes/lanmai/images/lanmai4.png"></li>
+                    <li><img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/lanmai1.png"></li>
+                    <li><img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/lanmai2.png"></li>
+                    <li><img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/lanmai3.png"></li>
+                    <li><img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/lanmai4.png"></li>
                 </ul>
             </div>
         </div>
@@ -118,7 +118,7 @@
         <div class="slideBox">
             <div class="bd">
                 <ul>
-                    <li><img src="../themes/lanmai/images/fengsugou.png"></li>
+                    <li><img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/fengsugou.png"></li>
                 </ul>
             </div>
         </div>
@@ -137,8 +137,8 @@
         <div class="slideBox">
             <div class="bd">
                 <ul>
-                    <li> <img src="../themes/lanmai/images/erp1.jpg"></li>
-                    <li> <img src="../themes/lanmai/images/erp2.jpg"></li>
+                    <li> <img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/erp1.jpg"></li>
+                    <li> <img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/erp2.jpg"></li>
                 </ul>
             </div>
         </div>
@@ -148,15 +148,15 @@
         <h1>校园生活剪影</h1>
         <div>
             <span>2012.09--至今<br>武汉大学测绘学院研究生篮球联赛/足球赛/排球赛</span>
-            <img src="../themes/lanmai/images/bs.jpg">
+            <img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/bs.jpg">
         </div>
         <div>
             <span>2012.09--2014.09<br>武汉大学艺术文化协会周末艺苑副部长</span>
-            <img src="../themes/lanmai/images/yixie.jpg">
+            <img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/yixie.jpg">
         </div>
         <div>
             <span>2016.09--2017.06<br>武汉大学测绘学院1605党支部书记</span>
-            <img src="../themes/lanmai/images/dangzhishu.jpg">
+            <img src="http://xmcy-1254086716.cossh.myqcloud.com/static/images/dangzhishu.jpg">
         </div>
         <div>
             <span>2016.09--2017.06<br>武汉大学测绘学院编程学校主讲老师</span>
@@ -216,9 +216,12 @@
         }
 
         document.addEventListener('mousemove', threedee, false);
+
+    })();
+    window.onload=function () {
         jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",interTime:50,trigger:"click"});
         jQuery(".picScroll-left").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:1});
-    })();
+    }
 </script>
 </body>
 </html>
