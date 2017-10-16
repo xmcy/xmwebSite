@@ -1535,9 +1535,7 @@ var returnUsersRouter = function(io) {
         siteFunc.renderToTargetPageByType(req, res, 'specificActivity', { title: '活动详情页', page: 'specificActivity' })
     })
 
-    router.get('/cityPartner', function(req, res, next) {
-        siteFunc.renderToTargetPageByType(req, res, 'cityPartner', { title: '城市合伙人', page: 'cityPartner' })
-    })
+ 
 
     router.get('/myCollect', function(req, res, next) {
         if (!isLogined(req)) {
