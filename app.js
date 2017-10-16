@@ -101,10 +101,10 @@ app.use(function (req, res, next) {
 //   siteFunc.setDataForSiteMap(req, res)
 // })
 
-// app.get('/robots.txt', function (req, res, next) {
-//   var stream = fs.createReadStream('./robots.txt', {flags: 'r'})
-//   stream.pipe(res)
-// })
+app.get('/robots.txt', function (req, res, next) {
+  var stream = fs.createReadStream('./robots.txt', {flags: 'r'})
+  stream.pipe(res)
+})
 
 // 事件监听
 app.io = io
