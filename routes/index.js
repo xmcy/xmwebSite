@@ -29,9 +29,11 @@ var cache = require('../util/cache')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.redirect('/users/cityPartner')
+    res.redirect('/selfIntroduce')
 })
-
+router.get('/selfIntroduce', function(req, res, next) {
+    siteFunc.renderToTargetPageByType(req, res, 'cityPartner', { title: '自我介绍', page: 'cityPartner' })
+})
 // 缓存站点地图
 router.get('/sitemap.html', function(req, res, next) {
     var siteMapNeedData
