@@ -965,7 +965,7 @@ var siteFunc = {
         }
       }else {
         res.writeHeader(200, {'Content-Type': 'text/javascript;charset=UTF-8'})
-        res.end('亲爱哒，请先在后台安装并启用模板喔~!')
+        res.end('检查数据库!')
       }
     })
   }
