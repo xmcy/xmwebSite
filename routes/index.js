@@ -35,25 +35,25 @@ router.get('/selfIntroduce', function(req, res, next) {
     siteFunc.renderToTargetPageByType(req, res, 'cityPartner', { title: '自我介绍', page: 'cityPartner' })
 })
 // 缓存站点地图
-router.get('/sitemap.html', function(req, res, next) {
-    var siteMapNeedData
-    cache.get(settings.session_secret + '_siteMapHtml', function(siteMapHtml) {
-        if (siteMapHtml) {
-            siteMapNeedData = siteMapHtml
-            siteFunc.renderToTargetPageByType(req, res, 'sitemap', { docs: siteMapNeedData })
-        } else {
-            Content.find({ 'type': 'content', 'state': true }, 'title', function(err, docs) {
-                if (err) {
-                    res.end(err)
-                } else {
-                    siteMapNeedData = docs
-                    cache.set(settings.session_secret + '_siteMapHtml', docs, 1000 * 60 * 60 * 24); // 缓存一天
-                    siteFunc.renderToTargetPageByType(req, res, 'sitemap', { docs: siteMapNeedData })
-                }
-            })
-        }
-    })
-})
+// router.get('/sitemap.html', function(req, res, next) {
+//     var siteMapNeedData
+//     cache.get(settings.session_secret + '_siteMapHtml', function(siteMapHtml) {
+//         if (siteMapHtml) {
+//             siteMapNeedData = siteMapHtml
+//             siteFunc.renderToTargetPageByType(req, res, 'sitemap', { docs: siteMapNeedData })
+//         } else {
+//             Content.find({ 'type': 'content', 'state': true }, 'title', function(err, docs) {
+//                 if (err) {
+//                     res.end(err)
+//                 } else {
+//                     siteMapNeedData = docs
+//                     cache.set(settings.session_secret + '_siteMapHtml', docs, 1000 * 60 * 60 * 24); // 缓存一天
+//                     siteFunc.renderToTargetPageByType(req, res, 'sitemap', { docs: siteMapNeedData })
+//                 }
+//             })
+//         }
+//     })
+// })
 
 // 文档详情页面
 router.get('/details/:url', function(req, res, next) {
