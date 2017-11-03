@@ -100,7 +100,7 @@ var tenderFunc = {
         var searchRecommendForFix = Install.findOne({ type: 'Install', where: 'hotsearch' })
 
         return {
-            title: "招投标发布-制作宝",
+            title: "招投标发布-幸福天地",
             searchRecommendForManufacture: searchRecommendForManufacture,
             searchRecommendForMaterial: searchRecommendForMaterial,
             searchRecommendForEquipment: searchRecommendForEquipment,
@@ -108,7 +108,7 @@ var tenderFunc = {
             searchRecommendForSearch: searchRecommendForSearch,
             searchRecommendForFix: searchRecommendForFix,
             ebookData: ebookData,
-            siteConfig: tenderFunc.siteInfos('制作宝'),
+            siteConfig: tenderFunc.siteInfos('幸福天地'),
             documentList: params.docs,
             cateList: tenderFunc.getCategoryList(),
             logined: req.session.logined,
@@ -127,10 +127,10 @@ var tenderFunc = {
                 }
             }
             res.render(targetPath,  {
-                title: "招投标发布-制作宝",
+                title: "招投标发布-幸福天地",
                 companyInfo:company,
                 isbind:isbind,
-                siteConfig: tenderFunc.siteInfos('制作宝'),
+                siteConfig: tenderFunc.siteInfos('幸福天地'),
                 documentList: params.docs,
                 cateList: tenderFunc.getCategoryList(),
                 logined: req.session.logined,
@@ -142,7 +142,7 @@ var tenderFunc = {
     setDataForShopAccount: function(req, res, params, staticforder, defaultTempPath) {
         var company = Company.findOne({ user: req.session.user._id })
         return {
-            siteConfig: tenderFunc.siteInfos('制作宝'),
+            siteConfig: tenderFunc.siteInfos('幸福天地'),
             documentList: params.docs,
             company: company,
             cateList: tenderFunc.getCategoryList(),
@@ -162,7 +162,7 @@ var tenderFunc = {
 
         Tender.findOne({ _id: req.query.id }).populate('categoryL1 categoryL2 blackList inviteList bidders chosenBidder company').exec(function(err, doc) {
             res.render(targetPath, {
-                title: "招投标发布-制作宝",
+                title: "招投标发布-幸福天地",
                 searchRecommendForManufacture: searchRecommendForManufacture,
                 searchRecommendForMaterial: searchRecommendForMaterial,
                 searchRecommendForEquipment: searchRecommendForEquipment,
@@ -172,7 +172,7 @@ var tenderFunc = {
                 ebookData: ebookData,
                 tenderInfo: doc,
                 moment: moment,
-                siteConfig: tenderFunc.siteInfos('制作宝'),
+                siteConfig: tenderFunc.siteInfos('幸福天地'),
                 documentList: params.docs,
                 cateList: tenderFunc.getCategoryList(),
                 logined: req.session.logined,
@@ -195,7 +195,7 @@ var tenderFunc = {
         var defaultsCount = Defaults.find({ user: req.session.user._id, createdAt: { $gte: moment().startOf('month') } }).count()
 
         return {
-            title: "招投标发布-制作宝",
+            title: "招投标发布-幸福天地",
             searchRecommendForManufacture: searchRecommendForManufacture,
             searchRecommendForMaterial: searchRecommendForMaterial,
             searchRecommendForEquipment: searchRecommendForEquipment,
@@ -205,7 +205,7 @@ var tenderFunc = {
             ebookData: ebookData,
             defaultsCount: defaultsCount,
             currentCateListForSecond: currentCateListForSecond,
-            siteConfig: tenderFunc.siteInfos('制作宝'),
+            siteConfig: tenderFunc.siteInfos('幸福天地'),
             documentList: params.docs,
             cateList: tenderFunc.getCategoryList(),
             logined: req.session.logined,
@@ -226,7 +226,7 @@ var tenderFunc = {
 
         var currentCateListForSecond = ContentCategory.find({ 'parentID': 'H124B2BCx', 'state': '1' })
         return {
-            title: "招投标搜索-制作宝",
+            title: "招投标搜索-幸福天地",
             searchRecommendForManufacture: searchRecommendForManufacture,
             searchRecommendForMaterial: searchRecommendForMaterial,
             searchRecommendForEquipment: searchRecommendForEquipment,
@@ -236,7 +236,7 @@ var tenderFunc = {
             ebookData: ebookData,
             companyList:companyList,
             currentCateListForSecond: currentCateListForSecond,
-            siteConfig: tenderFunc.siteInfos('制作宝'),
+            siteConfig: tenderFunc.siteInfos('幸福天地'),
             documentList: params.docs,
             cateList: tenderFunc.getCategoryList(),
             logined: req.session.logined,
@@ -309,7 +309,7 @@ var tenderFunc = {
                         }
                         if (doc.tenderType == 2) {
                             res.render(targetPath, {
-                                title: doc._doc.title + "-制作宝",
+                                title: doc._doc.title + "-幸福天地",
                                 searchRecommendForManufacture: searchRecommendForManufacture,
                                 searchRecommendForMaterial: searchRecommendForMaterial,
                                 searchRecommendForEquipment: searchRecommendForEquipment,
@@ -327,7 +327,7 @@ var tenderFunc = {
                                 companyIdentifyInfo: companyIdentifyInfo,
                                 tenderInfo: doc,
                                 moment: moment,
-                                siteConfig: tenderFunc.siteInfos('制作宝'),
+                                siteConfig: tenderFunc.siteInfos('幸福天地'),
                                 documentList: params.docs,
                                 cateList: tenderFunc.getCategoryList(),
                                 logined: req.session.logined,
@@ -337,7 +337,7 @@ var tenderFunc = {
 
                         } else {
                             res.render(targetPath, {
-                                title: doc._doc.title + "-制作宝",
+                                title: doc._doc.title + "-幸福天地",
                                 searchRecommendForManufacture: searchRecommendForManufacture,
                                 searchRecommendForMaterial: searchRecommendForMaterial,
                                 searchRecommendForEquipment: searchRecommendForEquipment,
@@ -355,7 +355,7 @@ var tenderFunc = {
                                 companyIdentifyInfo: companyIdentifyInfo,
                                 tenderInfo: doc,
                                 moment: moment,
-                                siteConfig: tenderFunc.siteInfos('制作宝'),
+                                siteConfig: tenderFunc.siteInfos('幸福天地'),
                                 documentList: params.docs,
                                 cateList: tenderFunc.getCategoryList(),
                                 logined: req.session.logined,

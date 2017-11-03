@@ -1,9 +1,9 @@
 ﻿[{
-	name:  '蓝迈网络制作宝', // 可以为中文或英文4-10个字符
+	name:  '蓝迈网络幸福天地', // 可以为中文或英文4-10个字符
     alias : 'lanmai', // 必须为4-10个字符的英文
     version : 'v1.0.0', // 照demo格式填写
     sImg: '/images/demo.jpg', // 指向disk目录下的images文件夹
     author: 'xiaomeng', // 作者名字4-10个字符
-    comment : '制作宝平台' //4-30个字符
+    comment : '幸福天地平台' //4-30个字符
 
 }]

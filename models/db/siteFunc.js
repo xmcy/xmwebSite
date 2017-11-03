@@ -263,8 +263,8 @@ var siteFunc = {
                 BrandPromotion.populate(aggrDocs, opts, function(err, companyList) {
                   var ebookData = Ebook.find({}).sort({createdAt:-1})
                   res.render(targetPath , {
-                    siteConfig: siteFunc.siteInfos('制作宝'),
-                    title: '制作宝 - 专业的广告制作服务平台',
+                    siteConfig: siteFunc.siteInfos('幸福天地'),
+                    title: '幸福天地 - 专业的广告制作服务平台',
                     documentList: params.docs,
                     ebookData: ebookData,
                     companyList: companyList,
@@ -309,7 +309,7 @@ var siteFunc = {
     var ebookData=Ebook.find({}).sort({createdAt:-1})
 
     return {
-      siteConfig: siteFunc.siteInfos('制作宝'),
+      siteConfig: siteFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       ebookData:ebookData,
       cateTypes: siteFunc.getCategoryList(),
@@ -322,7 +322,7 @@ var siteFunc = {
     var ebookData=Ebook.find({}).sort({createdAt:-1})
 
     return {
-      siteConfig: siteFunc.siteInfos('制作宝'),
+      siteConfig: siteFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       ebookData:ebookData,
       user:User.findOne({_id:req.session.user._id}),
@@ -336,10 +336,10 @@ var siteFunc = {
     var ebookData=Ebook.find({}).sort({createdAt:-1})
 
     return {
-      siteConfig: siteFunc.siteInfos('制作宝'),
+      siteConfig: siteFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       ebookData:ebookData,
-      title:'制作宝 - 欢迎您回来',
+      title:'幸福天地 - 欢迎您回来',
       cateTypes: siteFunc.getCategoryList(),
       logined: req.session.logined,
       staticforder: staticforder,
@@ -350,10 +350,10 @@ var siteFunc = {
     var ebookData=Ebook.find({}).sort({createdAt:-1})
 
     return {
-      siteConfig: siteFunc.siteInfos('制作宝'),
+      siteConfig: siteFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       ebookData:ebookData,
-      title:'制作宝 - 免费注册',
+      title:'幸福天地 - 免费注册',
       cateTypes: siteFunc.getCategoryList(),
       logined: req.session.logined,
       staticforder: staticforder,
@@ -364,10 +364,10 @@ var siteFunc = {
     var ebookData=Ebook.find({}).sort({createdAt:-1})
 
     return {
-      siteConfig: siteFunc.siteInfos('制作宝'),
+      siteConfig: siteFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       ebookData:ebookData,
-      title:' 忘记密码-制作宝 ',
+      title:' 忘记密码-幸福天地 ',
       cateTypes: siteFunc.getCategoryList(),
       logined: req.session.logined,
       staticforder: staticforder,
@@ -386,7 +386,7 @@ var siteFunc = {
           }
         }
         res.render(targetPath, {
-          siteConfig: siteFunc.siteInfos('制作宝'),
+          siteConfig: siteFunc.siteInfos('幸福天地'),
           documentList: params.docs,
           precisePromotion: newDocs,
           cateTypes: siteFunc.getCategoryList(),
@@ -397,7 +397,7 @@ var siteFunc = {
         })
       }else{
         res.render(targetPath, {
-          siteConfig: siteFunc.siteInfos('制作宝'),
+          siteConfig: siteFunc.siteInfos('幸福天地'),
           documentList: params.docs,
           precisePromotion: [],
           cateTypes: siteFunc.getCategoryList(),
@@ -417,7 +417,7 @@ var siteFunc = {
         isBrand=true
       }
       res.render(targetPath,  {
-        siteConfig: siteFunc.siteInfos('制作宝'),
+        siteConfig: siteFunc.siteInfos('幸福天地'),
         company: Company.findOne({user: req.session.user._id}),
         isBrand:isBrand,
         resCount: PubHistory.find({user: req.session.user._id, isDeleted: false, isShowing: true}).count(),
@@ -434,7 +434,7 @@ var siteFunc = {
 
   setDataForMyActivity: function (req, res, params , staticforder, defaultTempPath) {
     return {
-      siteConfig: siteFunc.siteInfos('制作宝'),
+      siteConfig: siteFunc.siteInfos('幸福天地'),
       inviteCode: InviteCode.findOne({user: req.session.user._id}),
       logined: req.session.logined,
       staticforder: staticforder,
@@ -444,7 +444,7 @@ var siteFunc = {
 
   setDataForMyOrders: function (req, res, params , staticforder, defaultTempPath) {
     return {
-      siteConfig: siteFunc.siteInfos('制作宝'),
+      siteConfig: siteFunc.siteInfos('幸福天地'),
       bills: Bill.find({user: req.session.user._id}, {billNum: 1, billName: 1, billType: 1, payType: 1, price: 1, billState: 1}).sort({createdAt:-1}),
       logined: req.session.logined,
       staticforder: staticforder,
@@ -517,7 +517,7 @@ var siteFunc = {
       cateTypes: this.getCategoryList(),
       errInfo: params.message,
       pageType: 'error',
-      title:'找不到页面-制作宝',
+      title:'找不到页面-幸福天地',
       logined: isLogined(req),
       staticforder: staticforder,
       layout: defaultTempPath
@@ -712,7 +712,7 @@ var siteFunc = {
                 infoCertificationManagement.companyIdentifystatus = companyIdentify.status
               }
               res.render(targetPath, {
-                siteConfig: siteFunc.siteInfos('制作宝'),
+                siteConfig: siteFunc.siteInfos('幸福天地'),
                 documentList: params.docs,
                 cateTypes: siteFunc.getCategoryList(),
                 infoCertificationManagement: infoCertificationManagement,
@@ -740,7 +740,7 @@ var siteFunc = {
           qqweichartBinding.qqBind = user.qqBind
           qqweichartBinding.wechatBind = user.wechatBind
           res.render(targetPath, {
-            siteConfig: siteFunc.siteInfos('制作宝'),
+            siteConfig: siteFunc.siteInfos('幸福天地'),
             documentList: params.docs,
             cateTypes: siteFunc.getCategoryList(),
             qqweichartBinding: qqweichartBinding,
@@ -764,7 +764,7 @@ var siteFunc = {
           res.end(err)
         }else {
           res.render(targetPath, {
-            siteConfig: siteFunc.siteInfos('制作宝'),
+            siteConfig: siteFunc.siteInfos('幸福天地'),
             documentList: params.docs,
             cateTypes: siteFunc.getCategoryList(),
             Identifying2Data: idCardIdentify,

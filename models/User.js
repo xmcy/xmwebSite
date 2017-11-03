@@ -20,7 +20,7 @@ var UserSchema = new Schema({
   qqBind: { type: Boolean, default: false },
   wechatId: String, // 微信快捷登陆
   aOpenId: String, // 网站应用微信openId
-  bOpenId: String, // 制作宝公众号应用微信openId
+  bOpenId: String, // 幸福天地公众号应用微信openId
   wechatBind: { type: Boolean, default: false },
 
   idCard: {}, // verified imgUrl

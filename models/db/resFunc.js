@@ -89,7 +89,7 @@ var resFunc = {
 
   setDataForHtmlSiteMap: function (req, res, params , staticforder, defaultTempPath) {
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       cateTypes: resFunc.getCategoryList(),
       logined: req.session.logined,
@@ -245,9 +245,9 @@ var resFunc = {
 
   setDataForResIndex: function (req, res, params , staticforder, defaultTempPath) {
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       cateList: resFunc.getCategoryList(),
-      title: '广告资源发布-制作宝',
+      title: '广告资源发布-幸福天地',
       logined: req.session.logined,
       staticforder: staticforder,
       layout: defaultTempPath
@@ -256,13 +256,13 @@ var resFunc = {
   setDataForDemandRelease: function (req, res, params , staticforder, defaultTempPath) {
     var DemandRelease = {}
     DemandRelease.isEdit = false
-    return {siteConfig: resFunc.siteInfos('制作宝'),
+    return {siteConfig: resFunc.siteInfos('幸福天地'),
       currentCateList: resFunc.getCategoryList(),
       hangyeleibie: PublishConfig.hangyeleibie,
       zuixiaozhouqi: PublishConfig.zuixiaozhouqi,
       dailifangshi: PublishConfig.dailifangshi,
       DemandRelease: DemandRelease,
-      title: '广告需求发布-制作宝',
+      title: '广告需求发布-幸福天地',
       logined: req.session.logined,
       staticforder: staticforder,
       layout: defaultTempPath
@@ -279,13 +279,13 @@ var resFunc = {
       } else {
         DemandRelease._doc.isEdit = true
         res.render(targetPath, {
-          siteConfig: resFunc.siteInfos('制作宝'),
+          siteConfig: resFunc.siteInfos('幸福天地'),
           currentCateList: resFunc.getCategoryList(),
           hangyeleibie: PublishConfig.hangyeleibie,
           zuixiaozhouqi: PublishConfig.zuixiaozhouqi,
           dailifangshi: PublishConfig.dailifangshi,
           DemandRelease: DemandRelease,
-          title: '广告需求发布编辑-制作宝',
+          title: '广告需求发布编辑-幸福天地',
           logined: req.session.logined,
           staticforder: staticforder,
           layout: defaultTempPath
@@ -296,7 +296,7 @@ var resFunc = {
   setDataForResourceMap: function (req, res, params , staticforder, defaultTempPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'sortId': 1})
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       cateList: resFunc.getCategoryList(),
       cateTypes: resFunc.getCategoryList(),
@@ -308,7 +308,7 @@ var resFunc = {
   setDataForResOut: function (req, res, params , staticforder, defaultTempPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'sortId': 1})
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       currentCateList: currentCateList,
       zhaoming: PublishConfig.zhaoming,
       zuixiaozhouqi: PublishConfig.zuixiaozhouqi,
@@ -326,11 +326,11 @@ var resFunc = {
         var material = {}
         material.isEdit = false
         res.render(targetPath, {
-          siteConfig: resFunc.siteInfos('制作宝'),
+          siteConfig: resFunc.siteInfos('幸福天地'),
           currentCateList: currentCateList,
           currentCateListForSecond: currentCateListForSecond,
           material: material,
-          title: '广告材料资源发布-制作宝',
+          title: '广告材料资源发布-幸福天地',
           cailiaopinpai: PublishConfig.cailiaopinpai,
           logined: req.session.logined,
           staticforder: staticforder,
@@ -347,12 +347,12 @@ var resFunc = {
         var equipment = {}
         equipment.isEdit = false
         res.render(targetPath, {
-          siteConfig: resFunc.siteInfos('制作宝'),
+          siteConfig: resFunc.siteInfos('幸福天地'),
           currentCateList: currentCateList,
           currentCateListForSecond: currentCateListForSecond,
           shebeipinpai: PublishConfig.shebeipinpai,
           equipment: equipment,
-          title: '广告设备资源发布-制作宝',
+          title: '广告设备资源发布-幸福天地',
           logined: req.session.logined,
           staticforder: staticforder,
           layout: defaultTempPath
@@ -363,7 +363,7 @@ var resFunc = {
   setDataForPaper: function (req, res, params , staticforder, defaultTempPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'sortId': 1})
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       currentCateList: currentCateList,
       baozhileixing: PublishConfig.baozhileixing,
       faxingzhouqi: PublishConfig.faxingzhouqi,
@@ -378,7 +378,7 @@ var resFunc = {
   setDataForMagazine: function (req, res, params , staticforder, defaultTempPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'sortId': 1})
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       currentCateList: currentCateList,
       zazhileixing: PublishConfig.zazhileixing,
       zazhiguanggaoxingshi: PublishConfig.zazhiguanggaoxingshi,
@@ -392,7 +392,7 @@ var resFunc = {
   setDataForTv: function (req, res, params , staticforder, defaultTempPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'sortId': 1})
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       currentCateList: currentCateList,
       dianshilanmuleibei: PublishConfig.dianshilanmuleibei,
       dianshiguanggaoxingshi: PublishConfig.dianshiguanggaoxingshi,
@@ -405,7 +405,7 @@ var resFunc = {
   setDataForRadio: function (req, res, params , staticforder, defaultTempPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'sortId': 1})
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       currentCateList: currentCateList,
       guangboleixing: PublishConfig.guangboleixing,
       guangboguanggaoxingshi: PublishConfig.guangboguanggaoxingshi,
@@ -424,9 +424,9 @@ var resFunc = {
         var manufacture = {}
         manufacture.isEdit = false
         res.render(targetPath, {
-          siteConfig: resFunc.siteInfos('制作宝'),
+          siteConfig: resFunc.siteInfos('幸福天地'),
           manufacture: manufacture,
-          title: '广告制作资源发布-制作宝',
+          title: '广告制作资源发布-幸福天地',
           currentCateList: currentCateList,
           currentCateListForSecond: currentCateListForSecond,
           logined: req.session.logined,
@@ -451,11 +451,11 @@ var resFunc = {
           ContentCategory.find({parentID: {$in: ids}, state: '1'}, function (err, currentCateList) {
             equipment._doc.isEdit = true
             res.render(targetPath, {
-              siteConfig: resFunc.siteInfos('制作宝'),
+              siteConfig: resFunc.siteInfos('幸福天地'),
               currentCateList: currentCateList,
               currentCateListForSecond: currentCateListForSecond,
               shebeipinpai: PublishConfig.shebeipinpai,
-              title: '广告设备资源发布编辑-制作宝',
+              title: '广告设备资源发布编辑-幸福天地',
               logined: req.session.logined,
               equipment: equipment,
               staticforder: staticforder,
@@ -481,9 +481,9 @@ var resFunc = {
           ContentCategory.find({parentID: {$in: ids}, state: '1'}, function (err, currentCateList) {
             material._doc.isEdit = true
             res.render(targetPath, {
-              siteConfig: resFunc.siteInfos('制作宝'),
+              siteConfig: resFunc.siteInfos('幸福天地'),
               currentCateList: currentCateList,
-              title: '广告材料资源发布编辑-制作宝',
+              title: '广告材料资源发布编辑-幸福天地',
               currentCateListForSecond: currentCateListForSecond,
               cailiaopinpai: PublishConfig.cailiaopinpai,
               material: material,
@@ -514,9 +514,9 @@ var resFunc = {
           ContentCategory.find({parentID: {$in: ids}, state: '1'}, function (err, currentCateList) {
             manufacture._doc.isEdit = true
             res.render(targetPath, {
-              siteConfig: resFunc.siteInfos('制作宝'),
+              siteConfig: resFunc.siteInfos('幸福天地'),
               manufacture: manufacture,
-              title: '广告制作资源发布编辑-制作宝',
+              title: '广告制作资源发布编辑-幸福天地',
               ebookData: ebookData,
               currentCateList: currentCateList,
               currentCateListForSecond: currentCateListForSecond,
@@ -553,7 +553,7 @@ var resFunc = {
         var companyIdentify = CompanyIdentify.findOne({user: material.user})
         var idCardIdentify = IdCardIdentify.findOne({user: material.user})
         var company = Company.findOne({user: material.user})
-        var title = material.title + '- 制作宝'
+        var title = material.title + '- 幸福天地'
         if (!material.promotionRegions || material.promotionRegions.length == 0 || !material.promotionEnd || material.promotionEnd <= new Date()) {
           material._doc.isPromotion = false
         }else {
@@ -562,7 +562,7 @@ var resFunc = {
         if (!req.session.logined) {
           material._doc.phoneNum = material.phoneNum.substring(0, 3) + '****' + material.phoneNum.substring(7, 11)
           res.render(targetPath, {
-            siteConfig: resFunc.siteInfos('制作宝'),
+            siteConfig: resFunc.siteInfos('幸福天地'),
             cateList: resFunc.getCategoryList(),
             logined: req.session.logined,
             searchRecommendForManufacture: searchRecommendForManufacture,
@@ -593,7 +593,7 @@ var resFunc = {
               material._doc.isCollect = false
             }
             res.render(targetPath, {
-              siteConfig: resFunc.siteInfos('制作宝'),
+              siteConfig: resFunc.siteInfos('幸福天地'),
               cateList: resFunc.getCategoryList(),
               logined: req.session.logined,
               promotionForMaterial:promotionForMaterial,
@@ -642,7 +642,7 @@ var resFunc = {
         var companyIdentify = CompanyIdentify.findOne({user: manufacture.user})
         var idCardIdentify = IdCardIdentify.findOne({user: manufacture.user})
         var company = Company.findOne({user: manufacture.user})
-        var title = manufacture.title + '- 制作宝'
+        var title = manufacture.title + '- 幸福天地'
         if (!manufacture.promotionRegions || manufacture.promotionRegions.length == 0 || !manufacture.promotionEnd || manufacture.promotionEnd <= new Date()) {
           manufacture._doc.isPromotion = false
         }else {
@@ -652,7 +652,7 @@ var resFunc = {
         if (!req.session.logined) {
           manufacture._doc.phoneNum = manufacture.phoneNum.substring(0, 3) + '****' + manufacture.phoneNum.substring(7, 11)
           res.render(targetPath, {
-            siteConfig: resFunc.siteInfos('制作宝'),
+            siteConfig: resFunc.siteInfos('幸福天地'),
             cateList: resFunc.getCategoryList(),
             logined: req.session.logined,
             company: company,
@@ -684,7 +684,7 @@ var resFunc = {
               manufacture._doc.isCollect = false
             }
             res.render(targetPath, {
-              siteConfig: resFunc.siteInfos('制作宝'),
+              siteConfig: resFunc.siteInfos('幸福天地'),
               cateList: resFunc.getCategoryList(),
               logined: req.session.logined,
               promotionForManufacture:promotionForManufacture,
@@ -733,7 +733,7 @@ var resFunc = {
         var companyIdentify = CompanyIdentify.findOne({user: equipment.user})
         var idCardIdentify = IdCardIdentify.findOne({user: equipment.user})
         var company = Company.findOne({user: equipment.user})
-        var title = equipment.title + '- 制作宝'
+        var title = equipment.title + '- 幸福天地'
 
         if (!equipment.promotionRegions || equipment.promotionRegions.length == 0 || !equipment.promotionEnd || equipment.promotionEnd <= new Date()) {
           equipment._doc.isPromotion = false
@@ -743,7 +743,7 @@ var resFunc = {
         if (!req.session.logined) {
           equipment._doc.phoneNum = equipment.phoneNum.substring(0, 3) + '****' + equipment.phoneNum.substring(7, 11)
           res.render(targetPath, {
-            siteConfig: resFunc.siteInfos('制作宝'),
+            siteConfig: resFunc.siteInfos('幸福天地'),
             cateList: resFunc.getCategoryList(),
             logined: req.session.logined,
             company: company,
@@ -774,7 +774,7 @@ var resFunc = {
               equipment._doc.isCollect = false
             }
             res.render(targetPath, {
-              siteConfig: resFunc.siteInfos('制作宝'),
+              siteConfig: resFunc.siteInfos('幸福天地'),
               cateList: resFunc.getCategoryList(),
               logined: req.session.logined,
               promotionForEquipment:promotionForEquipment,
@@ -821,12 +821,12 @@ var resFunc = {
       if (err) {
         res.end(err)
       } else if (!_.isEmpty(demands)) {
-        var title = demands.title + '- 制作宝'
+        var title = demands.title + '- 幸福天地'
         var company = Company.findOne({user: demands.user})
         if (!req.session.logined) {
           demands._doc.phoneNum = demands.phoneNum.substring(0, 3) + '****' + demands.phoneNum.substring(7, 11)
           res.render(targetPath, {
-            siteConfig: resFunc.siteInfos('制作宝'),
+            siteConfig: resFunc.siteInfos('幸福天地'),
             searchRecommendForManufacture: searchRecommendForManufacture,
             searchRecommendForMaterial: searchRecommendForMaterial,
             searchRecommendForEquipment: searchRecommendForEquipment,
@@ -855,7 +855,7 @@ var resFunc = {
               demands._doc.isCollect = false
             }
             res.render(targetPath, {
-              siteConfig: resFunc.siteInfos('制作宝'),
+              siteConfig: resFunc.siteInfos('幸福天地'),
               cateList: resFunc.getCategoryList(),
               logined: req.session.logined,
               searchRecommendForManufacture: searchRecommendForManufacture,
@@ -890,9 +890,9 @@ var resFunc = {
     var promotionForAll=PubHistory.aggregate([{ $match: {promotionEnd:{$gt:new Date()}} }, { $sample: { size: 6 } } ])
 
     res.render(targetPath, {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       ebookData: ebookData,
-      title: '广告需求- 需求搜索 - 制作宝',
+      title: '广告需求- 需求搜索 - 幸福天地',
       searchRecommendForManufacture: searchRecommendForManufacture,
       searchRecommendForMaterial: searchRecommendForMaterial,
       searchRecommendForEquipment: searchRecommendForEquipment,
@@ -921,9 +921,9 @@ var resFunc = {
     var promotionForAll=PubHistory.aggregate([{ $match: {promotionEnd:{$gt:new Date()}} }, { $sample: { size: 5 } } ])
 
     res.render(targetPath, {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       ebookData:ebookData,
-      title:'安装列表- 安装搜索 - 制作宝',
+      title:'安装列表- 安装搜索 - 幸福天地',
       searchRecommendForManufacture:searchRecommendForManufacture,
       searchRecommendForMaterial:searchRecommendForMaterial,
       searchRecommendForEquipment:searchRecommendForEquipment,
@@ -958,14 +958,14 @@ var resFunc = {
         var ids = _.pluck(docs, '_id')
         var currentCateList = ContentCategory.find({parentID: {$in: ids}, state: '1'}, {name: 1})
         res.render(targetPath, {
-          siteConfig: resFunc.siteInfos('制作宝'),
+          siteConfig: resFunc.siteInfos('幸福天地'),
           currentCateList: currentCateList,
           cateList: resFunc.getCategoryList(),
           typeThreeObj: typeThreeObj,
           promotionForMaterial:promotionForMaterial,
           ebookData: ebookData,
           companyList:companyList,
-          title: '广告材料- 资源搜索 - 制作宝',
+          title: '广告材料- 资源搜索 - 幸福天地',
           searchRecommendForManufacture: searchRecommendForManufacture,
           searchRecommendForMaterial: searchRecommendForMaterial,
           searchRecommendForEquipment: searchRecommendForEquipment,
@@ -982,7 +982,7 @@ var resFunc = {
       ContentCategory.findOne({homePage: typeThree}, function (err, typeThreeObj) {
         var currentCateList = ContentCategory.find({parentID: typeThreeObj._id, state: '1'}, {name: 1}).sort({'sortId': 1})
         res.render(targetPath, {
-          siteConfig: resFunc.siteInfos('制作宝'),
+          siteConfig: resFunc.siteInfos('幸福天地'),
           currentCateList: currentCateList,
           cateList: resFunc.getCategoryList(),
           typeThreeObj: typeThreeObj,
@@ -995,7 +995,7 @@ var resFunc = {
           searchRecommendForSearch: searchRecommendForSearch,
           searchRecommendForFix:searchRecommendForFix,
           ebookData: ebookData,
-          title: typeThreeObj.name + '- 资源搜索 - 制作宝',
+          title: typeThreeObj.name + '- 资源搜索 - 幸福天地',
           cailiaopinpai: PublishConfig.cailiaopinpai,
           logined: req.session.logined,
           staticforder: staticforder,
@@ -1022,12 +1022,12 @@ var resFunc = {
         var ids = _.pluck(docs, '_id')
         var currentCateList = ContentCategory.find({parentID: {$in: ids}, state: '1'}, {name: 1})
         res.render(targetPath, {
-          siteConfig: resFunc.siteInfos('制作宝'),
+          siteConfig: resFunc.siteInfos('幸福天地'),
           currentCateList: currentCateList,
           typeThreeObj: typeThreeObj,
           cateList: resFunc.getCategoryList(),
           promotionForEquipment:promotionForEquipment,
-          title: '广告设备- 资源搜索 - 制作宝',
+          title: '广告设备- 资源搜索 - 幸福天地',
           searchRecommendForManufacture: searchRecommendForManufacture,
           searchRecommendForMaterial: searchRecommendForMaterial,
           searchRecommendForEquipment: searchRecommendForEquipment,
@@ -1046,11 +1046,11 @@ var resFunc = {
       ContentCategory.findOne({homePage: typeThree}, function (err, typeThreeObj) {
         var currentCateList = ContentCategory.find({parentID: typeThreeObj._id, state: '1'}, {name: 1}).sort({'sortId': 1})
         res.render(targetPath, {
-          siteConfig: resFunc.siteInfos('制作宝'),
+          siteConfig: resFunc.siteInfos('幸福天地'),
           currentCateList: currentCateList,
           cateList: resFunc.getCategoryList(),
           typeThreeObj: typeThreeObj,
-          title: typeThreeObj.name + '- 资源搜索 - 制作宝',
+          title: typeThreeObj.name + '- 资源搜索 - 幸福天地',
           promotionForEquipment:promotionForEquipment,
           searchRecommendForManufacture: searchRecommendForManufacture,
           searchRecommendForMaterial: searchRecommendForMaterial,
@@ -1085,8 +1085,8 @@ var resFunc = {
         var ids = _.pluck(docs, '_id')
         var currentCateList = ContentCategory.find({parentID: {$in: ids}, state: '1'}, {name: 1})
         res.render(targetPath, {
-          siteConfig: resFunc.siteInfos('制作宝'),
-          title: '广告制作- 资源搜索 - 制作宝',
+          siteConfig: resFunc.siteInfos('幸福天地'),
+          title: '广告制作- 资源搜索 - 幸福天地',
           currentCateList: currentCateList,
           typeThreeObj: typeThreeObj,
           promotionForManufacture:promotionForManufacture,
@@ -1108,10 +1108,10 @@ var resFunc = {
       ContentCategory.findOne({homePage: typeThree}, function (err, typeThreeObj) {
         var currentCateList = ContentCategory.find({parentID: typeThreeObj._id, state: '1'}, {name: 1}).sort({'sortId': 1})
         res.render(targetPath, {
-          siteConfig: resFunc.siteInfos('制作宝'),
+          siteConfig: resFunc.siteInfos('幸福天地'),
           currentCateList: currentCateList,
           typeThreeObj: typeThreeObj,
-          title: typeThreeObj.name + '- 资源搜索 - 制作宝',
+          title: typeThreeObj.name + '- 资源搜索 - 幸福天地',
           promotionForManufacture:promotionForManufacture,
           searchRecommendForManufacture: searchRecommendForManufacture,
           searchRecommendForMaterial: searchRecommendForMaterial,
@@ -1142,8 +1142,8 @@ var resFunc = {
     var promotionForAll=PubHistory.aggregate([{ $match: {promotionEnd:{$gt:new Date()}} }, { $sample: { size: 9 } } ])
 
     res.render(targetPath, {
-          siteConfig: resFunc.siteInfos('制作宝'),
-          title: '广告制作- 资源搜索 - 制作宝',
+          siteConfig: resFunc.siteInfos('幸福天地'),
+          title: '广告制作- 资源搜索 - 幸福天地',
           searchRecommendForManufacture: searchRecommendForManufacture,
           companyList:companyList,
           searchRecommendForMaterial: searchRecommendForMaterial,
@@ -1163,9 +1163,9 @@ var resFunc = {
   setDataForDigitalMagazine: function (req, res, params , staticforder, defaultTempPath, targetPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'createdAt': -1})
     var ebookData = Ebook.find({}).sort({createdAt:-1})
-    var title = '数字期刊- 制作宝'
+    var title = '数字期刊- 幸福天地'
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       title: title,
       EbookList:Ebook.find({}).sort({createdAt:-1}),
@@ -1180,9 +1180,9 @@ var resFunc = {
   setDataFornewslist: function (req, res, params , staticforder, defaultTempPath, targetPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'createdAt': -1})
     var ebookData = Ebook.find({}).sort({createdAt:-1})
-    var title = '文章头条列表- 制作宝'
+    var title = '文章头条列表- 幸福天地'
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       title: title,
       ebookData: ebookData,
@@ -1196,9 +1196,9 @@ var resFunc = {
   setDataForreportslist: function (req, res, params , staticforder, defaultTempPath, targetPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'createdAt': -1})
     var ebookData = Ebook.find({}).sort({createdAt:-1})
-    var title = '媒体报道列表- 制作宝'
+    var title = '媒体报道列表- 幸福天地'
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       title: title,
       ebookData: ebookData,
@@ -1211,11 +1211,11 @@ var resFunc = {
   setDataForArticle: function (req, res, params , staticforder, defaultTempPath, targetPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'createdAt': -1})
     var ebookData = Ebook.find({}).sort({createdAt:-1})
-    var title = '文章头条- 制作宝'
+    var title = '文章头条- 幸福天地'
     if(req.query.id){
       var articleDetail=Content.findOne({contentNum:req.query.id})
       return {
-        siteConfig: resFunc.siteInfos('制作宝'),
+        siteConfig: resFunc.siteInfos('幸福天地'),
         documentList: params.docs,
         title: title,
         ebookData: ebookData,
@@ -1243,9 +1243,9 @@ var resFunc = {
     var ebookData=Ebook.find({}).sort({createdAt:-1})
 
     res.render(targetPath, {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       ebookData:ebookData,
-      title:'发布安装 - 制作宝',
+      title:'发布安装 - 幸福天地',
       searchRecommendForManufacture:searchRecommendForManufacture,
       searchRecommendForFix:searchRecommendForFix,
       searchRecommendForMaterial:searchRecommendForMaterial,
@@ -1274,9 +1274,9 @@ var resFunc = {
     var companyList=BrandPromotion.aggregate([{ $match: {promotionEnd:{$gt:new Date()}} }, { $sample: { size: 16 } } ])
 
     res.render(targetPath, {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       ebookData:ebookData,
-      title:'安装修改 - 制作宝',
+      title:'安装修改 - 幸福天地',
       companyList:companyList,
       myInstallList01:myInstallList01,
       searchRecommendForManufacture:searchRecommendForManufacture,
@@ -1297,10 +1297,10 @@ var resFunc = {
   setDataForBrandWin: function (req, res, params , staticforder, defaultTempPath, targetPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'sortId': 1})
     var ebookData = Ebook.find({}).sort({createdAt:-1})
-    var title = '品牌推广- 制作宝'
+    var title = '品牌推广- 幸福天地'
     if (req.session.logined) {
       return {
-        siteConfig: resFunc.siteInfos('制作宝'),
+        siteConfig: resFunc.siteInfos('幸福天地'),
         documentList: params.docs,
         cateTypes: resFunc.getCategoryList(),
         ebookData: ebookData,
@@ -1312,7 +1312,7 @@ var resFunc = {
       }
     }else {
       return {
-        siteConfig: resFunc.siteInfos('制作宝'),
+        siteConfig: resFunc.siteInfos('幸福天地'),
         documentList: params.docs,
         cateTypes: resFunc.getCategoryList(),
         ebookData: ebookData,
@@ -1327,9 +1327,9 @@ var resFunc = {
   setDataForVr: function (req, res, params , staticforder, defaultTempPath, targetPath) {
     var currentCateList = ContentCategory.find({parentID: req.query.parentID, state: '1'}).sort({'sortId': 1})
     var ebookData = Ebook.find({}).sort({createdAt:-1})
-    var title = 'vr展馆- 制作宝'
+    var title = 'vr展馆- 幸福天地'
     return {
-      siteConfig: resFunc.siteInfos('制作宝'),
+      siteConfig: resFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       ebookData: ebookData,
       cateTypes: resFunc.getCategoryList(),

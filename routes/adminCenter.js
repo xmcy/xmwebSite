@@ -1940,7 +1940,7 @@ router.post('/manage/transferCash', function(req, res, next) {
                                             out_biz_no: moment().format('YYYYMMDDHHmmss') + _.random(1000, 9999), // 商户转账唯一订单号
                                             payee_account: payTypeNum, // 支付宝账号
                                             remark:"招标定金尾款提现",
-                                            payer_show_name:"制作宝",
+                                            payer_show_name:"幸福天地",
                                             // amount: 0.1 // 转账金额 最少0.1
                                             amount: (price*0.97).toFixed(2) // 转账金额 最少0.1
                                         }
@@ -2274,7 +2274,7 @@ router.post('/manage/agreeToSolute', function(req, res, next) {
                                                                                         out_biz_no: moment().format('YYYYMMDDHHmmss') + _.random(1000, 9999), // 商户转账唯一订单号
                                                                                         payee_account: alipayAccount, // 支付宝账号
                                                                                         remark:"招标定金尾款",
-                                                                                        payer_show_name:"制作宝",
+                                                                                        payer_show_name:"幸福天地",
                                                                                         // amount: 0.1 // 转账金额 最少0.1
                                                                                         amount: ((tender.downpayment+tender.deposit)*0.97).toFixed(2) // 转账金额 最少0.1
                                                                                     }
@@ -2388,7 +2388,7 @@ router.post('/manage/agreeToSolute', function(req, res, next) {
                                                                                         out_biz_no: moment().format('YYYYMMDDHHmmss') + _.random(1000, 9999), // 商户转账唯一订单号
                                                                                         payee_account: alipayAccount, // 支付宝账号
                                                                                         remark:"招标定金尾款",
-                                                                                        payer_show_name:"制作宝",
+                                                                                        payer_show_name:"幸福天地",
                                                                                         // amount: 0.1 // 转账金额 最少0.1
                                                                                         amount: ((tender.downpayment+finalpayment)*0.97).toFixed(2) // 转账金额 最少0.1
                                                                                     }
@@ -2446,7 +2446,7 @@ router.post('/manage/agreeToSolute', function(req, res, next) {
                                                                     out_biz_no: moment().format('YYYYMMDDHHmmss') + _.random(1000, 9999), // 商户转账唯一订单号
                                                                     payee_account: alipayAccount, // 支付宝账号
                                                                     remark:"招标定金尾款",
-                                                                    payer_show_name:"制作宝",
+                                                                    payer_show_name:"幸福天地",
                                                                     // amount: 0.1 // 转账金额 最少0.1
                                                                     amount: ((tender.downpayment)*0.97).toFixed(2), // 转账金额 最少0.1
                                                                 }

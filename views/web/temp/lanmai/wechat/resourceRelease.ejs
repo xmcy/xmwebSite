@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>幸福天地-资源发布</title>
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/weui.min.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/myStyle.css">
+    <link rel="stylesheet" href="/themes/<%=staticforder%>/css/common.css">
+    <link href="/plugins/sweetalert/sweetalert.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <link href="/plugins/citypicker/css/city-picker.css?vesion=<%=siteConfig.version%>" rel="stylesheet">
+    <!--引入 WeUI -->
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/0.4.0/weui.min.css">
+
+<style>
+    *{
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .warpper{
+        padding-top: 0.63957rem;
+    }
+    .warpper>.releaseIcon{
+        width:2.76rem;
+        height: .55597rem;
+        background: url("/themes/lanmai/images/release.png") -1.898rem -2.9451rem;
+        margin-bottom: .93283rem;
+        margin-left: .3198rem;
+        background-size: 6.6631rem 6.6631rem;
+    }
+    .releaseContent{
+        width: 6.84968rem;
+        height: auto;
+        margin: 0 auto;
+    }
+    .releaseContent>div{
+        display: block;
+        min-height:.53305rem;
+        width: 6.85rem;
+        margin-bottom: 0.66631rem;
+        font-size: 0;
+    }
+    .releaseContent>div>span{
+        float: left;
+        height: .53305rem;
+        width: 2.05rem;
+        font-size: 12px;
+    }
+    .releaseContent>div>span>span{
+        float: left;
+        height:.53305rem;
+        line-height: .53305rem;
+        font-size: 12px;
+    }
+    .optionIcon{
+        font-size: .81983rem !important;
+        color: #da2f2f;
+        padding: .15rem .1rem 0 0;
+    }
+    .releaseContent>div>input{
+        width: 4.79rem;
+        height: .53305rem;
+        border: 1px solid #b5b5b5;
+        padding-left: .2rem;
+        font-size: 12px;
+        outline: 0;
+    }
+    input::-webkit-input-placeholder{
+        font-size: 10px;
+    }
+    input::-moz-placeholder{
+        font-size: 10px;
+    }
+    input:-moz-placeholder{
+        font-size: 10px;
+    }
+    input:-ms-input-placeholder{
+        font-size: 10px;
+    }
+    textarea{
+        width: 4.79rem;
+        height:3.19829rem;
+        border: 1px solid #b5b5b5;
+        font-size: 12px;
+        padding: .1rem;
+    }
+    select{
+        width: 4.79rem;
+        height: .53305rem;
+        border: 1px solid #b5b5b5;
+        font-size: 12px;
+        color: grey;
+    }
+    p{
+        display: block;
+        margin-top: .31982rem;
+        font-size: 10px;
+        color: #b5b5b5;
+        text-align: right;
+    }
+    .serviceArea{
+        position: relative;
+    }
+    .serviceArea .city-picker-span{
+        float: left;
+    }
+    .serviceArea .city-picker-dropdown{
+        width: 100% !important;
+        top:54% !important;
+    }
+    .relative{
+        position: relative;
+    }
+    .submit{
+        float: right;
+        font-size: 12px;
+        width: 2.6851rem;
+        text-align: center;
+        height: 0.73294rem;
+        line-height:0.73294rem;
+        text-align: center;
+        background-color: #da2f2f;
+        color: #fff;
+        border-radius: 2px;
+        margin-top:.5rem;
+        margin-bottom: .5rem;
+    }
+    .uploadImg{
+        position: absolute;
+        left:2.05rem ;
+        width: 4.237rem;
+        height: 2.478rem;
+    }
+    .uploadInput{
+        width: 4.237rem !important;
+        height: 2.478rem !important;
+        padding-left: 0 !important;
+        z-index: 999;
+    }
+    .re_machine_fix{
+        width: .26rem;
+        float: left;
+        margin: .05rem .05rem 0 0;
+    }
+    label{
+        float: left;
+        width: auto;
+        margin-right: .3rem;
+        height: .53305rem;
+        font-size: 12px;
+    }
+    #imgContainer{
+        display: none;
+        width: 100%;
+        min-height: 2.5rem;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+    #imgContainer>div{
+        width: 49%;
+        float: left;
+        height: 2.2rem;
+    }
+    #imgContainer>div>img{
+        height: 100%;
+        width: 100%;
+    }
+    .contentshow{
+        height: auto;
+        font-size: 13px;
+    }
+    .contentlist{
+        width: 100%;
+        height: auto;
+        margin-top: 0.39978678rem;
+    }
+    .contentlist>div{
+        display: inline-block;
+        margin-bottom: 0.26652452rem;
+        position: relative;
+    }
+    .contentlist>div>img{
+        width: 4.25788912rem;
+        height: 2.39872068rem;
+    }
+    .bannerimg{
+        width: 1.978949rem !important;
+        height: 1.699rem !important;
+    }
+    .contentlist .fileInput{
+        overflow: hidden;
+        font-size: 300px;
+        position: absolute;
+        right: 0px;
+        top: -40px;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        cursor: pointer;
+        width: 200px;
+        height: 115px;
+
+    }
+    .contentlist .addfileInput{
+        width: 4.25788912rem;
+        height: 2.39872068rem;
+        overflow: hidden;
+        font-size: 300px;
+        position:absolute;
+        right:0;
+        top:0;
+        opacity: 0;
+        filter:alpha(opacity=0);
+        cursor:pointer;
+    }
+    .contentlist>div>.deleteIcon{
+        width:0.33315565rem;
+        height: 0.33315565rem;
+        position: absolute;
+        right: 0;
+        top: -5px;
+        opacity: 1;
+        /*background:url("/themes/lanmai/images/timg.jpg") -20px -20px;*/
+    }
+    .contentlist>div>.deleteIcon>a{
+        width: 0.33315565rem;
+        height: 0.33315565rem;
+        display: block;
+        color: red;
+        font-size: 20px;
+    }
+    .contentlist>div>.relevant{
+        width: 100%;
+        height: 20px;
+    }
+    .contentlist>div>.relevant>span{
+        float: right;
+        padding-top: 1px;
+    }
+    .contentlist .dropdown>button{
+        background-color: #fff;
+        color: rgb(112,112,112);
+        width:100px;
+        border-radius:0 ;
+        font-size: 13px;
+        float: left;
+        border: 1px solid gainsboro;
+    }
+    .contentlist .dropdown{
+        float: left;
+    }
+    .contentlist .btn{
+        font-size: 12px;
+        padding-top: 1px;
+        padding-left: 1px;
+        padding-bottom: 1px;
+        border-radius: 0;
+        outline: none;
+    }
+    .contentlist .dropdown, .dropup,.contentlist .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+        width: 100px;
+    }
+    .contentlist .handle{
+        width: 300px;
+        margin: 0 auto;
+    }
+    .contentlist .handle>button{
+        width: 120px;
+        height: 30px;
+        background-color: #da2f2f;
+        border: 1px solid  #da2f2f;
+        margin: 100px 28px 80px 0;
+    }
+    .tip{
+        position: absolute;
+        top:225px;
+        left: 150px;
+        color: red;
+        display: none;
+    }
+    .left1{
+        margin-right:.304rem;
+    }
+</style>
+</head>
+<body ontouchstart>
+     <div class="warpper">
+           <div class="releaseIcon"></div>
+         <%if(!resourceDetail.isEdit){%>
+         <div class="releaseContent">
+             <div class="serviceArea">
+                 <span><span class="optionIcon">*</span><span>服务地区</span></span>
+                 <input class="ICanFixArea" readonly type="text" data-toggle="city-picker" value="<%=resourceDetail.region.province%>/<%=resourceDetail.region.city%>/<%=resourceDetail.region.district%>">
+             </div>
+             <div>
+                 <span><span class="optionIcon">*</span><span>标  题</span></span>
+                 <input class="Title" placeholder="请输入标题（10--50个文字）" value="<%=resourceDetail.title%>"/>
+                 <p>适当添加相应的关键字，便于需求方精准搜索资源</p>
+             </div>
+             <div>
+                 <span><span class="optionIcon">*</span><span>资源大类</span></span>
+                 <select class="resourceType" value="<%=resourceDetail.categoryL1%>">
+                     <option>请选择</option>
+                     <%if(resourceDetail.categoryL1._id=="H124B2BCx"){%>
+                     <option value="H124B2BCx" selected="selected">广告制作</option>
+                     <option value="HyD8BhH0x">广告材料</option>
+                     <option value="BJJ_r2BRg">广告设备</option>
+                     <%}else if(resourceDetail.categoryL1._id=="HyD8BhH0x"){%>
+                     <option value="H124B2BCx">广告制作</option>
+                     <option value="HyD8BhH0x" selected="selected">广告材料</option>
+                     <option value="BJJ_r2BRg">广告设备</option>
+                     <%}else if(resourceDetail.categoryL1._id=="BJJ_r2BRg"){%>
+                     <option value="H124B2BCx">广告制作</option>
+                     <option value="HyD8BhH0x">广告材料</option>
+                     <option value="BJJ_r2BRg" selected="selected">广告设备</option>
+                     <%}%>
+                 </select>
+             </div>
+             <div>
+                 <span><span class="optionIcon">*</span><span>一级分类</span></span>
+                 <select class="firstClass">
+                     <option value="<%=resourceDetail.categoryL2._id%>" selected="selected"><%=resourceDetail.categoryL2.name%></option>
+                 </select>
+             </div>
+             <div>
+                 <span><span class="optionIcon">*</span><span>二级分类</span></span>
+                 <select class="secondClass">
+                     <option value="<%=resourceDetail.categoryL3._id%>" selected="selected"><%=resourceDetail.categoryL3.name%></option>
+                 </select>
+             </div>
+             <div>  <span><span class="optionIcon">*</span><span>运费支付</span></span>
+                 <form>
+                     <%if(resourceDetail.freightType=="卖家支付"){%>
+                     <input class="re_machine_fix" type="radio" name="freightType" id="bosspay" checked value="卖家支付"> <label for="bosspay" class="change_style">卖家支付</label>
+                     <input class="re_machine_fix" type="radio" name="freightType" id="buyerpay"  value="买家支付"> <label for="buyerpay" class="change_style">买家支付</label>
+                     <%}else if(resourceDetail.freightType=="买家支付"){%>
+                     <input class="re_machine_fix" type="radio" name="freightType" id="bosspay"  value="卖家支付"> <label for="bosspay" class="change_style">卖家支付</label>
+                     <input class="re_machine_fix" type="radio" name="freightType" id="buyerpay"  checked value="买家支付"> <label for="buyerpay" class="change_style">买家支付</label>
+                     <%}%>
+                 </form>
+             </div>
+             <div>  <span><span class="optionIcon">*</span><span>安 装</span></span>
+                 <form>
+                     <%if(resourceDetail.installType=="免费安装"){%>
+                     <input class="re_machine_fix" type="radio" name="installType" id="freeinstall" checked value="免费安装"> <label for="freeinstall" class="change_style">免费</label>
+                     <input class="re_machine_fix" type="radio" name="installType"  id="payinstall" value="付费安装"> <label for="payinstall" class="change_style">付费</label>
+                     <input class="re_machine_fix" type="radio" name="installType" id="noinstall"  value="不包安装"> <label for="noinstall" class="change_style">无安装</label>
+                     <%}else if(resourceDetail.installType=="付费安装"){%>
+                     <input class="re_machine_fix" type="radio" name="installType" id="freeinstall"  value="免费安装"> <label for="freeinstall" class="change_style">免费</label>
+                     <input class="re_machine_fix" type="radio" name="installType"  id="payinstall" checked value="付费安装"> <label for="payinstall" class="change_style">付费</label>
+                     <input class="re_machine_fix" type="radio" name="installType" id="noinstall"  value="不包安装"> <label for="noinstall" class="change_style">无安装</label>
+                     <%}else if(resourceDetail.installType=="不包安装"){%>
+                     <input class="re_machine_fix" type="radio" name="installType" id="freeinstall"  value="免费安装"> <label for="freeinstall" class="change_style">免费</label>
+                     <input class="re_machine_fix" type="radio" name="installType"  id="payinstall" value="付费安装"> <label for="payinstall" class="change_style">付费</label>
+                     <input class="re_machine_fix" type="radio" name="installType" id="noinstall" checked  value="不包安装"> <label for="noinstall" class="change_style">无安装</label>
+                     <%}%>
+
+                 </form>
+             </div>
+             <div>
+                 <span><span class="optionIcon"></span><span>原  价（元）</span></span>
+                 <input class="oriPrice" placeholder="选填" value="<%=resourceDetail.originalPrice%>"/>
+             </div>
+             <div>
+                 <span><span class="optionIcon"></span><span>折扣价（元）</span></span>
+                 <input class="disccont" placeholder="选填" <%=resourceDetail.discountPrice%>/>
+             </div>
+             <div class="relative">
+                 <span><span class="optionIcon">*</span><span>上传图片</span></span>
+                 <!--<img class="uploadImg" src="/themes/lanmai/images/w_upload.png"/>-->
+
+                 <div class="contentlist " id="bannercontentlist">
+                     <div class="bannercontent">
+                         <img src="/themes/lanmai/images/addfileb.png"/>
+                         <input class="addfileInput banneraddfile" id="" type="file" multiple="multiple" name="">
+                     </div>
+                     <%if(resourceDetail.images!==[]){for(var i=0;i<resourceDetail.images.length;i++){%>
+                     <div class="bannercontent left1">
+                         <img class="shopimg bannerimg " src="<%=resourceDetail.images[i]%>"/>
+                         <div class="deleteIcon"><a>×</a></div>
+                     </div>
+                     <%}}%>
+                 </div>
+                 <p>（系统默认首张图片为信息封面最多上传10张图片，<br>每张不超过10MZ支持jpg/png格式）</p>
+
+                 <!--<p class="picGet">(系统默认首张图片作为信息封面，最多上传10张图片，每张大小不超过10M，支持JPG、PNG格式）</p>-->
+             </div>
+             <div id="imgContainer">
+             </div>
+             <div>
+                 <span><span class="optionIcon">*</span><span>联系人</span></span>
+                 <input class="contactor" placeholder="请输入联系人姓名" value="<%=resourceDetail.contacts%>"/>
+             </div>
+             <div>
+                 <span><span class="optionIcon">*</span><span>联系方式</span></span>
+                 <input class="phone" placeholder="请输入联系方式" value="<%=resourceDetail.phoneNum%>"/>
+             </div>
+             <div>
+                 <span><span class="optionIcon">*</span><span>详细信息</span></span>
+                 <textarea class="discription" placeholder=" 20--500个文字"><%-resourceDetail.details%></textarea>
+             </div>
+             <span class="submit">确认发布</span>
+         </div>
+         <%}else {%>
+           <div class="releaseContent">
+               <div class="serviceArea">
+                   <span><span class="optionIcon">*</span><span>服务地区</span></span>
+                   <input class="ICanFixArea" readonly type="text" data-toggle="city-picker" >
+               </div>
+               <div>
+                   <span><span class="optionIcon">*</span><span>标  题</span></span>
+                   <input class="Title" placeholder="请输入标题（10--50个文字）"/>
+                   <p>适当添加相应的关键字，便于需求方精准搜索资源</p>
+               </div>
+               <div>
+                   <span><span class="optionIcon">*</span><span>资源大类</span></span>
+                  <select class="resourceType">
+                      <option>请选择</option>
+                      <option value="H124B2BCx">广告制作</option>
+                      <option value="HyD8BhH0x">广告材料</option>
+                      <option value="BJJ_r2BRg">广告设备</option>
+                  </select>
+               </div>
+               <div>
+                   <span><span class="optionIcon">*</span><span>一级分类</span></span>
+                   <select class="firstClass">
+                       <option>请选择</option>
+                   </select>
+               </div>
+               <div>
+                   <span><span class="optionIcon">*</span><span>二级分类</span></span>
+                   <select class="secondClass">
+                       <option>请选择</option>
+                   </select>
+               </div>
+               <div>  <span><span class="optionIcon">*</span><span>运费支付</span></span>
+                   <form>
+                       <input class="re_machine_fix" type="radio" name="freightType" id="bosspay" checked value="卖家支付"> <label for="bosspay" class="change_style">卖家支付</label>
+                       <input class="re_machine_fix" type="radio" name="freightType" id="buyerpay"  value="买家支付"> <label for="buyerpay" class="change_style">买家支付</label>
+                   </form>
+               </div>
+               <div>  <span><span class="optionIcon">*</span><span>安 装</span></span>
+                   <form>
+                       <input class="re_machine_fix" type="radio" name="installType" id="freeinstall" checked value="免费安装"> <label for="freeinstall" class="change_style">免费</label>
+                       <input class="re_machine_fix" type="radio" name="installType"  id="payinstall" value="付费安装"> <label for="payinstall" class="change_style">付费</label>
+                       <input class="re_machine_fix" type="radio" name="installType" id="noinstall"  value="不包安装"> <label for="noinstall" class="change_style">无安装</label>
+                   </form>
+               </div>
+               <div>
+                   <span><span class="optionIcon"></span><span>原  价（元）</span></span>
+                   <input class="oriPrice" placeholder="选填"/>
+               </div>
+               <div>
+                   <span><span class="optionIcon"></span><span>折扣价（元）</span></span>
+                   <input class="disccont" placeholder="选填"/>
+               </div>
+               <div class="relative">
+                   <span><span class="optionIcon">*</span><span>上传图片</span></span>
+                   <!--<img class="uploadImg" src="/themes/lanmai/images/w_upload.png"/>-->
+
+                   <div class="contentlist " id="bannercontentlist">
+                       <div class="bannercontent">
+                           <img src="/themes/lanmai/images/addfileb.png"/>
+                           <input class="addfileInput banneraddfile" id="" type="file" multiple="multiple" name="">
+                       </div>
+                   </div>
+                   <p>（系统默认首张图片为信息封面最多上传10张图片，<br>每张不超过10MZ支持jpg/png格式）</p>
+
+                   <!--<p class="picGet">(系统默认首张图片作为信息封面，最多上传10张图片，每张大小不超过10M，支持JPG、PNG格式）</p>-->
+               </div>
+                 <div id="imgContainer">
+                 </div>
+               <div>
+                    <span><span class="optionIcon">*</span><span>联系人</span></span>
+                     <input class="contactor" placeholder="请输入联系人姓名"/>
+                 </div>
+                 <div>
+                     <span><span class="optionIcon">*</span><span>联系方式</span></span>
+                     <input class="phone" placeholder="请输入联系方式"/>
+                 </div>
+               <div>
+                   <span><span class="optionIcon">*</span><span>详细信息</span></span>
+                   <textarea class="discription" placeholder=" 20--500个文字"></textarea>
+
+               </div>
+               <span class="submit">确认发布</span>
+             </div>
+         <%}%>
+         <input type="hidden" value="<%=userInfo._id%>" id="idForUser">
+     </div>
+     <script src="https://cdn.adquan.net/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+     <script src="https://cdn.adquan.net/static/js/rem.js" type="text/javascript"></script>
+     <script src="/themes/<%=staticforder%>/js/cos-js-sdk-v4.js?vesion=<%=siteConfig.version%>"></script>
+     <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+     <script src="/plugins/sweetalert/sweetalert.min.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+     <script src="https://cdn.adquan.net/static/js/moment.min.js" type="text/javascript"></script>
+     <script src="https://cdn.adquan.net/static/js/city-picker.data.js" type="text/javascript"></script>
+     <script src="/plugins/citypicker/city-picker.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+     <script src="/themes/<%=staticforder%>/js/tool.js?vesion=<%=siteConfig.version%>" type="text/javascript"></script>
+     <script src="/themes/<%=staticforder%>/js/weui.min.js"></script>
+<script>
+    $(function () {
+        var images=[]
+        var str="";
+        var listitem;
+        var deleteIcon=$(".deleteIcon");
+        var bannerimgcount=$(".bannerimg").length;
+
+        $(".banneraddfile").change(function (e) {
+            var that=this;
+            str=""
+            if($(".contentlist>div").length+that.files.length>=12){
+                swal({
+                    title: "达到上传图片上限10张，请删除后再上传图片!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            }
+            window.fileArr=[]
+            for(var i=0;i<that.files.length;i++){
+                var file = this.files[i];
+                var fileType=file.type.split('/')[1];
+                var filePath=$("#idForUser").val()
+                $.getCos("users",filePath,fileType,file,function (res) {
+                    $("#bannercontentlist>div>img[name='"+res.data.resource_path+"']")
+                            .attr("src",res.data.source_url.replace('http://adquan-1253780958.cosgz.myqcloud.com','https://cdn.adquan.net')+'/addrespreview')
+                })
+                str+='<div class="bannercontent left1">'+'<img class="shopimg bannerimg" src="" name="/1253780958/adquan/users/'+$("#idForUser").val()+'/'+window.fileArr[i]+'"/>'+
+                        '<div class="deleteIcon"><a>×</a></div></div>';
+            }
+            $("#bannercontentlist").append($(str));
+            $(".deleteIcon").on("click",function () {
+                $(this).parent().remove();
+            })
+
+        })
+        $(".deleteIcon").on("click",function () {
+            $(this).parent().remove();
+        })
+
+        var imgContainer=$("#imgContainer")
+        $.get('/wechat/getSignature?url='+encodeURIComponent(location.href.split('#')[0]),function (data) {
+            wx.config({
+                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: 'wx64fc0b35ccd350bf', // 必填，公众号的唯一标识
+                timestamp: 111111, // 必填，生成签名的时间戳
+                nonceStr: 'adquan', // 必填，生成签名的随机串
+                signature: data,// 必填，签名，见附录1
+                jsApiList: ["onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            });
+            wx.ready(function(){
+                wx.onMenuShareTimeline({
+                    title: '幸福天地资源发布', // 分享标题
+                    link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: 'https://cdn.adquan.net/images/wx/weixinlogo.jpg', // 分享图标
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
+                wx.onMenuShareAppMessage({
+                    title: '幸福天地资源发布', // 分享标题
+                    desc: '资源免费发布，让全国的用户都能找到你', // 分享描述
+                    link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: 'https://cdn.adquan.net/images/wx/weixinlogo.jpg', // 分享图标
+                    type: '', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+
+                });
+                wx.onMenuShareQQ({
+                    title: '幸福天地资源发布', // 分享标题
+                    desc: '资源免费发布，让全国的用户都能找到你', // 分享描述
+                    link: '', // 分享链接
+                    imgUrl: 'https://cdn.adquan.net/images/wx/weixinlogo.jpg', // 分享图标
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+
+                });
+                // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+            });
+            wx.error(function(res){
+                console.log(res)
+                // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+            });
+        })
+//        $(".uploadImg").on("click",function () {
+//            wx.chooseImage({
+//                count: 9, // 默认9
+//                sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+//                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+//                success: function (res) {
+//                    var localIds = res.localIds;
+//                    if(localIds.length+$("#imgContainer>div").length>10){
+//                        var str=''
+//                        if(window.__wxjs_is_wkwebview){
+//                            for(var i=0,length=localIds.length;i<length;i++){
+//                                wx.getLocalImgData({
+//                                    localId: localIds[i], // 图片的localID
+//                                    success: function (res) {
+//                                        var localData = res.localData; // localData是图片的base64数据，可以用img标签显示
+//                                        str='<div><img src="'+localData+'"></div>'
+//                                        imgContainer.append($(str))
+//                                        imgContainer.show()
+//                                    }
+//                                });
+//                            }
+//                        }else {
+//                            for(var i=0,length=localIds.length;i<length;i++){
+//                                str+='<div><img src="'+localIds[i]+'"></div>'
+//                            }
+//                            imgContainer.append($(str))
+//                            imgContainer.show()
+//                        }
+//                    }else {
+//                        swal('最多只能上传10张图片')
+//                        return
+//                    }
+//
+//                    // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+//                }
+//            });
+//        })
+
+        var title;
+        var resourceType;
+        var resourceTypeChange=$(".resourceType")
+        var categoryL1;
+        var firstClass;
+        var firstClassContent=$(".firstClass");
+        var secondClassContent=$(".secondClass")
+        var secondClass;
+        var freightType;
+        var installType;
+        var oriPrice;
+        var disccont;
+        var discription;
+        var ICanFixArea;
+        var contactor;
+        var phone;
+        var str="";
+        var testmobile=/^([0-9]{3,4}-)?[0-9]{7,8}$/;
+        var restmobible = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+        $(resourceTypeChange).on("change",function () {
+             str="";
+             var parentID=$(".resourceType option:selected").val();
+            $.post("/getChildType",{parentID:parentID},function (res) {
+                var catelist=res.currentCateList;
+                var catelistLength=$(catelist).length;
+                for(var i=0;i<catelistLength;i++){
+                    var that=catelist[i]
+                   str+="<option value='"+that._id+"'>"+that.name+"</option>"
+                }
+                $(firstClassContent).append($(str))
+                console.log(catelist)
+            })
+        });
+        $(firstClassContent).on("change",function () {
+            str="";
+            var parentID=$(".firstClass option:selected").val();
+            $.post("/getChildType",{parentID:parentID},function (res) {
+                var contentlist=res.currentCateList;
+                var contentlistLength=$(contentlist).length;
+                for(var i=0;i<contentlistLength;i++){
+                    var that=contentlist[i]
+                    str+="<option value='"+that._id+"'>"+that.name+"</option>"
+                }
+                $(secondClassContent).append($(str))
+                console.log(contentlist)
+            })
+        })
+        $(".submit").on("click",function () {
+            images=[]
+            var bannerimg=$('.bannerimg');
+            bannerimgcount=$(".bannerimg").length;
+            title=$(".Title").val();
+            resourceType=$(".resourceType option:selected").val();
+            firstClass=$(".firstClass option:selected").val();
+            secondClass=$(".secondClass option:selected").val();
+            var freightType=$("input[name='freightType']:checked").val()
+            var installType=$("input[name='installType']:checked").val()
+            oriPrice=$(".oriPrice").val();
+            disccont=$(".disccont").val();
+            discription=$(".discription").val();
+            ICanFixArea=$(".ICanFixArea").val().split("/");
+            contactor=$(".contactor").val();
+            phone=$(".phone").val();
+            if(resourceType=="H124B2BCx"){
+                resourceType="Manufacture";
+                categoryL1="H124B2BCx"
+            }else if(resourceType=="HyD8BhH0x"){
+                resourceType="Material";
+                categoryL1="HyD8BhH0x";
+            }else if(resourceType=="BJJ_r2BRg") {
+                resourceType="Equipment";
+                categoryL1="BJJ_r2BRg";
+            }
+            if(title==""||resourceType==""||firstClass==""||secondClass==""||freightType==""||installType==""||ICanFixArea==""||contactor==""|| phone==""){
+                swal({
+                    title: "必填项不许为空!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            };
+            if(title.trim().length<10||title.trim().length>50){
+                swal({
+                    title: "标题长度需大于10小于50个字符!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            };
+            if(discription.trim().length<10||title.trim().length>500){
+                swal({
+                    title: "描述长度需大于20小于500个字符!",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return;
+            };
+            if (restmobible.test(phone)||testmobile.test(phone)){
+            }else {
+                swal({
+                    title: "联系电话填写有误！",
+                    type: "error",
+                    confirmButtonText: "确定"
+                });
+                return false;
+            };
+            if(bannerimgcount==0) {
+                swal({
+                            title: "提交提示?",
+                            text: "您还没有上传图片!",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            cancelButtonText: "去上传",
+                            confirmButtonText: "使用默认图片!",
+                            closeOnConfirm: false
+                        },
+                        function () {
+                            images.push("https://cdn.adquan.net/images/def-img/defaultResPic.png");
+                            var region = {
+                                province: ICanFixArea[0],
+                                city: ICanFixArea[1],
+                                district: ICanFixArea.length == 3 ? ICanFixArea[2] : ""
+                            };
+                            var data = {
+                                title: title,
+                                region: region,
+                                phoneNum: phone,
+                                contacts: contactor,
+                                details: discription,
+                                resType: resourceType,
+                                categoryL1: categoryL1,
+                                categoryL2: firstClass,
+                                categoryL3: secondClass,
+                                freightType: freightType,
+                                installType: installType,
+                                originalPrice: oriPrice,
+                                discountPrice: disccont,
+                                images: images,
+                                promotion: {}
+                            };
+                            $.ajax({
+                                type: "POST",
+                                url: "/resource/updateOrInsertRes",
+                                data: JSON.stringify(data),
+                                contentType: "application/json",
+                                success: function (res) {
+                                    if (res.result == "success") {
+                                        swal({
+                                                    title: "发布成功！",
+                                                    type: "warning",
+                                                    confirmButtonColor: "#DD6B55",
+                                                    confirmButtonText: "确定",
+                                                    closeOnConfirm: false
+                                                },
+                                                function (isConfirm) {
+                                                    if (isConfirm) {
+                                                        window.location.href = "/wechat/weMakeList";
+                                                    } else {
+                                                        swal("已取消", "", "error");
+                                                    }
+                                                });
+                                    }
+                                }
+                            })
+                        })
+            }else {
+                for (var i=0;i<bannerimgcount;i++){
+                    images.push($(bannerimg[i]).attr("src").replace('/addrespreview','').replace('/297.180',''));
+                }
+                var region = {
+                    province: ICanFixArea[0],
+                    city: ICanFixArea[1],
+                    district: ICanFixArea.length == 3 ? ICanFixArea[2] : ""
+                };
+                var data = {
+                    title: title,
+                    region: region,
+                    phoneNum: phone,
+                    contacts: contactor,
+                    details: discription,
+                    resType: resourceType,
+                    categoryL1: categoryL1,
+                    categoryL2: firstClass,
+                    categoryL3: secondClass,
+                    freightType: freightType,
+                    installType: installType,
+                    originalPrice: oriPrice,
+                    discountPrice: disccont,
+                    images: images,
+                    promotion: {}
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/resource/updateOrInsertRes",
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    success: function (res) {
+                        if (res.result == "success") {
+                            swal({
+                                        title: "发布成功！",
+                                        type: "warning",
+                                        confirmButtonColor: "#DD6B55",
+                                        confirmButtonText: "确定",
+                                        closeOnConfirm: false
+                                    },
+                                    function (isConfirm) {
+                                        if (isConfirm) {
+                                            window.location.href = "/wechat/weMakeList";
+                                        } else {
+                                            swal("已取消", "", "error");
+                                        }
+                                    });
+                        }
+                    }
+                })
+            }
+        })
+    })
+    window.onload=function(){
+        function isWeiXin(){
+            var ua = window.navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                return true;
+            }else{
+                var bod=document.getElementsByTagName("body")[0];
+                bod.innerHTML="<p style='text-align: center;color:#68E868'>请在微信客户端打开页面</p>";
+                swal({
+                            title: '您好，请使用微信客户端浏览！',
+                            text: "即将跳转-幸福天地-首页",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确定",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                window.location.href="/users/home";
+                            }
+                        })
+                return false;
+            }
+        }
+        isWeiXin()
+    }
+
+</script>
+</body>
+</html>
+

@@ -57,7 +57,7 @@ var companyFunc = {
 
   setDataForHtmlSiteMap: function (req, res, params , staticforder, defaultTempPath) {
     return {
-      siteConfig: companyFunc.siteInfos('制作宝'),
+      siteConfig: companyFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       logined: req.session.logined,
       staticforder: staticforder,
@@ -76,7 +76,7 @@ var companyFunc = {
           infoCertificationManagement.companyIdentifystatus = companyIdentify.status
         }
         res.render(targetPath, {
-          siteConfig: companyFunc.siteInfos('制作宝'),
+          siteConfig: companyFunc.siteInfos('幸福天地'),
           documentList: params.docs,
           logined: req.session.logined,
           infoCertificationManagement:infoCertificationManagement,
@@ -165,7 +165,7 @@ var companyFunc = {
           res.end(err)
         }else {
           res.render(targetPath, {
-            siteConfig: companyFunc.siteInfos('制作宝'),
+            siteConfig: companyFunc.siteInfos('幸福天地'),
             documentList: params.docs,
             cateTypes: companyFunc.getCategoryList(),
             LicenseCertification2Data: companyIdentify,
@@ -190,7 +190,7 @@ var companyFunc = {
           res.end(err)
         }else {
           res.render(targetPath, {
-            siteConfig: companyFunc.siteInfos('制作宝'),
+            siteConfig: companyFunc.siteInfos('幸福天地'),
             documentList: params.docs,
             cateTypes: companyFunc.getCategoryList(),
             LicenseCertification2Data: companyIdentify,
@@ -205,7 +205,7 @@ var companyFunc = {
 
   setDataForShopCenter: function (req, res, params , staticforder, defaultTempPath) {
     return {
-      siteConfig: companyFunc.siteInfos('制作宝'),
+      siteConfig: companyFunc.siteInfos('幸福天地'),
       companyInfo: Company.findOne({user: req.session.user._id}),
       companyIdentify: CompanyIdentify.findOne({user: req.session.user._id}),
       promotion: BrandPromotion.findOne({user: req.session.user._id}).populate('bill', 'billState'),
@@ -223,7 +223,7 @@ var companyFunc = {
         var currentCateListForSecond =currentCateListForSecond
         var companyIdentifyInfo=CompanyIdentify.findOne({user:req.session.user._id})
         var data = {
-          siteConfig: companyFunc.siteInfos('制作宝'),
+          siteConfig: companyFunc.siteInfos('幸福天地'),
           cateList:cateList ,
           companyIdentifyInfo:companyIdentifyInfo,
           currentCateListForSecond:currentCateListForSecond,
@@ -239,7 +239,7 @@ var companyFunc = {
 
   setDataForShopPromote: function (req, res, params , staticforder, defaultTempPath, targetPath) {
     res.render(targetPath, {
-      siteConfig: companyFunc.siteInfos('制作宝'),
+      siteConfig: companyFunc.siteInfos('幸福天地'),
       companyInfo: Company.findOne({user: req.session.user._id}, {_id: 1}),
       promotion: BrandPromotion.findOne({user: req.session.user._id}).populate('bill', 'billState'),
       logined: req.session.logined,
@@ -251,7 +251,7 @@ var companyFunc = {
 
   setDataForShopIndex: function (req, res, params , staticforder, defaultTempPath, targetPath) {
     var data = {
-      siteConfig: companyFunc.siteInfos('制作宝'),
+      siteConfig: companyFunc.siteInfos('幸福天地'),
       allRes: PubHistory.find({user: req.session.user._id, isDeleted: false, isShowing: true}, {title: 1,resNum:1}),
       companyInfo: Company.findOne({user: req.session.user._id}, {_id: 1, homePageBanner: 1, homePageBody: 1}),
       logined: req.session.logined,
@@ -298,7 +298,7 @@ var companyFunc = {
       if (!req.session.logined) {
         var isCollect = "collect"
         var data = {
-          siteConfig: companyFunc.siteInfos('制作宝'),
+          siteConfig: companyFunc.siteInfos('幸福天地'),
           isCollect:isCollect,
           avequality:avequality,
           avedescribe:avedescribe,
@@ -335,7 +335,7 @@ var companyFunc = {
           } else if (!_.isEmpty(doc)) {
             var isCollect = "collected"
             var data = {
-              siteConfig: companyFunc.siteInfos('制作宝'),
+              siteConfig: companyFunc.siteInfos('幸福天地'),
               isCollect:isCollect,
               scoreCount:scoreCount,
               score:score,
@@ -368,7 +368,7 @@ var companyFunc = {
           } else {
             var isCollect = "collect"
             var data = {
-              siteConfig: companyFunc.siteInfos('制作宝'),
+              siteConfig: companyFunc.siteInfos('幸福天地'),
               isCollect:isCollect,
               scoreCount:scoreCount,
               score:score,
@@ -444,7 +444,7 @@ var companyFunc = {
       if (!req.session.logined) {
         var isCollect = "collect"
         var data = {
-          siteConfig: companyFunc.siteInfos('制作宝'),
+          siteConfig: companyFunc.siteInfos('幸福天地'),
           isCollect: isCollect,
           companyIdentify: CompanyIdentify.findOne({user: req.query.id}),
           idCardIdentify: IdCardIdentify.findOne({user: req.query.id}),
@@ -481,7 +481,7 @@ var companyFunc = {
           } else if (!_.isEmpty(doc)) {
             var isCollect = "collected"
             var data = {
-              siteConfig: companyFunc.siteInfos('制作宝'),
+              siteConfig: companyFunc.siteInfos('幸福天地'),
               isCollect: isCollect,
               companyIdentify: CompanyIdentify.findOne({user: req.query.id}),
               idCardIdentify: IdCardIdentify.findOne({user: req.query.id}),
@@ -511,7 +511,7 @@ var companyFunc = {
           } else {
             var isCollect = "collect"
             var data = {
-              siteConfig: companyFunc.siteInfos('制作宝'),
+              siteConfig: companyFunc.siteInfos('幸福天地'),
               isCollect: isCollect,
               companyIdentify: CompanyIdentify.findOne({user: req.query.id}),
               idCardIdentify: IdCardIdentify.findOne({user: req.query.id}),
@@ -583,7 +583,7 @@ var companyFunc = {
       if (!req.session.logined) {
         var isCollect = "collect"
         var data = {
-          siteConfig: companyFunc.siteInfos('制作宝'),
+          siteConfig: companyFunc.siteInfos('幸福天地'),
           isCollect: isCollect,
           companyIdentify: CompanyIdentify.findOne({user: req.query.id}),
           idCardIdentify: IdCardIdentify.findOne({user: req.query.id}),
@@ -620,7 +620,7 @@ var companyFunc = {
           } else if (!_.isEmpty(doc)) {
             var isCollect = "collected"
             var data = {
-              siteConfig: companyFunc.siteInfos('制作宝'),
+              siteConfig: companyFunc.siteInfos('幸福天地'),
               isCollect: isCollect,
               companyIdentify: CompanyIdentify.findOne({user: req.query.id}),
               idCardIdentify: IdCardIdentify.findOne({user: req.query.id}),
@@ -650,7 +650,7 @@ var companyFunc = {
           } else {
             var isCollect = "collect"
             var data = {
-              siteConfig: companyFunc.siteInfos('制作宝'),
+              siteConfig: companyFunc.siteInfos('幸福天地'),
               isCollect: isCollect,
               scoreCount:scoreCount,
               score:score,

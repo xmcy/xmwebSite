@@ -59,7 +59,7 @@ var wechatFunc = {
   setDataForWeHomeSiteMap: function (req, res, params , staticforder, defaultTempPath) {
     var promotionForManufacture=PubHistory.aggregate([{ $match: {resType:"Manufacture",promotionEnd:{$gt:new Date()}} }, { $sample: { size: 32 } } ]).limit(6)
     return {
-      siteConfig: wechatFunc.siteInfos('制作宝'),
+      siteConfig: wechatFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       promotionForManufacture:promotionForManufacture,
       logined: req.session.logined,
@@ -71,7 +71,7 @@ var wechatFunc = {
     var myInstallList = Install.find({user: req.session.user._id,isDeleted:false}).sort({'refreshedAt': -1})
     /*console.log(req.session.user._id);*/
     return {
-      siteConfig: wechatFunc.siteInfos('制作宝'),
+      siteConfig: wechatFunc.siteInfos('幸福天地'),
       myInstallList: myInstallList,
       userInfo: req.session.user,
       documentList: params.docs,
@@ -85,7 +85,7 @@ var wechatFunc = {
     var myInstallList = Install.find({_id:id}).sort({'createdAt': -1})
     /*console.log(myInstallList);*/
     return {
-      siteConfig: wechatFunc.siteInfos('制作宝'),
+      siteConfig: wechatFunc.siteInfos('幸福天地'),
       myInstallList: myInstallList,
       documentList: params.docs,
       logined: req.session.logined,
@@ -96,7 +96,7 @@ var wechatFunc = {
   setDataForMagazineSiteMap: function (req, res, params , staticforder, defaultTempPath) {
     //var magazineList=ebooks.find().sort({"createdAt":-1})
     return {
-      siteConfig: wechatFunc.siteInfos('制作宝'),
+      siteConfig: wechatFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       EbookList:Ebook.find({}).sort({createdAt:-1}),
       logined: req.session.logined,
@@ -104,9 +104,36 @@ var wechatFunc = {
       layout: defaultTempPath
     }
   },
+  setDataForresourceRelease: function (req, res, params , staticforder, defaultTempPath) {
+    //var magazineList=ebooks.find().sort({"createdAt":-1})
+    if(req.query.id){
+      return {
+        siteConfig: wechatFunc.siteInfos('幸福天地'),
+        documentList: params.docs,
+        resourceDetail:PubHistory.findOne({_id:req.query.id}).populate('categoryL1').populate('categoryL2').populate('categoryL3'),
+        EbookList:Ebook.find({}).sort({createdAt:-1}),
+        logined: req.session.logined,
+        staticforder: staticforder,
+        layout: defaultTempPath
+      }
+    }else {
+      var resourceDetail={}
+      resourceDetail.isEdit='ok'
+      return {
+        siteConfig: wechatFunc.siteInfos('幸福天地'),
+        documentList: params.docs,
+        resourceDetail:resourceDetail,
+        // EbookList:Ebook.find({}).sort({createdAt:-1}),
+        logined: req.session.logined,
+        staticforder: staticforder,
+        layout: defaultTempPath
+      }
+    }
+
+  },
   setDataForPriceListSiteMap: function (req, res, params , staticforder, defaultTempPath) {
     return {
-      siteConfig: wechatFunc.siteInfos('制作宝'),
+      siteConfig: wechatFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       logined: req.session.logined,
       staticforder: staticforder,
@@ -116,7 +143,7 @@ var wechatFunc = {
   setDataForMakeListSiteMap: function (req, res, params , staticforder, defaultTempPath) {
     var makeList= pubhistories.find({ "isDeleted" : false}).sort({'createdAt': -1}).limit(15)
     return {
-      siteConfig: wechatFunc.siteInfos('制作宝'),
+      siteConfig: wechatFunc.siteInfos('幸福天地'),
       makeList:makeList,
       documentList: params.docs,
       logined: req.session.logined,
@@ -130,7 +157,7 @@ var wechatFunc = {
     var detailMakeList=pubhistories.find({ "_id" : id}).sort({'createdAt': -1})
     PubHistory.update({_id:id}, { $inc: { pageview: 1 }}).exec()
     return {
-      siteConfig: wechatFunc.siteInfos('制作宝'),
+      siteConfig: wechatFunc.siteInfos('幸福天地'),
       detailMakeList:detailMakeList,
       documentList: params.docs,
       moment:moment,
@@ -143,7 +170,7 @@ var wechatFunc = {
     var text=req.query.text;
     var myInstallList = Install.find({isDeleted:false}).sort({'createdAt': -1}).limit(15)
     return {
-      siteConfig: wechatFunc.siteInfos('制作宝'),
+      siteConfig: wechatFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       myInstallList:myInstallList,
       logined: req.session.logined,
@@ -154,7 +181,7 @@ var wechatFunc = {
   },
   setDataForweForgetPasswordSiteMap: function (req, res, params , staticforder, defaultTempPath) {
   return {
-    siteConfig: wechatFunc.siteInfos('制作宝'),
+    siteConfig: wechatFunc.siteInfos('幸福天地'),
     documentList: params.docs,
     logined: req.session.logined,
     staticforder: staticforder,
@@ -164,7 +191,7 @@ var wechatFunc = {
 },
   setDataForweActivityNextSiteMap: function (req, res, params , staticforder, defaultTempPath) {
     return {
-      siteConfig: wechatFunc.siteInfos('制作宝'),
+      siteConfig: wechatFunc.siteInfos('幸福天地'),
       inviteCode:InviteCode.findOne({user:req.session.user._id}),
       documentList: params.docs,
       logined: req.session.logined,
@@ -175,7 +202,7 @@ var wechatFunc = {
   },
 setDataForweICanFixSiteMap: function (req, res, params , staticforder, defaultTempPath) {
   return {
-    siteConfig: wechatFunc.siteInfos('制作宝'),
+    siteConfig: wechatFunc.siteInfos('幸福天地'),
     documentList: params.docs,
     logined: req.session.logined,
     staticforder: staticforder,
@@ -185,7 +212,7 @@ setDataForweICanFixSiteMap: function (req, res, params , staticforder, defaultTe
 },
   setDataForweActivitySiteMap: function (req, res, params , staticforder, defaultTempPath) {
   return {
-    siteConfig: wechatFunc.siteInfos('制作宝'),
+    siteConfig: wechatFunc.siteInfos('幸福天地'),
     documentList: params.docs,
     logined: req.session.logined,
     staticforder: staticforder,
@@ -197,7 +224,7 @@ setDataForweICanFixSiteMap: function (req, res, params , staticforder, defaultTe
     var id= req.query.value;
     var detailList=Install.find({_id:id}).sort({'createdAt': -1})
     return {
-      siteConfig: wechatFunc.siteInfos('制作宝'),
+      siteConfig: wechatFunc.siteInfos('幸福天地'),
       detailList:detailList,
       documentList: params.docs,
       logined: req.session.logined,
@@ -207,7 +234,7 @@ setDataForweICanFixSiteMap: function (req, res, params , staticforder, defaultTe
   },
   setDataForWeIPriceSiteMap: function (req, res, params , staticforder, defaultTempPath) {
     return {
-      siteConfig: wechatFunc.siteInfos('制作宝'),
+      siteConfig: wechatFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       logined: req.session.logined,
       staticforder: staticforder,
@@ -289,6 +316,9 @@ setDataForweICanFixSiteMap: function (req, res, params , staticforder, defaultTe
         } else if (type == 'weRegister') {
           targetPath = settings.SYSTEMTEMPFORDER + temp.alias + '/wechat/weRegister'
           res.render(targetPath, wechatFunc.setDataForMagazineSiteMap(req, res, params, temp.alias))
+        } else if (type == 'resourceRelease') {
+          targetPath = settings.SYSTEMTEMPFORDER + temp.alias + '/wechat/resourceRelease'
+          res.render(targetPath, wechatFunc.setDataForresourceRelease(req, res, params, temp.alias))
         }
       }else {
         res.writeHeader(200, {'Content-Type': 'text/javascript;charset=UTF-8'})

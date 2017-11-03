@@ -57,7 +57,7 @@ var citypartnerFunc = {
 
   setDataForHtmlSiteMap: function (req, res, params , staticforder, defaultTempPath) {
     return {
-      siteConfig: citypartnerFunc.siteInfos('制作宝'),
+      siteConfig: citypartnerFunc.siteInfos('幸福天地'),
       documentList: params.docs,
       logined: req.session.logined,
       staticforder: staticforder,

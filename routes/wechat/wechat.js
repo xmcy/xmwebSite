@@ -157,77 +157,79 @@ router.get('/checkUserForTwo', function (req, res, next) {
 })
 // 不需要登陆的路由直接渲染
 router.get('/getHomeInfo', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'getHomeInfo', {title: '欢迎来到制作宝!',page: 'getHomeInfo'})
+  wechatFunc.renderToTargetPageByType(req, res, 'getHomeInfo', {title: '欢迎来到幸福天地!',page: 'getHomeInfo'})
 })
 router.get('/weActivity', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'weActivity', {title: '欢迎来到制作宝!',page: 'weActivity'})
+  wechatFunc.renderToTargetPageByType(req, res, 'weActivity', {title: '欢迎来到幸福天地!',page: 'weActivity'})
 })
 router.get('/weActivityNext', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'weActivityNext', {title: '欢迎来到制作宝!',page: 'weActivityNext'})
+  wechatFunc.renderToTargetPageByType(req, res, 'weActivityNext', {title: '欢迎来到幸福天地!',page: 'weActivityNext'})
 })
 router.get('/weDetailFix', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'weDetailFix', {title: '欢迎来到制作宝!',page: 'weDetailFix'})
+  wechatFunc.renderToTargetPageByType(req, res, 'weDetailFix', {title: '欢迎来到幸福天地!',page: 'weDetailFix'})
 })
 router.get('/weFixList', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'weFixList', {title: '欢迎来到制作宝!',page: 'weFixList'})
+  wechatFunc.renderToTargetPageByType(req, res, 'weFixList', {title: '欢迎来到幸福天地!',page: 'weFixList'})
 })
 router.get('/weForgetPassword', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'weForgetPassword', {title: '欢迎来到制作宝!',page: 'weForgetPassword'})
+  wechatFunc.renderToTargetPageByType(req, res, 'weForgetPassword', {title: '欢迎来到幸福天地!',page: 'weForgetPassword'})
 })
 router.get('/weAboutOus', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'weAboutOus', {title: '欢迎来到制作宝!',page: 'weAboutOus'})
+  wechatFunc.renderToTargetPageByType(req, res, 'weAboutOus', {title: '欢迎来到幸福天地!',page: 'weAboutOus'})
 })
 router.get('/weMagazine', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'weMagazine', {title: '欢迎来到制作宝!',page: 'weMagazine'})
+  wechatFunc.renderToTargetPageByType(req, res, 'weMagazine', {title: '欢迎来到幸福天地!',page: 'weMagazine'})
 })
 router.get('/weMakeDetail', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'weMakeDetail', {title: '欢迎来到制作宝!',page: 'weMakeDetail'})
+  wechatFunc.renderToTargetPageByType(req, res, 'weMakeDetail', {title: '欢迎来到幸福天地!',page: 'weMakeDetail'})
 })
 router.get('/weMakeList', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'weMakeList', {title: '欢迎来到制作宝!',page: 'weMakeList'})
+  wechatFunc.renderToTargetPageByType(req, res, 'weMakeList', {title: '欢迎来到幸福天地!',page: 'weMakeList'})
 })
 router.get('/weAboutOus', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'weAboutOus', {title: '欢迎来到制作宝!',page: 'weAboutOus'})
+  wechatFunc.renderToTargetPageByType(req, res, 'weAboutOus', {title: '欢迎来到幸福天地!',page: 'weAboutOus'})
 })
 router.get('/wePriceList', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'wePriceList', {title: '欢迎来到制作宝!',page: 'weMakeDetail'})
+  wechatFunc.renderToTargetPageByType(req, res, 'wePriceList', {title: '欢迎来到幸福天地!',page: 'weMakeDetail'})
 })
 router.get('/weRegister', function (req, res, next) {
-  wechatFunc.renderToTargetPageByType(req, res, 'weRegister', {title: '欢迎来到制作宝!',page: 'weRegister'})
+  wechatFunc.renderToTargetPageByType(req, res, 'weRegister', {title: '欢迎来到幸福天地!',page: 'weRegister'})
 })
-
+router.get('/resourceRelease', function (req, res, next) {
+  wechatFunc.renderToTargetPageByType(req, res, 'resourceRelease', {title: '欢迎来到幸福天地!',page: 'resourceRelease'})
+})
 // 需要登陆的路由判断登陆状态
 router.get('/userCenter', function (req, res, next) {
   if (isLogined(req)) {
-    wechatFunc.renderToTargetPageByType(req, res, 'userCenter', {title: '欢迎来到制作宝！',page: ''})
+    wechatFunc.renderToTargetPageByType(req, res, 'userCenter', {title: '欢迎来到幸福天地！',page: ''})
   }else {
-    wechatFunc.renderToTargetPageByType(req, res, 'weRegister', {title: '欢迎加入制作宝！',page: ''})
-  /*wechatFunc.renderToTargetPageByType(req, res, 'userCenter', {title: '欢迎加入制作宝！',page: ''})*/
+    wechatFunc.renderToTargetPageByType(req, res, 'weRegister', {title: '欢迎加入幸福天地！',page: ''})
+  /*wechatFunc.renderToTargetPageByType(req, res, 'userCenter', {title: '欢迎加入幸福天地！',page: ''})*/
   }
 })
 
 router.get('/weChangeMyFix', function (req, res) {
   if (isLogined(req)) {
-    wechatFunc.renderToTargetPageByType(req, res, 'weChangeMyFix', {title: '欢迎来到制作宝！',page: ''})
+    wechatFunc.renderToTargetPageByType(req, res, 'weChangeMyFix', {title: '欢迎来到幸福天地！',page: ''})
   }else {
-    wechatFunc.renderToTargetPageByType(req, res, 'weRegister', {title: '欢迎加入制作宝！',page: ''})
-  /*wechatFunc.renderToTargetPageByType(req, res, 'weChangeMyFix', {title: '欢迎加入制作宝！',page: ''})*/
+    wechatFunc.renderToTargetPageByType(req, res, 'weRegister', {title: '欢迎加入幸福天地！',page: ''})
+  /*wechatFunc.renderToTargetPageByType(req, res, 'weChangeMyFix', {title: '欢迎加入幸福天地！',page: ''})*/
   }
 })
 router.get('/weICanFix', function (req, res, next) {
   if (isLogined(req)) {
-    wechatFunc.renderToTargetPageByType(req, res, 'weICanFix', {title: '欢迎来到制作宝！',page: ''})
+    wechatFunc.renderToTargetPageByType(req, res, 'weICanFix', {title: '欢迎来到幸福天地！',page: ''})
   }else {
-    wechatFunc.renderToTargetPageByType(req, res, 'weRegister', {title: '欢迎加入制作宝！',page: ''})
-  /* wechatFunc.renderToTargetPageByType(req, res, 'weICanFix', {title: '欢迎加入制作宝！',page: ''})*/
+    wechatFunc.renderToTargetPageByType(req, res, 'weRegister', {title: '欢迎加入幸福天地！',page: ''})
+  /* wechatFunc.renderToTargetPageByType(req, res, 'weICanFix', {title: '欢迎加入幸福天地！',page: ''})*/
   }
 })
 router.get('/weIprice', function (req, res, next) {
   if (isLogined(req)) {
-    wechatFunc.renderToTargetPageByType(req, res, 'weIprice', {title: '欢迎来到制作宝！',page: ''})
+    wechatFunc.renderToTargetPageByType(req, res, 'weIprice', {title: '欢迎来到幸福天地！',page: ''})
   }else {
-    wechatFunc.renderToTargetPageByType(req, res, 'weRegister', {title: '欢迎加入制作宝！',page: ''})
-  /*wechatFunc.renderToTargetPageByType(req, res, 'weIprice', {title: '欢迎加入制作宝！',page: ''})*/
+    wechatFunc.renderToTargetPageByType(req, res, 'weRegister', {title: '欢迎加入幸福天地！',page: ''})
+  /*wechatFunc.renderToTargetPageByType(req, res, 'weIprice', {title: '欢迎加入幸福天地！',page: ''})*/
   }
 })
 
