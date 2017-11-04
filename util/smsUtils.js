@@ -104,8 +104,8 @@ function sendVerifyCodeSMS(to, tempId, cb) {
 //     "ext": "" //用户的session内容，腾讯server回包中会原样返回，可选字段，不需要就填空。
 // }
 
-var sdkappid = '1400032545'
-var appkey = 'affa35660c6808fa9b839d00aae244dc'
+var sdkappid = '1400047966'
+var appkey = '351a0db4702e0307679888707f520761 '
 var hostname = 'yun.tim.qq.com'
 
 function getSig(mobile, time, random) {
@@ -237,7 +237,8 @@ function sendNotifyMultiSMS_qcloud(mobiles, tempId, params, cb) {
 // 23445	普通短信	2017-06-09 14:25:37	实名及营业执照认证提醒	您的{1}审核状态变更为{2}，请登录网页端查看详情	
 // 22497	普通短信	2017-06-02 17:25:04	发送验证码	            您的验证码为{1}，请于{2}分钟内正确输入，如非本人操作，请忽略此短信	
 // 22453	普通短信	2017-06-02 14:50:40	订单生成提醒	        您的{1}订单已生成，请及时支付，如有疑问请联系在线客服	
-// 22451	普通短信	2017-06-02 14:49:18	发送注册邀请码	        您的注册邀请码为{1}，您可在个人中心-我的活动中查看完成情况，如有疑问请联系在线客服	
+// 22451	普通短信	2017-06-02 14:49:18	发送注册邀请码	        您的注册邀请码为{1}，您可在个人中心-我的活动中查看完成情况，如有疑问请联系在线客服
+//53909     小区：{1}，具体地点：{2}，收到新的投诉建议，请您尽快处理！
 var exports = module.exports = {
     sendVerifyCodeSMS: sendVerifyCodeSMS,
     sendVerifyCodeSMS_qcloud: sendVerifyCodeSMS_qcloud,
@@ -268,5 +269,6 @@ var exports = module.exports = {
     code23: 27697,
     code24: 28417,
     code25: 28576,
-    code26: 29126
+    code26: 29126,
+    code27: 53909
 }

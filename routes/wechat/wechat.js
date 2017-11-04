@@ -265,6 +265,9 @@ router.post('/InsertAdvice', function (req, res, next) {
         }else if(req.body.resType=="7"){
           phoneNumArr.push('13007107822')
         }
+        smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code27,[req.body.resourceTypeText,req.body.detailPlace],function () {
+          
+        })
         res.json({
           'result': 'success'
         })

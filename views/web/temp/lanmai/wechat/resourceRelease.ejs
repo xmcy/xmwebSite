@@ -19,7 +19,7 @@
             -webkit-box-sizing: border-box;
             box-sizing: border-box;
         }
-        
+
 
         .warpper {
             padding-top: 0.63957rem;
@@ -552,6 +552,7 @@
             //        })
 
             var resourceType;
+            var resourceTypeText;
             var discription;
             var detailPlace;
             var contactor;
@@ -592,6 +593,7 @@
                 var bannerimg = $('.bannerimg');
                 bannerimgcount = $(".bannerimg").length;
                 resourceType = $(".resourceType option:selected").val();
+                resourceTypeText = $(".resourceType option:selected").text();
                 discription = $(".discription").val();
                 detailPlace = $(".detailPlace").val();
                 contactor = $(".contactor").val();
@@ -632,6 +634,7 @@
                                 contacts: contactor,
                                 details: discription,
                                 resType: resourceType,
+                                resourceTypeText:resourceTypeText,
                                 detailPlace: detailPlace,
                                 images: images
                             };
@@ -670,6 +673,7 @@
                         contacts: contactor,
                         details: discription,
                         resType: resourceType,
+                        resourceTypeText:resourceTypeText,
                         detailPlace: detailPlace,
                         images: images
                     };
