@@ -8,16 +8,13 @@
         };
     }
     $.getCos=function (secondPath,filePath,fileType,file,successCallBack,errorCallBack) {
-        var bucket = 'adquan';
-        var appid = '1253780958';
+        var bucket = 'xmcy';
+        var appid = '1254086716';
         var sid = '';
         var skey = '';
-        var region = 'gz';
-        if(filePath==""){
-            var myFolder = '/'+secondPath+'/';//需要操作的目录
-        }else {
-            var myFolder = '/'+secondPath+'/'+filePath+'/';//需要操作的目录
-        }
+        var region = 'sh';
+        var myFolder = '/';
+ 
         var cos = new CosCloud({
             appid: appid,// APPID 必填参数
             bucket: bucket,//bucketName 必填参数
