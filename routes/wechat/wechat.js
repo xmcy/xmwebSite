@@ -244,7 +244,7 @@ router.post('/getChildType', function (req, res, next) {
 //投诉建议
 router.post('/InsertAdvice', function (req, res, next) {
       var dataObj={
-        resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999)
+        resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
         resType:req.body.resType,
         images:req.body.images,
         contacts:req.body.contacts,
