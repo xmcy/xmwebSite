@@ -18,7 +18,7 @@
         var cos = new CosCloud({
             appid: appid,// APPID 必填参数
             bucket: bucket,//bucketName 必填参数
-            region: region,//地域信息 必填参数 华南地区填gz 华东填gz 华北填tj
+            region: region,//地域信息 必填参数 华南地区填gz 华东填sh 华北填tj
             getAppSign: function (callback) {//获取签名 必填参数
                 $.post('/users/getCosSignature', {once: false}, function (data) {
                     var sig = data;
@@ -31,7 +31,7 @@
         };
         var name=moment().format("YYYYMMDDHHmmss")+Math.ceil(Math.random()*100000)+"."+fileType
         if(window.fileArr){
-            window.fileArr.pugz(name)
+            window.fileArr.push(name)
         }
         cos.uploadFile(successCallBack, errorCallBack, progressCallBack, bucket, myFolder + name, file, 1);
     }
@@ -52,7 +52,7 @@
         var cos = new CosCloud({
             appid: appid,// APPID 必填参数
             bucket: bucket,//bucketName 必填参数
-            region: region,//地域信息 必填参数 华南地区填gz 华东填gz 华北填tj
+            region: region,//地域信息 必填参数 华南地区填gz 华东填sh 华北填tj
             getAppSign: function (callback) {//获取签名 必填参数
                 $.post('/users/getCosSignature', {once: false}, function (data) {
                     var sig = data;
@@ -79,7 +79,7 @@
         var cos = new CosCloud({
             appid: appid,// APPID 必填参数
             bucket: bucket,//bucketName 必填参数
-            region: region,//地域信息 必填参数 华南地区填gz 华东填gz 华北填tj
+            region: region,//地域信息 必填参数 华南地区填gz 华东填sh 华北填tj
             getAppSign: function (callback) {//获取签名 必填参数
                 $.post('/users/getCosSignature', {once: false}, function (data) {
                     var sig = data;
@@ -98,7 +98,7 @@
         var cos = new CosCloud({
             appid: appid,// APPID 必填参数
             bucket: bucket,//bucketName 必填参数
-            region: region,//地域信息 必填参数 华南地区填gz 华东填gz 华北填tj
+            region: region,//地域信息 必填参数 华南地区填gz 华东填sh 华北填tj
             getAppSign: function (callback) {//获取签名 必填参数
                 $.post('/users/getCosSignature', {once: false}, function (data) {
                     var sig = data;
