@@ -6,6 +6,7 @@ var validator = require('validator')
 var request=require('request')
 var ContentCategory = require('../../models/ContentCategory')
 var User = require('../../models/User')
+var Advice = require('../../models/Advice')
 var WxCheck = require('../../models/WxCheck')
 var Wx = require('../../models/Wx')
 var AdminUser = require('../../models/AdminUser')
@@ -239,6 +240,29 @@ router.post('/getChildType', function (req, res, next) {
   res.json({
     currentCateList: currentCateList
   })
+})
+//投诉建议
+router.post('/InsertAdvice', function (req, res, next) {
+      var dataObj={
+        resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999)
+        resType:req.body.resType,
+        images:req.body.images,
+        contacts:req.body.contacts,
+        phoneNum:req.body.phoneNum,
+        details:req.body.details,
+        detailPlace:req.body.detailPlace
+      }
+    var advice=new Advice(dataObj)
+    advice.save(function (err) {
+      if (err) {
+        res.json({ error: err })
+      } else {
+        res.json({
+          'result': 'success'
+        })
+      }
+    })
+  
 })
 
 

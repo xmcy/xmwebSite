@@ -603,7 +603,7 @@
                 };
                 $.ajax({
                     type: "POST",
-                    url: "/resource/updateOrInsertRes",
+                    url: "/wechat/InsertAdvice",
                     data: JSON.stringify(data),
                     contentType: "application/json",
                     success: function (res) {
@@ -617,7 +617,7 @@
                                     },
                                     function (isConfirm) {
                                         if (isConfirm) {
-                                            window.location.href = "/wechat/weMakeList";
+                                            window.reload();
                                         } else {
                                             swal("已取消", "", "error");
                                         }
