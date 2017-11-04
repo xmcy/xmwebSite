@@ -290,23 +290,23 @@
                    <span><span class="optionIcon">*</span><span>服务区域</span></span>
                   <select class="resourceType">
                       <option>请选择</option>
-                      <option value="H124B2BCx">蒲谭小区南区</option>
-                      <option value="H124B2BCx">蒲谭小区北区</option>
-                      <option value="H124B2BCx">蒲谭小区幸福小区</option>
-                      <option value="HyD8BhH0x">凤凰苑小区</option>
-                      <option value="HyD8BhH0x">龙湖小区一期</option>
-                      <option value="HyD8BhH0x">龙湖小区二期</option>
-                      <option value="BJJ_r2BRg">小军山小区</option>
-                      <option value="BJJ_r2BRg">其它</option>
+                      <option value="1">蒲谭南区</option>
+                      <option value="2">蒲谭北区</option>
+                      <option value="3">蒲谭幸福小区</option>
+                      <option value="4">凤凰苑小区</option>
+                      <option value="5">龙湖小区一期</option>
+                      <option value="6">龙湖小区二期</option>
+                      <option value="7">小军山小区</option>
+                      <option value="0">其它</option>
                   </select>
                </div>
                <div>
                    <span><span class="optionIcon">*</span><span>具体地点</span></span>
-                   <input class="contactor" placeholder="小区栋数或其他地方"/>
+                   <input class="detailPlace" placeholder="小区栋数或其他地方"/>
                </div>
                <div>
                    <span><span class="optionIcon">*</span><span>反映内容</span></span>
-                   <textarea class="discription" placeholder=" 20--500个文字"></textarea>
+                   <textarea class="discription" placeholder="请填写具体情况"></textarea>
                </div>
                <div class="relative">
                    <span><span class="optionIcon">*</span><span>上传图片</span></span>
@@ -480,20 +480,9 @@
 //            });
 //        })
 
-        var title;
         var resourceType;
-        var resourceTypeChange=$(".resourceType")
-        var categoryL1;
-        var firstClass;
-        var firstClassContent=$(".firstClass");
-        var secondClassContent=$(".secondClass")
-        var secondClass;
-        var freightType;
-        var installType;
-        var oriPrice;
-        var disccont;
         var discription;
-        var ICanFixArea;
+        var detailPlace;
         var contactor;
         var phone;
         var str="";
@@ -531,9 +520,9 @@
             images=[]
             var bannerimg=$('.bannerimg');
             bannerimgcount=$(".bannerimg").length;
-            title=$(".Title").val();
             resourceType=$(".resourceType option:selected").val();
             discription=$(".discription").val();
+            detailPlace=$(".detailPlace").val();
             contactor=$(".contactor").val();
             phone=$(".phone").val();
 
@@ -567,27 +556,13 @@
                         },
                         function () {
                             images.push("https://cdn.adquan.net/images/def-img/defaultResPic.png");
-                            var region = {
-                                province: ICanFixArea[0],
-                                city: ICanFixArea[1],
-                                district: ICanFixArea.length == 3 ? ICanFixArea[2] : ""
-                            };
                             var data = {
-                                title: title,
-                                region: region,
                                 phoneNum: phone,
                                 contacts: contactor,
                                 details: discription,
                                 resType: resourceType,
-                                categoryL1: categoryL1,
-                                categoryL2: firstClass,
-                                categoryL3: secondClass,
-                                freightType: freightType,
-                                installType: installType,
-                                originalPrice: oriPrice,
-                                discountPrice: disccont,
-                                images: images,
-                                promotion: {}
+                                detailPlace:detailPlace,
+                                images: images
                             };
                             $.ajax({
                                 type: "POST",
@@ -616,29 +591,15 @@
                         })
             }else {
                 for (var i=0;i<bannerimgcount;i++){
-                    images.push($(bannerimg[i]).attr("src").replace('/addrespreview','').replace('/297.180',''));
+                    images.push($(bannerimg[i]).attr("src"));
                 }
-                var region = {
-                    province: ICanFixArea[0],
-                    city: ICanFixArea[1],
-                    district: ICanFixArea.length == 3 ? ICanFixArea[2] : ""
-                };
                 var data = {
-                    title: title,
-                    region: region,
                     phoneNum: phone,
                     contacts: contactor,
                     details: discription,
                     resType: resourceType,
-                    categoryL1: categoryL1,
-                    categoryL2: firstClass,
-                    categoryL3: secondClass,
-                    freightType: freightType,
-                    installType: installType,
-                    originalPrice: oriPrice,
-                    discountPrice: disccont,
-                    images: images,
-                    promotion: {}
+                    detailPlace:detailPlace,
+                    images: images
                 };
                 $.ajax({
                     type: "POST",
