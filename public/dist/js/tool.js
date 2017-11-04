@@ -12,7 +12,7 @@
         var appid = '1254086716';
         var sid = '';
         var skey = '';
-        var region = 'gz';
+        var region = 'sh';
         var myFolder = '/';
 
         var cos = new CosCloud({
@@ -43,7 +43,7 @@
         var appid = '1254086716'
         var sid = '';
         var skey = '';
-        var region = 'gz';
+        var region = 'sh';
         if(filePath==""){
             var myFolder = '/'+secondPath+'/';//需要操作的目录
         }else {
@@ -75,7 +75,7 @@
         var appid = '1254086716'
         var sid = '';
         var skey = '';
-        var region = 'gz';
+        var region = 'sh'; 
         var cos = new CosCloud({
             appid: appid,// APPID 必填参数
             bucket: bucket,//bucketName 必填参数
@@ -94,7 +94,7 @@
         var appid = '1254086716'
         var sid = '';
         var skey = '';
-        var region = 'gz';
+        var region = 'sh';
         var cos = new CosCloud({
             appid: appid,// APPID 必填参数
             bucket: bucket,//bucketName 必填参数
