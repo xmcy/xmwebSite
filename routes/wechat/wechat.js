@@ -243,7 +243,8 @@ router.post('/getChildType', function (req, res, next) {
 })
 //投诉建议
 router.post('/InsertAdvice', function (req, res, next) {
-      var phoneNumArr=['13367255218','18971314866','13871312213']
+      // var phoneNumArr=['13367255218','18971314866','13871312213','18571557923']
+      var phoneNumArr=['18571557923']
       var dataObj={
         resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
         resType:req.body.resType,
