@@ -243,6 +243,7 @@ router.post('/getChildType', function (req, res, next) {
 })
 //投诉建议
 router.post('/InsertAdvice', function (req, res, next) {
+      var phoneNumArr=['13367255218','18971314866','13871312213']
       var dataObj={
         resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
         resType:req.body.resType,
@@ -257,6 +258,13 @@ router.post('/InsertAdvice', function (req, res, next) {
       if (err) {
         res.json({ error: err })
       } else {
+        if(req.body.resType=="4"){
+          phoneNumArr.push('13971651751')
+        }else if(req.body.resType=="5"||req.body.resType=="6"){
+          phoneNumArr.push('13871457538')
+        }else if(req.body.resType=="7"){
+          phoneNumArr.push('13007107822')
+        }
         res.json({
           'result': 'success'
         })
