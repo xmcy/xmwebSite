@@ -368,6 +368,7 @@
                 var fileType=file.type.split('/')[1];
                 var filePath=$("#idForUser").val()
                 $.getCos("users","",fileType,file,function (res) {
+                    console.log("ok")
                     $("#bannercontentlist>div>img[name='"+res.data.resource_path+"']")
                             .attr("src",res.data.source_url)
                 })
