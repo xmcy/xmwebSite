@@ -89,6 +89,9 @@ doraApp.controller('ebookManage',['$scope','$http',function($scope,$http){
     $scope.pageChanged = function(currentPage) {
         postData();
     };
+    $scope.changeScope=function (item) {
+        $scope.content=item
+    }
     $scope.delOneItem=function (id) {
         swal({
                 title: "删除",
