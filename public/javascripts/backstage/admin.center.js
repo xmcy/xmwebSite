@@ -70,6 +70,7 @@ doraApp.controller("addEbookManage",['$scope','$http',"$window",function($scope,
 doraApp.controller('ebookManage',['$scope','$http',function($scope,$http){
     var postData=function () {
         var data={
+            resType:$scope.status1,
             page:$scope.bigCurrentPage,
             limit:$scope.itemsPerPage,
             order:$scope.order
@@ -126,27 +127,13 @@ doraApp.controller('ebookManage',['$scope','$http',function($scope,$http){
 
     }
     $scope.searchForEbookManage=function (text) {
-        $scope.text=$scope.textForSearch;
-        if($scope.regionStr!==""){
-            var regionObj={};
-            var region=$scope.regionStr.split('/')
-            regionObj.province=region[0];
-            regionObj.city=region[1];
-            if(region.length==3){
-                regionObj.district=region[2];
-            }else{
-                regionObj.district="";
-            }
-            // $scope.region=JSON.stringify(regionObj)
-            $scope.region=regionObj
-        }
         postData();
     }
     $scope.maxSize = 5;
     $scope.itemsPerPage=10;
     $scope.bigCurrentPage = 1;
     $scope.bigTotalItems=1;
-    $scope.text='';
+    $scope.status1='';
     $scope.order={createdAt: -1};
     $scope.region={};
     $scope.content={}

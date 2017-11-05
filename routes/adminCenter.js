@@ -255,10 +255,6 @@ router.post('/manage/wxMenu', function(req, res, next) {
 // 数字期刊或vr查询
 router.post('/manage/searchManageFilter', function(req, res, next) {
     var resType = req.body.resType
-    var title = req.body.title
-    var region = req.body.region
-    var type = req.body.type
-    var recommend = req.body.recommend
     var order = req.body.order
     var page = parseInt(req.body.page)
     var limit = parseInt(req.body.limit)
