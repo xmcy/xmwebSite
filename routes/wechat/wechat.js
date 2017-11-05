@@ -241,9 +241,12 @@ router.post('/getChildType', function (req, res, next) {
     currentCateList: currentCateList
   })
 })
+
+
+
 //投诉建议
 router.post('/InsertAdvice', function (req, res, next) {
-      // var phoneNumArr=['13367255218','18971314866','13871312213','18571557923']
+      // var phoneNumArr=['13367255218','15927095400','13871312213','18571557923']
       var phoneNumArr=['18571557923']
       var dataObj={
         resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
@@ -259,15 +262,21 @@ router.post('/InsertAdvice', function (req, res, next) {
       if (err) {
         res.json({ error: err })
       } else {
-        if(req.body.resType=="4"){
+        if(req.body.resType=="1"||req.body.resType=="2"||req.body.resType=="3"){
+            console.log("get")
+          // phoneNumArr.push('18702786303')
+        }else if(req.body.resType=="4"){
           phoneNumArr.push('13971651751')
+          phoneNumArr.push('15172316250')
         }else if(req.body.resType=="5"||req.body.resType=="6"){
           phoneNumArr.push('13871457538')
+          phoneNumArr.push('18071022988')
         }else if(req.body.resType=="7"){
           phoneNumArr.push('13007107822')
+          phoneNumArr.push('18986180878')
         }
-        smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code27,[req.body.resourceTypeText,req.body.detailPlace],function () {
-          
+        smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code27,[req.body.resourceTypeText,req.body.detailPlace],function (err) {
+          console.log(err)
         })
         res.json({
           'result': 'success'
