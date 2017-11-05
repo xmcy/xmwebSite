@@ -7,6 +7,7 @@ var DbOpt = require('../models/Dbopt')
 var request=require('request')
 
 var AdminGroup = require('../models/AdminGroup')
+var Advice = require('../models/Advice')
 var validator = require('validator')
 var settings = require('../models/db/settings')
 var adminFunc = require('../models/db/adminFunc')
@@ -43,6 +44,13 @@ var PubHistory = require('../models/publish/PubHistory')
 
 router.caseSensitive = true
 
+// router.get('/manage/adviceMng', function(req, res) {
+//     if (adminFunc.checkAdminPower(req, 'promotionManage_view')) {
+//         res.render('manage/lanmai/brandPromotionMng', adminFunc.setBrandPromotionMngPageInfo(req, res, settings.promotionManage))
+//     } else {
+//         res.render('manage/public/notice', adminFunc.setDataForInfo('danger', '对不起，您无权查看 <strong>' + settings['promotionManage'][1] + '</strong> 模块！'))
+//     }
+// })
 router.get('/manage/brandPromotionMng', function(req, res) {
     if (adminFunc.checkAdminPower(req, 'promotionManage_view')) {
         res.render('manage/lanmai/brandPromotionMng', adminFunc.setBrandPromotionMngPageInfo(req, res, settings.promotionManage))
@@ -102,7 +110,7 @@ router.get('/manage/withdrawCashManage', function(req, res) {
 })
 
 // 数字期刊
-router.get('/manage/ebookManage', function(req, res) {
+router.get('/manage/adviceMng', function(req, res) {
     if (adminFunc.checkAdminPower(req, 'ebookManage_view')) {
         res.render('manage/lanmai/ebookManage', adminFunc.setPageInfo(req, res, settings.ebookManage))
     } else {
@@ -266,63 +274,34 @@ router.post('/manage/searchManageFilter', function(req, res, next) {
     var startNum = (page - 1) * limit
 
     var query = {}
-    if (!_.isEmpty(region.province) && _.isEmpty(region.city) && _.isEmpty(region.district)) {
-        query = {
-            'region.province': region.province
-        }
-    } else if (!_.isEmpty(region.province) && !_.isEmpty(region.city) && _.isEmpty(region.district)) {
-        query = {
-            'region.province': region.province,
-            'region.city': region.city
-        }
-    } else if (!_.isEmpty(region.province) && !_.isEmpty(region.city) && !_.isEmpty(region.district)) {
-        query = {
-            'region.province': region.province,
-            'region.city': region.city,
-            'region.district': region.district
-        }
-    }
 
-    if (title && title.length > 1 && title.length <= 20) {
-        query.title = { $regex: new RegExp(title, 'i') }
-    }
     if (type) {
         query.type = type
     }
     if (recommend) {
         query.recommend = recommend
     }
-    var model
-    if (resType == 'Ebook') {
-        model = Ebook
-    } else if (resType == 'VR') {
-        model = VR
-    }
-
-    if (model) {
-        var resultNum = model.find(query).count()
-        model.find(query).sort(order).skip(startNum).limit(limit).exec(function(err, docs) {
-            if (err) {
-                res.end(err)
-            } else if (!_.isEmpty(docs)) {
-                var pageInfo = {
-                    'totalItems': resultNum,
-                    'currentPage': page,
-                    'limit': limit,
-                    'startNum': startNum + 1
-                }
-                var datasInfo = {
-                    docs: docs,
-                    pageInfo: pageInfo
-                }
-                res.json(datasInfo)
-            } else {
-                res.end('查询为空')
+    var resultNum = Advice.find(query).count()
+    Advice.find(query).sort(order).skip(startNum).limit(limit).exec(function(err, docs) {
+        if (err) {
+            res.end(err)
+        } else if (!_.isEmpty(docs)) {
+            var pageInfo = {
+                'totalItems': resultNum,
+                'currentPage': page,
+                'limit': limit,
+                'startNum': startNum + 1
             }
-        })
-    } else {
-        res.end('查询失败')
-    }
+            var datasInfo = {
+                docs: docs,
+                pageInfo: pageInfo
+            }
+            res.json(datasInfo)
+        } else {
+            res.end('查询为空')
+        }
+    })
+
 })
 
 // 数字期刊增加或修改

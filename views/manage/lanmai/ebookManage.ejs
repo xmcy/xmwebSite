@@ -21,24 +21,23 @@
             <div class="box">
                 <div class="box-body table-responsive no-padding" >
                     <ul class="table" style="list-style: none">
-
-                            <li>
-                                <input readonly type="text" data-toggle="city-picker" value="" id="region">
-                            </li>
-                        <li>
-                            <button class="btn btn-primary btn-sm" type="button" id="resetDistrict"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 重置地区</button>
-                        </li>
-                            <li>标题：
-                                <input  type="text"  value="" ng-model="textForSearch">
-                            </li>
+                            <!--<li>-->
+                                <!--<input readonly type="text" data-toggle="city-picker" value="" id="region">-->
+                            <!--</li>-->
+                        <!--<li>-->
+                            <!--<button class="btn btn-primary btn-sm" type="button" id="resetDistrict"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 重置地区</button>-->
+                        <!--</li>-->
+                            <!--<li>标题：-->
+                                <!--<input  type="text"  value="" ng-model="textForSearch">-->
+                            <!--</li>-->
                             <li>
                                     <button class="btn btn-primary btn-sm" type="button" ng-click="searchForEbookManage()"><span class="fa fa-plus-undo" aria-hidden="true">&nbsp;</span> 搜索</button>
                             </li>
-                        <li>
-                            <a class="btn-group" href="/admin/manage/addEbookManage">
-                                <button class="btn btn-primary btn-sm" type="button"><span class="fa fa-plus-square" aria-hidden="true">&nbsp;</span> 添加期刊</button>
-                            </a>
-                        </li>
+                        <!--<li>-->
+                            <!--<a class="btn-group" href="/admin/manage/addEbookManage">-->
+                                <!--<button class="btn btn-primary btn-sm" type="button"><span class="fa fa-plus-square" aria-hidden="true">&nbsp;</span> 添加期刊</button>-->
+                            <!--</a>-->
+                        <!--</li>-->
                     </ul>
                 </div>
             </div>
@@ -49,24 +48,22 @@
                 <table class="table table-hover">
                     <tr>
                         <th><input type="checkbox" class="mini" id="selectAll"/></th>
-                        <th>标题</th>
-                        <th>地区</th>
-                        <th>在线浏览url</th>
-                        <th>在线浏览量</th>
-                        <th>下载量</th>
+                        <th>社区类别</th>
+                        <th>具体地点</th>
+                        <th>联系人</th>
+                        <th>联系电话</th>
                         <th>创建时间</th>
                         <th>操作</th>
                     </tr>
                     <tr class="datalist" ng-repeat="item in dataList">
                         <td><input type="checkbox" name="listItem" class="mini" value="{{item._id}}" ng-click="getNewIds()"/></td>
-                        <td>{{item.title}}</td>
-                        <td>{{item.region.province}}-{{item.region.city}}-{{item.region.district}}</td>
-                        <td>{{item.onlineView}}</td>
-                        <td>{{item.onlineConut}}万</td>
-                        <td>{{item.downloadConut}}万</td>
+                        <td>{{item.resType}}</td>
+                        <td>{{item.detailPlace}}</td>
+                        <td>{{item.contacts}}</td>
+                        <td>{{item.phoneNum}}</td>
                         <td>{{item.createdAt | date : "yyyy-MM-dd HH:mm:ss"}}</td>
                         <td>
-                            <a href="/admin/manage/addEbookManage?uid={{item._id}}" role="button"  title="编辑" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-primary btn-xs" data-whatever="{{item._id}}" data-toggle="modal" data-target="#addContentTags" ><span class="fa fa-fw fa-edit" aria-hidden="true"></span>编辑</button>&nbsp;
                             <button class="btn btn-default btn-xs" type="button" title="删除" ng-click="delOneItem(item._id)"><i class="fa fa-trash-o"></i></button>
                         </td>
                     </tr>
