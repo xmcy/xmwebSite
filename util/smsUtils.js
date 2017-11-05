@@ -105,7 +105,7 @@ function sendVerifyCodeSMS(to, tempId, cb) {
 // }
 
 var sdkappid = '1400047966'
-var appkey = '351a0db4702e0307679888707f520761 '
+var appkey = '351a0db4702e0307679888707f520761'
 var hostname = 'yun.tim.qq.com'
 
 function getSig(mobile, time, random) {
