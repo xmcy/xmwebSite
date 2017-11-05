@@ -1819,3 +1819,26 @@ doraApp.filter('valToStatus', [function(){
         }
     };
 }]);
+doraApp.filter('valToDistrict', [function(){
+    return function(text){
+        if(text=="1"){
+            return "蒲潭南区"
+        }else if(text=="2"){
+            return "蒲潭北区"
+        }else if(text=="3"){
+            return "幸福小区"
+        }else if(text=="4"){
+            return "凤凰苑小区"
+        }else if(text=="5"){
+            return "龙湖小区一期"
+        }else if(text=="6"){
+            return "龙湖小区二期"
+        }else if(text=="7"){
+            return "小军山小区"
+        }else if(text=="0"){
+            return "其它"
+        }else {
+            return text
+        }
+    };
+}]);

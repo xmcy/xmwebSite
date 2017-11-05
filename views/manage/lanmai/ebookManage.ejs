@@ -57,7 +57,7 @@
                     </tr>
                     <tr class="datalist" ng-repeat="item in dataList">
                         <td><input type="checkbox" name="listItem" class="mini" value="{{item._id}}" ng-click="getNewIds()"/></td>
-                        <td>{{item.resType}}</td>
+                        <td>{{item.resType|valToDistrict}}</td>
                         <td>{{item.detailPlace}}</td>
                         <td>{{item.contacts}}</td>
                         <td>{{item.phoneNum}}</td>
