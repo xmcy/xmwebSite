@@ -149,7 +149,7 @@ doraApp.controller('ebookManage',['$scope','$http',function($scope,$http){
     $scope.text='';
     $scope.order={createdAt: -1};
     $scope.region={};
-
+    $scope.content={}
     postData();
     
 }]);
