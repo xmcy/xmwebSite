@@ -271,11 +271,8 @@ router.post('/manage/searchManageFilter', function(req, res, next) {
 
     var query = {}
 
-    if (type) {
-        query.type = type
-    }
-    if (recommend) {
-        query.recommend = recommend
+    if (resType!=="") {
+        query.resType = resType
     }
     var resultNum = Advice.find(query).count()
     Advice.find(query).sort(order).skip(startNum).limit(limit).exec(function(err, docs) {
