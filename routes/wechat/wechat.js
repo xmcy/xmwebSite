@@ -274,7 +274,7 @@ router.post('/InsertAdvice', function (req, res, next) {
           phoneNumArr.push('13007107822')
           phoneNumArr.push('18986180878')
         }
-        smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code27,[req.body.resourceTypeText,req.body.detailPlace],function (err) {
+        smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code28,[req.body.resourceTypeText,req.body.detailPlace,req.body.details],function (err) {
           console.log(err)
         })
         res.json({

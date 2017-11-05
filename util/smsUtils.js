@@ -270,5 +270,6 @@ var exports = module.exports = {
     code24: 28417,
     code25: 28576,
     code26: 29126,
-    code27: 53909
+    code27: 53909,
+    code28: 53952
 }
