@@ -131,7 +131,6 @@
                             <label class="control-label col-sm-4">图片</label>
                             <div class="modifyPic col-sm-4 " ng-repeat="image in content.images">
                                 <a ng-href={{image}} target="_blank"><img  id="coverImg" ng-src={{image}} /></a>
-
                             </div>
                         </div>
 
@@ -142,19 +141,3 @@
 
     </div><!-- /.row -->
 </div>
-
-<script>
-    $('#region').citypicker({
-        level:"province"
-    });
-    $("#resetDistrict").on("click",function () {
-        $('#region').citypicker("reset");
-        $("#region").scope().regionStr="";
-        $("#region").scope().region={}
-        $("#region").scope().$apply();
-    })
-    document.addEventListener("listen", function (e) {
-        $("#region").scope().regionStr=finalText;
-        $("#region").scope().$apply();
-    }, false);
-</script>
