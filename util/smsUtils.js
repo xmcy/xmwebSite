@@ -202,9 +202,7 @@ function sendNotifySMS_qcloud(mobile, tempId, params, cb) {
 function sendNotifyMultiSMS_qcloud(mobiles, tempId, params, cb) {
     var time = Math.round(new Date().getTime() / 1000)
     var random = _.random(100000, 999999)
-    console.log(mobiles)
     var sig = getSig(mobiles.join(','), time, random)
-    console.log(sig)
     var tels = []
     for (var idx in mobiles) {
         tels.push({ nationcode: '86', mobile: mobiles[idx] })
