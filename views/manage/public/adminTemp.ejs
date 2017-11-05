@@ -100,7 +100,7 @@ Contact: 18571557923@163.com
     <!-- Main Header -->
     <header class="main-header">
         <!-- Logo -->
-        <a href="/admin/manage" class="logo"><b>幸福天地</b>管理员系统</a>
+        <a href="/admin/manage" class="logo"><b>幸福天地</b>管理系统</a>
 
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -195,75 +195,82 @@ Contact: 18571557923@163.com
                 <li class="header">内容管理</li>
                 <!-- Optionally, you can add icons to the links -->
                 <input type="hidden" id="currentCate" value="<%= bigCategory%>"/>
-                <li class="treeview" cid="contentManage">
-                    <a href="#"><span>文档管理</span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li cid="contentManage_content"><a href="/admin/manage/contentList"><i class="fa fa-file-text-o"></i> 文档管理</a></li>
-                        <li cid="articleManage_content"><a href="/admin/manage/articlecontentManage"><i class="fa fa-file-text-o"></i> 文章管理</a></li>
-                        <li cid="articleManage_cateGory"><a href="/admin/manage/articleManage"><i class="fa fa-file-text-o"></i> 文章类别管理</a></li>
-                        <li cid="newsManage"><a href="/admin/manage/newsManage"><i class="fa fa-file-text-o"></i> 新闻管理</a></li>
-                        <li cid="contentManage_cateGory"><a href="/admin/manage/contentCategorys"><i class="fa fa-clipboard"></i> 文档类别管理</a></li>
-                        <li cid="contentManage_tag"><a href="/admin/manage/contentTags"><i class="fa fa-tags"></i> 文档标签管理</a></li>
-                        <li cid="contentManage_msg"><a href="/admin/manage/messageList"><i class="fa fa-comments"></i> 留言管理</a></li>
-                        <li cid="contentManage_notice">
-                            <a href="#"><i class="fa fa-bullhorn"></i> 消息管理<i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li cid="contentManage_notice_1"><a href="/admin/manage/systemNotice"><i class="fa fa-volume-up"></i> 公告管理</a></li>
-                            </ul>
-                            <ul class="treeview-menu hide">
-                                <li cid="contentManage_notice_2"><a href="/admin/manage/userNotice"><i class="fa fa-male"></i> 用户消息</a></li>
-                            </ul>
-                            <ul class="treeview-menu">
-                                <li cid="contentManage_notice_3"><a href="/admin/manage/sysTemBackStageNotice"><i class="fa fa-bell-o"></i> 系统消息</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>             
+                <!--<li class="treeview" cid="contentManage">-->
+                    <!--<a href="#"><span>文档管理</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+                    <!--<ul class="treeview-menu">-->
+                        <!--<li cid="contentManage_content"><a href="/admin/manage/contentList"><i class="fa fa-file-text-o"></i> 文档管理</a></li>-->
+                        <!--<li cid="articleManage_content"><a href="/admin/manage/articlecontentManage"><i class="fa fa-file-text-o"></i> 文章管理</a></li>-->
+                        <!--<li cid="articleManage_cateGory"><a href="/admin/manage/articleManage"><i class="fa fa-file-text-o"></i> 文章类别管理</a></li>-->
+                        <!--<li cid="newsManage"><a href="/admin/manage/newsManage"><i class="fa fa-file-text-o"></i> 新闻管理</a></li>-->
+                        <!--<li cid="contentManage_cateGory"><a href="/admin/manage/contentCategorys"><i class="fa fa-clipboard"></i> 文档类别管理</a></li>-->
+                        <!--<li cid="contentManage_tag"><a href="/admin/manage/contentTags"><i class="fa fa-tags"></i> 文档标签管理</a></li>-->
+                        <!--<li cid="contentManage_msg"><a href="/admin/manage/messageList"><i class="fa fa-comments"></i> 留言管理</a></li>-->
+                        <!--<li cid="contentManage_notice">-->
+                            <!--<a href="#"><i class="fa fa-bullhorn"></i> 消息管理<i class="fa fa-angle-left pull-right"></i></a>-->
+                            <!--<ul class="treeview-menu">-->
+                                <!--<li cid="contentManage_notice_1"><a href="/admin/manage/systemNotice"><i class="fa fa-volume-up"></i> 公告管理</a></li>-->
+                            <!--</ul>-->
+                            <!--<ul class="treeview-menu hide">-->
+                                <!--<li cid="contentManage_notice_2"><a href="/admin/manage/userNotice"><i class="fa fa-male"></i> 用户消息</a></li>-->
+                            <!--</ul>-->
+                            <!--<ul class="treeview-menu">-->
+                                <!--<li cid="contentManage_notice_3"><a href="/admin/manage/sysTemBackStageNotice"><i class="fa fa-bell-o"></i> 系统消息</a></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</li>             -->
+                <!--<li class="treeview active" cid="tuiguangManage">-->
+                    <!--<a href="#"><span>数字期刊</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+                    <!--<ul class="treeview-menu">-->
+                        <!--<li cid="ebookManage_add"><a href="/admin/manage/addEbookManage"><i class="fa fa-camera-retro"></i> 新增期刊</a></li>-->
+                        <!--<li cid="ebookManage"><a href="/admin/manage/ebookManage"><i class="fa fa-camera-retro"></i> 期刊列表</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+
+                <!--<li class="treeview active" cid="tuiguangManage">-->
+                    <!--<a href="#"><span>VR展馆</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+                    <!--<ul class="treeview-menu">-->
+                        <!--<li cid="vrManage_add"><a href="/admin/manage/addVrManage"><i class="fa fa-camera-retro"></i> 新增展馆</a></li>-->
+                        <!--<li cid="vrManage"><a href="/admin/manage/vrManage"><i class="fa fa-camera-retro"></i> 展馆列表</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<li class="header">服务管理</li>-->
+                <!--<li class="treeview active" cid="tuiguangManage">-->
+                    <!--<a href="#"><span>推荐管理</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+                    <!--<ul class="treeview-menu">-->
+                        <!--<li cid="slideManage"><a href="/admin/manage/slideManage"><i class="fa fa-camera-retro"></i> 首页轮播图</a></li>-->
+                        <!--<li cid="searchRcdManage"><a href="/admin/manage/searchRcdManage"><i class="fa fa-camera-retro"></i> 搜索推荐</a></li>-->
+                        <!--<li cid="categorySettingMng"><a href="/admin/manage/categorySettingMng"><i class="fa fa-camera-retro"></i> 二级栏目推荐</a></li>-->
+                    <!--</ul>-->
+                <!--</li>                   -->
+                <!--<li class="treeview active" cid="tuiguangManage">-->
+                    <!--<a href="#"><span>推广管理</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+                    <!--<ul class="treeview-menu">-->
+                        <!--<li cid="promotionManage"><a href="/admin/manage/brandPromotionMng"><i class="fa fa-camera-retro"></i> 品牌推广管理</a></li>-->
+                        <!--<li cid="PrecisePromotion"><a href="/admin/manage/precisePromotion"><i class="fa fa-camera-retro"></i> 精准推广管理</a></li>-->
+                        <!--&lt;!&ndash; <li cid="sysTemManage_ads"><a href="/admin/manage/adsList"><i class="fa fa-camera-retro"></i> 广告管理</a></li>&ndash;&gt;-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<li class="treeview active" cid="TenderBidManage">-->
+                    <!--<a href="#"><span>招投标管理</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+                    <!--<ul class="treeview-menu">-->
+                        <!--<li cid="TenderManage"><a href="/admin/manage/TenderManage"><i class="fa fa-camera-retro"></i> 招投标管理</a></li>-->
+                        <!--<li cid="withdrawCashManage"><a href="/admin/manage/withdrawCashManage"><i class="fa fa-camera-retro"></i> 提现管理</a></li>-->
+                        <!--<li cid="complainManage"><a href="/admin/manage/complainManage"><i class="fa fa-camera-retro"></i> 投诉管理</a></li>-->
+                        <!--&lt;!&ndash; <li cid="sysTemManage_ads"><a href="/admin/manage/adsList"><i class="fa fa-camera-retro"></i> 广告管理</a></li>&ndash;&gt;-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<li class="treeview" cid="userManage">-->
+                    <!--<a href="#"><span>会员管理</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+                    <!--<ul class="treeview-menu">-->
+                        <!--<li cid="userManage_verify"><a href="/admin/manage/userManage_verify"><i class="fa fa-users"></i> 信息审核</a></li>-->
+                        <!--<li cid="userManage_user"><a href="/admin/manage/regUsersList"><i class="fa fa-users"></i> 会员列表</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
                 <li class="treeview active" cid="tuiguangManage">
-                    <a href="#"><span>数字期刊</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <a href="#"><span>报事建议</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li cid="ebookManage_add"><a href="/admin/manage/addEbookManage"><i class="fa fa-camera-retro"></i> 新增期刊</a></li>
-                        <li cid="ebookManage"><a href="/admin/manage/ebookManage"><i class="fa fa-camera-retro"></i> 期刊列表</a></li>
-                    </ul>
-                </li>
-                <li class="treeview active" cid="tuiguangManage">
-                    <a href="#"><span>VR展馆</span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li cid="vrManage_add"><a href="/admin/manage/addVrManage"><i class="fa fa-camera-retro"></i> 新增展馆</a></li>
-                        <li cid="vrManage"><a href="/admin/manage/vrManage"><i class="fa fa-camera-retro"></i> 展馆列表</a></li>
-                    </ul>
-                </li>
-                <li class="header">服务管理</li>
-                <li class="treeview active" cid="tuiguangManage">
-                    <a href="#"><span>推荐管理</span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li cid="slideManage"><a href="/admin/manage/slideManage"><i class="fa fa-camera-retro"></i> 首页轮播图</a></li>
-                        <li cid="searchRcdManage"><a href="/admin/manage/searchRcdManage"><i class="fa fa-camera-retro"></i> 搜索推荐</a></li>
-                        <li cid="categorySettingMng"><a href="/admin/manage/categorySettingMng"><i class="fa fa-camera-retro"></i> 二级栏目推荐</a></li>
-                    </ul>
-                </li>                   
-                <li class="treeview active" cid="tuiguangManage">
-                    <a href="#"><span>推广管理</span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li cid="promotionManage"><a href="/admin/manage/brandPromotionMng"><i class="fa fa-camera-retro"></i> 品牌推广管理</a></li>
-                        <li cid="PrecisePromotion"><a href="/admin/manage/precisePromotion"><i class="fa fa-camera-retro"></i> 精准推广管理</a></li>
-                        <!-- <li cid="sysTemManage_ads"><a href="/admin/manage/adsList"><i class="fa fa-camera-retro"></i> 广告管理</a></li>-->
-                    </ul>
-                </li>
-                <li class="treeview active" cid="TenderBidManage">
-                    <a href="#"><span>招投标管理</span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li cid="TenderManage"><a href="/admin/manage/TenderManage"><i class="fa fa-camera-retro"></i> 招投标管理</a></li>
-                        <li cid="withdrawCashManage"><a href="/admin/manage/withdrawCashManage"><i class="fa fa-camera-retro"></i> 提现管理</a></li>
-                        <li cid="complainManage"><a href="/admin/manage/complainManage"><i class="fa fa-camera-retro"></i> 投诉管理</a></li>
-                        <!-- <li cid="sysTemManage_ads"><a href="/admin/manage/adsList"><i class="fa fa-camera-retro"></i> 广告管理</a></li>-->
-                    </ul>
-                </li>
-                <li class="treeview" cid="userManage">
-                    <a href="#"><span>会员管理</span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li cid="userManage_verify"><a href="/admin/manage/userManage_verify"><i class="fa fa-users"></i> 信息审核</a></li>
-                        <li cid="userManage_user"><a href="/admin/manage/regUsersList"><i class="fa fa-users"></i> 会员列表</a></li>
+                        <li cid="ebookManage"><a href="/admin/manage/ebookManage"><i class="fa fa-camera-retro"></i>报事建议列表</a></li>
                     </ul>
                 </li>
                 <li class="header">系统管理</li>            
