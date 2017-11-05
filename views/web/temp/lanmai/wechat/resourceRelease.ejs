@@ -379,7 +379,8 @@
                         <input class="addfileInput banneraddfile" id="" type="file" multiple="multiple" name="">
                     </div>
                 </div>
-                <p>（最多上传10张图片，每张不超过10M，支持jpg/png格式）</p>
+                <p>（最多上传10张图片，每张不超过10M，支持jpg/png格式
+                    <br> 请等待图片上传完毕显示在页面上再提交）</p>
 
             </div>
             <div id="imgContainer">
@@ -617,52 +618,11 @@
                 };
                 if (bannerimgcount == 0) {
                     swal({
-                            title: "提交提示?",
-                            text: "您还没有上传图片!",
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#DD6B55",
-                            cancelButtonText: "去上传",
-                            confirmButtonText: "使用默认图片!",
-                            closeOnConfirm: false
-                        },
-                        function () {
-                            images.push("https://cdn.adquan.net/images/def-img/defaultResPic.png");
-                            var data = {
-                                phoneNum: phone,
-                                contacts: contactor,
-                                details: discription,
-                                resType: resourceType,
-                                resourceTypeText:resourceTypeText,
-                                detailPlace: detailPlace,
-                                images: images
-                            };
-                            $.ajax({
-                                type: "POST",
-                                url: "/resource/updateOrInsertRes",
-                                data: JSON.stringify(data),
-                                contentType: "application/json",
-                                success: function (res) {
-                                    if (res.result == "success") {
-                                        swal({
-                                                title: "发布成功！",
-                                                type: "warning",
-                                                confirmButtonColor: "#DD6B55",
-                                                confirmButtonText: "确定",
-                                                closeOnConfirm: false
-                                            },
-                                            function (isConfirm) {
-                                                if (isConfirm) {
-                                                    window.location.href =
-                                                        "/wechat/weMakeList";
-                                                } else {
-                                                    swal("已取消", "", "error");
-                                                }
-                                            });
-                                    }
-                                }
-                            })
-                        })
+                        title: "请上传图片！",
+                        type: "error",
+                        confirmButtonText: "确定"
+                    });
+                    return false;
                 } else {
                     for (var i = 0; i < bannerimgcount; i++) {
                         images.push($(bannerimg[i]).attr("src"));
