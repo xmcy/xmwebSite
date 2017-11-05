@@ -70,12 +70,9 @@ doraApp.controller("addEbookManage",['$scope','$http',"$window",function($scope,
 doraApp.controller('ebookManage',['$scope','$http',function($scope,$http){
     var postData=function () {
         var data={
-            // resType:"Ebook",
-            // page:$scope.bigCurrentPage,
-            // limit:$scope.itemsPerPage,
-            // text:$scope.text,
-            // order:$scope.order,
-            // region:$scope.region
+            page:$scope.bigCurrentPage,
+            limit:$scope.itemsPerPage,
+            order:$scope.order
         }
         $http.post("/admin/manage/searchManageFilter",JSON.stringify(data)).success(function (res) {
             if(res!=="查询为空"){
