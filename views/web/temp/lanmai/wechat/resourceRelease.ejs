@@ -379,7 +379,7 @@
                         <input class="addfileInput banneraddfile" id="" type="file" multiple="multiple" name="">
                     </div>
                 </div>
-                <p>（最多上传10张图片，每张不超过10M，支持jpg/png格式
+                <p>（最多上传5张图片，每张不超过10M，支持jpg/png格式
                     <br> 请等待图片上传完毕显示在页面上再提交）</p>
             </div>
             <div id="imgContainer">
@@ -422,9 +422,9 @@
             $(".banneraddfile").change(function (e) {
                 var that = this;
                 str = ""
-                if ($(".contentlist>div").length + that.files.length >= 12) {
+                if ($(".contentlist>div").length + that.files.length >= 7) {
                     swal({
-                        title: "达到上传图片上限10张，请删除后再上传图片!",
+                        title: "达到上传图片上限5张，请删除后再上传图片!",
                         type: "error",
                         confirmButtonText: "确定"
                     });
@@ -662,31 +662,31 @@
                 }
             })
         })
-        //    window.onload=function(){
-        //        function isWeiXin(){
-        //            var ua = window.navigator.userAgent.toLowerCase();
-        //            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
-        //                return true;
-        //            }else{
-        //                var bod=document.getElementsByTagName("body")[0];
-        //                bod.innerHTML="<p style='text-align: center;color:#68E868'>请在微信客户端打开页面</p>";
-        //                swal({
-        //                            title: '您好，请使用微信客户端浏览！',
-        //                            text: "即将跳转-幸福天地-首页",
-        //                            confirmButtonColor: "#DD6B55",
-        //                            confirmButtonText: "确定",
-        //                            closeOnConfirm: false
-        //                        },
-        //                        function(isConfirm) {
-        //                            if (isConfirm) {
-        //                                window.location.href="/users/home";
-        //                            }
-        //                        })
-        //                return false;
-        //            }
-        //        }
-        //        isWeiXin()
-        //    }
+            window.onload=function(){
+                function isWeiXin(){
+                    var ua = window.navigator.userAgent.toLowerCase();
+                    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                        return true;
+                    }else{
+                        var bod=document.getElementsByTagName("body")[0];
+                        bod.innerHTML="<p style='text-align: center;color:#68E868'>请在微信客户端打开页面</p>";
+                        swal({
+                                    title: '您好，请使用微信客户端浏览！',
+                                    text: "即将跳转-幸福天地-首页",
+                                    confirmButtonColor: "#DD6B55",
+                                    confirmButtonText: "确定",
+                                    closeOnConfirm: false
+                                },
+                                function(isConfirm) {
+                                    if (isConfirm) {
+                                        window.location.href="/admin";
+                                    }
+                                })
+                        return false;
+                    }
+                }
+                isWeiXin()
+            }
     </script>
 </body>
 
