@@ -88,6 +88,7 @@
                         <td>{{item.createdAt | date : "yyyy-MM-dd HH:mm:ss"}}</td>
                         <td>
                             <button class="btn btn-primary btn-xs" data-whatever="{{item._id}}" data-toggle="modal" data-target="#addContentTags" ng-click="changeScope(item)"><span class="fa fa-fw fa-edit" aria-hidden="true"></span>查看详情</button>&nbsp;
+                            <button class="btn btn-primary btn-xs" data-whatever="{{item._id}}" data-toggle="modal" data-target="#fankui" ><span class="fa fa-fw fa-edit" aria-hidden="true"></span>回复</button>&nbsp;
                             <!--<button class="btn btn-default btn-xs" type="button" title="删除" ng-click="delOneItem(item._id)"><i class="fa fa-trash-o"></i></button>-->
                         </td>
                     </tr>
@@ -151,6 +152,31 @@
                             <div class="modifyPic col-sm-4 " ng-repeat="image in content.images">
                                 <a ng-href={{image}} target="_blank"><img  id="coverImg" ng-src={{image}} /></a>
                             </div>
+                        </div>
+
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+    </div><!-- /.row -->
+    <div class="modal fade bs-example-modal-lg" id="fankui">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">反馈回复</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form" class="form-horizontal" name="myForm"  novalidate>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">反馈内容</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="fankui" id="fankui" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="submit">提交</button>
                         </div>
 
                     </form>

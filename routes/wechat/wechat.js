@@ -246,7 +246,7 @@ router.post('/getChildType', function (req, res, next) {
 
 //投诉建议
 router.post('/InsertAdvice', function (req, res, next) {
-      var phoneNumArr=['13367255218','15927095400','13871312213','18571557923']
+      var phoneNumArr=['17771898882','15927095400','13871312213','18571557923']
       // var phoneNumArr=['18571557923']
       var dataObj={
         resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
@@ -277,6 +277,7 @@ router.post('/InsertAdvice', function (req, res, next) {
         smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code28,[req.body.resourceTypeText,req.body.detailPlace,req.body.details],function (err) {
           console.log(err)
         })
+        smsUtils.sendNotifySMS_qcloud(req.body.phoneNum, smsUtils.code30, [], function(err) {})
         res.json({
           'result': 'success'
         })
