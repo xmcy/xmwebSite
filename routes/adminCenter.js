@@ -119,14 +119,14 @@ router.get('/manage/adviceMng', function(req, res) {
 })
 router.get('/manage/baoxiuManage', function(req, res) {
     if (adminFunc.checkAdminPower(req, 'baoxiuManage_view')) {
-        res.render('manage/lanmai/baoxiuManage', adminFunc.setPageInfo(req, res, '报修'))
+        res.render('manage/lanmai/baoxiuManage', adminFunc.setPageInfo(req, res, ['withdrawCashManage', '报修管理']))
     } else {
         res.render('manage/public/notice', adminFunc.setDataForInfo('danger', '对不起，您无权查看 <strong>' + 报修 + '</strong> 模块！'))
     }
 })
 router.get('/manage/jianyiManage', function(req, res) {
     if (adminFunc.checkAdminPower(req, 'jianyiManage_view')) {
-        res.render('manage/lanmai/jianyiManage', adminFunc.setPageInfo(req, res, '建议'))
+        res.render('manage/lanmai/jianyiManage', adminFunc.setPageInfo(req, res,['withdrawCashManage', '建议管理'] ))
     } else {
         res.render('manage/public/notice', adminFunc.setDataForInfo('danger', '对不起，您无权查看 <strong>' + 建议 + '</strong> 模块！'))
     }
