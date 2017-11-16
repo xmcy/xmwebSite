@@ -5,6 +5,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var adviceSchema = new Schema({
+    adType: String, // 1:居民投诉 2:居民报修 3：居民建议
     resNum: String, // id
 
     resType: String, // 社区类别

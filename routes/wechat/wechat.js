@@ -258,6 +258,7 @@ router.post('/InsertAdvice', function (req, res, next) {
         details:req.body.details,
         detailPlace:req.body.detailPlace
       }
+  console.log(dataObj)
     var advice=new Advice(dataObj)
     advice.save(function (err) {
       if (err) {
