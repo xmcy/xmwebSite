@@ -268,6 +268,7 @@ router.post('/manage/wxMenu', function(req, res, next) {
 // 数字期刊或vr查询
 router.post('/manage/searchManageFilter', function(req, res, next) {
     var resType = req.body.resType
+    var adType = req.body.adType
     var order = req.body.order
     var page = parseInt(req.body.page)
     var limit = parseInt(req.body.limit)
@@ -283,6 +284,8 @@ router.post('/manage/searchManageFilter', function(req, res, next) {
     var startNum = (page - 1) * limit
 
     var query = {}
+
+    query.adType=adType
 
     if (resType!=="") {
         query.resType = resType

@@ -70,6 +70,7 @@ doraApp.controller("addEbookManage",['$scope','$http',"$window",function($scope,
 doraApp.controller('ebookManage',['$scope','$http',function($scope,$http){
     var postData=function () {
         var data={
+            adType:'1',
             resType:$scope.status1,
             page:$scope.bigCurrentPage,
             limit:$scope.itemsPerPage,
@@ -139,6 +140,154 @@ doraApp.controller('ebookManage',['$scope','$http',function($scope,$http){
     $scope.content={}
     postData();
     
+}]);
+doraApp.controller('baoxiuManage',['$scope','$http',function($scope,$http){
+    var postData=function () {
+        var data={
+            adType:'2',
+            resType:$scope.status1,
+            page:$scope.bigCurrentPage,
+            limit:$scope.itemsPerPage,
+            order:$scope.order
+        }
+        $http.post("/admin/manage/searchManageFilter",JSON.stringify(data)).success(function (res) {
+            if(res!=="查询为空"){
+                $scope.dataList=res.docs;
+                $scope.bigTotalItems=res.pageInfo.totalItems;
+            }else {
+                $scope.dataList=[]
+                $scope.bigTotalItems=0
+                $scope.warningInfoData='暂无数据'
+            }
+            console.log(res)
+        })
+    }
+    $scope.pageChanged = function(currentPage) {
+        postData();
+    };
+    $scope.changeScope=function (item) {
+        $scope.content=item
+    }
+    $scope.delOneItem=function (id) {
+        swal({
+                title: "删除",
+                text: "确定删除这一条期刊资源",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "继续删除",
+                closeOnConfirm: false
+            },
+            function(){
+                $http.post("/admin/manage/deleteEbook",{
+                    uid:id
+                }).success(function (res) {
+                    if(res=="success"){
+                        swal({
+                            title: "删除成功",
+                            type: "success",
+                            confirmButtonText: "确定"
+                        });
+                        postData()
+                    }else {
+                        swal({
+                            title: "删除失败",
+                            type: "error",
+                            confirmButtonText: "确定"
+                        });
+                    }
+                    console.log(res)
+                })
+            });
+
+    }
+    $scope.searchForEbookManage=function (text) {
+        postData();
+    }
+    $scope.maxSize = 5;
+    $scope.itemsPerPage=10;
+    $scope.bigCurrentPage = 1;
+    $scope.bigTotalItems=1;
+    $scope.status1='';
+    $scope.order={createdAt: -1};
+    $scope.region={};
+    $scope.content={}
+    postData();
+
+}]);
+doraApp.controller('jianyiManage',['$scope','$http',function($scope,$http){
+    var postData=function () {
+        var data={
+            adType:'3',
+            resType:$scope.status1,
+            page:$scope.bigCurrentPage,
+            limit:$scope.itemsPerPage,
+            order:$scope.order
+        }
+        $http.post("/admin/manage/searchManageFilter",JSON.stringify(data)).success(function (res) {
+            if(res!=="查询为空"){
+                $scope.dataList=res.docs;
+                $scope.bigTotalItems=res.pageInfo.totalItems;
+            }else {
+                $scope.dataList=[]
+                $scope.bigTotalItems=0
+                $scope.warningInfoData='暂无数据'
+            }
+            console.log(res)
+        })
+    }
+    $scope.pageChanged = function(currentPage) {
+        postData();
+    };
+    $scope.changeScope=function (item) {
+        $scope.content=item
+    }
+    $scope.delOneItem=function (id) {
+        swal({
+                title: "删除",
+                text: "确定删除这一条期刊资源",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "继续删除",
+                closeOnConfirm: false
+            },
+            function(){
+                $http.post("/admin/manage/deleteEbook",{
+                    uid:id
+                }).success(function (res) {
+                    if(res=="success"){
+                        swal({
+                            title: "删除成功",
+                            type: "success",
+                            confirmButtonText: "确定"
+                        });
+                        postData()
+                    }else {
+                        swal({
+                            title: "删除失败",
+                            type: "error",
+                            confirmButtonText: "确定"
+                        });
+                    }
+                    console.log(res)
+                })
+            });
+
+    }
+    $scope.searchForEbookManage=function (text) {
+        postData();
+    }
+    $scope.maxSize = 5;
+    $scope.itemsPerPage=10;
+    $scope.bigCurrentPage = 1;
+    $scope.bigTotalItems=1;
+    $scope.status1='';
+    $scope.order={createdAt: -1};
+    $scope.region={};
+    $scope.content={}
+    postData();
+
 }]);
 
 //VR列表
