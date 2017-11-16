@@ -249,6 +249,7 @@ router.post('/InsertAdvice', function (req, res, next) {
       var phoneNumArr=['17771898882','15927095400','13871312213','18571557923']
       // var phoneNumArr=['18571557923']
       var dataObj={
+        adType:req.body.adType,
         resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
         resType:req.body.resType,
         images:req.body.images,

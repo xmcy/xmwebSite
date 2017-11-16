@@ -348,6 +348,14 @@
         <div class="topTip">如遇警情请直接拨打相应报警电话</div>
         <div class="releaseContent">
             <div>
+                <span><span class="optionIcon">*</span><span>类 型</span></span>
+                <form>
+                    <input class="re_machine_fix" type="radio" name="installType" id="freeinstall" checked value="1"> <label for="freeinstall" class="change_style">投诉</label>
+                    <input class="re_machine_fix" type="radio" name="installType"  id="payinstall" value="2"> <label for="payinstall" class="change_style">报修</label>
+                    <input class="re_machine_fix" type="radio" name="installType" id="noinstall"  value="3"> <label for="noinstall" class="change_style">建议</label>
+                </form>
+            </div>
+            <div>
                 <span>
                     <span class="optionIcon">*</span>
                     <span>服务区域</span>
@@ -568,6 +576,7 @@
             var contactor;
             var phone;
             var str = "";
+            var installType;
             var testmobile = /^([0-9]{3,4}-)?[0-9]{7,8}$/;
             var restmobible = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
             //        $(resourceTypeChange).on("change",function () {
@@ -608,7 +617,7 @@
                 detailPlace = $(".detailPlace").val();
                 contactor = $(".contactor").val();
                 phone = $(".phone").val();
-
+                installType=$("input[name='installType']:checked").val()
                 if (resourceType == "" || contactor == "" || phone == "" || discription == "" ||
                     detailPlace == "") {
                     swal({
@@ -639,6 +648,7 @@
                     }
                     var data = {
                         phoneNum: phone,
+                        adType: installType,
                         contacts: contactor,
                         details: discription,
                         resType: resourceType,
