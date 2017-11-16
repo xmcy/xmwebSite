@@ -71,7 +71,7 @@ module.exports = {
     USERMANAGE: ['userManage', '会员管理'], // 后台模块(会员管理)
     regUsersList: ['userManage_user', '注册用户管理'],
     userManageVerify: ['userManage_verify', '信息审核'],
-    ebookManage: ['ebookManage', '报事建议'],
+    ebookManage: ['ebookManage', '投诉'],
     vrManage: ['vrManage', 'VR展馆'],
     rcdManage: ['rcdManage', '推荐管理'],
     promotionManage: ['promotionManage', '推广管理'],

@@ -117,7 +117,20 @@ router.get('/manage/adviceMng', function(req, res) {
         res.render('manage/public/notice', adminFunc.setDataForInfo('danger', '对不起，您无权查看 <strong>' + settings['ebookManage'][1] + '</strong> 模块！'))
     }
 })
-
+router.get('/manage/baoxiuManage', function(req, res) {
+    if (adminFunc.checkAdminPower(req, 'baoxiuManage_view')) {
+        res.render('manage/lanmai/baoxiuManage', adminFunc.setPageInfo(req, res, '报修'))
+    } else {
+        res.render('manage/public/notice', adminFunc.setDataForInfo('danger', '对不起，您无权查看 <strong>' + 报修 + '</strong> 模块！'))
+    }
+})
+router.get('/manage/jianyiManage', function(req, res) {
+    if (adminFunc.checkAdminPower(req, 'jianyiManage_view')) {
+        res.render('manage/lanmai/jianyiManage', adminFunc.setPageInfo(req, res, '建议'))
+    } else {
+        res.render('manage/public/notice', adminFunc.setDataForInfo('danger', '对不起，您无权查看 <strong>' + 建议 + '</strong> 模块！'))
+    }
+})
 // 数字期刊添加页面(默认)
 router.get('/manage/addEbookManage', function(req, res) {
     if (!_.isEmpty(req.query.uid)) {
