@@ -619,7 +619,7 @@
                 contactor = $(".contactor").val();
                 phone = $(".phone").val();
                 installType=$("input[name='installType']:checked").val()
-                installTypeText=$("input[name='installType']:checked").text()
+                installTypeText=$("input[name='installType']:checked").next().text()
                 if (resourceType == "" || contactor == "" || phone == "" || discription == "" ||
                     detailPlace == "") {
                     swal({
