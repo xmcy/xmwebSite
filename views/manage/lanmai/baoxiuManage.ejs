@@ -200,7 +200,7 @@
                     },
                     function(){
                         var fankui=$("#fankuiContent").val()
-                        if(fankui&&fankui.length>0&&fankui.trim().length>0){
+                        if(!fankui||fankui.length==0&&fankui.trim().length==0){
                             swal({
                                 title: "反馈内容为空，请填写完整！",
                                 type: "error",
