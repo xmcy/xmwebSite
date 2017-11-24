@@ -188,5 +188,51 @@
         $('#addContentTags').on('hidden.bs.modal', function (e) {
             $("#addContentTags").scope().content={}
         });
+        $("#submit").on("click",function () {
+            swal({
+                        title: "确定提交反馈?",
+                        text: "请检查内容!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "提交",
+                        closeOnConfirm: false
+                    },
+                    function(){
+                        var fankui=$("#fankui").val()
+                        if(fankui&&fankui.length>0&&fankui.trim().length>0){
+                            swal({
+                                title: "反馈内容为空，请填写完整！",
+                                type: "error",
+                                confirmButtonText: "确定"
+                            });
+                            return false
+                        }
+                        var dataForPost={
+                            content:fankui,
+                            phoneNum:$("#addContentTags").scope().content.phoneNum
+                        }
+                        $.post("/admin/manage/fankuiContent",dataForPost,function (res) {
+                            if(res=="success"){
+                                swal({
+                                    title: "提交成功",
+                                    type: "success",
+                                    confirmButtonText: "确定"
+                                });
+                                $("#addContentTags").modal('hide')
+                            }else {
+                                swal({
+                                    title: "提交失败",
+                                    type: "error",
+                                    confirmButtonText: "确定"
+                                });
+                                console.log(res)
+                                $("#addContentTags").modal('hide')
+                            }
+                        })
+                    });
+
+        })
+
     }
 </script>
