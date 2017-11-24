@@ -295,7 +295,6 @@ router.post('/InsertAdvice', function (req, res, next) {
         })
       }
     })
-  
 })
 
 

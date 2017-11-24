@@ -183,3 +183,10 @@
 
     </div><!-- /.row -->
 </div>
+<script>
+    window.onload=function () {
+        $('#addContentTags').on('hidden.bs.modal', function (e) {
+            $("#addContentTags").scope().content={}
+        });
+    }
+</script>
