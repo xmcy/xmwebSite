@@ -169,7 +169,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-4">反馈内容</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="fankui" id="fankui" />
+                                <input type="text" class="form-control" name="fankui" id="fankuiContent" />
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -199,7 +199,7 @@
                         closeOnConfirm: false
                     },
                     function(){
-                        var fankui=$("#fankui").val()
+                        var fankui=$("#fankuiContent").val()
                         if(fankui&&fankui.length>0&&fankui.trim().length>0){
                             swal({
                                 title: "反馈内容为空，请填写完整！",
