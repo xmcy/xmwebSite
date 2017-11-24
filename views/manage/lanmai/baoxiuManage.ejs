@@ -212,7 +212,7 @@
                             content:fankui,
                             phoneNum:$("#addContentTags").scope().content.phoneNum
                         }
-                        $.post("/admin/manage/fankuiContent",dataForPost,function (res) {
+                        $.post("/wechat/fankuiContent",dataForPost,function (res) {
                             if(res=="success"){
                                 swal({
                                     title: "提交成功",
