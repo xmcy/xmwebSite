@@ -263,17 +263,27 @@ router.post('/InsertAdvice', function (req, res, next) {
       if (err) {
         res.json({ error: err })
       } else {
-        if(req.body.resType=="1"||req.body.resType=="2"||req.body.resType=="3"){
+        if(req.body.resType=="1"){
+          phoneNumArr.push('15527496551')
+          phoneNumArr.push('18971549698')
+        }else if(req.body.resType=="2"){
           phoneNumArr.push('18702786303')
+          phoneNumArr.push('18871176855')
+        }else if(req.body.resType=="3"){
+          phoneNumArr.push('13659865498')
+          phoneNumArr.push('13871510430')
         }else if(req.body.resType=="4"){
           phoneNumArr.push('13971651751')
           phoneNumArr.push('15172316250')
+          phoneNumArr.push('15994294908')
         }else if(req.body.resType=="5"||req.body.resType=="6"){
           phoneNumArr.push('13871457538')
           phoneNumArr.push('18071022988')
+          phoneNumArr.push('13871342702')
         }else if(req.body.resType=="7"){
           phoneNumArr.push('13007107822')
           phoneNumArr.push('18986180878')
+          phoneNumArr.push('13387627928')
         }
         smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code31,[req.body.installTypeText,req.body.resourceTypeText,
           req.body.detailPlace,req.body.details],function (err) {
