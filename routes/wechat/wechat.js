@@ -303,6 +303,7 @@ router.post('/fankuiContent', function (req, res, next) {
   var phoneNum=req.body.phoneNum
   smsUtils.sendNotifySMS_qcloud(phoneNum, smsUtils.code29, [content], function(err) {
     if(err){
+      console.log(err)
       res.end("error")
     }else {
       res.end("success")
