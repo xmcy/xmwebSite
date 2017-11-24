@@ -297,5 +297,10 @@ router.post('/InsertAdvice', function (req, res, next) {
     })
 })
 
-
+//投诉建议
+router.post('/fankuiContent', function (req, res, next) {
+  var content=req.body.content
+  var phoneNum=req.body.phoneNum
+  smsUtils.sendNotifySMS_qcloud(req.body.phoneNum, smsUtils.code29, [content], function(err) {})
+})
 module.exports = router
