@@ -17,8 +17,8 @@ module.exports = {
     DB: 'xmcy',
     HOST: '',
     PORT: 27017,
-    USERNAME: '',
-    PASSWORD: '',
+    USERNAME: 'xmcy',
+    PASSWORD: 'xiaomeng61389798',
 
     appid:"wx9e9ca14e4a5c9f87",
     secret:"7f15f33ccaa50a40a2ae540a4d38095c",
