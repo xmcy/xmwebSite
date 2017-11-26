@@ -76,12 +76,12 @@ router.get('/vnum',function(req, res){
 router.post('/doLogin', function(req, res) {
     var userName = req.body.userName;
     var password = req.body.password;
-    var vnum = req.body.vnum;
+    // var vnum = req.body.vnum;
     var newPsd = DbOpt.encrypt(password,settings.encrypt_key);
 
-    if(vnum != req.session.vnum){
-        res.end('验证码有误');
-    }else{
+    // if(vnum != req.session.vnum){
+    //     res.end('验证码有误');
+    // }else{
         AdminUser.findOne({'userName':userName,'password':newPsd}).populate('group').exec(function(err,user){
             if(err){
                 res.end(err);
@@ -102,7 +102,7 @@ router.post('/doLogin', function(req, res) {
                 res.end("用户名或密码错误");
             }
         });
-    }
+    // }
 
 });
 
