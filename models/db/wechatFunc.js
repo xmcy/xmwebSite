@@ -317,6 +317,7 @@ setDataForweICanFixSiteMap: function (req, res, params , staticforder, defaultTe
           targetPath = settings.SYSTEMTEMPFORDER + temp.alias + '/wechat/weRegister'
           res.render(targetPath, wechatFunc.setDataForMagazineSiteMap(req, res, params, temp.alias))
         } else if (type == 'resourceRelease') {
+          console.log("1")
           targetPath = settings.SYSTEMTEMPFORDER + temp.alias + '/wechat/resourceRelease'
           res.render(targetPath, wechatFunc.setDataForresourceRelease(req, res, params, temp.alias))
         }
