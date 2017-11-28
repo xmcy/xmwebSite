@@ -77,13 +77,13 @@ router.post('/doLogin', function(req, res) {
     var userName = req.body.userName;
     var password = req.body.password;
     // var vnum = req.body.vnum;
-    console.log("进入");
     var newPsd = DbOpt.encrypt(password,settings.encrypt_key);
-
+    console.log(userName);
     // if(vnum != req.session.vnum){
     //     res.end('验证码有误');
     // }else{
         AdminUser.findOne({'userName':userName,'password':newPsd}).populate('group').exec(function(err,user){
+            console.log('1');
             if(err){
                 res.end(err);
             }
