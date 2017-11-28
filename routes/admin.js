@@ -77,7 +77,7 @@ router.post('/doLogin', function(req, res) {
     var userName = req.body.userName;
     var password = req.body.password;
     // var vnum = req.body.vnum;
-    
+
     var newPsd = DbOpt.encrypt(password,settings.encrypt_key);
 
     // if(vnum != req.session.vnum){
