@@ -7,7 +7,7 @@
 module.exports = {
 
     // debug 为 true 时，用于本地调试//debug 为 false 时，取消本地调试
-    debug: true,
+    debug: false,
     imgZip: true, // 上传图片是否压缩(如果为false则本地不需要安装gm)
     session_secret: 'xmcy', // 务必修改
     auth_cookie_name: 'xmcy',
