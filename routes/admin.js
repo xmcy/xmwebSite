@@ -61,7 +61,6 @@ var captcha = require('../util/randomWord').captcha;
 
 //管理员登录页面
 router.get('/', function(req, res) {
-    console.log("11111111111111111111111111")
     res.render('manage/adminLogin',{ title: settings.SITETITLE , description : 'xmcy后台管理登录'});
 });
 
@@ -89,6 +88,7 @@ router.post('/doLogin', function(req, res) {
                 res.end(err);
             }
             if(user) {
+                console.log("登录成功");
                 req.session.adminPower = user.group.power;
                 req.session.adminlogined = true;
                 req.session.adminUserInfo = user;
