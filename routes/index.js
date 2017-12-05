@@ -28,9 +28,9 @@ var url = require('url')
 var cache = require('../util/cache')
 
 /* GET home page. */
-// router.get('/', function(req, res, next) {
-//     res.redirect('/admin/manage')
-// })
+router.get('/', function(req, res, next) {
+    res.redirect('/admin/manage')
+})
 router.get('/selfIntroduce', function(req, res, next) {
     siteFunc.renderToTargetPageByType(req, res, 'cityPartner', { title: '自我介绍', page: 'cityPartner' })
 })
