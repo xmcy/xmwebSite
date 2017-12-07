@@ -246,7 +246,7 @@ router.post('/getChildType', function (req, res, next) {
 
 //投诉建议
 router.post('/InsertAdvice', function (req, res, next) {
-      var phoneNumArr=['17771898882','15927095400','13871312213','18571557923']
+      var phoneNumArr=['17771898882','15927095400','13871312213','18571557923','18871176855']
       // var phoneNumArr=['18571557923']
       var dataObj={
         adType:req.body.adType,
@@ -268,7 +268,6 @@ router.post('/InsertAdvice', function (req, res, next) {
           phoneNumArr.push('18971549698')
         }else if(req.body.resType=="2"){
           phoneNumArr.push('18702786303')
-          phoneNumArr.push('18871176855')
         }else if(req.body.resType=="3"){
           phoneNumArr.push('13659865498')
           phoneNumArr.push('13871510430')
