@@ -287,11 +287,12 @@ router.post('/InsertAdvice', function (req, res, next) {
         smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code31,[req.body.installTypeText,req.body.resourceTypeText,
           req.body.detailPlace,req.body.details],function (err) {
           console.log(err)
+          smsUtils.sendNotifySMS_qcloud(req.body.phoneNum, smsUtils.code30, [], function(err) {})
+          res.json({
+            'result': 'success'
+          })
         })
-        smsUtils.sendNotifySMS_qcloud(req.body.phoneNum, smsUtils.code30, [], function(err) {})
-        res.json({
-          'result': 'success'
-        })
+
       }
     })
 })
