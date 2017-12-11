@@ -19,7 +19,7 @@ var PriceConfig2 = require('../../models/admincenter/PriceConfig2')
 var PrecisePromotion = require('../../models/admincenter/PrecisePromotion')
 var Bill = require('../../models/Bill')
 var Install = require('../../models/publish/Install')
-
+var nodeExcel = require('excel-export')
 var crypto = require('crypto')
 var system = require('../../util/system')
 var moment = require('moment')
@@ -308,5 +308,67 @@ router.post('/fankuiContent', function (req, res, next) {
       res.end("success")
     }
   })
+})
+
+router.get('/toExcel',function (req,res,next) {
+  var conf ={};
+  // uncomment it for style example
+  // conf.stylesXmlFile = "styles.xml";
+  conf.stylesXmlFile = "styles.xml";
+  conf.name = "mysheet";
+  conf.cols = [{
+    caption:'类型',
+      type:'string',
+      width:15
+},{
+    caption:'社区类别',
+    type:'string',
+    width:15
+  },{
+    caption:'具体地点',
+    type:'string',
+    width:35
+  },{
+    caption:'联系人',
+    type:'string',
+    width:15
+  },{
+    caption:'联系电话',
+    type:'number',
+    width:15
+  },{
+    caption:'详情',
+    type:'string',
+    width:50
+  },{
+    caption:'时间',
+    type:'date',
+    beforeCellWrite:function(){
+      var originDate = new Date(Date.UTC(1899,11,30));
+      return function(row, cellData, eOpt){
+        // uncomment it for style example
+        // if (eOpt.rowNum%2){
+        // eOpt.styleIndex = 1;
+        // }
+        // else{
+        // eOpt.styleIndex = 2;
+        // }
+        if (cellData === null){
+          eOpt.cellType = 'string';
+          return 'N/A';
+        } else
+          return (cellData - originDate) / (24 * 60 * 60 * 1000);
+      }
+    }()
+    , width:20.85
+  }];
+  Advice.find({},{adType:1,resType:1,detailPlace:1,contacts:1,phoneNum:1,details:1,createdAt:1}).sort({createdAt: -1}).exec(function(err, docs) {
+    conf.rows = docs;
+    var result = nodeExcel.execute(conf);
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats');
+    res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
+    res.end(result, 'binary');
+  })
+
 })
 module.exports = router
