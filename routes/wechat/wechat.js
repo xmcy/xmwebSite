@@ -368,7 +368,6 @@ router.get('/toExcel',function (req,res,next) {
     var temp=[]
     docs.forEach(function (item) {
       temp=[item.adType,item.resType,item.detailPlace,item.contacts,item.phoneNum,item.details,item.createdAt]
-      }
       result.push(temp)
       temp=[]
     })
