@@ -363,6 +363,7 @@ router.get('/toExcel',function (req,res,next) {
     , width:20.85
   }];
   Advice.find({},{adType:1,resType:1,detailPlace:1,contacts:1,phoneNum:1,details:1,createdAt:1}).sort({createdAt: -1}).exec(function(err, docs) {
+    console.log(docs)
     conf.rows = docs;
     var result = nodeExcel.execute(conf);
     res.setHeader('Content-Type', 'application/vnd.openxmlformats');
