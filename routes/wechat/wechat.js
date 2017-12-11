@@ -382,7 +382,7 @@ router.get('/toExcel',function (req,res,next) {
 })
 
 function getresType(num) {
-  switch(num)
+  switch(parseInt(num) )
   {
     case 1:
       return '蒲潭南区';
@@ -412,7 +412,7 @@ function getresType(num) {
 }
 
 function getadType(num) {
-  switch(num)
+  switch(parseInt(num))
   {
     case 1:
       return '投诉';
