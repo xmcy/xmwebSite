@@ -367,7 +367,7 @@ router.get('/toExcel',function (req,res,next) {
 
     var temp=[]
     docs.forEach(function (item) {
-      temp=[item.adType,item.resType,item.detailPlace,item.contacts,item.phoneNum,item.details,item.createdAt]
+      temp=[getadType(item.adType),getresType(item.resType),item.detailPlace,item.contacts,item.phoneNum,item.details,item.createdAt]
       console.log(temp)
       resultArr.push(temp)
       temp=[]
@@ -380,4 +380,52 @@ router.get('/toExcel',function (req,res,next) {
   })
 
 })
+
+function getresType(num) {
+  switch(num)
+  {
+    case 1:
+      return '蒲潭南区';
+      break;
+    case 2:
+      return '蒲潭北区';
+      break;
+    case 3:
+      return '幸福小区';
+      break;
+    case 4:
+      return '凤凰苑小区';
+      break;
+    case 5:
+      return '龙湖小区一期';
+      break;
+    case 6:
+      return '龙湖小区二期';
+      break;
+    case 7:
+      return '小军山小区';
+      break;
+    default:
+      return '其它';
+      break;
+  }
+}
+
+function getadType(num) {
+  switch(num)
+  {
+    case 1:
+      return '投诉';
+      break;
+    case 2:
+      return '报修';
+      break;
+    case 3:
+      return '建议';
+      break;
+    default:
+      return '其它';
+      break;
+  }
+}
 module.exports = router
