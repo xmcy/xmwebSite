@@ -369,7 +369,7 @@ router.get('/toExcel',function (req,res,next) {
     docs.forEach(function (item) {
       for(arr in item){
         if(item.hasOwnProperty(arr)){
-          temp.unshift(arr)
+          temp.unshift(item[arr])
         }
       }
       console.log(result)
