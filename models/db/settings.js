@@ -13,8 +13,8 @@ module.exports = {
     auth_cookie_name: 'xmcy',
     encrypt_key: 'dora',
 //    数据库配置
-    URL: 'mongodb://xmcy:xiaomeng61389798@127.0.0.1:27017/xmcy',
-    // URL: 'mongodb://xmcy:xiaomeng61389798@127.0.0.1:27017/xmcy?authSource=admin',
+//     URL: 'mongodb://xmcy:xiaomeng61389798@127.0.0.1:27017/xmcy',
+    URL: 'mongodb://xmcy:xiaomeng61389798@127.0.0.1:27017/xmcy?authSource=admin',
     DB: 'xmcy',
     HOST: '',
     PORT: 27017,
