@@ -312,7 +312,7 @@ router.post('/fankuiContent', function (req, res, next) {
 
 router.get('/toExcel',function (req,res,next) {
   var conf ={};
-  var resutt=[]
+  var result=[]
   // uncomment it for style example
   // conf.stylesXmlFile = "styles.xml";
   // conf.stylesXmlFile = "styles.xml";
