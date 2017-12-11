@@ -314,7 +314,7 @@ router.get('/toExcel',function (req,res,next) {
   var conf ={};
   // uncomment it for style example
   // conf.stylesXmlFile = "styles.xml";
-  conf.stylesXmlFile = "styles.xml";
+  // conf.stylesXmlFile = "styles.xml";
   conf.name = "mysheet";
   conf.cols = [{
     caption:'类型',
