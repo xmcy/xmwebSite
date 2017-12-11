@@ -312,7 +312,7 @@ router.post('/fankuiContent', function (req, res, next) {
 
 router.get('/toExcel',function (req,res,next) {
   var conf ={};
-  var result=[]
+  var resultArr=[]
   // uncomment it for style example
   // conf.stylesXmlFile = "styles.xml";
   // conf.stylesXmlFile = "styles.xml";
@@ -369,10 +369,10 @@ router.get('/toExcel',function (req,res,next) {
     docs.forEach(function (item) {
       temp=[item.adType,item.resType,item.detailPlace,item.contacts,item.phoneNum,item.details,item.createdAt]
       console.log(temp)
-      result.push(temp)
+      resultArr.push(temp)
       temp=[]
     })
-    conf.rows = result;
+    conf.rows = resultArr;
     var result = nodeExcel.execute(conf);
     res.setHeader('Content-Type', 'application/vnd.openxmlformats');
     res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
