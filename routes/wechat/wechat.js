@@ -340,7 +340,7 @@ router.get('/toExcel',function (req,res,next) {
   },{
     caption:'详情',
     type:'string',
-    width:50
+    width:100
   },{
     caption:'时间',
     type:'date',
