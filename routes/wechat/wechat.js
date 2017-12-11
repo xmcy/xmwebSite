@@ -368,10 +368,11 @@ router.get('/toExcel',function (req,res,next) {
     var temp=[]
     docs.forEach(function (item) {
       temp=[item.adType,item.resType,item.detailPlace,item.contacts,item.phoneNum,item.details,item.createdAt]
+      console.log(temp)
       result.push(temp)
       temp=[]
     })
-    conf.rows = docs;
+    conf.rows = result;
     var result = nodeExcel.execute(conf);
     res.setHeader('Content-Type', 'application/vnd.openxmlformats');
     res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
