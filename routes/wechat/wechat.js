@@ -312,6 +312,7 @@ router.post('/fankuiContent', function (req, res, next) {
 
 router.get('/toExcel',function (req,res,next) {
   var conf ={};
+  var resutt=[]
   // uncomment it for style example
   // conf.stylesXmlFile = "styles.xml";
   // conf.stylesXmlFile = "styles.xml";
@@ -363,7 +364,18 @@ router.get('/toExcel',function (req,res,next) {
     , width:20.85
   }];
   Advice.find({},{adType:1,resType:1,detailPlace:1,contacts:1,phoneNum:1,details:1,createdAt:1}).sort({createdAt: -1}).exec(function(err, docs) {
-    console.log(docs)
+
+    var temp=[]
+    docs.forEach(function (item) {
+      for(arr in item){
+        if(item.hasOwnProperty(arr)){
+          temp.unshift(arr)
+        }
+      }
+      console.log(result)
+      result.push(temp)
+      temp=[]
+    })
     conf.rows = docs;
     var result = nodeExcel.execute(conf);
     res.setHeader('Content-Type', 'application/vnd.openxmlformats');
