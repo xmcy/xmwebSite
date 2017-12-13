@@ -23,12 +23,13 @@
             margin: 0 0 30px 0;
             background-color: #da2f2f;
             height: 38px;
+            line-height: 38px;
             width: 100%;
-            padding: 7px 0 6px 100px;
             color: #fff;
             border-radius: 4px;
             font-size: 14px;
             display: block;
+            text-align: center;
         }
 
         .warpper {
@@ -686,31 +687,31 @@
                 }
             })
         })
-//            window.onload=function(){
-//                function isWeiXin(){
-//                    var ua = window.navigator.userAgent.toLowerCase();
-//                    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
-//                        return true;
-//                    }else{
-//                        var bod=document.getElementsByTagName("body")[0];
-//                        bod.innerHTML="<p style='text-align: center;color:#68E868'>请在微信客户端打开页面</p>";
-//                        swal({
-//                                    title: '您好，请使用微信客户端浏览！',
-//                                    text: "即将跳转-幸福天地-首页",
-//                                    confirmButtonColor: "#DD6B55",
-//                                    confirmButtonText: "确定",
-//                                    closeOnConfirm: false
-//                                },
-//                                function(isConfirm) {
-//                                    if (isConfirm) {
-//                                        window.location.href="/admin";
-//                                    }
-//                                })
-//                        return false;
-//                    }
-//                }
-//                isWeiXin()
-//            }
+            window.onload=function(){
+                function isWeiXin(){
+                    var ua = window.navigator.userAgent.toLowerCase();
+                    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                        return true;
+                    }else{
+                        var bod=document.getElementsByTagName("body")[0];
+                        bod.innerHTML="<p style='text-align: center;color:#68E868'>请在微信客户端打开页面</p>";
+                        swal({
+                                    title: '您好，请使用微信客户端浏览！',
+                                    text: "即将跳转-幸福天地-首页",
+                                    confirmButtonColor: "#DD6B55",
+                                    confirmButtonText: "确定",
+                                    closeOnConfirm: false
+                                },
+                                function(isConfirm) {
+                                    if (isConfirm) {
+                                        window.location.href="/admin";
+                                    }
+                                })
+                        return false;
+                    }
+                }
+                isWeiXin()
+            }
     </script>
 </body>
 
