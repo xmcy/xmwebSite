@@ -285,10 +285,10 @@ router.post('/InsertAdvice', function (req, res, next) {
           phoneNumArr.push('18986180878')
           phoneNumArr.push('13387627928')
         }
-        smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code31,[req.body.installTypeText,req.body.resourceTypeText,
-          req.body.detailPlace,req.body.details],function (err) {
-          console.log(err)
-        })
+        // smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code31,[req.body.installTypeText,req.body.resourceTypeText,
+        //   req.body.detailPlace,req.body.details],function (err) {
+        //   console.log(err)
+        // })
         smsUtils.sendNotifySMS_qcloud(req.body.phoneNum, smsUtils.code30, [], function(err) {})
         res.json({
           'result': 'success'

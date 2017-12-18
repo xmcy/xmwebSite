@@ -648,6 +648,14 @@
                     });
                     return false;
                 } else {
+                    if($($(".bannerimg")[0]).attr("src")==""){
+                        swal({
+                            title: "请等待图片上传成功再提交！",
+                            type: "error",
+                            confirmButtonText: "确定"
+                        });
+                        return false;
+                    }
                     for (var i = 0; i < bannerimgcount; i++) {
                         images.push($(bannerimg[i]).attr("src"));
                     }
