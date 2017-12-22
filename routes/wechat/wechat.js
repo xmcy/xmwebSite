@@ -246,7 +246,7 @@ router.post('/getChildType', function (req, res, next) {
 
 //投诉建议
 router.post('/InsertAdvice', function (req, res, next) {
-      var phoneNumArr=['17771898882','15927095400','13871312213','18571557923','18871176855']
+      var phoneNumArr=['17771898882','15927095400','13871312213','18571557923','18871176855','18971314866']
       // var phoneNumArr=['18571557923']
       var dataObj={
         adType:req.body.adType,
