@@ -199,6 +199,9 @@ router.get('/weRegister', function (req, res, next) {
 router.get('/resourceRelease', function (req, res, next) {
   wechatFunc.renderToTargetPageByType(req, res, 'resourceRelease', {title: '欢迎来到幸福天地!',page: 'resourceRelease'})
 })
+router.get('/love', function (req, res, next) {
+  wechatFunc.renderToTargetPageByType(req, res, 'love', {title: '欢迎来到幸福天地!',page: 'love'})
+})
 // 需要登陆的路由判断登陆状态
 router.get('/userCenter', function (req, res, next) {
   if (isLogined(req)) {

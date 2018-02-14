@@ -320,6 +320,9 @@ setDataForweICanFixSiteMap: function (req, res, params , staticforder, defaultTe
           console.log("1")
           targetPath = settings.SYSTEMTEMPFORDER + temp.alias + '/wechat/resourceRelease'
           res.render(targetPath, wechatFunc.setDataForresourceRelease(req, res, params, temp.alias))
+        }else if (type == 'love') {
+          targetPath = settings.SYSTEMTEMPFORDER + temp.alias + '/wechat/love'
+          res.render(targetPath, wechatFunc.setDataForresourceRelease(req, res, params, temp.alias))
         }
       }else {
         res.writeHeader(200, {'Content-Type': 'text/javascript;charset=UTF-8'})
