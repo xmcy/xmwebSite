@@ -7,6 +7,7 @@ var request=require('request')
 var ContentCategory = require('../../models/ContentCategory')
 var User = require('../../models/User')
 var Advice = require('../../models/Advice')
+var History = require('../../models/History')
 var WxCheck = require('../../models/WxCheck')
 var Wx = require('../../models/Wx')
 var AdminUser = require('../../models/AdminUser')
@@ -249,7 +250,8 @@ router.post('/getChildType', function (req, res, next) {
 
 //投诉建议
 router.post('/InsertAdvice', function (req, res, next) {
-      var phoneNumArr=['17771898882','15927095400','13871312213','18571557923','18871176855','18971314866']
+      var phoneNumArr=['17771898882','15927095400','13871312213','18571557923','18871176855','18971314866','13871304056'
+        ,'15927582796','15827337859','13971625508']
       // var phoneNumArr=['18571557923']
       var dataObj={
         adType:req.body.adType,
@@ -309,6 +311,17 @@ router.post('/fankuiContent', function (req, res, next) {
       console.log(err)
       res.end("error")
     }else {
+      // var dataObj={
+      //   resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
+      //   resType:req.body.resType,
+      //   images:req.body.images,
+      //   contacts:req.body.contacts,
+      //   phoneNum:req.body.phoneNum,
+      //   details:req.body.details,
+      //   detailPlace:req.body.detailPlace
+      // }
+      // var advice=new History(dataObj)
+      //
       res.end("success")
     }
   })
