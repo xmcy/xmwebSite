@@ -331,7 +331,7 @@ router.post('/fankuiContent', function (req, res, next) {
               }
           })
       }
-  }).exec()
+  })
 })
 
 router.get('/toExcel',function (req,res,next) {
