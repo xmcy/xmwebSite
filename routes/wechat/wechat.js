@@ -306,7 +306,7 @@ router.post('/InsertAdvice', function (req, res, next) {
 router.post('/fankuiContent', function (req, res, next) {
   var content=req.body.content
   var phoneNum=req.body.phoneNum
-    console.log(req.body.phoneNum)
+    console.log(req.body.resNum)
     Advice.update({resNum:req.body.resNum},{$set:{fankuiContent:content}},function(err, result) {
         console.log(result)
         if (err) {
