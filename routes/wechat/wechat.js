@@ -306,7 +306,7 @@ router.post('/InsertAdvice', function (req, res, next) {
 router.post('/fankuiContent', function (req, res, next) {
   var content=req.body.content
   var phoneNum=req.body.phoneNum
-  Advice.findByIdAndUpdate(req.body.id,{content:content},function(err, result) {
+  Advice.findByIdAndUpdate(req.body.id,{fankuiContent:content},function(err, result) {
       console.log(err)
       console.log(result)
       if (err) {

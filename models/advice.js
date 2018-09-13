@@ -24,8 +24,6 @@ var adviceSchema = new Schema({
     isTop: { type: Boolean, default: false }, // 是否置顶显示
 })
 
-adviceSchema.add({content:String})
-
 var Advice = mongoose.model('Advice', adviceSchema)
 
 module.exports = Advice
