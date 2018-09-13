@@ -307,7 +307,7 @@ router.post('/fankuiContent', function (req, res, next) {
   var content=req.body.content
   var phoneNum=req.body.phoneNum
     Advice.findOne({resNum:req.body.resNum},function (err,doc) {
-        Advice.update({resNum:req.body.resNum},{$set:{fankuiContent:"desdsds"}},function(err, result) {
+        Advice.update({resNum:req.body.resNum},{$set:{content:"desdsds"}},function(err, result) {
             console.log(err)
             console.log(result)
             if (err) {
