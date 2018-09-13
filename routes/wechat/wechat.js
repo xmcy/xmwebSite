@@ -310,7 +310,7 @@ router.post('/fankuiContent', function (req, res, next) {
     Advice.findOne({resNum:req.body.resNum},function (err,doc) {
         // var tempObj=_.cloneDeep(doc)
         // tempObj.fankuiContent=content
-        doc._doc.fankuiContent=content
+        doc._doc.content=content
         console.log(doc)
         Advice.update({resNum:req.body.resNum},{$set:doc},function(err, result) {
             console.log(result)
