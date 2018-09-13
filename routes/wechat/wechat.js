@@ -367,33 +367,25 @@ router.get('/toExcel',function (req,res,next) {
     caption:'详情',
     type:'string',
     width:100
+  }, {
+      caption:'回复',
+      type:'string',
+      width:150
   },{
     caption:'时间',
     type:'date',
     beforeCellWrite:function(){
-      var originDate = new Date(Date.UTC(1899,11,30));
       return function(row, cellData, eOpt){
-        // uncomment it for style example
-        // if (eOpt.rowNum%2){
-        // eOpt.styleIndex = 1;
-        // }
-        // else{
-        // eOpt.styleIndex = 2;
-        // }
-        if (cellData === null){
-          eOpt.cellType = 'string';
-          return 'N/A';
-        } else
-          return (cellData - originDate) / (24 * 60 * 60 * 1000);
+          return moment(cellData).format('YYYY-MM-DD HH:mm:ss')
       }
     }()
     , width:20.85
   }];
-  Advice.find({},{adType:1,resType:1,detailPlace:1,contacts:1,phoneNum:1,details:1,createdAt:1}).sort({createdAt: -1}).exec(function(err, docs) {
+  Advice.find({},{adType:1,resType:1,detailPlace:1,contacts:1,phoneNum:1,details:1,content:1,createdAt:1}).sort({createdAt: -1}).exec(function(err, docs) {
 
     var temp=[]
     docs.forEach(function (item) {
-      temp=[getadType(item.adType),getresType(item.resType),item.detailPlace,item.contacts,item.phoneNum,item.details,item.createdAt]
+      temp=[getadType(item.adType),getresType(item.resType),item.detailPlace,item.contacts,item.phoneNum,item.details,item.content,item.createdAt]
       console.log(temp)
       resultArr.push(temp)
       temp=[]
