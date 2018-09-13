@@ -308,10 +308,8 @@ router.post('/fankuiContent', function (req, res, next) {
   var phoneNum=req.body.phoneNum
     console.log(req.body.resNum)
     Advice.findOne({resNum:req.body.resNum},function (err,doc) {
-        var tempObj=_.cloneDeep(doc._doc)
-        tempObj.fankuiContent=content
-        console.log(tempObj)
-        Advice.update({resNum:req.body.resNum},{$set:tempObj},function(err, result) {
+        console.log(doc)
+        Advice.update({resNum:req.body.resNum},{$set:{fankuiContent:content}},function(err, result) {
             console.log(result)
             if (err) {
                 res.end(err)
