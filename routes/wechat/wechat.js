@@ -307,7 +307,7 @@ router.post('/fankuiContent', function (req, res, next) {
     console.log(req.body)
     var content=req.body.content
   var phoneNum=req.body.phoneNum
-  Advice.update({ _id: req.body.id }, { $set: {fankuiContent:content}}, function(err, result) {
+  Advice.findOneAndUpdate({ _id: req.body.id }, { $set: {fankuiContent:content}}, function(err, result) {
       console.log(result)
       if (err) {
           res.end(err)
