@@ -307,12 +307,13 @@ router.post('/InsertAdvice', function (req, res, next) {
 router.post('/fankuiContent', function (req, res, next) {
   var content=req.body.content.replace("undefined","")
   var phoneNum=req.body.phoneNum
+  var fankui=req.body.fankui
     Advice.update({resNum:req.body.resNum},{$set:{content:content}},function(err, result) {
         console.log(result)
         if (err) {
             res.end(err)
         } else {
-            smsUtils.sendNotifySMS_qcloud(phoneNum, smsUtils.code29, [content], function (err) {
+            smsUtils.sendNotifySMS_qcloud(phoneNum, smsUtils.code29, [fankui], function (err) {
                 if (err) {
                     console.log(err)
                     res.end("error")
