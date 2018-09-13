@@ -11,7 +11,7 @@ var adviceSchema = new Schema({
     resType: String, // 社区类别
     images: [], // 图片集合
 
-    fankuiContent: String, //回复消息
+    fankuiContent: {type: String, default: ''}, //回复消息
     contacts: String, // 联系人
     phoneNum: String, // 联系电话
     details: String, // 详情
