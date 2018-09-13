@@ -306,16 +306,16 @@ router.post('/InsertAdvice', function (req, res, next) {
 router.post('/fankuiContent', function (req, res, next) {
     var content=req.body.content
   var phoneNum=req.body.phoneNum
-  Advice.update({ _id: req.body.id }, { $set: {details:content}}, function(err, result) {
+  Advice.update({ _id: req.body.id }, { $set: {fankuiContent:content}}).exec(function(err, result) {
       console.log(result)
       if (err) {
           res.end(err)
       } else {
-          smsUtils.sendNotifySMS_qcloud(phoneNum, smsUtils.code29, [content], function(err) {
-              if(err){
+          smsUtils.sendNotifySMS_qcloud(phoneNum, smsUtils.code29, [content], function (err) {
+              if (err) {
                   console.log(err)
                   res.end("error")
-              }else {
+              } else {
                   // var dataObj={
                   //   resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
                   //   resType:req.body.resType,
@@ -330,7 +330,6 @@ router.post('/fankuiContent', function (req, res, next) {
                   res.end("success")
               }
           })
-
       }
   })
 })
