@@ -312,7 +312,7 @@ router.post('/fankuiContent', function (req, res, next) {
         // tempObj.fankuiContent=content
         doc._doc.content=content
         console.log(doc)
-        Advice.update({resNum:req.body.resNum},{$set:doc},function(err, result) {
+        Advice.update({resNum:req.body.resNum},doc,function(err, result) {
             console.log(result)
             if (err) {
                 res.end(err)
