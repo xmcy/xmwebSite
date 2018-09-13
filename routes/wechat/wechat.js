@@ -307,34 +307,35 @@ router.post('/fankuiContent', function (req, res, next) {
   var content=req.body.content
   var phoneNum=req.body.phoneNum
     Advice.findOne({resNum:req.body.resNum},function (err,doc) {
-        console.log(doc)
+        doc.fankuiContent=content
+        Advice.update({resNum:req.body.resNum},{$set:doc},function(err, result) {
+            console.log(result)
+            if (err) {
+                res.end(err)
+            } else {
+                smsUtils.sendNotifySMS_qcloud(phoneNum, smsUtils.code29, [content], function (err) {
+                    if (err) {
+                        console.log(err)
+                        res.end("error")
+                    } else {
+                        // var dataObj={
+                        //   resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
+                        //   resType:req.body.resType,
+                        //   images:req.body.images,
+                        //   contacts:req.body.contacts,
+                        //   phoneNum:req.body.phoneNum,
+                        //   details:req.body.details,
+                        //   detailPlace:req.body.detailPlace
+                        // }
+                        // var advice=new History(dataObj)
+                        //
+                        res.end("success")
+                    }
+                })
+            }
+        })
+
     })
-  Advice.update({resNum:req.body.resNum},{$set:{fankuiContent:content}},function(err, result) {
-      console.log(result)
-      if (err) {
-          res.end(err)
-      } else {
-          smsUtils.sendNotifySMS_qcloud(phoneNum, smsUtils.code29, [content], function (err) {
-              if (err) {
-                  console.log(err)
-                  res.end("error")
-              } else {
-                  // var dataObj={
-                  //   resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
-                  //   resType:req.body.resType,
-                  //   images:req.body.images,
-                  //   contacts:req.body.contacts,
-                  //   phoneNum:req.body.phoneNum,
-                  //   details:req.body.details,
-                  //   detailPlace:req.body.detailPlace
-                  // }
-                  // var advice=new History(dataObj)
-                  //
-                  res.end("success")
-              }
-          })
-      }
-  })
 })
 
 router.get('/toExcel',function (req,res,next) {
