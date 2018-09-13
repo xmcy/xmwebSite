@@ -258,6 +258,7 @@ router.post('/InsertAdvice', function (req, res, next) {
         resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
         resType:req.body.resType,
         images:req.body.images,
+        content:"",
         contacts:req.body.contacts,
         phoneNum:req.body.phoneNum,
         details:req.body.details,
