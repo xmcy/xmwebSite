@@ -217,9 +217,13 @@
                             });
                             return false
                         }
-                        var fankuiContent=$("#addContentTags").scope().content.content||""
+                        if($("#addContentTags").scope().content.content){
+                           fankuiContent=$("#addContentTags").scope().content.content+";"
+                       }else{
+                           fankuiContent=""
+                       }
                         var dataForPost={
-                            content:fankuiContent+";"+fankui,
+                            content:fankuiContent+fankui,
                             fankui:fankui,
                             resNum:$("#addContentTags").scope().content.resNum,
                             phoneNum:$("#addContentTags").scope().content.phoneNum
