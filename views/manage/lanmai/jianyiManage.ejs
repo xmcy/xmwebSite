@@ -217,8 +217,9 @@
                             });
                             return false
                         }
+                        var fankuiContent=$("#addContentTags").scope().content.fankuiContent||""
                         var dataForPost={
-                            content:$("#addContentTags").scope().content.fankuiContent+fankui,
+                            content:fankuiContent+fankui,
                             phoneNum:$("#addContentTags").scope().content.phoneNum,
                             resNum:$("#addContentTags").scope().content.resNum,
                         }
