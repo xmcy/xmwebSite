@@ -250,10 +250,10 @@ router.post('/getChildType', function (req, res, next) {
 
 //投诉建议
 router.post('/InsertAdvice', function (req, res, next) {
-      var phoneNumArr=['17771898882','15927095400','13871312213','18571557923','18871176855','18971314866','13871304056'
+    var phoneNumArr=['17771898882','15927095400','13871312213','18571557923','18871176855','18971314866','13871304056'
         ,'15927582796','15827337859','13971625508']
-      // var phoneNumArr=['18571557923']
-      var dataObj={
+    // var phoneNumArr=['18571557923']
+    var dataObj={
         adType:req.body.adType,
         resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
         resType:req.body.resType,
@@ -262,43 +262,43 @@ router.post('/InsertAdvice', function (req, res, next) {
         phoneNum:req.body.phoneNum,
         details:req.body.details,
         detailPlace:req.body.detailPlace
-      }
+    }
     var advice=new Advice(dataObj)
     advice.save(function (err) {
-      if (err) {
-        res.json({ error: err })
-      } else {
-        if(req.body.resType=="1"){
-          phoneNumArr.push('15527496551')
-          phoneNumArr.push('18971549698')
-        }else if(req.body.resType=="2"){
-          phoneNumArr.push('18702786303')
-        }else if(req.body.resType=="3"){
-          phoneNumArr.push('13659865498')
-          phoneNumArr.push('13871510430')
-        }else if(req.body.resType=="4"){
-          phoneNumArr.push('13971651751')
-          phoneNumArr.push('15172316250')
-          phoneNumArr.push('15994294908')
-          phoneNumArr.push('15002777819')
-        }else if(req.body.resType=="5"||req.body.resType=="6"){
-          phoneNumArr.push('13871457538')
-          phoneNumArr.push('18071022988')
-          phoneNumArr.push('13871342702')
-        }else if(req.body.resType=="7"){
-          phoneNumArr.push('13007107822')
-          phoneNumArr.push('18986180878')
-          phoneNumArr.push('13387627928')
+        if (err) {
+            res.json({ error: err })
+        } else {
+            if(req.body.resType=="1"){
+                phoneNumArr.push('15527496551')
+                phoneNumArr.push('18971549698')
+            }else if(req.body.resType=="2"){
+                phoneNumArr.push('18702786303')
+            }else if(req.body.resType=="3"){
+                phoneNumArr.push('13659865498')
+                phoneNumArr.push('13871510430')
+            }else if(req.body.resType=="4"){
+                phoneNumArr.push('13971651751')
+                phoneNumArr.push('13387627928')
+                phoneNumArr.push('15994294908')
+                phoneNumArr.push('15002777819')
+            }else if(req.body.resType=="5"||req.body.resType=="6"){
+                phoneNumArr.push('13871457538')
+                phoneNumArr.push('18071022988')
+                phoneNumArr.push('13871342702')
+            }else if(req.body.resType=="7"){
+                phoneNumArr.push('13007107822')
+                phoneNumArr.push('18986180878')
+                phoneNumArr.push('15392859490')
+            }
+            smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code31,[req.body.installTypeText,req.body.resourceTypeText,
+                req.body.detailPlace,req.body.details],function (err) {
+                console.log(err)
+            })
+            smsUtils.sendNotifySMS_qcloud(req.body.phoneNum, smsUtils.code30, [], function(err) {})
+            res.json({
+                'result': 'success'
+            })
         }
-        smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr,smsUtils.code31,[req.body.installTypeText,req.body.resourceTypeText,
-          req.body.detailPlace,req.body.details],function (err) {
-          console.log(err)
-        })
-        smsUtils.sendNotifySMS_qcloud(req.body.phoneNum, smsUtils.code30, [], function(err) {})
-        res.json({
-          'result': 'success'
-        })
-      }
     })
 })
 
@@ -306,24 +306,31 @@ router.post('/InsertAdvice', function (req, res, next) {
 router.post('/fankuiContent', function (req, res, next) {
   var content=req.body.content
   var phoneNum=req.body.phoneNum
-  smsUtils.sendNotifySMS_qcloud(phoneNum, smsUtils.code29, [content], function(err) {
-    if(err){
-      console.log(err)
-      res.end("error")
-    }else {
-      // var dataObj={
-      //   resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
-      //   resType:req.body.resType,
-      //   images:req.body.images,
-      //   contacts:req.body.contacts,
-      //   phoneNum:req.body.phoneNum,
-      //   details:req.body.details,
-      //   detailPlace:req.body.detailPlace
-      // }
-      // var advice=new History(dataObj)
-      //
-      res.end("success")
-    }
+  Advice.update({ _id: req.body.id }, { $inc: {fankuiContent:content}}, function(err, result) {
+      if (err) {
+          res.end(err)
+      } else {
+          smsUtils.sendNotifySMS_qcloud(phoneNum, smsUtils.code29, [content], function(err) {
+              if(err){
+                  console.log(err)
+                  res.end("error")
+              }else {
+                  // var dataObj={
+                  //   resNum:moment().format('YYYYMMDDHHmmss') + _.random(10000, 99999),
+                  //   resType:req.body.resType,
+                  //   images:req.body.images,
+                  //   contacts:req.body.contacts,
+                  //   phoneNum:req.body.phoneNum,
+                  //   details:req.body.details,
+                  //   detailPlace:req.body.detailPlace
+                  // }
+                  // var advice=new History(dataObj)
+                  //
+                  res.end("success")
+              }
+          })
+
+      }
   })
 })
 

@@ -137,6 +137,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-sm-4">回复内容</label>
+                            <div class="col-sm-6">
+                                {{content.fankuiContent}}
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-sm-4">联系人</label>
                             <div class="col-sm-6">
                                 <span class="form-control" >{{content.contacts}}</span>
@@ -217,7 +223,8 @@
                         }
                         var dataForPost={
                             content:fankui,
-                            phoneNum:$("#addContentTags").scope().content.phoneNum
+                            phoneNum:$("#addContentTags").scope().content.phoneNum,
+                            id:$("#addContentTags").scope().content.id
                         }
                         $.post("/wechat/fankuiContent",dataForPost,function (res) {
                             if(res=="success"){
