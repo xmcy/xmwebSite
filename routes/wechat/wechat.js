@@ -305,7 +305,7 @@ router.post('/InsertAdvice', function (req, res, next) {
 
 //投诉建议
 router.post('/fankuiContent', function (req, res, next) {
-  var content=req.body.content.replace("undefined","")
+  var content=req.body.content.replace(";","")
   var phoneNum=req.body.phoneNum
   var fankui=req.body.fankui
     Advice.update({resNum:req.body.resNum},{$set:{content:content}},function(err, result) {
