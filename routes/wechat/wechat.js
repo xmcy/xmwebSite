@@ -308,6 +308,7 @@ router.post('/fankuiContent', function (req, res, next) {
   var phoneNum=req.body.phoneNum
     Advice.findOne({resNum:req.body.resNum},function (err,doc) {
         doc.fankuiContent=content
+        console.log(doc)
         doc.save(function () {
             res.end("success")
         });
