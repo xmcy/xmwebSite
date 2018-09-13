@@ -218,9 +218,9 @@
                             return false
                         }
                         var dataForPost={
-                            content:$("#addContentTags").scope().content.fankuiContent+fankui,
+                            content:$("#addContentTags").scope().content.fankuiContent||""+fankui,
                             phoneNum:$("#addContentTags").scope().content.phoneNum,
-                            id:$("#addContentTags").scope().content.id,
+                            id:$("#addContentTags").scope().content._id,
                         }
                         $.post("/wechat/fankuiContent",dataForPost,function (res) {
                             if(res=="success"){

@@ -218,8 +218,8 @@
                             return false
                         }
                         var dataForPost={
-                            content:$("#addContentTags").scope().content.fankuiContent+fankui,
-                            id:$("#addContentTags").scope().content.id,
+                            content:$("#addContentTags").scope().content.fankuiContent||""+fankui,
+                            id:$("#addContentTags").scope().content._id,
                             phoneNum:$("#addContentTags").scope().content.phoneNum
                         }
                         $.post("/wechat/fankuiContent",dataForPost,function (res) {
