@@ -224,7 +224,7 @@
                         var dataForPost={
                             content:$("#addContentTags").scope().content.fankuiContent||""+fankui,
                             phoneNum:$("#addContentTags").scope().content.phoneNum,
-                            resNum:$("#addContentTags").scope().content.resNum
+                            id:$("#addContentTags").scope().content._id
                         }
                         $.post("/wechat/fankuiContent",dataForPost,function (res) {
                             if(res=="success"){

@@ -219,7 +219,7 @@
                         }
                         var dataForPost={
                             content:$("#addContentTags").scope().content.fankuiContent||""+fankui,
-                            resNum:$("#addContentTags").scope().content.resNum,
+                            id:$("#addContentTags").scope().content._id,
                             phoneNum:$("#addContentTags").scope().content.phoneNum
                         }
                         $.post("/wechat/fankuiContent",dataForPost,function (res) {
