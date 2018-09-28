@@ -380,7 +380,7 @@ router.get('/toExcel',function (req,res,next) {
           return moment(cellData).format('YYYY-MM-DD HH:mm:ss')
       }
     }()
-    , width:20.85
+    , width:150
   }];
   Advice.find({},{adType:1,resType:1,detailPlace:1,contacts:1,phoneNum:1,details:1,content:1,createdAt:1}).sort({createdAt: -1}).exec(function(err, docs) {
 
