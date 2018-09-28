@@ -376,6 +376,7 @@ router.get('/toExcel',function (req,res,next) {
     type:'date',
     beforeCellWrite:function(){
       return function(row, cellData, eOpt){
+          console.log(row,cellData)
           return moment(cellData).format('YYYY-MM-DD HH:mm:ss')
       }
     }()
@@ -386,7 +387,6 @@ router.get('/toExcel',function (req,res,next) {
     var temp=[]
     docs.forEach(function (item) {
       temp=[getadType(item.adType),getresType(item.resType),item.detailPlace,item.contacts,item.phoneNum,item.details,item.content,item.createdAt]
-      console.log(temp)
       resultArr.push(temp)
       temp=[]
     })
