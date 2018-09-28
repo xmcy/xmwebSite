@@ -350,19 +350,19 @@ router.get('/toExcel',function (req,res,next) {
 },{
     caption:'社区类别',
     type:'string',
-    width:15
+    width:30
   },{
     caption:'具体地点',
     type:'string',
-    width:35
+    width:200
   },{
     caption:'联系人',
     type:'string',
-    width:15
+    width:30
   },{
     caption:'联系电话',
     type:'number',
-    width:15
+    width:110
   },{
     caption:'详情',
     type:'string',
@@ -376,7 +376,6 @@ router.get('/toExcel',function (req,res,next) {
     type:'string',
     beforeCellWrite:function(){
       return function(row, cellData, eOpt){
-          console.log(moment(cellData).format('YYYY-MM-DD HH:mm:ss'))
           return moment(cellData).format('YYYY-MM-DD HH:mm:ss')
       }
     }()
