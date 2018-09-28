@@ -373,10 +373,10 @@ router.get('/toExcel',function (req,res,next) {
       width:150
   },{
     caption:'时间',
-    type:'date',
+    type:'string',
     beforeCellWrite:function(){
       return function(row, cellData, eOpt){
-          console.log(cellData)
+          console.log(moment(cellData).format('YYYY-MM-DD HH:mm:ss'))
           return moment(cellData).format('YYYY-MM-DD HH:mm:ss')
       }
     }()
