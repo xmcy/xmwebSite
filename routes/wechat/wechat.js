@@ -345,32 +345,25 @@ router.get('/toExcel',function (req,res,next) {
   conf.name = "mysheet";
   conf.cols = [{
     caption:'类型',
-      type:'string',
-      width:15
+      type:'string'
 },{
     caption:'社区类别',
-    type:'string',
-    width:30
+    type:'string'
   },{
     caption:'具体地点',
-    type:'string',
-    width:200
+    type:'string'
   },{
     caption:'联系人',
-    type:'string',
-    width:30
+    type:'string'
   },{
     caption:'联系电话',
-    type:'number',
-    width:110
+    type:'number'
   },{
     caption:'详情',
-    type:'string',
-    width:100
+    type:'string'
   }, {
       caption:'回复',
-      type:'string',
-      width:150
+      type:'string'
   },{
     caption:'时间',
     type:'string',
@@ -379,7 +372,6 @@ router.get('/toExcel',function (req,res,next) {
           return moment(cellData).format('YYYY-MM-DD HH:mm:ss')
       }
     }()
-    , width:150
   }];
   Advice.find({},{adType:1,resType:1,detailPlace:1,contacts:1,phoneNum:1,details:1,content:1,createdAt:1}).sort({createdAt: -1}).exec(function(err, docs) {
 
