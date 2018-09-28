@@ -376,7 +376,7 @@ router.get('/toExcel',function (req,res,next) {
     type:'date',
     beforeCellWrite:function(){
       return function(row, cellData, eOpt){
-          console.log(row,cellData)
+          console.log(cellData)
           return moment(cellData).format('YYYY-MM-DD HH:mm:ss')
       }
     }()
