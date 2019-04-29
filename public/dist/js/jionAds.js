@@ -2,6 +2,7 @@ $(function(){
     var CODE_GET_ERROR="验证码错误"
     var CODE_DATA_ERROR="验证码已过期";
     var CODE_NUM_LOST="电话号码或验证码无效";
+    $("#xmhaha").text(window.location.host.indexOf("xmcy")>-1?"鄂ICP备17020747号-2":"鄂ICP备17020747号-1")
     $(".myTelNum").on("input",function(){
         var tel = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/;
         var tvalue=$(".myTelNum").val();
