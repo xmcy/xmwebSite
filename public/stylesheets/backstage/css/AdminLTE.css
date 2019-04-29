@@ -102,6 +102,7 @@ body {
   z-index: 800;
 }
 .main-footer {
+  margin: 0;
   background: #fff;
   padding: 15px;
   color: #444;
