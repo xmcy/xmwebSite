@@ -70,7 +70,7 @@
             float: left;
             height: .83305rem;
             line-height: .83305rem;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .optionIcon {
@@ -90,18 +90,22 @@
 
         input::-webkit-input-placeholder {
             font-size: 10px;
+            color: #000;
         }
 
         input::-moz-placeholder {
             font-size: 10px;
+            color: #000;
         }
 
         input:-moz-placeholder {
             font-size: 10px;
+            color: #000;
         }
 
         input:-ms-input-placeholder {
             font-size: 10px;
+            color: #000;
         }
 
         textarea {
@@ -124,7 +128,7 @@
             display: block;
             margin-top: .31982rem;
             font-size: 10px;
-            color: #b5b5b5;
+            color: #000;
             text-align: right;
         }
 
@@ -353,8 +357,8 @@
             <div>
                 <span><span class="optionIcon">*</span><span>类 型</span></span>
                 <form>
-                    <input class="re_machine_fix" type="radio" name="installType" id="freeinstall" checked value="1"> <label for="freeinstall" class="change_style">投诉</label>
-                    <input class="re_machine_fix" type="radio" name="installType"  id="payinstall" value="2"> <label for="payinstall" class="change_style">报修</label>
+                    <input class="re_machine_fix" type="radio" name="installType"  id="payinstall" checked value="2"> <label for="payinstall" class="change_style">报修</label>
+                    <input class="re_machine_fix" type="radio" name="installType" id="freeinstall"  value="1"> <label for="freeinstall" class="change_style">投诉</label>
                     <input class="re_machine_fix" type="radio" name="installType" id="noinstall"  value="3"> <label for="noinstall" class="change_style">建议</label>
                 </form>
             </div>
@@ -640,14 +644,14 @@
                     return false;
                 };
                 if (bannerimgcount == 0) {
-                    swal({
-                        title: "请上传图片！",
-                        type: "error",
-                        confirmButtonText: "确定"
-                    });
-                    return false;
-                } else {
-                    if($($(".bannerimg")[0]).attr("src")==""){
+                    // swal({
+                    //     title: "请上传图片！",
+                    //     type: "error",
+                    //     confirmButtonText: "确定"
+                    // });
+                    // return false;
+                // } else {
+                    if(bannerimgcount>0 && $($(".bannerimg")[0]).attr("src")==""){
                         swal({
                             title: "请等待图片上传成功再提交！",
                             type: "error",
@@ -655,9 +659,12 @@
                         });
                         return false;
                     }
-                    for (var i = 0; i < bannerimgcount; i++) {
-                        images.push($(bannerimg[i]).attr("src"));
+                    if(bannerimgcount>0){
+                        for (var i = 0; i < bannerimgcount; i++) {
+                            images.push($(bannerimg[i]).attr("src"));
+                        }
                     }
+
                     var data = {
                         phoneNum: phone,
                         adType: installType,
