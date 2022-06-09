@@ -381,7 +381,6 @@ router.post('/InsertAdvice', function (req, res, next) {
       } else if (req.body.resType == "7") {
         phoneNumArr.push('13007107822')
         phoneNumArr.push('18986180878')
-        phoneNumArr.push('15392880187')
       }
       smsUtils.sendNotifyMultiSMS_qcloud(phoneNumArr, smsUtils.code31, [req.body.installTypeText, req.body.resourceTypeText,
         req.body.detailPlace, req.body.details
