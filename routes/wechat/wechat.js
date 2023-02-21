@@ -378,6 +378,7 @@ router.post('/InsertAdvice', function (req, res, next) {
         phoneNumArr.push('13871457538')
         phoneNumArr.push('18071022988')
         phoneNumArr.push('13871342702')
+        phoneNumArr.push('15827422117')
       } else if (req.body.resType == "7") {
         phoneNumArr.push('13007107822')
         phoneNumArr.push('18986180878')
