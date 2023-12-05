@@ -366,9 +366,11 @@ router.post('/InsertAdvice', function (req, res, next) {
         phoneNumArr.push('18702786303')
       } else if (req.body.resType == "2") {
         phoneNumArr.push('18702786303')
+        phoneNumArr.push('15527496551')
       } else if (req.body.resType == "3") {
         phoneNumArr.push('13659865498')
         phoneNumArr.push('18702786303')
+        phoneNumArr.push('15527496551')
       } else if (req.body.resType == "4") {
         phoneNumArr.push('13971651751')
         phoneNumArr.push('13387627928')
